@@ -89,7 +89,9 @@ public:
     //暂时不做
     void relativeMove();//相对模式移动
     void absoluteMove();//绝对模式移动
-    void homeMove();//移动到起点
+    void homeMove(QByteArray );//移动到起点
+    void moveAxis(int Mode, int X, int Y, int Z);
+    void setDualMode(int Mode);
 
     void testdemo();
 

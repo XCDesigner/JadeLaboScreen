@@ -1,5 +1,13 @@
 #include "xhport.h"
 
+// B: int buffer 
+// I: Int value
+#define FILL_QBYTEARRAY_32(B, I)    do { B[0]=I; \
+                                       B[1]=(unsigned char)(I>>8); \
+                                       B[2]=(unsigned char)(I>>16); \
+                                       B[3]=(unsigned char)(I>>24); \
+                                    }while(0)
+
 XhPort::XhPort(QObject *parent) : QObject(parent)
 {
     m_serial = new QSerialPort(this);
@@ -527,12 +535,56 @@ void XhPort::relativeMove()
 
 void XhPort::absoluteMove()
 {
-
 }
 
-void XhPort::homeMove()
+/**
+  * @brief  Request home aixs 
+  * @param  AxisFlag: Flags, {XAxis, YAxis, ZAxis}. 1 for home
+  * @retval None
+  */
+void XhPort::homeMove(QByteArray AxisFlag)
 {
+    QByteArray s = QByteArray::fromHex("0203");
+    s.append(AxisFlag);
+    QByteArray buff = m_package->groupPage(s);
+    m_serial->write(buff);
+}
 
+/**
+  * @brief  Request move axis
+  * @param  Mode: 0 for absolute mode. 1 for relative mode
+  * @param  X: X distance in micron meter
+  * @param  Y: Y distance in micron meter
+  * @param  Z: Z distance in micron meter
+  * @retval None
+  */
+void XhPort::moveAxis(int Mode, int X, int Y, int Z)
+{
+    QByteArray s = QByteArray::fromHex("0202");
+    s.append(1, Mode);
+    QByteArray value;
+    value.resize(4);
+    FILL_QBYTEARRAY_32(value, X);
+    s.append(value);
+    FILL_QBYTEARRAY_32(value, Y);
+    s.append(value);
+    FILL_QBYTEARRAY_32(value, Z);
+    s.append(value);
+    QByteArray buff = m_package->groupPage(s);
+    m_serial->write(buff);
+}
+
+/**
+  * @brief  Set dual carrier mode 
+  * @param  Mode: 0 for full control, 1 for auto park, 2 for duplicate, 3 for mirror.
+  * @retval None
+  */
+void XhPort::setDualMode(int Mode)
+{
+    QByteArray s = QByteArray::fromHex("0206");
+    s.append(1, Mode);
+    QByteArray buff = m_package->groupPage(s);
+    m_serial->write(buff);
 }
 
 void XhPort::testdemo()
