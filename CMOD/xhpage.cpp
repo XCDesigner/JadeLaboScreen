@@ -710,9 +710,11 @@ QByteArray XhPage::groupPage(QByteArray data)
     checkData[1] = static_cast< char>((nature >> 8) & 0xFF);
     checkData[0] = static_cast< char>((nature >> 0) & 0xFF);
 
+    pagedataNature.resize(2);
     pagedataNature.append(checkData,2);
 
     pageLen = "";
+    pageLen.resize(2);
     pageLen[0]='\x00';
     pageLen[1]='\x00';
     int len = data.size();
@@ -729,9 +731,11 @@ QByteArray XhPage::groupPage(QByteArray data)
         len--;
     }
     pageLsc = "";
+    pageLsc.resize(1);
     pageLsc[0] = pageLen[0]^pageLen[1];
 
     QByteArray sendPage = "";
+    sendPage.resize(len + 9);
     sendPage.append(pageHead);
     sendPage.append(pageType);
     sendPage.append(pageLen);
