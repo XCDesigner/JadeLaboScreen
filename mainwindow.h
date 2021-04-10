@@ -163,6 +163,7 @@ private:
     QQuickItem *item1;
     QQuickItem *item3;
     QQuickItem *item4;
+    QQuickItem *qw_DistanceItem;
     filamentFault *m_filamentfault;
     printFlament *m_printfilament;
 
@@ -1044,6 +1045,24 @@ private slots:
     void on_pushButton_454_clicked(bool checked);
 
     void on_pushButton_455_clicked();
+
+    void on_pushButton_693_clicked();
+
+    void on_pushButton_694_clicked();
+
+    void on_pushButton_695_clicked();
+
+    void on_pushButton_698_clicked();
+
+    void on_pushButton_697_clicked();
+
+    void on_pushButton_696_clicked();
+
+    void on_pushButton_699_clicked();
+
+    void on_pushButton_701_clicked();
+
+    void on_pushButton_700_clicked();
 
 signals:
     void detection(bool ready);

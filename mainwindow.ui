@@ -57,7 +57,7 @@
      <string notr="true">background-color: rgb(32, 32, 35);</string>
     </property>
     <property name="currentIndex">
-     <number>57</number>
+     <number>86</number>
     </property>
     <widget class="QWidget" name="page">
      <widget class="QLabel" name="label">
@@ -16552,7 +16552,7 @@ font-family: Barlow;
 border: 1px solid rgba(79, 79, 79, 255);</string>
       </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>2</number>
       </property>
       <widget class="QWidget" name="key_1">
        <widget class="QPushButton" name="pushButton_138">
@@ -19161,6 +19161,229 @@ border: 2px solid rgba(255, 99, 11, 255);</string>
      <zorder>pushButton_692</zorder>
      <zorder>pushButton_451</zorder>
      <zorder>pushButton_452</zorder>
+    </widget>
+    <widget class="QWidget" name="page_JodMove">
+     <property name="font">
+      <font>
+       <family>Adobe Arabic</family>
+      </font>
+     </property>
+     <widget class="QPushButton" name="pushButton_693">
+      <property name="geometry">
+       <rect>
+        <x>660</x>
+        <y>600</y>
+        <width>571</width>
+        <height>97</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">font-weight: bold;
+font-family:Barlow;outline:none;border-radius: 20px;
+background-color: rgb(255, 99, 11);
+color: rgba(255, 255, 255, 255);
+font-size: 36px;
+font-family: Barlow;
+border: 2px solid rgba(255, 99, 11, 255);</string>
+      </property>
+      <property name="text">
+       <string>Complete</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton_694">
+      <property name="geometry">
+       <rect>
+        <x>460</x>
+        <y>120</y>
+        <width>91</width>
+        <height>97</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">font-weight: bold;
+font-family:Barlow;outline:none;border-radius: 20px;
+background-color: rgb(255, 99, 11);
+color: rgba(255, 255, 255, 255);
+font-size: 36px;
+font-family: Barlow;
+border: 2px solid rgba(255, 99, 11, 255);</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton_695">
+      <property name="geometry">
+       <rect>
+        <x>460</x>
+        <y>280</y>
+        <width>91</width>
+        <height>97</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">font-weight: bold;
+font-family:Barlow;outline:none;border-radius: 20px;
+background-color: rgb(255, 99, 11);
+color: rgba(255, 255, 255, 255);
+font-size: 36px;
+font-family: Barlow;
+border: 2px solid rgba(255, 99, 11, 255);</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton_696">
+      <property name="geometry">
+       <rect>
+        <x>460</x>
+        <y>440</y>
+        <width>91</width>
+        <height>97</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">font-weight: bold;
+font-family:Barlow;outline:none;border-radius: 20px;
+background-color: rgb(255, 99, 11);
+color: rgba(255, 255, 255, 255);
+font-size: 36px;
+font-family: Barlow;
+border: 2px solid rgba(255, 99, 11, 255);</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton_697">
+      <property name="geometry">
+       <rect>
+        <x>320</x>
+        <y>280</y>
+        <width>91</width>
+        <height>97</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">font-weight: bold;
+font-family:Barlow;outline:none;border-radius: 20px;
+background-color: rgb(255, 99, 11);
+color: rgba(255, 255, 255, 255);
+font-size: 36px;
+font-family: Barlow;
+border: 2px solid rgba(255, 99, 11, 255);</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton_698">
+      <property name="geometry">
+       <rect>
+        <x>620</x>
+        <y>280</y>
+        <width>91</width>
+        <height>97</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">font-weight: bold;
+font-family:Barlow;outline:none;border-radius: 20px;
+background-color: rgb(255, 99, 11);
+color: rgba(255, 255, 255, 255);
+font-size: 36px;
+font-family: Barlow;
+border: 2px solid rgba(255, 99, 11, 255);</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton_699">
+      <property name="geometry">
+       <rect>
+        <x>930</x>
+        <y>130</y>
+        <width>91</width>
+        <height>97</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">font-weight: bold;
+font-family:Barlow;outline:none;border-radius: 20px;
+background-color: rgb(255, 99, 11);
+color: rgba(255, 255, 255, 255);
+font-size: 36px;
+font-family: Barlow;
+border: 2px solid rgba(255, 99, 11, 255);</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton_700">
+      <property name="geometry">
+       <rect>
+        <x>930</x>
+        <y>290</y>
+        <width>91</width>
+        <height>97</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">font-weight: bold;
+font-family:Barlow;outline:none;border-radius: 20px;
+background-color: rgb(255, 99, 11);
+color: rgba(255, 255, 255, 255);
+font-size: 36px;
+font-family: Barlow;
+border: 2px solid rgba(255, 99, 11, 255);</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton_701">
+      <property name="geometry">
+       <rect>
+        <x>930</x>
+        <y>450</y>
+        <width>91</width>
+        <height>97</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">font-weight: bold;
+font-family:Barlow;outline:none;border-radius: 20px;
+background-color: rgb(255, 99, 11);
+color: rgba(255, 255, 255, 255);
+font-size: 36px;
+font-family: Barlow;
+border: 2px solid rgba(255, 99, 11, 255);</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QQuickWidget" name="qw_Distance">
+      <property name="geometry">
+       <rect>
+        <x>40</x>
+        <y>540</y>
+        <width>384</width>
+        <height>56</height>
+       </rect>
+      </property>
+      <property name="resizeMode">
+       <enum>QQuickWidget::SizeRootObjectToView</enum>
+      </property>
+      <property name="source">
+       <url>
+        <string>qrc:/qml/DistanceButton.qml</string>
+       </url>
+      </property>
+     </widget>
     </widget>
    </widget>
    <widget class="QWidget" name="m_StatusBar" native="true">

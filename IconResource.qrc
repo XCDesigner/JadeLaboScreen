@@ -119,5 +119,6 @@
         <file>qml/BiCircleProgressBar.qml</file>
         <file>qml/CircleProgressBar.qml</file>
         <file>qml/pageView.qml</file>
+        <file>qml/DistanceButton.qml</file>
     </qresource>
 </RCC>

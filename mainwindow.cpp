@@ -191,6 +191,9 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->quickWidget_4->setResizeMode(QQuickWidget::SizeRootObjectToView);
     ui->quickWidget_4->setClearColor(QColor(qmlColor));
 
+    ui->qw_Distance->setSource(QUrl("qrc:/qml/DistanceButton.qml"));
+    ui->qw_Distance->setResizeMode(QQuickWidget::SizeRootObjectToView);
+    ui->qw_Distance->setClearColor(QColor(qmlColor));
 
     item=ui->quickWidget_3->rootObject();
     QObject::connect(this,SIGNAL(sendSignalToQml(int )),item,SIGNAL(receFromWidget(int )));
@@ -203,6 +206,8 @@ MainWindow::MainWindow(QWidget *parent) :
 
     item1=ui->quickWidget_4->rootObject();
     QObject::connect(this,SIGNAL(sendSignalHeating(int ,int )),item1,SIGNAL(receFromWidgetT(int ,int )));
+
+    qw_DistanceItem = ui->qw_Distance->rootObject();
 
     m_printsec = new QTimer(this);
     m_time = new QTime(0,0,0);
@@ -3041,7 +3046,8 @@ void MainWindow::on_pushButton_174_clicked()
 
 void MainWindow::on_pushButton_175_clicked()
 {
-    ui->stackedWidget->setCurrentIndex(71);
+    m_port->setDualMode(1);
+    ui->stackedWidget->setCurrentWidget(ui->page_JodMove);
 }
 
 void MainWindow::on_pushButton_176_clicked()
@@ -5252,4 +5258,60 @@ void MainWindow::on_pushButton_455_clicked()
 #ifdef XH_VIS
     ui->m_StatusBar->setVisible(true);
 #endif
+}
+
+void MainWindow::on_pushButton_693_clicked()
+{
+    ui->stackedWidget->setCurrentWidget(ui->page_42);
+}
+
+void MainWindow::on_pushButton_695_clicked()
+{
+    QByteArray flag;
+    flag = QByteArray::fromHex("010100");
+    m_port->homeMove(flag);
+}
+
+void MainWindow::on_pushButton_698_clicked()
+{
+    QVariant i = qw_DistanceItem->property("distance");
+    m_port->moveAxis(1, i.toInt(), 0, 0);
+}
+
+void MainWindow::on_pushButton_697_clicked()
+{
+    QVariant i = qw_DistanceItem->property("distance");
+    m_port->moveAxis(1, -(i.toInt()), 0, 0);
+}
+
+void MainWindow::on_pushButton_694_clicked()
+{
+    QVariant i = qw_DistanceItem->property("distance");
+    m_port->moveAxis(1, 0, i.toUInt(), 0);
+}
+
+void MainWindow::on_pushButton_696_clicked()
+{
+    QVariant i = qw_DistanceItem->property("distance");
+    m_port->moveAxis(1, 0, -(i.toInt()), 0);
+}
+
+void MainWindow::on_pushButton_699_clicked()
+{
+    QVariant i = qw_DistanceItem->property("distance");
+    m_port->moveAxis(1, 0, 0, i.toInt());
+}
+
+void MainWindow::on_pushButton_701_clicked()
+{
+    QVariant i = qw_DistanceItem->property("distance");
+    qDebug()<<-(i.toInt());
+    m_port->moveAxis(1, 0, 0, -(i.toInt()));
+}
+
+void MainWindow::on_pushButton_700_clicked()
+{
+    QByteArray flag;
+    flag = QByteArray::fromHex("000001");
+    m_port->homeMove(flag);
 }
