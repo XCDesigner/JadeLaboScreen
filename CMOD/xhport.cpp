@@ -620,6 +620,31 @@ void XhPort::setHeattingUnit(int Index, int Temp)
     m_serial->write(buff);
 }
 
+/**
+  * @brief  Set filament sensor enable status
+  * @param  NewStatus: True for enable sensor. False for disable sensor
+  * @retval None
+  */
+void XhPort::setFilamentSensorEnableStatus(bool NewStatus)
+{
+    QByteArray buff;
+    if (NewStatus == true)
+        buff = m_package->groupPage(QByteArray::fromHex("070001"));
+    else
+        buff = m_package->groupPage(QByteArray::fromHex("070000"));
+    m_serial->write(buff);
+}
+
+/**
+  * @brief  Get filament sensor enable status
+  * @retval None
+  */
+void XhPort::getFilamentSensorEnableStatus()
+{
+    QByteArray buff = m_package->groupPage(QByteArray::fromHex("0701"));
+    m_serial->write(buff);
+}
+
 void XhPort::testdemo()
 {
     QByteArray s = QByteArray::fromHex("84654875294581");

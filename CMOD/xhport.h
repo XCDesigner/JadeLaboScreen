@@ -95,7 +95,11 @@ public:
 
     void setRGBLight(int R, int G, int B);
 
+
     void setHeattingUnit(int Index, int Temp);
+
+    void setFilamentSensorEnableStatus(bool NewStatus);
+    void getFilamentSensorEnableStatus();
 
     void testdemo();
 
