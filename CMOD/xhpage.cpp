@@ -702,7 +702,7 @@ QByteArray XhPage::lightPage(bool type, QString str)
 QByteArray XhPage::groupPage(QByteArray data)
 {
     quint16 nature=0;
-    pagedataNature="";
+    pagedataNature.resize(0);
     for (int i = 0;i<data.size();i++) {
       nature = nature +(quint8)data[i];
     }
@@ -710,10 +710,8 @@ QByteArray XhPage::groupPage(QByteArray data)
     checkData[1] = static_cast< char>((nature >> 8) & 0xFF);
     checkData[0] = static_cast< char>((nature >> 0) & 0xFF);
 
-    pagedataNature.resize(2);
     pagedataNature.append(checkData,2);
 
-    pageLen = "";
     pageLen.resize(2);
     pageLen[0]='\x00';
     pageLen[1]='\x00';
@@ -730,12 +728,11 @@ QByteArray XhPage::groupPage(QByteArray data)
         pageLen[0] = pageLen[0] +'\x01';
         len--;
     }
-    pageLsc = "";
     pageLsc.resize(1);
     pageLsc[0] = pageLen[0]^pageLen[1];
 
     QByteArray sendPage = "";
-    sendPage.resize(len + 9);
+    sendPage.resize(0);
     sendPage.append(pageHead);
     sendPage.append(pageType);
     sendPage.append(pageLen);
