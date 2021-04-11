@@ -120,5 +120,6 @@
         <file>qml/CircleProgressBar.qml</file>
         <file>qml/pageView.qml</file>
         <file>qml/DistanceButton.qml</file>
+        <file>qml/JFSliderBar.qml</file>
     </qresource>
 </RCC>

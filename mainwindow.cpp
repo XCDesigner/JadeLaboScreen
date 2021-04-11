@@ -195,6 +195,10 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->qw_Distance->setResizeMode(QQuickWidget::SizeRootObjectToView);
     ui->qw_Distance->setClearColor(QColor(qmlColor));
 
+    ui->qw_LightSlider->setSource(QUrl("qrc:/qml/JFSliderBar.qml"));
+    ui->qw_LightSlider->setResizeMode(QQuickWidget::SizeRootObjectToView);
+    ui->qw_LightSlider->setClearColor(QColor(qmlColor));
+
     item=ui->quickWidget_3->rootObject();
     QObject::connect(this,SIGNAL(sendSignalToQml(int )),item,SIGNAL(receFromWidget(int )));
 
@@ -208,6 +212,11 @@ MainWindow::MainWindow(QWidget *parent) :
     QObject::connect(this,SIGNAL(sendSignalHeating(int ,int )),item1,SIGNAL(receFromWidgetT(int ,int )));
 
     qw_DistanceItem = ui->qw_Distance->rootObject();
+
+    qw_LightItem = ui->qw_LightSlider->rootObject();
+    QObject::connect(qw_LightItem, SIGNAL(released()), this, SLOT(LightSliderReleased()));
+    QObject::connect(qw_LightItem, SIGNAL(pressed()), this, SLOT(LightSliderPressed()));
+    timer_light_slider = new QTimer(this);
 
     m_printsec = new QTimer(this);
     m_time = new QTime(0,0,0);
@@ -4386,11 +4395,6 @@ void MainWindow::on_pushButton_42_clicked()
 
 }
 
-void MainWindow::on_pushButton_346_clicked()
-{
-    ui->stackedWidget->setCurrentIndex(71);
-}
-
 void MainWindow::on_pushButton_354_clicked()
 {
     m_port->portInit(ui->comboBox_15->currentText());
@@ -5315,3 +5319,9 @@ void MainWindow::on_pushButton_700_clicked()
     flag = QByteArray::fromHex("000001");
     m_port->homeMove(flag);
 }
+
+void MainWindow::on_pushButton_350_clicked()
+{
+    ui->stackedWidget->setCurrentWidget(ui->page_LightSetting);
+}
+

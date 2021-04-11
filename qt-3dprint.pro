@@ -54,7 +54,8 @@ SOURCES += \
     listwidgetitem/mywifiitem.cpp \
         main.cpp \
         mainwindow.cpp \
-    oldplan/filecheckthread.cpp
+    oldplan/filecheckthread.cpp \
+    pages/LightSetting/LightSetting.cpp
 
 HEADERS += \
     CMOD/XhGcodeFileParser.h \

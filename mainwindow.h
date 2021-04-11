@@ -164,6 +164,8 @@ private:
     QQuickItem *item3;
     QQuickItem *item4;
     QQuickItem *qw_DistanceItem;
+    QQuickItem *qw_LightItem;
+
     filamentFault *m_filamentfault;
     printFlament *m_printfilament;
 
@@ -185,6 +187,7 @@ private:
     QTimer *m_printsec;
     QTime *m_time;
 
+    QTimer *timer_light_slider;
 
 signals:
     void sendSignalToQml(int );
@@ -1063,6 +1066,12 @@ private slots:
     void on_pushButton_701_clicked();
 
     void on_pushButton_700_clicked();
+
+    void on_pushButton_350_clicked();
+
+    void LightSliderPressed();
+    void LightSliderReleased();
+    void LightSettingTimer();
 
 signals:
     void detection(bool ready);

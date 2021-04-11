@@ -10,6 +10,11 @@
     <height>720</height>
    </rect>
   </property>
+  <property name="font">
+   <font>
+    <family>Adobe Arabic</family>
+   </font>
+  </property>
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
@@ -57,7 +62,7 @@
      <string notr="true">background-color: rgb(32, 32, 35);</string>
     </property>
     <property name="currentIndex">
-     <number>86</number>
+     <number>74</number>
     </property>
     <widget class="QWidget" name="page">
      <widget class="QLabel" name="label">
@@ -15131,7 +15136,7 @@ font-family:Barlow;</string>
      <zorder>pushButton_447</zorder>
      <zorder>pushButton_448</zorder>
     </widget>
-    <widget class="QWidget" name="page_73">
+    <widget class="QWidget" name="page_LightSetting">
      <widget class="QPushButton" name="pushButton_672">
       <property name="geometry">
        <rect>
@@ -15218,39 +15223,17 @@ border: 2px solid rgba(255, 99, 11, 255);</string>
        <string>Complete</string>
       </property>
      </widget>
-     <widget class="QSlider" name="horizontalSlider">
+     <widget class="QQuickWidget" name="qw_LightSlider">
       <property name="geometry">
        <rect>
-        <x>243</x>
-        <y>310</y>
-        <width>971</width>
-        <height>60</height>
+        <x>230</x>
+        <y>300</y>
+        <width>1000</width>
+        <height>100</height>
        </rect>
       </property>
-      <property name="styleSheet">
-       <string notr="true">QSlider::handle:horizontal{
-width:50px;
-background-color:rgb(255,99,11);
-margin:-15px 0px -15px 0px;
-border-radius:25px;
-border:1px solid rgb(255, 99, 11);}
-
-QSlider::groove:horizontal{
-height: 27px;
-line-height: 20px;
-border-radius: 10px;
-background-color: rgba(206, 206, 206, 100);
-border: 1px solid rgba(187, 187, 187, 100);
-}
-
-QSlider::sub-page:horizontal{
-border-radius: 10px;
-background-color: rgba(255, 99, 11, 100);}
-
-</string>
-      </property>
-      <property name="orientation">
-       <enum>Qt::Horizontal</enum>
+      <property name="resizeMode">
+       <enum>QQuickWidget::SizeRootObjectToView</enum>
       </property>
      </widget>
     </widget>
