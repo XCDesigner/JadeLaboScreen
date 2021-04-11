@@ -587,6 +587,23 @@ void XhPort::setDualMode(int Mode)
     m_serial->write(buff);
 }
 
+/**
+  * @brief  Set light 
+  * @param  R: Value for channel R
+  * @param  G: Value for channel G
+  * @param  B: Value for channel B
+  * @retval None
+  */
+void XhPort::setRGBLight(int R, int G, int B)
+{
+    QByteArray s = QByteArray::fromHex("0204");
+    s.append(1, R);
+    s.append(1, G);
+    s.append(1, B);
+    QByteArray buff = m_package->groupPage(s);
+    m_serial->write(buff);
+}
+
 void XhPort::testdemo()
 {
     QByteArray s = QByteArray::fromHex("84654875294581");

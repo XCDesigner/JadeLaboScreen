@@ -93,6 +93,8 @@ public:
     void moveAxis(int Mode, int X, int Y, int Z);
     void setDualMode(int Mode);
 
+    void setRGBLight(int R, int G, int B);
+
     void testdemo();
 
     void portInit(QString );//初始化串口
