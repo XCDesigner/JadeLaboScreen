@@ -89,7 +89,6 @@
         <file>image/SettingIcon.png</file>
         <file>image/Start.png</file>
         <file>image/StatusBar.png</file>
-        <file>image/stop.png</file>
         <file>image/TempButton.png</file>
         <file>image/TempofButton.png</file>
         <file>image/TempOffButton.png</file>
@@ -121,5 +120,7 @@
         <file>qml/pageView.qml</file>
         <file>qml/DistanceButton.qml</file>
         <file>qml/JFSliderBar.qml</file>
+        <file>image/Stop.png</file>
+        <file>qml/PrintCcontrolBox.qml</file>
     </qresource>
 </RCC>
