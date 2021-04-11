@@ -205,6 +205,10 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->qw_PreparePrintControl->rootObject()->setProperty("settingEnabled", false);
     ui->qw_PreparePrintControl->rootObject()->setProperty("pauseEnabled", false);
 
+    ui->qw_FilSensor->setSource(QUrl("qrc:/qml/JFOnOffSwitch.qml"));
+    ui->qw_FilSensor->setResizeMode(QQuickWidget::SizeRootObjectToView);
+    ui->qw_FilSensor->setClearColor(QColor(qmlColor));
+
     item=ui->quickWidget_3->rootObject();
     QObject::connect(this,SIGNAL(sendSignalToQml(int )),item,SIGNAL(receFromWidget(int )));
 
@@ -3596,7 +3600,7 @@ void MainWindow::on_pushButton_656_clicked()
 
 void MainWindow::on_pushButton_341_clicked()
 {
-    ui->stackedWidget->setCurrentIndex(72);
+    ui->stackedWidget->setCurrentWidget(ui->page_FILSensorsetting);
 }
 
 void MainWindow::on_pushButton_670_clicked()

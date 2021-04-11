@@ -1072,6 +1072,8 @@ private slots:
 
     void StopPreHeatting();
 
+    void on_pushButton_702_clicked();
+
 signals:
     void detection(bool ready);
     void updateNum(int );

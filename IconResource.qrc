@@ -125,5 +125,6 @@
         <file>image/pause_disabled.png</file>
         <file>image/setting_disabled.png</file>
         <file>image/Stop_disabled.png</file>
+        <file>qml/JFOnOffSwitch.qml</file>
     </qresource>
 </RCC>
