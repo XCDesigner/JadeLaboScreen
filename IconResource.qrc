@@ -120,11 +120,11 @@
         <file>qml/pageView.qml</file>
         <file>qml/DistanceButton.qml</file>
         <file>qml/JFSliderBar.qml</file>
-        <file>image/Stop.png</file>
+        <file>image/stop.png</file>
         <file>qml/PrintControlBox.qml</file>
         <file>image/pause_disabled.png</file>
         <file>image/setting_disabled.png</file>
-        <file>image/Stop_disabled.png</file>
+        <file>image/stop_disabled.png</file>
         <file>qml/JFOnOffSwitch.qml</file>
     </qresource>
 </RCC>

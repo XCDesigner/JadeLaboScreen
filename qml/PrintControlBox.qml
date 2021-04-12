@@ -21,8 +21,8 @@ Rectangle {
   }
 
   onStopEnabledChanged: {
-    if(stopEnabled == true) btnStop.source = "qrc:/image/Stop.png"
-    else btnStop.source = "qrc:/image/Stop_disabled.png"
+    if(stopEnabled == true) btnStop.source = "qrc:/image/stop.png"
+    else btnStop.source = "qrc:/image/stop_disabled.png"
   }
 
   onPauseEnabledChanged: {
