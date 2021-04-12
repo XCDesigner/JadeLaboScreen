@@ -604,6 +604,22 @@ void XhPort::setRGBLight(int R, int G, int B)
     m_serial->write(buff);
 }
 
+/**
+  * @brief  Set temperature to the heating unit
+  * @param  Index: Index of the heating unit. 0 for left extruder, 1 for right extruder, 2 for heatedbed
+  * @param  Temp: Target temperature
+  * @retval None
+  */
+void XhPort::setHeattingUnit(int Index, int Temp)
+{
+    QByteArray s = QByteArray::fromHex("0200");
+    s.append(1, Index);
+    s.append(1, (Temp));
+    s.append(1, (Temp >> 8));
+    QByteArray buff = m_package->groupPage(s);
+    m_serial->write(buff);
+}
+
 void XhPort::testdemo()
 {
     QByteArray s = QByteArray::fromHex("84654875294581");

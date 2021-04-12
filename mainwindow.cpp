@@ -199,6 +199,12 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->qw_LightSlider->setResizeMode(QQuickWidget::SizeRootObjectToView);
     ui->qw_LightSlider->setClearColor(QColor(qmlColor));
 
+    ui->qw_PreparePrintControl->setSource(QUrl("qrc:/qml/PrintControlBox.qml"));
+    ui->qw_PreparePrintControl->setResizeMode(QQuickWidget::SizeRootObjectToView);
+    ui->qw_PreparePrintControl->setClearColor(QColor(qmlColor));
+    ui->qw_PreparePrintControl->rootObject()->setProperty("settingEnabled", false);
+    ui->qw_PreparePrintControl->rootObject()->setProperty("pauseEnabled", false);
+
     item=ui->quickWidget_3->rootObject();
     QObject::connect(this,SIGNAL(sendSignalToQml(int )),item,SIGNAL(receFromWidget(int )));
 
@@ -217,6 +223,9 @@ MainWindow::MainWindow(QWidget *parent) :
     QObject::connect(qw_LightItem, SIGNAL(released()), this, SLOT(LightSliderReleased()));
     QObject::connect(qw_LightItem, SIGNAL(pressed()), this, SLOT(LightSliderPressed()));
     timer_light_slider = new QTimer(this);
+
+    qw_PrintPrepareControlItem = ui->qw_PreparePrintControl->rootObject();
+    QObject::connect(qw_PrintPrepareControlItem, SIGNAL(stopClicked()), this, SLOT(StopPreHeatting()));
 
     m_printsec = new QTimer(this);
     m_time = new QTime(0,0,0);
@@ -2966,7 +2975,8 @@ void MainWindow::on_pushButton_73_clicked()
 
 void MainWindow::on_pushButton_129_clicked()
 {
-    ui->stackedWidget->setCurrentIndex(34);
+    ui->stackedWidget->setCurrentWidget(ui->page_36);
+    //ui->stackedWidget->setCurrentIndex(34);
     ui->listWidget->setVisible(true);
     ui->listWidget_2->setVisible(false);
 
@@ -4271,17 +4281,6 @@ void MainWindow::on_pushButton_131_clicked()
 #endif
 }
 
-void MainWindow::on_pushButton_141_clicked()
-{
-    /*print 第一个设置*/
-    if(m_timer.isActive())
-    {
-        m_timer.stop();
-    }
-    //QObject::disconnect(&m_timer,SIGNAL(timeout()),this,SLOT(jumpEightteen()));
-    //ui->stackedWidget->setCurrentIndex(38);
-}
-
 void MainWindow::on_pushButton_168_clicked()
 {
     m_parsetdlog =new parsetdlog(this);
@@ -4591,15 +4590,6 @@ void MainWindow::on_pushButton_108_clicked()
 
 //}
 
-void MainWindow::on_pushButton_140_clicked()
-{
-
-}
-
-void MainWindow::on_pushButton_98_clicked()
-{
-//    m_port->testb();
-}
 
 void MainWindow::on_pushButton_99_clicked()
 {

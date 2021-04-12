@@ -165,6 +165,7 @@ private:
     QQuickItem *item4;
     QQuickItem *qw_DistanceItem;
     QQuickItem *qw_LightItem;
+    QQuickItem *qw_PrintPrepareControlItem;
 
     filamentFault *m_filamentfault;
     printFlament *m_printfilament;
@@ -765,8 +766,6 @@ private slots:
 
     void on_pushButton_131_clicked();
 
-    void on_pushButton_141_clicked();
-
     void on_pushButton_168_clicked();
 
     void on_pushButton_118_clicked();
@@ -828,8 +827,6 @@ private slots:
     void on_pushButton_108_clicked();
 
 //    void on_pushButton_360_clicked();
-
-    void on_pushButton_140_clicked();
 
     void on_pushButton_98_clicked();
 
@@ -1072,6 +1069,8 @@ private slots:
     void LightSliderPressed();
     void LightSliderReleased();
     void LightSettingTimer();
+
+    void StopPreHeatting();
 
 signals:
     void detection(bool ready);

@@ -55,7 +55,8 @@ SOURCES += \
         main.cpp \
         mainwindow.cpp \
     oldplan/filecheckthread.cpp \
-    pages/LightSetting/LightSetting.cpp
+    pages/LightSetting/LightSetting.cpp \
+    pages/PrintControl/PreparePrint.cpp
 
 HEADERS += \
     CMOD/XhGcodeFileParser.h \
