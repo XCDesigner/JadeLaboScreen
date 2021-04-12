@@ -121,6 +121,9 @@
         <file>qml/DistanceButton.qml</file>
         <file>qml/JFSliderBar.qml</file>
         <file>image/Stop.png</file>
-        <file>qml/PrintCcontrolBox.qml</file>
+        <file>qml/PrintControlBox.qml</file>
+        <file>image/pause_disabled.png</file>
+        <file>image/setting_disabled.png</file>
+        <file>image/Stop_disabled.png</file>
     </qresource>
 </RCC>

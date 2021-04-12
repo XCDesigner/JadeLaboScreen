@@ -15,22 +15,23 @@ Rectangle {
   signal stopClicked()
   signal pauseClicked()
 
-  onOptionEnabledChanged: {
-    if(optionEnabled == true) source: "qrc:/image/setting.png"
-    else source: "qrc:/image/setting_disabled.png"
+  onSettingEnabledChanged: {
+    if(settingEnabled == true) btnSetting.source = "qrc:/image/setting.png"
+    else btnSetting.source = "qrc:/image/setting_disabled.png"
   }
 
-  onStopEnabled: {
-    if(optionEnabled == true) source: "qrc:/image/Stop.png"
-    else source: "qrc:/image/Stop_disabled.png"
+  onStopEnabledChanged: {
+    if(stopEnabled == true) btnStop.source = "qrc:/image/Stop.png"
+    else btnStop.source = "qrc:/image/Stop_disabled.png"
   }
 
-  onPauseEnabled: {
-    if(optionEnabled == true) source: "qrc:/image/pause.png"
-    else source: "qrc:/image/pause_disabled.png"
+  onPauseEnabledChanged: {
+    if(pauseEnabled == true) btnPause.source = "qrc:/image/pause.png"
+    else btnPause.source = "qrc:/image/pause_disabled.png"
   }
 
   Image {
+    id: btnSetting
     x: 42
     y: 50
     width: 140
@@ -41,12 +42,13 @@ Rectangle {
     MouseArea {
       anchors.fill: parent
       onClicked:  {
-        if(base.optionEnabled == true) base.settingClicked()
+        if(base.settingEnabled == true) base.settingClicked()
       }
     }
   }
 
   Image {
+    id: btnStop
     x: 272
     y: 55
     width: 120
@@ -55,13 +57,15 @@ Rectangle {
     sourceSize.width: width
     source: "qrc:/image/Stop.png"
     MouseArea {
-      anchors.fill: parentonClicked:  {
+      anchors.fill: parent
+      onClicked:  {
         if(base.stopEnabled == true) base.stopClicked()
       }
     }
   }
 
   Image {
+    id: btnPause
     x: 472
     y: 55
     width: 120
