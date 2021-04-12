@@ -2979,8 +2979,7 @@ void MainWindow::on_pushButton_73_clicked()
 
 void MainWindow::on_pushButton_129_clicked()
 {
-    ui->stackedWidget->setCurrentWidget(ui->page_36);
-    //ui->stackedWidget->setCurrentIndex(34);
+    ui->stackedWidget->setCurrentIndex(34);
     ui->listWidget->setVisible(true);
     ui->listWidget_2->setVisible(false);
 
