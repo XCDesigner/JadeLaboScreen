@@ -55,6 +55,7 @@ SOURCES += \
         main.cpp \
         mainwindow.cpp \
     oldplan/filecheckthread.cpp \
+    pages/JodMove/JodMove.cpp \
     pages/LightSetting/LightSetting.cpp \
     pages/PrintControl/PreparePrint.cpp \
     pages/FilmentSensorSetting/FilamentSetting.cpp 

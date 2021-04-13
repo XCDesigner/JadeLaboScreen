@@ -4,6 +4,8 @@ Rectangle {
     id: base
     property bool enable: true
 
+    signal clicked()
+
     width: 120
     height: 60
     color: "transparent"
@@ -46,7 +48,7 @@ Rectangle {
                 else if(base.enable == false) {
                     base.enable = true
                 }
-
+                base.clicked()
             }
         }
     }

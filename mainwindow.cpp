@@ -209,6 +209,10 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->qw_FilSensor->setResizeMode(QQuickWidget::SizeRootObjectToView);
     ui->qw_FilSensor->setClearColor(QColor(qmlColor));
 
+    ui->qw_ExtruderSelect->setSource(QUrl("qrc:/qml/JFOnOffSwitch.qml"));
+    ui->qw_ExtruderSelect->setResizeMode(QQuickWidget::SizeRootObjectToView);
+    ui->qw_ExtruderSelect->setClearColor(QColor(qmlColor));
+
     item=ui->quickWidget_3->rootObject();
     QObject::connect(this,SIGNAL(sendSignalToQml(int )),item,SIGNAL(receFromWidget(int )));
 
@@ -220,6 +224,8 @@ MainWindow::MainWindow(QWidget *parent) :
 
     item1=ui->quickWidget_4->rootObject();
     QObject::connect(this,SIGNAL(sendSignalHeating(int ,int )),item1,SIGNAL(receFromWidgetT(int ,int )));
+
+    QObject::connect(ui->qw_ExtruderSelect->rootObject(), SIGNAL(clicked()), this, SLOT(on_extruder_change()));
 
     qw_DistanceItem = ui->qw_Distance->rootObject();
 
@@ -5255,62 +5261,6 @@ void MainWindow::on_pushButton_455_clicked()
 #ifdef XH_VIS
     ui->m_StatusBar->setVisible(true);
 #endif
-}
-
-void MainWindow::on_pushButton_693_clicked()
-{
-    ui->stackedWidget->setCurrentWidget(ui->page_42);
-}
-
-void MainWindow::on_pushButton_695_clicked()
-{
-    QByteArray flag;
-    flag = QByteArray::fromHex("010100");
-    m_port->homeMove(flag);
-}
-
-void MainWindow::on_pushButton_698_clicked()
-{
-    QVariant i = qw_DistanceItem->property("distance");
-    m_port->moveAxis(1, i.toInt(), 0, 0);
-}
-
-void MainWindow::on_pushButton_697_clicked()
-{
-    QVariant i = qw_DistanceItem->property("distance");
-    m_port->moveAxis(1, -(i.toInt()), 0, 0);
-}
-
-void MainWindow::on_pushButton_694_clicked()
-{
-    QVariant i = qw_DistanceItem->property("distance");
-    m_port->moveAxis(1, 0, i.toUInt(), 0);
-}
-
-void MainWindow::on_pushButton_696_clicked()
-{
-    QVariant i = qw_DistanceItem->property("distance");
-    m_port->moveAxis(1, 0, -(i.toInt()), 0);
-}
-
-void MainWindow::on_pushButton_699_clicked()
-{
-    QVariant i = qw_DistanceItem->property("distance");
-    m_port->moveAxis(1, 0, 0, i.toInt());
-}
-
-void MainWindow::on_pushButton_701_clicked()
-{
-    QVariant i = qw_DistanceItem->property("distance");
-    qDebug()<<-(i.toInt());
-    m_port->moveAxis(1, 0, 0, -(i.toInt()));
-}
-
-void MainWindow::on_pushButton_700_clicked()
-{
-    QByteArray flag;
-    flag = QByteArray::fromHex("000001");
-    m_port->homeMove(flag);
 }
 
 void MainWindow::on_pushButton_350_clicked()

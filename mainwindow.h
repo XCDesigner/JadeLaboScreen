@@ -1074,6 +1074,8 @@ private slots:
 
     void on_pushButton_702_clicked();
 
+    void on_extruder_change();
+
 signals:
     void detection(bool ready);
     void updateNum(int );
