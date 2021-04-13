@@ -101,6 +101,8 @@ public:
     void setFilamentSensorEnableStatus(bool NewStatus);
     void getFilamentSensorEnableStatus();
 
+    void changeToolHead(int Index);
+
     void testdemo();
 
     void portInit(QString );//初始化串口

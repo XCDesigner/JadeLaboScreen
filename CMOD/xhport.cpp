@@ -645,6 +645,18 @@ void XhPort::getFilamentSensorEnableStatus()
     m_serial->write(buff);
 }
 
+/**
+  * @brief  Change tool head
+  * @param  Index: Index of the x carrier. 0 for left, 1 for right
+  * @retval None
+  */
+void XhPort::changeToolHead(int Index)
+{
+    QByteArray buff = QByteArray::fromHex("0208");
+    buff.append(1, Index);
+    m_serial->write(buff);
+}
+
 void XhPort::testdemo()
 {
     QByteArray s = QByteArray::fromHex("84654875294581");

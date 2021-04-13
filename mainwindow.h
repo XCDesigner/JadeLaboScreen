@@ -828,8 +828,6 @@ private slots:
 
 //    void on_pushButton_360_clicked();
 
-    void on_pushButton_98_clicked();
-
     void on_pushButton_99_clicked();
 
     void on_pushButton_356_clicked();

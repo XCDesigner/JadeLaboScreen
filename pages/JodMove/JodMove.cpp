@@ -59,5 +59,12 @@ void MainWindow::on_pushButton_693_clicked()
 
 void MainWindow::on_extruder_change()
 {
-    
+    if(ui->qw_ExtruderSelect->rootObject()->property("enable").toBool() == true) {
+        m_port->changeToolHead(0);
+        qDebug()<<"Left";
+    }
+    else {
+        m_port->changeToolHead(1);
+        qDebug()<<"Right";
+    }
 }
