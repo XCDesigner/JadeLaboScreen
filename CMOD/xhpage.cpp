@@ -853,6 +853,7 @@ void XhPage::sendfile(quint32 offset, QByteArray arrayOffset)
     }
     QByteArray pageData;
     pageData = QByteArray::fromHex("060400");
+    pageData.append(1, 0);
     pageData.append(arrayOffset);
     pageData.append(datalen);
     pageData.append(data);
