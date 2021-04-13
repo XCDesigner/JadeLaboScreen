@@ -55,7 +55,7 @@ Rectangle {
     height: 120
     sourceSize.height: height
     sourceSize.width: width
-    source: "qrc:/image/Stop.png"
+    source: "qrc:/image/stop.png"
     MouseArea {
       anchors.fill: parent
       onClicked:  {
