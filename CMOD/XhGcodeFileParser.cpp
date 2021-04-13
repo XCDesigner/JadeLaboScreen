@@ -29,7 +29,7 @@ void XhGcodeFileParser::parseByDirect(const QString &inputFileName, const QStrin
     m_inputFileName = inputFileName;
     m_outputFileName = outputFileName;
     m_mutex->unlock();
-    m_parseType.store((int)ParseType::Direct);
+    m_parseType.storeRelaxed((int)ParseType::Direct);
 
     start();
 }
@@ -40,7 +40,7 @@ void XhGcodeFileParser::parseByDeep(const QString &inputFileName, const QString 
     m_inputFileName = inputFileName;
     m_outputFileName = outputFileName;
     m_mutex->unlock();
-    m_parseType.store((int)ParseType::Deep);
+    m_parseType.storeRelaxed((int)ParseType::Deep);
 
     start();
 }
@@ -59,7 +59,7 @@ int XhGcodeFileParser::GetParsedLine()
 
 void XhGcodeFileParser::run()
 {
-    ParseType parseType = (ParseType)m_parseType.load();
+    ParseType parseType = (ParseType)m_parseType.loadRelaxed();
 
     switch (parseType) {
     case ParseType::Direct:
@@ -331,6 +331,7 @@ void XhGcodeFileParser::parseWholeFile()
     }
 
     float xCenter, xSize;
+    xSize = 300;
     if ((minX != 999) && (maxX != -999)) {
         xCenter = (maxX + minX) / 2.0f;
         xSize = maxX - minX;

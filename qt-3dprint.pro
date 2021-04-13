@@ -47,8 +47,6 @@ SOURCES += \
     dialog/selectmode.cpp \
     dialog/unnoknfile.cpp \
     dialog/updateprogrebar.cpp \
-    dialog/xhrest.cpp \
-    dialog/xhsensor.cpp \
     dialog/xhwizard.cpp \
     listwidgetitem/mylistwidgetitem.cpp \
     listwidgetitem/mywifiitem.cpp \
@@ -84,8 +82,6 @@ HEADERS += \
     dialog/selectmode.h \
     dialog/unnoknfile.h \
     dialog/updateprogrebar.h \
-    dialog/xhrest.h \
-    dialog/xhsensor.h \
     dialog/xhwizard.h \
     listwidgetitem/mylistwidgetitem.h \
     listwidgetitem/mywifiitem.h \
@@ -109,8 +105,6 @@ FORMS += \
     dialog/selectmode.ui \
     dialog/unnoknfile.ui \
     dialog/updateprogrebar.ui \
-    dialog/xhrest.ui \
-    dialog/xhsensor.ui \
     dialog/xhwizard.ui \
     listwidgetitem/mylistwidgetitem.ui \
     listwidgetitem/mywifiitem.ui \

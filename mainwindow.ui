@@ -2550,7 +2550,7 @@ color: rgba(191, 191, 191, 100);
       <property name="styleSheet">
        <string notr="true">border:1px groovergba(191, 191, 191, 100);
 border-image: url(:/image/remove.png);
-color: rgba(191, 191, 191, );
+color: rgba(191, 191, 191, 100);
 
 </string>
       </property>

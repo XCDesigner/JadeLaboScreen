@@ -444,6 +444,7 @@ int XhPage::analysis(QByteArray package)
     {
         return -1;//包头不对
     }
+    return 0;
 }
 
 void XhPage::fSelfTest(QByteArray data)
@@ -652,7 +653,7 @@ QByteArray XhPage::filamentPage(QString l, QString r)
 {
     int lnum= l.toInt();
     int rnum= r.toInt();
-    QByteArray a = "";
+    QByteArray a;
     a[0]='\x00';
     a[1]='\x00';
     a[2]='\x00';
@@ -812,7 +813,7 @@ void XhPage::askstate(QByteArray data)
 
     emit state(QString::asprintf("%d",ltemp),QString::asprintf("%d",rtemp),\
                 QString::asprintf("%d",bedtemp),QString::asprintf("%d",lfan),\
-                QString::asprintf("%d",rfan),QString::asprintf("%d",FeedRate),QString::asprintf("%0.1f",PlatformZ/1000));
+                QString::asprintf("%d",rfan),QString::asprintf("%d",FeedRate),QString::asprintf("%0.1f",PlatformZ/1000.0f));
 
 }
 
@@ -897,7 +898,7 @@ void XhPage::updateBegin(QString updateFile)
     memset(offset,5,sizeof (mode));
     memset(size,5,sizeof (mode));
 
-    for (int var = 0; var < num; var++) {
+    for (quint32 var = 0; var < num; var++) {
         mode[var] = XH_LITTLE_BIT_MERGE_32(allData[(var*12)+4],allData[(var*12)+5],allData[(var*12)+6],allData[(var*12)+7]);
         offset[var] = XH_LITTLE_BIT_MERGE_32(allData[(var*12)+8],allData[(var*12)+9],allData[(var*12)+10],allData[(var*12)+11]);
         size[var] = XH_LITTLE_BIT_MERGE_32(allData[(var*12)+12],allData[(var*12)+13],allData[(var*12)+14],allData[(var*12)+15]);
@@ -905,7 +906,7 @@ void XhPage::updateBegin(QString updateFile)
 
     bool printNeedUpdate = false;
 
-    for (int  i= 0;  i< num; i++)
+    for (quint32  i= 0;  i< num; i++)
     {
         if(mode[i] == 0)
         {

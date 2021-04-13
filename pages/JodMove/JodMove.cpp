@@ -57,7 +57,7 @@ void MainWindow::on_pushButton_693_clicked()
     ui->stackedWidget->setCurrentWidget(ui->page_42);
 }
 
-void MainWindow::on_extruder_change()
+void MainWindow::ExtruderChange()
 {
     if(ui->qw_ExtruderSelect->rootObject()->property("enable").toBool() == true) {
         m_port->changeToolHead(0);

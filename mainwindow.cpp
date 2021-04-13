@@ -225,7 +225,7 @@ MainWindow::MainWindow(QWidget *parent) :
     item1=ui->quickWidget_4->rootObject();
     QObject::connect(this,SIGNAL(sendSignalHeating(int ,int )),item1,SIGNAL(receFromWidgetT(int ,int )));
 
-    QObject::connect(ui->qw_ExtruderSelect->rootObject(), SIGNAL(clicked()), this, SLOT(on_extruder_change()));
+    QObject::connect(ui->qw_ExtruderSelect->rootObject(), SIGNAL(clicked()), this, SLOT(ExtruderChange()));
 
     qw_DistanceItem = ui->qw_Distance->rootObject();
 
@@ -3632,11 +3632,6 @@ void MainWindow::on_pushButton_671_clicked()
 }
 
 void MainWindow::on_pushButton_667_clicked()
-{
-    ui->stackedWidget->setCurrentIndex(41);
-}
-
-void MainWindow::on_pushButton_662_clicked()
 {
     ui->stackedWidget->setCurrentIndex(41);
 }

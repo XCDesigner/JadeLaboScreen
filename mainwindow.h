@@ -602,8 +602,6 @@ private slots:
 
     void on_pushButton_667_clicked();
 
-    void on_pushButton_662_clicked();
-
     void on_pushButton_659_clicked();
 
     void on_pushButton_655_clicked();
@@ -1072,7 +1070,7 @@ private slots:
 
     void on_pushButton_702_clicked();
 
-    void on_extruder_change();
+    void ExtruderChange();
 
 signals:
     void detection(bool ready);
