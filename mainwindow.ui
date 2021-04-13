@@ -19366,54 +19366,6 @@ font-weight: bold;</string>
       <string>000.0mm</string>
      </property>
     </widget>
-    <widget class="QLabel" name="label_130">
-     <property name="geometry">
-      <rect>
-       <x>950</x>
-       <y>6</y>
-       <width>48</width>
-       <height>42</height>
-      </rect>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">image: url(:/image/Wifi.png);</string>
-     </property>
-     <property name="text">
-      <string/>
-     </property>
-    </widget>
-    <widget class="QLabel" name="label_131">
-     <property name="geometry">
-      <rect>
-       <x>1010</x>
-       <y>6</y>
-       <width>30</width>
-       <height>43</height>
-      </rect>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">border-image: url(:/image/Light.png);</string>
-     </property>
-     <property name="text">
-      <string/>
-     </property>
-    </widget>
-    <widget class="QLabel" name="label_132">
-     <property name="geometry">
-      <rect>
-       <x>1050</x>
-       <y>6</y>
-       <width>40</width>
-       <height>42</height>
-      </rect>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">border-image: url(:/image/Udisk.png);</string>
-     </property>
-     <property name="text">
-      <string/>
-     </property>
-    </widget>
     <widget class="QLabel" name="label_29">
      <property name="geometry">
       <rect>
@@ -19457,6 +19409,19 @@ font-weight: bold;</string>
      </property>
      <property name="text">
       <string/>
+     </property>
+    </widget>
+    <widget class="QQuickWidget" name="qw_StatusNotice">
+     <property name="geometry">
+      <rect>
+       <x>940</x>
+       <y>6</y>
+       <width>158</width>
+       <height>43</height>
+      </rect>
+     </property>
+     <property name="resizeMode">
+      <enum>QQuickWidget::SizeRootObjectToView</enum>
      </property>
     </widget>
    </widget>

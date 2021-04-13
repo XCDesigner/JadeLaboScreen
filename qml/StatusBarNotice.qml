@@ -11,6 +11,10 @@ Rectangle {
     property bool lightVisible: true
     property bool wifiVisible: true
 
+    property alias udiskChecked: icbUdisk.checked
+    property alias lightChecked: icbLight.checked
+    property alias wifiChecked: icbWifi.checked
+
     property alias udiskIcon: icbUdisk.icon
     property alias udiskPressedIcon: icbUdisk.pressedIcon
     property alias lightIcon: icbLight.icon
@@ -19,25 +23,25 @@ Rectangle {
     property alias wifiPressedIcon: icbWifi.pressedIcon
 
     signal udiskClicked()
-    signal lightChecked()
+    signal lightClicked()
     signal wifiClicked()
 
     onUdiskVisibleChanged: {
-        if(udiskVisible == true)
+        if(udiskVisible == false)
             icbUdisk.width = 0
         else
             icbUdisk.width = 40
     }
 
     onLightVisibleChanged: {
-        if(lightVisible == true)
+        if(lightVisible == false)
             icbLight.width = 0
         else
             icbLight.width = 30
     }
 
     onWifiVisibleChanged: {
-        if(wifiVisible == true)
+        if(wifiVisible == false)
             icbWifi.width = 0
         else
             icbWifi.width = 48
@@ -62,7 +66,7 @@ Rectangle {
         checked: true
         anchors { right: icbUdisk.left; margins: 10}
         icon: "qrc:/image/Light.png"
-        pressedIcon: "qrc:/image/Light.png"
+        pressedIcon: "qrc:/image/light_on.png"
         onClicked: base.lightClicked()
     }
 

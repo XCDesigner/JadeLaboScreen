@@ -1074,6 +1074,8 @@ private slots:
 
     void on_extruder_change();
 
+    void on_qw_StatusNotice_Light_clicked();
+
 signals:
     void detection(bool ready);
     void updateNum(int );

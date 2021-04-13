@@ -58,7 +58,8 @@ SOURCES += \
     pages/JodMove/JodMove.cpp \
     pages/LightSetting/LightSetting.cpp \
     pages/PrintControl/PreparePrint.cpp \
-    pages/FilmentSensorSetting/FilamentSetting.cpp 
+    pages/FilmentSensorSetting/FilamentSetting.cpp  \
+    pages/StatusBar/StatusBar.cpp
 
 HEADERS += \
     CMOD/XhGcodeFileParser.h \

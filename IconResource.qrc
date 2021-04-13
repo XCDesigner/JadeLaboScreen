@@ -128,5 +128,6 @@
         <file>qml/JFOnOffSwitch.qml</file>
         <file>qml/IconCheckedButton.qml</file>
         <file>qml/StatusBarNotice.qml</file>
+        <file>image/light_on.png</file>
     </qresource>
 </RCC>

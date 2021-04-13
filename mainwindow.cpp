@@ -213,6 +213,12 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->qw_ExtruderSelect->setResizeMode(QQuickWidget::SizeRootObjectToView);
     ui->qw_ExtruderSelect->setClearColor(QColor(qmlColor));
 
+    ui->qw_StatusNotice->setSource(QUrl("qrc:/qml/StatusBarNotice.qml"));
+    ui->qw_StatusNotice->setClearColor(QColor(qmlColor));
+    ui->qw_StatusNotice->rootObject()->setProperty("udiskVisible", false);
+    ui->qw_StatusNotice->rootObject()->setProperty("wifiVisible", false);
+    ui->qw_StatusNotice->rootObject()->setProperty("lightChecked", false);
+
     item=ui->quickWidget_3->rootObject();
     QObject::connect(this,SIGNAL(sendSignalToQml(int )),item,SIGNAL(receFromWidget(int )));
 
@@ -226,6 +232,8 @@ MainWindow::MainWindow(QWidget *parent) :
     QObject::connect(this,SIGNAL(sendSignalHeating(int ,int )),item1,SIGNAL(receFromWidgetT(int ,int )));
 
     QObject::connect(ui->qw_ExtruderSelect->rootObject(), SIGNAL(clicked()), this, SLOT(on_extruder_change()));
+
+    QObject::connect(ui->qw_StatusNotice->rootObject(), SIGNAL(lightClicked()), this, SLOT(on_qw_StatusNotice_Light_clicked()));
 
     qw_DistanceItem = ui->qw_Distance->rootObject();
 
@@ -325,20 +333,6 @@ void MainWindow::setZnumber(float num)
     ui->label_129->setText(str);
 }
 
-void MainWindow::setUSBpic(bool isVisible)
-{
-    ui->label_132->setVisible(isVisible);
-}
-
-void MainWindow::setLightPic(bool isVisible)
-{
-    ui->label_131->setVisible(isVisible);
-}
-
-void MainWindow::setWinPic(bool isVisible)
-{
-    ui->label_130->setVisible(isVisible);
-}
 
 void MainWindow::setPicColor(QWidget *pic, QWidget *lab, bool isgray)
 {
@@ -1761,14 +1755,14 @@ void MainWindow::fileList()
     QFileInfo usbfile(UDiskfind);
     if(usbfile.isDir())
     {
-
-       ui->label_132->setVisible(true);
+       ui->qw_StatusNotice->rootObject()->setProperty("udiskVisible", true);
+       // ui->label_132->setVisible(true);
        ui->pushButton_101->setEnabled(true);
     }
     else
     {
-
-        ui->label_132->setVisible(false);
+        ui->qw_StatusNotice->rootObject()->setProperty("udiskVisible", false);
+        // ui->label_132->setVisible(false);
         ui->pushButton_101->setEnabled(false);
         ui->listWidget_2->setVisible(false);
         ui->listWidget->setVisible(true);
