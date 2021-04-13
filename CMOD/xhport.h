@@ -94,7 +94,7 @@ public:
     void setDualMode(int Mode);
 
     void setRGBLight(int R, int G, int B);
-
+    void setLightOnOff(bool);
 
     void setHeattingUnit(int Index, int Temp);
 

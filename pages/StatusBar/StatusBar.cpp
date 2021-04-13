@@ -21,7 +21,7 @@ void MainWindow::on_qw_StatusNotice_Light_clicked()
     QQuickItem *item;
     item = ui->qw_StatusNotice->rootObject();
     if(item->property("lightChecked").toBool() == true)
-        qDebug()<<"Light on";
+        m_port->setLightOnOff(true);
     else
-        qDebug()<<"Light off";
+        m_port->setLightOnOff(false);
 }

@@ -57,6 +57,7 @@ Rectangle {
             //console.log(base.value)
         }
         onReleased: {
+            base.value = slider.x * 100 / (base.width - slider.bigRadius - slider.bigRadius)
             slider.height = slider.smallRadius * 2
             slider.width = slider.smallRadius * 2
             slider.radius = slider.smallRadius
@@ -64,7 +65,6 @@ Rectangle {
             slider.y = (slider.bigRadius - slider.smallRadius)
             base.isPressed = false
             base.released()
-            base.value = slider.x * 100 / (base.width - slider.bigRadius - slider.bigRadius)
             //console.log(base.value)
         }
         onPositionChanged: {
