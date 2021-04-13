@@ -28,8 +28,6 @@
 #include "dialog/parsing.h"
 #include "dialog/askpause.h"
 #include "dialog/selectmode.h"
-#include "dialog/xhrest.h"
-#include "dialog/xhsensor.h"
 #include "dialog/xhwizard.h"
 #include "dialog/delete.h"
 #include "oldplan/filecheckthread.h"
@@ -146,9 +144,7 @@ private:
     selectMode * m_mode;
     Delete * m_delete;
 
-    XhSensor *m_sensor;
     XhWizard *m_wizard;
-    XhRest *m_rest;
 
     XhPort *m_port;
     fileCheckThread *m_thread;
@@ -251,8 +247,6 @@ private slots:
     void filamentTimeout();
     void filamentOK(bool a );
 //    void toolSelfTest(bool a,bool b,bool c,bool d,bool e,bool f);
-    void disfilament(bool a);
-    void mfactoryReset();
 
     void planAdd(int ,int );
     void buprint();
@@ -279,12 +273,6 @@ private slots:
     void m_cancel();
     void m_backPrint();
     void m_whatThis();
-
-    void sensorCancel();
-    void sensorConfirm();
-
-    void restCancel();
-    void restConfirm();
 
     void wizardCancel();
     void wizardConfirm();

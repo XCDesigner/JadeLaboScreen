@@ -16,9 +16,7 @@ MainWindow::MainWindow(QWidget *parent) :
     m_mode = NULL;
     m_delete = NULL;
 
-    m_sensor = NULL;
     m_wizard = NULL;
-    m_rest = NULL;
 
     m_port = NULL;
 //    fileCheckThread *m_thread;
@@ -75,8 +73,6 @@ MainWindow::MainWindow(QWidget *parent) :
     QObject::connect(m_port,&XhPort::filamentHeated,this,&MainWindow::filamentOK);
     /*tool mach set*/
 //    QObject::connect(m_port,&XhPort::toolTestResult,this,&MainWindow::toolSelfTest);
-    QObject::connect(m_port,&XhPort::disUseFilament,this,&MainWindow::disfilament);
-    QObject::connect(m_port,&XhPort::factoryReset,this,&MainWindow::mfactoryReset);
 
     /*tool carb*/
 
@@ -1304,25 +1300,6 @@ void MainWindow::filamentOK(bool a)
 //    ui->stackedWidget->setCurrentIndex(75);
 //}
 
-void MainWindow::disfilament(bool a)
-{
-    if(a)
-    {
-        m_sensor->hide();
-        m_sensor->close();
-    }
-    else
-    {
-        m_port->unFilament();
-    }
-}
-
-void MainWindow::mfactoryReset()
-{
-        m_rest->hide();
-        m_rest->close();
-}
-
 void MainWindow::planAdd(int a,int b)
 {
 
@@ -1682,27 +1659,6 @@ void MainWindow::m_whatThis()
     ui->m_StatusBar->setVisible(false);
 }
 
-void MainWindow::sensorCancel()
-{
-    m_sensor->hide();
-    m_sensor->close();
-}
-
-void MainWindow::sensorConfirm()
-{
-    m_port->unFilament();
-}
-
-void MainWindow::restCancel()
-{
-    m_rest->hide();
-    m_rest->close();
-}
-
-void MainWindow::restConfirm()
-{
-    m_port->factoryReset();
-}
 
 void MainWindow::wizardCancel()
 {
