@@ -47,6 +47,7 @@
     </property>
     <property name="font">
      <font>
+      <family>Adobe Arabic</family>
       <pointsize>9</pointsize>
       <weight>75</weight>
       <bold>true</bold>
@@ -62,7 +63,7 @@
      <string notr="true">background-color: rgb(32, 32, 35);</string>
     </property>
     <property name="currentIndex">
-     <number>86</number>
+     <number>79</number>
     </property>
     <widget class="QWidget" name="page">
      <widget class="QLabel" name="label">
