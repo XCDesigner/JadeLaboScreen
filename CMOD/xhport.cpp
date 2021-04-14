@@ -668,8 +668,9 @@ void XhPort::getFilamentSensorEnableStatus()
   */
 void XhPort::changeToolHead(int Index)
 {
-    QByteArray buff = QByteArray::fromHex("0208");
-    buff.append(1, Index);
+    QByteArray s = QByteArray::fromHex("0208");
+    s.append(1, Index);
+    QByteArray buff = m_package->groupPage(s);
     m_serial->write(buff);
 }
 
