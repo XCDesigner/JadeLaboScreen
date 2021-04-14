@@ -43,12 +43,14 @@ PrintSetDlog::PrintSetDlog(QWidget *parent) :
     pButtons[5] = ui->qw_FeedRatePercent;
     pButtons[6] = ui->qw_PlatformHeight;
 
-    for(int i=0;i<6;i++) {
-        pButtons[i]->setProperty("index", i);
-        QObject::connect(pButtons[i]->rootObject(), SIGNAL(clicked()), this, SLOT(buttonClicked()));
+    for(int i=0;i<7;i++) {
+        pButtons[i]->rootObject()->setProperty("index", i);
+        pButtons[i]->rootObject()->setProperty("enable", true);
+        QObject::connect(pButtons[i]->rootObject(), SIGNAL(clicked(int)), this, SLOT(buttonClicked(int)));
     }
 
-    QObject::connect(ui->qw_BackupMode->rootObject(), SIGNAL(clicked()), this, SLOT(backupModeChange()));
+    ui->qw_BackupMode->rootObject()->setProperty("index", 10);
+    QObject::connect(ui->qw_BackupMode->rootObject(), SIGNAL(clicked(int)), this, SLOT(backupModeChange(int)));
 }
 
 PrintSetDlog::~PrintSetDlog()
@@ -74,20 +76,20 @@ void PrintSetDlog::initnum(QString a, QString b, QString c, QString d, QString e
 
     ui->qw_RightTemp->rootObject()->setProperty("text", "Right Temp / "+b+"°C");
 
-    ui->qw_BedTemp->rootObject()->setProperty("text", "Bed Temp / "+c+"°C");
+    ui->qw_BedTemp->rootObject()->setProperty("text", "Bed Temp "+c+"°C");
 
     ui->qw_LeftFan->rootObject()->setProperty("text", "Left Fan Speed "+d+"%");
 
     ui->qw_RightFan->rootObject()->setProperty("text", "Right Fan Speed "+e+"%");
 
-    ui->qw_FeedRatePercent->rootObject()->setProperty("text", "Left Fan Speed / "+f+"%");
+    ui->qw_FeedRatePercent->rootObject()->setProperty("text", "Feedrate "+f+"%");
     
     ui->qw_PlatformHeight->rootObject()->setProperty("text", "Platform Height "+g+"mm");
 }
     
 void PrintSetDlog::backupModeChange(int Index)
 {
-    Index = 0;
+    qDebug()<<Index;
     if(ui->qw_BackupMode->rootObject()->property("isPressed").toBool() == true)
     {
         ui->qw_BackupMode->rootObject()->setProperty("isPressed", false);
@@ -149,49 +151,60 @@ void PrintSetDlog::decreaseCheck()
 
 void PrintSetDlog::buttonClicked(int Index)
 {
-    button_check_status[Index] = pButtons[Index]->rootObject()->property("isPressed").toBool();
-    if(button_check_status[Index] == true)
+    bool new_status = pButtons[Index]->rootObject()->property("isPressed").toBool();
+    if(new_status == true)
+    {
+        pButtons[Index]->rootObject()->setProperty("isPressed", false);
+        button_check_status[Index] = false;
+    }
+    else
+    {
+        pButtons[Index]->rootObject()->setProperty("isPressed", true);
+        button_check_status[Index] = true;
         updateButtonCheckStatus(Index);
+    }
 }
 
 void PrintSetDlog::updateButtonCheckStatus(int Index)
 {
+    qDebug()<<"Clicked:";
+    qDebug()<<Index;
     if((Index == 0) || (Index == 1) || (Index == 2)) 
     {
-        button_check_status[3] = button_check_status[4] = button_check_status[5] = button_check_status[6]  = false;
-        pButtons[3]->rootObject()->setProperty("isPress", false);
-        pButtons[4]->rootObject()->setProperty("isPress", false);
-        pButtons[5]->rootObject()->setProperty("isPress", false);
-        pButtons[6]->rootObject()->setProperty("isPress", false);
+        button_check_status[3] = button_check_status[4] = button_check_status[5] = button_check_status[6] = false;
+        pButtons[3]->rootObject()->setProperty("isPressed", false);
+        pButtons[4]->rootObject()->setProperty("isPressed", false);
+        pButtons[5]->rootObject()->setProperty("isPressed", false);
+        pButtons[6]->rootObject()->setProperty("isPressed", false);
     }
     else if((Index == 3) || (Index == 4))
     {
-        button_check_status[0] = button_check_status[1] = button_check_status[2] = button_check_status[5] = button_check_status[6]  = false;
-        pButtons[0]->rootObject()->setProperty("isPress", false);
-        pButtons[1]->rootObject()->setProperty("isPress", false);
-        pButtons[2]->rootObject()->setProperty("isPress", false);
-        pButtons[5]->rootObject()->setProperty("isPress", false);
-        pButtons[6]->rootObject()->setProperty("isPress", false);
+        button_check_status[0] = button_check_status[1] = button_check_status[2] = button_check_status[5] = button_check_status[6] = false;
+        pButtons[0]->rootObject()->setProperty("isPressed", false);
+        pButtons[1]->rootObject()->setProperty("isPressed", false);
+        pButtons[2]->rootObject()->setProperty("isPressed", false);
+        pButtons[5]->rootObject()->setProperty("isPressed", false);
+        pButtons[6]->rootObject()->setProperty("isPressed", false);
     }
     else if(Index == 5)
     {
-        button_check_status[0] = button_check_status[1] = button_check_status[2] = button_check_status[3] = button_check_status[4] = button_check_status[6]  = false;
-        pButtons[0]->rootObject()->setProperty("isPress", false);
-        pButtons[1]->rootObject()->setProperty("isPress", false);
-        pButtons[2]->rootObject()->setProperty("isPress", false);
-        pButtons[3]->rootObject()->setProperty("isPress", false);
-        pButtons[4]->rootObject()->setProperty("isPress", false);
-        pButtons[6]->rootObject()->setProperty("isPress", false);
+        button_check_status[0] = button_check_status[1] = button_check_status[2] = button_check_status[3] = button_check_status[4] = button_check_status[6] = false;
+        pButtons[0]->rootObject()->setProperty("isPressed", false);
+        pButtons[1]->rootObject()->setProperty("isPressed", false);
+        pButtons[2]->rootObject()->setProperty("isPressed", false);
+        pButtons[3]->rootObject()->setProperty("isPressed", false);
+        pButtons[4]->rootObject()->setProperty("isPressed", false);
+        pButtons[6]->rootObject()->setProperty("isPressed", false);
     }
     else if(Index == 6)
     {
-        button_check_status[0] = button_check_status[1] = button_check_status[2] = button_check_status[3] = button_check_status[4] = button_check_status[5]  = false;
-        pButtons[0]->rootObject()->setProperty("isPress", false);
-        pButtons[1]->rootObject()->setProperty("isPress", false);
-        pButtons[2]->rootObject()->setProperty("isPress", false);
-        pButtons[3]->rootObject()->setProperty("isPress", false);
-        pButtons[4]->rootObject()->setProperty("isPress", false);
-        pButtons[5]->rootObject()->setProperty("isPress", false);
+        button_check_status[0] = button_check_status[1] = button_check_status[2] = button_check_status[3] = button_check_status[4] = button_check_status[5] = false;
+        pButtons[0]->rootObject()->setProperty("isPressed", false);
+        pButtons[1]->rootObject()->setProperty("isPressed", false);
+        pButtons[2]->rootObject()->setProperty("isPressed", false);
+        pButtons[3]->rootObject()->setProperty("isPressed", false);
+        pButtons[4]->rootObject()->setProperty("isPressed", false);
+        pButtons[5]->rootObject()->setProperty("isPressed", false);
     }
 }
 
