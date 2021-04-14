@@ -369,7 +369,7 @@ int XhPage::analysis(QByteArray package)
                                     ArrayOffset.append(data[4]);
                                     ArrayOffset.append(data[3]);
                                     ArrayOffset.append(data[2]);
-                                    quint32 offset  = (quint32)(ArrayOffset[0]<<24 ) |(quint32)(ArrayOffset[1]<<16 )|(quint32)(ArrayOffset[2]<<8 )|(quint32)(ArrayOffset[3]<<0 );
+                                    quint32 offset  = ((uint8_t)ArrayOffset[0]<<24 ) | ((uint8_t)ArrayOffset[1]<<16 ) | ((uint8_t)ArrayOffset[2]<<8 )| ((uint8_t)ArrayOffset[3]);
                                     QByteArray arrayOffset;
                                     arrayOffset.append(data[2]);
                                     arrayOffset.append(data[3]);
@@ -832,33 +832,24 @@ void XhPage::sendfile(quint32 offset, QByteArray arrayOffset)
     {
         qDebug()<<"file close";
     }
-    QString data1 = in->read(128);
-    QByteArray data = data1.toUtf8();
+    // qDebug()<<"Offset:";
+    // qDebug()<<offset;
+    // qDebug()<<arrayOffset;
+    // QString data1 = in->read(128);
+    m_file->seek(offset);
+    QByteArray data = m_file->read(128);
 
-    int len= 128;//data.size();
+    int len= data.size();
     QByteArray datalen;
-    datalen[0]= '\x00';
-    datalen[1]= '\x00';
-    while (len>255) {
-        len = len-256;
-        if(datalen[1]== '\xFF')
-        {
-            datalen[1] = datalen[1] - '\xFF';
-        }
-        datalen[1] = datalen[1] +'\x01';
-    }
-    while (len>0) {
-        datalen[0] = datalen[0] +'\x01';
-        len--;
-    }
+    datalen.resize(0);
+    datalen.append(1, (len & 0xff));
+    datalen.append(1, ((len >> 8) & 0xff));
     QByteArray pageData;
     pageData = QByteArray::fromHex("060400");
-    pageData.append(1, 0);
     pageData.append(arrayOffset);
     pageData.append(datalen);
     pageData.append(data);
     emit sendFileArry(groupPage(pageData));
-
 }
 
 void XhPage::updateBegin(QString updateFile)
