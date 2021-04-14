@@ -129,5 +129,6 @@
         <file>qml/IconCheckedButton.qml</file>
         <file>qml/StatusBarNotice.qml</file>
         <file>image/light_on.png</file>
+        <file>qml/JLPushedButton.qml</file>
     </qresource>
 </RCC>
