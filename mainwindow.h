@@ -161,7 +161,6 @@ private:
     QQuickItem *item4;
     QQuickItem *qw_DistanceItem;
     QQuickItem *qw_LightItem;
-    QQuickItem *qw_PrintPrepareControlItem;
 
     filamentFault *m_filamentfault;
     printFlament *m_printfilament;
@@ -277,7 +276,6 @@ private slots:
     void wizardCancel();
     void wizardConfirm();
 
-    void askStop();
     void askPaused();
 
     void fileList();
@@ -395,10 +393,6 @@ private slots:
     void on_pushButton_73_clicked();
 
     void on_pushButton_129_clicked();
-
-    void on_pushButton_146_clicked();
-
-    void on_pushButton_147_clicked();
 
     void on_pushButton_134_clicked();
 
@@ -1061,6 +1055,10 @@ private slots:
     void ExtruderChange();
 
     void on_qw_StatusNotice_Light_clicked();
+
+    void ShowPauseDialogClicked();
+    void ShowParameterDialogClicked();
+    void StopPrintClicked();
 
 signals:
     void detection(bool ready);

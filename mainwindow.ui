@@ -63,7 +63,7 @@
      <string notr="true">background-color: rgb(32, 32, 35);</string>
     </property>
     <property name="currentIndex">
-     <number>86</number>
+     <number>22</number>
     </property>
     <widget class="QWidget" name="page">
      <widget class="QLabel" name="label">
@@ -6506,41 +6506,6 @@ background-color: rgba(255, 255, 255, 0);</string>
      <zorder>qw_PreparePrintControl</zorder>
     </widget>
     <widget class="QWidget" name="page_37">
-     <widget class="QPushButton" name="pushButton_146">
-      <property name="geometry">
-       <rect>
-        <x>1001</x>
-        <y>492</y>
-        <width>120</width>
-        <height>120</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">
-outline:none;border-image: url(:/image/pause.png);
-background-color: rgba(255, 255, 255, 0);</string>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="pushButton_147">
-      <property name="geometry">
-       <rect>
-        <x>689</x>
-        <y>488</y>
-        <width>140</width>
-        <height>130</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">outline:none;border-image: url(:/image/setting.png);
-background-color: rgba(255, 255, 255, 0);</string>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-     </widget>
      <widget class="QLabel" name="label_270">
       <property name="geometry">
        <rect>
@@ -6548,28 +6513,6 @@ background-color: rgba(255, 255, 255, 0);</string>
         <y>110</y>
         <width>640</width>
         <height>300</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">color: rgba(16, 16, 16, 255);
-font-size: 28px;
-text-align: left;
-font-family: Roboto;
-background-color: rgb(45, 44, 43);
-border: 2px solid rgba(45, 44, 43, 255);
-border-radius: 20px;</string>
-      </property>
-      <property name="text">
-       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-      </property>
-     </widget>
-     <widget class="QLabel" name="label_271">
-      <property name="geometry">
-       <rect>
-        <x>588</x>
-        <y>435</y>
-        <width>640</width>
-        <height>240</height>
        </rect>
       </property>
       <property name="styleSheet">
@@ -6726,16 +6669,19 @@ font-weight: bold;</string>
        <enum>QQuickWidget::SizeRootObjectToView</enum>
       </property>
      </widget>
-     <zorder>label_271</zorder>
-     <zorder>label_270</zorder>
-     <zorder>pushButton_146</zorder>
-     <zorder>pushButton_147</zorder>
-     <zorder>label_71</zorder>
-     <zorder>label_37</zorder>
-     <zorder>label_307</zorder>
-     <zorder>label_69</zorder>
-     <zorder>label_73</zorder>
-     <zorder>quickWidget_3</zorder>
+     <widget class="QQuickWidget" name="qw_PrintingControl">
+      <property name="geometry">
+       <rect>
+        <x>590</x>
+        <y>435</y>
+        <width>640</width>
+        <height>240</height>
+       </rect>
+      </property>
+      <property name="resizeMode">
+       <enum>QQuickWidget::SizeRootObjectToView</enum>
+      </property>
+     </widget>
     </widget>
     <widget class="QWidget" name="page_38">
      <widget class="QLabel" name="label_273">

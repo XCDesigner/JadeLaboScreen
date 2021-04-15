@@ -196,10 +196,12 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->qw_LightSlider->setClearColor(QColor(qmlColor));
 
     ui->qw_PreparePrintControl->setSource(QUrl("qrc:/qml/PrintControlBox.qml"));
-    ui->qw_PreparePrintControl->setResizeMode(QQuickWidget::SizeRootObjectToView);
     ui->qw_PreparePrintControl->setClearColor(QColor(qmlColor));
     ui->qw_PreparePrintControl->rootObject()->setProperty("settingEnabled", false);
     ui->qw_PreparePrintControl->rootObject()->setProperty("pauseEnabled", false);
+
+    ui->qw_PrintingControl->setSource(QUrl("qrc:/qml/PrintControlBox.qml"));
+    ui->qw_PrintingControl->setClearColor(QColor(qmlColor));
 
     ui->qw_FilSensor->setSource(QUrl("qrc:/qml/JFOnOffSwitch.qml"));
     ui->qw_FilSensor->setResizeMode(QQuickWidget::SizeRootObjectToView);
@@ -238,8 +240,11 @@ MainWindow::MainWindow(QWidget *parent) :
     QObject::connect(qw_LightItem, SIGNAL(pressed()), this, SLOT(LightSliderPressed()));
     timer_light_slider = new QTimer(this);
 
-    qw_PrintPrepareControlItem = ui->qw_PreparePrintControl->rootObject();
-    QObject::connect(qw_PrintPrepareControlItem, SIGNAL(stopClicked()), this, SLOT(StopPreHeatting()));
+    QObject::connect(ui->qw_PreparePrintControl->rootObject(), SIGNAL(stopClicked()), this, SLOT(StopPreHeatting()));
+
+    QObject::connect(ui->qw_PrintingControl->rootObject(), SIGNAL(settingClicked()), this, SLOT(ShowParameterDialogClicked()));
+    QObject::connect(ui->qw_PrintingControl->rootObject(), SIGNAL(stopClicked()), this, SLOT(StopPrintClicked()));
+    QObject::connect(ui->qw_PrintingControl->rootObject(), SIGNAL(pauseClicked()), this, SLOT(ShowPauseDialogClicked()));
 
     m_printsec = new QTimer(this);
     m_time = new QTime(0,0,0);
@@ -1673,7 +1678,7 @@ void MainWindow::wizardConfirm()
     m_timer.start(250);
 }
 
-void MainWindow::askStop()
+void MainWindow::StopPrintClicked()
 {
     if(m_timer.isActive())
     {
@@ -2941,17 +2946,16 @@ void MainWindow::on_pushButton_129_clicked()
 
 }
 
-void MainWindow::on_pushButton_146_clicked()
+void MainWindow::ShowPauseDialogClicked()
 {
     m_timer.stop();
     skpWin = new askPause(this);
     QObject::connect(skpWin,SIGNAL(cancel()),this,SLOT(m_cancel()));
-    QObject::connect(skpWin,SIGNAL(m_stop()),this,SLOT(askStop()));
     QObject::connect(skpWin,SIGNAL(m_paused()),this,SLOT(askPaused()));
     skpWin->show();
 }
 
-void MainWindow::on_pushButton_147_clicked()
+void MainWindow::ShowParameterDialogClicked()
 {
   m_setdlog = new PrintSetDlog(this);
   m_setdlog->show();
@@ -3334,7 +3338,6 @@ void MainWindow::on_pushButton_91_clicked()
         skpWin->show();
     }
     QObject::connect(skpWin,SIGNAL(cancel()),this,SLOT(m_cancel()));
-    QObject::connect(skpWin,SIGNAL(m_stop()),this,SLOT(askStop()));
     QObject::connect(skpWin,SIGNAL(m_paused()),this,SLOT(askPaused()));
 }
 
