@@ -3032,8 +3032,8 @@ void MainWindow::on_pushButton_174_clicked()
 
 void MainWindow::on_pushButton_175_clicked()
 {
-    m_port->setDualMode(1);
-    ui->stackedWidget->setCurrentWidget(ui->page_JodMove);
+    QByteArray prepare_manual_move = QByteArray::fromHex("0209");
+    blockingChangePage(prepare_manual_move, ui->page_JodMove);
 }
 
 void MainWindow::on_pushButton_176_clicked()
