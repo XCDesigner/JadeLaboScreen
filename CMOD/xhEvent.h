@@ -7,14 +7,14 @@
 #include <QDebug>
 #include <QtNetwork>
 #include <QByteArray>
+#include <QThread>
 #include "xhpage.h"
 #include "xhport.h"
 
 typedef struct {
     uint8_t Command;
     uint8_t SubCode;
-    uint8_t SendData[256];
-    uint8_t RecvData[256];
+    QByteArray RecvivedDatas;
 }strEventTCB;
 
 class JLEvent : public QObject
@@ -24,17 +24,24 @@ public:
     explicit JLEvent(QObject *parent = nullptr);
     ~JLEvent();
 
-    bool wait(uint8_t Command, uint8_t SubCode, uint8_t *pDataSend, uint8_t *pDataReply);
+    void wait(QByteArray pDataSend, uint8_t Timeout);
     void setup(XhPort *pSerialPort);
     // bool setListen(uint8_t Command, uint8_t SubCode);
 
 private:
    QList<strEventTCB> event_list;
    XhPort *m_serial_port;
+   uint8_t command_to_wait;
+   uint8_t subcode_to_wait;
+   QByteArray bytes_accept;
 
 public slots:
    void test();
    void commandAccept(uint8_t Command, uint8_t SubCode, QByteArray Data);
+
+signals:
+   void changePageAccept(QByteArray);
+
 };
 
 #endif

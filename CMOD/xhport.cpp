@@ -1073,3 +1073,8 @@ XhPage* XhPort::getXhPage()
 {
     return m_package;
 }
+
+QSerialPort* XhPort::getSerialPort()
+{
+    return m_serial;
+}

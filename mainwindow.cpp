@@ -284,6 +284,7 @@ MainWindow::MainWindow(QWidget *parent) :
     QObject::connect(m_fileParser,&XhGcodeFileParser::parseByDeepMode,this,&MainWindow::parseDeepMode,Qt::QueuedConnection);
 
     m_event->setup(m_port);
+    QObject::connect(this->m_event, SIGNAL(changePageAccept(QByteArray)), this, SLOT(changePageCallback(QByteArray)));
 }
 
 MainWindow::~MainWindow()
@@ -5219,3 +5220,14 @@ void MainWindow::on_pushButton_350_clicked()
     ui->stackedWidget->setCurrentWidget(ui->page_LightSetting);
 }
 
+void MainWindow::blockingChangePage(QByteArray Command, QWidget *pPage)
+{
+    m_event->wait(Command, 5);
+    pNextShowPage = pPage;
+    ui->stackedWidget->setCurrentWidget(ui->page_Masker);
+}
+
+void MainWindow::changePageCallback(QByteArray ReplyData)
+{
+    ui->stackedWidget->setCurrentWidget(pNextShowPage);
+}

@@ -60,10 +60,17 @@
      <bool>false</bool>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: rgb(32, 32, 35);</string>
+     <string notr="true">QLabel::label_130{
+width: 233px;
+height: 100px;
+color: rgba(255, 255,255, 255);
+font-size: 48px;
+text-align: left;
+font-family: barlow;
+}</string>
     </property>
     <property name="currentIndex">
-     <number>22</number>
+     <number>41</number>
     </property>
     <widget class="QWidget" name="page">
      <widget class="QLabel" name="label">
@@ -15393,7 +15400,39 @@ background-color: rgb(45, 44, 43);</string>
       </property>
      </widget>
     </widget>
-    <widget class="QWidget" name="page_75"/>
+    <widget class="QWidget" name="page_Masker">
+     <property name="styleSheet">
+      <string notr="true">width: 233px;
+height: 71px;
+color: rgba(255, 255,255, 255);
+font-size: 48px;
+text-align: left;
+font-family: barlow;</string>
+     </property>
+     <widget class="QLabel" name="label_130">
+      <property name="geometry">
+       <rect>
+        <x>400</x>
+        <y>270</y>
+        <width>601</width>
+        <height>111</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QLabel::label_130{
+width: 233px;
+height: 100px;
+color: rgba(255, 255,255, 255);
+font-size: 48px;
+text-align: left;
+font-family: barlow;
+}</string>
+      </property>
+      <property name="text">
+       <string>Processing......</string>
+      </property>
+     </widget>
+    </widget>
     <widget class="QWidget" name="page_76"/>
     <widget class="QWidget" name="page_77">
      <widget class="QPushButton" name="pushButton_354">

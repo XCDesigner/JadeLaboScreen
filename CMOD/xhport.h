@@ -123,6 +123,7 @@ public:
     void updateBegin(QString );
 
     XhPage* getXhPage();
+    QSerialPort* getSerialPort();
 
 private:
     QSerialPort *m_serial;

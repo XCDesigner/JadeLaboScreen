@@ -96,6 +96,8 @@ public:
     void m_addItemToList(const QString& fileName,QString filePath,QString uDisk);
     void m_adTtemtowifi(const QString& wifiname,QString wifilevel);
 
+    void blockingChangePage(QByteArray Command, QWidget *pPage);
+
 private:
     Ui::MainWindow *ui;
 
@@ -187,12 +189,15 @@ private:
 
     QTimer *timer_light_slider;
 
+    QWidget *pNextShowPage;
+
 signals:
     void sendSignalToQml(int );
     void sendSignalHeating(int , int );
 
 
 private slots:
+    void changePageCallback(QByteArray ReplyData);
     void firstStart();
     void jumpOne();
     void jumpTwo();
