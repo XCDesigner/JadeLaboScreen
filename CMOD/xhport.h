@@ -122,6 +122,8 @@ public:
 
     void updateBegin(QString );
 
+    XhPage* getXhPage();
+
 private:
     QSerialPort *m_serial;
     XhPage *m_package;

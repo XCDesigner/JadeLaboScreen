@@ -114,6 +114,7 @@ int XhPage::analysis(QByteArray package)
                     QByteArray data = package.mid(9,len);
                     quint16 dataCheck = (quint16)package[8];
                     dataCheck = (dataCheck << 8)+(quint16)package[7];
+                    emit command_received(data[0], data[1], data);
                     switch (data[0]) {
                     /*判断是哪一个页面族*/
                     /********first start********/

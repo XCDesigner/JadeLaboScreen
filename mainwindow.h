@@ -23,6 +23,7 @@
 #include <QMutex>
 #include <QStorageInfo>
 #include "CMOD/xhpage.h"
+#include "CMOD/xhEvent.h"
 #include "CMOD/xhport.h"
 #include "dialog/choosefile.h"
 #include "dialog/parsing.h"
@@ -147,6 +148,7 @@ private:
     XhWizard *m_wizard;
 
     XhPort *m_port;
+    JLEvent *m_event;
     fileCheckThread *m_thread;
     chooseTemp *mchoose;
 

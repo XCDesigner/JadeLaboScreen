@@ -27,9 +27,9 @@ DEFINES += QT_DEPRECATED_WARNINGS XH_WIN XH_VIS
 CONFIG += c++11
 
 SOURCES += \
-    CMOD/Event.cpp \
     CMOD/XhGcodeFileParser.cpp \
     CMOD/XhUpdater.cpp \
+    CMOD/xhEvent.cpp \
     CMOD/xhcontrolr818.cpp \
     CMOD/xhpage.cpp \
     CMOD/xhport.cpp \
@@ -61,9 +61,9 @@ SOURCES += \
     pages/StatusBar/StatusBar.cpp
 
 HEADERS += \
-    CMOD/Event.h \
     CMOD/XhGcodeFileParser.h \
     CMOD/XhUpdater.h \
+    CMOD/xhEvent.h \
     CMOD/xhcontrolr818.h \
     CMOD/xhpage.h \
     CMOD/xhport.h \

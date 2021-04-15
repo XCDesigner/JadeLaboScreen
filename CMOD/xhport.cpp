@@ -1068,3 +1068,8 @@ void XhPort::updateNum(int a)
 {
     emit xhupdateNum(a);
 }
+
+XhPage* XhPort::getXhPage()
+{
+    return m_package;
+}

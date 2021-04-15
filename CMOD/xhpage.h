@@ -101,6 +101,7 @@ private:
 
     XhUpdater *m_upDater;
 signals:
+    void command_received(uint8_t, uint8_t, QByteArray);
     /*first start*/
     void firstTestResult(bool ,bool ,bool ,bool ,bool );
     void firstTemperatureResult(int ,int ,int ,int ,int ,int ,int ,QByteArray );

@@ -19,6 +19,7 @@ MainWindow::MainWindow(QWidget *parent) :
     m_wizard = NULL;
 
     m_port = NULL;
+    m_event = NULL;
 //    fileCheckThread *m_thread;
     mchoose = NULL;
     m_modeone = NULL;
@@ -43,6 +44,7 @@ MainWindow::MainWindow(QWidget *parent) :
     /*开启串口*/
     serialOpen =false;
     m_port = new XhPort(this);
+    m_event = new JLEvent(this);
 
     foreach (const QSerialPortInfo &info,QSerialPortInfo::availablePorts())
     {
@@ -281,6 +283,7 @@ MainWindow::MainWindow(QWidget *parent) :
     QObject::connect(m_fileParser,&XhGcodeFileParser::parseDeepSucceded,this,&MainWindow::parseDeep,Qt::QueuedConnection);
     QObject::connect(m_fileParser,&XhGcodeFileParser::parseByDeepMode,this,&MainWindow::parseDeepMode,Qt::QueuedConnection);
 
+    m_event->setup(m_port);
 }
 
 MainWindow::~MainWindow()
