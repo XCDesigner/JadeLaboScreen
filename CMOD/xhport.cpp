@@ -350,16 +350,16 @@ void XhPort::enbackup(bool a )
     }
 }
 
-void XhPort::printcom(int a )
+void XhPort::setBackupEnableStatus(bool Enable)
 {
-    if(a == 0)
+    if(Enable == true)
     {
-        QByteArray s = QByteArray::fromHex("010F00");
+        QByteArray s = QByteArray::fromHex("010F01");
         QByteArray buff = m_package->groupPage(s);
         m_serial->write(buff);
     }
     else {
-        QByteArray s = QByteArray::fromHex("010F01");
+        QByteArray s = QByteArray::fromHex("010F00");
         QByteArray buff = m_package->groupPage(s);
         m_serial->write(buff);
     }
