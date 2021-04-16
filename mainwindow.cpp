@@ -31,7 +31,9 @@ MainWindow::MainWindow(QWidget *parent) :
     m_printfilament = NULL;
 
     m_power = NULL;
-    m_setdlog =NULL;
+    m_setdlog = new PrintSetDlog();
+    m_setdlog->hide();
+    QObject::connect(m_setdlog, SIGNAL(hideWidget()), this, SLOT(onSettingDialogHide()));
     m_parsetdlog = NULL;
     m_dam = NULL;
     m_dup = NULL;
@@ -204,6 +206,9 @@ MainWindow::MainWindow(QWidget *parent) :
 
     ui->qw_PrintingControl->setSource(QUrl("qrc:/qml/PrintControlBox.qml"));
     ui->qw_PrintingControl->setClearColor(QColor(qmlColor));
+    ui->qw_PrintingControl->rootObject()->setProperty("stopEnabled", true);
+    ui->qw_PrintingControl->rootObject()->setProperty("settingEnabled", true);
+    ui->qw_PrintingControl->rootObject()->setProperty("pauseEnabled", true);
 
     ui->qw_FilSensor->setSource(QUrl("qrc:/qml/JFOnOffSwitch.qml"));
     ui->qw_FilSensor->setResizeMode(QQuickWidget::SizeRootObjectToView);
@@ -1645,6 +1650,7 @@ void MainWindow::wizardConfirm()
 
 void MainWindow::StopPrintClicked()
 {
+    qDebug()<<"Printing stop click";
     if(m_timer.isActive())
     {
         m_timer.stop();
@@ -2116,15 +2122,6 @@ void MainWindow::selftest6()
 
 }
 
-void MainWindow::setclose(int a)
-{
-    m_setdlog->hide();
-    m_setdlog->close();
-    m_setdlog =NULL;
-    m_port->printcom(a);
-    m_printsec->start(1000);
-}
-
 void MainWindow::parsetclose(int a, int b)
 {
     m_port->parcom(b);
@@ -2169,18 +2166,6 @@ void MainWindow::cannext(bool )
     if(m_parsetdlog!=NULL)
     {
         m_parsetdlog->seten(true,true);
-    }
-}
-
-void MainWindow::state(QString a, QString b, QString c, QString d, QString e, QString f, QString g)
-{
-    if(m_setdlog != NULL)
-    {
-        m_setdlog->initnum(a,b,c,d,e,f,g);
-    }
-    if(m_parsetdlog != NULL)
-    {
-        m_parsetdlog->initnum(a,b,c,d,e,f,g);
     }
 }
 
@@ -2894,18 +2879,16 @@ void MainWindow::on_pushButton_129_clicked()
 
 void MainWindow::ShowPauseDialogClicked()
 {
+    QByteArray s;
     m_timer.stop();
-    blockingChangeDialog(NULL, (JLWidget*)skpWin);
+    blockingChangeDialog(s, (JLWidget*)skpWin);
 }
 
 void MainWindow::ShowParameterDialogClicked()
 {
-  m_setdlog = new PrintSetDlog(this);
-  m_setdlog->show();
-  QObject::connect(m_setdlog,&PrintSetDlog::closeset,this,&MainWindow::setclose);
-  m_port->askstate();
-  m_port->backupsend();
-  m_printsec->stop();
+    QByteArray s = QByteArray::fromHex("0614");
+    blockingChangeDialog(s, m_setdlog);
+    m_printsec->stop();
 }
 
 void MainWindow::on_pushButton_134_clicked()

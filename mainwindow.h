@@ -203,6 +203,7 @@ private slots:
     void changePageCallback(QByteArray ReplyData);
     void changeDialogCallback(QByteArray ReplyData);
     void onPauseDialogHide();
+    void onSettingDialogHide();
     void firstStart();
     void jumpOne();
     void jumpTwo();
@@ -331,8 +332,6 @@ private slots:
     void selftest4();
     void selftest5();
     void selftest6();
-
-    void setclose(int a);
 
     void parsetclose(int ,int );
     void parsetexclose(bool ,bool ,bool );

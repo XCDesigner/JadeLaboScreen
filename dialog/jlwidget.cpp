@@ -13,11 +13,10 @@ void JLWidget::init(QByteArray InitData)
 void JLWidget::show()
 {
     qDebug()<<"show() Unremap";
+    QWidget::show();
 }
 
 QList<QByteArray> JLWidget::get_return_value()
 {
-    ret_value.clear();
     return ret_value;
-    qDebug()<<"get_return_value() Unremap";
 }

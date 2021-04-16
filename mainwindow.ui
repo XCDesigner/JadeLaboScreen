@@ -70,7 +70,7 @@ font-family: barlow;
 }</string>
     </property>
     <property name="currentIndex">
-     <number>80</number>
+     <number>52</number>
     </property>
     <widget class="QWidget" name="page">
      <widget class="QLabel" name="label">
