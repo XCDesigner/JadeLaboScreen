@@ -24,6 +24,7 @@ public:
     void updateButtonCheckStatus(int);
     void setXHPort(XhPort *pPort);
     void sendSetting();
+    void init(QByteArray) override;
 
 private slots:
     void on_pushButton_clicked();

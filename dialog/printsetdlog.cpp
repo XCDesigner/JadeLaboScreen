@@ -71,27 +71,29 @@ PrintSetDlog::~PrintSetDlog()
     delete ui;
 }
 
+void PrintSetDlog::init(QByteArray InitData)
+{
+    temp_percent[0] = InitData[0];
+    temp_percent[1] = InitData[1];
+    temp_percent[2] = InitData[2];
+    fan_percent[0] = InitData[3];
+    fan_percent[1] = InitData[4];
+    feedrate_percent = (uint16_t)(((uint8_t)InitData[6] << 8) | (uint8_t)InitData[5]);
+    platform_height = (uint32_t)(((uint8_t)InitData[10] << 8) | ((uint8_t)InitData[9] << 8) | ((uint8_t)InitData[8] << 8) | (uint8_t)InitData[7]);
+    QString a, b, c, d, e, f, g;
+    a.setNum(temp_percent[0]);
+    b.setNum(temp_percent[1]);
+    c.setNum(temp_percent[2]);
+    d.setNum(fan_percent[0]);
+    e.setNum(fan_percent[1]);
+    f.setNum(feedrate_percent);
+    f.setNum(platform_height, 'g', 2);
+    initnum(a, b, c, d, e, f, g);
+    ret_value.clear();
+}
+
 void PrintSetDlog::initnum(QString a, QString b, QString c, QString d, QString e, QString f, QString g)
 {
-    // ui->pushButton_4->setText("Left Temp / "+a+"°C");
-    // ui->pushButton_5->setText("Right Temp / "+b+"°C");
-
-    // ui->pushButton_6->setText("Left Fan Speed "+d+"%");
-    // ui->pushButton_7->setText("Right Fan Speed "+e+"%");
-
-    // ui->pushButton_8->setText("Bed Temp "+c+"°C");
-
-    // ui->pushButton_9->setText("Feedrate "+f+"%");
-    // ui->pushButton_10->setText("Platform Height "+g+"mm");
-
-    temp_percent[0] = a.toInt();
-    temp_percent[1] = b.toInt();
-    temp_percent[2] = c.toInt();
-    fan_percent[0] = d.toInt();
-    fan_percent[1]= e.toInt();
-    feedrate_percent = f.toUInt();
-    platform_height = g.toFloat();
-
     ui->qw_LeftTemp->rootObject()->setProperty("text", "Left Temp / "+a+"°C");
 
     ui->qw_RightTemp->rootObject()->setProperty("text", "Right Temp / "+b+"°C");
@@ -145,12 +147,12 @@ void PrintSetDlog::backup(int a )
 void PrintSetDlog::on_pushButton_clicked()
 {
     if(ui->qw_BackupMode->rootObject()->property("isPressed").toBool() == true)
-    {
-        emit closeset(1);
-    }
-    else {
-        emit closeset(0);
-    }
+        ret_value.append(QByteArray("Enable Backup"));
+    else
+        ret_value.append(QByteArray("Disable Backup"));
+
+    emit hideWidget();
+    this->hide();
 }
 
 void PrintSetDlog::onIncreaseClicked()

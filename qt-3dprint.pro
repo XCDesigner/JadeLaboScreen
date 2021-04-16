@@ -61,6 +61,7 @@ SOURCES += \
     pages/PauseDialog/PauseDialog.cpp \
     pages/PrintControl/PreparePrint.cpp \
     pages/FilmentSensorSetting/FilamentSetting.cpp  \
+    pages/PrintSetting/PrintSetting.cpp \
     pages/StatusBar/StatusBar.cpp
 
 HEADERS += \

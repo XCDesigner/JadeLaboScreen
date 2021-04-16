@@ -52,7 +52,7 @@ public:
 
     void enHotend(bool ,bool );
     void enbackup(bool );
-    void printcom(int );
+    void setBackupEnableStatus(bool );
     void parcom(int );
     void askHotend();
     void askstate();
