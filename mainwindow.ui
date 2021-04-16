@@ -16046,7 +16046,7 @@ font-family: Barlow;
 border: 1px solid rgba(79, 79, 79, 255);</string>
       </property>
       <property name="currentIndex">
-       <number>2</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="key_1">
        <widget class="QPushButton" name="pushButton_138">

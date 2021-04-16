@@ -41,7 +41,7 @@
 #include "dialog/parsetdlog.h"
 #include "dialog/dupandmirorr.h"
 #include "dialog/duponly.h"
-#include "dialog/JLWidget.h"
+#include "dialog/jlwidget.h"
 #include "listwidgetitem/mywifiitem.h"
 #include "dialog/updateprogrebar.h"
 #include "CMOD/XhGcodeFileParser.h"

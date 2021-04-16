@@ -1,6 +1,14 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
+
+#ifdef XH_LINUX
+void tWifi_event_callback(struct Manager *wmg,int event_lavel)
+{
+    qDebug()<<"tWifi_event_callback";
+}
+#endif
+
 MainWindow::MainWindow(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::MainWindow)
@@ -159,6 +167,19 @@ MainWindow::MainWindow(QWidget *parent) :
     for(i = 0;i< m_fileinfo.count();i++)
     {
         m_addItemToList(m_fileinfo.at(i).fileName(),m_fileinfo.at(i).filePath());
+        QFileInfoList m_gcodelist;
+        foreach (QFileInfo fileinfo, m_fileinfo) {
+            if(!fileinfo.isFile())
+                continue;
+            if(0 == fileinfo.suffix().compare("gcode",Qt::CaseInsensitive))
+                m_gcodelist<<fileinfo;
+        }
+
+        int i = 0;
+        for(i = 0;i< m_gcodelist.count();i++)
+        {
+            m_addItemToList(m_gcodelist.at(i).fileName(),m_gcodelist.at(i).filePath());
+        }
     }
     lheatend = false;
     rheatend = false;
@@ -1430,6 +1451,64 @@ void MainWindow::connctwifi(myWifiItem *itm)
 
 void MainWindow::m_chooseEN()
 {
+    /*判断存储空间*/
+    QFileInfo printFile(m_WinFiel->m_filePath);
+    int filesize = printFile.size();
+    QStorageInfo storage = QStorageInfo::root();
+    storage.refresh();
+#ifdef DEBUG
+    qDebug()<<storage.rootPath();
+    if(storage.isReadOnly())
+        qDebug()<<"isReadOnly:"<<storage.isReadOnly();
+    qDebug()<<"name:"<<storage.name();
+    qDebug()<<"fileSystemType:"<<storage.fileSystemType();
+    qDebug()<<"size:"<<storage.bytesTotal()/1000/1000<<"MB";
+    qDebug()<<"availableSize:"<<storage.bytesAvailable()/1000/1000<<"MB";
+#endif
+    int i,j;
+    QDir *dir=new QDir(localPath);
+    QList<QFileInfo> fileInfo = QList<QFileInfo>(dir->entryInfoList());
+    if(fileInfo.size() > 0 )
+    {
+        /*判断文件输入后剩余容量是否小于512MB*/
+        if((storage.bytesAvailable()/1000/1000 - filesize) < 512)
+        {
+            /*文件最后修改日期排序*/
+            QList<QDateTime> fileTime;
+            for(i = 0; i < fileInfo.size(); i++)
+            {
+                fileTime.append(fileInfo.at(i).lastModified());
+            }
+            qSort(fileTime.begin(), fileTime.end());//容器元素的递增排序
+            /*腾出空间，直到可以容纳输入文件*/
+            while(1)
+            {
+                if((storage.bytesAvailable()/1000/1000 - filesize) >= 512)
+                {
+                    break;
+                }
+                qDebug()<<"while run";
+                qDebug()<<fileInfo.size();
+                if(fileInfo.size()<= 0 )
+                    break;
+                for (j = 0;j<fileInfo.size();j++)
+                {
+                    qDebug()<<"list"<<j;
+                    if(fileInfo.at(j).lastModified() == fileTime.at(0))
+                    {
+                        qDebug()<<fileInfo.at(j).fileName();
+                        dir->remove(fileInfo.at(j).fileName());
+                        fileInfo.removeAt(j);
+                        fileTime.removeAt(0);
+                    }
+                }
+                storage.refresh();
+                qDebug()<<storage.bytesAvailable()/1000/1000<<"MB";
+            }
+            qDebug()<<fileTime;
+        }
+    }
+
     loaclPATH.clear();
     loaclPATH = localPath+m_WinFiel->m_fileName;
     /* 2021/3/2 cbw */
@@ -1563,16 +1642,16 @@ void MainWindow::m_chooseEN()
         m_sendFile.close();
     }
     /* over */
-    QStorageInfo storage = QStorageInfo::root();
-    storage.refresh();
-    qDebug()<<storage.rootPath();
-    if(storage.isReadOnly())
-        qDebug()<<"isReadOnly:"<<storage.isReadOnly();
-    qDebug()<<"name:"<<storage.name();
-    qDebug()<<"fileSystemType:"<<storage.fileSystemType();
-    qDebug()<<"size:"<<storage.bytesTotal()/1000/1000<<"MB";
-    qDebug()<<"availableSize:"<<storage.bytesAvailable()/1000/1000<<"MB";
 
+//    QStorageInfo storage = QStorageInfo::root();
+//    storage.refresh();
+//    qDebug()<<storage.rootPath();
+//    if(storage.isReadOnly())
+//        qDebug()<<"isReadOnly:"<<storage.isReadOnly();
+//    qDebug()<<"name:"<<storage.name();
+//    qDebug()<<"fileSystemType:"<<storage.fileSystemType();
+//    qDebug()<<"size:"<<storage.bytesTotal()/1000/1000<<"MB";
+//    qDebug()<<"availableSize:"<<storage.bytesAvailable()/1000/1000<<"MB";
 }
 
 void MainWindow::sendChoose(int a )
@@ -1657,8 +1736,49 @@ void MainWindow::StopPrintClicked()
 
 void MainWindow::fileList()
 {
+#ifdef XH_WIN
+    QDir *m_dir=new QDir(UDiskfind);
+    QStringList filter;
+    QFileInfoList m_fileinfo = m_dir->entryInfoList();
+    foreach (QFileInfo fileinfo, m_fileinfo) {
+//        if(!fileinfo.isFile())
+//            continue;
+        if(fileinfo.fileName().left(3) == "sda"||fileinfo.fileName().left(3) == "sdb")
+        {
 
-
+            ui->label_132->setVisible(true);
+            ui->pushButton_101->setEnabled(true);
+            return;
+        }
+    }
+    ui->label_132->setVisible(false);
+    ui->pushButton_101->setEnabled(false);
+    ui->listWidget_2->setVisible(false);
+    ui->listWidget->setVisible(true);
+#endif
+#ifdef XH_LINUX
+    system("mount > /usr/share/3d_printer/tmp/udisk.txt");
+    QFile udisk("/usr/share/3d_printer/tmp/udisk.txt");
+    if(!udisk.open(QIODevice::ReadOnly|QIODevice::Text))
+        return;
+    QString mountEcho =  udisk.readAll();
+    udisk.close();
+    if(mountEcho.contains("/mnt/exUDISK"))
+    {
+        qDebug()<<"mount";
+        ui->label_132->setVisible(true);
+        ui->pushButton_101->setEnabled(true);
+    }
+    else
+    {
+        qDebug()<<"no mount";
+        ui->label_132->setVisible(false);
+        ui->pushButton_101->setEnabled(false);
+        ui->listWidget_2->setVisible(false);
+        ui->listWidget->setVisible(true);
+    }
+#endif
+#ifdef OLD
     QFileInfo usbfile(UDiskfind);
     if(usbfile.isDir())
     {
@@ -1674,7 +1794,11 @@ void MainWindow::fileList()
         ui->listWidget_2->setVisible(false);
         ui->listWidget->setVisible(true);
     }
+<<<<<<< HEAD
 
+=======
+#endif
+>>>>>>> 6c9c1f1... add wifi usb romclean
 }
 
 void MainWindow::carilbin()
@@ -2941,11 +3065,18 @@ void MainWindow::on_pushButton_134_clicked()
     QStringList filter;
     QFileInfoList m_fileinfo = m_dir->entryInfoList();
 
-    int i = 0;
-    for(i = 0;i< m_fileinfo.count();i++)
-    {
-        m_addItemToList(m_fileinfo.at(i).fileName(),m_fileinfo.at(i).filePath());
+    QFileInfoList m_gcodelist;
+    foreach (QFileInfo fileinfo, m_fileinfo) {
+        if(!fileinfo.isFile())
+            continue;
+        if(0 == fileinfo.suffix().compare("gcode",Qt::CaseInsensitive))
+            m_gcodelist<<fileinfo;
+    }
 
+    int i = 0;
+    for(i = 0;i< m_gcodelist.count();i++)
+    {
+        m_addItemToList(m_gcodelist.at(i).fileName(),m_gcodelist.at(i).filePath());
     }
 
 }
@@ -3974,29 +4105,100 @@ void MainWindow::on_pushButton_340_clicked()
             {
                 m_adTtemtowifi(C[j],"1");
             }
-        }
-        else
-        {
-            qDebug()<<"scan bad";
+
+            /*自动连接*/
+            QFileInfo wifiConncetinfo(localWIFI);
+            if(wifiConncetinfo.isFile())
+            {
+                QFile wifiConncet(localWIFI);
+                QTextStream textStream(&wifiConncet);
+                QStringList list;
+                if(wifiConncet.open(QIODevice::ReadOnly|QIODevice::Text))
+                {
+                    /*读文件到list*/
+                    while(true)
+                    {
+                        QString line = textStream.readLine();
+                        if(line.isNull())
+                            break;
+                        else
+                            list.append(line.toLatin1());
+                    }
+                    wifiConncet.close();
+                    if(C.size()!=0&&list.size()!=0)
+                    {
+                        for (int i= 0; i<C.size();i++) {
+                            for (int j = 0; j<list.size();j+2) {
+                                if(C.at(i) == list.at(j))
+                                {
+                                    /*如果有存档*/
+                                    std::string str = list.at(j).toStdString();
+                                    const char * a= str.c_str();
+                                    std::string str1 = list.at(j+1).toStdString();
+                                    const char * b= str1.c_str();
+                                    if(aw_wifi->connect_ap(a,b,1)>=0)
+                                    {
+                                        /*如果连接成功*/
+                                        qDebug()<<"connect success!";
+                                        start_udhcpc();
+                                        ui->stackedWidget->setCurrentIndex(84);
+                                        setWinPic(true);
+                                        udpControl = new XhControlR818(this);
+                                        QObject::connect(udpControl,&XhControlR818::signalsAskCondition,this,&MainWindow::getCondition);
+                                        QObject::connect(this,&MainWindow::sendCondition,udpControl,&XhControlR818::slotAskCondition);
+                                        QObject::connect(udpControl,&XhControlR818::signalsDownloadOver,this,&MainWindow::downloadOver);
+                                        ui->label_316->setText(list.at(j));
+                                    }
+                                    else
+                                    {
+                                        qDebug()<<"connect bad";
+                                        ui->stackedWidget->setCurrentIndex(83);
+                                        setWinPic(false);
+                                    }
+                                    return;
+                                }
+                            }
+
+                        }
+                    }
+
+                }
+            }
         }
 
+
+
+    }
+    else
+    {
+        qDebug()<<"scan bad";
+    }
+#endif
+#ifdef OLD
         QFileInfo wifiConncetinfo(localWIFI);
         if(wifiConncetinfo.isFile())
         {
             QFile wifiConncet(localWIFI);
+
+            QTextStream textStream(&wifiConncet);
+            QStringList list;
             if(wifiConncet.open(QIODevice::ReadOnly|QIODevice::Text))
             {
-                QByteArray wifi =  wifiConncet.readAll();
-                wifiConncet.close();
-                QString wifidata = wifi;
-//                QString wifiname = wifidata.left(wifidata.indexOf(" "));
-//                QString wifikey = wifidata.right(wifidata.size()-wifidata.indexOf(" ")-1);
-//                const char* name =  wifiname.toStdString().c_str();
-//                const char* key  =  wifikey.toStdString().c_str();
-                std::string str = wifidata.left(wifidata.indexOf(" ")).toStdString();
-                const char * a= str.c_str();
-                std::string str1 = wifidata.right(wifidata.size()-wifidata.indexOf(" ")-1).toStdString();
-                const char * b= str1.c_str();
+                /*读文件到list*/
+                while(true)
+                {
+                    QString line = textStream.readLine();
+                    if(line.isNull())
+                        break;
+                    else
+                        list.append(line.toLatin1());
+                }
+
+
+//                std::string str = wifidata.left(wifidata.indexOf(" ")).toStdString();
+//                const char * a= str.c_str();
+//                std::string str1 = wifidata.right(wifidata.size()-wifidata.indexOf(" ")-1).toStdString();
+//                const char * b= str1.c_str();
                 qDebug()<<"wifi"<<a<<b;
                 if(aw_wifi->connect_ap(a,b,1)>=0)
                 {
@@ -4015,8 +4217,9 @@ void MainWindow::on_pushButton_340_clicked()
                     qDebug()<<"connect bad";
                     ui->stackedWidget->setCurrentIndex(83);
                     setWinPic(false);
-                    QFile wifiConnect(localWIFI);
-                    wifiConncet.remove();
+
+//                    QFile wifiConnect(localWIFI);
+//                    wifiConncet.remove();
                 }
             }
         }
@@ -4544,12 +4747,19 @@ void MainWindow::on_pushButton_101_clicked()
         QDir *m_dir=new QDir(UDiskPath);
         QStringList filter;
         QFileInfoList m_fileinfo = m_dir->entryInfoList();
+        QFileInfoList m_gcodelist;
+        foreach (QFileInfo fileinfo, m_fileinfo) {
+            if(!fileinfo.isFile())
+                continue;
+            if(0 == fileinfo.suffix().compare("gcode",Qt::CaseInsensitive))
+                m_gcodelist<<fileinfo;
+        }
         int i = 0;
-        for(i = 0;i< m_fileinfo.count();i++)
+        for(i = 0;i< m_gcodelist.count();i++)
         {
-            m_addItemToList(m_fileinfo.at(i).fileName(),m_fileinfo.at(i).filePath(),"udisk");
-                    qDebug()<<m_fileinfo.at(i).filePath();
-                    qDebug()<<m_fileinfo.at(i).fileName();
+            m_addItemToList(m_gcodelist.at(i).fileName(),m_gcodelist.at(i).filePath(),"udisk");
+//                    qDebug()<<m_fileinfo.at(i).filePath();
+//                    qDebug()<<m_fileinfo.at(i).fileName();
         }
 
 }
@@ -4993,14 +5203,51 @@ void MainWindow::on_pushButton_689_clicked()
         start_udhcpc();
         ui->stackedWidget->setCurrentIndex(84);
         setWinPic(true);
+
         QFile wifiConnect(localWIFI);
-        if(wifiConnect.open(QIODevice::WriteOnly|QIODevice::Text))
+        QTextStream textStream(&wifiConnect);
+        QStringList list;
+        if(wifiConnect.open(QIODevice::ReadWrite|QIODevice::Text))
         {
+            list.clear();
+            /*读文件到list*/
+            while(true)
+            {
+                QString line = textStream.readLine();
+                if(line.isNull())
+                    break;
+                else
+                   list.append(line.toLatin1());
+            }
+            /*保存最新k-v*/
+            if(list.contains(chooseit->wifiname))
+            {
+                int index = list.indexOf(chooseit->wifiname);
+                list.replace(index+1,ui->lineEdit->text());
+            }
+            else
+            {
+                list.append(chooseit->wifiname);
+                list.append(ui->lineEdit->text());
+            }
+            /*判断是否超标*/
+            while(list.size()>40)
+            {
+                list.removeAt(0);
+                list.removeAt(0);
+            }
+            wifiConnect.resize(0);
+            for (int i = 0 ;i<list.size();i++) {
+                wifiConnect.write(list.at(i).toLatin1()+"\n");
+            }
+            wifiConnect.close();
+#ifdef OLD
             wifiConnect.resize(0);
             wifiConnect.write(chooseit->wifiname.toLatin1());
             wifiConnect.write(" ");
             wifiConnect.write(ui->lineEdit->text().toLatin1());
             wifiConnect.close();
+#endif
         }
         if(udpControl == NULL)
         {

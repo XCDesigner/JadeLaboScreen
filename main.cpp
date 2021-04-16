@@ -9,8 +9,8 @@ int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
     MainWindow w_ui;
-    int nIndex = QFontDatabase::addApplicationFont(":/Barlow-Regular.ttf");
-    int nindex = QFontDatabase::addApplicationFont(":/Barlow-Bold.ttf");
+    int nIndex = QFontDatabase::addApplicationFont(":/fonts/Barlow-Regular.ttf");
+    int nindex = QFontDatabase::addApplicationFont(":/fonts/Barlow-Bold.ttf");
     if (nIndex != -1)
     {
         QStringList strList(QFontDatabase::applicationFontFamilies(nIndex));
