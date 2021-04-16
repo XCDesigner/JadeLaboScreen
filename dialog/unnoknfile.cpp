@@ -2,7 +2,7 @@
 #include "ui_unnoknfile.h"
 
 UnNoknfile::UnNoknfile(QWidget *parent) :
-    QWidget(parent),
+    JLWidget(parent),
     ui(new Ui::UnNoknfile)
 {
     ui->setupUi(this);

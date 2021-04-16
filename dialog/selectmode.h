@@ -2,12 +2,13 @@
 #define SELECTMODE_H
 
 #include <QWidget>
+#include "jlwidget.h"
 
 namespace Ui {
 class selectMode;
 }
 
-class selectMode : public QWidget
+class selectMode : public JLWidget
 {
     Q_OBJECT
 

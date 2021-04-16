@@ -2,12 +2,13 @@
 #define XHWIZARD_H
 
 #include <QWidget>
+#include "jlwidget.h"
 
 namespace Ui {
 class XhWizard;
 }
 
-class XhWizard : public QWidget
+class XhWizard : public JLWidget
 {
     Q_OBJECT
 

@@ -2,7 +2,7 @@
 #include "ui_printflament.h"
 
 printFlament::printFlament(QWidget *parent) :
-    QWidget(parent),
+    JLWidget(parent),
     ui(new Ui::printFlament)
 {
     ui->setupUi(this);

@@ -2,12 +2,13 @@
 #define PRINTFLAMENT_H
 
 #include <QWidget>
+#include "jlwidget.h"
 
 namespace Ui {
 class printFlament;
 }
 
-class printFlament : public QWidget
+class printFlament : public JLWidget
 {
     Q_OBJECT
 

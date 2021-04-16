@@ -3,12 +3,13 @@
 
 #include <QWidget>
 #include <QString>
+#include "jlwidget.h"
 
 namespace Ui {
 class chooseFile;
 }
 
-class chooseFile : public QWidget
+class chooseFile : public JLWidget
 {
     Q_OBJECT
 

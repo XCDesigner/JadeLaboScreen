@@ -2,7 +2,7 @@
 #include "ui_choosetemp.h"
 
 chooseTemp::chooseTemp(QWidget *parent) :
-    QWidget(parent),
+    JLWidget(parent),
     ui(new Ui::chooseTemp)
 {
     ui->setupUi(this);

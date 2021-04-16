@@ -2,12 +2,13 @@
 #define POWERLOST_H
 
 #include <QWidget>
+#include "jlwidget.h"
 
 namespace Ui {
 class powerLost;
 }
 
-class powerLost : public QWidget
+class powerLost : public JLWidget
 {
     Q_OBJECT
 

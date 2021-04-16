@@ -2,7 +2,7 @@
 #include "ui_delete.h"
 
 Delete::Delete(QWidget *parent) :
-    QWidget(parent),
+    JLWidget(parent),
     ui(new Ui::Delete)
 {
     ui->setupUi(this);

@@ -2,18 +2,23 @@
 #define ASKPAUSE_H
 
 #include <QWidget>
+#include <QDebug>
+#include "jlwidget.h"
 
 namespace Ui {
 class askPause;
 }
 
-class askPause : public QWidget
+class askPause : public JLWidget
 {
     Q_OBJECT
 
 public:
-    explicit askPause(QWidget *parent = nullptr);
+    askPause(QWidget *parent = nullptr);
     ~askPause();
+
+    void init(QByteArray) override;
+    void show() override;
 
 private slots:
     void on_pushButton_clicked();
@@ -27,6 +32,7 @@ signals:
     void cancel();
     void m_stop();
     void m_paused();
+    void sigHide();
 
 private:
     Ui::askPause *ui;

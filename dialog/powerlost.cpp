@@ -2,7 +2,7 @@
 #include "ui_powerlost.h"
 
 powerLost::powerLost(QWidget *parent) :
-    QWidget(parent),
+    JLWidget(parent),
     ui(new Ui::powerLost)
 {
     ui->setupUi(this);

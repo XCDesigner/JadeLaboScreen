@@ -2,7 +2,7 @@
 #include "ui_printsetdlog.h"
 
 PrintSetDlog::PrintSetDlog(QWidget *parent) :
-    QWidget(parent),
+    JLWidget(parent),
     ui(new Ui::PrintSetDlog)
 {
     ui->setupUi(this);

@@ -40,6 +40,7 @@ SOURCES += \
     dialog/dupandmirorr.cpp \
     dialog/duponly.cpp \
     dialog/filamentfault.cpp \
+    dialog/jlwidget.cpp \
     dialog/parsetdlog.cpp \
     dialog/parsing.cpp \
     dialog/powerlost.cpp \
@@ -54,8 +55,10 @@ SOURCES += \
         main.cpp \
         mainwindow.cpp \
     oldplan/filecheckthread.cpp \
+    pages/Application/Application.cpp \
     pages/JodMove/JodMove.cpp \
     pages/LightSetting/LightSetting.cpp \
+    pages/PauseDialog/PauseDialog.cpp \
     pages/PrintControl/PreparePrint.cpp \
     pages/FilmentSensorSetting/FilamentSetting.cpp  \
     pages/StatusBar/StatusBar.cpp
@@ -77,6 +80,7 @@ HEADERS += \
     dialog/dupandmirorr.h \
     dialog/duponly.h \
     dialog/filamentfault.h \
+    dialog/jlwidget.h \
     dialog/parsetdlog.h \
     dialog/parsing.h \
     dialog/powerlost.h \

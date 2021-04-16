@@ -41,6 +41,7 @@
 #include "dialog/parsetdlog.h"
 #include "dialog/dupandmirorr.h"
 #include "dialog/duponly.h"
+#include "dialog/JLWidget.h"
 #include "listwidgetitem/mywifiitem.h"
 #include "dialog/updateprogrebar.h"
 #include "CMOD/XhGcodeFileParser.h"
@@ -97,6 +98,7 @@ public:
     void m_adTtemtowifi(const QString& wifiname,QString wifilevel);
 
     void blockingChangePage(QByteArray Command, QWidget *pPage);
+    void blockingChangeDialog(QByteArray Command, JLWidget *pDialog);
 
 private:
     Ui::MainWindow *ui;
@@ -190,6 +192,7 @@ private:
     QTimer *timer_light_slider;
 
     QWidget *pNextShowPage;
+    JLWidget *pDialogToShow;
 
 signals:
     void sendSignalToQml(int );
@@ -198,6 +201,8 @@ signals:
 
 private slots:
     void changePageCallback(QByteArray ReplyData);
+    void changeDialogCallback(QByteArray ReplyData);
+    void onPauseDialogHide();
     void firstStart();
     void jumpOne();
     void jumpTwo();
@@ -276,14 +281,11 @@ private slots:
     void m_chooseUEN();
     void m_parcancel();
 
-    void m_cancel();
     void m_backPrint();
     void m_whatThis();
 
     void wizardCancel();
     void wizardConfirm();
-
-    void askPaused();
 
     void fileList();
 

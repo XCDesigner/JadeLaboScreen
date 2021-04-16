@@ -17,6 +17,12 @@ typedef struct {
     QByteArray RecvivedDatas;
 }strEventTCB;
 
+enum
+{
+    WAIT_TYPE_PAGE = 0,
+    WAIT_TYPE_DIALOG
+};
+
 class JLEvent : public QObject
 {
     Q_OBJECT
@@ -25,6 +31,7 @@ public:
     ~JLEvent();
 
     void wait(QByteArray pDataSend, uint8_t Timeout);
+    void waitDialog(QByteArray pDataSend, uint8_t Timeout);
     void setup(XhPort *pSerialPort);
     // bool setListen(uint8_t Command, uint8_t SubCode);
 
@@ -33,6 +40,7 @@ private:
    XhPort *m_serial_port;
    uint8_t command_to_wait;
    uint8_t subcode_to_wait;
+   uint8_t wait_type;
    QByteArray bytes_accept;
 
 public slots:
@@ -41,7 +49,7 @@ public slots:
 
 signals:
    void changePageAccept(QByteArray);
-
+   void changeDialogAccept(QByteArray);
 };
 
 #endif

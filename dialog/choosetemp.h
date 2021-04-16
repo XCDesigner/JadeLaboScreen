@@ -2,12 +2,13 @@
 #define CHOOSETEMP_H
 
 #include <QWidget>
+#include "jlwidget.h"
 
 namespace Ui {
 class chooseTemp;
 }
 
-class chooseTemp : public QWidget
+class chooseTemp : public JLWidget
 {
     Q_OBJECT
 

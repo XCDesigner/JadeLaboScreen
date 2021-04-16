@@ -2,10 +2,11 @@
 #include "ui_askpause.h"
 
 askPause::askPause(QWidget *parent) :
-    QWidget(parent),
+    JLWidget(parent),
     ui(new Ui::askPause)
 {
     ui->setupUi(this);
+    qDebug()<<"ask new";
 }
 
 askPause::~askPause()
@@ -13,26 +14,35 @@ askPause::~askPause()
     delete ui;
 }
 
+void askPause::init(QByteArray InitData)
+{
+    qDebug()<<"ask";
+    ret_value.clear();
+}
+
+void askPause::show()
+{
+    QWidget::show();
+}
+
 void askPause::on_pushButton_clicked()
 {
-    ui->pushButton->setEnabled(false);
-    ui->pushButton_2->setEnabled(false);
-    ui->pushButton_3->setEnabled(false);
-    emit m_stop();
+    QByteArray result = QByteArray("Stop");
+    ret_value.append(result);
+    emit hideWidget();
 }
 
 void askPause::on_pushButton_2_clicked()
 {
-    ui->pushButton->setEnabled(false);
-    ui->pushButton_2->setEnabled(false);
-    ui->pushButton_3->setEnabled(false);
-    emit m_paused();
+    QByteArray result = QByteArray("Pause");
+    ret_value.append(result);
+    emit hideWidget();
 }
 
 void askPause::on_pushButton_3_clicked()
 {
-    ui->pushButton->setEnabled(false);
-    ui->pushButton_2->setEnabled(false);
-    ui->pushButton_3->setEnabled(false);
-    emit cancel();
+    QByteArray result = QByteArray("Cancel");
+    ret_value.append(result);
+    emit hideWidget();
+    this->hide();
 }

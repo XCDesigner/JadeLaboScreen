@@ -2,12 +2,13 @@
 #define UNNOKNFILE_H
 
 #include <QWidget>
+#include "jlwidget.h"
 
 namespace Ui {
 class UnNoknfile;
 }
 
-class UnNoknfile : public QWidget
+class UnNoknfile : public JLWidget
 {
     Q_OBJECT
 

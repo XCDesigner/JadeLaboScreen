@@ -2,12 +2,13 @@
 #define FILAMENTFAULT_H
 
 #include <QWidget>
+#include "jlwidget.h"
 
 namespace Ui {
 class filamentFault;
 }
 
-class filamentFault : public QWidget
+class filamentFault : public JLWidget
 {
     Q_OBJECT
 

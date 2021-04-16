@@ -2,12 +2,13 @@
 #define DUPONLY_H
 
 #include <QWidget>
+#include "jlwidget.h"
 
 namespace Ui {
 class duponly;
 }
 
-class duponly : public QWidget
+class duponly : public JLWidget
 {
     Q_OBJECT
 

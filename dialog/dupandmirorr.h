@@ -2,12 +2,13 @@
 #define DUPANDMIRORR_H
 
 #include <QWidget>
+#include "jlwidget.h"
 
 namespace Ui {
 class DupandMirorr;
 }
 
-class DupandMirorr : public QWidget
+class DupandMirorr : public JLWidget
 {
     Q_OBJECT
 

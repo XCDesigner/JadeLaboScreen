@@ -5,13 +5,14 @@
 #include <QTimer>
 #include <QQuickItem>
 #include <QtQuickWidgets>
+#include "jlwidget.h"
 #include "define/imagePath.h"
 
 namespace Ui {
 class PrintSetDlog;
 }
 
-class PrintSetDlog : public QWidget
+class PrintSetDlog : public JLWidget
 {
     Q_OBJECT
 

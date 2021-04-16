@@ -2,7 +2,7 @@
 #include "ui_updateprogrebar.h"
 
 updateProgreBar::updateProgreBar(QWidget *parent) :
-    QWidget(parent),
+    JLWidget(parent),
     ui(new Ui::updateProgreBar)
 {
     ui->setupUi(this);

@@ -3,12 +3,13 @@
 
 #include <QWidget>
 #include <QQuickItem>
+#include "jlwidget.h"
 
 namespace Ui {
 class parsing;
 }
 
-class parsing : public QWidget
+class parsing : public JLWidget
 {
     Q_OBJECT
 

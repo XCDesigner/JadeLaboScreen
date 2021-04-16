@@ -3,12 +3,13 @@
 
 #include <QWidget>
 #include <QTimer>
+#include "jlwidget.h"
 
 namespace Ui {
 class parsetdlog;
 }
 
-class parsetdlog : public QWidget
+class parsetdlog : public JLWidget
 {
     Q_OBJECT
 

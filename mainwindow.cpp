@@ -12,7 +12,9 @@ MainWindow::MainWindow(QWidget *parent) :
     m_filamentfault = NULL;
     m_WinFiel = NULL;
     par = NULL;
-    skpWin = NULL;
+    skpWin = new askPause(this);
+    skpWin->hide();
+    QObject::connect(skpWin, SIGNAL(hideWidget()), this, SLOT(onPauseDialogHide()));
     m_mode = NULL;
     m_delete = NULL;
 
@@ -88,8 +90,6 @@ MainWindow::MainWindow(QWidget *parent) :
     QObject::connect(m_port,&XhPort::canPrint,this,&MainWindow::m_canPrintFile);
     QObject::connect(m_port,&XhPort::fileSendOver,this,&MainWindow::jumpSixteen);
     QObject::connect(m_port,&XhPort::type,this,&MainWindow::planAdd);
-    QObject::connect(m_port,&XhPort::stopOk,this,&MainWindow::printstop);
-    QObject::connect(m_port,&XhPort::pauseOk,this,&MainWindow::printpause);
     QObject::connect(m_port,&XhPort::goOnOk,this,&MainWindow::printagin);
     QObject::connect(m_port,&XhPort::printend,this,&MainWindow::printending);
 
@@ -285,6 +285,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
     m_event->setup(m_port);
     QObject::connect(this->m_event, SIGNAL(changePageAccept(QByteArray)), this, SLOT(changePageCallback(QByteArray)));
+    QObject::connect(this->m_event, SIGNAL(changeDialogAccept(QByteArray)), this, SLOT(changeDialogCallback(QByteArray)));
 }
 
 MainWindow::~MainWindow()
@@ -1039,39 +1040,6 @@ void MainWindow::plat()
     ui->stackedWidget->setCurrentIndex(68);
 }
 
-void MainWindow::printstop()
-{
-    if(m_filamentfault!= NULL)
-    {
-        if(m_filamentfault->isHidden())
-        {
-
-        }
-        else
-        {
-            m_filamentfault->hide();
-            m_filamentfault->close();
-            m_filamentfault = NULL;
-        }
-    }
-    if(skpWin!=NULL)
-    {
-        skpWin->hide();
-        skpWin->close();
-        skpWin = NULL;
-    }
-    ui->stackedWidget->setCurrentIndex(33);
-    m_printsec->stop();
-    m_time->setHMS(0,0,0);
-}
-
-void MainWindow::printpause()
-{
-    ui->label_272->setVisible(true);
-    ui->pushButton_167->setVisible(true);
-    ui->pushButton_168->setVisible(true);
-    m_printsec->stop();
-}
 
 void MainWindow::printagin()
 {
@@ -1639,13 +1607,6 @@ void MainWindow::m_parcancel()
     par->close();
 }
 
-void MainWindow::m_cancel()
-{
-    skpWin->hide();
-    skpWin->close();
-
-}
-
 void MainWindow::m_backPrint()
 {
     m_mode->hide();
@@ -1691,25 +1652,6 @@ void MainWindow::StopPrintClicked()
         QObject::disconnect(&m_timer,SIGNAL(timeout()),this,SLOT(jumpFourteen()));
     }
     m_port->stopPrint();
-
-}
-
-void MainWindow::askPaused()
-{
-    if(m_timer.isActive())
-    {
-        m_timer.stop();
-        QObject::disconnect(&m_timer,SIGNAL(timeout()),this,SLOT(jumpFourteen()));
-    }
-
-    m_port->pausePrint();
-    skpWin->hide();
-    skpWin->close();
-    ui->stackedWidget->setCurrentIndex(39);
-    ui->label_272->setVisible(false);
-    ui->pushButton_167->setVisible(false);
-    ui->pushButton_168->setVisible(false);
-
 
 }
 
@@ -2953,10 +2895,7 @@ void MainWindow::on_pushButton_129_clicked()
 void MainWindow::ShowPauseDialogClicked()
 {
     m_timer.stop();
-    skpWin = new askPause(this);
-    QObject::connect(skpWin,SIGNAL(cancel()),this,SLOT(m_cancel()));
-    QObject::connect(skpWin,SIGNAL(m_paused()),this,SLOT(askPaused()));
-    skpWin->show();
+    blockingChangeDialog(NULL, (JLWidget*)skpWin);
 }
 
 void MainWindow::ShowParameterDialogClicked()
@@ -3341,8 +3280,6 @@ void MainWindow::on_pushButton_91_clicked()
         skpWin = new askPause(this);
         skpWin->show();
     }
-    QObject::connect(skpWin,SIGNAL(cancel()),this,SLOT(m_cancel()));
-    QObject::connect(skpWin,SIGNAL(m_paused()),this,SLOT(askPaused()));
 }
 
 void MainWindow::on_pushButton_85_clicked()
@@ -5220,14 +5157,4 @@ void MainWindow::on_pushButton_350_clicked()
     ui->stackedWidget->setCurrentWidget(ui->page_LightSetting);
 }
 
-void MainWindow::blockingChangePage(QByteArray Command, QWidget *pPage)
-{
-    m_event->wait(Command, 5);
-    pNextShowPage = pPage;
-    ui->stackedWidget->setCurrentWidget(ui->page_Masker);
-}
 
-void MainWindow::changePageCallback(QByteArray ReplyData)
-{
-    ui->stackedWidget->setCurrentWidget(pNextShowPage);
-}

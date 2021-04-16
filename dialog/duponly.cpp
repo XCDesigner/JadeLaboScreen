@@ -2,7 +2,7 @@
 #include "ui_duponly.h"
 
 duponly::duponly(QWidget *parent) :
-    QWidget(parent),
+    JLWidget(parent),
     ui(new Ui::duponly)
 {
     ui->setupUi(this);

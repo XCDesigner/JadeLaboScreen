@@ -2,7 +2,7 @@
 #include "ui_filamentfault.h"
 
 filamentFault::filamentFault(QWidget *parent) :
-    QWidget(parent),
+    JLWidget(parent),
     ui(new Ui::filamentFault)
 {
     ui->setupUi(this);

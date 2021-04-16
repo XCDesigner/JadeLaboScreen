@@ -2,7 +2,7 @@
 #include "ui_xhwizard.h"
 
 XhWizard::XhWizard(QWidget *parent) :
-    QWidget(parent),
+    JLWidget(parent),
     ui(new Ui::XhWizard)
 {
     ui->setupUi(this);

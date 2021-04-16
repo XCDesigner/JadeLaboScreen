@@ -2,7 +2,7 @@
 #include "ui_parsing.h"
 
 parsing::parsing(QWidget *parent) :
-    QWidget(parent),
+    JLWidget(parent),
     ui(new Ui::parsing)
 {
     ui->setupUi(this);

@@ -2,7 +2,7 @@
 #include "ui_selectmode.h"
 
 selectMode::selectMode(QWidget *parent) :
-    QWidget(parent),
+    JLWidget(parent),
     ui(new Ui::selectMode)
 {
     ui->setupUi(this);

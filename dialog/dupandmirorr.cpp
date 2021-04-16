@@ -5,7 +5,7 @@
 int DupandMirorr::num = 0;
 
 DupandMirorr::DupandMirorr(QWidget *parent) :
-    QWidget(parent),
+    JLWidget(parent),
     ui(new Ui::DupandMirorr)
 {
     ui->setupUi(this);

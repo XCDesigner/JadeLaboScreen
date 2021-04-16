@@ -3,7 +3,7 @@
 #include <qdebug.h>
 
 parsetdlog::parsetdlog(QWidget *parent) :
-    QWidget(parent),
+    JLWidget(parent),
     ui(new Ui::parsetdlog)
 {
     ui->setupUi(this);

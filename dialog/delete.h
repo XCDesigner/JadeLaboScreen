@@ -3,12 +3,13 @@
 
 #include <QWidget>
 #include "listwidgetitem/mylistwidgetitem.h"
+#include "jlwidget.h"
 
 namespace Ui {
 class Delete;
 }
 
-class Delete : public QWidget
+class Delete : public JLWidget
 {
     Q_OBJECT
 

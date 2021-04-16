@@ -2,7 +2,7 @@
 #include "ui_choosefile.h"
 
 chooseFile::chooseFile(QWidget *parent) :
-    QWidget(parent),
+    JLWidget(parent),
     ui(new Ui::chooseFile)
 {
     ui->setupUi(this);

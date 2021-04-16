@@ -3,12 +3,13 @@
 
 #include <QWidget>
 #include <QQuickItem>
+#include "jlwidget.h"
 
 namespace Ui {
 class updateProgreBar;
 }
 
-class updateProgreBar : public QWidget
+class updateProgreBar : public JLWidget
 {
     Q_OBJECT
 
