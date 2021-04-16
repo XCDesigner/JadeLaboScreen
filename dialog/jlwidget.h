@@ -5,6 +5,7 @@
 #include <QWidget>
 #include <QDebug>
 #include <QByteArray>
+#include "CMOD/xhport.h"
 
 class JLWidget : public QWidget
 {
@@ -18,6 +19,7 @@ public:
 
 protected:
     QList<QByteArray> ret_value;
+    XhPort *m_xhPort;
 
 signals:
     void hideWidget();

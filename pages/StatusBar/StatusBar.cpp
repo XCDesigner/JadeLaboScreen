@@ -16,7 +16,7 @@ void MainWindow::setWinPic(bool isVisible)
     ui->qw_StatusNotice->rootObject()->setProperty("wifiVisible", isVisible);
 }
 
-void MainWindow::on_qw_StatusNotice_Light_clicked()
+void MainWindow::StatusNotice_Light_clicked()
 {
     QQuickItem *item;
     item = ui->qw_StatusNotice->rootObject();

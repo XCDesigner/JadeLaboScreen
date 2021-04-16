@@ -56,6 +56,11 @@ public:
     void parcom(int );
     void askHotend();
     void askstate();
+
+    void setPrintTempPercentage(int Index, uint8_t Percent);
+    void setPrintFanPercentage(int Index, uint8_t Percent);
+    void setPrintSpeedPercentage(uint16_t Percent);
+    void setPrintPlatformOffset(uint32_t Height);
     /*********ERROR*************/
     void resume();
     void abort();

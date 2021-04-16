@@ -674,6 +674,62 @@ void XhPort::changeToolHead(int Index)
     m_serial->write(buff);
 }
 
+/**
+  * @brief  Set Temperaure percent
+  * @param  Index: Index of the x carrier. 0 for left, 1 for right
+  * @param  Percent: Percentage
+  * @retval None
+  */
+void XhPort::setPrintTempPercentage(int Index, uint8_t Percent)
+{
+    QByteArray s = QByteArray::fromHex("0610");
+    s.append(1, Index);
+    s.append(1, Percent);
+    QByteArray buff = m_package->groupPage(s);
+    m_serial->write(buff);
+}
+
+/**
+  * @brief  Set fan percent
+  * @param  Index: Index of the x carrier. 0 for left, 1 for right
+  * @param  Percent: Percentage
+  * @retval None
+  */
+void XhPort::setPrintFanPercentage(int Index, uint8_t Percent)
+{
+    QByteArray s = QByteArray::fromHex("0611");
+    s.append(1, Index);
+    s.append(1, Percent);
+    QByteArray buff = m_package->groupPage(s);
+    m_serial->write(buff);
+}
+
+/**
+  * @brief  Set print speed percent
+  * @param  Percent: Percentage
+  * @retval None
+  */
+void XhPort::setPrintSpeedPercentage(uint16_t Percent)
+{
+    QByteArray s = QByteArray::fromHex("0612");
+    s.append(2, Percent);
+    QByteArray buff = m_package->groupPage(s);
+    m_serial->write(buff);
+}
+
+/**
+  * @brief  Set print platform offset
+  * @param  Height: Offset in micronmeters
+  * @retval None
+  */
+void XhPort::setPrintPlatformOffset(uint32_t Height)
+{
+    QByteArray s = QByteArray::fromHex("0613");
+    s.append(4, Height);
+    QByteArray buff = m_package->groupPage(s);
+    m_serial->write(buff);
+}
+
 void XhPort::testdemo()
 {
     QByteArray s = QByteArray::fromHex("84654875294581");

@@ -233,7 +233,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
     QObject::connect(ui->qw_ExtruderSelect->rootObject(), SIGNAL(clicked()), this, SLOT(ExtruderChange()));
 
-    QObject::connect(ui->qw_StatusNotice->rootObject(), SIGNAL(lightClicked()), this, SLOT(on_qw_StatusNotice_Light_clicked()));
+    QObject::connect(ui->qw_StatusNotice->rootObject(), SIGNAL(lightClicked()), this, SLOT(StatusNotice_Light_clicked()));
 
     qw_DistanceItem = ui->qw_Distance->rootObject();
 
@@ -3479,24 +3479,6 @@ void MainWindow::on_pushButton_652_clicked()
 #endif
 }
 
-void MainWindow::on_pushButton_657_clicked()
-{
-    ui->stackedWidget->setCurrentIndex(33);
-}
-
-void MainWindow::on_pushButton_658_clicked()
-{
-    ui->stackedWidget->setCurrentIndex(30);
-}
-
-void MainWindow::on_pushButton_656_clicked()
-{
-    ui->stackedWidget->setCurrentIndex(24);
-#ifdef XH_VIS
-    ui->m_StatusBar->setVisible(false);
-#endif
-}
-
 void MainWindow::on_pushButton_341_clicked()
 {
     ui->stackedWidget->setCurrentWidget(ui->page_FILSensorsetting);
@@ -3526,11 +3508,6 @@ void MainWindow::on_pushButton_671_clicked()
 }
 
 void MainWindow::on_pushButton_667_clicked()
-{
-    ui->stackedWidget->setCurrentIndex(41);
-}
-
-void MainWindow::on_pushButton_659_clicked()
 {
     ui->stackedWidget->setCurrentIndex(41);
 }

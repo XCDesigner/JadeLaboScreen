@@ -575,11 +575,6 @@ private slots:
 
     void on_pushButton_652_clicked();
 
-    void on_pushButton_657_clicked();
-
-    void on_pushButton_658_clicked();
-
-    void on_pushButton_656_clicked();
 
     void on_pushButton_341_clicked();
 
@@ -592,8 +587,6 @@ private slots:
     void on_pushButton_671_clicked();
 
     void on_pushButton_667_clicked();
-
-    void on_pushButton_659_clicked();
 
     void on_pushButton_655_clicked();
 
@@ -1063,7 +1056,7 @@ private slots:
 
     void ExtruderChange();
 
-    void on_qw_StatusNotice_Light_clicked();
+    void StatusNotice_Light_clicked();
 
     void ShowPauseDialogClicked();
     void ShowParameterDialogClicked();

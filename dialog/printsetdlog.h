@@ -22,16 +22,17 @@ public:
     void initnum(QString a, QString b, QString c, QString d, QString e, QString f, QString g);
     void backup(int a );
     void updateButtonCheckStatus(int);
+    void setXHPort(XhPort *pPort);
+    void sendSetting();
 
 private slots:
     void on_pushButton_clicked();
 
-    void on_pushButton_2_clicked();
+    void onIncreaseClicked();
+    void onDecreaseClicked();
 
     void increaseCheck();
     void decreaseCheck();
-
-    void on_pushButton_3_clicked();
 
     void buttonClicked(int);
 
@@ -45,6 +46,13 @@ private:
 
     QQuickWidget *pButtons[7];
     bool button_check_status[7];
+
+    uint8_t temp_percent[3];
+    uint8_t fan_percent[2];
+    uint16_t feedrate_percent;
+    float platform_height;
+
+    uint8_t press_counter;
 signals:
     void closeset(int );
 

@@ -6,7 +6,6 @@ askPause::askPause(QWidget *parent) :
     ui(new Ui::askPause)
 {
     ui->setupUi(this);
-    qDebug()<<"ask new";
 }
 
 askPause::~askPause()
