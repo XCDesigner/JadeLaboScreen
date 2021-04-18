@@ -62,8 +62,8 @@ PrintSetDlog::PrintSetDlog(QWidget *parent) :
     ui->qw_BackupMode->rootObject()->setProperty("index", 10);
     QObject::connect(ui->qw_BackupMode->rootObject(), SIGNAL(clicked(int)), this, SLOT(backupModeChange(int)));
 
-    QObject::connect(ui->qw_Increase->rootObject(), SIGNAL(press()), this, SLOT(onIncreaseClicked));
-    QObject::connect(ui->qw_Decrease->rootObject(), SIGNAL(press()), this, SLOT(onDecreaseClicked));
+    QObject::connect(ui->qw_Increase->rootObject(), SIGNAL(press()), this, SLOT(onIncreaseClicked()));
+    QObject::connect(ui->qw_Decrease->rootObject(), SIGNAL(press()), this, SLOT(onDecreaseClicked()));
 }
 
 PrintSetDlog::~PrintSetDlog()

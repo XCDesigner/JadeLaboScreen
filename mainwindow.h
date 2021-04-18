@@ -230,7 +230,6 @@ private slots:
     void shineone();
     void shinetwo();
 
-    void jumptwelve();
     void jumpthirteen();
     void jumpFourteen();
     void jumpFifteen();
@@ -258,7 +257,6 @@ private slots:
 
     void filamentTimeout();
     void filamentOK(bool a );
-//    void toolSelfTest(bool a,bool b,bool c,bool d,bool e,bool f);
 
     void planAdd(int ,int );
     void buprint();
@@ -362,13 +360,7 @@ private slots:
 
     void on_readynext_clicked();
 
-    void on_pushButton_12_clicked();
-
-    void on_pushButton_23_clicked();
-
     void on_pushButton_24_clicked();
-
-    void on_pushButton_41_clicked();
 
     void on_pushButton_31_clicked();
 
@@ -396,15 +388,11 @@ private slots:
 
     void on_pushButton_74_clicked();
 
-//    void on_pushButton_104_clicked();
-
     void on_pushButton_73_clicked();
 
     void on_pushButton_129_clicked();
 
     void on_pushButton_134_clicked();
-
-//    void on_pushButton_135_clicked();
 
     void on_pushButton_169_clicked();
 
@@ -458,8 +446,6 @@ private slots:
 
     void on_pushButton_242_clicked();
 
-//    void on_pushButton_258_clicked();
-
     void on_pushButton_259_clicked();
 
     void on_pushButton_286_clicked();
@@ -476,33 +462,9 @@ private slots:
 
     void on_pushButton_647_clicked();
 
-    void on_pushButton_3_clicked();
-
-    void on_pushButton_17_clicked();
-
     void on_pushButton_233_clicked();
 
     void on_pushButton_180_clicked();
-
-    void on_pushButton_5_clicked();
-
-    void on_pushButton_2_clicked();
-
-    void on_pushButton_4_clicked();
-
-    void on_pushButton_7_clicked();
-
-    void on_pushButton_8_clicked();
-
-    void on_pushButton_9_clicked();
-
-    void on_pushButton_14_clicked();
-
-    void on_pushButton_16_clicked();
-
-    void on_pushButton_18_clicked();
-
-    void on_pushButton_90_clicked();
 
     void on_pushButton_92_clicked();
 
@@ -513,8 +475,6 @@ private slots:
     void on_pushButton_86_clicked();
 
     void on_pushButton_88_clicked();
-
-    void on_pushButton_117_clicked();
 
     void on_pushButton_116_clicked();
 
@@ -573,7 +533,6 @@ private slots:
     void on_pushButton_654_clicked();
 
     void on_pushButton_652_clicked();
-
 
     void on_pushButton_341_clicked();
 
@@ -681,8 +640,6 @@ private slots:
 
     void on_pushButton_292_clicked();
 
-//    void on_pushButton_297_clicked();
-
     void on_pushButton_298_clicked();
 
     void on_pushButton_301_clicked();
@@ -700,8 +657,6 @@ private slots:
     void on_pushButton_630_clicked();
 
     void on_pushButton_637_clicked();
-
-//    void on_pushButton_642_clicked();
 
     void on_pushButton_643_clicked();
 
@@ -721,8 +676,6 @@ private slots:
 
     void on_pushButton_340_clicked();
 
-    void on_pushButton_343_clicked();
-
     void on_pushButton_679_clicked();
 
     void on_pushButton_676_clicked();
@@ -730,8 +683,6 @@ private slots:
     void on_pushButton_678_clicked();
 
     void on_pushButton_677_clicked();
-
-    void on_pushButton_89_clicked();
 
     void on_pushButton_128_clicked();
 
@@ -759,21 +710,11 @@ private slots:
 
     void on_pushButton_148_clicked();
 
-    void on_pushButton_160_clicked();
-
     void on_pushButton_167_clicked();
-
-    void on_pushButton_44_clicked();
-
-    void on_pushButton_42_clicked();
 
     void on_pushButton_346_clicked();
 
     void on_pushButton_354_clicked();
-
-//    void on_pushButton_102_clicked();
-
-//    void on_pushButton_103_clicked();
 
     void on_pushButton_355_clicked();
 
@@ -807,8 +748,6 @@ private slots:
 
     void on_pushButton_108_clicked();
 
-//    void on_pushButton_360_clicked();
-
     void on_pushButton_99_clicked();
 
     void on_pushButton_356_clicked();
@@ -817,17 +756,9 @@ private slots:
 
     void on_pushButton_262_clicked();
 
-    void on_pushButton_124_clicked();
-
-//    void on_pushButton_136_clicked();s
-
-//    void on_pushButton_144_clicked();
-
     void on_pushButton_100_clicked();
 
     void on_pushButton_101_clicked();
-
-
 
     void on_pushButton_371_clicked();
 

@@ -31,4 +31,6 @@
 *.out
 *.app
 
+.vscode
+
 qt-3dprint.pro.user

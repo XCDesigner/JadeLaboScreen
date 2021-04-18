@@ -56,9 +56,15 @@ SOURCES += \
         mainwindow.cpp \
     oldplan/filecheckthread.cpp \
     pages/Application/Application.cpp \
+    pages/Calibration/NozzleCalibration.cpp \
+    pages/Calibration/PlatformCalibration.cpp \
+    pages/Calibration/XYCalibration.cpp \
+    pages/ChangeFilament/ChangeFilament.cpp \
     pages/JodMove/JodMove.cpp \
+    pages/Keyboard/KeyBoard.cpp \
     pages/LightSetting/LightSetting.cpp \
     pages/PauseDialog/PauseDialog.cpp \
+    pages/PrintControl/FileList.cpp \
     pages/PrintControl/PreparePrint.cpp \
     pages/FilmentSensorSetting/FilamentSetting.cpp  \
     pages/PrintSetting/PrintSetting.cpp \

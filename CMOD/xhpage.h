@@ -32,20 +32,18 @@ public:
     void fTGet(QByteArray data);//温度获取
     /*TOOL页面*/
     void tSelfTest(QByteArray data);//自检
-    void tCalibration(QByteArray data);//calibration
     void pCalibration(QByteArray data);
 
     void errorLog(QByteArray data);
 
     /*****************组包******************/
-    QByteArray filamentPage(QString ,QString );
     QByteArray lightPage(bool ,QString );
     QByteArray groupPage(QByteArray );
 
     QByteArray chooseFile(QString );
     QByteArray analysisFile();
     void askstate(QByteArray );
-    void sendfile(quint32 ,QByteArray );
+    void sendfile(quint32 );
 
 
     void updateBegin(QString );
@@ -110,7 +108,6 @@ signals:
     void xNoHeating(bool );
     void xyCheck(bool );
     /*tool*/
-    void toolTestResult(bool ,bool ,bool ,bool ,bool ,bool );
     void disUseFilament(bool );
     void backFactory(bool );
     /*filament*/

@@ -274,10 +274,6 @@ int XhPage::analysis(QByteArray package)
                                 }
                             }
                         break;
-                    /********************04族*********/
-                        case '\x04':
-                            tCalibration(data);
-                            break;
                     /**************05族**************/
                     case '\x05':
                         switch (data[1]) {
@@ -365,19 +361,8 @@ int XhPage::analysis(QByteArray package)
 
                             case '\x04':
                                 {
-                                    QByteArray ArrayOffset;
-                                    ArrayOffset.append(data[5]);
-                                    ArrayOffset.append(data[4]);
-                                    ArrayOffset.append(data[3]);
-                                    ArrayOffset.append(data[2]);
-                                    quint32 offset  = ((uint8_t)ArrayOffset[0]<<24 ) | ((uint8_t)ArrayOffset[1]<<16 ) | ((uint8_t)ArrayOffset[2]<<8 )| ((uint8_t)ArrayOffset[3]);
-                                    QByteArray arrayOffset;
-                                    arrayOffset.append(data[2]);
-                                    arrayOffset.append(data[3]);
-                                    arrayOffset.append(data[4]);
-                                    arrayOffset.append(data[5]);
-                                    sendfile(offset ,arrayOffset);
-
+                                    quint32 offset  = ((uint8_t)data[5]<<24 ) | ((uint8_t)data[4]<<16 ) | ((uint8_t)data[3]<<8 )| ((uint8_t)data[2]);
+                                    sendfile(offset);
                             break;
                                 }
                             case '\x0D':
@@ -557,32 +542,6 @@ void XhPage::tSelfTest(QByteArray data)
 
     }
     //发送自检结果
-    emit toolTestResult(Taxistesting,Theatingtesting,Tmaterialextrudetest,Tplatfomcheck,Tnozzleheightcheck,TxYcheck);
-
-}
-
-void XhPage::tCalibration(QByteArray data)
-{
-    switch (data[1]) {
-
-    case '\x02':
-    {
-        quint8 lturns11 = (quint8)data[2];
-        quint8 rturns11 = (quint8)data[3];
-        quint8 lturns12 = (quint8)data[4];
-        quint8 rturns12 = (quint8)data[5];
-        quint8 lturns21 = (quint8)data[6];
-        quint8 rturns21 = (quint8)data[7];
-        quint8 lturns22 = (quint8)data[8];
-        quint8 rturns22 = (quint8)data[9];
-
-        break;
-    }
-
-    default:
-        break;
-
-    }
 }
 
 void XhPage::pCalibration(QByteArray data)
@@ -648,45 +607,6 @@ void XhPage::errorLog(QByteArray data)
     {
         emit error(31);
     }
-}
-
-QByteArray XhPage::filamentPage(QString l, QString r)
-{
-    int lnum= l.toInt();
-    int rnum= r.toInt();
-    QByteArray a;
-    a[0]='\x00';
-    a[1]='\x00';
-    a[2]='\x00';
-    QByteArray b = "";
-    b[0]='\x01';
-    b[1]='\x00';
-    b[2]='\x00';
-    /*数据区计算*/
-    while(lnum > 255)
-    {
-        lnum = lnum -256;
-        a[2] = a[2]+'\x01';
-    }
-    for (;lnum > 0;lnum -- ) {
-        a[1] = a[1] + '\x01';
-    }
-    while(rnum > 255)
-    {
-        rnum = rnum -256;
-        b[2] = b[2]+'\x01';
-    }
-    for (;rnum > 0;rnum -- ) {
-        b[1] = b[1] + '\x01';
-    }
-
-    QByteArray c ="";
-    c[0]='\x02';
-    c[1]='\x00';
-    c.append(a);
-    c.append(b);
-    QByteArray d = groupPage(c);
-    return d;
 }
 
 QByteArray XhPage::lightPage(bool type, QString str)
@@ -818,7 +738,7 @@ void XhPage::askstate(QByteArray data)
 
 }
 
-void XhPage::sendfile(quint32 offset, QByteArray arrayOffset)
+void XhPage::sendfile(quint32 offset)
 {
     if(m_file == nullptr)
     {
@@ -847,7 +767,10 @@ void XhPage::sendfile(quint32 offset, QByteArray arrayOffset)
     datalen.append(1, ((len >> 8) & 0xff));
     QByteArray pageData;
     pageData = QByteArray::fromHex("060400");
-    pageData.append(arrayOffset);
+    pageData.append(1, offset);
+    pageData.append(1, offset >> 8);
+    pageData.append(1, offset >> 16);
+    pageData.append(1, offset >> 24);
     pageData.append(datalen);
     pageData.append(data);
     emit sendFileArry(groupPage(pageData));

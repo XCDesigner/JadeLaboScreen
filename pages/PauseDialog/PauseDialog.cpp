@@ -19,7 +19,7 @@ void MainWindow::printstop()
     QByteArray command = QByteArray::fromHex("0601");
     m_printsec->stop();
     m_time->setHMS(0,0,0);
-    blockingChangePage(command, ui->page_34);
+    blockingChangePage(command, ui->page_GetStart);
     // ui->stackedWidget->setCurrentIndex(33);
 }
 

@@ -70,118 +70,8 @@ font-family: barlow;
 }</string>
     </property>
     <property name="currentIndex">
-     <number>52</number>
+     <number>7</number>
     </property>
-    <widget class="QWidget" name="page">
-     <widget class="QLabel" name="label">
-      <property name="geometry">
-       <rect>
-        <x>532</x>
-        <y>263</y>
-        <width>186</width>
-        <height>195</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true"/>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-     </widget>
-    </widget>
-    <widget class="QWidget" name="page_2">
-     <widget class="QLabel" name="label_2">
-      <property name="geometry">
-       <rect>
-        <x>524</x>
-        <y>325</y>
-        <width>233</width>
-        <height>71</height>
-       </rect>
-      </property>
-      <property name="font">
-       <font>
-        <family>SourceHanSansSC-regular</family>
-        <pointsize>-1</pointsize>
-       </font>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">width: 233px;
-height: 71px;
-color: rgba(16, 16, 16, 255);
-font-size: 48px;
-text-align: left;
-font-family: SourceHanSansSC-regular;</string>
-      </property>
-      <property name="text">
-       <string>Welcome！</string>
-      </property>
-     </widget>
-    </widget>
-    <widget class="QWidget" name="page_3">
-     <widget class="QLabel" name="label_3">
-      <property name="geometry">
-       <rect>
-        <x>264</x>
-        <y>304</y>
-        <width>753</width>
-        <height>113</height>
-       </rect>
-      </property>
-      <property name="font">
-       <font>
-        <family>SourceHanSansSC-regular</family>
-        <pointsize>-1</pointsize>
-       </font>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">left: 264px;
-top: 304px;
-width: 753px;
-height: 113px;
-color: rgba(16, 16, 16, 255);
-font-size: 36px;
-text-align: center;
-font-family: SourceHanSansSC-regular;</string>
-      </property>
-      <property name="text">
-       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:16pt; font-weight:400;&quot;&gt;Jade One is awake&lt;/span&gt;&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:16pt; font-weight:400;&quot;&gt;We need a little time to initialize the machine&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-      </property>
-     </widget>
-    </widget>
-    <widget class="QWidget" name="page_4">
-     <widget class="QLabel" name="label_4">
-      <property name="geometry">
-       <rect>
-        <x>145</x>
-        <y>242</y>
-        <width>990</width>
-        <height>311</height>
-       </rect>
-      </property>
-      <property name="font">
-       <font>
-        <family>Roboto</family>
-        <pointsize>-1</pointsize>
-       </font>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">left: 145px;
-top: 242px;
-width: 990px;
-height: 311px;
-line-height: 41px;
-color: rgba(16, 16, 16, 255);
-font-size: 28px;
-text-align: center;
-font-family: Roboto;</string>
-      </property>
-      <property name="text">
-       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:12pt; font-weight:400;&quot;&gt;This operatione will cost about 20minutes and executes the following steps:&lt;/span&gt;&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:12pt; font-weight:400;&quot;&gt;Axis test&lt;/span&gt;&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:12pt; font-weight:400;&quot;&gt;Heating test&lt;/span&gt;&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:12pt; font-weight:400;&quot;&gt;Platfom check&lt;/span&gt;&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:12pt; font-weight:400;&quot;&gt;Nozzle height check&lt;/span&gt;&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:12pt; font-weight:400;&quot;&gt;XY check&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-      </property>
-     </widget>
-    </widget>
     <widget class="QWidget" name="page_5">
      <widget class="QLabel" name="label_5">
       <property name="geometry">
@@ -1121,787 +1011,6 @@ font-family: Roboto;</string>
       </property>
      </widget>
     </widget>
-    <widget class="QWidget" name="page_16">
-     <widget class="QLabel" name="label_22">
-      <property name="geometry">
-       <rect>
-        <x>440</x>
-        <y>310</y>
-        <width>341</width>
-        <height>91</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:20pt; font-weight:400;&quot;&gt;XY calibrration done&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-      </property>
-     </widget>
-    </widget>
-    <widget class="QWidget" name="page_17">
-     <widget class="QPushButton" name="pushButton">
-      <property name="geometry">
-       <rect>
-        <x>0</x>
-        <y>0</y>
-        <width>180</width>
-        <height>180</height>
-       </rect>
-      </property>
-      <property name="font">
-       <font>
-        <family>Roboto</family>
-        <pointsize>-1</pointsize>
-       </font>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">line-height: 46px;
-background-color: rgba(255, 255, 255, 100);
-color: rgba(16, 16, 16, 100);
-font-size: 32px;
-text-align: center;
-font-family: Roboto;
-border: 1px solid rgba(255, 255, 255, 100);</string>
-      </property>
-      <property name="text">
-       <string>PRINT</string>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="pushButton_2">
-      <property name="geometry">
-       <rect>
-        <x>0</x>
-        <y>180</y>
-        <width>180</width>
-        <height>180</height>
-       </rect>
-      </property>
-      <property name="font">
-       <font>
-        <family>Roboto</family>
-        <pointsize>-1</pointsize>
-       </font>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">line-height: 46px;
-background-color: rgba(255, 255, 255, 100);
-color: rgba(16, 16, 16, 100);
-font-size: 32px;
-text-align: center;
-font-family: Roboto;
-border: 1px solid rgba(255, 255, 255, 100);</string>
-      </property>
-      <property name="text">
-       <string>FILAMENT</string>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="pushButton_3">
-      <property name="geometry">
-       <rect>
-        <x>0</x>
-        <y>360</y>
-        <width>180</width>
-        <height>180</height>
-       </rect>
-      </property>
-      <property name="font">
-       <font>
-        <family>Roboto</family>
-        <pointsize>-1</pointsize>
-       </font>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">line-height: 46px;
-background-color: rgba(255, 255, 255, 100);
-color: rgba(16, 16, 16, 100);
-font-size: 32px;
-text-align: center;
-font-family: Roboto;
-border: 1px solid rgba(255, 255, 255, 100);</string>
-      </property>
-      <property name="text">
-       <string>TOOL</string>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="pushButton_4">
-      <property name="geometry">
-       <rect>
-        <x>0</x>
-        <y>540</y>
-        <width>180</width>
-        <height>180</height>
-       </rect>
-      </property>
-      <property name="font">
-       <font>
-        <family>Roboto</family>
-        <pointsize>-1</pointsize>
-       </font>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">line-height: 46px;
-background-color: rgba(255, 255, 255, 100);
-color: rgba(16, 16, 16, 100);
-font-size: 32px;
-text-align: center;
-font-family: Roboto;
-border: 1px solid rgba(255, 255, 255, 100);</string>
-      </property>
-      <property name="text">
-       <string>ABOUT</string>
-      </property>
-     </widget>
-     <widget class="QLabel" name="label_30">
-      <property name="geometry">
-       <rect>
-        <x>484</x>
-        <y>302</y>
-        <width>510</width>
-        <height>117</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">left: 484px;
-top: 302px;
-width: 510px;
-height: 117px;
-color: rgba(16, 16, 16, 255);
-font-size: 48px;
-text-align: left;
-font-family: SourceHanSansSC-regular;</string>
-      </property>
-      <property name="text">
-       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:26pt; font-weight:600;&quot;&gt;JADE ONE &lt;/span&gt;&lt;span style=&quot; font-size:26pt; font-weight:600; color:#000000;&quot;&gt;IS&lt;/span&gt;&lt;span style=&quot; font-size:26pt; font-weight:600; color:#ff0000;&quot;&gt; HEATING&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="pushButton_5">
-      <property name="geometry">
-       <rect>
-        <x>595</x>
-        <y>473</y>
-        <width>200</width>
-        <height>100</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">left: 595px;
-top: 473px;
-width: 200px;
-height: 100px;
-line-height: 41px;
-opacity: 0.1;
-border-radius: 20px;
-color: rgba(16, 16, 16, 100);
-font-size: 24px;
-text-align: center;
-font-family: Roboto;
-border: 2px solid rgba(18, 185, 19, 100);</string>
-      </property>
-      <property name="text">
-       <string>Getting Started</string>
-      </property>
-     </widget>
-    </widget>
-    <widget class="QWidget" name="page_18">
-     <widget class="QQuickWidget" name="quickWidget">
-      <property name="geometry">
-       <rect>
-        <x>230</x>
-        <y>67</y>
-        <width>1000</width>
-        <height>250</height>
-       </rect>
-      </property>
-      <property name="resizeMode">
-       <enum>QQuickWidget::SizeRootObjectToView</enum>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="pushButton_6">
-      <property name="geometry">
-       <rect>
-        <x>0</x>
-        <y>0</y>
-        <width>180</width>
-        <height>180</height>
-       </rect>
-      </property>
-      <property name="font">
-       <font>
-        <family>Roboto</family>
-        <pointsize>-1</pointsize>
-       </font>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">line-height: 46px;
-background-color: rgba(255, 255, 255, 100);
-color: rgba(16, 16, 16, 100);
-font-size: 32px;
-text-align: center;
-font-family: Roboto;
-border: 1px solid rgba(255, 255, 255, 100);</string>
-      </property>
-      <property name="text">
-       <string>PRINT</string>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="pushButton_7">
-      <property name="geometry">
-       <rect>
-        <x>0</x>
-        <y>180</y>
-        <width>180</width>
-        <height>180</height>
-       </rect>
-      </property>
-      <property name="font">
-       <font>
-        <family>Roboto</family>
-        <pointsize>-1</pointsize>
-       </font>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">line-height: 46px;
-background-color: rgba(255, 255, 255, 100);
-color: rgba(16, 16, 16, 100);
-font-size: 32px;
-text-align: center;
-font-family: Roboto;
-border: 1px solid rgba(255, 255, 255, 100);</string>
-      </property>
-      <property name="text">
-       <string>FILAMENT</string>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="pushButton_8">
-      <property name="geometry">
-       <rect>
-        <x>0</x>
-        <y>360</y>
-        <width>180</width>
-        <height>180</height>
-       </rect>
-      </property>
-      <property name="font">
-       <font>
-        <family>Roboto</family>
-        <pointsize>-1</pointsize>
-       </font>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">line-height: 46px;
-background-color: rgba(255, 255, 255, 100);
-color: rgba(16, 16, 16, 100);
-font-size: 32px;
-text-align: center;
-font-family: Roboto;
-border: 1px solid rgba(255, 255, 255, 100);</string>
-      </property>
-      <property name="text">
-       <string>TOOL</string>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="pushButton_9">
-      <property name="geometry">
-       <rect>
-        <x>0</x>
-        <y>540</y>
-        <width>180</width>
-        <height>180</height>
-       </rect>
-      </property>
-      <property name="font">
-       <font>
-        <family>Roboto</family>
-        <pointsize>-1</pointsize>
-       </font>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">line-height: 46px;
-background-color: rgba(255, 255, 255, 100);
-color: rgba(16, 16, 16, 100);
-font-size: 32px;
-text-align: center;
-font-family: Roboto;
-border: 1px solid rgba(255, 255, 255, 100);</string>
-      </property>
-      <property name="text">
-       <string>ABOUT</string>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="pushButton_10">
-      <property name="geometry">
-       <rect>
-        <x>339</x>
-        <y>350</y>
-        <width>250</width>
-        <height>80</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">left: 339px;
-top: 350px;
-width: 250px;
-height: 80px;
-line-height: 41px;
-border-radius: 20px;
-color: rgba(16, 16, 16, 255);
-font-size: 28px;
-text-align: center;
-font-family: Roboto;
-border: 1px solid rgba(187, 187, 187, 255);</string>
-      </property>
-      <property name="text">
-       <string>L Hotend</string>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="pushButton_11">
-      <property name="geometry">
-       <rect>
-        <x>835</x>
-        <y>350</y>
-        <width>250</width>
-        <height>80</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">left: 835px;
-top: 350px;
-width: 250px;
-height: 80px;
-line-height: 41px;
-border-radius: 20px;
-color: rgba(16, 16, 16, 255);
-font-size: 28px;
-text-align: center;
-font-family: Roboto;
-border: 1px solid rgba(187, 187, 187, 255);</string>
-      </property>
-      <property name="text">
-       <string>R Hotend</string>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="pushButton_12">
-      <property name="geometry">
-       <rect>
-        <x>424</x>
-        <y>467</y>
-        <width>80</width>
-        <height>80</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">border-image: url(:/image/downLoadBlack.png);</string>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="pushButton_13">
-      <property name="geometry">
-       <rect>
-        <x>920</x>
-        <y>467</y>
-        <width>80</width>
-        <height>80</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">border-image: url(:/image/downLoadBlack.png);</string>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="pushButton_14">
-      <property name="geometry">
-       <rect>
-        <x>620</x>
-        <y>570</y>
-        <width>200</width>
-        <height>80</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">left: 611px;
-top: 570px;
-width: 200px;
-height: 80px;
-line-height: 52px;
-opacity: 0.1;
-border-radius: 20px;
-background-color: rgba(30, 26, 26, 0);
-color: rgba(16, 16, 16, 100);
-font-size: 36px;
-text-align: center;
-font-family: Roboto;
-border: 2px solid rgba(0, 0, 0, 100);</string>
-      </property>
-      <property name="text">
-       <string>Next</string>
-      </property>
-     </widget>
-     <widget class="QLabel" name="label_31">
-      <property name="geometry">
-       <rect>
-        <x>233</x>
-        <y>672</y>
-        <width>997</width>
-        <height>37</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">left: 233px;
-top: 672px;
-width: 997px;
-height: 37px;
-color: rgba(16, 16, 16, 255);
-font-size: 28px;
-text-align: left;
-font-family: SourceHanSansSC-regular;</string>
-      </property>
-      <property name="text">
-       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:14pt;&quot;&gt;Heating done,please insert filament as shown above and click load button.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-      </property>
-     </widget>
-     <widget class="QLabel" name="label_32">
-      <property name="geometry">
-       <rect>
-        <x>195</x>
-        <y>678</y>
-        <width>30</width>
-        <height>30</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">border-image: url(:/image/ready.png);</string>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-     </widget>
-     <widget class="Line" name="line">
-      <property name="geometry">
-       <rect>
-        <x>711</x>
-        <y>357</y>
-        <width>20</width>
-        <height>169</height>
-       </rect>
-      </property>
-      <property name="orientation">
-       <enum>Qt::Vertical</enum>
-      </property>
-     </widget>
-    </widget>
-    <widget class="QWidget" name="page_19">
-     <widget class="QQuickWidget" name="quickWidget_2">
-      <property name="geometry">
-       <rect>
-        <x>230</x>
-        <y>67</y>
-        <width>1000</width>
-        <height>250</height>
-       </rect>
-      </property>
-      <property name="resizeMode">
-       <enum>QQuickWidget::SizeRootObjectToView</enum>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="pushButton_15">
-      <property name="geometry">
-       <rect>
-        <x>0</x>
-        <y>0</y>
-        <width>180</width>
-        <height>180</height>
-       </rect>
-      </property>
-      <property name="font">
-       <font>
-        <family>Roboto</family>
-        <pointsize>-1</pointsize>
-       </font>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">line-height: 46px;
-background-color: rgba(255, 255, 255, 100);
-color: rgba(16, 16, 16, 100);
-font-size: 32px;
-text-align: center;
-font-family: Roboto;
-border: 1px solid rgba(255, 255, 255, 100);</string>
-      </property>
-      <property name="text">
-       <string>PRINT</string>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="pushButton_16">
-      <property name="geometry">
-       <rect>
-        <x>0</x>
-        <y>180</y>
-        <width>180</width>
-        <height>180</height>
-       </rect>
-      </property>
-      <property name="font">
-       <font>
-        <family>Roboto</family>
-        <pointsize>-1</pointsize>
-       </font>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">line-height: 46px;
-background-color: rgba(255, 255, 255, 100);
-color: rgba(16, 16, 16, 100);
-font-size: 32px;
-text-align: center;
-font-family: Roboto;
-border: 1px solid rgba(255, 255, 255, 100);</string>
-      </property>
-      <property name="text">
-       <string>FILAMENT</string>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="pushButton_17">
-      <property name="geometry">
-       <rect>
-        <x>0</x>
-        <y>360</y>
-        <width>180</width>
-        <height>180</height>
-       </rect>
-      </property>
-      <property name="font">
-       <font>
-        <family>Roboto</family>
-        <pointsize>-1</pointsize>
-       </font>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">line-height: 46px;
-background-color: rgba(255, 255, 255, 100);
-color: rgba(16, 16, 16, 100);
-font-size: 32px;
-text-align: center;
-font-family: Roboto;
-border: 1px solid rgba(255, 255, 255, 100);</string>
-      </property>
-      <property name="text">
-       <string>TOOL</string>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="pushButton_18">
-      <property name="geometry">
-       <rect>
-        <x>0</x>
-        <y>540</y>
-        <width>180</width>
-        <height>180</height>
-       </rect>
-      </property>
-      <property name="font">
-       <font>
-        <family>Roboto</family>
-        <pointsize>-1</pointsize>
-       </font>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">line-height: 46px;
-background-color: rgba(255, 255, 255, 100);
-color: rgba(16, 16, 16, 100);
-font-size: 32px;
-text-align: center;
-font-family: Roboto;
-border: 1px solid rgba(255, 255, 255, 100);</string>
-      </property>
-      <property name="text">
-       <string>ABOUT</string>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="pushButton_19">
-      <property name="geometry">
-       <rect>
-        <x>339</x>
-        <y>350</y>
-        <width>250</width>
-        <height>80</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">left: 339px;
-top: 350px;
-width: 250px;
-height: 80px;
-line-height: 41px;
-border-radius: 20px;
-color: rgba(16, 16, 16, 255);
-font-size: 28px;
-text-align: center;
-font-family: Roboto;
-border: 1px solid rgba(187, 187, 187, 255);</string>
-      </property>
-      <property name="text">
-       <string>L Hotend</string>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="pushButton_20">
-      <property name="geometry">
-       <rect>
-        <x>835</x>
-        <y>350</y>
-        <width>250</width>
-        <height>80</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">left: 835px;
-top: 350px;
-width: 250px;
-height: 80px;
-line-height: 41px;
-border-radius: 20px;
-color: rgba(16, 16, 16, 255);
-font-size: 28px;
-text-align: center;
-font-family: Roboto;
-border: 1px solid rgba(187, 187, 187, 255);</string>
-      </property>
-      <property name="text">
-       <string>R Hotend</string>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="pushButton_21">
-      <property name="geometry">
-       <rect>
-        <x>424</x>
-        <y>467</y>
-        <width>80</width>
-        <height>80</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">border-image: url(:/image/downLoadBlack.png);</string>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="pushButton_22">
-      <property name="geometry">
-       <rect>
-        <x>920</x>
-        <y>467</y>
-        <width>80</width>
-        <height>80</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">
-border-image: url(:/image/downLoadBlack.png);</string>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="pushButton_23">
-      <property name="geometry">
-       <rect>
-        <x>620</x>
-        <y>590</y>
-        <width>200</width>
-        <height>80</height>
-       </rect>
-      </property>
-      <property name="font">
-       <font>
-        <family>Roboto</family>
-        <pointsize>-1</pointsize>
-       </font>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">left: 600px;
-top: 603px;
-width: 200px;
-height: 80px;
-line-height: 52px;
-border-radius: 20px;
-background-color: rgba(30, 26, 26, 0);
-color: rgba(16, 16, 16, 255);
-font-size: 36px;
-text-align: center;
-font-family: Roboto;
-border: 2px solid rgba(0, 0, 0, 1);
-</string>
-      </property>
-      <property name="text">
-       <string>Next</string>
-      </property>
-     </widget>
-     <widget class="QLabel" name="label_33">
-      <property name="geometry">
-       <rect>
-        <x>371</x>
-        <y>678</y>
-        <width>40</width>
-        <height>40</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">border-image: url(:/image/ready.png);</string>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-     </widget>
-     <widget class="QLabel" name="label_34">
-      <property name="geometry">
-       <rect>
-        <x>417</x>
-        <y>674</y>
-        <width>610</width>
-        <height>37</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">left: 417px;
-top: 674px;
-width: 610px;
-height: 37px;
-color: rgba(16, 16, 16, 255);
-font-size: 28px;
-text-align: left;
-font-family: SourceHanSansSC-regular;</string>
-      </property>
-      <property name="text">
-       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:16pt;&quot;&gt;After filament comes out of nozzle click &amp;quot;Next&amp;quot;&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-      </property>
-     </widget>
-     <widget class="Line" name="line_2">
-      <property name="geometry">
-       <rect>
-        <x>711</x>
-        <y>357</y>
-        <width>20</width>
-        <height>169</height>
-       </rect>
-      </property>
-      <property name="orientation">
-       <enum>Qt::Vertical</enum>
-      </property>
-     </widget>
-     <zorder>quickWidget_2</zorder>
-     <zorder>pushButton_15</zorder>
-     <zorder>pushButton_16</zorder>
-     <zorder>pushButton_17</zorder>
-     <zorder>pushButton_18</zorder>
-     <zorder>pushButton_19</zorder>
-     <zorder>pushButton_20</zorder>
-     <zorder>pushButton_21</zorder>
-     <zorder>pushButton_22</zorder>
-     <zorder>label_33</zorder>
-     <zorder>label_34</zorder>
-     <zorder>line_2</zorder>
-     <zorder>pushButton_23</zorder>
-    </widget>
     <widget class="QWidget" name="page_20">
      <widget class="QPushButton" name="pushButton_24">
       <property name="geometry">
@@ -2685,122 +1794,6 @@ text-align: center;
 
 border: 2px solid rgba(202, 208, 74, 255);</string>
        </property>
-       <widget class="QPushButton" name="pushButton_41">
-        <property name="geometry">
-         <rect>
-          <x>130</x>
-          <y>300</y>
-          <width>161</width>
-          <height>61</height>
-         </rect>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">left: 399px;
-top: 450px;
-width: 193px;
-height: 63px;
-line-height: 52px;
-border-radius: 20px;
-background-color: rgba(255, 255, 255, 100);
-color: rgba(16, 16, 16, 255);
-font-size: 36px;
-text-align: center;
-font-family: Roboto;
-border: 2px solid rgba(202, 208, 74, 255);</string>
-        </property>
-        <property name="text">
-         <string>CONFIRM</string>
-        </property>
-       </widget>
-       <widget class="QPushButton" name="pushButton_44">
-        <property name="geometry">
-         <rect>
-          <x>410</x>
-          <y>300</y>
-          <width>171</width>
-          <height>61</height>
-         </rect>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">
-line-height: 52px;
-border-radius: 20px;
-background-color: rgba(255, 255, 255, 100);
-color: rgba(16, 16, 16, 255);
-font-size: 36px;
-text-align: center;
-font-family: Roboto;
-border: 2px solid rgba(202, 208, 74, 255);</string>
-        </property>
-        <property name="text">
-         <string>CANCEL</string>
-        </property>
-       </widget>
-       <widget class="QLabel" name="label_44">
-        <property name="geometry">
-         <rect>
-          <x>170</x>
-          <y>90</y>
-          <width>381</width>
-          <height>141</height>
-         </rect>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">border: none;
-background-color: none</string>
-        </property>
-        <property name="text">
-         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:20pt; font-weight:600;&quot;&gt;Print&lt;/span&gt;&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:20pt; font-weight:600;&quot;&gt;Accordion 1.gcode?&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-        </property>
-       </widget>
-       <widget class="QPushButton" name="pushButton_42">
-        <property name="geometry">
-         <rect>
-          <x>270</x>
-          <y>300</y>
-          <width>151</width>
-          <height>61</height>
-         </rect>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">
-line-height: 52px;
-border-radius: 20px;
-background-color: rgba(255, 255, 255, 100);
-color: rgba(16, 16, 16, 255);
-font-size: 36px;
-text-align: center;
-font-family: Roboto;
-border: 2px solid rgba(202, 208, 74, 255);</string>
-        </property>
-        <property name="text">
-         <string>CANCEL</string>
-        </property>
-       </widget>
-       <widget class="QLabel" name="label_43">
-        <property name="geometry">
-         <rect>
-          <x>250</x>
-          <y>140</y>
-          <width>231</width>
-          <height>51</height>
-         </rect>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">left: 250px;
-top: 201px;
-width: 779px;
-height: 136px;
-color: rgba(0, 0, 0, 255);
-font-size: 36px;
-text-align: center;
-font-family: Helvetica-regular;
-border:none</string>
-        </property>
-        <property name="text">
-         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;PARSING FILE&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-        </property>
-       </widget>
       </widget>
       <widget class="QLabel" name="label_205">
        <property name="geometry">
@@ -2989,213 +1982,6 @@ font-family: SourceHanSansSC-regular;</string>
      <zorder>label_209</zorder>
      <zorder>label_210</zorder>
      <zorder>widget_2</zorder>
-    </widget>
-    <widget class="QWidget" name="page_22">
-     <widget class="QLabel" name="label_45">
-      <property name="geometry">
-       <rect>
-        <x>250</x>
-        <y>200</y>
-        <width>450</width>
-        <height>450</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">border-image: url(:/image/13.png);
-color: rgba(16, 16, 16, 255);
-font-size: 48px;
-font-family: Roboto;
-</string>
-      </property>
-      <property name="text">
-       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;1%&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="pushButton_77">
-      <property name="geometry">
-       <rect>
-        <x>0</x>
-        <y>0</y>
-        <width>180</width>
-        <height>180</height>
-       </rect>
-      </property>
-      <property name="font">
-       <font>
-        <family>Roboto</family>
-        <pointsize>-1</pointsize>
-       </font>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">
-line-height: 46px;
-border-radius: 30px;
-background-color: rgba(255, 255, 255, 100);
-color: rgba(16, 16, 16, 255);
-font-size: 32px;
-text-align: center;
-font-family: Roboto;
-border: 1px solid rgba(202, 208, 74, 255);</string>
-      </property>
-      <property name="text">
-       <string>PRINT</string>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="pushButton_78">
-      <property name="geometry">
-       <rect>
-        <x>0</x>
-        <y>180</y>
-        <width>180</width>
-        <height>180</height>
-       </rect>
-      </property>
-      <property name="font">
-       <font>
-        <family>Roboto</family>
-        <pointsize>-1</pointsize>
-       </font>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">line-height: 46px;
-background-color: rgba(255, 255, 255, 100);
-color: rgba(16, 16, 16, 255);
-font-size: 32px;
-text-align: center;
-font-family: Roboto;
-border: 1px solid rgba(255, 255, 255, 100);</string>
-      </property>
-      <property name="text">
-       <string>FILAMENT</string>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="pushButton_79">
-      <property name="geometry">
-       <rect>
-        <x>0</x>
-        <y>540</y>
-        <width>180</width>
-        <height>180</height>
-       </rect>
-      </property>
-      <property name="font">
-       <font>
-        <family>Roboto</family>
-        <pointsize>-1</pointsize>
-       </font>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">line-height: 46px;
-background-color: rgba(255, 255, 255, 100);
-color: rgba(16, 16, 16, 255);
-font-size: 32px;
-text-align: center;
-font-family: Roboto;
-border: 1px solid rgba(255, 255, 255, 100);</string>
-      </property>
-      <property name="text">
-       <string>ABOUT</string>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="pushButton_80">
-      <property name="geometry">
-       <rect>
-        <x>0</x>
-        <y>360</y>
-        <width>180</width>
-        <height>180</height>
-       </rect>
-      </property>
-      <property name="font">
-       <font>
-        <family>Roboto</family>
-        <pointsize>-1</pointsize>
-       </font>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">line-height: 46px;
-background-color: rgba(255, 255, 255, 100);
-color: rgba(16, 16, 16, 255);
-font-size: 32px;
-text-align: center;
-font-family: Roboto;
-border: 1px solid rgba(255, 255, 255, 100);</string>
-      </property>
-      <property name="text">
-       <string>TOOL</string>
-      </property>
-     </widget>
-     <widget class="QLabel" name="label_26">
-      <property name="geometry">
-       <rect>
-        <x>740</x>
-        <y>537</y>
-        <width>500</width>
-        <height>113</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">left: 740px;
-top: 537px;
-width: 500px;
-height: 113px;
-color: rgba(16, 16, 16, 255);
-font-size: 36px;
-text-align: center;
-font-family: SourceHanSansSC-regular;</string>
-      </property>
-      <property name="text">
-       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:20pt;&quot;&gt;3DBenchy.Gcode&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:20pt;&quot;&gt;Elapsed Time:0h30m&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-      </property>
-     </widget>
-     <widget class="QLabel" name="label_27">
-      <property name="geometry">
-       <rect>
-        <x>830</x>
-        <y>200</y>
-        <width>320</width>
-        <height>337</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">border-image: url(:/image/boat.png);</string>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="pushButton_89">
-      <property name="geometry">
-       <rect>
-        <x>1070</x>
-        <y>80</y>
-        <width>80</width>
-        <height>80</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">border-image: url(:/image/stop.png);</string>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="pushButton_90">
-      <property name="geometry">
-       <rect>
-        <x>1170</x>
-        <y>80</y>
-        <width>80</width>
-        <height>80</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">border-image: url(:/image/set.png);</string>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-     </widget>
     </widget>
     <widget class="QWidget" name="page_23">
      <widget class="QLabel" name="label_56">
@@ -4713,7 +3499,7 @@ border: 1px solid rgba(202, 208, 74, 255);</string>
       </property>
      </widget>
     </widget>
-    <widget class="QWidget" name="page_32">
+    <widget class="QWidget" name="page_ChangeFilament">
      <widget class="QPushButton" name="pushButton_105">
       <property name="geometry">
        <rect>
@@ -5385,600 +4171,7 @@ background-color: rgb(45, 44, 43);</string>
      <zorder>label_40</zorder>
      <zorder>label_41</zorder>
     </widget>
-    <widget class="QWidget" name="page_31"/>
-    <widget class="QWidget" name="page_33">
-     <widget class="QPushButton" name="pushButton_113">
-      <property name="geometry">
-       <rect>
-        <x>0</x>
-        <y>540</y>
-        <width>180</width>
-        <height>180</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">outline:none;image: url(:/image/AboutInactive.png);
-border:none;</string>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="pushButton_116">
-      <property name="geometry">
-       <rect>
-        <x>0</x>
-        <y>180</y>
-        <width>180</width>
-        <height>180</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">outline:none;border:none;
-image: url(:/image/FilamentActive(2).png);</string>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="pushButton_117">
-      <property name="geometry">
-       <rect>
-        <x>0</x>
-        <y>0</y>
-        <width>180</width>
-        <height>180</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">outline:none;image: url(:/image/PrintInactive.png);
-border:none;</string>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="pushButton_118">
-      <property name="geometry">
-       <rect>
-        <x>0</x>
-        <y>360</y>
-        <width>180</width>
-        <height>180</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">outline:none;image: url(:/image/ToolsInactive.png);
-border:none;</string>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="pushButton_119">
-      <property name="geometry">
-       <rect>
-        <x>790</x>
-        <y>400</y>
-        <width>140</width>
-        <height>140</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">outline:none;image: url(:/image/UnloadButtonActive.png);
-background-color: rgb(45, 44, 43);
-border:none;</string>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="pushButton_120">
-      <property name="geometry">
-       <rect>
-        <x>1080</x>
-        <y>400</y>
-        <width>140</width>
-        <height>140</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">outline:none;image: url(:/image/LoadButtonActive.png);
-background-color: rgb(45, 44, 43);
-border:none;</string>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="pushButton_121">
-      <property name="geometry">
-       <rect>
-        <x>540</x>
-        <y>400</y>
-        <width>140</width>
-        <height>140</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">outline:none;image: url(:/image/LoadButtonActive.png);
-background-color: rgb(45, 44, 43);
-border:none;</string>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="pushButton_122">
-      <property name="geometry">
-       <rect>
-        <x>940</x>
-        <y>200</y>
-        <width>250</width>
-        <height>80</height>
-       </rect>
-      </property>
-      <property name="font">
-       <font>
-        <family>Barlow</family>
-        <pointsize>-1</pointsize>
-        <weight>75</weight>
-        <bold>true</bold>
-       </font>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">font-weight: bold;
-font-family:Barlow;outline:none;border-radius: 10px;
-color: rgb(255, 255, 255);
-font-size: 32px;
-text-align: left;
-padding:5px 15px 10px 20px;
-font-family: Barlow;
-border: 2px solid rgb(255, 99, 11) ;
-background-color: rgb(255, 99, 11);</string>
-      </property>
-      <property name="text">
-       <string>R Hotend</string>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="pushButton_123">
-      <property name="geometry">
-       <rect>
-        <x>410</x>
-        <y>200</y>
-        <width>250</width>
-        <height>80</height>
-       </rect>
-      </property>
-      <property name="font">
-       <font>
-        <family>Barlow</family>
-        <pointsize>-1</pointsize>
-        <weight>75</weight>
-        <bold>true</bold>
-       </font>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">font-weight: bold;
-font-family:Barlow;outline:none;border-radius: 10px;
-color: rgb(255, 255, 255);
-font-size: 32px;
-text-align: left;
-padding:5px 15px 10px 20px;
-font-family: Barlow;
-border: 2px solid rgb(255, 99, 11) ;
-background-color: rgb(255, 99, 11);</string>
-      </property>
-      <property name="text">
-       <string>L Hotend</string>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="pushButton_124">
-      <property name="geometry">
-       <rect>
-        <x>240</x>
-        <y>400</y>
-        <width>140</width>
-        <height>140</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">outline:none;image: url(:/image/UnloadButtonActive.png);
-background-color: rgb(45, 44, 43);
-border:none;</string>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="pushButton_355">
-      <property name="geometry">
-       <rect>
-        <x>520</x>
-        <y>600</y>
-        <width>737</width>
-        <height>96</height>
-       </rect>
-      </property>
-      <property name="font">
-       <font>
-        <family>Barlow</family>
-        <pointsize>-1</pointsize>
-        <weight>75</weight>
-        <bold>true</bold>
-       </font>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">font-weight: bold;
-font-family:Barlow;outline:none;border-radius: 20px;
-background-color: rgb(255, 99, 11);
-color: rgb(255, 255, 255);
-font-size: 36px;
-text-align: center;
-font-family: Barlow;
-border: 2px solid rgb(255, 99, 11) ;</string>
-      </property>
-      <property name="text">
-       <string>Done</string>
-      </property>
-     </widget>
-     <widget class="QLabel" name="label_237">
-      <property name="geometry">
-       <rect>
-        <x>600</x>
-        <y>220</y>
-        <width>32</width>
-        <height>36</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">image: url(:/image/ChangeTemperature.png);
-
-background-color: rgb(255, 99, 11);</string>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-     </widget>
-     <widget class="QLabel" name="label_194">
-      <property name="geometry">
-       <rect>
-        <x>740</x>
-        <y>310</y>
-        <width>500</width>
-        <height>20</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">image: url(:/image/2.png);
-background-color: rgba(45, 44, 43, 255);</string>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-     </widget>
-     <widget class="QLabel" name="label_195">
-      <property name="geometry">
-       <rect>
-        <x>420</x>
-        <y>410</y>
-        <width>70</width>
-        <height>102</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">image: url(:/image/nozzle.png);
-background-color: rgb(45, 44, 43);</string>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-     </widget>
-     <widget class="QLabel" name="label_238">
-      <property name="geometry">
-       <rect>
-        <x>200</x>
-        <y>70</y>
-        <width>511</width>
-        <height>511</height>
-       </rect>
-      </property>
-      <property name="font">
-       <font>
-        <family>Barlow</family>
-        <weight>75</weight>
-        <bold>true</bold>
-       </font>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">border-radius: 20px;
-border: 5px solid rgb(45, 44, 43);
-background-color: rgba(45, 44, 43, 255);</string>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-     </widget>
-     <widget class="QLabel" name="label_239">
-      <property name="geometry">
-       <rect>
-        <x>830</x>
-        <y>100</y>
-        <width>401</width>
-        <height>81</height>
-       </rect>
-      </property>
-      <property name="font">
-       <font>
-        <family>Barlow</family>
-        <pointsize>-1</pointsize>
-        <weight>75</weight>
-        <bold>true</bold>
-       </font>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">font-weight: bold;
-font-family:Barlow;font-family:Barlow;
-color: rgb(150, 150, 150);
-border:none;
-background-color: rgba(45, 44, 43, 255);
-font-size: 36px;
-text-align: center;
-font-family: Barlow;</string>
-      </property>
-      <property name="text">
-       <string>R Hotend Activate</string>
-      </property>
-     </widget>
-     <widget class="QLabel" name="label_240">
-      <property name="geometry">
-       <rect>
-        <x>300</x>
-        <y>100</y>
-        <width>401</width>
-        <height>81</height>
-       </rect>
-      </property>
-      <property name="font">
-       <font>
-        <family>Barlow</family>
-        <pointsize>-1</pointsize>
-        <weight>75</weight>
-        <bold>true</bold>
-       </font>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">font-weight: bold;
-font-family:Barlow;font-family:Barlow;
-color: rgb(150, 150, 150);
-border:none;
-background-color: rgba(45, 44, 43, 255);
-font-size: 36px;
-text-align: center;
-font-family: Barlow;</string>
-      </property>
-      <property name="text">
-       <string>L Hotend Activate</string>
-      </property>
-     </widget>
-     <widget class="QLabel" name="label_241">
-      <property name="geometry">
-       <rect>
-        <x>230</x>
-        <y>120</y>
-        <width>36</width>
-        <height>42</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">image: url(:/image/LeftHotendIndecator.png);
-background-color: rgba(45, 44, 43, 255);</string>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-     </widget>
-     <widget class="QLabel" name="label_242">
-      <property name="geometry">
-       <rect>
-        <x>760</x>
-        <y>120</y>
-        <width>36</width>
-        <height>42</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">image: url(:/image/RightHotendIndecator.png);
-background-color: rgba(45, 44, 43, 255);</string>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-     </widget>
-     <widget class="QLabel" name="label_243">
-      <property name="geometry">
-       <rect>
-        <x>740</x>
-        <y>70</y>
-        <width>511</width>
-        <height>511</height>
-       </rect>
-      </property>
-      <property name="font">
-       <font>
-        <family>Barlow</family>
-        <weight>75</weight>
-        <bold>true</bold>
-       </font>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">border-radius: 20px;
-border: 8px solid rgba(45, 44, 43, 255);
-background-color: rgba(45, 44, 43, 255);</string>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-     </widget>
-     <widget class="QLabel" name="label_244">
-      <property name="geometry">
-       <rect>
-        <x>230</x>
-        <y>210</y>
-        <width>151</width>
-        <height>61</height>
-       </rect>
-      </property>
-      <property name="font">
-       <font>
-        <family>Barlow</family>
-        <pointsize>-1</pointsize>
-        <weight>75</weight>
-        <bold>true</bold>
-       </font>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">font-weight: bold;
-font-family:Barlow;background-color: rgb(45, 44, 43);
-color: rgb(185, 185, 185);
-font-size: 32px;
-text-align: left;
-font-family: Barlow;</string>
-      </property>
-      <property name="text">
-       <string>Preheat:</string>
-      </property>
-     </widget>
-     <widget class="QLabel" name="label_245">
-      <property name="geometry">
-       <rect>
-        <x>1130</x>
-        <y>220</y>
-        <width>32</width>
-        <height>36</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">image: url(:/image/ChangeTemperature.png);
-
-background-color: rgb(255, 99, 11);</string>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-     </widget>
-     <widget class="QLabel" name="label_246">
-      <property name="geometry">
-       <rect>
-        <x>970</x>
-        <y>410</y>
-        <width>70</width>
-        <height>102</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">image: url(:/image/nozzle.png);
-background-color: rgb(45, 44, 43);</string>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-     </widget>
-     <widget class="QLabel" name="label_247">
-      <property name="geometry">
-       <rect>
-        <x>200</x>
-        <y>310</y>
-        <width>500</width>
-        <height>20</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">image: url(:/image/2.png);
-background-color: rgba(45, 44, 43, 255);</string>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-     </widget>
-     <widget class="QLabel" name="label_248">
-      <property name="geometry">
-       <rect>
-        <x>770</x>
-        <y>200</y>
-        <width>151</width>
-        <height>61</height>
-       </rect>
-      </property>
-      <property name="font">
-       <font>
-        <family>Barlow</family>
-        <pointsize>-1</pointsize>
-       </font>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">background-color: rgb(45, 44, 43);
-color: rgb(185, 185, 185);
-font-size: 32px;
-text-align: left;
-font-family: Barlow;</string>
-      </property>
-      <property name="text">
-       <string>Preheat:</string>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="pushButton_359">
-      <property name="geometry">
-       <rect>
-        <x>190</x>
-        <y>600</y>
-        <width>305</width>
-        <height>96</height>
-       </rect>
-      </property>
-      <property name="font">
-       <font>
-        <family>Barlow</family>
-        <weight>75</weight>
-        <bold>true</bold>
-       </font>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">outline:none;image: url(:/image/HelpButton.png);
-border:none;</string>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-     </widget>
-     <zorder>label_238</zorder>
-     <zorder>pushButton_123</zorder>
-     <zorder>label_243</zorder>
-     <zorder>label_242</zorder>
-     <zorder>label_241</zorder>
-     <zorder>label_239</zorder>
-     <zorder>label_194</zorder>
-     <zorder>label_195</zorder>
-     <zorder>label_247</zorder>
-     <zorder>label_240</zorder>
-     <zorder>label_246</zorder>
-     <zorder>label_244</zorder>
-     <zorder>label_237</zorder>
-     <zorder>label_248</zorder>
-     <zorder>pushButton_113</zorder>
-     <zorder>pushButton_116</zorder>
-     <zorder>pushButton_117</zorder>
-     <zorder>pushButton_118</zorder>
-     <zorder>pushButton_119</zorder>
-     <zorder>pushButton_120</zorder>
-     <zorder>pushButton_121</zorder>
-     <zorder>pushButton_122</zorder>
-     <zorder>pushButton_124</zorder>
-     <zorder>pushButton_355</zorder>
-     <zorder>label_245</zorder>
-     <zorder>pushButton_359</zorder>
-    </widget>
-    <widget class="QWidget" name="page_34">
+    <widget class="QWidget" name="page_GetStart">
      <widget class="QPushButton" name="pushButton_125">
       <property name="geometry">
        <rect>
@@ -7204,7 +5397,7 @@ border:1px solid gray</string>
       </property>
      </widget>
     </widget>
-    <widget class="QWidget" name="page_42">
+    <widget class="QWidget" name="page_Tools">
      <widget class="QPushButton" name="pushButton_170">
       <property name="geometry">
        <rect>
@@ -9311,7 +7504,7 @@ font-family: Roboto;</string>
       </property>
      </widget>
     </widget>
-    <widget class="QWidget" name="page_52">
+    <widget class="QWidget" name="page_Calibration">
      <widget class="QPushButton" name="pushButton_231">
       <property name="geometry">
        <rect>
@@ -9528,7 +7721,7 @@ background-color: rgb(45, 44, 43);</string>
       </property>
      </widget>
     </widget>
-    <widget class="QWidget" name="page_53">
+    <widget class="QWidget" name="page_PlatformCali_0">
      <widget class="QPushButton" name="pushButton_238">
       <property name="geometry">
        <rect>
@@ -9754,7 +7947,7 @@ font-family:Barlow;</string>
       </property>
      </widget>
     </widget>
-    <widget class="QWidget" name="page_54">
+    <widget class="QWidget" name="page_PlatformCali_1">
      <widget class="QPushButton" name="pushButton_244">
       <property name="geometry">
        <rect>
@@ -9912,7 +8105,7 @@ border-radius: 20px;</string>
      <zorder>label_119</zorder>
      <zorder>pushButton_248</zorder>
     </widget>
-    <widget class="QWidget" name="page_55">
+    <widget class="QWidget" name="page_PlatformCali_2">
      <widget class="QPushButton" name="pushButton_249">
       <property name="geometry">
        <rect>
@@ -10044,7 +8237,7 @@ border-radius: 20px;</string>
      <zorder>label_120</zorder>
      <zorder>label_121</zorder>
     </widget>
-    <widget class="QWidget" name="page_78">
+    <widget class="QWidget" name="page_PlatformCali_6">
      <widget class="QPushButton" name="pushButton_361">
       <property name="geometry">
        <rect>
@@ -10080,10 +8273,10 @@ border-radius: 20px;</string>
      <widget class="QLabel" name="label_196">
       <property name="geometry">
        <rect>
-        <x>307</x>
-        <y>238</y>
-        <width>180</width>
-        <height>180</height>
+        <x>350</x>
+        <y>280</y>
+        <width>100</width>
+        <height>100</height>
        </rect>
       </property>
       <property name="styleSheet">
@@ -10128,8 +8321,8 @@ border-radius: 20px;</string>
      <widget class="QLabel" name="label_197">
       <property name="geometry">
        <rect>
-        <x>724</x>
-        <y>294</y>
+        <x>480</x>
+        <y>300</y>
         <width>611</width>
         <height>57</height>
        </rect>
@@ -10151,8 +8344,8 @@ font-family: Barlow;</string>
        <rect>
         <x>188</x>
         <y>598</y>
-        <width>1080</width>
-        <height>96</height>
+        <width>1070</width>
+        <height>100</height>
        </rect>
       </property>
       <property name="styleSheet">
@@ -10200,7 +8393,7 @@ border-radius: 20px;</string>
      <zorder>label_197</zorder>
      <zorder>pushButton_365</zorder>
     </widget>
-    <widget class="QWidget" name="page_79">
+    <widget class="QWidget" name="page_PlatformCali_3">
      <widget class="QPushButton" name="pushButton_366">
       <property name="geometry">
        <rect>
@@ -10441,7 +8634,7 @@ image: url(:/image/bamp3.png);</string>
       </property>
      </widget>
     </widget>
-    <widget class="QWidget" name="page_80">
+    <widget class="QWidget" name="page_PlatformCali_4">
      <widget class="QPushButton" name="pushButton_372">
       <property name="geometry">
        <rect>
@@ -10696,7 +8889,7 @@ image: url(:/image/Bitmap4.png);</string>
      <zorder>label_258</zorder>
      <zorder>label_296</zorder>
     </widget>
-    <widget class="QWidget" name="page_56">
+    <widget class="QWidget" name="page_PlatformCali_5">
      <widget class="QPushButton" name="pushButton_254">
       <property name="geometry">
        <rect>
@@ -11383,7 +9576,7 @@ border: 1px solid rgba(187, 187, 187, 100);</string>
      <zorder>pushButton_275</zorder>
      <zorder>pushButton_280</zorder>
     </widget>
-    <widget class="QWidget" name="page_58">
+    <widget class="QWidget" name="page_NozzleCali_0">
      <widget class="QPushButton" name="pushButton_282">
       <property name="geometry">
        <rect>
@@ -11598,7 +9791,7 @@ image: url(:/image/Bitmap.png);</string>
      <zorder>label_80</zorder>
      <zorder>label_298</zorder>
     </widget>
-    <widget class="QWidget" name="page_59">
+    <widget class="QWidget" name="page_NozzleCali_1">
      <widget class="QPushButton" name="pushButton_288">
       <property name="geometry">
        <rect>
@@ -11757,7 +9950,7 @@ border-radius: 20px;</string>
      <zorder>label_146</zorder>
      <zorder>pushButton_292</zorder>
     </widget>
-    <widget class="QWidget" name="page_60">
+    <widget class="QWidget" name="page_NozzleCali_2">
      <widget class="QPushButton" name="pushButton_293">
       <property name="geometry">
        <rect>
@@ -11889,7 +10082,7 @@ border-radius: 20px;</string>
      <zorder>label_147</zorder>
      <zorder>label_148</zorder>
     </widget>
-    <widget class="QWidget" name="page_61">
+    <widget class="QWidget" name="page_NozzleCali_3">
      <widget class="QPushButton" name="pushButton_298">
       <property name="geometry">
        <rect>
@@ -12126,7 +10319,7 @@ image: url(:/image/Bitmap2.png);</string>
      <zorder>pushButton_305</zorder>
      <zorder>label_306</zorder>
     </widget>
-    <widget class="QWidget" name="page_62">
+    <widget class="QWidget" name="page_NozzleCali_4">
      <widget class="QPushButton" name="pushButton_306">
       <property name="geometry">
        <rect>
@@ -12167,7 +10360,7 @@ image: url(:/image/Bitmap2.png);</string>
        <rect>
         <x>188</x>
         <y>598</y>
-        <width>1080</width>
+        <width>1070</width>
         <height>96</height>
        </rect>
       </property>
@@ -12205,10 +10398,10 @@ border: 2px solid rgba(255, 99, 11, 255);</string>
      <widget class="QLabel" name="label_152">
       <property name="geometry">
        <rect>
-        <x>555</x>
-        <y>294</y>
+        <x>480</x>
+        <y>300</y>
         <width>591</width>
-        <height>81</height>
+        <height>57</height>
        </rect>
       </property>
       <property name="styleSheet">
@@ -12225,10 +10418,10 @@ font-family: Barlow;</string>
      <widget class="QLabel" name="label_153">
       <property name="geometry">
        <rect>
-        <x>307</x>
-        <y>238</y>
-        <width>190</width>
-        <height>190</height>
+        <x>350</x>
+        <y>280</y>
+        <width>100</width>
+        <height>100</height>
        </rect>
       </property>
       <property name="styleSheet">
@@ -12285,7 +10478,7 @@ border-radius: 20px;</string>
      <zorder>label_153</zorder>
      <zorder>pushButton_310</zorder>
     </widget>
-    <widget class="QWidget" name="page_63">
+    <widget class="QWidget" name="page_XYCali_0">
      <widget class="QPushButton" name="pushButton_627">
       <property name="geometry">
        <rect>
@@ -12464,7 +10657,7 @@ border-radius: 20px;</string>
      <zorder>pushButton_631</zorder>
      <zorder>pushButton_632</zorder>
     </widget>
-    <widget class="QWidget" name="page_64">
+    <widget class="QWidget" name="page_XYCali_1">
      <widget class="QPushButton" name="pushButton_633">
       <property name="geometry">
        <rect>
@@ -12619,7 +10812,7 @@ border-radius: 20px;</string>
      <zorder>label_302</zorder>
      <zorder>pushButton_637</zorder>
     </widget>
-    <widget class="QWidget" name="page_65">
+    <widget class="QWidget" name="page_XYCali_2">
      <widget class="QPushButton" name="pushButton_638">
       <property name="geometry">
        <rect>
@@ -12750,7 +10943,7 @@ border-radius: 20px;</string>
      <zorder>label_303</zorder>
      <zorder>label_304</zorder>
     </widget>
-    <widget class="QWidget" name="page_66">
+    <widget class="QWidget" name="page_XYCali_3">
      <widget class="QPushButton" name="pushButton_643">
       <property name="geometry">
        <rect>
@@ -12820,8 +11013,8 @@ border-radius: 20px;</string>
        <rect>
         <x>188</x>
         <y>598</y>
-        <width>1080</width>
-        <height>96</height>
+        <width>1070</width>
+        <height>100</height>
        </rect>
       </property>
       <property name="styleSheet">
@@ -12841,8 +11034,8 @@ border: 2px solid rgba(255, 99, 11, 255);</string>
      <widget class="QLabel" name="label_305">
       <property name="geometry">
        <rect>
-        <x>778</x>
-        <y>294</y>
+        <x>480</x>
+        <y>300</y>
         <width>357</width>
         <height>57</height>
        </rect>
@@ -12861,10 +11054,10 @@ font-family: Barlow;</string>
      <widget class="QLabel" name="label_123">
       <property name="geometry">
        <rect>
-        <x>430</x>
-        <y>238</y>
-        <width>180</width>
-        <height>180</height>
+        <x>350</x>
+        <y>280</y>
+        <width>100</width>
+        <height>100</height>
        </rect>
       </property>
       <property name="styleSheet">
@@ -13699,7 +11892,6 @@ font-family: Roboto;</string>
       </property>
      </widget>
     </widget>
-    <widget class="QWidget" name="page_69"/>
     <widget class="QWidget" name="page_FILSensorsetting">
      <widget class="QQuickWidget" name="qw_FilSensor">
       <property name="geometry">
@@ -14249,7 +12441,7 @@ font-family: Roboto;</string>
       </property>
      </widget>
     </widget>
-    <widget class="QWidget" name="page_72">
+    <widget class="QWidget" name="page_MachineSetting">
      <widget class="QPushButton" name="pushButton_668">
       <property name="geometry">
        <rect>
@@ -14703,7 +12895,7 @@ border: 2px solid rgba(255, 99, 11, 255);</string>
       </property>
      </widget>
     </widget>
-    <widget class="QWidget" name="page_74">
+    <widget class="QWidget" name="page_SelfTest_0">
      <widget class="QPushButton" name="pushButton_676">
       <property name="geometry">
        <rect>
@@ -15106,8 +13298,7 @@ font-family: barlow;
       </property>
      </widget>
     </widget>
-    <widget class="QWidget" name="page_76"/>
-    <widget class="QWidget" name="page_77">
+    <widget class="QWidget" name="page_WinStartup">
      <widget class="QPushButton" name="pushButton_354">
       <property name="geometry">
        <rect>
@@ -16046,7 +14237,7 @@ font-family: Barlow;
 border: 1px solid rgba(79, 79, 79, 255);</string>
       </property>
       <property name="currentIndex">
-       <number>2</number>
+       <number>1</number>
       </property>
       <widget class="QWidget" name="key_1">
        <widget class="QPushButton" name="pushButton_138">
@@ -18265,10 +16456,10 @@ border: 2px solid rgba(67, 67, 67, 255);</string>
      <widget class="QLabel" name="label_321">
       <property name="geometry">
        <rect>
-        <x>620</x>
-        <y>290</y>
+        <x>480</x>
+        <y>300</y>
         <width>551</width>
-        <height>48</height>
+        <height>57</height>
        </rect>
       </property>
       <property name="styleSheet">
@@ -18285,22 +16476,22 @@ font-size:48px;</string>
      <widget class="QLabel" name="label_325">
       <property name="geometry">
        <rect>
-        <x>409</x>
-        <y>235</y>
-        <width>180</width>
-        <height>180</height>
+        <x>350</x>
+        <y>280</y>
+        <width>100</width>
+        <height>100</height>
        </rect>
       </property>
       <property name="styleSheet">
        <string notr="true">background-color: rgba(255, 255, 255, 0);
-background-image: url(:/image/ze-cross.png);</string>
+image: url(:/image/ze-cross.png);</string>
       </property>
       <property name="text">
        <string/>
       </property>
      </widget>
     </widget>
-    <widget class="QWidget" name="page_85">
+    <widget class="QWidget" name="page_SelfTest_1">
      <widget class="QPushButton" name="pushButton_443">
       <property name="geometry">
        <rect>
@@ -18325,10 +16516,10 @@ background-image: url(:/image/ze-cross.png);</string>
      <widget class="QLabel" name="label_322">
       <property name="geometry">
        <rect>
-        <x>620</x>
-        <y>290</y>
+        <x>480</x>
+        <y>300</y>
         <width>551</width>
-        <height>48</height>
+        <height>57</height>
        </rect>
       </property>
       <property name="styleSheet">
@@ -18435,8 +16626,8 @@ background-color: rgba(45, 44, 43, 255);</string>
        <rect>
         <x>200</x>
         <y>600</y>
-        <width>1051</width>
-        <height>97</height>
+        <width>1070</width>
+        <height>100</height>
        </rect>
       </property>
       <property name="styleSheet">
@@ -18455,10 +16646,10 @@ border: 2px solid rgba(255, 99, 11, 255);</string>
      <widget class="QLabel" name="label_324">
       <property name="geometry">
        <rect>
-        <x>409</x>
-        <y>235</y>
-        <width>180</width>
-        <height>180</height>
+        <x>350</x>
+        <y>280</y>
+        <width>100</width>
+        <height>100</height>
        </rect>
       </property>
       <property name="styleSheet">
@@ -18478,14 +16669,14 @@ image: url(:/image/check.png);</string>
      <zorder>pushButton_691</zorder>
      <zorder>label_324</zorder>
     </widget>
-    <widget class="QWidget" name="page_86">
+    <widget class="QWidget" name="page_SelfTestSucess">
      <widget class="QLabel" name="label_328">
       <property name="geometry">
        <rect>
-        <x>409</x>
-        <y>235</y>
-        <width>180</width>
-        <height>180</height>
+        <x>350</x>
+        <y>280</y>
+        <width>100</width>
+        <height>100</height>
        </rect>
       </property>
       <property name="styleSheet">
@@ -18545,10 +16736,10 @@ background-color: rgba(45, 44, 43, 255);</string>
      <widget class="QLabel" name="label_326">
       <property name="geometry">
        <rect>
-        <x>620</x>
-        <y>290</y>
+        <x>480</x>
+        <y>300</y>
         <width>551</width>
-        <height>48</height>
+        <height>57</height>
        </rect>
       </property>
       <property name="styleSheet">

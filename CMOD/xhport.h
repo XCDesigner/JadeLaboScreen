@@ -35,7 +35,6 @@ public:
     void powercancel();
 
     /**********FILAMENT**********/
-    void setFilament(QString ,QString );
     void lup();
     void ldown();
     void rup();
@@ -78,7 +77,7 @@ public:
     void p_platformCalibration();
 
     void finish();
-    void cancle();
+    void cancleCalibration();
     /*nozzle*/
     void n_nozzleHeating();
     void n_nozzleCalibration();
@@ -102,6 +101,8 @@ public:
     void setLightOnOff(bool);
 
     void setHeattingUnit(int Index, int Temp);
+    void setHeattingUnit(int Index0, int Temp0, int Index1, int Temp1);
+    void setHeattingUnit(QString strLeftTemp, QString strRightTemp);
 
     void setFilamentSensorEnableStatus(bool NewStatus);
     void getFilamentSensorEnableStatus();
@@ -152,7 +153,6 @@ signals:
     void xNoHeating(bool );
     void xyCheck(bool );
     /*tool*/
-    void toolTestResult(bool ,bool ,bool ,bool ,bool ,bool );
     void disUseFilament(bool );
     void backFactory(bool );
     /*filament*/
@@ -205,7 +205,6 @@ private slots:
     void xhfirstTestResult(bool ,bool ,bool ,bool ,bool );
     void xhfirstTemperatureResult(int ,int ,int ,int ,int ,int ,int ,QByteArray );
     /*tool*/
-    void xhtoolTestResult(bool ,bool ,bool ,bool ,bool ,bool );
     void xhdisUseFilament(bool );
     void xhbackFactory(bool );
     /*filament*/

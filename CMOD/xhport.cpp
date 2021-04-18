@@ -20,7 +20,6 @@ XhPort::XhPort(QObject *parent) : QObject(parent)
     QObject::connect(m_package,&XhPage::firstTestResult,this,&XhPort::xhfirstTestResult);
     QObject::connect(m_package,&XhPage::firstTemperatureResult,this,&XhPort::xhfirstTemperatureResult);
     /*tool*/
-    QObject::connect(m_package,&XhPage::toolTestResult,this,&XhPort::xhtoolTestResult);
     QObject::connect(m_package,&XhPage::disUseFilament,this,&XhPort::xhdisUseFilament);
     QObject::connect(m_package,&XhPage::backFactory,this,&XhPort::xhbackFactory);
     /*filament*/
@@ -131,14 +130,6 @@ void XhPort::powercancel()
 {
     QByteArray s = QByteArray::fromHex("0104");
     QByteArray buff = m_package->groupPage(s);
-    m_serial->write(buff);
-}
-
-
-
-void XhPort::setFilament(QString l, QString r)
-{
-    QByteArray buff= m_package->filamentPage(l,r);
     m_serial->write(buff);
 }
 
@@ -464,7 +455,7 @@ void XhPort::finish()
     m_serial->write(buff);
 }
 
-void XhPort::cancle()
+void XhPort::cancleCalibration()
 {
     QByteArray s = QByteArray::fromHex("030A");
     QByteArray buff = m_package->groupPage(s);
@@ -634,6 +625,30 @@ void XhPort::setHeattingUnit(int Index, int Temp)
     s.append(1, (Temp >> 8));
     QByteArray buff = m_package->groupPage(s);
     m_serial->write(buff);
+}
+
+/**
+  * @brief  Set temperature to the heating unit
+  * @param  Index(n): Index of the heating unit. 0 for left extruder, 1 for right extruder, 2 for heatedbed
+  * @param  Temp(n): Target temperature
+  * @retval None
+  */
+void XhPort::setHeattingUnit(int Index0, int Temp0, int Index1, int Temp1)
+{
+    setHeattingUnit(Index0, Temp0);
+    setHeattingUnit(Index1, Temp1);
+}
+
+/**
+  * @brief  Set temperature to the heating unit
+  * @param  strLeftTemp: Temperature of the left nozzle, etc "200"
+  * @param  strRightTemp: Temperature of the right nozzle
+  * @retval None
+  */
+void XhPort::setHeattingUnit(QString strLeftTemp, QString strRightTemp)
+{
+    setHeattingUnit(0, strLeftTemp.toInt());
+    setHeattingUnit(1, strRightTemp.toInt());
 }
 
 /**
@@ -892,11 +907,6 @@ void XhPort::xhfirstTemperatureResult(int a, int b, int c, int d , int e, int f,
     emit firstTemperatureResult(a,b,c,d,e,f,g,data);
 }
 
-void XhPort::xhtoolTestResult(bool a, bool b, bool c, bool d, bool e, bool f)
-{
-    emit toolTestResult(a,b,c,d,e,f);
-}
-
 void XhPort::xhdisUseFilament(bool a)
 {
     emit disUseFilament(a);
@@ -1000,13 +1010,13 @@ void XhPort::xhgoOnOk()
 void XhPort::xhfinished()
 {
     emit finished();
-    setFilament("0","0");
+    setHeattingUnit("0","0");
 }
 
 void XhPort::xhcancle()
 {
     emit canelk();
-    setFilament("0","0");
+    setHeattingUnit("0","0");
 }
 
 void XhPort::xhprintend()

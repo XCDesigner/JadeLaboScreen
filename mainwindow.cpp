@@ -78,7 +78,6 @@ MainWindow::MainWindow(QWidget *parent) :
     /*filament*/
     QObject::connect(m_port,&XhPort::filamentHeated,this,&MainWindow::filamentOK);
     /*tool mach set*/
-//    QObject::connect(m_port,&XhPort::toolTestResult,this,&MainWindow::toolSelfTest);
 
     /*tool carb*/
 
@@ -119,8 +118,6 @@ MainWindow::MainWindow(QWidget *parent) :
     print = new QTimer(this);
     QObject::connect(print,&QTimer::timeout,this,&MainWindow::printTime);
     /*设置透明度淡入淡出*/
-    ui->label->setAttribute(Qt::WA_TranslucentBackground, true);
-    ui->label_3->setAttribute(Qt::WA_TranslucentBackground,true);
 
     /*设置状态栏*/
     ui->m_StatusBar->setVisible(false);
@@ -170,9 +167,6 @@ MainWindow::MainWindow(QWidget *parent) :
     m_opaCity=0.0;
     m_effect=new QGraphicsOpacityEffect();
     m_effect->setOpacity(m_opaCity);
-    ui->label->setGraphicsEffect(m_effect);
-    ui->label->setPixmap(QPixmap(LogoPic));
-
 
     ui->quickWidget_3->setSource(QUrl("qrc:/qml/CircleProgressBar.qml"));
     ui->quickWidget_3->setResizeMode(QQuickWidget::SizeRootObjectToView);
@@ -260,27 +254,22 @@ MainWindow::MainWindow(QWidget *parent) :
 #ifdef  XH_LINUX
     m_port->portInit(serialNum);
     m_port->serialOpen =true;
-    ui->stackedWidget->setCurrentIndex(33);
-    ui->quickWidget->setSource(QUrl("qrc:/pageView.qml"));
+    ui->stackedWidget->setCurrentWidget(ui->page_GetStart);
     ui->quickWidget_2->setSource(QUrl("qrc:/pageView.qml"));
-    ui->quickWidget->setResizeMode(QQuickWidget::SizeRootObjectToView);
     ui->quickWidget_2->setResizeMode(QQuickWidget::SizeRootObjectToView);
-    ui->quickWidget->show();
     ui->quickWidget_2->show();
 
     serialOpen =true;
     ui->m_StatusBar->setVisible(true);
     QObject::connect(printTimer,&QTimer::timeout,this,&MainWindow::askPrint);
     printTimer->start(1000);
-
+    m_port->powerlostsend();
 #endif
 
 #ifdef XH_WIN
-    ui->stackedWidget->setCurrentIndex(79);
-
+    ui->stackedWidget->setCurrentWidget(ui->page_WinStartup);
 #endif
 
-    m_port->powerlostsend();
     setWinPic(false);
     m_fileParser = new XhGcodeFileParser(this);
     QObject::connect(m_fileParser,&XhGcodeFileParser::parseByDirectMode,this,&MainWindow::parseMode,Qt::QueuedConnection);
@@ -392,11 +381,11 @@ void MainWindow::m_addItemToList(const QString &fileName, QString filePath, QStr
     QListWidgetItem* pItem = new QListWidgetItem(ui->listWidget_2);
     pItem->setSizeHint(QSize(930,127));
 
-        m_map.insert(pWidgetItem,pItem);
-        ui->listWidget_2->setItemWidget(pItem,pWidgetItem);
+    m_map.insert(pWidgetItem,pItem);
+    ui->listWidget_2->setItemWidget(pItem,pWidgetItem);
 
-        QObject::connect(pWidgetItem,SIGNAL(deleteItem(myListWidgetItem * )),this,SLOT(m_deleteItem(myListWidgetItem * )));
-        QObject::connect(pWidgetItem,SIGNAL(chooseFile(myListWidgetItem * )),this,SLOT(m_chooseItem(myListWidgetItem * )));
+    QObject::connect(pWidgetItem,SIGNAL(deleteItem(myListWidgetItem * )),this,SLOT(m_deleteItem(myListWidgetItem * )));
+    QObject::connect(pWidgetItem,SIGNAL(chooseFile(myListWidgetItem * )),this,SLOT(m_chooseItem(myListWidgetItem * )));
 }
 
 void MainWindow::m_adTtemtowifi(const QString &wifiname, QString wifilevel)
@@ -423,34 +412,20 @@ void MainWindow::firstStart()
     else
     {
         m_effect->setOpacity(m_opaCity);
-        ui->label->setGraphicsEffect(m_effect);
     }
     m_opaCity+=0.1;
 }
 
 void MainWindow::jumpOne()
 {
-    ui->quickWidget->setSource(QUrl("qrc:/pageView.qml"));
-    ui->quickWidget_2->setSource(QUrl("qrc:/pageView.qml"));
-
-
-    ui->quickWidget->setResizeMode(QQuickWidget::SizeRootObjectToView);
-    ui->quickWidget_2->setResizeMode(QQuickWidget::SizeRootObjectToView);
-
-    //ui->quickWidget->resize(1050,230);
-    ui->quickWidget->show();
-    ui->quickWidget_2->show();
-
     /*跳到welcome页，并初始化G1页参数*/
     ui->stackedWidget->setCurrentIndex(1);
     m_timer.stop();
     m_opaCity=0.0;
     m_effect->setOpacity(m_opaCity);
-    ui->label_3->setGraphicsEffect(m_effect);
     QObject::disconnect(&m_timer,SIGNAL(timeout()),this,SLOT(jumpOne()));
     QObject::connect(&m_timer,SIGNAL(timeout()),this,SLOT(jumpTwo()));
     m_timer.start(2000);
-
 }
 
 void MainWindow::jumpTwo()
@@ -475,7 +450,6 @@ void MainWindow::winGone()
     else
     {
         m_effect->setOpacity(m_opaCity);
-        ui->label_3->setGraphicsEffect(m_effect);
     }
     m_opaCity+=0.1;
 }
@@ -508,8 +482,6 @@ void MainWindow::jumpThree()
     QObject::disconnect(&m_timer,SIGNAL(timeout()),this,SLOT(jumpThree()));
 
     m_port->askStatus();
-
-
 }
 
 void MainWindow::winGfour(bool a, bool b, bool c, bool d, bool e)
@@ -528,7 +500,6 @@ void MainWindow::winGfour(bool a, bool b, bool c, bool d, bool e)
     {
         /*非正常启动*/
         ui->stackedWidget->setCurrentIndex(7);
-
     }
 }
 
@@ -571,7 +542,6 @@ void MainWindow::jumpFour()
     ui->stackedWidget->setCurrentIndex(6/*7*/);
     m_timer.stop();
     QObject::disconnect(&m_timer,SIGNAL(timeout()),this,SLOT(jumpFour()));
-
 }
 
 void MainWindow::jumpFive()
@@ -718,26 +688,6 @@ void MainWindow::shinetwo()
         m_effect ->setOpacity(m_opaCity);
         ui->pushButton_41->setGraphicsEffect(m_effect);
     }
-#endif
-}
-
-void MainWindow::jumptwelve()
-{
-#ifdef OLD
-    ui->m_StatusBar->setVisible(true);
-    //start 第一动画
-    m_timer.stop();
-    QObject::disconnect(&m_timer,SIGNAL(timeout()),this,SLOT(jumptwelve()));
-    ui->stackedWidget->setCurrentIndex(21);
-    QObject::connect(&m_timer,SIGNAL(timeout()),this,SLOT(jumpthirteen()));
-    //ui->label_45->setScaledContents(true);
-    timeLonger=0;
-    m_x=250;
-    m_y=200;
-    m_w=450;
-    m_h=450;
-    flicker =true;
-    m_timer.start(10);
 #endif
 }
 
@@ -960,28 +910,6 @@ void MainWindow::jumpTwenty(bool a)
     }
 }
 
-void MainWindow::jump21(qint32 a , qint32 b, qint32 c, qint32 d)
-{
-//    ui->label_133->setNum((int)(c/1000));
-//    ui->label_133->setAlignment(Qt::AlignCenter);
-    ui->label_253->setNum((int)(a/1000));
-    ui->label_253->setAlignment(Qt::AlignCenter);
-    ui->label_261->setNum((int)(d/1000));
-    ui->label_261->setAlignment(Qt::AlignCenter);
-    ui->label_256->setNum((int)(b/1000));
-    ui->label_256->setAlignment(Qt::AlignCenter);
-    if(a==0&&b==0&&c==0&&d==0)
-    {
-        ui->stackedWidget->setCurrentIndex(55);
-    }
-    else {
-        ui->stackedWidget->setCurrentIndex(56);
-    }
-
-//    m_timer.stop();
-//    QObject::disconnect(&m_timer,SIGNAL(timeout()),this,SLOT(jump21()));
-}
-
 void MainWindow::jump22(bool)
 {
     ui->stackedWidget->setCurrentIndex(59);
@@ -1071,211 +999,6 @@ void MainWindow::printTime()
     printtime++;
 }
 
-void MainWindow::filamentTimeout()
-{
-    //m_port->askTemperature();
-    if(ui->stackedWidget->currentIndex() == 30)
-    {
-        int l1 = ui->label_125->text().left(3).toInt();
-        int l2 = ui->label_125->text().mid(4,3).toInt();
-        int r = ui->label_127->text().left(3).toInt();
-        int r2 = ui->label_127->text().mid(4,3).toInt();
-
-        if(l2 != 0&& r2 != 0)
-        {
-            if(l1>(l2-5) && r>(r2-5))
-            {
-                m_timer.stop();
-                ui->pushButton_358->setText("Complete");
-                QObject::disconnect(&m_timer,SIGNAL(timeout()),this,SLOT(filamentTimeout()));
-                lheatend =false;
-                rheatend =false;
-#ifdef OLD
-                ui->pushButton_111->setStyleSheet("QPushButton{outline:none;\
-                                                  image: url(:/UnloadButtonActive.png);\
-                                                  background-color: rgb(45, 44, 43);\
-                                                  border:none;};");
-                ui->pushButton_112->setStyleSheet("QPushButton{outline:none;\
-                                                  image: url(:/LoadButtonActive.png);\
-                                                  background-color: rgb(45, 44, 43);\
-                                                  border:none;};");
-                ui->pushButton_114->setStyleSheet("QPushButton{outline:none;\
-                                                image: url(:/UnloadButtonActive.png);\
-                                                background-color: rgb(45, 44, 43);\
-                                                border:none;};");
-                ui->pushButton_115->setStyleSheet("QPushButton{outline:none;\
-                                                image: url(:/LoadButtonActive.png);\
-                                                background-color: rgb(45, 44, 43);\
-                                                border:none;};");
-#endif
-                ui->pushButton_111->setEnabled(true);
-                ui->pushButton_112->setEnabled(true);
-                ui->pushButton_114->setEnabled(true);
-                ui->pushButton_115->setEnabled(true);
-
-                ui->pushButton_105->setEnabled(true);
-                ui->pushButton_106->setEnabled(true);
-                ui->pushButton_107->setEnabled(true);
-                ui->pushButton_108->setEnabled(true);
-
-            }
-        }
-        if(l2 !=0 &&r2 == 0)
-        {
-            if(l1>(l2-5))
-            {
-                m_timer.stop();
-                QObject::disconnect(&m_timer,SIGNAL(timeout()),this,SLOT(filamentTimeout()));
-                lheatend =false;
-                rheatend =false;
-                ui->pushButton_358->setText("Complete");
-#ifdef OLD
-                ui->pushButton_111->setStyleSheet("QPushButton{outline:none;\
-                                                  image: url(:/UnloadButtonActive.png);\
-                                                  background-color: rgb(45, 44, 43);\
-                                                  border:none;};");
-                ui->pushButton_112->setStyleSheet("QPushButton{outline:none;\
-                                                  image: url(:/LoadButtonActive.png);\
-                                                  background-color: rgb(45, 44, 43);\
-                                                  border:none;};");
-                ui->pushButton_114->setStyleSheet("QPushButton{outline:none;\
-                                                    image: url(:/UnloadButton.png);\
-                                                  background-color: rgb(45, 44, 43);\
-                                                  border:none;};");
-                ui->pushButton_115->setStyleSheet("QPushButton{outline:none;\
-                                                    image: url(:/LoadButton.png);\
-                                                  background-color: rgb(45, 44, 43);\
-                                                  border:none;};");
-#endif
-                ui->pushButton_111->setEnabled(true);
-                ui->pushButton_112->setEnabled(true);
-                ui->pushButton_114->setEnabled(false);
-                ui->pushButton_115->setEnabled(false);
-
-                ui->pushButton_105->setEnabled(true);
-                ui->pushButton_106->setEnabled(true);
-                ui->pushButton_107->setEnabled(true);
-                ui->pushButton_108->setEnabled(true);
-
-            }
-        }
-        if(l2 == 0&&r2 != 0)
-        {
-            if(r>(r2-5))
-            {
-                m_timer.stop();
-                QObject::disconnect(&m_timer,SIGNAL(timeout()),this,SLOT(filamentTimeout()));
-
-                lheatend =false;
-                rheatend =false;
-                ui->pushButton_358->setText("Complete");
-#ifdef OLD
-                ui->pushButton_114->setStyleSheet("QPushButton{outline:none;\
-                                                  image: url(:/UnloadButtonActive.png);\
-                                                  background-color: rgb(45, 44, 43);\
-                                                  border:none;};");
-                ui->pushButton_115->setStyleSheet("QPushButton{outline:none;\
-                                                  image: url(:/LoadButtonActive.png);\
-                                                  background-color: rgb(45, 44, 43);\
-                                                  border:none;};");
-                ui->pushButton_111->setStyleSheet("QPushButton{outline:none;\
-                                                    image: url(:/UnloadButton.png);\
-                                                  background-color: rgb(45, 44, 43);\
-                                                  border:none;};");
-                ui->pushButton_112->setStyleSheet("QPushButton{outline:none;\
-                                                    image: url(:/LoadButton.png);\
-                                                  background-color: rgb(45, 44, 43);\
-                                                  border:none;};");
-#endif
-                ui->pushButton_111->setEnabled(false);
-                ui->pushButton_112->setEnabled(false);
-                ui->pushButton_114->setEnabled(true);
-                ui->pushButton_115->setEnabled(true);
-
-                ui->pushButton_105->setEnabled(false);
-                ui->pushButton_107->setEnabled(false);
-                ui->pushButton_108->setEnabled(false);
-            }
-        }
-        if(l2== 0&&r2==0)
-        {
-            lheatend =false;
-            rheatend =false;
-            m_timer.stop();
-            QObject::disconnect(&m_timer,SIGNAL(timeout()),this,SLOT(filamentTimeout()));
-            ui->pushButton_358->setText("Cancel");
-#ifdef OLD
-            ui->pushButton_111->setStyleSheet("QPushButton{outline:none;\
-                                                image: url(:/UnloadButton.png);\
-                                              background-color: rgb(45, 44, 43);\
-                                              border:none;};");
-            ui->pushButton_112->setStyleSheet("QPushButton{outline:none;\
-                                                image: url(:/LoadButton.png);\
-                                              background-color: rgb(45, 44, 43);\
-                                              border:none;};");
-            ui->pushButton_114->setStyleSheet("QPushButton{outline:none;\
-                                                image: url(:/UnloadButton.png);\
-                                              background-color: rgb(45, 44, 43);\
-                                              border:none;};");
-            ui->pushButton_115->setStyleSheet("QPushButton{outline:none;\
-                                                image: url(:/LoadButton.png);\
-                                              background-color: rgb(45, 44, 43);\
-                                              border:none;};");
-#endif
-            ui->pushButton_111->setEnabled(false);
-            ui->pushButton_112->setEnabled(false);
-            ui->pushButton_114->setEnabled(false);
-            ui->pushButton_115->setEnabled(false);
-
-            ui->pushButton_105->setEnabled(true);
-            ui->pushButton_107->setEnabled(true);
-            ui->pushButton_108->setEnabled(true);
-        }
-    }
-
-}
-
-void MainWindow::filamentOK(bool a)
-{
-    if(a)
-    {
-        m_timer.stop();
-        QObject::disconnect(&m_timer,SIGNAL(timeout()),this,SLOT(filamentTimeout()));
-        ui->stackedWidget->setCurrentIndex(32);
-    }
-}
-
-//void MainWindow::toolSelfTest(bool a, bool b, bool c, bool d, bool e, bool f)
-//{
-//    m_timer.stop();
-//    QObject::disconnect(&m_timer,SIGNAL(timeout()),this,SLOT(toolSelfTest()));
-//    if(!a)
-//    {
-//        ui->label_175->setPixmap(QPixmap(":/unready.png"));
-//    }
-//    if(!b)
-//    {
-//        ui->label_176->setPixmap(QPixmap(":/unready.png"));
-//    }
-//    if(!c)
-//    {
-//        ui->label_177->setPixmap(QPixmap(":/unready.png"));
-//    }
-//    if(!d)
-//    {
-//        ui->label_178->setPixmap(QPixmap(":/unready.png"));
-//    }
-//    if(!e)
-//    {
-//        ui->label_179->setPixmap(QPixmap(":/unready.png"));
-//    }
-//    if(!f)
-//    {
-//        ui->label_180->setPixmap(QPixmap(":/unready.png"));
-//    }
-//    ui->stackedWidget->setCurrentIndex(75);
-//}
-
 void MainWindow::planAdd(int a,int b)
 {
 
@@ -1338,7 +1061,7 @@ void MainWindow::planAdd(int a,int b)
 
 void MainWindow::buprint()
 {
-    ui->stackedWidget->setCurrentIndex(33);
+    ui->stackedWidget->setCurrentWidget(ui->page_GetStart);
 //    m_printsec->stop();
     m_deepTimer->stop();
     par->hide();
@@ -1377,7 +1100,6 @@ void MainWindow::m_deleteItem(myListWidgetItem *itm)
     m_delete->setName();
     QObject::connect(m_delete,SIGNAL(checkDelete(myListWidgetItem * )),this,SLOT(m_deleteTrue(myListWidgetItem * )));
     QObject::connect(m_delete,SIGNAL(checkCancel(myListWidgetItem * )),this,SLOT(m_deleteFalse(myListWidgetItem * )));
-
 }
 
 void MainWindow::m_deleteTrue(myListWidgetItem *itm)
@@ -1397,7 +1119,6 @@ void MainWindow::m_deleteTrue(myListWidgetItem *itm)
     }
     m_delete->hide();
     m_delete->close();
-
 }
 
 void MainWindow::m_deleteFalse(myListWidgetItem *itm)
@@ -1421,7 +1142,6 @@ void MainWindow::m_chooseItem(myListWidgetItem *itm)
     ui->label_73->setText(itm->m_fileName);
     ui->label_309->setText(itm->m_fileName);
     ui->label_313->setText(itm->m_fileName);
-
 }
 
 void MainWindow::connctwifi(myWifiItem *itm)
@@ -1596,7 +1316,6 @@ void MainWindow::checkFile()
 //    printTimer->stop();
 //    QObject::disconnect(printTimer,&QTimer::timeout,this,&MainWindow::checkFile);
 //     m_port->startPrint(m_WinFiel->m_filePath);
-
 }
 void MainWindow::m_chooseUEN()
 {
@@ -1616,7 +1335,7 @@ void MainWindow::m_backPrint()
 {
     m_mode->hide();
     m_mode->close();
-    ui->stackedWidget->setCurrentIndex(34);
+    ui->stackedWidget->setCurrentWidget(ui->page_GetStart);
 }
 
 void MainWindow::m_whatThis()
@@ -1642,7 +1361,6 @@ void MainWindow::wizardConfirm()
     m_opaCity=0.0;
     m_effect=new QGraphicsOpacityEffect();
     m_effect->setOpacity(m_opaCity);
-    ui->label->setGraphicsEffect(m_effect);
     QObject::connect(&m_timer,SIGNAL(timeout()),this,SLOT(firstStart()));
     ui->stackedWidget->setCurrentIndex(0);
     m_timer.start(250);
@@ -1658,13 +1376,10 @@ void MainWindow::StopPrintClicked()
         QObject::disconnect(&m_timer,SIGNAL(timeout()),this,SLOT(jumpFourteen()));
     }
     m_port->stopPrint();
-
 }
 
 void MainWindow::fileList()
 {
-
-
     QFileInfo usbfile(UDiskfind);
     if(usbfile.isDir())
     {
@@ -1679,18 +1394,6 @@ void MainWindow::fileList()
         ui->pushButton_101->setEnabled(false);
         ui->listWidget_2->setVisible(false);
         ui->listWidget->setVisible(true);
-    }
-
-}
-
-void MainWindow::carilbin()
-{
-    if((ui->label_125->text().left(3).toInt() >190 )&& (ui->label_127->text().left(3).toInt() >190))
-    {
-         m_port->p_nozzleHeating();
-         QObject::disconnect(&m_timer,&QTimer::timeout,this,&MainWindow::carilbin);
-         m_timer.stop();
-         ui->stackedWidget->setCurrentIndex(54);
     }
 }
 
@@ -1748,7 +1451,7 @@ void MainWindow::ltemp(QString a)
     mchoose->hide();
     mchoose->close();
 
-    m_port->setFilament(ui->pushButton_109->text().mid(0,3),ui->pushButton_110->text().mid(0,3));
+    m_port->setHeattingUnit(ui->pushButton_109->text().mid(0,3),ui->pushButton_110->text().mid(0,3));
 
 
     if(m_timer.isActive())
@@ -1758,7 +1461,6 @@ void MainWindow::ltemp(QString a)
     }
     QObject::connect(&m_timer,SIGNAL(timeout()),this,SLOT(filamentTimeout()));
     m_timer.start(1000);
-
 }
 
 void MainWindow::rtemp(QString a)
@@ -1775,7 +1477,7 @@ void MainWindow::rtemp(QString a)
     QObject::disconnect(mchoose,&chooseTemp::heatT,this,&MainWindow::rtemp);
     mchoose->hide();
     mchoose->close();
-    m_port->setFilament(ui->pushButton_109->text().mid(0,3),ui->pushButton_110->text().mid(0,3));
+    m_port->setHeattingUnit(ui->pushButton_109->text().mid(0,3),ui->pushButton_110->text().mid(0,3));
 
     if(m_timer.isActive())
     {
@@ -1792,7 +1494,7 @@ void MainWindow::plt(QString a)
     m_printfilament->hide();
     m_printfilament->close();
 
-    m_port->setFilament(ui->pushButton_263->text().mid(0,3),ui->pushButton_262->text().mid(0,3));
+    m_port->setHeattingUnit(ui->pushButton_263->text().mid(0,3),ui->pushButton_262->text().mid(0,3));
     ui->pushButton_263->setText(a);
 }
 
@@ -1802,7 +1504,7 @@ void MainWindow::prt(QString a)
     m_printfilament->hide();
     m_printfilament->close();
 
-    m_port->setFilament(ui->pushButton_263->text().mid(0,3),ui->pushButton_262->text().mid(0,3));
+    m_port->setHeattingUnit(ui->pushButton_263->text().mid(0,3),ui->pushButton_262->text().mid(0,3));
     ui->pushButton_262->setText(a);
 }
 
@@ -2063,31 +1765,27 @@ void MainWindow::selftest1()
     ui->label_164->setPixmap(QPixmap(selfTestOk));
     m_port->selftest2();
     ui->label_192->setPixmap(QPixmap(selfTestWait));
-
 }
 
 void MainWindow::selftest2()
 {
-ui->label_192->setPixmap(QPixmap(selfTestOk));
-m_port->selftest3();
-ui->label_193->setPixmap(QPixmap(selfTestWait));
-
+    ui->label_192->setPixmap(QPixmap(selfTestOk));
+    m_port->selftest3();
+    ui->label_193->setPixmap(QPixmap(selfTestWait));
 }
 
 void MainWindow::selftest3()
 {
-ui->label_193->setPixmap(QPixmap(selfTestOk));
-m_port->selftest4();
-ui->label_224->setPixmap(QPixmap(selfTestWait));
-
+    ui->label_193->setPixmap(QPixmap(selfTestOk));
+    m_port->selftest4();
+    ui->label_224->setPixmap(QPixmap(selfTestWait));
 }
 
 void MainWindow::selftest4()
 {
-ui->label_224->setPixmap(QPixmap(selfTestOk));
-m_port->selftest5();
-ui->label_225->setPixmap(QPixmap(selfTestWait));
-
+    ui->label_224->setPixmap(QPixmap(selfTestOk));
+    m_port->selftest5();
+    ui->label_225->setPixmap(QPixmap(selfTestWait));
 }
 
 void MainWindow::selftest5()
@@ -2102,7 +1800,7 @@ void MainWindow::selftest5()
     ui->pushButton_678->setEnabled(true);
     ui->pushButton_679->setEnabled(true);
 
-    ui->stackedWidget->setCurrentIndex(85);
+    ui->stackedWidget->setCurrentWidget(ui->page_SelfTestSucess);
 //    m_port->selfTest();
 //    ui->label_285->setPixmap(QPixmap(selfTestWait));
 }
@@ -2119,7 +1817,6 @@ void MainWindow::selftest6()
     ui->pushButton_677->setEnabled(true);
     ui->pushButton_678->setEnabled(true);
     ui->pushButton_679->setEnabled(true);
-
 }
 
 void MainWindow::parsetclose(int a, int b)
@@ -2133,7 +1830,6 @@ void MainWindow::parsetclose(int a, int b)
         m_parsetdlog= NULL;
     }
     m_printsec->start(1000);
-
 }
 
 void MainWindow::parsetexclose(bool l, bool r,bool b)
@@ -2207,10 +1903,7 @@ void MainWindow::updatebegin()
     m_update = new updateProgreBar();
     QObject::connect(this,&MainWindow::updateNum,m_update,&updateProgreBar::change);
     m_update->show();
-
 }
-
-
 
 void MainWindow::updateNumx(int q )
 {
@@ -2294,7 +1987,6 @@ void MainWindow::parseMode(QString printMode)
         m_WinFiel->hide();
         m_WinFiel->close();
     }
-
 }
 
 void MainWindow::parseDeepMode(QString printMode)
@@ -2472,7 +2164,6 @@ void MainWindow::parseDeepMode(QString printMode)
             }
         }
     }
-
 }
 
 void MainWindow::parseHeader(QString left_temp, QString right_temp, QString bed_temp, QString offset)
@@ -2692,7 +2383,6 @@ void MainWindow::on_platnext_clicked()
     ui->stackedWidget->setCurrentIndex(12);
     QObject::connect(&m_timer,SIGNAL(timeout()),this,SLOT(jumpEight()));
     m_timer.start(2000);
-
 }
 
 void MainWindow::on_readynext_clicked()
@@ -2703,59 +2393,9 @@ void MainWindow::on_readynext_clicked()
     m_timer.start(3000);
 }
 
-void MainWindow::on_pushButton_12_clicked()
-{
-    /*第二个PAGEVIEW界面*/
-    ui->stackedWidget->setCurrentIndex(18);
-    ui->quickWidget_2->setSource(QUrl("qrc:/pageView.qml"));
-    ui->quickWidget_2->setResizeMode(QQuickWidget::SizeRootObjectToView);
-    ui->quickWidget_2->show();
-}
-
-void MainWindow::on_pushButton_23_clicked()
-{
-    /*G6按钮闪烁*/
-    ui->stackedWidget->setCurrentIndex(19);
-    if(m_timer.isActive())
-    {
-        m_timer.stop();
-    }
-    QObject::connect(&m_timer,SIGNAL(timeout()),this,SLOT(shineone()));
-    flicker =true;
-    timeLonger = 0;
-    m_opaCity = 0.0;
-    m_effect->setOpacity(m_opaCity);
-    m_timer.start(50);
-
-}
-
 void MainWindow::on_pushButton_24_clicked()
 {
-    if(m_timer.isActive())
-    {
-        m_timer.stop();
-        QObject::disconnect(&m_timer,SIGNAL(timeout()),this,SLOT(shineone()));
-    }
-      ui->stackedWidget->setCurrentIndex(20);
-      ui->widget_2->setVisible(false);
-      ui->label_43->setVisible(false);
-      ui->pushButton_42->setVisible(false);
 
-}
-
-void MainWindow::on_pushButton_41_clicked()
-{
-    ui->label_43->setVisible(true);
-    ui->pushButton_42->setVisible(true);
-
-    ui->label_44->setVisible(false);
-    ui->pushButton_41->setVisible(false);
-    ui->pushButton_44->setVisible(false);
-
-    m_timer.stop();
-    QObject::disconnect(&m_timer,SIGNAL(timeout()),this,SLOT(shinetwo()));
-    QObject::connect(&m_timer,SIGNAL(timeout()),this,SLOT(jumptwelve()));
-    m_timer.start(2000);
 }
 
 void MainWindow::on_pushButton_31_clicked()
@@ -2858,23 +2498,21 @@ void MainWindow::on_pushButton_56_clicked()
 #endif
 }
 
-
 void MainWindow::on_pushButton_74_clicked()
 {
-    ui->stackedWidget->setCurrentIndex(30);
+    ui->stackedWidget->setCurrentWidget(ui->page_ChangeFilament);
 }
 
 void MainWindow::on_pushButton_73_clicked()
 {
-    ui->stackedWidget->setCurrentIndex(33);
+    ui->stackedWidget->setCurrentWidget(ui->page_GetStart);
 }
 
 void MainWindow::on_pushButton_129_clicked()
 {
-    ui->stackedWidget->setCurrentIndex(34);
+    ui->stackedWidget->setCurrentWidget(ui->page_GetStart);
     ui->listWidget->setVisible(true);
     ui->listWidget_2->setVisible(false);
-
 }
 
 void MainWindow::ShowPauseDialogClicked()
@@ -2891,55 +2529,9 @@ void MainWindow::ShowParameterDialogClicked()
     m_printsec->stop();
 }
 
-void MainWindow::on_pushButton_134_clicked()
-{
-    ui->pushButton_134->setStyleSheet("QPushButton{border-top-left-radius: 20px;\
-                                      border-bottom-left-radius: 20px;\
-                                      border-left: 2px solid rgb(81, 83, 86);\
-                                      border-top: 2px solid rgb(81, 83, 86);\
-                                      border-bottom: 2px solid rgb(81, 83, 86);\
-                                      background-color: rgba(45, 44, 43, 255);\
-                                      font-weight: bold;\
-                                      font-family:Barlow;outline:none;\
-                                      color: rgb(255, 255, 255);\
-                                      font-size: 32px;\
-};");
-    ui->pushButton_101->setStyleSheet("QPushButton{\
-                                      background-color: rgb(32, 32, 32);\
-                                      font-weight: bold;\
-                                      font-family:Barlow;outline:none;\
-                                      color: rgb(255, 255, 255);\
-                                      font-size: 32px;\
-                                      border-top-right-radius: 20px;\
-                                      border-bottom-right-radius: 20px;\
-                                      border-right: 2px solid rgb(81, 83, 86);\
-                                      border-top: 2px solid rgb(81, 83, 86);\
-                                      border-bottom: 2px solid rgb(81, 83, 86);\
-};");
-    ui->listWidget->setVisible(true);
-    ui->listWidget_2->setVisible(false);
-
-    ui->listWidget->clear();
-    QDir *m_dir=new QDir(localPath);
-    QStringList filter;
-    QFileInfoList m_fileinfo = m_dir->entryInfoList();
-
-    int i = 0;
-    for(i = 0;i< m_fileinfo.count();i++)
-    {
-        m_addItemToList(m_fileinfo.at(i).fileName(),m_fileinfo.at(i).filePath());
-
-    }
-
-}
-//void MainWindow::on_pushButton_135_clicked()
-//{
-
-//}
-
 void MainWindow::on_pushButton_169_clicked()
 {
-    ui->stackedWidget->setCurrentIndex(34);
+    ui->stackedWidget->setCurrentWidget(ui->page_GetStart);
     ui->m_StatusBar->setVisible(true);
     m_mode = new selectMode(this);
     m_mode->show();
@@ -2965,7 +2557,7 @@ void MainWindow::on_pushButton_176_clicked()
 
 void MainWindow::on_pushButton_177_clicked()
 {
-    ui->stackedWidget->setCurrentIndex(74);
+    ui->stackedWidget->setCurrentWidget(ui->page_MachineSetting);
 }
 
 void MainWindow::on_pushButton_182_clicked()
@@ -2996,7 +2588,6 @@ void MainWindow::on_pushButton_194_clicked()
 void MainWindow::on_pushButton_195_clicked()
 {
     ui->stackedWidget->setCurrentIndex(43);
-
 }
 
 void MainWindow::on_pushButton_200_clicked()
@@ -3056,187 +2647,35 @@ void MainWindow::on_pushButton_230_clicked()
 
 void MainWindow::on_pushButton_235_clicked()
 {
-    ui->stackedWidget->setCurrentIndex(52);
+    ui->stackedWidget->setCurrentWidget(ui->page_PlatformCali_0);
 }
 
 void MainWindow::on_pushButton_236_clicked()
 {
-    ui->stackedWidget->setCurrentIndex(60);
+    ui->stackedWidget->setCurrentWidget(ui->page_NozzleCali_0);
 }
 
 void MainWindow::on_pushButton_237_clicked()
 {
-    ui->stackedWidget->setCurrentIndex(65);
-}
-
-void MainWindow::on_pushButton_242_clicked()
-{
-    m_port->setFilament("200","200");
-    ui->stackedWidget->setCurrentIndex(53);
-    QObject::connect(&m_timer,&QTimer::timeout,this,&MainWindow::carilbin);
-    m_timer.start(1000);
-}
-
-//void MainWindow::on_pushButton_258_clicked()
-//{
-//    m_port->finish();
-//}
-
-void MainWindow::on_pushButton_259_clicked()
-{
-    ui->stackedWidget->setCurrentIndex(54);
-    m_port->p_platformCalibration();
+    ui->stackedWidget->setCurrentWidget(ui->page_XYCali_0);
 }
 
 void MainWindow::on_pushButton_286_clicked()
 {
      ui->stackedWidget->setCurrentIndex(61);
-     m_port->setFilament("200","200");
+     m_port->setHeattingUnit("200","200");
      QObject::connect(&m_timer,&QTimer::timeout,this,&MainWindow::nozzled);
      m_timer.start(1000);
 }
 
-void MainWindow::on_pushButton_287_clicked()
-{
-    ui->stackedWidget->setCurrentIndex(51);
-}
-
-void MainWindow::on_pushButton_302_clicked()
-{
-    m_port->setFilament("0","0");
-    ui->stackedWidget->setCurrentIndex(51);
-}
-
-void MainWindow::on_pushButton_303_clicked()
-{
-    ui->stackedWidget->setCurrentIndex(62);
-//    QObject::connect(&m_timer,SIGNAL(timeout()),this,SLOT(jump23()));
-//    m_timer.start(2000);
-    m_port->n_nozzleCalibration();
-}
-
-void MainWindow::on_pushButton_631_clicked()
-{
-    ui->stackedWidget->setCurrentIndex(66);
-    m_port->setFilament("200","200");
-    QObject::connect(&m_timer,&QTimer::timeout,this,&MainWindow::xyheated);
-    m_timer.start(1000);
-
-}
-
-void MainWindow::on_pushButton_632_clicked()
-{
-    ui->stackedWidget->setCurrentIndex(51);
-}
-
-void MainWindow::on_pushButton_647_clicked()
-{
-    m_port->x_platformCalibration();
-    ui->stackedWidget->setCurrentIndex(51);
-}
-
-void MainWindow::on_pushButton_3_clicked()
-{
-    m_timer.stop();
-    QObject::disconnect(&m_timer,SIGNAL(timeout()),this,SLOT(jumpEleven()));
-     ui->stackedWidget->setCurrentIndex(41);
-}
-
-void MainWindow::on_pushButton_17_clicked()
-{
-     ui->stackedWidget->setCurrentIndex(41);
-}
-
 void MainWindow::on_pushButton_233_clicked()
 {
-    ui->stackedWidget->setCurrentIndex(41);
+    ui->stackedWidget->setCurrentWidget(ui->page_Tools);
 }
 
 void MainWindow::on_pushButton_180_clicked()
 {
-    ui->stackedWidget->setCurrentIndex(41);
-}
-
-void MainWindow::on_pushButton_5_clicked()
-{
-    if(m_timer.isActive())
-    {
-        m_timer.stop();
-        QObject::disconnect(&m_timer,SIGNAL(timeout()),this,SLOT(jumpEleven()));
-    }
-    ui->stackedWidget->setCurrentIndex(33);
-}
-
-void MainWindow::on_pushButton_2_clicked()
-{
-    if(m_timer.isActive())
-    {
-        m_timer.stop();
-        QObject::disconnect(&m_timer,SIGNAL(timeout()),this,SLOT(jumpEleven()));
-    }
-    ui->stackedWidget->setCurrentIndex(30);
-}
-
-void MainWindow::on_pushButton_4_clicked()
-{
-    if(m_timer.isActive())
-    {
-        m_timer.stop();
-        QObject::disconnect(&m_timer,SIGNAL(timeout()),this,SLOT(jumpEleven()));
-    }
-    ui->stackedWidget->setCurrentIndex(24);
-#ifdef XH_VIS
-    ui->m_StatusBar->setVisible(false);
-#endif
-}
-
-void MainWindow::on_pushButton_7_clicked()
-{
-    ui->stackedWidget->setCurrentIndex(30);
-}
-
-void MainWindow::on_pushButton_8_clicked()
-{
-    ui->stackedWidget->setCurrentIndex(41);
-}
-
-void MainWindow::on_pushButton_9_clicked()
-{
-    ui->stackedWidget->setCurrentIndex(24);
-#ifdef XH_VIS
-    ui->m_StatusBar->setVisible(false);
-#endif
-}
-
-void MainWindow::on_pushButton_14_clicked()
-{
-    ui->stackedWidget->setCurrentIndex(73);
-}
-
-void MainWindow::on_pushButton_16_clicked()
-{
-    ui->stackedWidget->setCurrentIndex(30);
-}
-
-void MainWindow::on_pushButton_18_clicked()
-{
-    ui->stackedWidget->setCurrentIndex(24);
-#ifdef XH_VIS
-    ui->m_StatusBar->setVisible(false);
-#endif
-}
-
-void MainWindow::on_pushButton_90_clicked()
-{
-    /*start 第一动画点击设置*/
-    if(m_timer.isActive())
-    {
-        m_timer.stop();
-        QObject::disconnect(&m_timer,SIGNAL(timeout()),this,SLOT(jumpthirteen()));
-        ui->stackedWidget->setCurrentIndex(38);
-        isPrintFirstAnim = true;
-        isStartFristAnim = true;
-    }
+    ui->stackedWidget->setCurrentWidget(ui->page_Tools);
 }
 
 void MainWindow::on_pushButton_92_clicked()
@@ -3267,8 +2706,7 @@ void MainWindow::on_pushButton_91_clicked()
 
 void MainWindow::on_pushButton_85_clicked()
 {
-
-    ui->stackedWidget->setCurrentIndex(33);
+    ui->stackedWidget->setCurrentWidget(ui->page_GetStart);
 }
 
 void MainWindow::on_pushButton_86_clicked()
@@ -3284,7 +2722,7 @@ void MainWindow::on_pushButton_86_clicked()
 //        timeLonger=0;
 //        flicker =true;
 //    }
-    ui->stackedWidget->setCurrentIndex(30);
+    ui->stackedWidget->setCurrentWidget(ui->page_ChangeFilament);
 }
 
 void MainWindow::on_pushButton_88_clicked()
@@ -3300,107 +2738,102 @@ void MainWindow::on_pushButton_88_clicked()
         timeLonger=0;
         flicker =true;
     }
-    ui->stackedWidget->setCurrentIndex(41);
-}
-
-void MainWindow::on_pushButton_117_clicked()
-{
-
+    ui->stackedWidget->setCurrentWidget(ui->page_Tools);
 }
 
 void MainWindow::on_pushButton_116_clicked()
 {
-    ui->stackedWidget->setCurrentIndex(30);
+    ui->stackedWidget->setCurrentWidget(ui->page_ChangeFilament);
 }
 
 void MainWindow::on_pushButton_48_clicked()
 {
-    ui->stackedWidget->setCurrentIndex(33);
+    ui->stackedWidget->setCurrentWidget(ui->page_GetStart);
 }
 
 void MainWindow::on_pushButton_49_clicked()
 {
-    ui->stackedWidget->setCurrentIndex(30);
+    ui->stackedWidget->setCurrentWidget(ui->page_ChangeFilament);
 }
 
 void MainWindow::on_pushButton_50_clicked()
 {
-    ui->stackedWidget->setCurrentIndex(41);
+    ui->stackedWidget->setCurrentWidget(ui->page_Tools);
 }
 
 void MainWindow::on_pushButton_54_clicked()
 {
-    ui->stackedWidget->setCurrentIndex(33);
+    ui->stackedWidget->setCurrentWidget(ui->page_GetStart);
 }
 
 void MainWindow::on_pushButton_55_clicked()
 {
-    ui->stackedWidget->setCurrentIndex(30);
+    ui->stackedWidget->setCurrentWidget(ui->page_ChangeFilament);
 }
 
 void MainWindow::on_pushButton_57_clicked()
 {
-    ui->stackedWidget->setCurrentIndex(41);
+    ui->stackedWidget->setCurrentWidget(ui->page_Tools);
 }
 
 void MainWindow::on_pushButton_58_clicked()
 {
-    ui->stackedWidget->setCurrentIndex(33);
+    ui->stackedWidget->setCurrentWidget(ui->page_GetStart);
 }
 
 void MainWindow::on_pushButton_59_clicked()
 {
-    ui->stackedWidget->setCurrentIndex(30);
+    ui->stackedWidget->setCurrentWidget(ui->page_ChangeFilament);
 }
 
 void MainWindow::on_pushButton_61_clicked()
 {
-    ui->stackedWidget->setCurrentIndex(41);
+    ui->stackedWidget->setCurrentWidget(ui->page_Tools);
 }
 
 void MainWindow::on_pushButton_65_clicked()
 {
-    ui->stackedWidget->setCurrentIndex(33);
+    ui->stackedWidget->setCurrentWidget(ui->page_GetStart);
 }
 
 void MainWindow::on_pushButton_66_clicked()
 {
-    ui->stackedWidget->setCurrentIndex(30);
+    ui->stackedWidget->setCurrentWidget(ui->page_ChangeFilament);
 }
 
 void MainWindow::on_pushButton_67_clicked()
 {
-    ui->stackedWidget->setCurrentIndex(41);
+    ui->stackedWidget->setCurrentWidget(ui->page_Tools);
 }
 
 void MainWindow::on_pushButton_69_clicked()
 {
-    ui->stackedWidget->setCurrentIndex(33);
+    ui->stackedWidget->setCurrentWidget(ui->page_GetStart);
 }
 
 void MainWindow::on_pushButton_70_clicked()
 {
-    ui->stackedWidget->setCurrentIndex(30);
+    ui->stackedWidget->setCurrentWidget(ui->page_ChangeFilament);
 }
 
 void MainWindow::on_pushButton_71_clicked()
 {
-    ui->stackedWidget->setCurrentIndex(41);
+    ui->stackedWidget->setCurrentWidget(ui->page_Tools);
 }
 
 void MainWindow::on_pushButton_75_clicked()
 {
-    ui->stackedWidget->setCurrentIndex(41);
+    ui->stackedWidget->setCurrentWidget(ui->page_Tools);
 }
 
 void MainWindow::on_pushButton_170_clicked()
 {
-    ui->stackedWidget->setCurrentIndex(33);
+    ui->stackedWidget->setCurrentWidget(ui->page_GetStart);
 }
 
 void MainWindow::on_pushButton_172_clicked()
 {
-    ui->stackedWidget->setCurrentIndex(30);
+    ui->stackedWidget->setCurrentWidget(ui->page_ChangeFilament);
 }
 
 void MainWindow::on_pushButton_173_clicked()
@@ -3428,12 +2861,12 @@ void MainWindow::on_pushButton_316_clicked()
 
 void MainWindow::on_pushButton_649_clicked()
 {
-    ui->stackedWidget->setCurrentIndex(33);
+    ui->stackedWidget->setCurrentWidget(ui->page_GetStart);
 }
 
 void MainWindow::on_pushButton_650_clicked()
 {
-    ui->stackedWidget->setCurrentIndex(30);
+    ui->stackedWidget->setCurrentWidget(ui->page_ChangeFilament);
 }
 
 void MainWindow::on_pushButton_648_clicked()
@@ -3446,12 +2879,12 @@ void MainWindow::on_pushButton_648_clicked()
 
 void MainWindow::on_pushButton_653_clicked()
 {
-    ui->stackedWidget->setCurrentIndex(33);
+    ui->stackedWidget->setCurrentWidget(ui->page_GetStart);
 }
 
 void MainWindow::on_pushButton_654_clicked()
 {
-    ui->stackedWidget->setCurrentIndex(30);
+    ui->stackedWidget->setCurrentWidget(ui->page_ChangeFilament);
 }
 
 void MainWindow::on_pushButton_652_clicked()
@@ -3469,17 +2902,17 @@ void MainWindow::on_pushButton_341_clicked()
 
 void MainWindow::on_pushButton_670_clicked()
 {
-    ui->stackedWidget->setCurrentIndex(34);
+    ui->stackedWidget->setCurrentWidget(ui->page_GetStart);
 }
 
 void MainWindow::on_pushButton_668_clicked()
 {
-    ui->stackedWidget->setCurrentIndex(30);
+    ui->stackedWidget->setCurrentWidget(ui->page_ChangeFilament);
 }
 
 void MainWindow::on_pushButton_669_clicked()
 {
-    ui->stackedWidget->setCurrentIndex(41);
+    ui->stackedWidget->setCurrentWidget(ui->page_Tools);
 }
 
 void MainWindow::on_pushButton_671_clicked()
@@ -3492,27 +2925,27 @@ void MainWindow::on_pushButton_671_clicked()
 
 void MainWindow::on_pushButton_667_clicked()
 {
-    ui->stackedWidget->setCurrentIndex(41);
+    ui->stackedWidget->setCurrentWidget(ui->page_Tools);
 }
 
 void MainWindow::on_pushButton_655_clicked()
 {
-    ui->stackedWidget->setCurrentIndex(41);
+    ui->stackedWidget->setCurrentWidget(ui->page_Tools);
 }
 
 void MainWindow::on_pushButton_651_clicked()
 {
-    ui->stackedWidget->setCurrentIndex(41);
+    ui->stackedWidget->setCurrentWidget(ui->page_Tools);
 }
 
 void MainWindow::on_pushButton_179_clicked()
 {
-    ui->stackedWidget->setCurrentIndex(33);
+    ui->stackedWidget->setCurrentWidget(ui->page_GetStart);
 }
 
 void MainWindow::on_pushButton_181_clicked()
 {
-    ui->stackedWidget->setCurrentIndex(30);
+    ui->stackedWidget->setCurrentWidget(ui->page_ChangeFilament);
 }
 
 void MainWindow::on_pushButton_178_clicked()
@@ -3525,12 +2958,12 @@ void MainWindow::on_pushButton_178_clicked()
 
 void MainWindow::on_pushButton_186_clicked()
 {
-    ui->stackedWidget->setCurrentIndex(33);
+    ui->stackedWidget->setCurrentWidget(ui->page_GetStart);
 }
 
 void MainWindow::on_pushButton_185_clicked()
 {
-    ui->stackedWidget->setCurrentIndex(30);
+    ui->stackedWidget->setCurrentWidget(ui->page_ChangeFilament);
 }
 
 void MainWindow::on_pushButton_187_clicked()
@@ -3543,12 +2976,12 @@ void MainWindow::on_pushButton_187_clicked()
 
 void MainWindow::on_pushButton_193_clicked()
 {
-    ui->stackedWidget->setCurrentIndex(33);
+    ui->stackedWidget->setCurrentWidget(ui->page_GetStart);
 }
 
 void MainWindow::on_pushButton_190_clicked()
 {
-    ui->stackedWidget->setCurrentIndex(30);
+    ui->stackedWidget->setCurrentWidget(ui->page_ChangeFilament);
 }
 
 void MainWindow::on_pushButton_191_clicked()
@@ -3561,12 +2994,12 @@ void MainWindow::on_pushButton_191_clicked()
 
 void MainWindow::on_pushButton_199_clicked()
 {
-    ui->stackedWidget->setCurrentIndex(33);
+    ui->stackedWidget->setCurrentWidget(ui->page_GetStart);
 }
 
 void MainWindow::on_pushButton_197_clicked()
 {
-    ui->stackedWidget->setCurrentIndex(30);
+    ui->stackedWidget->setCurrentWidget(ui->page_ChangeFilament);
 }
 
 void MainWindow::on_pushButton_198_clicked()
@@ -3579,12 +3012,12 @@ void MainWindow::on_pushButton_198_clicked()
 
 void MainWindow::on_pushButton_202_clicked()
 {
-    ui->stackedWidget->setCurrentIndex(33);
+    ui->stackedWidget->setCurrentWidget(ui->page_GetStart);
 }
 
 void MainWindow::on_pushButton_203_clicked()
 {
-    ui->stackedWidget->setCurrentIndex(30);
+    ui->stackedWidget->setCurrentWidget(ui->page_ChangeFilament);
 }
 
 void MainWindow::on_pushButton_205_clicked()
@@ -3597,12 +3030,12 @@ void MainWindow::on_pushButton_205_clicked()
 
 void MainWindow::on_pushButton_210_clicked()
 {
-    ui->stackedWidget->setCurrentIndex(33);
+    ui->stackedWidget->setCurrentWidget(ui->page_GetStart);
 }
 
 void MainWindow::on_pushButton_209_clicked()
 {
-    ui->stackedWidget->setCurrentIndex(30);
+    ui->stackedWidget->setCurrentWidget(ui->page_ChangeFilament);
 }
 
 void MainWindow::on_pushButton_211_clicked()
@@ -3615,12 +3048,12 @@ void MainWindow::on_pushButton_211_clicked()
 
 void MainWindow::on_pushButton_216_clicked()
 {
-    ui->stackedWidget->setCurrentIndex(33);
+    ui->stackedWidget->setCurrentWidget(ui->page_GetStart);
 }
 
 void MainWindow::on_pushButton_214_clicked()
 {
-    ui->stackedWidget->setCurrentIndex(30);
+    ui->stackedWidget->setCurrentWidget(ui->page_ChangeFilament);
 }
 
 void MainWindow::on_pushButton_215_clicked()
@@ -3633,12 +3066,12 @@ void MainWindow::on_pushButton_215_clicked()
 
 void MainWindow::on_pushButton_220_clicked()
 {
-    ui->stackedWidget->setCurrentIndex(33);
+    ui->stackedWidget->setCurrentWidget(ui->page_GetStart);
 }
 
 void MainWindow::on_pushButton_223_clicked()
 {
-    ui->stackedWidget->setCurrentIndex(30);
+    ui->stackedWidget->setCurrentWidget(ui->page_ChangeFilament);
 }
 
 void MainWindow::on_pushButton_221_clicked()
@@ -3651,12 +3084,12 @@ void MainWindow::on_pushButton_221_clicked()
 
 void MainWindow::on_pushButton_227_clicked()
 {
-    ui->stackedWidget->setCurrentIndex(33);
+    ui->stackedWidget->setCurrentWidget(ui->page_GetStart);
 }
 
 void MainWindow::on_pushButton_226_clicked()
 {
-    ui->stackedWidget->setCurrentIndex(30);
+    ui->stackedWidget->setCurrentWidget(ui->page_ChangeFilament);
 }
 
 void MainWindow::on_pushButton_228_clicked()
@@ -3667,19 +3100,14 @@ void MainWindow::on_pushButton_228_clicked()
 #endif
 }
 
-void MainWindow::on_pushButton_243_clicked()
-{
-    ui->stackedWidget->setCurrentIndex(51);
-}
-
 void MainWindow::on_pushButton_231_clicked()
 {
-    ui->stackedWidget->setCurrentIndex(30);
+    ui->stackedWidget->setCurrentWidget(ui->page_ChangeFilament);
 }
 
 void MainWindow::on_pushButton_232_clicked()
 {
-    ui->stackedWidget->setCurrentIndex(33);
+    ui->stackedWidget->setCurrentWidget(ui->page_GetStart);
 }
 
 void MainWindow::on_pushButton_234_clicked()
@@ -3692,17 +3120,17 @@ void MainWindow::on_pushButton_234_clicked()
 
 void MainWindow::on_pushButton_240_clicked()
 {
-    ui->stackedWidget->setCurrentIndex(33);
+    ui->stackedWidget->setCurrentWidget(ui->page_GetStart);
 }
 
 void MainWindow::on_pushButton_238_clicked()
 {
-    ui->stackedWidget->setCurrentIndex(30);
+    ui->stackedWidget->setCurrentWidget(ui->page_ChangeFilament);
 }
 
 void MainWindow::on_pushButton_239_clicked()
 {
-    ui->stackedWidget->setCurrentIndex(41);
+    ui->stackedWidget->setCurrentWidget(ui->page_Tools);
 }
 
 void MainWindow::on_pushButton_241_clicked()
@@ -3713,25 +3141,19 @@ void MainWindow::on_pushButton_241_clicked()
 #endif
 }
 
-void MainWindow::on_pushButton_248_clicked()
-{
-    m_port->setFilament("0","0");
-    ui->stackedWidget->setCurrentIndex(51);
-}
-
 void MainWindow::on_pushButton_256_clicked()
 {
-    ui->stackedWidget->setCurrentIndex(33);
+    ui->stackedWidget->setCurrentWidget(ui->page_GetStart);
 }
 
 void MainWindow::on_pushButton_257_clicked()
 {
-    ui->stackedWidget->setCurrentIndex(30);
+    ui->stackedWidget->setCurrentWidget(ui->page_ChangeFilament);
 }
 
 void MainWindow::on_pushButton_254_clicked()
 {
-    ui->stackedWidget->setCurrentIndex(41);
+    ui->stackedWidget->setCurrentWidget(ui->page_Tools);
 }
 
 void MainWindow::on_pushButton_255_clicked()
@@ -3744,17 +3166,17 @@ void MainWindow::on_pushButton_255_clicked()
 
 void MainWindow::on_pushButton_284_clicked()
 {
-    ui->stackedWidget->setCurrentIndex(33);
+    ui->stackedWidget->setCurrentWidget(ui->page_GetStart);
 }
 
 void MainWindow::on_pushButton_285_clicked()
 {
-    ui->stackedWidget->setCurrentIndex(30);
+    ui->stackedWidget->setCurrentWidget(ui->page_ChangeFilament);
 }
 
 void MainWindow::on_pushButton_282_clicked()
 {
-    ui->stackedWidget->setCurrentIndex(41);
+    ui->stackedWidget->setCurrentWidget(ui->page_Tools);
 }
 
 void MainWindow::on_pushButton_283_clicked()
@@ -3765,31 +3187,19 @@ void MainWindow::on_pushButton_283_clicked()
 #endif
 }
 
-void MainWindow::on_pushButton_292_clicked()
-{
-    m_port->setFilament("0","0");
-    ui->stackedWidget->setCurrentIndex(51);
-}
-
-//void MainWindow::on_pushButton_297_clicked()
-//{
-//    m_port->setFilament("0","0");
-//    ui->stackedWidget->setCurrentIndex(51);
-//}
-
 void MainWindow::on_pushButton_298_clicked()
 {
-    ui->stackedWidget->setCurrentIndex(33);
+    ui->stackedWidget->setCurrentWidget(ui->page_GetStart);
 }
 
 void MainWindow::on_pushButton_301_clicked()
 {
-    ui->stackedWidget->setCurrentIndex(30);
+    ui->stackedWidget->setCurrentWidget(ui->page_ChangeFilament);
 }
 
 void MainWindow::on_pushButton_300_clicked()
 {
-    ui->stackedWidget->setCurrentIndex(41);
+    ui->stackedWidget->setCurrentWidget(ui->page_Tools);
 }
 
 void MainWindow::on_pushButton_299_clicked()
@@ -3802,17 +3212,17 @@ void MainWindow::on_pushButton_299_clicked()
 
 void MainWindow::on_pushButton_628_clicked()
 {
-    ui->stackedWidget->setCurrentIndex(33);
+    ui->stackedWidget->setCurrentWidget(ui->page_GetStart);
 }
 
 void MainWindow::on_pushButton_629_clicked()
 {
-    ui->stackedWidget->setCurrentIndex(30);
+    ui->stackedWidget->setCurrentWidget(ui->page_ChangeFilament);
 }
 
 void MainWindow::on_pushButton_627_clicked()
 {
-    ui->stackedWidget->setCurrentIndex(41);
+    ui->stackedWidget->setCurrentWidget(ui->page_Tools);
 }
 
 void MainWindow::on_pushButton_630_clicked()
@@ -3830,26 +3240,19 @@ void MainWindow::on_pushButton_637_clicked()
     ui->stackedWidget->setCurrentIndex(51);
 }
 
-//void MainWindow::on_pushButton_642_clicked()
-//{
-//    m_timer.stop();
-//    QObject::disconnect(&m_timer,SIGNAL(timeout()),this,SLOT(jump25()));
-//    ui->stackedWidget->setCurrentIndex(51);
-//}
-
 void MainWindow::on_pushButton_643_clicked()
 {
-    ui->stackedWidget->setCurrentIndex(33);
+    ui->stackedWidget->setCurrentWidget(ui->page_GetStart);
 }
 
 void MainWindow::on_pushButton_644_clicked()
 {
-    ui->stackedWidget->setCurrentIndex(30);
+    ui->stackedWidget->setCurrentWidget(ui->page_ChangeFilament);
 }
 
 void MainWindow::on_pushButton_646_clicked()
 {
-    ui->stackedWidget->setCurrentIndex(41);
+    ui->stackedWidget->setCurrentWidget(ui->page_Tools);
 }
 
 void MainWindow::on_pushButton_645_clicked()
@@ -3879,17 +3282,16 @@ void MainWindow::on_pushButton_347_clicked()
     ui->pushButton_679->setEnabled(false);
     m_port->selftest1();
     ui->label_164->setPixmap(QPixmap(selfTestWait));
-
 }
 
 void MainWindow::on_pushButton_342_clicked()
 {
-    ui->stackedWidget->setCurrentIndex(76);
+    ui->stackedWidget->setCurrentWidget(ui->page_SelfTest_0);
 }
 
 void MainWindow::on_pushButton_348_clicked()
 {
-    ui->stackedWidget->setCurrentIndex(74);
+    ui->stackedWidget->setCurrentWidget(ui->page_MachineSetting);
 
     ui->label_164->clear();
     ui->label_192->clear();
@@ -4041,11 +3443,6 @@ void MainWindow::on_pushButton_340_clicked()
 #endif
 }
 
-void MainWindow::on_pushButton_343_clicked()
-{
-    ui->lineEdit->insert(" ");
-}
-
 void MainWindow::on_pushButton_679_clicked()
 {
     ui->label_164->clear();
@@ -4054,7 +3451,7 @@ void MainWindow::on_pushButton_679_clicked()
     ui->label_224->clear();
     ui->label_225->clear();
     ui->label_285->clear();
-    ui->stackedWidget->setCurrentIndex(33);
+    ui->stackedWidget->setCurrentWidget(ui->page_GetStart);
 }
 
 void MainWindow::on_pushButton_676_clicked()
@@ -4065,7 +3462,7 @@ void MainWindow::on_pushButton_676_clicked()
     ui->label_224->clear();
     ui->label_225->clear();
     ui->label_285->clear();
-    ui->stackedWidget->setCurrentIndex(30);
+    ui->stackedWidget->setCurrentWidget(ui->page_ChangeFilament);
 }
 
 void MainWindow::on_pushButton_678_clicked()
@@ -4076,7 +3473,7 @@ void MainWindow::on_pushButton_678_clicked()
     ui->label_224->clear();
     ui->label_225->clear();
     ui->label_285->clear();
-    ui->stackedWidget->setCurrentIndex(41);
+    ui->stackedWidget->setCurrentWidget(ui->page_Tools);
 }
 
 void MainWindow::on_pushButton_677_clicked()
@@ -4093,19 +3490,14 @@ void MainWindow::on_pushButton_677_clicked()
 #endif
 }
 
-void MainWindow::on_pushButton_89_clicked()
-{
-    //
-}
-
 void MainWindow::on_pushButton_128_clicked()
 {
-    ui->stackedWidget->setCurrentIndex(30);
+    ui->stackedWidget->setCurrentWidget(ui->page_ChangeFilament);
 }
 
 void MainWindow::on_pushButton_125_clicked()
 {
-    ui->stackedWidget->setCurrentIndex(41);
+    ui->stackedWidget->setCurrentWidget(ui->page_Tools);
 }
 
 void MainWindow::on_pushButton_126_clicked()
@@ -4118,17 +3510,17 @@ void MainWindow::on_pushButton_126_clicked()
 
 void MainWindow::on_pushButton_130_clicked()
 {
-    ui->stackedWidget->setCurrentIndex(30);
+    ui->stackedWidget->setCurrentWidget(ui->page_ChangeFilament);
 }
 
 void MainWindow::on_pushButton_133_clicked()
 {
-    ui->stackedWidget->setCurrentIndex(33);
+    ui->stackedWidget->setCurrentWidget(ui->page_GetStart);
 }
 
 void MainWindow::on_pushButton_132_clicked()
 {
-    ui->stackedWidget->setCurrentIndex(41);
+    ui->stackedWidget->setCurrentWidget(ui->page_Tools);
 }
 
 void MainWindow::on_pushButton_131_clicked()
@@ -4158,7 +3550,7 @@ void MainWindow::on_pushButton_168_clicked()
 
 void MainWindow::on_pushButton_118_clicked()
 {
-    ui->stackedWidget->setCurrentIndex(41);
+    ui->stackedWidget->setCurrentWidget(ui->page_Tools);
 }
 
 void MainWindow::on_pushButton_113_clicked()
@@ -4169,94 +3561,16 @@ void MainWindow::on_pushButton_113_clicked()
 #endif
 }
 
-void MainWindow::on_pushButton_149_clicked()
-{
-    ui->lineEdit->insert(ui->pushButton_149->text());
-}
-
-void MainWindow::on_pushButton_151_clicked()
-{
-    ui->lineEdit->insert(ui->pushButton_151->text());
-}
-
-void MainWindow::on_pushButton_148_clicked()
-{
-    ui->lineEdit->insert(ui->pushButton_148->text());
-}
-
-void MainWindow::on_pushButton_160_clicked()
-{
-
-    /*设置返回函数*/
-//    if(isPrintFirstAnim)
-//    {
-//        if(isStartFristAnim)
-//        {
-//            m_timer.stop();
-//            isStartFristAnim = false;
-//            QObject::disconnect(&m_timer,SIGNAL(timeout()),this,SLOT(jumpthirteen()));
-//            QObject::connect(&m_timer,SIGNAL(timeout()),this,SLOT(jumpSeventeen()));
-//            ui->stackedWidget->setCurrentIndex(35);
-//            m_timer.start(15);
-//        }
-//        else
-//        {
-//            ui->stackedWidget->setCurrentIndex(35);
-//            m_timer.start(15);
-//        }
-//        ui->stackedWidget->setCurrentIndex(35);
-//        m_timer.start(15);
-//    }
-//    else
-//    {
-//        if(isStartFristAnim)
-//        {
-//            m_timer.stop();
-//            isStartFristAnim = false;
-//            QObject::disconnect(&m_timer,SIGNAL(timeout()),this,SLOT(jumpFourteen()));
-//            QObject::connect(&m_timer,SIGNAL(timeout()),this,SLOT(jumpEightteen()));
-//            ui->stackedWidget->setCurrentIndex(36);
-//            m_timer.start(15);
-//        }
-//        else
-//        {
-//            ui->stackedWidget->setCurrentIndex(36);
-//            m_timer.start(15);
-//        }
-//        ui->stackedWidget->setCurrentIndex(36);
-//        m_timer.start(15);
-//    }
-}
-
 void MainWindow::on_pushButton_167_clicked()
 {
     m_port->regainPrint();
-
-}
-
-void MainWindow::on_pushButton_44_clicked()
-{
-    ui->widget_2->setVisible(false);
-    ui->m_StatusBar->setVisible(true);
-    QObject::disconnect(&m_timer,SIGNAL(timeout()),this,SLOT(shinetwo()));
-    m_timer.stop();
-}
-
-void MainWindow::on_pushButton_42_clicked()
-{
-    m_timer.stop();
-    ui->m_StatusBar->setVisible(true);
-    ui->widget_2->setVisible(false);
-    //QObject::disconnect(&m_timer,SIGNAL(timeout()),this,SLOT(shinetwo()));
-    QObject::disconnect(&m_timer,SIGNAL(timeout()),this,SLOT(jumptwelve()));
-
 }
 
 void MainWindow::on_pushButton_354_clicked()
 {
     m_port->portInit(ui->comboBox_15->currentText());
     m_port->serialOpen =true;
-    ui->stackedWidget->setCurrentIndex(33);
+    ui->stackedWidget->setCurrentWidget(ui->page_GetStart);
     m_port->powerlostsend();
     serialOpen =true;
     ui->m_StatusBar->setVisible(true);
@@ -4264,190 +3578,11 @@ void MainWindow::on_pushButton_354_clicked()
     printTimer->start(1000);
 }
 
-
-
 void MainWindow::on_pushButton_355_clicked()
 {
-    ui->stackedWidget->setCurrentIndex(30);
-    m_port->setFilament("0","0");
+    ui->stackedWidget->setCurrentWidget(ui->page_ChangeFilament);
+    m_port->setHeattingUnit("0","0");
 }
-
-void MainWindow::on_pushButton_253_clicked()
-{
-    m_port->cancle();
-}
-
-void MainWindow::on_pushButton_365_clicked()
-{
-    m_port->setFilament("0","0");
-    ui->stackedWidget->setCurrentIndex(51);
-    m_port->carbinfinished();
-}
-
-void MainWindow::on_pushButton_367_clicked()
-{
-    ui->stackedWidget->setCurrentIndex(57);
-}
-
-void MainWindow::on_pushButton_375_clicked()
-{
-    ui->stackedWidget->setCurrentIndex(58);
-}
-
-void MainWindow::on_pushButton_308_clicked()
-{
-    ui->stackedWidget->setCurrentIndex(51);
-    m_port->setFilament("0","0");
-
-}
-
-void MainWindow::on_pushButton_109_clicked()
-{
-    mchoose = new chooseTemp(this);
-    mchoose->init(ui->pushButton_109->text());
-    ui->pushButton_358->setText("Cancel");
-#ifdef OLD
-    ui->pushButton_111->setStyleSheet("QPushButton{outline:none;\
-                                        image: url(:/UnloadButton.png);\
-                                      background-color: rgb(45, 44, 43);\
-                                      border:none;};");
-    ui->pushButton_112->setStyleSheet("QPushButton{outline:none;\
-                                        image: url(:/LoadButton.png);\
-                                      background-color: rgb(45, 44, 43);\
-                                      border:none;};");
-    ui->pushButton_114->setStyleSheet("QPushButton{outline:none;\
-                                        image: url(:/UnloadButton.png);\
-                                      background-color: rgb(45, 44, 43);\
-                                      border:none;};");
-    ui->pushButton_115->setStyleSheet("QPushButton{outline:none;\
-                                        image: url(:/LoadButton.png);\
-                                      background-color: rgb(45, 44, 43);\
-                                      border:none;};");
-#endif
-    ui->pushButton_111->setEnabled(false);
-    ui->pushButton_112->setEnabled(false);
-    ui->pushButton_114->setEnabled(false);
-    ui->pushButton_115->setEnabled(false);
-
-    ui->pushButton_105->setEnabled(false);
-    ui->pushButton_106->setEnabled(false);
-    ui->pushButton_107->setEnabled(false);
-    ui->pushButton_108->setEnabled(false);
-    QObject::connect(mchoose,&chooseTemp::heatT,this,&MainWindow::ltemp);
-    mchoose->show();
-}
-
-void MainWindow::on_pushButton_110_clicked()
-{
-        mchoose = new chooseTemp(this);
-        mchoose->init(ui->pushButton_110->text());
-        ui->pushButton_358->setText("Cancel");
-#ifdef OLD
-        ui->pushButton_111->setStyleSheet("QPushButton{outline:none;\
-                                            image: url(:/UnloadButton.png);\
-                                          background-color: rgb(45, 44, 43);\
-                                          border:none;};");
-        ui->pushButton_112->setStyleSheet("QPushButton{outline:none;\
-                                            image: url(:/LoadButton.png);\
-                                          background-color: rgb(45, 44, 43);\
-                                          border:none;};");
-        ui->pushButton_114->setStyleSheet("QPushButton{outline:none;\
-                                            image: url(:/UnloadButton.png);\
-                                          background-color: rgb(45, 44, 43);\
-                                          border:none;};");
-        ui->pushButton_115->setStyleSheet("QPushButton{outline:none;\
-                                            image: url(:/LoadButton.png);\
-                                          background-color: rgb(45, 44, 43);\
-                                          border:none;};");
-#endif
-        ui->pushButton_111->setEnabled(false);
-        ui->pushButton_112->setEnabled(false);
-        ui->pushButton_114->setEnabled(false);
-        ui->pushButton_115->setEnabled(false);
-
-        ui->pushButton_105->setEnabled(false);
-        ui->pushButton_107->setEnabled(false);
-        ui->pushButton_108->setEnabled(false);
-        mchoose->show();
-        QObject::connect(mchoose,&chooseTemp::heatT,this,&MainWindow::rtemp);
-}
-
-void MainWindow::on_pushButton_358_clicked()
-{
-    ui->pushButton_109->setText("000°C");
-    ui->pushButton_110->setText("000°C");
-    m_port->setFilament("0","0");
-#ifdef OLD
-    ui->pushButton_111->setStyleSheet("QPushButton{outline:none;\
-                                        image: url(:/UnloadButton.png);\
-                                      background-color: rgb(45, 44, 43);\
-                                      border:none;};");
-    ui->pushButton_112->setStyleSheet("QPushButton{outline:none;\
-                                        image: url(:/LoadButton.png);\
-                                      background-color: rgb(45, 44, 43);\
-                                      border:none;};");
-    ui->pushButton_114->setStyleSheet("QPushButton{outline:none;\
-                                        image: url(:/UnloadButton.png);\
-                                      background-color: rgb(45, 44, 43);\
-                                      border:none;};");
-    ui->pushButton_115->setStyleSheet("QPushButton{outline:none;\
-                                        image: url(:/LoadButton.png);\
-                                      background-color: rgb(45, 44, 43);\
-                                      border:none;};");
-#endif
-    ui->pushButton_111->setEnabled(false);
-    ui->pushButton_112->setEnabled(false);
-    ui->pushButton_114->setEnabled(false);
-    ui->pushButton_115->setEnabled(false);
-
-    ui->pushButton_105->setEnabled(true);
-    ui->pushButton_107->setEnabled(true);
-    ui->pushButton_108->setEnabled(true);
-}
-
-void MainWindow::on_pushButton_111_clicked()
-{
-    m_port->lup();
-}
-
-void MainWindow::on_pushButton_112_clicked()
-{
-    m_port->ldown();
-}
-
-void MainWindow::on_pushButton_114_clicked()
-{
-    m_port->rup();
-}
-
-void MainWindow::on_pushButton_115_clicked()
-{
-    m_port->rdown();
-}
-
-void MainWindow::on_pushButton_105_clicked()
-{
-    ui->stackedWidget->setCurrentIndex(33);
-}
-
-void MainWindow::on_pushButton_107_clicked()
-{
-    ui->stackedWidget->setCurrentIndex(41);
-}
-
-void MainWindow::on_pushButton_108_clicked()
-{
-    ui->stackedWidget->setCurrentIndex(24);
-#ifdef XH_VIS
-    ui->m_StatusBar->setVisible(false);
-#endif
-}
-
-//void MainWindow::on_pushButton_360_clicked()
-//{
-
-//}
-
 
 void MainWindow::on_pushButton_99_clicked()
 {
@@ -4480,483 +3615,9 @@ void MainWindow::on_pushButton_262_clicked()
     QObject::connect(m_printfilament,&printFlament::heatT,this,&MainWindow::prt);
 }
 
-void MainWindow::on_pushButton_124_clicked()
-{
-
-}
-
-
-
-
-
 void MainWindow::on_pushButton_100_clicked()
 {
-    ui->stackedWidget->setCurrentIndex(33);
-}
-
-void MainWindow::on_pushButton_101_clicked()
-{
-    ui->pushButton_134->setStyleSheet("QPushButton{border-top-left-radius: 20px;\
-                                      border-bottom-left-radius: 20px;\
-                                      border-left: 2px solid rgb(81, 83, 86);\
-                                      border-top: 2px solid rgb(81, 83, 86);\
-                                      border-bottom: 2px solid rgb(81, 83, 86);\
-                                      background-color: rgb(32, 32, 32);\
-                                      font-weight: bold;\
-                                      font-family:Barlow;outline:none;\
-                                      color: rgb(255, 255, 255);\
-                                      font-size: 32px;\
-};");
-    ui->pushButton_101->setStyleSheet("QPushButton{\
-                                      background-color: rgba(45, 44, 43, 255);\
-                                      font-weight: bold;\
-                                      font-family:Barlow;outline:none;\
-                                      color: rgb(255, 255, 255);\
-                                      font-size: 32px;\
-                                      border-top-right-radius: 20px;\
-                                      border-bottom-right-radius: 20px;\
-                                      border-right: 2px solid rgb(81, 83, 86);\
-                                      border-top: 2px solid rgb(81, 83, 86);\
-                                      border-bottom: 2px solid rgb(81, 83, 86);\
-};");
-
-        ui->listWidget->setVisible(false);
-        ui->listWidget_2->setVisible(true);
-
-        ui->listWidget_2->clear();
-        QDir *m_dir=new QDir(UDiskPath);
-        QStringList filter;
-        QFileInfoList m_fileinfo = m_dir->entryInfoList();
-        int i = 0;
-        for(i = 0;i< m_fileinfo.count();i++)
-        {
-            m_addItemToList(m_fileinfo.at(i).fileName(),m_fileinfo.at(i).filePath(),"udisk");
-                    qDebug()<<m_fileinfo.at(i).filePath();
-                    qDebug()<<m_fileinfo.at(i).fileName();
-        }
-
-}
-
-
-
-void MainWindow::on_pushButton_371_clicked()
-{
-    m_port->setFilament("0","0");
-    ui->stackedWidget->setCurrentIndex(51);
-    m_port->carbincancel();
-}
-
-void MainWindow::on_pushButton_373_clicked()
-{
-    m_port->setFilament("0","0");
-    ui->stackedWidget->setCurrentIndex(51);
-    m_port->carbincancel();
-}
-
-void MainWindow::on_pushButton_164_clicked()
-{
-    /*切换小写*/
-    ui->stackedWidget_2->setCurrentIndex(1);
-}
-
-void MainWindow::on_pushButton_393_clicked()
-{
-    ui->stackedWidget_2->setCurrentIndex(0);
-}
-
-void MainWindow::on_pushButton_313_clicked()
-{
-    ui->stackedWidget_2->setCurrentIndex(2);
-}
-
-void MainWindow::on_pushButton_387_clicked()
-{
-    ui->stackedWidget_2->setCurrentIndex(2);
-}
-
-void MainWindow::on_pushButton_418_clicked()
-{
-    ui->stackedWidget_2->setCurrentIndex(0);
-}
-
-void MainWindow::on_pushButton_138_clicked()
-{
-    ui->lineEdit->insert(ui->pushButton_138->text());
-}
-
-void MainWindow::on_pushButton_139_clicked()
-{
-    ui->lineEdit->insert(ui->pushButton_139->text());
-}
-
-void MainWindow::on_pushButton_142_clicked()
-{
-    ui->lineEdit->insert(ui->pushButton_142->text());
-}
-
-void MainWindow::on_pushButton_143_clicked()
-{
-    ui->lineEdit->insert(ui->pushButton_143->text());
-}
-
-void MainWindow::on_pushButton_144_clicked()
-{
-    ui->lineEdit->insert(ui->pushButton_144->text());
-}
-
-void MainWindow::on_pushButton_145_clicked()
-{
-    ui->lineEdit->insert(ui->pushButton_145->text());
-}
-
-void MainWindow::on_pushButton_150_clicked()
-{
-    ui->lineEdit->insert(ui->pushButton_150->text());
-}
-
-void MainWindow::on_pushButton_152_clicked()
-{
-    ui->lineEdit->insert(ui->pushButton_152->text());
-}
-
-void MainWindow::on_pushButton_153_clicked()
-{
-    ui->lineEdit->insert(ui->pushButton_153->text());
-}
-
-void MainWindow::on_pushButton_154_clicked()
-{
-    ui->lineEdit->insert(ui->pushButton_154->text());
-}
-
-void MainWindow::on_pushButton_155_clicked()
-{
-    ui->lineEdit->insert(ui->pushButton_155->text());
-}
-
-void MainWindow::on_pushButton_156_clicked()
-{
-    ui->lineEdit->insert(ui->pushButton_156->text());
-}
-
-void MainWindow::on_pushButton_157_clicked()
-{
-    ui->lineEdit->insert(ui->pushButton_157->text());
-}
-
-void MainWindow::on_pushButton_158_clicked()
-{
-    ui->lineEdit->insert(ui->pushButton_158->text());
-}
-
-void MainWindow::on_pushButton_159_clicked()
-{
-    ui->lineEdit->insert(ui->pushButton_159->text());
-}
-
-void MainWindow::on_pushButton_163_clicked()
-{
-    ui->lineEdit->insert(ui->pushButton_163->text());
-}
-
-void MainWindow::on_pushButton_165_clicked()
-{
-    ui->lineEdit->insert(ui->pushButton_165->text());
-}
-
-void MainWindow::on_pushButton_166_clicked()
-{
-    ui->lineEdit->insert(ui->pushButton_166->text());
-}
-
-void MainWindow::on_pushButton_258_clicked()
-{
-    ui->lineEdit->insert(ui->pushButton_258->text());
-}
-
-void MainWindow::on_pushButton_265_clicked()
-{
-    ui->lineEdit->insert(ui->pushButton_265->text());
-}
-
-void MainWindow::on_pushButton_267_clicked()
-{
-    ui->lineEdit->insert(ui->pushButton_267->text());
-}
-
-void MainWindow::on_pushButton_297_clicked()
-{
-    ui->lineEdit->insert(ui->pushButton_297->text());
-}
-
-void MainWindow::on_pushButton_311_clicked()
-{
-    ui->lineEdit->insert(ui->pushButton_311->text());
-}
-
-void MainWindow::on_pushButton_385_clicked()
-{
-    ui->lineEdit->insert(ui->pushButton_385->text());
-}
-
-void MainWindow::on_pushButton_382_clicked()
-{
-    ui->lineEdit->insert(ui->pushButton_382->text());
-}
-
-void MainWindow::on_pushButton_398_clicked()
-{
-    ui->lineEdit->insert(ui->pushButton_398->text());
-}
-
-void MainWindow::on_pushButton_381_clicked()
-{
-    ui->lineEdit->insert(ui->pushButton_381->text());
-}
-
-void MainWindow::on_pushButton_397_clicked()
-{
-    ui->lineEdit->insert(ui->pushButton_397->text());
-}
-
-void MainWindow::on_pushButton_389_clicked()
-{
-    ui->lineEdit->insert(ui->pushButton_389->text());
-}
-
-void MainWindow::on_pushButton_392_clicked()
-{
-    ui->lineEdit->insert(ui->pushButton_392->text());
-}
-
-void MainWindow::on_pushButton_407_clicked()
-{
-    ui->lineEdit->insert(ui->pushButton_407->text());
-}
-
-void MainWindow::on_pushButton_399_clicked()
-{
-    ui->lineEdit->insert(ui->pushButton_399->text());
-}
-
-void MainWindow::on_pushButton_384_clicked()
-{
-    ui->lineEdit->insert(ui->pushButton_384->text());
-}
-
-void MainWindow::on_pushButton_383_clicked()
-{
-    ui->lineEdit->insert(ui->pushButton_383->text());
-}
-
-void MainWindow::on_pushButton_404_clicked()
-{
-    ui->lineEdit->insert(ui->pushButton_404->text());
-}
-
-void MainWindow::on_pushButton_388_clicked()
-{
-    ui->lineEdit->insert(ui->pushButton_388->text());
-}
-
-void MainWindow::on_pushButton_390_clicked()
-{
-    ui->lineEdit->insert(ui->pushButton_390->text());
-}
-
-void MainWindow::on_pushButton_395_clicked()
-{
-    ui->lineEdit->insert(ui->pushButton_395->text());
-}
-
-void MainWindow::on_pushButton_406_clicked()
-{
-    ui->lineEdit->insert(ui->pushButton_406->text());
-}
-
-void MainWindow::on_pushButton_403_clicked()
-{
-    ui->lineEdit->insert(ui->pushButton_403->text());
-}
-
-void MainWindow::on_pushButton_386_clicked()
-{
-    ui->lineEdit->insert(ui->pushButton_386->text());
-}
-
-void MainWindow::on_pushButton_394_clicked()
-{
-    ui->lineEdit->insert(ui->pushButton_394->text());
-}
-
-void MainWindow::on_pushButton_405_clicked()
-{
-    ui->lineEdit->insert(ui->pushButton_405->text());
-}
-
-void MainWindow::on_pushButton_360_clicked()
-{
-    ui->lineEdit->insert(ui->pushButton_360->text());
-}
-
-void MainWindow::on_pushButton_400_clicked()
-{
-    ui->lineEdit->insert(ui->pushButton_400->text());
-}
-
-void MainWindow::on_pushButton_396_clicked()
-{
-    ui->lineEdit->insert(ui->pushButton_396->text());
-}
-
-void MainWindow::on_pushButton_379_clicked()
-{
-    ui->lineEdit->insert(ui->pushButton_379->text());
-}
-
-void MainWindow::on_pushButton_345_clicked()
-{
-    ui->lineEdit->insert(ui->pushButton_345->text());
-}
-
-void MainWindow::on_pushButton_380_clicked()
-{
-    ui->lineEdit->insert(ui->pushButton_380->text());
-}
-
-void MainWindow::on_pushButton_416_clicked()
-{
-    ui->lineEdit->insert(ui->pushButton_416->text());
-}
-
-void MainWindow::on_pushButton_413_clicked()
-{
-    ui->lineEdit->insert(ui->pushButton_413->text());
-}
-
-void MainWindow::on_pushButton_429_clicked()
-{
-    ui->lineEdit->insert(ui->pushButton_429->text());
-}
-
-void MainWindow::on_pushButton_412_clicked()
-{
-    ui->lineEdit->insert(ui->pushButton_412->text());
-}
-
-void MainWindow::on_pushButton_428_clicked()
-{
-    ui->lineEdit->insert(ui->pushButton_428->text());
-}
-
-void MainWindow::on_pushButton_420_clicked()
-{
-    ui->lineEdit->insert(ui->pushButton_420->text());
-}
-
-void MainWindow::on_pushButton_423_clicked()
-{
-    ui->lineEdit->insert(ui->pushButton_423->text());
-}
-
-void MainWindow::on_pushButton_438_clicked()
-{
-    ui->lineEdit->insert(ui->pushButton_438->text());
-}
-
-void MainWindow::on_pushButton_430_clicked()
-{
-    ui->lineEdit->insert(ui->pushButton_430->text());
-}
-
-void MainWindow::on_pushButton_415_clicked()
-{
-    ui->lineEdit->insert(ui->pushButton_415->text());
-}
-
-void MainWindow::on_pushButton_414_clicked()
-{
-    ui->lineEdit->insert(ui->pushButton_414->text());
-}
-
-void MainWindow::on_pushButton_435_clicked()
-{
-    ui->lineEdit->insert(ui->pushButton_435->text());
-}
-
-void MainWindow::on_pushButton_419_clicked()
-{
-    ui->lineEdit->insert(ui->pushButton_419->text());
-}
-
-void MainWindow::on_pushButton_421_clicked()
-{
-    ui->lineEdit->insert(ui->pushButton_421->text());
-}
-
-void MainWindow::on_pushButton_426_clicked()
-{
-    ui->lineEdit->insert(ui->pushButton_426->text());
-}
-
-void MainWindow::on_pushButton_437_clicked()
-{
-    ui->lineEdit->insert(ui->pushButton_437->text());
-}
-
-void MainWindow::on_pushButton_434_clicked()
-{
-    ui->lineEdit->insert(ui->pushButton_434->text());
-}
-
-void MainWindow::on_pushButton_417_clicked()
-{
-    ui->lineEdit->insert(ui->pushButton_417->text());
-}
-
-void MainWindow::on_pushButton_425_clicked()
-{
-    ui->lineEdit->insert(ui->pushButton_425->text());
-}
-
-void MainWindow::on_pushButton_424_clicked()
-{
-    ui->lineEdit->insert(ui->pushButton_424->text());
-}
-
-void MainWindow::on_pushButton_436_clicked()
-{
-    ui->lineEdit->insert(ui->pushButton_436->text());
-}
-
-void MainWindow::on_pushButton_409_clicked()
-{
-    ui->lineEdit->insert(ui->pushButton_409->text());
-}
-
-void MainWindow::on_pushButton_431_clicked()
-{
-    ui->lineEdit->insert(ui->pushButton_431->text());
-}
-
-void MainWindow::on_pushButton_427_clicked()
-{
-    ui->lineEdit->insert(ui->pushButton_427->text());
-}
-
-void MainWindow::on_pushButton_410_clicked()
-{
-    ui->lineEdit->insert(ui->pushButton_410->text());
-}
-
-void MainWindow::on_pushButton_408_clicked()
-{
-    ui->lineEdit->insert(ui->pushButton_408->text());
-}
-
-void MainWindow::on_pushButton_411_clicked()
-{
-    ui->lineEdit->insert(ui->pushButton_411->text());
+    ui->stackedWidget->setCurrentWidget(ui->page_GetStart);
 }
 
 void MainWindow::on_pushButton_689_clicked()
@@ -5029,39 +3690,9 @@ void MainWindow::on_pushButton_690_clicked()
 };");
 }
 
-void MainWindow::on_pushButton_642_clicked()
-{
-    ui->stackedWidget->setCurrentIndex(74);
-}
-
-void MainWindow::on_pushButton_312_clicked()
-{
-    ui->lineEdit->backspace();
-}
-
-void MainWindow::on_pushButton_401_clicked()
-{
-    ui->lineEdit->backspace();
-}
-
-void MainWindow::on_pushButton_432_clicked()
-{
-    ui->lineEdit->backspace();
-}
-
-void MainWindow::on_pushButton_433_clicked()
-{
-    ui->lineEdit->insert(" ");
-}
-
-void MainWindow::on_pushButton_402_clicked()
-{
-    ui->lineEdit->insert(" ");
-}
-
 void MainWindow::on_pushButton_688_clicked()
 {
-    ui->stackedWidget->setCurrentIndex(74);
+    ui->stackedWidget->setCurrentWidget(ui->page_MachineSetting);
 }
 
 void MainWindow::on_pushButton_447_clicked()
@@ -5079,7 +3710,7 @@ void MainWindow::on_pushButton_692_clicked()
     ui->label_224->clear();
     ui->label_225->clear();
     ui->label_285->clear();
-    ui->stackedWidget->setCurrentIndex(76);
+    ui->stackedWidget->setCurrentWidget(ui->page_SelfTest_0);
 }
 
 void MainWindow::on_pushButton_453_clicked(bool checked)
@@ -5106,7 +3737,7 @@ void MainWindow::on_pushButton_454_clicked(bool checked)
 
 void MainWindow::on_pushButton_455_clicked()
 {
-    ui->stackedWidget->setCurrentIndex(33);
+    ui->stackedWidget->setCurrentWidget(ui->page_GetStart);
 #ifdef XH_VIS
     ui->m_StatusBar->setVisible(true);
 #endif
@@ -5116,5 +3747,3 @@ void MainWindow::on_pushButton_350_clicked()
 {
     ui->stackedWidget->setCurrentWidget(ui->page_LightSetting);
 }
-
-

@@ -28,5 +28,5 @@ void MainWindow::LightSettingTimer()
 
 void MainWindow::on_pushButton_346_clicked()
 {
-    ui->stackedWidget->setCurrentWidget(ui->page_72);
+    ui->stackedWidget->setCurrentWidget(ui->page_MachineSetting);
 }
