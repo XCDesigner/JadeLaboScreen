@@ -6,6 +6,7 @@ Rectangle {
     property bool isPressed: false
     property bool enable: true
     property alias text: title.text
+    property alias font: title.font
     property int index: 0
 
     color: "#2d2c2b"
@@ -28,7 +29,25 @@ Rectangle {
     }
 
     onEnableChanged: {
-        color = "#000000"
+        if(enable == false)
+        {
+            color = "#000000"
+        }
+        else
+        {
+            if(enable == true)
+            {
+                if(isPressed == true)
+                    color = "#ff630b"
+                else
+                    color = "#2d2c2b"
+            }
+            else
+            {
+                color = "#000000"
+            }
+        }
+
     }
 
     Text {

@@ -3,24 +3,13 @@ import QtQuick.Window 2.2
 import QtQuick.Layouts 1.2
 import QtQuick.Controls 2.0
 import QtQuick.Controls.Styles 1.4
+
 Rectangle{
   id: base
 
   property alias leftPercent: canvas.leftPercent
   property alias rightPercent: canvas.rightPercent
 
-
-  signal receFromWidgetT(int l ,int r)
-  function setPercent(l,r)
-  {
-    leftPercent = l;
-    rightPercent = r;
-  }
-
-  Component.onCompleted:
-  {
-      base.receFromWidgetT.connect(base.setPercent);
-  }
   onLeftPercentChanged: {
     canvas.requestPaint()
   }
@@ -45,17 +34,17 @@ Rectangle{
 
       ctx.beginPath();
       ctx.lineWidth = 2;
-      ctx.fillStyle = "#202023";
-      ctx.ellipse(1, 1, parent.width-2, parent.height-2);
+      ctx.fillStyle = "#000000";
+      ctx.ellipse(0, 0, parent.width-2, parent.height-2);
       ctx.closePath();
       ctx.fill();
 
-      // ctx.beginPath();
-      // ctx.lineWidth = 2;
-      // ctx.fillStyle = "#e0e0e0";
-      // ctx.ellipse(32, 32, parent.width-16, parent.height-16);
-      // ctx.closePath();
-      // ctx.fill();
+      ctx.beginPath();
+      ctx.lineWidth = 2;
+      ctx.fillStyle = "#202023";
+      ctx.ellipse(58, 58, parent.width-116, parent.height-116);
+      ctx.closePath();
+      ctx.fill();
 
       ctx.lineCap = "round"
       ctx.lineWidth = 58;

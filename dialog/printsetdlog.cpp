@@ -62,8 +62,8 @@ PrintSetDlog::PrintSetDlog(QWidget *parent) :
     ui->qw_BackupMode->rootObject()->setProperty("index", 10);
     QObject::connect(ui->qw_BackupMode->rootObject(), SIGNAL(clicked(int)), this, SLOT(backupModeChange(int)));
 
-    QObject::connect(ui->qw_Increase->rootObject(), SIGNAL(press()), this, SLOT(onIncreaseClicked));
-    QObject::connect(ui->qw_Decrease->rootObject(), SIGNAL(press()), this, SLOT(onDecreaseClicked));
+    QObject::connect(ui->qw_Increase->rootObject(), SIGNAL(press()), this, SLOT(onIncreaseClicked()));
+    QObject::connect(ui->qw_Decrease->rootObject(), SIGNAL(press()), this, SLOT(onDecreaseClicked()));
 }
 
 PrintSetDlog::~PrintSetDlog()
@@ -73,13 +73,13 @@ PrintSetDlog::~PrintSetDlog()
 
 void PrintSetDlog::init(QByteArray InitData)
 {
-    temp_percent[0] = InitData[0];
-    temp_percent[1] = InitData[1];
-    temp_percent[2] = InitData[2];
-    fan_percent[0] = InitData[3];
-    fan_percent[1] = InitData[4];
-    feedrate_percent = (uint16_t)(((uint8_t)InitData[6] << 8) | (uint8_t)InitData[5]);
-    platform_height = (uint32_t)(((uint8_t)InitData[10] << 8) | ((uint8_t)InitData[9] << 8) | ((uint8_t)InitData[8] << 8) | (uint8_t)InitData[7]);
+    temp_percent[0] = InitData[3];
+    temp_percent[1] = InitData[4];
+    temp_percent[2] = InitData[5];
+    fan_percent[0] = InitData[6];
+    fan_percent[1] = InitData[7];
+    feedrate_percent = (uint16_t)(((uint8_t)InitData[9] << 8) | (uint8_t)InitData[8]);
+    platform_height = (uint32_t)(((uint8_t)InitData[13] << 8) | ((uint8_t)InitData[12] << 8) | ((uint8_t)InitData[11] << 8) | (uint8_t)InitData[10]);
     QString a, b, c, d, e, f, g;
     a.setNum(temp_percent[0]);
     b.setNum(temp_percent[1]);
@@ -87,25 +87,28 @@ void PrintSetDlog::init(QByteArray InitData)
     d.setNum(fan_percent[0]);
     e.setNum(fan_percent[1]);
     f.setNum(feedrate_percent);
-    f.setNum(platform_height, 'g', 2);
+    g.setNum(platform_height, 'g', 2);
     initnum(a, b, c, d, e, f, g);
     ret_value.clear();
 }
 
 void PrintSetDlog::initnum(QString a, QString b, QString c, QString d, QString e, QString f, QString g)
 {
-    ui->qw_LeftTemp->rootObject()->setProperty("text", "Left Temp / "+a+"°C");
+//    ui->qw_LeftTemp->rootObject()->setProperty("text", "Left Temp / "+a+"°C");
+//    ui->qw_LeftTemp->rootObject()->setProperty("text", "Left Temp / "+a+"°C");
+//    ui->qw_RightTemp->rootObject()->setProperty("text", "Right Temp / "+b+"°C");
+//    ui->qw_BedTemp->rootObject()->setProperty("text", "Bed Temp "+c+"°C");
+//    ui->qw_LeftFan->rootObject()->setProperty("text", "Left Fan Speed "+d+"%");
+//    ui->qw_RightFan->rootObject()->setProperty("text", "Right Fan Speed "+e+"%");
+//    ui->qw_FeedRatePercent->rootObject()->setProperty("text", "Feedrate "+f+"%");
+//    ui->qw_PlatformHeight->rootObject()->setProperty("text", "Platform Height "+g+"mm");
 
-    ui->qw_RightTemp->rootObject()->setProperty("text", "Right Temp / "+b+"°C");
-
-    ui->qw_BedTemp->rootObject()->setProperty("text", "Bed Temp "+c+"°C");
-
+    ui->qw_LeftTemp->rootObject()->setProperty("text", "Left Temp / "+a+"%");
+    ui->qw_RightTemp->rootObject()->setProperty("text", "Right Temp / "+b+"%");
+    ui->qw_BedTemp->rootObject()->setProperty("text", "Bed Temp "+c+"%");
     ui->qw_LeftFan->rootObject()->setProperty("text", "Left Fan Speed "+d+"%");
-
     ui->qw_RightFan->rootObject()->setProperty("text", "Right Fan Speed "+e+"%");
-
     ui->qw_FeedRatePercent->rootObject()->setProperty("text", "Feedrate "+f+"%");
-
     ui->qw_PlatformHeight->rootObject()->setProperty("text", "Platform Height "+g+"mm");
 }
 

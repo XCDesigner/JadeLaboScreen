@@ -274,10 +274,6 @@ int XhPage::analysis(QByteArray package)
                                 }
                             }
                         break;
-                    /********************04族*********/
-                        case '\x04':
-                            tCalibration(data);
-                            break;
                     /**************05族**************/
                     case '\x05':
                         switch (data[1]) {
@@ -365,19 +361,8 @@ int XhPage::analysis(QByteArray package)
 
                             case '\x04':
                                 {
-                                    QByteArray ArrayOffset;
-                                    ArrayOffset.append(data[5]);
-                                    ArrayOffset.append(data[4]);
-                                    ArrayOffset.append(data[3]);
-                                    ArrayOffset.append(data[2]);
-                                    quint32 offset  = ((uint8_t)ArrayOffset[0]<<24 ) | ((uint8_t)ArrayOffset[1]<<16 ) | ((uint8_t)ArrayOffset[2]<<8 )| ((uint8_t)ArrayOffset[3]);
-                                    QByteArray arrayOffset;
-                                    arrayOffset.append(data[2]);
-                                    arrayOffset.append(data[3]);
-                                    arrayOffset.append(data[4]);
-                                    arrayOffset.append(data[5]);
-                                    sendfile(offset ,arrayOffset);
-
+                                    quint32 offset  = ((uint8_t)data[5]<<24 ) | ((uint8_t)data[4]<<16 ) | ((uint8_t)data[3]<<8 )| ((uint8_t)data[2]);
+                                    sendfile(offset);
                             break;
                                 }
                             case '\x0D':
@@ -413,7 +398,7 @@ int XhPage::analysis(QByteArray package)
                                 }
                             }
                             break;
-                        case '\x08':
+                            case '\x08':
                             emit filamentlost();
                             break;
 
@@ -494,22 +479,25 @@ void XhPage::fTGet(QByteArray data)
 {
     if(data[2] == '\x00')
     {
-        quint16 lNozzle = ((quint16)(data[5] << 8)) | (((static_cast< quint16>(data[4])) & 0x00FF) << 0);
-        quint16 lNozzle1 = ((quint16)(data[7] << 8)) | (((static_cast< quint16>(data[6])) & 0x00FF) << 0);
-
-        quint16 rNozzle = ((quint16)(data[9] << 8)) | (((static_cast< quint16>(data[8])) & 0x00FF) << 0);
-        quint16 rNozzle1 = ((quint16)(data[11] << 8)) | (((static_cast< quint16>(data[10])) & 0x00FF) << 0);
-        quint16 bedT = ((quint16)(data[13] << 8)) | (((static_cast< quint16>(data[12])) & 0x00FF) << 0);
-        quint16 bedT1 = ((quint16)(data[15] << 8)) | (((static_cast< quint16>(data[14])) & 0x00FF) << 0);
-        //quint32 znum = (quint32)(data[19]<<24)|(quint32)(data[18]<<16)|(quint32)(data[17]<<8)|(quint32)(data[16]<<0);
-        quint32 znum = (((static_cast< quint32>(data[19])) &  0x0000000000FF) << 24)|(((static_cast< quint32>(data[18])) &  0x0000000000FF) << 16)|(((static_cast< quint32>(data[17])) &  0x0000000000FF) << 8)|(((static_cast< quint32>(data[16])) &  0x0000000000FF) << 0);
-        quint8 printPlan = (quint8)data[20];
-
-        quint8 type = (quint8)data[3];
-
-        emit firstTemperatureResult(lNozzle,lNozzle1,rNozzle,rNozzle1,bedT,bedT1,znum,data);
-        emit typeChanged(type,printPlan);
+        cur_machine_status.CurTemp[0] = ((uint8_t)(data[5] << 8)) | (uint8_t)data[4];
+        cur_machine_status.TarTemp[0] = ((uint8_t)(data[7] << 8)) | (uint8_t)data[6];
+        cur_machine_status.CurTemp[1] = ((uint8_t)(data[9] << 8)) | (uint8_t)data[8];
+        cur_machine_status.TarTemp[1] = ((uint8_t)(data[11] << 8)) | (uint8_t)data[10];
+        cur_machine_status.CurTemp[2] = ((uint8_t)(data[13] << 8)) | (uint8_t)data[12];
+        cur_machine_status.TarTemp[2] = ((uint8_t)(data[15] << 8)) | (uint8_t)data[14];
+        cur_machine_status.Status = data[3];
+        cur_machine_status.Percent = data[20];
     }
+}
+
+/**
+  * @brief  Get current machine status
+  * @param  pStatus: The buffer to store current status
+  * @retval None
+  */
+void XhPage::GetMachineStatus(strMachineStatus *pStatus)
+{
+    *pStatus = cur_machine_status;
 }
 
 void XhPage::tSelfTest(QByteArray data)
@@ -557,32 +545,6 @@ void XhPage::tSelfTest(QByteArray data)
 
     }
     //发送自检结果
-    emit toolTestResult(Taxistesting,Theatingtesting,Tmaterialextrudetest,Tplatfomcheck,Tnozzleheightcheck,TxYcheck);
-
-}
-
-void XhPage::tCalibration(QByteArray data)
-{
-    switch (data[1]) {
-
-    case '\x02':
-    {
-        quint8 lturns11 = (quint8)data[2];
-        quint8 rturns11 = (quint8)data[3];
-        quint8 lturns12 = (quint8)data[4];
-        quint8 rturns12 = (quint8)data[5];
-        quint8 lturns21 = (quint8)data[6];
-        quint8 rturns21 = (quint8)data[7];
-        quint8 lturns22 = (quint8)data[8];
-        quint8 rturns22 = (quint8)data[9];
-
-        break;
-    }
-
-    default:
-        break;
-
-    }
 }
 
 void XhPage::pCalibration(QByteArray data)
@@ -648,45 +610,6 @@ void XhPage::errorLog(QByteArray data)
     {
         emit error(31);
     }
-}
-
-QByteArray XhPage::filamentPage(QString l, QString r)
-{
-    int lnum= l.toInt();
-    int rnum= r.toInt();
-    QByteArray a;
-    a[0]='\x00';
-    a[1]='\x00';
-    a[2]='\x00';
-    QByteArray b = "";
-    b[0]='\x01';
-    b[1]='\x00';
-    b[2]='\x00';
-    /*数据区计算*/
-    while(lnum > 255)
-    {
-        lnum = lnum -256;
-        a[2] = a[2]+'\x01';
-    }
-    for (;lnum > 0;lnum -- ) {
-        a[1] = a[1] + '\x01';
-    }
-    while(rnum > 255)
-    {
-        rnum = rnum -256;
-        b[2] = b[2]+'\x01';
-    }
-    for (;rnum > 0;rnum -- ) {
-        b[1] = b[1] + '\x01';
-    }
-
-    QByteArray c ="";
-    c[0]='\x02';
-    c[1]='\x00';
-    c.append(a);
-    c.append(b);
-    QByteArray d = groupPage(c);
-    return d;
 }
 
 QByteArray XhPage::lightPage(bool type, QString str)
@@ -818,7 +741,7 @@ void XhPage::askstate(QByteArray data)
 
 }
 
-void XhPage::sendfile(quint32 offset, QByteArray arrayOffset)
+void XhPage::sendfile(quint32 offset)
 {
     if(m_file == nullptr)
     {
@@ -847,7 +770,10 @@ void XhPage::sendfile(quint32 offset, QByteArray arrayOffset)
     datalen.append(1, ((len >> 8) & 0xff));
     QByteArray pageData;
     pageData = QByteArray::fromHex("060400");
-    pageData.append(arrayOffset);
+    pageData.append(1, offset);
+    pageData.append(1, offset >> 8);
+    pageData.append(1, offset >> 16);
+    pageData.append(1, offset >> 24);
     pageData.append(datalen);
     pageData.append(data);
     emit sendFileArry(groupPage(pageData));

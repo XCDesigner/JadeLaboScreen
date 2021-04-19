@@ -3,6 +3,8 @@
 
 #include <QWidget>
 #include <QDebug>
+#include <QObject>
+#include <QQuickItem>
 #include "jlwidget.h"
 
 namespace Ui {
@@ -19,20 +21,17 @@ public:
 
     void init(QByteArray) override;
     void show() override;
+    void setXHPort(XhPort *pPort);
 
 private slots:
-    void on_pushButton_clicked();
-
-    void on_pushButton_2_clicked();
-
-    void on_pushButton_3_clicked();
+    void pauseClick();
+    void continueClick();
+    void changeFilamentClick();
+    void cancelClick();
 
 
 signals:
     void cancel();
-    void m_stop();
-    void m_paused();
-    void sigHide();
 
 private:
     Ui::askPause *ui;

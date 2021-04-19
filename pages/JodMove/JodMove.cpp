@@ -54,7 +54,7 @@ void MainWindow::on_pushButton_700_clicked()
 
 void MainWindow::on_pushButton_693_clicked()
 {
-    ui->stackedWidget->setCurrentWidget(ui->page_42);
+    ui->stackedWidget->setCurrentWidget(ui->page_Tools);
 }
 
 void MainWindow::ExtruderChange()

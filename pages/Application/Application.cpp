@@ -8,19 +8,43 @@ void MainWindow::blockingChangePage(QByteArray Command, QWidget *pPage)
     ui->stackedWidget->setCurrentWidget(ui->page_Masker);
 }
 
+void MainWindow::changePageOnStatus(QByteArray Status, QWidget *pPage)
+{
+    pNextShowPage = pPage;
+    ui->stackedWidget->setCurrentWidget(ui->page_Masker);
+    statusWaiting = Status;
+    QTimer::singleShot(1000, this, SLOT(waitforIdleStatus()));
+}
+
+void MainWindow::waitforIdleStatus()
+{
+    strMachineStatus new_status;
+    m_port->getXhPage()->GetMachineStatus(&new_status);
+    int status_count = statusWaiting.size();
+    for(int i=0;i<status_count;i++) {
+        if(new_status.Status == statusWaiting.at(i))
+        {
+            statusWaiting.clear();
+            ui->stackedWidget->setCurrentWidget(pNextShowPage);
+            return;
+        }
+    }
+    QTimer::singleShot(1000, this, SLOT(waitforIdleStatus()));
+}
+
 void MainWindow::blockingChangeDialog(QByteArray Command, JLWidget *pDialog)
 {
     pDialogToShow = pDialog;
     if(Command.size() == 0)
     {
-        m_event->waitDialog(Command, 5);
-        pNextShowPage = ui->stackedWidget->currentWidget();
-        ui->stackedWidget->setCurrentWidget(ui->page_Masker);
+        pDialogToShow->init(QByteArray());
+        pDialogToShow->show();
     }
     else
     {
-        pDialogToShow->init(QByteArray());
-        pDialogToShow->show();
+        m_event->waitDialog(Command, 5);
+        pNextShowPage = ui->stackedWidget->currentWidget();
+        ui->stackedWidget->setCurrentWidget(ui->page_Masker);
     }
 }
 

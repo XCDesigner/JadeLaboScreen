@@ -3,8 +3,12 @@
 
 void MainWindow::StopPreHeatting() 
 {
-    qDebug()<<"Stop clicked";
-    m_port->setHeattingUnit(0, 100);
-    m_port->setHeattingUnit(1, 200);
-    m_port->setHeattingUnit(3, 300);
+    m_port->setHeattingUnit("0", "0");
+    m_port->setHeattingUnit(2, 0);
+    if(m_timer.isActive())
+    {
+        m_timer.stop();
+        QObject::disconnect(&m_timer,SIGNAL(timeout()),this,SLOT(jumpSeventeen()));
+    }
+    ui->stackedWidget->setCurrentWidget(ui->page_GetStart);
 }

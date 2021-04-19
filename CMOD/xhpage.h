@@ -18,6 +18,14 @@
 
 #include "XhUpdater.h"
 
+typedef struct {
+    float ZHeight;
+    uint16_t CurTemp[3];
+    uint16_t TarTemp[3];
+    uint8_t Percent;
+    uint8_t Status;
+}strMachineStatus;
+
 class XhPage : public QObject
 {
     Q_OBJECT
@@ -32,26 +40,23 @@ public:
     void fTGet(QByteArray data);//温度获取
     /*TOOL页面*/
     void tSelfTest(QByteArray data);//自检
-    void tCalibration(QByteArray data);//calibration
     void pCalibration(QByteArray data);
 
     void errorLog(QByteArray data);
 
     /*****************组包******************/
-    QByteArray filamentPage(QString ,QString );
     QByteArray lightPage(bool ,QString );
     QByteArray groupPage(QByteArray );
 
     QByteArray chooseFile(QString );
     QByteArray analysisFile();
     void askstate(QByteArray );
-    void sendfile(quint32 ,QByteArray );
+    void sendfile(quint32 );
 
 
     void updateBegin(QString );
     void sendUpdate(quint16 ,QByteArray );
-
-
+    void GetMachineStatus(strMachineStatus *pStatus);
 
 private:
     /*包体*/
@@ -100,6 +105,8 @@ private:
     QTimer *m_timer;
 
     XhUpdater *m_upDater;
+
+    strMachineStatus cur_machine_status;
 signals:
     void command_received(uint8_t, uint8_t, QByteArray);
     /*first start*/
@@ -110,7 +117,6 @@ signals:
     void xNoHeating(bool );
     void xyCheck(bool );
     /*tool*/
-    void toolTestResult(bool ,bool ,bool ,bool ,bool ,bool );
     void disUseFilament(bool );
     void backFactory(bool );
     /*filament*/
@@ -132,7 +138,6 @@ signals:
     /*print*/
     void canPrint();//允许文件传输
     void fileSendOver();//文件传输结束
-    void typeChanged(int ,int);//状态
     void stopOk();
     void pauseOk();
     void goOnOk();

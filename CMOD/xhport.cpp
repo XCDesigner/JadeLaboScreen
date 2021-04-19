@@ -20,7 +20,6 @@ XhPort::XhPort(QObject *parent) : QObject(parent)
     QObject::connect(m_package,&XhPage::firstTestResult,this,&XhPort::xhfirstTestResult);
     QObject::connect(m_package,&XhPage::firstTemperatureResult,this,&XhPort::xhfirstTemperatureResult);
     /*tool*/
-    QObject::connect(m_package,&XhPage::toolTestResult,this,&XhPort::xhtoolTestResult);
     QObject::connect(m_package,&XhPage::disUseFilament,this,&XhPort::xhdisUseFilament);
     QObject::connect(m_package,&XhPage::backFactory,this,&XhPort::xhbackFactory);
     /*filament*/
@@ -41,7 +40,6 @@ XhPort::XhPort(QObject *parent) : QObject(parent)
 
     QObject::connect(m_package,&XhPage::canPrint,this,&XhPort::printCan);
     QObject::connect(m_package,&XhPage::fileSendOver,this,&XhPort::fileSendOverSlot);
-    QObject::connect(m_package,&XhPage::typeChanged,this,&XhPort::typeChang);
 
     QObject::connect(m_package,&XhPage::noHeating,this,&XhPort::xhnoHeating);
     QObject::connect(m_package,&XhPage::platCheck,this,&XhPort::xhplatCheck);
@@ -134,14 +132,6 @@ void XhPort::powercancel()
     m_serial->write(buff);
 }
 
-
-
-void XhPort::setFilament(QString l, QString r)
-{
-    QByteArray buff= m_package->filamentPage(l,r);
-    m_serial->write(buff);
-}
-
 void XhPort::lup()
 {
     QByteArray s = QByteArray::fromHex("0205006079FEFF");
@@ -174,7 +164,6 @@ QByteArray XhPort::startPrint(QString m_filePath)
 {
     QByteArray buff = m_package->chooseFile(m_filePath);
     return  buff;
-
 }
 
 void XhPort::AcsPrint(QByteArray a)
@@ -203,120 +192,14 @@ void XhPort::regainPrint()
     m_serial->write(buff);
 }
 
-void XhPort::fileTemperature(QString l, QString r, QString bed)
+void XhPort::readyprint(int Mode, QByteArray Offset)
 {
-    int l1 = l.indexOf(".");
-    int r1 = r.indexOf(".");
-    int b1 = bed.indexOf(".");
-
-    int lnum = l.left(l1).toInt();
-    int rnum = r.left(r1).toInt();
-    int bnum = bed.left(b1).toInt();
-
-
-    QByteArray a = "";
-    a[0]='\x00';
-    a[1]='\x00';
-    a[2]='\x00';
-    QByteArray b = "";
-    b[0]='\x01';
-    b[1]='\x00';
-    b[2]='\x00';
-    QByteArray x = "";
-    x[0]='\x02';
-    x[1]='\x00';
-    x[2]='\x00';
-    /*数据区计算*/
-    while(lnum > 255)
-    {
-        lnum = lnum -256;
-        a[2] = a[2]+'\x01';
-    }
-    for (;lnum > 0;lnum -- ) {
-        a[1] = a[1] + '\x01';
-    }
-    while(rnum > 255)
-    {
-        rnum = rnum -256;
-        b[2] = b[2]+'\x01';
-    }
-    for (;rnum > 0;rnum -- ) {
-        b[1] = b[1] + '\x01';
-    }
-    while(bnum > 255)
-    {
-        bnum = bnum -256;
-        x[2] = x[2]+'\x01';
-    }
-    for (;bnum > 0;bnum -- ) {
-        x[1] = x[1] + '\x01';
-    }
-
-    QByteArray c ="";
-    c[0]='\x02';
-    c[1]='\x00';
-    c.append(a);
-    c.append(b);
-    c.append(x);
-    QByteArray d = m_package->groupPage(c);
-    m_serial->write(d);
-}
-
-void XhPort::readyprint(int a, QByteArray b)
-{
-    switch (a) {
-    case 0:
-    {
-        QByteArray s = QByteArray::fromHex("060D00");
-        s.append(b);
-        QByteArray buff = m_package->groupPage(s);
-        m_serial->write(buff);
-    }
-        break;
-    case 2:
-    {
-        QByteArray s = QByteArray::fromHex("060D02");
-        s.append(b);
-        QByteArray buff = m_package->groupPage(s);
-        m_serial->write(buff);
-    }
-        break;
-    case 3:
-    {
-        QByteArray s = QByteArray::fromHex("060D03");
-        s.append(b);
-        QByteArray buff = m_package->groupPage(s);
-        m_serial->write(buff);
-    }
-        break;
-    case 4:
-    {
-        QByteArray s = QByteArray::fromHex("060D04");
-        s.append(b);
-        QByteArray buff = m_package->groupPage(s);
-        m_serial->write(buff);
-    }
-        break;
-    case 5:
-    {
-        QByteArray s = QByteArray::fromHex("060D05");
-        s.append(b);
-        QByteArray buff = m_package->groupPage(s);
-        m_serial->write(buff);
-    }
-        break;
-    case 6:
-    {
-        QByteArray s = QByteArray::fromHex("060D06");
-        s.append(b);
-        QByteArray buff = m_package->groupPage(s);
-        m_serial->write(buff);
-    }
-        break;
-    default:
-        break;
-    }
-
+    QByteArray s;
+    char strMode[][7] = {"060D00", "060D02", "060D03", "060D04", "060D05", "060D06"};
+    s = QByteArray::fromHex(strMode[Mode]);
+    s.append(Offset);
+    QByteArray buff = m_package->groupPage(s);
+    m_serial->write(buff);
 }
 
 void XhPort::enHotend(bool l, bool r)
@@ -464,7 +347,7 @@ void XhPort::finish()
     m_serial->write(buff);
 }
 
-void XhPort::cancle()
+void XhPort::cancleCalibration()
 {
     QByteArray s = QByteArray::fromHex("030A");
     QByteArray buff = m_package->groupPage(s);
@@ -634,6 +517,43 @@ void XhPort::setHeattingUnit(int Index, int Temp)
     s.append(1, (Temp >> 8));
     QByteArray buff = m_package->groupPage(s);
     m_serial->write(buff);
+}
+
+/**
+  * @brief  Set temperature to the heating unit
+  * @param  Index(n): Index of the heating unit. 0 for left extruder, 1 for right extruder, 2 for heatedbed
+  * @param  Temp(n): Target temperature
+  * @retval None
+  */
+void XhPort::setHeattingUnit(int Index0, int Temp0, int Index1, int Temp1)
+{
+    setHeattingUnit(Index0, Temp0);
+    setHeattingUnit(Index1, Temp1);
+}
+
+/**
+  * @brief  Set temperature to the heating unit
+  * @param  strLeftTemp: Temperature of the left nozzle, etc "200"
+  * @param  strRightTemp: Temperature of the right nozzle
+  * @retval None
+  */
+void XhPort::setHeattingUnit(QString strLeftTemp, QString strRightTemp)
+{
+    setHeattingUnit(0, strLeftTemp.toInt());
+    setHeattingUnit(1, strRightTemp.toInt());
+}
+
+/**
+  * @brief  Set temperature to the heating unit
+  * @param  strLeftTemp: Temperature of the left nozzle, etc "200"
+  * @param  strRightTemp: Temperature of the right nozzle
+  * @retval None
+  */
+void XhPort::setHeattingUnit(QString strLeftTemp, QString strRightTemp, QString strBedTemp)
+{
+    setHeattingUnit(0, strLeftTemp.toInt());
+    setHeattingUnit(1, strRightTemp.toInt());
+    setHeattingUnit(2, strBedTemp.toInt());
 }
 
 /**
@@ -892,11 +812,6 @@ void XhPort::xhfirstTemperatureResult(int a, int b, int c, int d , int e, int f,
     emit firstTemperatureResult(a,b,c,d,e,f,g,data);
 }
 
-void XhPort::xhtoolTestResult(bool a, bool b, bool c, bool d, bool e, bool f)
-{
-    emit toolTestResult(a,b,c,d,e,f);
-}
-
 void XhPort::xhdisUseFilament(bool a)
 {
     emit disUseFilament(a);
@@ -957,11 +872,6 @@ void XhPort::fileSendOverSlot()
     emit fileSendOver();
 }
 
-void XhPort::typeChang(int a, int b)
-{
-    emit type(a,b);
-}
-
 void XhPort::xhnoHeating(bool a)
 {
     emit noHeating(a);
@@ -1000,13 +910,13 @@ void XhPort::xhgoOnOk()
 void XhPort::xhfinished()
 {
     emit finished();
-    setFilament("0","0");
+    setHeattingUnit("0","0");
 }
 
 void XhPort::xhcancle()
 {
     emit canelk();
-    setFilament("0","0");
+    setHeattingUnit("0","0");
 }
 
 void XhPort::xhprintend()

@@ -77,28 +77,18 @@ public:
     explicit MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
-    void setTemperatureLeft(int num1,int num2);
-    void setTemperatureRight(int num,int num2);
-
-//    void setTemperaturePicLeft(bool isBlue);
-//    void setTemperaturePicRight(bool isBlue );
-
-    void setBedPic(bool isVisible);
-    void setBedTemperature(int num1,int num2);
-
-    void setZnumber(float num);
-
     void setUSBpic(bool isVisible);
     void setLightPic(bool isVisible);
     void setWinPic(bool isVisible);
 
-    void setPicColor(QWidget * pic,QWidget * lab,bool isgray);
     void m_addItemToList(const QString& fileName,QString filePath);
     void m_addItemToList(const QString& fileName,QString filePath,QString uDisk);
     void m_adTtemtowifi(const QString& wifiname,QString wifilevel);
 
     void blockingChangePage(QByteArray Command, QWidget *pPage);
     void blockingChangeDialog(QByteArray Command, JLWidget *pDialog);
+    void changePageOnStatus(QByteArray Status, QWidget *pPage);
+
 
 private:
     Ui::MainWindow *ui;
@@ -162,7 +152,6 @@ private:
 
 
     QQuickItem *item;
-    QQuickItem *item1;
     QQuickItem *item3;
     QQuickItem *item4;
     QQuickItem *qw_DistanceItem;
@@ -193,6 +182,11 @@ private:
 
     QWidget *pNextShowPage;
     JLWidget *pDialogToShow;
+    QByteArray statusWaiting;
+
+    QTimer *t_test;
+    uint8_t counter;
+    bool test_en;
 
 signals:
     void sendSignalToQml(int );
@@ -200,6 +194,9 @@ signals:
 
 
 private slots:
+    void TestTimeout();
+    void updateStatusBar();
+    void waitforIdleStatus();
     void changePageCallback(QByteArray ReplyData);
     void changeDialogCallback(QByteArray ReplyData);
     void onPauseDialogHide();
@@ -215,7 +212,6 @@ private slots:
 
 //    void winGfour();
     void winGfour(bool a,bool b,bool c,bool d,bool e);
-    void temperatureChange(int a,int b,int c,int d,int e,int f,int g,QByteArray data);
     void jumpFour();
 
     void jumpFive();
@@ -230,7 +226,6 @@ private slots:
     void shineone();
     void shinetwo();
 
-    void jumptwelve();
     void jumpthirteen();
     void jumpFourteen();
     void jumpFifteen();
@@ -238,7 +233,6 @@ private slots:
     void jumpSixteen();
     void askPrint();
     void jumpSeventeen();
-    void jumpEightteen();
     void jumpnineteen();
 
     void jumpTwenty(bool a);
@@ -258,9 +252,7 @@ private slots:
 
     void filamentTimeout();
     void filamentOK(bool a );
-//    void toolSelfTest(bool a,bool b,bool c,bool d,bool e,bool f);
 
-    void planAdd(int ,int );
     void buprint();
     void powercancle();
     /******udp**************/
@@ -276,9 +268,7 @@ private slots:
 
     void connctwifi(myWifiItem* itm);
     void m_chooseEN();
-    void sendChoose(int );
     void m_canPrintFile();
-    void checkFile();
     void m_chooseUEN();
     void m_parcancel();
 
@@ -348,13 +338,13 @@ private slots:
     void updatebegin();
     void updateNumx(int );
 
-    void    parseMode(QString printMode);
-    void    parseDeepMode(QString printMode);
-    void    parseHeader(QString left_temp, QString right_temp, QString bed_temp, QString offset);
-    void    parseDeep();
-    void    timeAdd();
+    void parseMode(QString printMode);
+    void parseDeepMode(QString printMode);
+    void parseHeader(QString left_temp, QString right_temp, QString bed_temp, QString offset);
+    void parseDeep();
+    void timeAdd();
 
-    void    deepTimer();
+    void deepTimer();
 
     void on_noreadynext_clicked();
 
@@ -362,13 +352,7 @@ private slots:
 
     void on_readynext_clicked();
 
-    void on_pushButton_12_clicked();
-
-    void on_pushButton_23_clicked();
-
     void on_pushButton_24_clicked();
-
-    void on_pushButton_41_clicked();
 
     void on_pushButton_31_clicked();
 
@@ -396,15 +380,11 @@ private slots:
 
     void on_pushButton_74_clicked();
 
-//    void on_pushButton_104_clicked();
-
     void on_pushButton_73_clicked();
 
     void on_pushButton_129_clicked();
 
     void on_pushButton_134_clicked();
-
-//    void on_pushButton_135_clicked();
 
     void on_pushButton_169_clicked();
 
@@ -458,8 +438,6 @@ private slots:
 
     void on_pushButton_242_clicked();
 
-//    void on_pushButton_258_clicked();
-
     void on_pushButton_259_clicked();
 
     void on_pushButton_286_clicked();
@@ -476,33 +454,9 @@ private slots:
 
     void on_pushButton_647_clicked();
 
-    void on_pushButton_3_clicked();
-
-    void on_pushButton_17_clicked();
-
     void on_pushButton_233_clicked();
 
     void on_pushButton_180_clicked();
-
-    void on_pushButton_5_clicked();
-
-    void on_pushButton_2_clicked();
-
-    void on_pushButton_4_clicked();
-
-    void on_pushButton_7_clicked();
-
-    void on_pushButton_8_clicked();
-
-    void on_pushButton_9_clicked();
-
-    void on_pushButton_14_clicked();
-
-    void on_pushButton_16_clicked();
-
-    void on_pushButton_18_clicked();
-
-    void on_pushButton_90_clicked();
 
     void on_pushButton_92_clicked();
 
@@ -513,10 +467,6 @@ private slots:
     void on_pushButton_86_clicked();
 
     void on_pushButton_88_clicked();
-
-    void on_pushButton_117_clicked();
-
-    void on_pushButton_116_clicked();
 
     void on_pushButton_48_clicked();
 
@@ -556,25 +506,6 @@ private slots:
 
     void on_pushButton_173_clicked();
 
-    void on_pushButton_314_clicked();
-
-    void on_pushButton_315_clicked();
-
-    void on_pushButton_316_clicked();
-
-    void on_pushButton_649_clicked();
-
-    void on_pushButton_650_clicked();
-
-    void on_pushButton_648_clicked();
-
-    void on_pushButton_653_clicked();
-
-    void on_pushButton_654_clicked();
-
-    void on_pushButton_652_clicked();
-
-
     void on_pushButton_341_clicked();
 
     void on_pushButton_670_clicked();
@@ -586,10 +517,6 @@ private slots:
     void on_pushButton_671_clicked();
 
     void on_pushButton_667_clicked();
-
-    void on_pushButton_655_clicked();
-
-    void on_pushButton_651_clicked();
 
     void on_pushButton_179_clicked();
 
@@ -681,8 +608,6 @@ private slots:
 
     void on_pushButton_292_clicked();
 
-//    void on_pushButton_297_clicked();
-
     void on_pushButton_298_clicked();
 
     void on_pushButton_301_clicked();
@@ -700,8 +625,6 @@ private slots:
     void on_pushButton_630_clicked();
 
     void on_pushButton_637_clicked();
-
-//    void on_pushButton_642_clicked();
 
     void on_pushButton_643_clicked();
 
@@ -721,8 +644,6 @@ private slots:
 
     void on_pushButton_340_clicked();
 
-    void on_pushButton_343_clicked();
-
     void on_pushButton_679_clicked();
 
     void on_pushButton_676_clicked();
@@ -730,8 +651,6 @@ private slots:
     void on_pushButton_678_clicked();
 
     void on_pushButton_677_clicked();
-
-    void on_pushButton_89_clicked();
 
     void on_pushButton_128_clicked();
 
@@ -749,33 +668,17 @@ private slots:
 
     void on_pushButton_168_clicked();
 
-    void on_pushButton_118_clicked();
-
-    void on_pushButton_113_clicked();
-
     void on_pushButton_149_clicked();
 
     void on_pushButton_151_clicked();
 
     void on_pushButton_148_clicked();
 
-    void on_pushButton_160_clicked();
-
     void on_pushButton_167_clicked();
-
-    void on_pushButton_44_clicked();
-
-    void on_pushButton_42_clicked();
 
     void on_pushButton_346_clicked();
 
     void on_pushButton_354_clicked();
-
-//    void on_pushButton_102_clicked();
-
-//    void on_pushButton_103_clicked();
-
-    void on_pushButton_355_clicked();
 
     void on_pushButton_253_clicked();
 
@@ -807,27 +710,15 @@ private slots:
 
     void on_pushButton_108_clicked();
 
-//    void on_pushButton_360_clicked();
-
-    void on_pushButton_99_clicked();
-
     void on_pushButton_356_clicked();
 
     void on_pushButton_263_clicked();
 
     void on_pushButton_262_clicked();
 
-    void on_pushButton_124_clicked();
-
-//    void on_pushButton_136_clicked();s
-
-//    void on_pushButton_144_clicked();
-
     void on_pushButton_100_clicked();
 
     void on_pushButton_101_clicked();
-
-
 
     void on_pushButton_371_clicked();
 
@@ -1060,6 +951,9 @@ private slots:
     void ShowPauseDialogClicked();
     void ShowParameterDialogClicked();
     void StopPrintClicked();
+    void WidgetChanged(int index);
+
+    void on_pushButton_clicked();
 
 signals:
     void detection(bool ready);

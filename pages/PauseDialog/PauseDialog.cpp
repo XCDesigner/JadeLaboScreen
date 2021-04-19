@@ -19,7 +19,7 @@ void MainWindow::printstop()
     QByteArray command = QByteArray::fromHex("0601");
     m_printsec->stop();
     m_time->setHMS(0,0,0);
-    blockingChangePage(command, ui->page_34);
+    blockingChangePage(command, ui->page_GetStart);
     // ui->stackedWidget->setCurrentIndex(33);
 }
 
@@ -27,7 +27,7 @@ void MainWindow::printpause()
 {
     m_printsec->stop();
     QByteArray command = QByteArray::fromHex("0602");
-    blockingChangePage(command, ui->page_37);
+    blockingChangePage(command, ui->page_Printint);
     //m_port->pausePrint();
 }
 

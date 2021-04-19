@@ -1,7 +1,6 @@
 import QtQuick 2.9
 import QtQuick.Window 2.2
 import QtQuick.Layouts 1.2
-//import QtQuick.Controls 2.5
 import QtQuick.Controls 2.0
 
 import QtQuick.Controls.Styles 1.4
@@ -44,8 +43,15 @@ Rectangle{
 
       ctx.beginPath();
       ctx.lineWidth = 2;
-      ctx.fillStyle = "#202023";
-      ctx.ellipse(2, 2, parent.width-4, parent.height-4);
+      ctx.fillStyle = "#000000";
+      ctx.ellipse(0, 0, parent.width, parent.height);
+      ctx.closePath();
+      ctx.fill();
+
+      ctx.beginPath();
+      ctx.lineWidth = 2;
+      ctx.fillStyle = "#202020";
+      ctx.ellipse(58, 58, parent.width-116, parent.height-116);
       ctx.closePath();
       ctx.fill();
       
