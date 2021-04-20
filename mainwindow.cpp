@@ -276,9 +276,9 @@ MainWindow::MainWindow(QWidget *parent) :
     m_port->portInit(serialNum);
     m_port->serialOpen =true;
     ui->stackedWidget->setCurrentWidget(ui->page_GetStart);
-    ui->quickWidget_2->setSource(QUrl("qrc:/pageView.qml"));
-    ui->quickWidget_2->setResizeMode(QQuickWidget::SizeRootObjectToView);
-    ui->quickWidget_2->show();
+    // ui->quickWidget_2->setSource(QUrl("qrc:/pageView.qml"));
+    // ui->quickWidget_2->setResizeMode(QQuickWidget::SizeRootObjectToView);
+    // ui->quickWidget_2->show();
 
     serialOpen =true;
     ui->m_StatusBar->setVisible(true);
@@ -1311,13 +1311,13 @@ void MainWindow::fileList()
     if(mountEcho.contains("/mnt/exUDISK"))
     {
         qDebug()<<"mount";
-        ui->label_132->setVisible(true);
+        ui->qw_StatusNotice->rootObject()->setProperty("udiskVisible", true);
         ui->pushButton_101->setEnabled(true);
     }
     else
     {
         qDebug()<<"no mount";
-        ui->label_132->setVisible(false);
+        ui->qw_StatusNotice->rootObject()->setProperty("udiskVisible", false);
         ui->pushButton_101->setEnabled(false);
         ui->listWidget_2->setVisible(false);
         ui->listWidget->setVisible(true);

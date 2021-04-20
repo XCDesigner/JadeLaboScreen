@@ -67,7 +67,7 @@ void MainWindow::updateStatusBar()
     QTimer::singleShot(1000, this, SLOT(updateStatusBar()));
 
     #ifdef XH_LINUX
-        currentState.clear();
-        currentState = data;
+        // currentState.clear();
+        // currentState = data;
     #endif
 }
