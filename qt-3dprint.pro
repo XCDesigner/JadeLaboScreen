@@ -34,6 +34,7 @@ SOURCES += \
     CMOD/xhpage.cpp \
     CMOD/xhport.cpp \
     dialog/askpause.cpp \
+    dialog/changefilamentdlg.cpp \
     dialog/choosefile.cpp \
     dialog/choosetemp.cpp \
     dialog/delete.cpp \
@@ -82,6 +83,7 @@ HEADERS += \
     define/linuxPath.h \
     define/windowsPath.h \
     dialog/askpause.h \
+    dialog/changefilamentdlg.h \
     dialog/choosefile.h \
     dialog/choosetemp.h \
     dialog/delete.h \
@@ -106,6 +108,7 @@ HEADERS += \
 
 FORMS += \
     dialog/askpause.ui \
+    dialog/changefilamentdlg.ui \
     dialog/choosefile.ui \
     dialog/choosetemp.ui \
     dialog/delete.ui \

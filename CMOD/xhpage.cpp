@@ -128,12 +128,9 @@ int XhPage::analysis(QByteArray package)
                                     break;
 
                                 case '\x04':
-                                if(data[2]=='\x00')
-                                    emit noHeating(true);
+
                                 break;
                                 case '\x05':
-                                if(data[2]=='\x00')
-                                    emit platCheck(true);
                                 break;
                                 case '\x06':
                                 if(data[2]=='\x00')
@@ -372,12 +369,10 @@ int XhPage::analysis(QByteArray package)
                             }
                             break;
                             case '\x02':
-                                if(data[2]=='\x00')
-                                    emit pauseOk();
+
                             break;
                             case '\x01':
                             if(data[2]=='\x00')
-                                emit stopOk();
                                 if(m_file!= nullptr)
                                 {
                                     m_file->close();
@@ -385,7 +380,7 @@ int XhPage::analysis(QByteArray package)
                                 }
                             break;
                             case '\x0C':
-                                emit goOnOk();
+
                             break;
                             case '\x07':
                             if(data[2]=='\x00')

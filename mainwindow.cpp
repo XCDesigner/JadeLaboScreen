@@ -22,6 +22,10 @@ MainWindow::MainWindow(QWidget *parent) :
     par = NULL;
     skpWin = new askPause(this);
     skpWin->hide();
+
+    changeFilamentDialog = new changeFilamentDlg(this);
+    changeFilamentDialog->hide();
+
     QObject::connect(skpWin, SIGNAL(hideWidget()), this, SLOT(onPauseDialogHide()));
     m_mode = NULL;
     m_delete = NULL;
@@ -96,11 +100,8 @@ MainWindow::MainWindow(QWidget *parent) :
     /*print*/
     QObject::connect(m_port,&XhPort::canPrint,this,&MainWindow::m_canPrintFile);
     QObject::connect(m_port,&XhPort::fileSendOver,this,&MainWindow::jumpSixteen);
-    QObject::connect(m_port,&XhPort::goOnOk,this,&MainWindow::printagin);
     QObject::connect(m_port,&XhPort::printend,this,&MainWindow::printending);
 
-//    QObject::connect(m_port,&XhPort::noHeating,this,&MainWindow::xhnoHeating);
-//    QObject::connect(m_port,&XhPort::platCheck,this,&MainWindow::xhplatCheck);
     QObject::connect(m_port,&XhPort::xNoHeating,this,&MainWindow::cannext);
 //    QObject::connect(m_port,&XhPort::xyCheck,this,&MainWindow::xhxyCheck);
 
@@ -286,6 +287,7 @@ MainWindow::MainWindow(QWidget *parent) :
     printTimer->start(1000);
     m_port->powerlostsend();
     skpWin->setXHPort(m_port);
+    changeFilamentDialog->setXHPort(m_port);
 #endif
 
 #ifdef XH_WIN
@@ -808,10 +810,10 @@ void MainWindow::askPrint()
 void MainWindow::jumpSeventeen()
 {
     /*加热槽函数*/
-    qDebug()<<ui->label_125->text();
+    // qDebug()<<ui->label_125->text();
     int l1 = ui->label_125->text().left(3).toInt();
     int l2 = ui->label_125->text().mid(4,3).toInt();
-    qDebug()<<"time out heating";
+    // qDebug()<<"time out heating";
     int r = ui->label_127->text().left(3).toInt();
     int r2 = ui->label_127->text().mid(4,3).toInt();
     if(l2!=0 || r2 != 0)
@@ -911,25 +913,25 @@ void MainWindow::plat()
 }
 
 
-void MainWindow::printagin()
-{
-    if(m_filamentfault!= NULL)
-    {
-        if(m_filamentfault->isHidden())
-        {
+//void MainWindow::printagin()
+//{
+//    if(m_filamentfault!= NULL)
+//    {
+//        if(m_filamentfault->isHidden())
+//        {
 
-        }
-        else
-        {
-            m_filamentfault->hide();
-            m_filamentfault->close();
-            m_filamentfault = NULL;
-        }
-    }
-    ui->stackedWidget->setCurrentWidget(ui->page_Printint);
-    //    m_timer.start(15);
-    m_printsec->start(1000);
-}
+//        }
+//        else
+//        {
+//            m_filamentfault->hide();
+//            m_filamentfault->close();
+//            m_filamentfault = NULL;
+//        }
+//    }
+//    ui->stackedWidget->setCurrentWidget(ui->page_Printint);
+//    //    m_timer.start(15);
+//    m_printsec->start(1000);
+//}
 
 void MainWindow::printTime()
 {
@@ -1032,71 +1034,14 @@ void MainWindow::connctwifi(myWifiItem *itm)
 
 void MainWindow::m_chooseEN()
 {
-    /*判断存储空间*/
-    QFileInfo printFile(m_WinFiel->m_filePath);
-    int filesize = printFile.size();
-    QStorageInfo storage = QStorageInfo::root();
-    storage.refresh();
-#ifdef DEBUG
-    qDebug()<<storage.rootPath();
-    if(storage.isReadOnly())
-        qDebug()<<"isReadOnly:"<<storage.isReadOnly();
-    qDebug()<<"name:"<<storage.name();
-    qDebug()<<"fileSystemType:"<<storage.fileSystemType();
-    qDebug()<<"size:"<<storage.bytesTotal()/1000/1000<<"MB";
-    qDebug()<<"availableSize:"<<storage.bytesAvailable()/1000/1000<<"MB";
-#endif
-    int i,j;
-    QDir *dir=new QDir(localPath);
-    QList<QFileInfo> fileInfo = QList<QFileInfo>(dir->entryInfoList());
-    if(fileInfo.size() > 0 )
-    {
-        /*判断文件输入后剩余容量是否小于512MB*/
-        if(((storage.bytesAvailable() - filesize) /1000/1000)  < 512)
-        {
-            qDebug()<<"Remove File";
-            /*文件最后修改日期排序*/
-            QList<QDateTime> fileTime;
-            for(i = 0; i < fileInfo.size(); i++)
-            {
-                fileTime.append(fileInfo.at(i).lastModified());
-            }
-            qSort(fileTime.begin(), fileTime.end());//容器元素的递增排序
-            /*腾出空间，直到可以容纳输入文件*/
-            while(1)
-            {
-                if((storage.bytesAvailable()/1000/1000 - filesize) >= 512)
-                {
-                    break;
-                }
-                qDebug()<<"while run";
-                qDebug()<<fileInfo.size();
-                if(fileInfo.size()<= 0 )
-                    break;
-                for (j = 0;j<fileInfo.size();j++)
-                {
-                    qDebug()<<"list"<<j;
-                    if(fileInfo.at(j).lastModified() == fileTime.at(0))
-                    {
-                        qDebug()<<fileInfo.at(j).fileName();
-                        dir->remove(fileInfo.at(j).fileName());
-                        fileInfo.removeAt(j);
-                        fileTime.removeAt(0);
-                    }
-                }
-                storage.refresh();
-                qDebug()<<storage.bytesAvailable()/1000/1000<<"MB";
-            }
-            qDebug()<<fileTime;
-        }
-    }
-
     loaclPATH.clear();
     loaclPATH = localPath+m_WinFiel->m_fileName;
     /* 2021/3/2 cbw */
     QString a= QDir::currentPath()+"/UD";
     if(m_WinFiel->m_filePath.left(4) == "/mnt"||m_WinFiel->m_filePath.left(a.size()) == UDiskPath)
     {
+        QFileInfo directFile(m_WinFiel->m_filePath);
+        romClean(directFile.size());
         m_fileParser->parseByDirect(m_WinFiel->m_filePath,localPath+m_WinFiel->m_fileName);
         udiskPATH = m_WinFiel->m_filePath;
         openMode = false;
@@ -1227,6 +1172,65 @@ void MainWindow::m_chooseEN()
 //    qDebug()<<"fileSystemType:"<<storage.fileSystemType();
 //    qDebug()<<"size:"<<storage.bytesTotal()/1000/1000<<"MB";
 //    qDebug()<<"availableSize:"<<storage.bytesAvailable()/1000/1000<<"MB";
+}
+
+void MainWindow::romClean(int fileSize)
+{
+    /*判断存储空间*/
+    QStorageInfo storage = QStorageInfo::root();
+    storage.refresh();
+#ifdef DEBUG
+    qDebug()<<storage.rootPath();
+    if(storage.isReadOnly())
+        qDebug()<<"isReadOnly:"<<storage.isReadOnly();
+    qDebug()<<"name:"<<storage.name();
+    qDebug()<<"fileSystemType:"<<storage.fileSystemType();
+    qDebug()<<"size:"<<storage.bytesTotal()/1000/1000<<"MB";
+    qDebug()<<"availableSize:"<<storage.bytesAvailable()/1000/1000<<"MB";
+#endif
+    int i,j;
+    QDir *dir=new QDir(localPath);
+    QList<QFileInfo> fileInfo = QList<QFileInfo>(dir->entryInfoList());
+    if(fileInfo.size() > 0 )
+    {
+        /*判断文件输入后剩余容量是否小于512MB*/
+        if((storage.bytesAvailable()/1000/1000 - fileSize) < 512)
+        {
+            /*文件最后修改日期排序*/
+            QList<QDateTime> fileTime;
+            for(i = 0; i < fileInfo.size(); i++)
+            {
+                fileTime.append(fileInfo.at(i).lastModified());
+            }
+            qSort(fileTime.begin(), fileTime.end());//容器元素的递增排序
+            /*腾出空间，直到可以容纳输入文件*/
+            while(1)
+            {
+                if((storage.bytesAvailable()/1000/1000 - fileSize) >= 512)
+                {
+                    break;
+                }
+                qDebug()<<"while run";
+                qDebug()<<fileInfo.size();
+                if(fileInfo.size()<= 0 )
+                    break;
+                for (j = 0;j<fileInfo.size();j++)
+                {
+                    qDebug()<<"list"<<j;
+                    if(fileInfo.at(j).lastModified() == fileTime.at(0))
+                    {
+                        qDebug()<<fileInfo.at(j).fileName();
+                        dir->remove(fileInfo.at(j).fileName());
+                        fileInfo.removeAt(j);
+                        fileTime.removeAt(0);
+                    }
+                }
+                storage.refresh();
+                qDebug()<<storage.bytesAvailable()/1000/1000<<"MB";
+            }
+            qDebug()<<fileTime;
+        }
+    }
 }
 
 void MainWindow::m_canPrintFile()
@@ -3171,7 +3175,7 @@ void MainWindow::on_pushButton_340_clicked()
                     wifiConncet.close();
                     if(C.size()!=0&&list.size()!=0)
                     {
-                        for (int i= 0; i<C.size();i++) {
+                        for (int i= 1; i<C.size();i++) {
                             for (int j = 0; j<list.size();j+2) {
                                 if(C.at(i) == list.at(j))
                                 {
@@ -3422,6 +3426,7 @@ void MainWindow::on_pushButton_354_clicked()
     ui->stackedWidget->setCurrentWidget(ui->page_GetStart);
     m_port->powerlostsend();
     skpWin->setXHPort(m_port);
+    changeFilamentDialog->setXHPort(m_port);
     serialOpen =true;
     ui->m_StatusBar->setVisible(true);
     QObject::connect(printTimer,&QTimer::timeout,this,&MainWindow::askPrint);

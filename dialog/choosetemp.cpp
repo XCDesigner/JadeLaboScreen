@@ -22,7 +22,7 @@ void chooseTemp::init(QString str)
                                         font-size: 36px;\
                 text-align: center;\
         font-family: Barlow;\
-        background-image: url(:/TempofButton.png);\
+        background-image: url(qrc:/image/TempofButton.png);\
 border:none;\
     };");
     break;
@@ -31,7 +31,7 @@ border:none;\
                                       font-size: 36px;\
                 text-align: center;\
         font-family: Barlow;\
-        background-image: url(:/TemponButton.png);\
+        background-image: url(qrc:/image/TemponButton.png);\
 border:none;\
 };");
 break;
@@ -78,32 +78,56 @@ break;
 }
 }
 
+void chooseTemp::show()
+{
+    ret_value.clear();
+    QWidget::show();
+}
+
 void chooseTemp::on_pushButton_clicked()
 {
     emit heatT(ui->pushButton->text());
+    ret_value.append("180");
+    emit hideWidget();
+    this->hide();
 }
 
 void chooseTemp::on_pushButton_2_clicked()
 {
     emit heatT(ui->pushButton_2->text());
+    ret_value.append("200");
+    emit hideWidget();
+    this->hide();
 }
 
 void chooseTemp::on_pushButton_3_clicked()
 {
     emit heatT(ui->pushButton_3->text());
+    ret_value.append("220");
+    emit hideWidget();
+    this->hide();
 }
 
 void chooseTemp::on_pushButton_4_clicked()
 {
     emit heatT(ui->pushButton_4->text());
+    ret_value.append("240");
+    emit hideWidget();
+    this->hide();
 }
 
 void chooseTemp::on_pushButton_5_clicked()
 {
     emit heatT(ui->pushButton_5->text());
+    ret_value.append("260");
+    emit hideWidget();
+    this->hide();
 }
 
 void chooseTemp::on_pushButton_6_clicked()
 {
     emit heatT(ui->pushButton_6->text());
+    ret_value.append("0");
+    emit hideWidget();
+    this->hide();
 }

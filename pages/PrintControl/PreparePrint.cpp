@@ -10,5 +10,5 @@ void MainWindow::StopPreHeatting()
         m_timer.stop();
         QObject::disconnect(&m_timer,SIGNAL(timeout()),this,SLOT(jumpSeventeen()));
     }
-    ui->stackedWidget->setCurrentWidget(ui->page_GetStart);
+    changePageOnStatus(QByteArray::fromHex("00"), ui->page_GetStart);
 }

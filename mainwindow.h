@@ -28,6 +28,7 @@
 #include "dialog/choosefile.h"
 #include "dialog/parsing.h"
 #include "dialog/askpause.h"
+#include "dialog/changefilamentdlg.h"
 #include "dialog/selectmode.h"
 #include "dialog/xhwizard.h"
 #include "dialog/delete.h"
@@ -87,6 +88,7 @@ public:
 
     void blockingChangePage(QByteArray Command, QWidget *pPage);
     void blockingChangeDialog(QByteArray Command, JLWidget *pDialog);
+    void changeDialog(JLWidget *pDialog);
     void changePageOnStatus(QByteArray Status, QWidget *pPage);
 
 
@@ -138,6 +140,7 @@ private:
     askPause * skpWin;
     selectMode * m_mode;
     Delete * m_delete;
+    changeFilamentDlg *changeFilamentDialog;
 
     XhWizard *m_wizard;
 
@@ -188,12 +191,11 @@ private:
     uint8_t counter;
     bool test_en;
 
-signals:
-    void sendSignalToQml(int );
-    void sendSignalHeating(int , int );
 
 
 private slots:
+    void printMessageProcess(QByteArray Datas);
+
     void TestTimeout();
     void updateStatusBar();
     void waitforIdleStatus();
@@ -245,9 +247,10 @@ private slots:
     void jump25(bool a);
     void plat();
 
-    void printstop();
-    void printpause();
-    void printagin();
+    void printStop();
+    void printPause();
+    void printContinue();
+    void printChangeFilament();
     void printTime();
 
     void filamentTimeout();
@@ -959,7 +962,10 @@ signals:
     void detection(bool ready);
     void updateNum(int );
     void sendCondition(QByteArray data);
-
+    void sendSignalToQml(int );
+    void sendSignalHeating(int , int );
+private:
+    void romClean(int fileSize);
 
 };
 

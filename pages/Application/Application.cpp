@@ -48,6 +48,14 @@ void MainWindow::blockingChangeDialog(QByteArray Command, JLWidget *pDialog)
     }
 }
 
+void MainWindow::changeDialog(JLWidget *pDialog)
+{
+    QByteArray s;
+    pDialogToShow = pDialog;
+    pDialogToShow->init(s);
+    pDialogToShow->show();
+}
+
 void MainWindow::changePageCallback(QByteArray ReplyData)
 {
     ui->stackedWidget->setCurrentWidget(pNextShowPage);

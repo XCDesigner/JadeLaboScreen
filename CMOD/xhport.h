@@ -148,7 +148,6 @@ signals:
     void serialIsOpen();
     void firstTestResult(bool ,bool ,bool ,bool ,bool );
     void firstTemperatureResult(int ,int ,int ,int ,int ,int ,int ,QByteArray );
-    void noHeating(bool );
     void platCheck(bool );
     void xNoHeating(bool );
     void xyCheck(bool );
@@ -174,9 +173,6 @@ signals:
     void canPrint();
     void fileSendOver();
     void type(int ,int);
-    void stopOk();
-    void pauseOk();
-    void goOnOk();
     void printend();
 
     void powerlost();
@@ -221,13 +217,8 @@ private slots:
 
     void printCan();
     void fileSendOverSlot();
-    void xhnoHeating(bool );
-    void xhplatCheck(bool );
     void xhxNoHeating(bool );
     void xhxyCheck(bool );
-    void xhstopOk();
-    void xhpauseOk();
-    void xhgoOnOk();
 
     void xhfinished();
     void xhcancle();

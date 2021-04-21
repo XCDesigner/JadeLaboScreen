@@ -16,6 +16,7 @@ public:
     explicit chooseTemp(QWidget *parent = nullptr);
     ~chooseTemp();
     void init(QString str);
+    void show() override;
 
 private:
     Ui::chooseTemp *ui;

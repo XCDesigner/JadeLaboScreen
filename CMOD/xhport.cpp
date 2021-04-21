@@ -41,14 +41,9 @@ XhPort::XhPort(QObject *parent) : QObject(parent)
     QObject::connect(m_package,&XhPage::canPrint,this,&XhPort::printCan);
     QObject::connect(m_package,&XhPage::fileSendOver,this,&XhPort::fileSendOverSlot);
 
-    QObject::connect(m_package,&XhPage::noHeating,this,&XhPort::xhnoHeating);
-    QObject::connect(m_package,&XhPage::platCheck,this,&XhPort::xhplatCheck);
     QObject::connect(m_package,&XhPage::xNoHeating,this,&XhPort::xhxNoHeating);
     QObject::connect(m_package,&XhPage::xyCheck,this,&XhPort::xhxyCheck);
 
-    QObject::connect(m_package,&XhPage::stopOk,this,&XhPort::xhstopOk);
-    QObject::connect(m_package,&XhPage::pauseOk,this,&XhPort::xhpauseOk);
-    QObject::connect(m_package,&XhPage::goOnOk,this,&XhPort::xhgoOnOk);
     QObject::connect(m_package,&XhPage::printend,this,&XhPort::xhprintend);
 
     QObject::connect(m_package,&XhPage::filamentlost,this,&XhPort::xhfilamentlost);
@@ -539,8 +534,8 @@ void XhPort::setHeattingUnit(int Index0, int Temp0, int Index1, int Temp1)
   */
 void XhPort::setHeattingUnit(QString strLeftTemp, QString strRightTemp)
 {
-    setHeattingUnit(0, strLeftTemp.toInt());
-    setHeattingUnit(1, strRightTemp.toInt());
+    setHeattingUnit(0, strLeftTemp.toFloat());
+    setHeattingUnit(1, strRightTemp.toFloat());
 }
 
 /**
@@ -551,9 +546,9 @@ void XhPort::setHeattingUnit(QString strLeftTemp, QString strRightTemp)
   */
 void XhPort::setHeattingUnit(QString strLeftTemp, QString strRightTemp, QString strBedTemp)
 {
-    setHeattingUnit(0, strLeftTemp.toInt());
-    setHeattingUnit(1, strRightTemp.toInt());
-    setHeattingUnit(2, strBedTemp.toInt());
+    setHeattingUnit(0, strLeftTemp.toFloat());
+    setHeattingUnit(1, strRightTemp.toFloat());
+    setHeattingUnit(2, strBedTemp.toFloat());
 }
 
 /**
@@ -872,16 +867,6 @@ void XhPort::fileSendOverSlot()
     emit fileSendOver();
 }
 
-void XhPort::xhnoHeating(bool a)
-{
-    emit noHeating(a);
-}
-
-void XhPort::xhplatCheck(bool a)
-{
-    emit platCheck(a);
-}
-
 void XhPort::xhxNoHeating(bool a)
 {
     emit xNoHeating(a);
@@ -890,21 +875,6 @@ void XhPort::xhxNoHeating(bool a)
 void XhPort::xhxyCheck(bool a)
 {
     emit xyCheck(a);
-}
-
-void XhPort::xhstopOk()
-{
-    emit stopOk();
-}
-
-void XhPort::xhpauseOk()
-{
-    emit pauseOk();
-}
-
-void XhPort::xhgoOnOk()
-{
-    emit goOnOk();
 }
 
 void XhPort::xhfinished()

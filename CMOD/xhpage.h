@@ -112,8 +112,6 @@ signals:
     /*first start*/
     void firstTestResult(bool ,bool ,bool ,bool ,bool );
     void firstTemperatureResult(int ,int ,int ,int ,int ,int ,int ,QByteArray );
-    void noHeating(bool );
-    void platCheck(bool );
     void xNoHeating(bool );
     void xyCheck(bool );
     /*tool*/
@@ -138,8 +136,6 @@ signals:
     /*print*/
     void canPrint();//允许文件传输
     void fileSendOver();//文件传输结束
-    void stopOk();
-    void pauseOk();
     void goOnOk();
     void printend();
 
