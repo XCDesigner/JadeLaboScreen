@@ -59,6 +59,8 @@ public:
     void setPrintFanPercentage(int Index, uint8_t Percent);
     void setPrintSpeedPercentage(uint16_t Percent);
     void setPrintPlatformOffset(uint32_t Height);
+
+    void setExtruderDisable(uint8_t Index);
     /*********ERROR*************/
     void resume();
     void abort();
@@ -131,6 +133,8 @@ public:
     XhPage* getXhPage();
     QSerialPort* getSerialPort();
 
+    void continuePrint();
+
 private:
     QSerialPort *m_serial;
     XhPage *m_package;
@@ -168,9 +172,6 @@ signals:
     void finished();
     void canelk();
 
-
-
-    void canPrint();
     void fileSendOver();
     void type(int ,int);
     void printend();
@@ -209,13 +210,11 @@ private slots:
     /*tool calibration*/
     void xhpNozzleHeating(bool );
     void xhpPlatformCalibration(qint32 ,qint32 ,qint32 ,qint32 );
-    void xhnNozzleHeating(bool );
     void xhnNozzleCalibration( int );
     void xhxXyHeating(bool );
     void xhxPlatformCalibration(bool );
     void xhxXyCalibration( );
 
-    void printCan();
     void fileSendOverSlot();
     void xhxNoHeating(bool );
     void xhxyCheck(bool );

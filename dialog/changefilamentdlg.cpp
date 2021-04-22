@@ -7,6 +7,9 @@ changeFilamentDlg::changeFilamentDlg(QWidget *parent) :
 {
     ui->setupUi(this);
 
+    ui->qw_StatusNotice->setSource(QUrl("qrc:/qml/StatusBarNotice.qml"));
+    ui->qw_StatusNotice->setClearColor("#2d2b2c");
+
     ui->qw_LeftHeatingItem->setSource(QUrl("qrc:/qml/JLHeatingUnit.qml"));
     QObject::connect(ui->qw_LeftHeatingItem->rootObject(), SIGNAL(choseTempClicked()), this, SLOT(left_setTemp()));
     QObject::connect(ui->qw_LeftHeatingItem->rootObject(), SIGNAL(extruderClicked()), this, SLOT(left_extrude()));
@@ -20,6 +23,8 @@ changeFilamentDlg::changeFilamentDlg(QWidget *parent) :
     QObject::connect(ui->qw_RightHeatingItem->rootObject(), SIGNAL(retackClicked()), this, SLOT(right_retract()));
     ui->qw_RightHeatingItem->rootObject()->setProperty("indicatorIcon", "qrc:/image/RightHotendIndecator.png");
     ui->qw_RightHeatingItem->rootObject()->setProperty("indicatorText", "Right Extruder");
+
+    autoUpdateStatus = false;
 }
 
 changeFilamentDlg::~changeFilamentDlg()
@@ -37,8 +42,48 @@ void changeFilamentDlg::init(QByteArray InitData)
 
 void changeFilamentDlg::show()
 {
+    strScreenStatus status;
+    char strtmp[20];
+
+    pscreen_status->getStatus(&status);
+    ui->qw_StatusNotice->rootObject()->setProperty("udiskVisible", pscreen_status->getUdiskStatus());
+    ui->qw_StatusNotice->rootObject()->setProperty("wifiVisible", pscreen_status->getWifiStatus());
+    ui->qw_StatusNotice->rootObject()->setProperty("lightVisible", true);
+
+    sprintf(strtmp, "%03d°C", status.TargetTemp[0]);
+    ui->qw_LeftHeatingItem->rootObject()->setProperty("text", strtmp);
+    sprintf(strtmp, "%03d°C", status.TargetTemp[1]);
+    ui->qw_RightHeatingItem->rootObject()->setProperty("text", strtmp);
+
     chooseTempDialog = new chooseTemp(this);
+    chooseTempDialog->hide();
+    autoUpdateStatus = true;
+
+    QTimer::singleShot(500, this, SLOT(updateStatusBar()));
+
+    QObject::connect(chooseTempDialog, SIGNAL(hideWidget()), this, SLOT(onSetTemp()));
     QWidget::show();
+}
+
+void changeFilamentDlg::updateStatusBar()
+{
+    strScreenStatus status;
+    pscreen_status->getStatus(&status);
+    char strtmp[20];
+
+    sprintf(strtmp, "%03d|%03d", status.CurrentTemp[0], status.TargetTemp[0]);
+    ui->label_131->setText(strtmp);
+
+    sprintf(strtmp, "%03d|%03d", status.CurrentTemp[1], status.TargetTemp[1]);
+    ui->label_133->setText(strtmp);
+
+    sprintf(strtmp, "%03d|%03d", status.CurrentTemp[2], status.TargetTemp[2]);
+    ui->label_30->setText(strtmp);
+
+    if(autoUpdateStatus == true)
+    {
+        QTimer::singleShot(500, this, SLOT(updateStatusBar()));
+    }
 }
 
 void changeFilamentDlg::setXHPort(XhPort *pPort)
@@ -46,54 +91,54 @@ void changeFilamentDlg::setXHPort(XhPort *pPort)
     m_xhPort = pPort;
 }
 
-
 void changeFilamentDlg::left_setTemp()
 {
-    QObject::disconnect(chooseTempDialog, SIGNAL(hideWidget()), this, SLOT(onSetRightTemp()));
-    QObject::connect(chooseTempDialog, SIGNAL(hideWidget()), this, SLOT(onSetLeftTemp()));
+    extruder_selected = 0;
+    chooseTempDialog->show();
+}
+
+void changeFilamentDlg::right_setTemp()
+{
+    extruder_selected = 1;
     chooseTempDialog->show();
 }
 
 void changeFilamentDlg::left_extrude()
 {
+    qDebug()<<"left extrude";
     m_xhPort->ldown();
 }
 
 void changeFilamentDlg::left_retract()
 {
+    qDebug()<<"left retract";
     m_xhPort->lup();
 }
 
-void changeFilamentDlg::right_setTemp()
-{
-    QObject::disconnect(chooseTempDialog, SIGNAL(hideWidget()), this, SLOT(onSetLeftTemp()));
-    QObject::connect(chooseTempDialog, SIGNAL(hideWidget()), this, SLOT(onSetRightTemp()));
-    chooseTempDialog->show();
-}
-
-void changeFilamentDlg::onSetLeftTemp()
+void changeFilamentDlg::onSetTemp()
 {
     QList<QByteArray> ret = chooseTempDialog->get_return_value();
-    qDebug()<<ret[0];
-    ui->qw_LeftHeatingItem->rootObject()->setProperty("text", ret[0] + "°C");
-    m_xhPort->setHeattingUnit(0, ret[0].toInt());
+    if(extruder_selected == 0) {
+        ui->qw_LeftHeatingItem->rootObject()->setProperty("text", ret[0] + "°C");
+        m_xhPort->setHeattingUnit(0, ret[0].toInt());
+    }
+    else if(extruder_selected == 1)
+    {
+        ui->qw_RightHeatingItem->rootObject()->setProperty("text", ret[0] + "°C");
+        m_xhPort->setHeattingUnit(1, ret[0].toInt());
+    }
 }
 
-void changeFilamentDlg::onSetRightTemp()
-{
-    QList<QByteArray> ret = chooseTempDialog->get_return_value();
-    qDebug()<<ret[0];
-    ui->qw_RightHeatingItem->rootObject()->setProperty("text", ret[0] + "°C");
-    m_xhPort->setHeattingUnit(1, ret[0].toInt());
-}
 
 void changeFilamentDlg::right_extrude()
 {
+    qDebug()<<"right extrude";
     m_xhPort->rdown();
 }
 
 void changeFilamentDlg::right_retract()
 {
+    qDebug()<<"right retract";
     m_xhPort->rup();
 }
 

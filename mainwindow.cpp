@@ -98,7 +98,6 @@ MainWindow::MainWindow(QWidget *parent) :
     QObject::connect(m_port,&XhPort::canelk,this,&MainWindow::cancle);
 
     /*print*/
-    QObject::connect(m_port,&XhPort::canPrint,this,&MainWindow::m_canPrintFile);
     QObject::connect(m_port,&XhPort::fileSendOver,this,&MainWindow::jumpSixteen);
     QObject::connect(m_port,&XhPort::printend,this,&MainWindow::printending);
 
@@ -200,11 +199,9 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->quickWidget_6->setClearColor(QColor(qmlColor));
 
 
-    ui->qw_PreHeating->setSource(QUrl("qrc:/qml/BiCircleProgressBar.qml"));
+    ui->qw_PreHeating->setSource(QUrl("qrc:/qml/HeatingCircle.qml"));
     ui->qw_PreHeating->setResizeMode(QQuickWidget::SizeRootObjectToView);
     ui->qw_PreHeating->setClearColor(QColor(qmlColor));
-    ui->qw_PreHeating->rootObject()->setProperty("leftPercent", 100);
-    ui->qw_PreHeating->rootObject()->setProperty("rightPercent", 100);
 
     ui->qw_Distance->setSource(QUrl("qrc:/qml/DistanceButton.qml"));
     ui->qw_Distance->setResizeMode(QQuickWidget::SizeRootObjectToView);
@@ -239,8 +236,13 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->qw_StatusNotice->rootObject()->setProperty("wifiVisible", false);
     ui->qw_StatusNotice->rootObject()->setProperty("lightChecked", false);
 
+    ui->quickWidget_7->setClearColor(QColor(qmlColor));
+    ui->quickWidget_7->rootObject()->setProperty("finishEnabled", true);
+
+
     item=ui->quickWidget_3->rootObject();
-    QObject::connect(this,SIGNAL(sendSignalToQml(int )),item,SIGNAL(receFromWidget(int )));
+    QObject::connect(item,SIGNAL(finishClicked()), this, SLOT(onFinishPrintClicked()));
+
 
     item3=ui->quickWidget_5->rootObject();
     QObject::connect(this,SIGNAL(sendSignalToQml(int )),item3,SIGNAL(receFromWidget(int )));
@@ -304,6 +306,8 @@ MainWindow::MainWindow(QWidget *parent) :
     m_event->setup(m_port);
     QObject::connect(this->m_event, SIGNAL(changePageAccept(QByteArray)), this, SLOT(changePageCallback(QByteArray)));
     QObject::connect(this->m_event, SIGNAL(changeDialogAccept(QByteArray)), this, SLOT(changeDialogCallback(QByteArray)));
+
+    QObject::connect(m_port->getXhPage(), SIGNAL(command_received(uint8_t, uint8_t, QByteArray)), this, SLOT(printMessageProcess(uint8_t, uint8_t, QByteArray)));
 }
 
 MainWindow::~MainWindow()
@@ -820,6 +824,9 @@ void MainWindow::jumpSeventeen()
     {
         if((l1>=(l2*0.9)) && (r>=(r2*0.9)))
         {
+            screen_status.setExtruderEnabled(0, true);
+            screen_status.setExtruderEnabled(1, true);
+            screen_status.setPrintMode(printMode);
             m_port->readyprint(this->printMode,offset);
             qDebug()<<"readyprint offset "<<offset;
             qDebug()<<"readyprint mode"<<printMode;
@@ -855,32 +862,6 @@ void MainWindow::jump22(bool)
     m_port->n_nozzleCalibration();
 }
 
-void MainWindow::jump23(int b)
-{
-    if(b==0)
-    {
-        ui->stackedWidget->setCurrentIndex(64);
-    }
-    else {
-        ui->stackedWidget->setCurrentIndex(63);
-    }
-
-    ui->label_151->setNum(b/1000);
-    ui->label_151->setAlignment(Qt::AlignCenter);
-//    if(a)
-//    {
-//        ui->pushButton_304->setIcon(QPixmap(":/9.png"));
-//        ui->pushButton_305->setIcon(QPixmap(":/11.png"));
-//    }
-//    else {
-//        ui->pushButton_305->setIcon(QPixmap(":/9.png"));
-//        ui->pushButton_304->setIcon(QPixmap(":/11.png"));
-//    }
-//    m_timer.stop();
-//    QObject::disconnect(&m_timer,SIGNAL(timeout()),this,SLOT(jump23()));
-}
-
-
 void MainWindow::jump24(bool a )
 {
     if(a)
@@ -905,11 +886,6 @@ void MainWindow::jump25(bool a)
     else {
         m_port->x_platformCalibration();
     }
-}
-
-void MainWindow::plat()
-{
-    ui->stackedWidget->setCurrentIndex(68);
 }
 
 
@@ -1357,28 +1333,6 @@ void MainWindow::cancle()
     ui->stackedWidget->setCurrentIndex(51);
 }
 
-void MainWindow:: nozzled()
-{
-    if((ui->label_125->text().left(3).toInt() >190 )&& (ui->label_127->text().left(3).toInt() >190 ))
-    {
-         m_port->n_nozzleHeating();
-         QObject::disconnect(&m_timer,&QTimer::timeout,this,&MainWindow::nozzled);
-         m_timer.stop();
-         ui->stackedWidget->setCurrentIndex(62);
-    }
-}
-
-void MainWindow::xyheated()
-{
-    if((ui->label_125->text().left(3).toInt() >190 )&& (ui->label_127->text().left(3).toInt() >190 ))
-    {
-         m_port->x_xyCalibration();
-         QObject::disconnect(&m_timer,&QTimer::timeout,this,&MainWindow::xyheated);
-         m_timer.stop();
-         ui->stackedWidget->setCurrentIndex(67);
-    }
-}
-
 void MainWindow::printending()
 {
     ui->stackedWidget->setCurrentWidget(ui->page_PrintFinish);
@@ -1549,6 +1503,8 @@ void MainWindow::tmirro()
         offsetbuff[2] = static_cast< char>((offsetnum >> 16) & 0xFF);
         offsetbuff[1] = static_cast< char>((offsetnum >> 8) & 0xFF);
         offsetbuff[0] = static_cast< char>((offsetnum >> 0) & 0xFF);
+        qDebug()<<"Send Offset:";
+        qDebug()<<offsetbuff;
         this->offset.resize(0);
         this->offset.append(offsetbuff,4);
         m_port->setHeattingUnit(lt,lt,bt);
@@ -2401,7 +2357,7 @@ void MainWindow::on_pushButton_169_clicked()
 
 void MainWindow::on_pushButton_174_clicked()
 {
-    ui->stackedWidget->setCurrentIndex(51);
+    ui->stackedWidget->setCurrentWidget(ui->page_Calibration);
 }
 
 void MainWindow::on_pushButton_175_clicked()
@@ -2518,14 +2474,6 @@ void MainWindow::on_pushButton_236_clicked()
 void MainWindow::on_pushButton_237_clicked()
 {
     ui->stackedWidget->setCurrentWidget(ui->page_XYCali_0);
-}
-
-void MainWindow::on_pushButton_286_clicked()
-{
-     ui->stackedWidget->setCurrentIndex(61);
-     m_port->setHeattingUnit("200","200");
-     QObject::connect(&m_timer,&QTimer::timeout,this,&MainWindow::nozzled);
-     m_timer.start(1000);
 }
 
 void MainWindow::on_pushButton_233_clicked()
@@ -3426,7 +3374,9 @@ void MainWindow::on_pushButton_354_clicked()
     ui->stackedWidget->setCurrentWidget(ui->page_GetStart);
     m_port->powerlostsend();
     skpWin->setXHPort(m_port);
+    skpWin->setScreenStausContext(&screen_status);
     changeFilamentDialog->setXHPort(m_port);
+    changeFilamentDialog->setScreenStausContext(&screen_status);
     serialOpen =true;
     ui->m_StatusBar->setVisible(true);
     QObject::connect(printTimer,&QTimer::timeout,this,&MainWindow::askPrint);
@@ -3539,7 +3489,7 @@ void MainWindow::on_pushButton_689_clicked()
     else
     {
         qDebug()<<"connect bad";
-        ui->stackedWidget->setCurrentIndex(83);
+        ui->stackedWidget->setCurrentWidget(ui->page_WifiConnect_1);
         setWinPic(false);
     }
 #endif
@@ -3547,7 +3497,7 @@ void MainWindow::on_pushButton_689_clicked()
 
 void MainWindow::on_pushButton_691_clicked()
 {
-    ui->stackedWidget->setCurrentIndex(81);
+    ui->stackedWidget->setCurrentWidget(ui->page_MachineSetting);
     if(chooseit)
         ui->label_316->setText(chooseit->wifiname);
     ui->label_316->setStyleSheet("QLabel{font-weight: bold;\
@@ -3561,7 +3511,7 @@ void MainWindow::on_pushButton_691_clicked()
 
 void MainWindow::on_pushButton_690_clicked()
 {
-    ui->stackedWidget->setCurrentIndex(81);
+    ui->stackedWidget->setCurrentWidget(ui->page_MachineSetting);
     ui->label_316->setText("none");
     ui->label_316->setStyleSheet("QLabel{background-color: rgba(255, 255, 255, 0);\
                                  color: rgb(255, 255, 255);\

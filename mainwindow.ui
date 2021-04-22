@@ -70,7 +70,7 @@ font-family: barlow;
 }</string>
     </property>
     <property name="currentIndex">
-     <number>21</number>
+     <number>25</number>
     </property>
     <widget class="QWidget" name="page_5">
      <widget class="QLabel" name="label_5">
@@ -8017,8 +8017,8 @@ border:none;</string>
      <widget class="QLabel" name="label_118">
       <property name="geometry">
        <rect>
-        <x>737</x>
-        <y>294</y>
+        <x>630</x>
+        <y>300</y>
         <width>357</width>
         <height>57</height>
        </rect>
@@ -8173,8 +8173,8 @@ border-radius: 20px;</string>
      <widget class="QLabel" name="label_120">
       <property name="geometry">
        <rect>
-        <x>765</x>
-        <y>294</y>
+        <x>630</x>
+        <y>300</y>
         <width>357</width>
         <height>57</height>
        </rect>
@@ -8234,8 +8234,8 @@ border-radius: 20px;</string>
      <zorder>pushButton_250</zorder>
      <zorder>pushButton_251</zorder>
      <zorder>pushButton_252</zorder>
-     <zorder>label_120</zorder>
      <zorder>label_121</zorder>
+     <zorder>label_120</zorder>
     </widget>
     <widget class="QWidget" name="page_PlatformCali_6">
      <widget class="QPushButton" name="pushButton_361">
@@ -8438,7 +8438,7 @@ border: 2px solid rgba(255, 99, 11, 255);font-weight: bold;
 font-family:Barlow;</string>
       </property>
       <property name="text">
-       <string>Next/Done</string>
+       <string>Next</string>
       </property>
      </widget>
      <widget class="QPushButton" name="pushButton_368">
@@ -8743,7 +8743,7 @@ font-family: Barlow;
 border: 2px solid rgba(255, 99, 11, 255);</string>
       </property>
       <property name="text">
-       <string>Start</string>
+       <string>Next</string>
       </property>
      </widget>
      <widget class="QPushButton" name="pushButton_376">
@@ -9426,8 +9426,8 @@ image: url(:/image/Bitmap.png);</string>
      <widget class="QLabel" name="label_145">
       <property name="geometry">
        <rect>
-        <x>737</x>
-        <y>294</y>
+        <x>630</x>
+        <y>300</y>
         <width>357</width>
         <height>57</height>
        </rect>
@@ -9586,8 +9586,8 @@ border-radius: 20px;</string>
      <widget class="QLabel" name="label_147">
       <property name="geometry">
        <rect>
-        <x>737</x>
-        <y>294</y>
+        <x>630</x>
+        <y>300</y>
         <width>357</width>
         <height>57</height>
        </rect>
@@ -10292,8 +10292,8 @@ border-radius: 20px;</string>
      <widget class="QLabel" name="label_301">
       <property name="geometry">
        <rect>
-        <x>737</x>
-        <y>294</y>
+        <x>630</x>
+        <y>300</y>
         <width>357</width>
         <height>57</height>
        </rect>
@@ -10447,8 +10447,8 @@ border-radius: 20px;</string>
      <widget class="QLabel" name="label_303">
       <property name="geometry">
        <rect>
-        <x>700</x>
-        <y>294</y>
+        <x>630</x>
+        <y>300</y>
         <width>481</width>
         <height>57</height>
        </rect>
@@ -12103,14 +12103,19 @@ background-color: rgb(255, 255, 255);</string>
      <widget class="QQuickWidget" name="quickWidget_7">
       <property name="geometry">
        <rect>
-        <x>790</x>
-        <y>390</y>
-        <width>131</width>
-        <height>111</height>
+        <x>760</x>
+        <y>130</y>
+        <width>484</width>
+        <height>484</height>
        </rect>
       </property>
       <property name="resizeMode">
        <enum>QQuickWidget::SizeRootObjectToView</enum>
+      </property>
+      <property name="source">
+       <url>
+        <string>qrc:/qml/CircleProgressBar.qml</string>
+       </url>
       </property>
      </widget>
      <widget class="QPushButton" name="pushButton">

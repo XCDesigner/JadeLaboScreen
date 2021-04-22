@@ -28,7 +28,6 @@ XhPort::XhPort(QObject *parent) : QObject(parent)
     /*tool calibration*/
     QObject::connect(m_package,&XhPage::pNozzleHeating,this,&XhPort::xhpNozzleHeating);
     QObject::connect(m_package,&XhPage::pPlatformCalibration,this,&XhPort::xhpPlatformCalibration);
-    QObject::connect(m_package,&XhPage::nNozzleHeating,this,&XhPort::xhnNozzleHeating);
     QObject::connect(m_package,&XhPage::nNozzleCalibration,this,&XhPort::xhnNozzleCalibration);
     QObject::connect(m_package,&XhPage::xXyHeating,this,&XhPort::xhxXyHeating);
     QObject::connect(m_package,&XhPage::xPlatformCalibration,this,&XhPort::xhxPlatformCalibration);
@@ -37,8 +36,6 @@ XhPort::XhPort(QObject *parent) : QObject(parent)
     QObject::connect(m_package,&XhPage::cancle,this,&XhPort::xhcancle);
     QObject::connect(m_package,&XhPage::finished,this,&XhPort::xhcancle);
 
-
-    QObject::connect(m_package,&XhPage::canPrint,this,&XhPort::printCan);
     QObject::connect(m_package,&XhPage::fileSendOver,this,&XhPort::fileSendOverSlot);
 
     QObject::connect(m_package,&XhPage::xNoHeating,this,&XhPort::xhxNoHeating);
@@ -136,7 +133,7 @@ void XhPort::lup()
 
 void XhPort::ldown()
 {
-    QByteArray s = QByteArray::fromHex("020500000186A0");
+    QByteArray s = QByteArray::fromHex("020500A0860100");
     QByteArray buff = m_package->groupPage(s);
     m_serial->write(buff);
 }
@@ -150,7 +147,7 @@ void XhPort::rup()
 
 void XhPort::rdown()
 {
-    QByteArray s = QByteArray::fromHex("020501000186A0");
+    QByteArray s = QByteArray::fromHex("020501A0860100");
     QByteArray buff = m_package->groupPage(s);
     m_serial->write(buff);
 }
@@ -166,20 +163,6 @@ void XhPort::AcsPrint(QByteArray a)
     m_serial->write(a);
 }
 
-void XhPort::pausePrint()
-{
-    QByteArray s = QByteArray::fromHex("0602");
-    QByteArray buff = m_package->groupPage(s);
-    m_serial->write(buff);
-}
-
-void XhPort::stopPrint()
-{
-    QByteArray s = QByteArray::fromHex("0601");
-    QByteArray buff = m_package->groupPage(s);
-    m_serial->write(buff);
-}
-
 void XhPort::regainPrint()
 {
     QByteArray s = QByteArray::fromHex("060C");
@@ -190,7 +173,7 @@ void XhPort::regainPrint()
 void XhPort::readyprint(int Mode, QByteArray Offset)
 {
     QByteArray s;
-    char strMode[][7] = {"060D00", "060D02", "060D03", "060D04", "060D05", "060D06"};
+    char strMode[][7] = {"060D00", "060D01", "060D02", "060D03", "060D04", "060D05", "060D06"};
     s = QByteArray::fromHex(strMode[Mode]);
     s.append(Offset);
     QByteArray buff = m_package->groupPage(s);
@@ -257,8 +240,6 @@ void XhPort::parcom(int a )
         m_serial->write(buff);
     }
 }
-
-
 
 void XhPort::askHotend()
 {
@@ -330,7 +311,7 @@ void XhPort::p_nozzleHeating()
 
 void XhPort::p_platformCalibration()
 {
-    QByteArray s = QByteArray::fromHex("030200");
+    QByteArray s = QByteArray::fromHex("0302");
     QByteArray buff = m_package->groupPage(s);
     m_serial->write(buff);
 }
@@ -345,13 +326,6 @@ void XhPort::finish()
 void XhPort::cancleCalibration()
 {
     QByteArray s = QByteArray::fromHex("030A");
-    QByteArray buff = m_package->groupPage(s);
-    m_serial->write(buff);
-}
-
-void XhPort::n_nozzleHeating()
-{
-    QByteArray s = QByteArray::fromHex("0300");
     QByteArray buff = m_package->groupPage(s);
     m_serial->write(buff);
 }
@@ -645,11 +619,58 @@ void XhPort::setPrintPlatformOffset(uint32_t Height)
     m_serial->write(buff);
 }
 
+/**
+  * @brief  Pause printing
+  * @retval None
+  */
+void XhPort::pausePrint()
+{
+    QByteArray s = QByteArray::fromHex("0602");
+    QByteArray buff = m_package->groupPage(s);
+    m_serial->write(buff);
+}
+
+/**
+  * @brief  Continue printing
+  * @retval None
+  */
+void XhPort::continuePrint()
+{
+    QByteArray s = QByteArray::fromHex("060C");
+    QByteArray buff = m_package->groupPage(s);
+    m_serial->write(buff);
+}
+
+/**
+  * @brief  Stop printing
+  * @retval None
+  */
+void XhPort::stopPrint()
+{
+    QByteArray s = QByteArray::fromHex("0601");
+    QByteArray buff = m_package->groupPage(s);
+    m_serial->write(buff);
+}
+
+/**
+  * @brief  Set extruder enable. This function can be called in Duplicate Mode or Mirror Mode
+  * @param  Index: The index of the extuder. 0 for left, 1 for right
+  * @retval None
+  */
+void XhPort::setExtruderDisable(uint8_t Index)
+{
+    QByteArray buff;
+    if(Index == 0)
+        buff = m_package->groupPage(QByteArray::fromHex("010700"));
+    else if(Index == 1)
+        buff = m_package->groupPage(QByteArray::fromHex("010701"));
+    m_serial->write(buff);
+}
+
 void XhPort::testdemo()
 {
     QByteArray s = QByteArray::fromHex("84654875294581");
     QByteArray buff = m_package->groupPage(s);
-//    qDebug()<<s.size();
     m_serial->write(buff);
 }
 
@@ -832,11 +853,6 @@ void XhPort::xhpPlatformCalibration(qint32 a, qint32 b, qint32 c, qint32 d)
     emit pPlatformCalibration(a,b,c,d);
 }
 
-void XhPort::xhnNozzleHeating(bool a )
-{
-    emit nNozzleHeating(a);
-}
-
 void XhPort::xhnNozzleCalibration(int b)
 {
     emit nNozzleCalibration(b);
@@ -855,11 +871,6 @@ void XhPort::xhxPlatformCalibration(bool a )
 void XhPort::xhxXyCalibration()
 {
     emit xXyCalibration();
-}
-
-void XhPort::printCan()
-{
-    emit canPrint();
 }
 
 void XhPort::fileSendOverSlot()

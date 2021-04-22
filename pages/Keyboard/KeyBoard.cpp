@@ -413,7 +413,7 @@ void MainWindow::on_pushButton_148_clicked()
 
 void MainWindow::on_pushButton_642_clicked()
 {
-    ui->stackedWidget->setCurrentIndex(74);
+    ui->stackedWidget->setCurrentWidget(ui->page_MachineSetting);
 }
 
 void MainWindow::on_pushButton_312_clicked()

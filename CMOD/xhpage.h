@@ -20,8 +20,8 @@
 
 typedef struct {
     float ZHeight;
-    uint16_t CurTemp[3];
-    uint16_t TarTemp[3];
+    int16_t CurTemp[3];
+    int16_t TarTemp[3];
     uint8_t Percent;
     uint8_t Status;
 }strMachineStatus;
@@ -126,7 +126,6 @@ signals:
     void finished();
 
     void cancle();
-    void nNozzleHeating(bool );
     void nNozzleCalibration(int  );
     void xXyHeating(bool );
     void xPlatformCalibration(bool );
@@ -134,7 +133,6 @@ signals:
 
     void sendFileArry(QByteArray );
     /*print*/
-    void canPrint();//允许文件传输
     void fileSendOver();//文件传输结束
     void goOnOk();
     void printend();
@@ -154,8 +152,6 @@ signals:
     void state(QString ,QString ,QString ,QString ,QString ,QString ,QString );
     void canone(int );
     void cantwo(int );
-
-
 
     void updateBeginSignls();
     void updateSerial(int );

@@ -25,16 +25,18 @@ public:
 
 private:
     chooseTemp *chooseTempDialog;
+    uint8_t extruder_selected;
+    bool autoUpdateStatus;
 
 public slots:
+    void updateStatusBar();
     void left_setTemp();
     void left_extrude();
     void left_retract();
     void right_setTemp();
     void right_extrude();
     void right_retract();
-    void onSetLeftTemp();
-    void onSetRightTemp();
+    void onSetTemp();
 private slots:
     void on_pushButton_359_clicked();
 

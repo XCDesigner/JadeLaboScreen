@@ -29,6 +29,7 @@ CONFIG += c++11
 SOURCES += \
     CMOD/XhGcodeFileParser.cpp \
     CMOD/XhUpdater.cpp \
+    CMOD/screenstatus.cpp \
     CMOD/xhEvent.cpp \
     CMOD/xhcontrolr818.cpp \
     CMOD/xhpage.cpp \
@@ -75,6 +76,7 @@ SOURCES += \
 HEADERS += \
     CMOD/XhGcodeFileParser.h \
     CMOD/XhUpdater.h \
+    CMOD/screenstatus.h \
     CMOD/xhEvent.h \
     CMOD/xhcontrolr818.h \
     CMOD/xhpage.h \

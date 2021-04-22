@@ -46,6 +46,7 @@
 #include "listwidgetitem/mywifiitem.h"
 #include "dialog/updateprogrebar.h"
 #include "CMOD/XhGcodeFileParser.h"
+#include "CMOD/screenstatus.h"
 #include "listwidgetitem/mylistwidgetitem.h"
 #ifdef XH_LINUX
 #include "wifi_intf.h"
@@ -190,11 +191,12 @@ private:
     QTimer *t_test;
     uint8_t counter;
     bool test_en;
-
+    ScreenStatus screen_status;
 
 
 private slots:
-    void printMessageProcess(QByteArray Datas);
+    void printMessageProcess(uint8_t, uint8_t, QByteArray Datas);
+    void onFinishPrintClicked();
 
     void TestTimeout();
     void updateStatusBar();

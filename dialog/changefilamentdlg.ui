@@ -14,7 +14,7 @@
    <string>Form</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">background-color: rgba(45, 44, 43, 255);</string>
+   <string notr="true">background-color: rgb(43, 44, 45);</string>
   </property>
   <widget class="QWidget" name="widget" native="true">
    <property name="geometry">
@@ -96,9 +96,12 @@ border: 2px solid rgb(255, 99, 11) ;</string>
     <rect>
      <x>180</x>
      <y>0</y>
-     <width>1120</width>
+     <width>1280</width>
      <height>50</height>
     </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgba(45, 44, 43, 255);</string>
    </property>
    <widget class="QLabel" name="label_130">
     <property name="geometry">
@@ -294,6 +297,22 @@ font-weight: bold;</string>
     </property>
    </widget>
   </widget>
+  <widget class="QLabel" name="label">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1280</width>
+     <height>720</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>TextLabel</string>
+   </property>
+  </widget>
+  <zorder>label</zorder>
+  <zorder>widget</zorder>
+  <zorder>m_StatusBar</zorder>
  </widget>
  <customwidgets>
   <customwidget>

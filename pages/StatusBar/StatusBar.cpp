@@ -4,16 +4,19 @@
 void MainWindow::setUSBpic(bool isVisible)
 {
     ui->qw_StatusNotice->rootObject()->setProperty("udiskVisible", isVisible);
+    screen_status.setUdiskStatus(isVisible);
 }
 
 void MainWindow::setLightPic(bool isVisible)
 {
     ui->qw_StatusNotice->rootObject()->setProperty("lightVisible", isVisible);
+    screen_status.setLightStatus(isVisible);
 }
 
 void MainWindow::setWinPic(bool isVisible)
 {
     ui->qw_StatusNotice->rootObject()->setProperty("wifiVisible", isVisible);
+    screen_status.setWifiStatus(isVisible);
 }
 
 void MainWindow::StatusNotice_Light_clicked()
@@ -30,6 +33,7 @@ void MainWindow::updateStatusBar()
 {
     strMachineStatus new_status;
     m_port->getXhPage()->GetMachineStatus(&new_status);
+    screen_status.setTemp(new_status.CurTemp, new_status.TarTemp);
 
     char m_string[20] ="";
     sprintf(m_string,"%03d|%03d°C",new_status.CurTemp[0], new_status.TarTemp[0]);

@@ -16,6 +16,11 @@ void JLWidget::show()
     QWidget::show();
 }
 
+void JLWidget::setScreenStausContext(ScreenStatus *pContext)
+{
+    pscreen_status = pContext;
+}
+
 QList<QByteArray> JLWidget::get_return_value()
 {
     return ret_value;

@@ -35,6 +35,8 @@ signals:
 
 private:
     Ui::askPause *ui;
+    bool last_left_extruder_enable;
+    bool last_right_extruder_enable;
 };
 
 #endif // ASKPAUSE_H

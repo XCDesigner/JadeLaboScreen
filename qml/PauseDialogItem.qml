@@ -9,12 +9,32 @@ Rectangle {
 
     property bool leftEnable: leftExtruderEnable.isPressed
     property bool rightEnable: rightExtruderEnable.isPressed
+    property bool nonAvoidEnable: true
     property string curStatus: "running"
 
     signal pauseClicked()
     signal continueClicked()
     signal changeFilamentClicked()
     signal cancelClicked()
+
+    onLeftEnableChanged: {
+        leftExtruderEnable.isPressed = leftEnable
+    }
+
+    onRightEnableChanged: {
+        rightExtruderEnable.isPressed = rightEnable
+    }
+
+    onNonAvoidEnableChanged: {
+        if(nonAvoidEnable == true){
+            leftExtruderEnable.visible = true
+            rightExtruderEnable.visible = true
+        }
+        else {
+            leftExtruderEnable.visible = false
+            rightExtruderEnable.visible = false
+        }
+    }
 
     onCurStatusChanged: {
         if(curStatus == "running") {
@@ -59,22 +79,36 @@ Rectangle {
                 id: leftExtruderEnable
                 width: 494
                 height: 120
+                isPressed: true
+                text: "Left Extruder Enable"
                 onClicked: {
                     if(leftExtruderEnable.isPressed == true)
-                        leftExtruderEnable.isPressed = false;
+                    {
+                        if(rightExtruderEnable.isPressed == true)
+                            leftExtruderEnable.isPressed = false;
+                    }
                     else
+                    {
                         leftExtruderEnable.isPressed = true
+                    }
                 }
             }
             JLPushedButton {
                 id: rightExtruderEnable
                 width: 494
                 height: 120
+                isPressed: true
+                text: "Right Extruder Enable"
                 onClicked: {
                     if(rightExtruderEnable.isPressed == true)
-                        rightExtruderEnable.isPressed = false;
+                    {
+                        if(leftExtruderEnable.isPressed == true)
+                            rightExtruderEnable.isPressed = false;
+                    }
                     else
+                    {
                         rightExtruderEnable.isPressed = true
+                    }
                 }
             }
         }

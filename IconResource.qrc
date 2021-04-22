@@ -133,5 +133,6 @@
         <file>qml/JLIconButton.qml</file>
         <file>qml/PauseDialogItem.qml</file>
         <file>qml/JLHeatingUnit.qml</file>
+        <file>qml/HeatingCircle.qml</file>
     </qresource>
 </RCC>

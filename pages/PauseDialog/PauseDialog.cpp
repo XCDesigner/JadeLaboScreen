@@ -20,24 +20,40 @@ void MainWindow::onPauseDialogHide()
 
 void MainWindow::printStop()
 {
-    QByteArray command = QByteArray::fromHex("0601");
+    m_port->stopPrint();
     m_printsec->stop();
     m_time->setHMS(0,0,0);
-    blockingChangePage(command, ui->page_GetStart);
+    changePageOnStatus(QByteArray::fromHex("00"), ui->page_GetStart);
 }
 
 void MainWindow::printPause()
 {
     m_printsec->stop();
     QByteArray command = QByteArray::fromHex("0602");
-    blockingChangePage(command, ui->page_Printint);
+    m_port->pausePrint();
+    changePageOnStatus(QByteArray::fromHex("02"), ui->page_Printint);
 }
 
 void MainWindow::printContinue()
 {
-    m_printsec->stop();
-    QByteArray command = QByteArray::fromHex("060C");
-    blockingChangePage(command, ui->page_Printint);
+    QList<QByteArray> ret = skpWin->get_return_value();
+    if(ret.count() > 1) {
+        qDebug()<<ret[1];
+        qDebug()<<ret[2];
+        if(ret[1] == "Disable") {
+            qDebug()<<"Disable Left Extruder";
+            m_port->setExtruderDisable(1);
+            screen_status.setExtruderEnabled(0, false);
+        }
+        else if(ret[2] == "Disable") {
+            qDebug()<<"Disable Right Extruder";
+            m_port->setExtruderDisable(0);
+            screen_status.setExtruderEnabled(1, false);
+        }
+    }
+    m_printsec->start();
+    m_port->continuePrint();
+    changePageOnStatus(QByteArray::fromHex("01"), ui->page_Printint);
 }
 
 void MainWindow::printChangeFilament()
@@ -48,9 +64,4 @@ void MainWindow::printChangeFilament()
     {
         changeDialog((JLWidget*)changeFilamentDialog);
     }
-}
-
-void MainWindow::printMessageProcess(QByteArray Datas)
-{
-
 }

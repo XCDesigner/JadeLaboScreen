@@ -349,11 +349,7 @@ int XhPage::analysis(QByteArray package)
                         case '\x06':
                         switch (data[1]) {
                             case '\x06':
-                                if(data[2] == '\x00')
-                                {
-                                    emit canPrint();
-//                                    analysisFile();
-                                }
+
                             break;
 
                             case '\x04':
@@ -385,7 +381,7 @@ int XhPage::analysis(QByteArray package)
                             case '\x07':
                             if(data[2]=='\x00')
                             {
-                                emit printend();
+                                // emit printend();
                                 if(m_file!= nullptr)
                                 {
                                    m_file->close();
@@ -474,12 +470,12 @@ void XhPage::fTGet(QByteArray data)
 {
     if(data[2] == '\x00')
     {
-        cur_machine_status.CurTemp[0] = ((uint8_t)(data[5] << 8)) | (uint8_t)data[4];
-        cur_machine_status.TarTemp[0] = ((uint8_t)(data[7] << 8)) | (uint8_t)data[6];
-        cur_machine_status.CurTemp[1] = ((uint8_t)(data[9] << 8)) | (uint8_t)data[8];
-        cur_machine_status.TarTemp[1] = ((uint8_t)(data[11] << 8)) | (uint8_t)data[10];
-        cur_machine_status.CurTemp[2] = ((uint8_t)(data[13] << 8)) | (uint8_t)data[12];
-        cur_machine_status.TarTemp[2] = ((uint8_t)(data[15] << 8)) | (uint8_t)data[14];
+        cur_machine_status.CurTemp[0] = (int16_t)(((uint8_t)(data[5] << 8)) | (uint8_t)data[4]);
+        cur_machine_status.TarTemp[0] = (int16_t)(((uint8_t)(data[7] << 8)) | (uint8_t)data[6]);
+        cur_machine_status.CurTemp[1] = (int16_t)(((uint8_t)(data[9] << 8)) | (uint8_t)data[8]);
+        cur_machine_status.TarTemp[1] = (int16_t)(((uint8_t)(data[11] << 8)) | (uint8_t)data[10]);
+        cur_machine_status.CurTemp[2] = (int16_t)(((uint8_t)(data[13] << 8)) | (uint8_t)data[12]);
+        cur_machine_status.TarTemp[2] = (int16_t)(((uint8_t)(data[15] << 8)) | (uint8_t)data[14]);
         cur_machine_status.Status = data[3];
         cur_machine_status.Percent = data[20];
     }
@@ -751,10 +747,10 @@ void XhPage::sendfile(quint32 offset)
     {
         qDebug()<<"file close";
     }
-    // qDebug()<<"Offset:";
-    // qDebug()<<offset;
-    // qDebug()<<arrayOffset;
-    // QString data1 = in->read(128);
+    //qDebug()<<"Offset:";
+    //qDebug()<<offset;
+    //qDebug()<<arrayOffset;
+    //QString data1 = in->read(128);
     m_file->seek(offset);
     QByteArray data = m_file->read(128);
 
