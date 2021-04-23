@@ -19,13 +19,15 @@ void portReceiver::run()
             if(tmp_data.size() > 0) {
                 emit sigDataParsed(tmp_data);
             }
+        } else {
+          usleep(20);
         }
     }
 }
 
 QByteArray portReceiver::parseData() {
     qDebug()<<"Parse data unremaped!";
-    sleep(0.2);
+    usleep(200);
     QByteArray nop;
     return nop;
 }
@@ -33,7 +35,7 @@ QByteArray portReceiver::parseData() {
 QByteArray portReceiver::readData()
 {
     qDebug()<<"Read data unremaped!";
-    sleep(0.5);
+    usleep(200);
     QByteArray nop;
     return nop;
 }
