@@ -71,7 +71,8 @@ SOURCES += \
     pages/FilmentSensorSetting/FilamentSetting.cpp  \
     pages/PrintControl/Printting.cpp \
     pages/PrintSetting/PrintSetting.cpp \
-    pages/StatusBar/StatusBar.cpp
+    pages/StatusBar/StatusBar.cpp \
+    portreceiver.cpp
 
 HEADERS += \
     CMOD/XhGcodeFileParser.h \
@@ -105,7 +106,8 @@ HEADERS += \
     listwidgetitem/mylistwidgetitem.h \
     listwidgetitem/mywifiitem.h \
         mainwindow.h \
-    oldplan/filecheckthread.h
+    oldplan/filecheckthread.h \
+    portreceiver.h
 
 
 FORMS += \
