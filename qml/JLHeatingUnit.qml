@@ -49,7 +49,7 @@ Rectangle {
     Text {
         text: "Preheat:"
         x: 38
-        y: 109
+        y: 121
         width: 150
         height: 60
         font {pixelSize: 32; family: "Barlow"; bold: true}

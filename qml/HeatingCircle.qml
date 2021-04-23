@@ -46,6 +46,7 @@ Rectangle {
             gradient.addColorStop(0.2, "#202020")
             gradient.addColorStop(0.41, "#ff0000")
             gradient.addColorStop(stop0, "#ff0000")
+            gradient.addColorStop(0.65, "#ff0000")
             gradient.addColorStop(1, "#202020")
 
             ctx.lineWidth = 0.1;

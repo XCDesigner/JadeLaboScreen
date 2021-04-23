@@ -1,6 +1,80 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
+void MainWindow::changeFilamentPageInit()
+{
+    ui->qw_LeftHeating->rootObject()->setProperty("indicatorIcon", "qrc:/image/LeftHotendIndecator.png");
+    ui->qw_LeftHeating->rootObject()->setProperty("indicatorText", "Left Extruder");
+    QObject::connect(ui->qw_LeftHeating->rootObject(), SIGNAL(choseTempClicked()), this, SLOT(left_setTemp()));
+    QObject::connect(ui->qw_LeftHeating->rootObject(), SIGNAL(extruderClicked()), this, SLOT(left_extrude()));
+    QObject::connect(ui->qw_LeftHeating->rootObject(), SIGNAL(retackClicked()), this, SLOT(left_retract()));
+
+    ui->qw_RightHeating->rootObject()->setProperty("indicatorIcon", "qrc:/image/RightHotendIndecator.png");
+    ui->qw_RightHeating->rootObject()->setProperty("indicatorText", "Right Extruder");
+    QObject::connect(ui->qw_RightHeating->rootObject(), SIGNAL(choseTempClicked()), this, SLOT(right_setTemp()));
+    QObject::connect(ui->qw_RightHeating->rootObject(), SIGNAL(extruderClicked()), this, SLOT(right_extrude()));
+    QObject::connect(ui->qw_RightHeating->rootObject(), SIGNAL(retackClicked()), this, SLOT(right_retract()));
+}
+
+void MainWindow::leftSetTemp()
+{
+    strMachineStatus new_status;
+    char temp[20];
+    changeFilamentSelectExtruder = 0;
+    m_port->getXhPage()->GetMachineStatus(&new_status);
+    sprintf(temp, "%03d", new_status.TarTemp[0]);
+    mchoose = new chooseTemp(this);
+    mchoose->init(temp);
+    QObject::connect(mchoose, SIGNAL(hideWidget()), this, SLOT(onSetTemp()), Qt::QueuedConnection);
+}
+
+void MainWindow::onSetTemp()
+{
+    QList<QByteArray> ret = mchoose->get_return_value();
+    m_port->setHeattingUnit(changeFilamentSelectExtruder, ret[0].toUInt());
+    delete mchoose;
+}
+
+void MainWindow::changeFilamentCheckTemp()
+{
+
+    QTimer::singleShot(500, this, SLOT(changeFilamentCheckTemp()));
+}
+
+void MainWindow::leftExtrude()
+{
+    m_port->ldown();
+}
+
+void MainWindow::leftRetract()
+{
+    m_port->lup();
+}
+
+
+void MainWindow::rightSetTemp()
+{
+    strMachineStatus new_status;
+    char temp[20];
+    changeFilamentSelectExtruder = 1;
+    m_port->getXhPage()->GetMachineStatus(&new_status);
+    sprintf(temp, "%03d", new_status.TarTemp[1]);
+    mchoose = new chooseTemp(this);
+    mchoose->init(temp);
+    QObject::connect(mchoose, SIGNAL(hideWidget()), this, SLOT(onSetTemp()));
+}
+
+void MainWindow::rightExtrude()
+{
+    m_port->rdown();
+}
+
+void MainWindow::rightRetract()
+{
+    m_port->rup();
+}
+
+
 void MainWindow::on_pushButton_109_clicked()
 {
     mchoose = new chooseTemp(this);

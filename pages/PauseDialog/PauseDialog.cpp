@@ -42,12 +42,12 @@ void MainWindow::printContinue()
         qDebug()<<ret[2];
         if(ret[1] == "Disable") {
             qDebug()<<"Disable Left Extruder";
-            m_port->setExtruderDisable(1);
+            m_port->setExtruderDisable(0);
             screen_status.setExtruderEnabled(0, false);
         }
         else if(ret[2] == "Disable") {
             qDebug()<<"Disable Right Extruder";
-            m_port->setExtruderDisable(0);
+            m_port->setExtruderDisable(1);
             screen_status.setExtruderEnabled(1, false);
         }
     }

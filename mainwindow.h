@@ -92,9 +92,12 @@ public:
     void changeDialog(JLWidget *pDialog);
     void changePageOnStatus(QByteArray Status, QWidget *pPage);
 
+    void changeFilamentPageInit();
 
 private:
     Ui::MainWindow *ui;
+
+    int changeFilamentSelectExtruder;
 
     float m_opaCity;
     bool flicker;
@@ -944,6 +947,15 @@ private slots:
     void LightSliderPressed();
     void LightSliderReleased();
     void LightSettingTimer();
+
+    void leftSetTemp();
+    void leftExtrude();
+    void leftRetract();
+    void rightSetTemp();
+    void rightExtrude();
+    void rightRetract();
+    void onSetTemp();
+    void changeFilamentCheckTemp();
 
     void StopPreHeatting();
 

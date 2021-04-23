@@ -70,7 +70,7 @@ font-family: barlow;
 }</string>
     </property>
     <property name="currentIndex">
-     <number>25</number>
+     <number>21</number>
     </property>
     <widget class="QWidget" name="page_5">
      <widget class="QLabel" name="label_5">
@@ -3499,7 +3499,7 @@ border: 1px solid rgba(202, 208, 74, 255);</string>
       </property>
      </widget>
     </widget>
-    <widget class="QWidget" name="page_ChangeFilament">
+    <widget class="QWidget" name="page_ChangeFilament2">
      <widget class="QPushButton" name="pushButton_105">
       <property name="geometry">
        <rect>
@@ -4170,6 +4170,174 @@ background-color: rgb(45, 44, 43);</string>
      <zorder>label_38</zorder>
      <zorder>label_40</zorder>
      <zorder>label_41</zorder>
+    </widget>
+    <widget class="QWidget" name="page_ChangeFilament">
+     <widget class="QQuickWidget" name="qw_LeftHeating">
+      <property name="geometry">
+       <rect>
+        <x>190</x>
+        <y>80</y>
+        <width>520</width>
+        <height>480</height>
+       </rect>
+      </property>
+      <property name="resizeMode">
+       <enum>QQuickWidget::SizeRootObjectToView</enum>
+      </property>
+      <property name="source">
+       <url>
+        <string>qrc:/qml/JLHeatingUnit.qml</string>
+       </url>
+      </property>
+     </widget>
+     <widget class="QQuickWidget" name="qw_RightHeating">
+      <property name="geometry">
+       <rect>
+        <x>740</x>
+        <y>80</y>
+        <width>520</width>
+        <height>480</height>
+       </rect>
+      </property>
+      <property name="resizeMode">
+       <enum>QQuickWidget::SizeRootObjectToView</enum>
+      </property>
+      <property name="source">
+       <url>
+        <string>qrc:/qml/JLHeatingUnit.qml</string>
+       </url>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton_113">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>180</width>
+        <height>180</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">outline:none;image: url(:/image/PrintInactive.png);
+border:none;</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton_116">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>180</y>
+        <width>180</width>
+        <height>180</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">outline:none;image: url(:/image/FilamentActive(2).png);
+border:none;</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton_117">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>360</y>
+        <width>180</width>
+        <height>180</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">outline:none;image: url(:/image/ToolsInactive.png);
+border:none;</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton_118">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>540</y>
+        <width>180</width>
+        <height>180</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">outline:none;image: url(:/image/AboutInactive.png);
+border:none;</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton_359">
+      <property name="geometry">
+       <rect>
+        <x>530</x>
+        <y>600</y>
+        <width>731</width>
+        <height>96</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Barlow</family>
+        <pointsize>-1</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">font-weight: bold;
+font-family:Barlow;outline:none;border-radius: 20px;
+background-color: rgb(255, 99, 11);
+color: rgb(255, 255, 255);
+font-size: 36px;
+text-align: center;
+font-family: Barlow;
+border: 2px solid rgb(255, 99, 11) ;</string>
+      </property>
+      <property name="text">
+       <string>Cancle</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton_456">
+      <property name="geometry">
+       <rect>
+        <x>190</x>
+        <y>600</y>
+        <width>305</width>
+        <height>96</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Barlow</family>
+        <pointsize>-1</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">font-weight: bold;
+font-family:Barlow;outline:none;border-radius: 20px;
+background-color: rgb(255, 99, 11);
+color: rgb(255, 255, 255);
+font-size: 36px;
+text-align: center;
+font-family: Barlow;
+border: 2px solid rgb(255, 99, 11) ;</string>
+      </property>
+      <property name="text">
+       <string>Help</string>
+      </property>
+     </widget>
     </widget>
     <widget class="QWidget" name="page_GetStart">
      <widget class="QPushButton" name="pushButton_125">

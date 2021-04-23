@@ -737,15 +737,21 @@ void XhPage::sendfile(quint32 offset)
     if(m_file == nullptr)
     {
         m_file = new QFile(thisFilePath);
-        in = new QTextStream(m_file);
-        if(!m_file->open(QIODevice::ReadOnly))
-        {
+        //in = new QTextStream(m_file);
+        if(!m_file->open(QIODevice::ReadOnly)) {
+            qDebug()<<"File open fail!!";
             return;
         }
     }
     if(!m_file->isOpen())
     {
-        qDebug()<<"file close";
+        qDebug()<<"File closed";
+        m_file = new QFile(thisFilePath);
+        if(!m_file->open(QIODevice::ReadOnly)) {
+            qDebug()<<"File reopen fail!!";
+            return;
+        }
+
     }
     //qDebug()<<"Offset:";
     //qDebug()<<offset;
