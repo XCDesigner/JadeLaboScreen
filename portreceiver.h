@@ -18,7 +18,7 @@ public:
 signals:
     void sigDataParsed(QByteArray);
 
-protected:
+public:
     virtual QByteArray readData();
     virtual QByteArray parseData();
 

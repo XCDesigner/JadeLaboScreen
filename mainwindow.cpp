@@ -60,17 +60,23 @@ MainWindow::MainWindow(QWidget *parent) :
     serialOpen =false;
     m_port = new XhPort(this);
     m_event = new JLEvent(this);
+    serial_port = new JLSerialPort();
+    serial_port->openPort("COM3");
+    serial_port->start();
 
-    foreach (const QSerialPortInfo &info,QSerialPortInfo::availablePorts())
-    {
-        QSerialPort serial;
-        serial.setPort(info);
-        if(serial.open(QIODevice::ReadWrite))
-        {
-            ui->comboBox_15->addItem(serial.portName());
-            serial.close();
-        }
-    }
+    QList<QString> port_names = JLSerialPort::getPortNames();
+    ui->comboBox_15->addItems(QStringList(port_names));
+
+    //foreach (const QSerialPortInfo &info,QSerialPortInfo::availablePorts())
+    //{
+    //    QSerialPort serial;
+    //    serial.setPort(info);
+    //    if(serial.open(QIODevice::ReadWrite))
+    //    {
+    //        ui->comboBox_15->addItem(serial.portName());
+    //        serial.close();
+    //    }
+    //}
 
     ui->comboBox_15->addItem("COM16");
     ui->comboBox_15->addItem("COM17");
@@ -3381,6 +3387,9 @@ void MainWindow::on_pushButton_354_clicked()
     ui->m_StatusBar->setVisible(true);
     QObject::connect(printTimer,&QTimer::timeout,this,&MainWindow::askPrint);
     printTimer->start(1000);
+    //while(1) {
+
+    //}
 }
 
 void MainWindow::on_pushButton_356_clicked()
