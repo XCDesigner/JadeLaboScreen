@@ -10,7 +10,6 @@
 
 XhPort::XhPort(QObject *parent) : QObject(parent)
 {
-    m_serial = new QSerialPort(this);
     portTimer = new QTimer(this);
     m_package = new XhPage;
     serialOpen =false;
@@ -67,7 +66,6 @@ XhPort::XhPort(QObject *parent) : QObject(parent)
 
 XhPort::~XhPort()
 {
-    m_serial->close();
     delete m_serial;
     delete portTimer;
     delete m_package;
@@ -677,19 +675,12 @@ void XhPort::testdemo()
 /*打开串口*/
 void XhPort::portInit(QString portname)
 {
-    m_serial->setPortName(portname);
-    m_serial->open(QIODevice::ReadWrite);//打开串口
-    if(m_serial->isOpen())
+    m_serial = new JLSerialPort();
+    if(m_serial->openPort(portname, 115200))
     {
-        m_serial->setBaudRate(QSerialPort::Baud115200);//设置波特率为115200
-        m_serial->setDataBits(QSerialPort::Data8);//设置数据位8
-        m_serial->setParity(QSerialPort::NoParity);
-        m_serial->setStopBits(QSerialPort::OneStop);//停止位设置为1
-        m_serial->setFlowControl(QSerialPort::NoFlowControl);//设置为无流控制
-
-        QObject::connect(m_serial,&QSerialPort::readyRead,this,&XhPort::readData);//连接信号槽
-        QObject::connect(portTimer, &QTimer::timeout, this, &XhPort::serialTest);//连接信号槽
-        portTimer->start(500);
+        QObject::connect(m_serial, SIGNAL(sigDataParsed(QByteArray)), this, SLOT(readData(QByteArray)));//连接信号槽
+        // QObject::connect(portTimer, &QTimer::timeout, this, &XhPort::serialTest);//连接信号槽
+        // portTimer->start(500);
     }
     else
     {
@@ -768,37 +759,8 @@ void XhPort::selftest1()
     m_serial->write(buff);
 }
 
-/*读串口readyread槽函数*/
-void XhPort::readData()
-{
-    QByteArray revBuff;
-    revBuff = m_serial->readAll();
-    if(!revBuff.isEmpty())
-    {
-        /*串口是否打开*/
-        if(serialOpen)
-        {
-            /*解析响应包*/
-            m_package->analysis(revBuff);
-        }
-        else
-        {
-        /*没有打开就判断收到的消息是不是串口连接对应的回复*/
-            QByteArray compareBuff = QByteArray::fromHex("4A4630030003000200010100");
-            if(revBuff == compareBuff)
-            {
-                QObject::disconnect(portTimer, &QTimer::timeout, this, &XhPort::serialTest);//dis连接信号槽
-                portTimer->stop();
-                serialOpen = true;
-                emit serialIsOpen();
-            }
-        }
-    }
-    else
-    {
-        qDebug()<<"no data read！";
-    }
-    revBuff.clear();
+void XhPort::readData(QByteArray Data) {
+    m_package->analysis(Data);
 }
 
 /*测试串口通讯*/
@@ -1021,7 +983,7 @@ XhPage* XhPort::getXhPage()
     return m_package;
 }
 
-QSerialPort* XhPort::getSerialPort()
+JLSerialPort* XhPort::getSerialPort()
 {
     return m_serial;
 }

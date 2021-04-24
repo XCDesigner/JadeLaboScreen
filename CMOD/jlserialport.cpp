@@ -25,6 +25,8 @@ bool JLSerialPort::openPort(QString PortName, int Baudary) {
     m_port->setReadBufferSize(20480);
     m_port->setDataBits(QSerialPort::Data8);
     m_port->setFlowControl(QSerialPort::NoFlowControl);
+    protocal = new JLProtocal(0x30);
+    start();
     return ret;
 }
 
@@ -34,21 +36,30 @@ bool JLSerialPort::openPort(QString PortName) {
 
 QByteArray JLSerialPort::readData() {
     QByteArray ret;
-    ret = m_port->read(1024);
+    if(m_port->isOpen())
+        ret = m_port->read(512);
     return ret;
 }
 
 QByteArray JLSerialPort::parseData() {
-    qDebug()<<"HH";
-    qDebug()<<receive_buffer;
-    mtx_receiver_buffer.lock();
-    receive_buffer.clear();
-    mtx_receiver_buffer.unlock();
-    return QByteArray();
+    uint32_t rn;
+    QByteArray ret = protocal->parseData(receive_buffer, &rn);
+    receive_buffer.remove(0, rn);
+    return ret;
+}
+
+void JLSerialPort::write(QByteArray DataToWrite) {
+    writeData(DataToWrite);
 }
 
 void JLSerialPort::writeData(QByteArray DataToWrite) {
-    m_port->write(DataToWrite);
+    if(m_port->isOpen())
+        m_port->write(DataToWrite);
+}
+
+void JLSerialPort::writeProtocalData(QByteArray SourceData) {
+    QByteArray pack_data = protocal->setupPackage(SourceData);
+    writeData(pack_data);
 }
 
 

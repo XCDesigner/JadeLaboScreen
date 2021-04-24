@@ -4,11 +4,10 @@ JLProtocal::JLProtocal() {
     JLProtocal(2);
 }
 
-JLProtocal::JLProtocal(uint8_t CommandLen) {
-    command_len = CommandLen;
+JLProtocal::JLProtocal(uint8_t Version) {
     header[0] = 'J';
     header[1] = 'F';
-    version = 0x30;
+    version = Version;
     attribute = 0xe0;
 }
 
@@ -51,7 +50,7 @@ QByteArray JLProtocal::parseData(QByteArray SourceData, uint32_t *DataRead) {
         uint8_t len_checksum;
 
         command_len = ((uint8_t)SourceData.at(4) << 8) | (uint8_t)SourceData.at(3);
-        len_checksum = SourceData.at(3) | SourceData.at(2);
+        len_checksum = SourceData.at(4) | SourceData.at(3);
 
         if(len_checksum != SourceData.at(5))
         {
@@ -77,9 +76,9 @@ QByteArray JLProtocal::parseData(QByteArray SourceData, uint32_t *DataRead) {
         // Data checksum
         uint32_t checksum, cal_checksum;
         checksum = ((uint8_t)SourceData.at(8) << 8) | (uint8_t)SourceData.at(7);
-        ret_datas = SourceData.mid(9, command_len);
+        ret_datas = SourceData.mid(0, command_len + 9);
         cal_checksum = 0;
-        for(int i=0;i<ret_datas.size(); i++)
+        for(int i=9;i<ret_datas.size(); i++)
             cal_checksum += (uint8_t)ret_datas.at(i);
         if(cal_checksum != checksum) {
             data_read = data_read + 2;

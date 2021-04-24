@@ -15,7 +15,6 @@ private:
     uint8_t header[2];
     uint8_t version;
     uint8_t attribute;
-    uint8_t command_len;
 };
 
 #endif // PROTOCAL_H
