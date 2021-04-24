@@ -470,12 +470,13 @@ void XhPage::fTGet(QByteArray data)
 {
     if(data[2] == '\x00')
     {
-        cur_machine_status.CurTemp[0] = (int16_t)(((uint8_t)(data[5] << 8)) | (uint8_t)data[4]);
-        cur_machine_status.TarTemp[0] = (int16_t)(((uint8_t)(data[7] << 8)) | (uint8_t)data[6]);
-        cur_machine_status.CurTemp[1] = (int16_t)(((uint8_t)(data[9] << 8)) | (uint8_t)data[8]);
-        cur_machine_status.TarTemp[1] = (int16_t)(((uint8_t)(data[11] << 8)) | (uint8_t)data[10]);
-        cur_machine_status.CurTemp[2] = (int16_t)(((uint8_t)(data[13] << 8)) | (uint8_t)data[12]);
-        cur_machine_status.TarTemp[2] = (int16_t)(((uint8_t)(data[15] << 8)) | (uint8_t)data[14]);
+        cur_machine_status.CurTemp[0] = (int16_t)(((uint16_t)(data[5] << 8)) | (uint8_t)data[4]);
+        cur_machine_status.TarTemp[0] = (int16_t)(((uint16_t)(data[7] << 8)) | (uint8_t)data[6]);
+        cur_machine_status.CurTemp[1] = (int16_t)(((uint16_t)(data[9] << 8)) | (uint8_t)data[8]);
+        cur_machine_status.TarTemp[1] = (int16_t)(((uint16_t)(data[11] << 8)) | (uint8_t)data[10]);
+        cur_machine_status.CurTemp[2] = (int16_t)(((uint16_t)(data[13] << 8)) | (uint8_t)data[12]);
+        cur_machine_status.TarTemp[2] = (int16_t)(((uint16_t)(data[15] << 8)) | (uint8_t)data[14]);
+        cur_machine_status.ZHeight = ((int32_t)(((uint8_t)data.at(19) << 24) | ((uint8_t)data.at(18) << 16) | ((uint8_t)data.at(17) << 8) | (uint8_t)data.at(16))) / 1000.0f;
         cur_machine_status.Status = data[3];
         cur_machine_status.Percent = data[20];
     }
