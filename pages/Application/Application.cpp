@@ -1,11 +1,13 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
-void MainWindow::blockingChangePage(QByteArray Command, QWidget *pPage)
+
+void MainWindow::blockingChangePage(QByteArray Command, QWidget *pPage, bool NeedProcessingPage)
 {
     m_event->wait(Command, 5);
     pNextShowPage = pPage;
-    ui->stackedWidget->setCurrentWidget(ui->page_Masker);
+    if(NeedProcessingPage == true)
+        ui->stackedWidget->setCurrentWidget(ui->page_Masker);
 }
 
 void MainWindow::changePageOnStatus(QByteArray Status, QWidget *pPage)

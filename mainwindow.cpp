@@ -91,9 +91,6 @@ MainWindow::MainWindow(QWidget *parent) :
 
     /*tool carb*/
 
-    QObject::connect(m_port,&XhPort::pPlatformCalibration,this,&MainWindow::jump21);
-    QObject::connect(m_port,&XhPort::nNozzleCalibration,this,&MainWindow::jump23);
-    QObject::connect(m_port,&XhPort::xXyCalibration,this,&MainWindow::plat);
     QObject::connect(m_port,&XhPort::finished,this,&MainWindow::finished);
     QObject::connect(m_port,&XhPort::canelk,this,&MainWindow::cancle);
 
@@ -307,6 +304,20 @@ MainWindow::MainWindow(QWidget *parent) :
     QObject::connect(this->m_event, SIGNAL(changePageAccept(QByteArray)), this, SLOT(changePageCallback(QByteArray)));
     QObject::connect(this->m_event, SIGNAL(changeDialogAccept(QByteArray)), this, SLOT(changeDialogCallback(QByteArray)));
 
+    ui->qw_LeftHeating->rootObject()->setProperty("indicatorIcon", "qrc:/image/LeftHotendIndecator.png");
+    ui->qw_LeftHeating->rootObject()->setProperty("indicatorText", "Left Extruder");
+    ui->qw_LeftHeating->rootObject()->setProperty("extrudeEnable", false);
+    QObject::connect(ui->qw_LeftHeating->rootObject(), SIGNAL(choseTempClicked()), this, SLOT(leftSetTemp()));
+    QObject::connect(ui->qw_LeftHeating->rootObject(), SIGNAL(extruderClicked()), this, SLOT(leftExtrude()));
+    QObject::connect(ui->qw_LeftHeating->rootObject(), SIGNAL(retackClicked()), this, SLOT(leftRetract()));
+
+    ui->qw_RightHeating->rootObject()->setProperty("indicatorIcon", "qrc:/image/RightHotendIndecator.png");
+    ui->qw_RightHeating->rootObject()->setProperty("indicatorText", "Right Extruder");
+    ui->qw_RightHeating->rootObject()->setProperty("extrudeEnable", false);
+    QObject::connect(ui->qw_RightHeating->rootObject(), SIGNAL(choseTempClicked()), this, SLOT(rightSetTemp()));
+    QObject::connect(ui->qw_RightHeating->rootObject(), SIGNAL(extruderClicked()), this, SLOT(rightExtrude()));
+    QObject::connect(ui->qw_RightHeating->rootObject(), SIGNAL(retackClicked()), this, SLOT(rightRetract()));
+
     QObject::connect(m_port->getXhPage(), SIGNAL(command_received(uint8_t, uint8_t, QByteArray)), this, SLOT(printMessageProcess(uint8_t, uint8_t, QByteArray)));
 }
 
@@ -325,6 +336,10 @@ void MainWindow::WidgetChanged(int index)
     char buff[20];
     sprintf(buff, "Cur Widget:%d", index);
     qDebug()<<buff;
+    if(ui->stackedWidget->currentWidget() == ui->page_ChangeFilament)
+    {
+        changeFilamentPageInit();
+    }
 }
 
 void MainWindow::m_addItemToList(const QString &fileName, QString filePath)
@@ -864,10 +879,9 @@ void MainWindow::jump22(bool)
 
 void MainWindow::jump24(bool a )
 {
-    if(a)
-    {
-    ui->stackedWidget->setCurrentIndex(64);
-    m_port->x_platformCalibration();
+    if(a) {
+        ui->stackedWidget->setCurrentIndex(64);
+        m_port->x_platformCalibration();
 
     }
     else {
@@ -2109,15 +2123,6 @@ void MainWindow::parseDeep()
     m_printsec->start(1000);
 }
 
-void MainWindow::timeAdd()
-{
-    *m_time =  m_time->addSecs(1);
-    ui->label_78->setText(QString::number(m_time->hour())+"H"+QString::number(m_time->minute())+"M"+QString::number(m_time->second())+"S");
-    ui->label_307->setText(QString::number(m_time->hour())+"H"+QString::number(m_time->minute())+"M"+QString::number(m_time->second())+"S");
-    ui->label_310->setText(QString::number(m_time->hour())+"H"+QString::number(m_time->minute())+"M"+QString::number(m_time->second())+"S");
-    ui->label_312->setText(QString::number(m_time->hour())+"H"+QString::number(m_time->minute())+"M"+QString::number(m_time->second())+"S");
-}
-
 void MainWindow::deepTimer()
 {
     int x= m_fileParser->GetParsedLine();
@@ -2973,13 +2978,6 @@ void MainWindow::on_pushButton_630_clicked()
 #ifdef XH_VIS
     ui->m_StatusBar->setVisible(false);
 #endif
-}
-
-void MainWindow::on_pushButton_637_clicked()
-{
-    m_timer.stop();
-    QObject::disconnect(&m_timer,SIGNAL(timeout()),this,SLOT(jump24()));
-    ui->stackedWidget->setCurrentIndex(51);
 }
 
 void MainWindow::on_pushButton_643_clicked()

@@ -3,17 +3,34 @@
 
 void MainWindow::changeFilamentPageInit()
 {
-    ui->qw_LeftHeating->rootObject()->setProperty("indicatorIcon", "qrc:/image/LeftHotendIndecator.png");
-    ui->qw_LeftHeating->rootObject()->setProperty("indicatorText", "Left Extruder");
-    QObject::connect(ui->qw_LeftHeating->rootObject(), SIGNAL(choseTempClicked()), this, SLOT(left_setTemp()));
-    QObject::connect(ui->qw_LeftHeating->rootObject(), SIGNAL(extruderClicked()), this, SLOT(left_extrude()));
-    QObject::connect(ui->qw_LeftHeating->rootObject(), SIGNAL(retackClicked()), this, SLOT(left_retract()));
+    screen_status.setPerformance(CHANGE_FILAMENT);
+    QTimer::singleShot(500, this, SLOT(changeFilamentTempChecking()));
+}
 
-    ui->qw_RightHeating->rootObject()->setProperty("indicatorIcon", "qrc:/image/RightHotendIndecator.png");
-    ui->qw_RightHeating->rootObject()->setProperty("indicatorText", "Right Extruder");
-    QObject::connect(ui->qw_RightHeating->rootObject(), SIGNAL(choseTempClicked()), this, SLOT(right_setTemp()));
-    QObject::connect(ui->qw_RightHeating->rootObject(), SIGNAL(extruderClicked()), this, SLOT(right_extrude()));
-    QObject::connect(ui->qw_RightHeating->rootObject(), SIGNAL(retackClicked()), this, SLOT(right_retract()));
+void MainWindow::changeFilamentTempChecking()
+{
+    strMachineStatus new_status;
+    m_port->getXhPage()->GetMachineStatus(&new_status);
+    if(screen_status.getPerformance() == CHANGE_FILAMENT)
+    {
+        if(new_status.CurTemp[0] > 180)
+        {
+            ui->qw_LeftHeating->rootObject()->setProperty("extrudeEnable", true);
+        }
+        else
+        {
+            ui->qw_LeftHeating->rootObject()->setProperty("extrudeEnable", false);
+        }
+        if(new_status.CurTemp[1] > 180)
+        {
+            ui->qw_RightHeating->rootObject()->setProperty("extrudeEnable", true);
+        }
+        else
+        {
+            ui->qw_RightHeating->rootObject()->setProperty("extrudeEnable", false);
+        }
+        QTimer::singleShot(500, this, SLOT(changeFilamentTempChecking()));
+    }
 }
 
 void MainWindow::leftSetTemp()
@@ -25,21 +42,28 @@ void MainWindow::leftSetTemp()
     sprintf(temp, "%03d", new_status.TarTemp[0]);
     mchoose = new chooseTemp(this);
     mchoose->init(temp);
+    mchoose->show();
     QObject::connect(mchoose, SIGNAL(hideWidget()), this, SLOT(onSetTemp()), Qt::QueuedConnection);
 }
 
 void MainWindow::onSetTemp()
 {
     QList<QByteArray> ret = mchoose->get_return_value();
+    if(ret[0].toInt() != 0) {
+        ui->pushButton_113->setEnabled(false);
+        ui->pushButton_117->setEnabled(false);
+        ui->pushButton_118->setEnabled(false);
+    }
+    else
+    {
+        ui->pushButton_113->setEnabled(true);
+        ui->pushButton_117->setEnabled(true);
+        ui->pushButton_118->setEnabled(true);
+    }
     m_port->setHeattingUnit(changeFilamentSelectExtruder, ret[0].toUInt());
     delete mchoose;
 }
 
-void MainWindow::changeFilamentCheckTemp()
-{
-
-    QTimer::singleShot(500, this, SLOT(changeFilamentCheckTemp()));
-}
 
 void MainWindow::leftExtrude()
 {
@@ -61,7 +85,8 @@ void MainWindow::rightSetTemp()
     sprintf(temp, "%03d", new_status.TarTemp[1]);
     mchoose = new chooseTemp(this);
     mchoose->init(temp);
-    QObject::connect(mchoose, SIGNAL(hideWidget()), this, SLOT(onSetTemp()));
+    mchoose->show();
+    QObject::connect(mchoose, SIGNAL(hideWidget()), this, SLOT(onSetTemp()), Qt::QueuedConnection);
 }
 
 void MainWindow::rightExtrude()
@@ -74,6 +99,25 @@ void MainWindow::rightRetract()
     m_port->rup();
 }
 
+void MainWindow::on_pushButton_359_clicked()
+{
+    m_port->setHeattingUnit("0","0");
+    ui->pushButton_113->setEnabled(true);
+    ui->pushButton_117->setEnabled(true);
+    ui->pushButton_118->setEnabled(true);
+}
+
+void MainWindow::on_pushButton_113_clicked()
+{
+    screen_status.setPerformance(IDLE);
+    ui->stackedWidget->setCurrentWidget(ui->page_GetStart);
+}
+
+void MainWindow::on_pushButton_117_clicked()
+{
+    screen_status.setPerformance(IDLE);
+    ui->stackedWidget->setCurrentWidget(ui->page_Calibration);
+}
 
 void MainWindow::on_pushButton_109_clicked()
 {
@@ -390,3 +434,5 @@ void MainWindow::on_pushButton_108_clicked()
     ui->m_StatusBar->setVisible(false);
 #endif
 }
+
+

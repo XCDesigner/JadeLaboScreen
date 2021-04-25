@@ -3,23 +3,30 @@
 
 void MainWindow::on_pushButton_286_clicked()
 {
-     ui->stackedWidget->setCurrentWidget(ui->page_NozzleCali_1);
-     m_port->setHeattingUnit("200","200");
-     QObject::connect(&m_timer,&QTimer::timeout,this,&MainWindow::nozzled);
-     m_timer.start(1000);
+    ui->stackedWidget->setCurrentWidget(ui->page_NozzleCali_1);
+    m_port->setHeattingUnit("200","200");
+    screen_status.setPerformance(NOZZLE_CALIBRATING);
+    QTimer::singleShot(500, this, SLOT(nozzleCalibrationHeating()));
+}
+
+void MainWindow::on_pushButton_648_clicked()
+{
+    qDebug()<<"123213";
+    m_port->setHeattingUnit("0","0");
+    ui->stackedWidget->setCurrentWidget(ui->page_Calibration);
+    screen_status.setPerformance(IDLE);
 }
 
 void MainWindow::on_pushButton_308_clicked()
 {
     ui->stackedWidget->setCurrentWidget(ui->page_Calibration);
+    screen_status.setPerformance(IDLE);
     m_port->setHeattingUnit("0","0");
 }
 
 void MainWindow::on_pushButton_303_clicked()
 {
     ui->stackedWidget->setCurrentWidget(ui->page_NozzleCali_2);
-//    QObject::connect(&m_timer,SIGNAL(timeout()),this,SLOT(jump23()));
-//    m_timer.start(2000);
     m_port->n_nozzleCalibration();
 }
 
@@ -27,55 +34,53 @@ void MainWindow::on_pushButton_302_clicked()
 {
     m_port->setHeattingUnit("0","0");
     ui->stackedWidget->setCurrentWidget(ui->page_Calibration);
-}
-
-void MainWindow::on_pushButton_292_clicked()
-{
-    m_port->setHeattingUnit("0","0");
-    ui->stackedWidget->setCurrentWidget(ui->page_Calibration);
+    screen_status.setPerformance(IDLE);
 }
 
 void MainWindow::on_pushButton_287_clicked()
 {
+    screen_status.setPerformance(IDLE);
     ui->stackedWidget->setCurrentWidget(ui->page_Calibration);
 }
 
-void MainWindow:: nozzled()
+void MainWindow::nozzleCalibrationHeating()
 {
-    int16_t cur_temp[3], tar_temp[3];
-    screen_status.getTemp(cur_temp, tar_temp);
+    strMachineStatus new_status;
+    m_port->getXhPage()->GetMachineStatus(&new_status);
 
-    if((cur_temp[0] >190 ) && (cur_temp[1] >190))
+    if(screen_status.getPerformance() == NOZZLE_CALIBRATING)
     {
-         m_port->n_nozzleCalibration();
-         QObject::disconnect(&m_timer,&QTimer::timeout,this,&MainWindow::nozzled);
-         m_timer.stop();
-         ui->stackedWidget->setCurrentWidget(ui->page_NozzleCali_2);
+        if((new_status.CurTemp[0] >190 ) && (new_status.CurTemp[1] >190))
+        {
+            m_port->n_nozzleCalibration();
+            ui->stackedWidget->setCurrentWidget(ui->page_NozzleCali_2);
+            QObject::connect(m_port->getXhPage(), SIGNAL(command_received(uint8_t, uint8_t, QByteArray)), this, SLOT(nozzleCalibrationMessageProcess(uint8_t, uint8_t, QByteArray)));
+        }
+        else
+        {
+            QTimer::singleShot(500, this, SLOT(nozzleCalibrationHeating()));
+        }
     }
 }
 
-
-void MainWindow::jump23(int b)
+void MainWindow::nozzleCalibrationMessageProcess(uint8_t Command, uint8_t SubCode, QByteArray Datas)
 {
-    if(b==0)
+    if(Command == 0x03)
     {
-        ui->stackedWidget->setCurrentWidget(ui->page_NozzleCali_4);
+        if(SubCode == 0x00) 
+        {
+            float z_diff = (int32_t)(((uint8_t)Datas.at(6) << 24) | ((uint8_t)Datas.at(5) << 16) | ((uint8_t)Datas.at(4) << 8) | (uint8_t)Datas.at(3)) / 1000.0f;
+            if(z_diff != 0) 
+            {
+                ui->stackedWidget->setCurrentWidget(ui->page_NozzleCali_3);
+                ui->label_151->setNum(z_diff);
+                ui->label_151->setAlignment(Qt::AlignCenter);
+            }
+            else
+            {
+                ui->stackedWidget->setCurrentWidget(ui->page_NozzleCali_4);
+                QObject::disconnect(m_port->getXhPage(), SIGNAL(command_received(uint8_t, uint8_t, QByteArray)), this, SLOT(nozzleCalibrationMessageProcess(uint8_t, uint8_t, QByteArray)));
+            }
+        }
     }
-    else {
-        ui->stackedWidget->setCurrentWidget(ui->page_NozzleCali_3);
-    }
-
-    ui->label_151->setNum(b/1000);
-    ui->label_151->setAlignment(Qt::AlignCenter);
-//    if(a)
-//    {
-//        ui->pushButton_304->setIcon(QPixmap(":/9.png"));
-//        ui->pushButton_305->setIcon(QPixmap(":/11.png"));
-//    }
-//    else {
-//        ui->pushButton_305->setIcon(QPixmap(":/9.png"));
-//        ui->pushButton_304->setIcon(QPixmap(":/11.png"));
-//    }
-//    m_timer.stop();
-//    QObject::disconnect(&m_timer,SIGNAL(timeout()),this,SLOT(jump23()));
 }

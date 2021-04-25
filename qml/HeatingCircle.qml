@@ -6,19 +6,19 @@ Rectangle {
     color: "transparent"
 
     Timer{
-        interval: 100
+        interval: 200
         repeat: true
         running: true
         property bool inc: true
         onTriggered: {
             if(inc == true) {
-                if(canvas.stop0 < 0.65)
+                if(canvas.stop0 < 0.8)
                     canvas.stop0 = canvas.stop0 + 0.02
                 else
                     inc = false
             }
             else {
-                if(canvas.stop0 > 0.45)
+                if(canvas.stop0 > 0.44)
                     canvas.stop0 = canvas.stop0 - 0.02
                 else
                     inc = true
@@ -30,8 +30,8 @@ Rectangle {
 
     Canvas {
         id: canvas
-        property real stop0: 0.45
-        property real thickness: base.width / 2 * 0.6
+        property real stop0: 0.5
+        property real thickness: base.width / 2 * 0.7
 
         anchors.fill: parent
 
@@ -43,10 +43,9 @@ Rectangle {
 
             var gradient = ctx.createRadialGradient(parent.width / 2, parent.height / 2 , thickness, parent.width / 2, parent.height / 2, parent.width / 2)
             gradient.addColorStop(0, "#202020")
-            gradient.addColorStop(0.2, "#202020")
-            gradient.addColorStop(0.41, "#ff0000")
+            gradient.addColorStop(0.4, "#202020")
+            gradient.addColorStop(0.44, "#ff0000")
             gradient.addColorStop(stop0, "#ff0000")
-            gradient.addColorStop(0.65, "#ff0000")
             gradient.addColorStop(1, "#202020")
 
             ctx.lineWidth = 0.1;

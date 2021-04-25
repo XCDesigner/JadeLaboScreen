@@ -5,8 +5,15 @@ void MainWindow::on_pushButton_631_clicked()
 {
     ui->stackedWidget->setCurrentWidget(ui->page_XYCali_1);
     m_port->setHeattingUnit("200","200");
-    QObject::connect(&m_timer,&QTimer::timeout,this,&MainWindow::xyheated);
-    m_timer.start(1000);
+    QTimer::singleShot(500, this, SLOT(xyCalibrationHeating()));
+    screen_status.setPerformance(XY_CALIBRATING);
+}
+
+void MainWindow::on_pushButton_637_clicked()
+{
+    m_port->setHeattingUnit("0","0");
+    screen_status.setPerformance(IDLE);
+    ui->stackedWidget->setCurrentWidget(ui->page_Calibration);
 }
 
 void MainWindow::on_pushButton_632_clicked()
@@ -20,18 +27,33 @@ void MainWindow::on_pushButton_647_clicked()
     ui->stackedWidget->setCurrentWidget(ui->page_Calibration);
 }
 
-void MainWindow::xyheated()
-{
-    if((ui->label_125->text().left(3).toInt() >190 )&& (ui->label_127->text().left(3).toInt() >190 ))
+void MainWindow::xyCalibrationHeating() {
+    strMachineStatus new_status;
+    m_port->getXhPage()->GetMachineStatus(&new_status);
+    if(screen_status.getPerformance() == XY_CALIBRATING)
     {
-         m_port->x_xyCalibration();
-         QObject::disconnect(&m_timer,&QTimer::timeout,this,&MainWindow::xyheated);
-         m_timer.stop();
-         ui->stackedWidget->setCurrentWidget(ui->page_XYCali_2);
+        if((new_status.CurTemp[0] > 190 ) && (new_status.CurTemp[1] > 190))
+        {
+            m_port->x_xyCalibration();
+            ui->stackedWidget->setCurrentWidget(ui->page_XYCali_2);
+            QObject::connect(m_port->getXhPage(), SIGNAL(command_received(uint8_t, uint8_t, QByteArray)), this, SLOT(xyCalibrationMessageProcess(uint8_t, uint8_t, QByteArray)));
+        }
+        else
+        {
+            QTimer::singleShot(500, this, SLOT(xyCalibrationHeating()));
+        }
     }
 }
 
-void MainWindow::plat()
+void MainWindow::xyCalibrationMessageProcess(uint8_t Command, uint8_t SubCode, QByteArray Datas)
 {
-    ui->stackedWidget->setCurrentWidget(ui->page_XYCali_3);
+    if(Command == 0x03)
+    {
+        if(SubCode == 0x05) {
+            m_port->setHeattingUnit("0","0");
+            screen_status.setPerformance(IDLE);
+            ui->stackedWidget->setCurrentWidget(ui->page_PlatformCali_6);
+            QObject::disconnect(m_port->getXhPage(), SIGNAL(command_received(uint8_t, uint8_t, QByteArray)), this, SLOT(xyCalibrationMessageProcess(uint8_t, uint8_t, QByteArray)));
+        }
+    }
 }

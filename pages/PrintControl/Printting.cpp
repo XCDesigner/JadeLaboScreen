@@ -29,6 +29,7 @@ void MainWindow::ShowParameterDialogClicked()
 
 void MainWindow::onFinishPrintClicked()
 {
+    m_printsec->stop();
     ui->stackedWidget->setCurrentWidget(ui->page_GetStart);
     ui->quickWidget_3->rootObject()->setProperty("currentPercent", 0);
     ui->quickWidget_3->rootObject()->setProperty("finishEnabled", false);
@@ -36,6 +37,16 @@ void MainWindow::onFinishPrintClicked()
     ui->qw_PrintingControl->rootObject()->setProperty("stopEnabled", true);
     ui->qw_PrintingControl->rootObject()->setProperty("pauseEnabled", true);
 }
+
+void MainWindow::timeAdd()
+{
+    *m_time =  m_time->addSecs(1);
+    ui->label_78->setText(QString::number(m_time->hour())+"H "+QString::number(m_time->minute())+"M");
+    ui->label_307->setText(QString::number(m_time->hour())+"H "+QString::number(m_time->minute())+"M");
+    ui->label_310->setText(QString::number(m_time->hour())+"H "+QString::number(m_time->minute())+"M");
+    ui->label_312->setText(QString::number(m_time->hour())+"H "+QString::number(m_time->minute())+"M");
+}
+
 
 void MainWindow::printMessageProcess(uint8_t Command, uint8_t SubCode, QByteArray Datas)
 {

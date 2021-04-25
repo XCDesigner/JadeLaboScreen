@@ -87,7 +87,8 @@ public:
     void m_addItemToList(const QString& fileName,QString filePath,QString uDisk);
     void m_adTtemtowifi(const QString& wifiname,QString wifilevel);
 
-    void blockingChangePage(QByteArray Command, QWidget *pPage);
+    //void blockingChangePage(QByteArray Command, QWidget *pPage);
+    void blockingChangePage(QByteArray Command, QWidget *pPage, bool NeedProcessingPage = true);
     void blockingChangeDialog(QByteArray Command, JLWidget *pDialog);
     void changeDialog(JLWidget *pDialog);
     void changePageOnStatus(QByteArray Status, QWidget *pPage);
@@ -199,6 +200,9 @@ private:
 
 private slots:
     void printMessageProcess(uint8_t, uint8_t, QByteArray Datas);
+    void nozzleCalibrationMessageProcess(uint8_t Command, uint8_t SubCode, QByteArray Datas);
+    void platformCalibrationMessageProcess(uint8_t Command, uint8_t SubCode, QByteArray Datas);
+    void xyCalibrationMessageProcess(uint8_t Command, uint8_t SubCode, QByteArray Datas);
     void onFinishPrintClicked();
 
     void TestTimeout();
@@ -243,14 +247,11 @@ private slots:
     void jumpnineteen();
 
     void jumpTwenty(bool a);
-    void jump21(qint32 a,qint32 b,qint32 c,qint32 d);
 
     void jump22(bool a);
-    void jump23(int b);
 
     void jump24(bool a);
     void jump25(bool a);
-    void plat();
 
     void printStop();
     void printPause();
@@ -288,12 +289,13 @@ private slots:
 
     void fileList();
 
-    void carilbin();
     void finished();
     void cancle();
-    void nozzled();
+    void nozzleCalibrationHeating();
+    void platformCalibrationHeating();
+    void xyCalibrationHeating();
 
-    void xyheated();
+    void changeFilamentTempChecking();
 
     void printending();
 
@@ -613,8 +615,6 @@ private slots:
     void on_pushButton_282_clicked();
 
     void on_pushButton_283_clicked();
-
-    void on_pushButton_292_clicked();
 
     void on_pushButton_298_clicked();
 
@@ -955,7 +955,6 @@ private slots:
     void rightExtrude();
     void rightRetract();
     void onSetTemp();
-    void changeFilamentCheckTemp();
 
     void StopPreHeatting();
 
@@ -971,6 +970,14 @@ private slots:
     void WidgetChanged(int index);
 
     void on_pushButton_clicked();
+
+    void on_pushButton_648_clicked();
+
+    void on_pushButton_359_clicked();
+
+    void on_pushButton_113_clicked();
+
+    void on_pushButton_117_clicked();
 
 signals:
     void detection(bool ready);

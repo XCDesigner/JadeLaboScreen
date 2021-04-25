@@ -70,7 +70,7 @@ font-family: barlow;
 }</string>
     </property>
     <property name="currentIndex">
-     <number>64</number>
+     <number>26</number>
     </property>
     <widget class="QWidget" name="page_5">
      <widget class="QLabel" name="label_5">
@@ -9628,32 +9628,6 @@ font-family: Barlow;</string>
        <string/>
       </property>
      </widget>
-     <widget class="QPushButton" name="pushButton_292">
-      <property name="enabled">
-       <bool>false</bool>
-      </property>
-      <property name="geometry">
-       <rect>
-        <x>188</x>
-        <y>598</y>
-        <width>1080</width>
-        <height>96</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">font-weight: bold;
-font-family:Barlow;outline:none;border-radius: 20px;
-background-color: rgb(67, 67, 67);
-color: rgba(255, 255, 255, 255);
-font-size: 36px;
-text-align: center;
-font-family: Barlow;
-border: 2px solid rgba(67, 67, 67, 255);</string>
-      </property>
-      <property name="text">
-       <string>Cancel</string>
-      </property>
-     </widget>
      <widget class="QLabel" name="label_289">
       <property name="geometry">
        <rect>
@@ -9676,6 +9650,29 @@ border-radius: 20px;</string>
        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
       </property>
      </widget>
+     <widget class="QPushButton" name="pushButton_648">
+      <property name="geometry">
+       <rect>
+        <x>180</x>
+        <y>600</y>
+        <width>1080</width>
+        <height>96</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">font-weight: bold;
+font-family:Barlow;outline:none;border-radius: 20px;
+background-color: rgb(67, 67, 67);
+color: rgba(255, 255, 255, 255);
+font-size: 36px;
+text-align: center;
+font-family: Barlow;
+border: 2px solid rgba(67, 67, 67, 255);</string>
+      </property>
+      <property name="text">
+       <string>Cancel</string>
+      </property>
+     </widget>
      <zorder>label_289</zorder>
      <zorder>pushButton_288</zorder>
      <zorder>pushButton_289</zorder>
@@ -9683,7 +9680,7 @@ border-radius: 20px;</string>
      <zorder>pushButton_291</zorder>
      <zorder>label_145</zorder>
      <zorder>label_146</zorder>
-     <zorder>pushButton_292</zorder>
+     <zorder>pushButton_648</zorder>
     </widget>
     <widget class="QWidget" name="page_NozzleCali_2">
      <widget class="QPushButton" name="pushButton_293">

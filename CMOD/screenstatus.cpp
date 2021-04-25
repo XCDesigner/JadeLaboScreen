@@ -15,6 +15,16 @@ void ScreenStatus::setStatus(strScreenStatus *NewStatus)
     status = *NewStatus;
 }
 
+uint8_t ScreenStatus::getPerformance()
+{
+    return status.performance;
+}
+
+void ScreenStatus::setPerformance(uint8_t NewPerformance)
+{
+    status.performance = NewPerformance;
+}
+
 void ScreenStatus::setPrintMode(uint8_t Mode)
 {
     status.print_mode = Mode;

@@ -10,10 +10,25 @@ Rectangle {
     property alias indicatorIcon: imgIndicator.source
     property alias indicatorText: txtIndicator.text
     property alias text: txtTargetTemp.text
+    property bool extrudeEnable: true
 
     signal choseTempClicked()
     signal extruderClicked()
     signal retackClicked()
+
+    onExtrudeEnableChanged:
+    {
+        if(extrudeEnable == true)
+        {
+            btnExtrude.enable = true
+            btnRetract.enable = true
+        }
+        else
+        {
+            btnExtrude.enable = false
+            btnRetract.enable = false
+        }
+    }
 
     Image {
         id: imgIndicator

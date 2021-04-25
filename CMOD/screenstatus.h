@@ -2,6 +2,15 @@
 #define SCREENSTATUS_H
 #include "stdint.h"
 
+enum {
+    IDLE = 0,
+    PRINTING,
+    CHANGE_FILAMENT,
+    XY_CALIBRATING,
+    PLATFORM_CALIBRATING,
+    NOZZLE_CALIBRATING
+};
+
 typedef struct{
     bool Wifi;
     bool UDisk;
@@ -11,6 +20,7 @@ typedef struct{
     uint32_t ZHeight;
     uint8_t print_mode;
     bool extruder_enabled[2];
+    uint8_t performance;
 }strScreenStatus;
 
 class ScreenStatus
@@ -19,6 +29,8 @@ public:
     ScreenStatus();
     void getStatus(strScreenStatus *);
     void setStatus(strScreenStatus *);
+    uint8_t getPerformance();
+    void setPerformance(uint8_t);
     void setPrintMode(uint8_t);
     void setWifiStatus(bool);
     void setUdiskStatus(bool);
