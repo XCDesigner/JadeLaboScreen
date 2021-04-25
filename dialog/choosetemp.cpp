@@ -6,6 +6,28 @@ chooseTemp::chooseTemp(QWidget *parent) :
     ui(new Ui::chooseTemp)
 {
     ui->setupUi(this);
+
+    QQuickWidget *item[6];
+
+    item[0] = ui->qw_TempOff;
+    item[1] = ui->qw_Temp180;
+    item[2] = ui->qw_Temp200;
+    item[3] = ui->qw_Temp220;
+    item[4] = ui->qw_Temp240;
+    item[5] = ui->qw_Temp260;
+
+    QString itemText[] = {"OFF", "180°C", "200°C", "220°C", "240°C", "260°C"};
+    int radius[] = {90, 20, 20, 20, 20, 20};
+
+    for(int i=0;i<6;i++)
+    {
+        item[i]->rootObject()->setProperty("text", itemText[i]);
+        item[i]->rootObject()->setProperty("radius", radius[i]);
+        item[i]->rootObject()->setProperty("index", i);
+        item[i]->setClearColor("#202020");
+        QMetaObject::invokeMethod(item[i]->rootObject(), "setBorder", Q_ARG(int, 5), Q_ARG(QVariant, "#b0b0b0"));
+        QObject::connect(item[i]->rootObject(), SIGNAL(clicked(int)), this, SLOT(onTempSelect(int)));
+    }
 }
 
 chooseTemp::~chooseTemp()
@@ -15,67 +37,7 @@ chooseTemp::~chooseTemp()
 
 void chooseTemp::init(QString str)
 {
-    int num = str.mid(0,3).toInt();
-    switch (num) {
-    case 0:
-        ui->pushButton_6->setStyleSheet("QPushButton{color: rgb(255, 255, 255);font-weight: bold;\
-                                        font-size: 36px;\
-                text-align: center;\
-        font-family: Barlow;\
-        background-image: url(qrc:/image/TempofButton.png);\
-border:none;\
-    };");
-    break;
-    case 180:
-        ui->pushButton->setStyleSheet("QPushButton{color: rgb(255, 255, 255);font-weight: bold;\
-                                      font-size: 36px;\
-                text-align: center;\
-        font-family: Barlow;\
-        background-image: url(qrc:/image/TemponButton.png);\
-border:none;\
-};");
-break;
-case 200:
-ui->pushButton_2->setStyleSheet("QPushButton{color: rgb(255, 255, 255);font-weight: bold;\
-                                font-size: 36px;\
-text-align: center;\
-font-family: Barlow;\
-background-image: url(:/TemponButton.png);\
-border:none;\
-};");
-break;
-case 220:
-ui->pushButton_3->setStyleSheet("QPushButton{color: rgb(255, 255, 255);font-weight: bold;\
-                                font-size: 36px;\
-text-align: center;\
-font-family: Barlow;\
-background-image: url(:/TemponButton.png);\
-border:none;\
-};");
-break;
-case 240:
-ui->pushButton_4->setStyleSheet("QPushButton{color: rgb(255, 255, 255);font-weight: bold;\
-                                font-size: 36px;\
-text-align: center;\
-font-family: Barlow;\
-background-image: url(:/TemponButton.png);\
-border:none;\
-};");
-break;
-case 260:
-ui->pushButton_5->setStyleSheet("QPushButton{color: rgb(255, 255, 255);font-weight: bold;\
-                                font-size: 36px;\
-text-align: center;\
-font-family: Barlow;\
-background-image: url(:/TemponButton.png);\
-border:none;\
-};");
-break;
-default:
-break;
 
-
-}
 }
 
 void chooseTemp::show()
@@ -84,50 +46,14 @@ void chooseTemp::show()
     QWidget::show();
 }
 
-void chooseTemp::on_pushButton_clicked()
+void chooseTemp::onTempSelect(int Index)
 {
-    emit heatT(ui->pushButton->text());
-    ret_value.append("180");
+    QByteArray ret_table[] = {"0", "180", "200", "220", "240", "260"};
+    ret_value.append(ret_table[Index]);
     emit hideWidget();
     this->hide();
 }
 
-void chooseTemp::on_pushButton_2_clicked()
-{
-    emit heatT(ui->pushButton_2->text());
-    ret_value.append("200");
-    emit hideWidget();
-    this->hide();
-}
 
-void chooseTemp::on_pushButton_3_clicked()
-{
-    emit heatT(ui->pushButton_3->text());
-    ret_value.append("220");
-    emit hideWidget();
-    this->hide();
-}
 
-void chooseTemp::on_pushButton_4_clicked()
-{
-    emit heatT(ui->pushButton_4->text());
-    ret_value.append("240");
-    emit hideWidget();
-    this->hide();
-}
 
-void chooseTemp::on_pushButton_5_clicked()
-{
-    emit heatT(ui->pushButton_5->text());
-    ret_value.append("260");
-    emit hideWidget();
-    this->hide();
-}
-
-void chooseTemp::on_pushButton_6_clicked()
-{
-    emit heatT(ui->pushButton_6->text());
-    ret_value.append("0");
-    emit hideWidget();
-    this->hide();
-}

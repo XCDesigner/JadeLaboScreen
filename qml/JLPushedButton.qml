@@ -9,10 +9,18 @@ Rectangle {
     property alias font: title.font
     property int index: 0
 
+    //property alias borderWidth: base.border.width
+    //property alias borderColor: base.border.color
     color: "#2d2c2b"
     radius: 20
 
     signal clicked(int index)
+
+    function setBorder(width: int, color)
+    {
+        base.border.width = width
+        base.border.color = color
+    }
 
     onIsPressedChanged: {
         if(enable == true)

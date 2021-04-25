@@ -3,6 +3,9 @@
 
 #include <QWidget>
 #include "jlwidget.h"
+#include <QQuickWidget>
+#include <QQuickItem>
+#include <QMetaObject>
 
 namespace Ui {
 class chooseTemp;
@@ -24,12 +27,7 @@ private:
 signals:
     void heatT(QString str);
 private slots:
-    void on_pushButton_clicked();
-    void on_pushButton_2_clicked();
-    void on_pushButton_3_clicked();
-    void on_pushButton_4_clicked();
-    void on_pushButton_5_clicked();
-    void on_pushButton_6_clicked();
+    void onTempSelect(int Index);
 };
 
 #endif // CHOOSETEMP_H
