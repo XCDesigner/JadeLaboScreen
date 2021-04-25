@@ -68,7 +68,7 @@ void MainWindow::updateStatusBar()
     else {
         ui->label_128->setPixmap(QPixmap(bedInactive));
     }
-    QTimer::singleShot(1000, this, SLOT(updateStatusBar()));
+    QTimer::singleShot(200, this, SLOT(updateStatusBar()));
 
     #ifdef XH_LINUX
         // currentState.clear();

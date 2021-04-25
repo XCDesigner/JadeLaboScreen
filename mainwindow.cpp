@@ -346,6 +346,10 @@ void MainWindow::WidgetChanged(int index)
     {
         changeFilamentPageInit();
     }
+    else if(ui->stackedWidget->currentWidget() == ui->page_PreparePrint)
+    {
+        preparePrintPageInit();
+    }
 }
 
 void MainWindow::m_addItemToList(const QString &fileName, QString filePath)

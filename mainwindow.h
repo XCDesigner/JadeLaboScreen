@@ -207,7 +207,10 @@ private slots:
     void nozzleCalibrationMessageProcess(uint8_t Command, uint8_t SubCode, QByteArray Datas);
     void platformCalibrationMessageProcess(uint8_t Command, uint8_t SubCode, QByteArray Datas);
     void xyCalibrationMessageProcess(uint8_t Command, uint8_t SubCode, QByteArray Datas);
+
     void onFinishPrintClicked();
+    void preparePrinTempChecking();
+    void preparePrintPageInit();
 
     void TestTimeout();
     void updateStatusBar();

@@ -4,6 +4,7 @@
 
 enum {
     IDLE = 0,
+    PREPARE_PRINT,
     PRINTING,
     CHANGE_FILAMENT,
     XY_CALIBRATING,

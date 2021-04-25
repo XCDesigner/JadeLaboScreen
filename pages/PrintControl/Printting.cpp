@@ -10,6 +10,7 @@ void MainWindow::StopPrintClicked()
     }
     qDebug()<<"Stop clicked";
     m_port->stopPrint();
+    screen_status.setPerformance(IDLE);
     changePageOnStatus(QByteArray::fromHex("00"), ui->page_GetStart);
 }
 
@@ -36,6 +37,7 @@ void MainWindow::onFinishPrintClicked()
     ui->qw_PrintingControl->rootObject()->setProperty("settingEnabled", true);
     ui->qw_PrintingControl->rootObject()->setProperty("stopEnabled", true);
     ui->qw_PrintingControl->rootObject()->setProperty("pauseEnabled", true);
+    screen_status.setPerformance(IDLE);
 }
 
 void MainWindow::timeAdd()
