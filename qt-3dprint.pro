@@ -29,6 +29,8 @@ CONFIG += c++11
 SOURCES += \
     CMOD/XhGcodeFileParser.cpp \
     CMOD/XhUpdater.cpp \
+    CMOD/jlprotocal.cpp \
+    CMOD/jlserialport.cpp \
     CMOD/screenstatus.cpp \
     CMOD/xhEvent.cpp \
     CMOD/xhcontrolr818.cpp \
@@ -77,6 +79,8 @@ SOURCES += \
 HEADERS += \
     CMOD/XhGcodeFileParser.h \
     CMOD/XhUpdater.h \
+    CMOD/jlprotocal.h \
+    CMOD/jlserialport.h \
     CMOD/screenstatus.h \
     CMOD/xhEvent.h \
     CMOD/xhcontrolr818.h \

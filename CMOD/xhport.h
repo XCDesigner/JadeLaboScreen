@@ -12,6 +12,7 @@
 #include <QtSerialPort/QSerialPortInfo>
 
 #include "xhpage.h"
+#include "jlserialport.h"
 
 #define PORTNAME "COM9"
 
@@ -131,20 +132,18 @@ public:
     void updateBegin(QString );
 
     XhPage* getXhPage();
-    QSerialPort* getSerialPort();
+    JLSerialPort* getSerialPort();
 
     void continuePrint();
 
 private:
-    QSerialPort *m_serial;
-    XhPage *m_package;
+    // QSerialPort *m_serial;
+    JLSerialPort *m_serial;
 
+    XhPage *m_package;
+    QByteArray ReceiveBuff;
 
     QTimer *portTimer;//专门用于测试通讯串口的计时器
-
-    void readData();//读取并解析串口响应
-
-
 
 signals:
 
@@ -243,6 +242,8 @@ private slots:
     void updateSend(QByteArray ,int ,QByteArray );
     void updateOver();
     void updateNum(int );
+
+    void readData(QByteArray Data);
 };
 
 #endif // XHPORT_H

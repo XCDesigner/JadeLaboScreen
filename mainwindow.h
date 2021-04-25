@@ -67,6 +67,10 @@
 #ifdef XH_WIN
 #include "define/windowsPath.h"
 #endif
+
+#include "CMOD/jlserialport.h"
+#include <QThread>
+#include <CMOD/jlprotocal.h>
 namespace Ui {
 class MainWindow;
 }
@@ -196,7 +200,7 @@ private:
     uint8_t counter;
     bool test_en;
     ScreenStatus screen_status;
-
+    JLSerialPort *serial_port;
 
 private slots:
     void printMessageProcess(uint8_t, uint8_t, QByteArray Datas);
