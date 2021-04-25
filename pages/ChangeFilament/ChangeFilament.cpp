@@ -60,6 +60,14 @@ void MainWindow::onSetTemp()
         ui->pushButton_117->setEnabled(true);
         ui->pushButton_118->setEnabled(true);
     }
+    if(changeFilamentSelectExtruder == 0)
+    {
+        ui->qw_LeftHeating->rootObject()->setProperty("text", ret[0] + "°C");
+    }
+    else
+    {
+        ui->qw_RightHeating->rootObject()->setProperty("text", ret[0] + "°C");
+    }
     m_port->setHeattingUnit(changeFilamentSelectExtruder, ret[0].toUInt());
     delete mchoose;
 }
