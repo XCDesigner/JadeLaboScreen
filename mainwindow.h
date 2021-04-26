@@ -230,7 +230,6 @@ private slots:
     void winGone();
 
     void winGtwo();
-    void serailIsOpen();
     void jumpThree();
 
 //    void winGfour();
@@ -362,42 +361,6 @@ private slots:
 
     void deepTimer();
 
-    void on_noreadynext_clicked();
-
-    void on_platnext_clicked();
-
-    void on_readynext_clicked();
-
-    void on_pushButton_24_clicked();
-
-    void on_pushButton_31_clicked();
-
-    void on_pushButton_87_clicked();
-
-    void on_pushButton_52_clicked();
-
-    void on_pushButton_53_clicked();
-
-    void on_pushButton_62_clicked();
-
-    void on_pushButton_63_clicked();
-
-    void on_pushButton_64_clicked();
-
-    void on_pushButton_76_clicked();
-
-    void on_pushButton_72_clicked();
-
-    void on_pushButton_68_clicked();
-
-    void on_pushButton_60_clicked();
-
-    void on_pushButton_56_clicked();
-
-    void on_pushButton_74_clicked();
-
-    void on_pushButton_73_clicked();
-
     void on_pushButton_129_clicked();
 
     void on_pushButton_134_clicked();
@@ -474,48 +437,6 @@ private slots:
 
     void on_pushButton_180_clicked();
 
-    void on_pushButton_92_clicked();
-
-    void on_pushButton_91_clicked();
-
-    void on_pushButton_85_clicked();
-
-    void on_pushButton_86_clicked();
-
-    void on_pushButton_88_clicked();
-
-    void on_pushButton_48_clicked();
-
-    void on_pushButton_49_clicked();
-
-    void on_pushButton_50_clicked();
-
-    void on_pushButton_54_clicked();
-
-    void on_pushButton_55_clicked();
-
-    void on_pushButton_57_clicked();
-
-    void on_pushButton_58_clicked();
-
-    void on_pushButton_59_clicked();
-
-    void on_pushButton_61_clicked();
-
-    void on_pushButton_65_clicked();
-
-    void on_pushButton_66_clicked();
-
-    void on_pushButton_67_clicked();
-
-    void on_pushButton_69_clicked();
-
-    void on_pushButton_70_clicked();
-
-    void on_pushButton_71_clicked();
-
-    void on_pushButton_75_clicked();
-
     void on_pushButton_170_clicked();
 
     void on_pushButton_172_clicked();
@@ -541,10 +462,6 @@ private slots:
     void on_pushButton_178_clicked();
 
     void on_pushButton_186_clicked();
-
-    void on_pushButton_185_clicked();
-
-    void on_pushButton_187_clicked();
 
     void on_pushButton_193_clicked();
 

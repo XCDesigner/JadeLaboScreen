@@ -88,7 +88,6 @@ MainWindow::MainWindow(QWidget *parent) :
 
     /*绑定串口信号*/
     /*frist*/
-    QObject::connect(m_port, &XhPort::serialIsOpen, this, &MainWindow::serailIsOpen);
     QObject::connect(m_port, &XhPort::firstTestResult, this,&MainWindow::winGfour);
 
     /*tool carb*/
@@ -462,11 +461,6 @@ void MainWindow::winGtwo()
         QObject::connect(&m_timer,SIGNAL(timeout()),this,SLOT(jumpThree()));
         m_timer.start(2000);
     }
-}
-
-void MainWindow::serailIsOpen()
-{
-    serialOpen =true;
 }
 
 void MainWindow::jumpThree()
@@ -2143,145 +2137,6 @@ void MainWindow::deepTimer()
     }
 }
 
-void MainWindow::on_noreadynext_clicked()
-{
-    /*G4-1按钮槽函数*/
-    ui->stackedWidget->setCurrentIndex(8);
-    QObject::connect(&m_timer,SIGNAL(timeout()),this,SLOT(jumpFive()));
-    m_timer.start(2000);
-}
-
-void MainWindow::on_platnext_clicked()
-{
-    /*G4-1-3按钮槽函数*/
-    ui->stackedWidget->setCurrentIndex(12);
-    QObject::connect(&m_timer,SIGNAL(timeout()),this,SLOT(jumpEight()));
-    m_timer.start(2000);
-}
-
-void MainWindow::on_readynext_clicked()
-{
-    ui->stackedWidget->setCurrentIndex(16);
-    ui->m_StatusBar->setVisible(true);
-    QObject::connect(&m_timer,SIGNAL(timeout()),this,SLOT(jumpEleven()));
-    m_timer.start(3000);
-}
-
-void MainWindow::on_pushButton_24_clicked()
-{
-
-}
-
-void MainWindow::on_pushButton_31_clicked()
-{
-    ui->m_StatusBar->setVisible(false);
-    ui->widget_2->setVisible(true);
-    if(m_timer.isActive())
-    {
-        m_timer.stop();
-    }
-    QObject::connect(&m_timer,SIGNAL(timeout()),this,SLOT(shinetwo()));
-    flicker =true;
-    timeLonger = 0;
-    m_opaCity = 0.0;
-    m_effect->setOpacity(m_opaCity);
-    m_timer.start(50);
-}
-
-void MainWindow::on_pushButton_87_clicked()
-{
-    ui->stackedWidget->setCurrentIndex(24);
-#ifdef XH_VIS
-    ui->m_StatusBar->setVisible(false);
-#endif
-    if(m_timer.isActive())
-    {
-        m_timer.stop();
-        QObject::disconnect(&m_timer,SIGNAL(timeout()),this,SLOT(jumpFifteen()));
-        m_x=0;
-        m_y=0;
-        m_w=0;
-        m_h=0;
-        timeLonger=0;
-        flicker =true;
-    }
-}
-
-void MainWindow::on_pushButton_52_clicked()
-{
-    ui->stackedWidget->setCurrentIndex(25);
-}
-
-void MainWindow::on_pushButton_53_clicked()
-{
-    ui->stackedWidget->setCurrentIndex(26);
-}
-
-void MainWindow::on_pushButton_62_clicked()
-{
-    ui->stackedWidget->setCurrentIndex(27);
-}
-
-void MainWindow::on_pushButton_63_clicked()
-{
-    ui->stackedWidget->setCurrentIndex(28);
-}
-
-void MainWindow::on_pushButton_64_clicked()
-{
-    ui->stackedWidget->setCurrentIndex(29);
-}
-
-void MainWindow::on_pushButton_76_clicked()
-{
-    ui->stackedWidget->setCurrentIndex(24);
-#ifdef XH_VIS
-    ui->m_StatusBar->setVisible(false);
-#endif
-}
-
-void MainWindow::on_pushButton_72_clicked()
-{
-    ui->stackedWidget->setCurrentIndex(24);
-#ifdef XH_VIS
-    ui->m_StatusBar->setVisible(false);
-#endif
-}
-
-void MainWindow::on_pushButton_68_clicked()
-{
-    ui->stackedWidget->setCurrentIndex(24);
-#ifdef XH_VIS
-    ui->m_StatusBar->setVisible(false);
-#endif
-}
-
-void MainWindow::on_pushButton_60_clicked()
-{
-    ui->stackedWidget->setCurrentIndex(24);
-#ifdef XH_VIS
-    ui->m_StatusBar->setVisible(false);
-#endif
-}
-
-void MainWindow::on_pushButton_56_clicked()
-{
-    ui->stackedWidget->setCurrentIndex(24);
-#ifdef XH_VIS
-    ui->m_StatusBar->setVisible(false);
-#endif
-}
-
-void MainWindow::on_pushButton_74_clicked()
-{
-    ui->stackedWidget->setCurrentWidget(ui->page_ChangeFilament);
-}
-
-void MainWindow::on_pushButton_73_clicked()
-{
-    ui->stackedWidget->setCurrentWidget(ui->page_GetStart);
-}
-
 void MainWindow::on_pushButton_129_clicked()
 {
     ui->stackedWidget->setCurrentWidget(ui->page_FileList);
@@ -2430,149 +2285,6 @@ void MainWindow::on_pushButton_180_clicked()
     ui->stackedWidget->setCurrentWidget(ui->page_Tools);
 }
 
-void MainWindow::on_pushButton_92_clicked()
-{
-    /*start 第二动画点击设置*/
-    if(m_timer.isActive())
-    {
-        m_timer.stop();
-        QObject::disconnect(&m_timer,SIGNAL(timeout()),this,SLOT(jumpFourteen()));
-        isPrintFirstAnim = false;
-        isStartFristAnim = true;
-        ui->stackedWidget->setCurrentIndex(38);
-    }
-}
-
-void MainWindow::on_pushButton_91_clicked()
-{
-    /*start 第二动画点击暂停*/
-    isStartFristAnim = true;
-    if(m_timer.isActive())
-    {
-        m_timer.stop();
-        //QObject::disconnect(&m_timer,SIGNAL(timeout()),this,SLOT(jumpFourteen()));
-        skpWin = new askPause(this);
-        skpWin->show();
-    }
-}
-
-void MainWindow::on_pushButton_85_clicked()
-{
-    ui->stackedWidget->setCurrentWidget(ui->page_GetStart);
-}
-
-void MainWindow::on_pushButton_86_clicked()
-{
-//    if(m_timer.isActive())
-//    {
-//        m_timer.stop();
-//        QObject::disconnect(&m_timer,SIGNAL(timeout()),this,SLOT(jumpFifteen()));
-//        m_x=0;
-//        m_y=0;
-//        m_w=0;
-//        m_h=0;
-//        timeLonger=0;
-//        flicker =true;
-//    }
-    ui->stackedWidget->setCurrentWidget(ui->page_ChangeFilament);
-}
-
-void MainWindow::on_pushButton_88_clicked()
-{
-    if(m_timer.isActive())
-    {
-        m_timer.stop();
-        QObject::disconnect(&m_timer,SIGNAL(timeout()),this,SLOT(jumpFifteen()));
-        m_x=0;
-        m_y=0;
-        m_w=0;
-        m_h=0;
-        timeLonger=0;
-        flicker =true;
-    }
-    ui->stackedWidget->setCurrentWidget(ui->page_Tools);
-}
-
-void MainWindow::on_pushButton_48_clicked()
-{
-    ui->stackedWidget->setCurrentWidget(ui->page_GetStart);
-}
-
-void MainWindow::on_pushButton_49_clicked()
-{
-    ui->stackedWidget->setCurrentWidget(ui->page_ChangeFilament);
-}
-
-void MainWindow::on_pushButton_50_clicked()
-{
-    ui->stackedWidget->setCurrentWidget(ui->page_Tools);
-}
-
-void MainWindow::on_pushButton_54_clicked()
-{
-    ui->stackedWidget->setCurrentWidget(ui->page_GetStart);
-}
-
-void MainWindow::on_pushButton_55_clicked()
-{
-    ui->stackedWidget->setCurrentWidget(ui->page_ChangeFilament);
-}
-
-void MainWindow::on_pushButton_57_clicked()
-{
-    ui->stackedWidget->setCurrentWidget(ui->page_Tools);
-}
-
-void MainWindow::on_pushButton_58_clicked()
-{
-    ui->stackedWidget->setCurrentWidget(ui->page_GetStart);
-}
-
-void MainWindow::on_pushButton_59_clicked()
-{
-    ui->stackedWidget->setCurrentWidget(ui->page_ChangeFilament);
-}
-
-void MainWindow::on_pushButton_61_clicked()
-{
-    ui->stackedWidget->setCurrentWidget(ui->page_Tools);
-}
-
-void MainWindow::on_pushButton_65_clicked()
-{
-    ui->stackedWidget->setCurrentWidget(ui->page_GetStart);
-}
-
-void MainWindow::on_pushButton_66_clicked()
-{
-    ui->stackedWidget->setCurrentWidget(ui->page_ChangeFilament);
-}
-
-void MainWindow::on_pushButton_67_clicked()
-{
-    ui->stackedWidget->setCurrentWidget(ui->page_Tools);
-}
-
-void MainWindow::on_pushButton_69_clicked()
-{
-    ui->stackedWidget->setCurrentWidget(ui->page_GetStart);
-}
-
-void MainWindow::on_pushButton_70_clicked()
-{
-    ui->stackedWidget->setCurrentWidget(ui->page_ChangeFilament);
-}
-
-void MainWindow::on_pushButton_71_clicked()
-{
-    ui->stackedWidget->setCurrentWidget(ui->page_Tools);
-}
-
-void MainWindow::on_pushButton_75_clicked()
-{
-    ui->stackedWidget->setCurrentWidget(ui->page_Tools);
-}
-
 void MainWindow::on_pushButton_170_clicked()
 {
     ui->stackedWidget->setCurrentWidget(ui->page_GetStart);
@@ -2645,19 +2357,6 @@ void MainWindow::on_pushButton_178_clicked()
 void MainWindow::on_pushButton_186_clicked()
 {
     ui->stackedWidget->setCurrentWidget(ui->page_GetStart);
-}
-
-void MainWindow::on_pushButton_185_clicked()
-{
-    ui->stackedWidget->setCurrentWidget(ui->page_ChangeFilament);
-}
-
-void MainWindow::on_pushButton_187_clicked()
-{
-    ui->stackedWidget->setCurrentIndex(24);
-#ifdef XH_VIS
-    ui->m_StatusBar->setVisible(false);
-#endif
 }
 
 void MainWindow::on_pushButton_193_clicked()

@@ -45,7 +45,7 @@ void MainWindow::updateStatusBar()
     sprintf(m_string,"%03d|%03d°C",new_status.CurTemp[2], new_status.TarTemp[2]);
     ui->label_29->setText(m_string);
 
-    sprintf(m_string,"%05.1f", new_status.ZHeight);
+    sprintf(m_string,"%0.1fmm", new_status.ZHeight);
     ui->label_129->setText(m_string);
 
     if(new_status.Status != 0) {

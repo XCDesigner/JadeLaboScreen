@@ -147,8 +147,6 @@ private:
 
 signals:
 
-    /*first start*/
-    void serialIsOpen();
     void firstTestResult(bool ,bool ,bool ,bool ,bool );
     void firstTemperatureResult(int ,int ,int ,int ,int ,int ,int ,QByteArray );
     void platCheck(bool );

@@ -44,6 +44,7 @@ SOURCES += \
     dialog/dupandmirorr.cpp \
     dialog/duponly.cpp \
     dialog/filamentfault.cpp \
+    dialog/firststartdialog.cpp \
     dialog/jlwidget.cpp \
     dialog/parsetdlog.cpp \
     dialog/parsing.cpp \
@@ -97,6 +98,7 @@ HEADERS += \
     dialog/dupandmirorr.h \
     dialog/duponly.h \
     dialog/filamentfault.h \
+    dialog/firststartdialog.h \
     dialog/jlwidget.h \
     dialog/parsetdlog.h \
     dialog/parsing.h \
@@ -123,6 +125,7 @@ FORMS += \
     dialog/dupandmirorr.ui \
     dialog/duponly.ui \
     dialog/filamentfault.ui \
+    dialog/firststartdialog.ui \
     dialog/parsetdlog.ui \
     dialog/parsing.ui \
     dialog/powerlost.ui \

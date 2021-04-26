@@ -1,0 +1,322 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>FirstStartDialog</class>
+ <widget class="QWidget" name="FirstStartDialog">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1280</width>
+    <height>720</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">background-color: rgb(43, 44, 45);</string>
+  </property>
+  <widget class="QLabel" name="label">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1280</width>
+     <height>720</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QWidget" name="m_StatusBar" native="true">
+   <property name="geometry">
+    <rect>
+     <x>180</x>
+     <y>0</y>
+     <width>1280</width>
+     <height>50</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgba(45, 44, 43, 255);</string>
+   </property>
+   <widget class="QLabel" name="label_130">
+    <property name="geometry">
+     <rect>
+      <x>7</x>
+      <y>6</y>
+      <width>36</width>
+      <height>44</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">image: url(:/image/LHotendInactive.png);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_131">
+    <property name="geometry">
+     <rect>
+      <x>52</x>
+      <y>2</y>
+      <width>177</width>
+      <height>48</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Barlow</family>
+      <pointsize>-1</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: rgb(255, 255, 255);
+font-size: 30px;
+font-family:Barlow;
+text-align: right;
+border:none;
+font-weight: bold;</string>
+    </property>
+    <property name="text">
+     <string>026|000°C</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_132">
+    <property name="geometry">
+     <rect>
+      <x>242</x>
+      <y>6</y>
+      <width>36</width>
+      <height>44</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">image: url(:/image/RHotendInactive.png);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_133">
+    <property name="geometry">
+     <rect>
+      <x>286</x>
+      <y>2</y>
+      <width>216</width>
+      <height>48</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Barlow</family>
+      <pointsize>-1</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: rgb(255, 255, 255);
+font-size: 30px;
+font-family:Barlow;
+text-align: right;
+border:none;
+font-weight: bold;</string>
+    </property>
+    <property name="text">
+     <string>026|000°C</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_134">
+    <property name="geometry">
+     <rect>
+      <x>484</x>
+      <y>6</y>
+      <width>42</width>
+      <height>40</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">image: url(:/image/BedActive.png);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_135">
+    <property name="geometry">
+     <rect>
+      <x>768</x>
+      <y>2</y>
+      <width>177</width>
+      <height>48</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Barlow</family>
+      <pointsize>-1</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: rgb(255, 255, 255);
+font-size: 30px;
+font-family:Barlow;
+text-align: right;
+border:none;
+font-weight: bold;</string>
+    </property>
+    <property name="text">
+     <string>000.0mm</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_30">
+    <property name="geometry">
+     <rect>
+      <x>534</x>
+      <y>2</y>
+      <width>177</width>
+      <height>48</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Barlow</family>
+      <pointsize>-1</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: rgb(255, 255, 255);
+font-size: 30px;
+font-family:Barlow;
+text-align: right;
+border:none;
+font-weight: bold;</string>
+    </property>
+    <property name="text">
+     <string>026|000°C</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_222">
+    <property name="geometry">
+     <rect>
+      <x>716</x>
+      <y>6</y>
+      <width>44</width>
+      <height>44</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">image: url(:/image/Zheight.png);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QQuickWidget" name="qw_StatusNotice">
+    <property name="geometry">
+     <rect>
+      <x>940</x>
+      <y>6</y>
+      <width>158</width>
+      <height>43</height>
+     </rect>
+    </property>
+    <property name="resizeMode">
+     <enum>QQuickWidget::SizeRootObjectToView</enum>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QWidget" name="widget" native="true">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>180</width>
+     <height>720</height>
+    </rect>
+   </property>
+   <widget class="QPushButton" name="pushButton_131">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>540</y>
+      <width>180</width>
+      <height>180</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">outline:none;image: url(:/image/AboutInactive.png);border:none;</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_133">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>180</width>
+      <height>180</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">outline:none;image: url(:/image/PrintActive(2).png);border:none;</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_130">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>180</y>
+      <width>180</width>
+      <height>180</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">outline:none;image: url(:/image/FilamentInactive.png);border:none;</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_132">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>360</y>
+      <width>180</width>
+      <height>180</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">outline:none;image: url(:/image/ToolsInactive.png);border:none;</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+  </widget>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>QQuickWidget</class>
+   <extends>QWidget</extends>
+   <header location="global">QtQuickWidgets/QQuickWidget</header>
+  </customwidget>
+ </customwidgets>
+ <resources/>
+ <connections/>
+</ui>

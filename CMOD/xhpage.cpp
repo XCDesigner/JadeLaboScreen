@@ -56,6 +56,17 @@ XhPage::XhPage(QObject *parent) : QObject(parent)
     logFind = new QTimer(this);
     logText = new QFile(logPath);
     QFileInfo fi("/mnt/exUDISK/gcode");
+
+    cur_machine_status.CurTemp[0] = 0;
+    cur_machine_status.CurTemp[1] = 0;
+    cur_machine_status.CurTemp[2] = 0;
+    cur_machine_status.TarTemp[0] = 0;
+    cur_machine_status.TarTemp[1] = 0;
+    cur_machine_status.TarTemp[2] = 0;
+    cur_machine_status.Percent = 0;
+    cur_machine_status.ZHeight = 0;
+    cur_machine_status.Status = 0;
+
     if(fi.isDir())
     {
         QObject::connect(logFind,&QTimer::timeout,this,&XhPage::logFindSlot);
