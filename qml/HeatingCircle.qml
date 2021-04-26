@@ -6,7 +6,7 @@ Rectangle {
     color: "transparent"
 
     Timer{
-        interval: 200
+        interval: 100
         repeat: true
         running: true
         property bool inc: true
@@ -43,7 +43,7 @@ Rectangle {
 
             var gradient = ctx.createRadialGradient(parent.width / 2, parent.height / 2 , thickness, parent.width / 2, parent.height / 2, parent.width / 2)
             gradient.addColorStop(0, "#202020")
-            gradient.addColorStop(0.5, "#202020")
+            gradient.addColorStop(0.4, "#202020")
             gradient.addColorStop(0.44, "#ff0000")
             gradient.addColorStop(stop0, "#202020")
             gradient.addColorStop(1, "#202020")

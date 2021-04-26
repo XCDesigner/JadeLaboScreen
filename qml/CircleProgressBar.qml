@@ -114,7 +114,7 @@ Rectangle{
       else {
           gradient = ctx.createRadialGradient(parent.width / 2, parent.height / 2 , parent.width / 2 * 0.9, parent.width / 2, parent.height / 2, parent.width / 2)
           gradient.addColorStop(0, "#202020")
-          gradient.addColorStop(0.5, "#202020")
+          gradient.addColorStop(0.4, "#202020")
           gradient.addColorStop(0.44, "#00ff00")
           gradient.addColorStop(stop0, "#202020")
           gradient.addColorStop(1, "#202020")
