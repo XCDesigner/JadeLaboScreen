@@ -21,6 +21,9 @@ public:
     void writeData(QByteArray);
     void writeProtocalData(QByteArray);
 
+private slots:
+    void onSerialRead();
+
 protected:
     QByteArray readData() override;
     QByteArray parseData() override;
