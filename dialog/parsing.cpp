@@ -20,6 +20,11 @@ parsing::~parsing()
     delete ui;
 }
 
+void parsing::show()
+{
+    QWidget::show();
+}
+
 void parsing::setNum(int num)
 {
     emit sendSignalToQml(num);

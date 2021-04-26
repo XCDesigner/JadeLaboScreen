@@ -379,17 +379,9 @@ private slots:
 
     void on_pushButton_183_clicked();
 
-    void on_pushButton_188_clicked();
-
-    void on_pushButton_189_clicked();
-
     void on_pushButton_194_clicked();
 
     void on_pushButton_195_clicked();
-
-    void on_pushButton_200_clicked();
-
-    void on_pushButton_201_clicked();
 
     void on_pushButton_206_clicked();
 
@@ -461,19 +453,11 @@ private slots:
 
     void on_pushButton_178_clicked();
 
-    void on_pushButton_186_clicked();
-
     void on_pushButton_193_clicked();
 
     void on_pushButton_190_clicked();
 
     void on_pushButton_191_clicked();
-
-    void on_pushButton_199_clicked();
-
-    void on_pushButton_197_clicked();
-
-    void on_pushButton_198_clicked();
 
     void on_pushButton_202_clicked();
 
@@ -597,15 +581,11 @@ private slots:
 
     void on_pushButton_131_clicked();
 
-    void on_pushButton_168_clicked();
-
     void on_pushButton_149_clicked();
 
     void on_pushButton_151_clicked();
 
     void on_pushButton_148_clicked();
-
-    void on_pushButton_167_clicked();
 
     void on_pushButton_346_clicked();
 

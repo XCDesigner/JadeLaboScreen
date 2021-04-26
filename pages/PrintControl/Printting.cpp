@@ -17,7 +17,10 @@ void MainWindow::StopPrintClicked()
 void MainWindow::ShowPauseDialogClicked()
 {
     QByteArray s;
-    m_timer.stop();
+    if(m_timer.isActive())
+    {
+        m_timer.stop();
+    }
     blockingChangeDialog(s, (JLWidget*)skpWin);
 }
 

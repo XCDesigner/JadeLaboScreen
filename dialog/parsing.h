@@ -17,6 +17,7 @@ public:
     explicit parsing(QWidget *parent = nullptr);
     ~parsing();
     void setNum(int num);
+    void show() override;
 
 private slots:
     void on_pushButton_clicked();

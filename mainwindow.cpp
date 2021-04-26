@@ -1105,6 +1105,11 @@ void MainWindow::m_chooseEN()
                 qDebug()<<"numoffset"<<offsetnum;
             }
         }
+
+        if(mode == 1) {
+            rt = "0";
+        }
+
         m_dam = new DupandMirorr(this);
         QObject::connect(m_dam,&DupandMirorr::print,this,&MainWindow::tprint);
         QObject::connect(m_dam,&DupandMirorr::mirro,this,&MainWindow::tmirro);
@@ -1418,6 +1423,8 @@ void MainWindow::tprint()
     offsetbuff[0] = static_cast< char>((offsetnum >> 0) & 0xFF);
     this->offset.resize(0);
     this->offset.append(offsetbuff,4);
+    rt = "0";
+    qDebug()<<rt;
     m_port->setHeattingUnit(lt,rt,bt);
     ui->stackedWidget->setCurrentWidget(ui->page_PreparePrint);
     m_dam->hide();
@@ -2185,16 +2192,6 @@ void MainWindow::on_pushButton_183_clicked()
     ui->stackedWidget->setCurrentIndex(48);
 }
 
-void MainWindow::on_pushButton_188_clicked()
-{
-    ui->stackedWidget->setCurrentIndex(44);
-}
-
-void MainWindow::on_pushButton_189_clicked()
-{
-    ui->stackedWidget->setCurrentIndex(42);
-}
-
 void MainWindow::on_pushButton_194_clicked()
 {
     ui->stackedWidget->setCurrentIndex(45);
@@ -2203,16 +2200,6 @@ void MainWindow::on_pushButton_194_clicked()
 void MainWindow::on_pushButton_195_clicked()
 {
     ui->stackedWidget->setCurrentIndex(43);
-}
-
-void MainWindow::on_pushButton_200_clicked()
-{
-    ui->stackedWidget->setCurrentIndex(46);
-}
-
-void MainWindow::on_pushButton_201_clicked()
-{
-    ui->stackedWidget->setCurrentIndex(44);
 }
 
 void MainWindow::on_pushButton_206_clicked()
@@ -2354,11 +2341,6 @@ void MainWindow::on_pushButton_178_clicked()
 #endif
 }
 
-void MainWindow::on_pushButton_186_clicked()
-{
-    ui->stackedWidget->setCurrentWidget(ui->page_GetStart);
-}
-
 void MainWindow::on_pushButton_193_clicked()
 {
     ui->stackedWidget->setCurrentWidget(ui->page_GetStart);
@@ -2370,24 +2352,6 @@ void MainWindow::on_pushButton_190_clicked()
 }
 
 void MainWindow::on_pushButton_191_clicked()
-{
-    ui->stackedWidget->setCurrentIndex(24);
-#ifdef XH_VIS
-    ui->m_StatusBar->setVisible(false);
-#endif
-}
-
-void MainWindow::on_pushButton_199_clicked()
-{
-    ui->stackedWidget->setCurrentWidget(ui->page_GetStart);
-}
-
-void MainWindow::on_pushButton_197_clicked()
-{
-    ui->stackedWidget->setCurrentWidget(ui->page_ChangeFilament);
-}
-
-void MainWindow::on_pushButton_198_clicked()
 {
     ui->stackedWidget->setCurrentIndex(24);
 #ifdef XH_VIS
@@ -2979,28 +2943,6 @@ void MainWindow::on_pushButton_131_clicked()
 #ifdef XH_VIS
     ui->m_StatusBar->setVisible(false);
 #endif
-}
-
-void MainWindow::on_pushButton_168_clicked()
-{
-    m_parsetdlog =new parsetdlog(this);
-    m_parsetdlog->show();
-    QObject::connect(m_parsetdlog,&parsetdlog::next,this,&MainWindow::findhotend);
-    QObject::connect(m_parsetdlog,&parsetdlog::complete,this,&MainWindow::parsetclose);
-    QObject::connect(m_parsetdlog,&parsetdlog::excomplete,this,&MainWindow::parsetexclose);
-    QObject::connect(m_parsetdlog,&parsetdlog::active,this,&MainWindow::paracktiv);
-    QObject::connect(m_parsetdlog,&parsetdlog::up,this,&MainWindow::up);
-    QObject::connect(m_parsetdlog,&parsetdlog::down,this,&MainWindow::down);
-    m_port->askstate();
-    m_printsec->stop();
-//    m_port->backupsend();
-
-
-}
-
-void MainWindow::on_pushButton_167_clicked()
-{
-    m_port->regainPrint();
 }
 
 void MainWindow::on_pushButton_354_clicked()
