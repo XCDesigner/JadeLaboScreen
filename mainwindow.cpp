@@ -325,6 +325,7 @@ MainWindow::MainWindow(QWidget *parent) :
     QObject::connect(ui->qw_RightHeating->rootObject(), SIGNAL(retackClicked()), this, SLOT(rightRetract()));
 
     QObject::connect(m_port->getXhPage(), SIGNAL(command_received(uint8_t, uint8_t, QByteArray)), this, SLOT(printMessageProcess(uint8_t, uint8_t, QByteArray)));
+    QObject::connect(m_port->getXhPage(), SIGNAL(command_received(uint8_t, uint8_t, QByteArray)), this, SLOT(onMessageTest(uint8_t, uint8_t, QByteArray)));
 }
 
 MainWindow::~MainWindow()
@@ -3613,4 +3614,22 @@ void MainWindow::TestTimeout()
     }
     title.setNum(counter);
     ui->pushButton->setText(title);
+}
+
+void MainWindow::onMessageTest(uint8_t Command, uint8_t SubCode, QByteArray Datas)
+{
+    if(Command == 0x09) {
+        if(SubCode == 0x01)
+        {
+            test_inc++;
+            char tmpBuff[20];
+            sprintf(tmpBuff, "test:%d", test_inc);
+            qDebug()<<tmpBuff;
+        }
+        else if(SubCode == 0x02)
+        {
+            qDebug()<<test_inc;
+            test_inc = 0;
+        }
+    }
 }

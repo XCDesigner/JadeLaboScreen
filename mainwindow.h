@@ -202,6 +202,8 @@ private:
     ScreenStatus screen_status;
     JLSerialPort *serial_port;
 
+    int test_inc;
+
 private slots:
     void printMessageProcess(uint8_t, uint8_t, QByteArray Datas);
     void nozzleCalibrationMessageProcess(uint8_t Command, uint8_t SubCode, QByteArray Datas);
@@ -211,6 +213,9 @@ private slots:
     void onFinishPrintClicked();
     void preparePrinTempChecking();
     void preparePrintPageInit();
+
+    //Test
+    void onMessageTest(uint8_t Command, uint8_t SubCode, QByteArray Datas);
 
     void TestTimeout();
     void updateStatusBar();

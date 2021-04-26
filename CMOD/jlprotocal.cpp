@@ -33,6 +33,28 @@ QByteArray JLProtocal::setupPackage(QByteArray Datas) {
 QByteArray JLProtocal::parseData(QByteArray SourceData, uint32_t *DataRead) {
     uint32_t data_read = 0;
     QByteArray ret_datas;
+
+    while(SourceData.size() > 0) {
+        if(SourceData.at(0) != header[0])
+        {
+            SourceData.remove(0, 1);
+            data_read = data_read + 1;
+            continue;
+        }
+        if(SourceData.size() > 1)
+        {
+            if(SourceData.at(1) == header[1])
+            {
+                break;
+            }
+            else
+            {
+                SourceData.remove(0, 2);
+                data_read = data_read + 2;
+            }
+        }
+    }
+
     while(SourceData.size() > 8) {
         if(SourceData.at(0) != header[0])
         {
@@ -83,10 +105,11 @@ QByteArray JLProtocal::parseData(QByteArray SourceData, uint32_t *DataRead) {
         if(cal_checksum != checksum) {
             data_read = data_read + 2;
             SourceData.remove(0, 2);
+            ret_datas.clear();
             continue;
         }
 
-        data_read = command_len + 9;
+        data_read += command_len + 9;
         break;
     }
 
