@@ -35,21 +35,15 @@ void MainWindow::changeFilamentTempChecking()
 
 void MainWindow::leftSetTemp()
 {
-    strMachineStatus new_status;
-    char temp[20];
     changeFilamentSelectExtruder = 0;
-    m_port->getXhPage()->GetMachineStatus(&new_status);
-    sprintf(temp, "%03d", new_status.TarTemp[0]);
-    mchoose = new chooseTemp(this);
-    mchoose->init(temp);
     mchoose->show();
-    QObject::connect(mchoose, SIGNAL(hideWidget()), this, SLOT(onSetTemp()), Qt::QueuedConnection);
 }
 
 void MainWindow::onSetTemp()
 {
     QList<QByteArray> ret = mchoose->get_return_value();
-    if(ret[0].toInt() != 0) {
+    if(ret[0].toInt() != 0)
+    {
         ui->pushButton_113->setEnabled(false);
         ui->pushButton_117->setEnabled(false);
         ui->pushButton_118->setEnabled(false);
@@ -69,7 +63,6 @@ void MainWindow::onSetTemp()
         ui->qw_RightHeating->rootObject()->setProperty("text", ret[0] + "°C");
     }
     m_port->setHeattingUnit(changeFilamentSelectExtruder, ret[0].toUInt());
-    delete mchoose;
 }
 
 
@@ -83,18 +76,10 @@ void MainWindow::leftRetract()
     m_port->lup();
 }
 
-
 void MainWindow::rightSetTemp()
 {
-    strMachineStatus new_status;
-    char temp[20];
     changeFilamentSelectExtruder = 1;
-    m_port->getXhPage()->GetMachineStatus(&new_status);
-    sprintf(temp, "%03d", new_status.TarTemp[1]);
-    mchoose = new chooseTemp(this);
-    mchoose->init(temp);
     mchoose->show();
-    QObject::connect(mchoose, SIGNAL(hideWidget()), this, SLOT(onSetTemp()), Qt::QueuedConnection);
 }
 
 void MainWindow::rightExtrude()

@@ -34,8 +34,11 @@ MainWindow::MainWindow(QWidget *parent) :
 
     m_port = NULL;
     m_event = NULL;
-//    fileCheckThread *m_thread;
-    mchoose = NULL;
+
+    mchoose = new chooseTemp(this);
+    mchoose->hide();
+    QObject::connect(mchoose, SIGNAL(hideWidget()), this, SLOT(onSetTemp()), Qt::QueuedConnection);
+
     m_modeone = NULL;
     item = NULL;
     m_filamentfault = NULL;
