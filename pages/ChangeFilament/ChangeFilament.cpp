@@ -35,6 +35,8 @@ void MainWindow::changeFilamentTempChecking()
 
 void MainWindow::leftSetTemp()
 {
+    mchoose = new chooseTemp(this);
+    QObject::connect(mchoose, SIGNAL(hideWidget()), this, SLOT(onSetTemp()), Qt::QueuedConnection);
     changeFilamentSelectExtruder = 0;
     mchoose->show();
 }
@@ -63,6 +65,7 @@ void MainWindow::onSetTemp()
         ui->qw_RightHeating->rootObject()->setProperty("text", ret[0] + "°C");
     }
     m_port->setHeattingUnit(changeFilamentSelectExtruder, ret[0].toUInt());
+    delete mchoose;
 }
 
 
@@ -78,6 +81,8 @@ void MainWindow::leftRetract()
 
 void MainWindow::rightSetTemp()
 {
+    mchoose = new chooseTemp(this);
+    QObject::connect(mchoose, SIGNAL(hideWidget()), this, SLOT(onSetTemp()), Qt::QueuedConnection);
     changeFilamentSelectExtruder = 1;
     mchoose->show();
 }
