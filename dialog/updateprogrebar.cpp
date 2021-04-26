@@ -21,6 +21,11 @@ updateProgreBar::~updateProgreBar()
     delete ui;
 }
 
+void updateProgreBar::show()
+{
+    QWidget::show();
+}
+
 void updateProgreBar::change(int a )
 {
     emit sendSignalToQml(a);

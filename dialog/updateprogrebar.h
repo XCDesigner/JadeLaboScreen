@@ -16,7 +16,7 @@ class updateProgreBar : public JLWidget
 public:
     explicit updateProgreBar(QWidget *parent = nullptr);
     ~updateProgreBar();
-
+    void show() override;
 
 private:
     Ui::updateProgreBar *ui;

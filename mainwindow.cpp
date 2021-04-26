@@ -197,11 +197,6 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->quickWidget_5->setResizeMode(QQuickWidget::SizeRootObjectToView);
     ui->quickWidget_5->setClearColor(QColor(qmlColor));
 
-    ui->quickWidget_6->setSource(QUrl("qrc:/qml/CircleProgressBar.qml"));
-    ui->quickWidget_6->setResizeMode(QQuickWidget::SizeRootObjectToView);
-    ui->quickWidget_6->setClearColor(QColor(qmlColor));
-
-
     ui->qw_PreHeating->setSource(QUrl("qrc:/qml/HeatingCircle.qml"));
     ui->qw_PreHeating->setResizeMode(QQuickWidget::SizeRootObjectToView);
     ui->qw_PreHeating->setClearColor(QColor(qmlColor));
@@ -249,9 +244,6 @@ MainWindow::MainWindow(QWidget *parent) :
 
     item3=ui->quickWidget_5->rootObject();
     QObject::connect(this,SIGNAL(sendSignalToQml(int )),item3,SIGNAL(receFromWidget(int )));
-
-    item4=ui->quickWidget_6->rootObject();
-    QObject::connect(this,SIGNAL(sendSignalToQml(int )),item4,SIGNAL(receFromWidget(int )));
 
     QObject::connect(ui->qw_ExtruderSelect->rootObject(), SIGNAL(clicked()), this, SLOT(ExtruderChange()));
 
@@ -1021,7 +1013,6 @@ void MainWindow::m_chooseItem(myListWidgetItem *itm)
     ui->label_72->setText(itm->m_fileName);
     ui->label_73->setText(itm->m_fileName);
     ui->label_309->setText(itm->m_fileName);
-    ui->label_313->setText(itm->m_fileName);
 }
 
 void MainWindow::connctwifi(myWifiItem *itm)
@@ -1443,7 +1434,6 @@ void MainWindow::oneprint()
     ui->label_36->setText("Direct Mode");
     ui->label_69->setText("Direct Mode");
     ui->label_308->setText("Direct Mode");
-    ui->label_311->setText("Direct Mode");
     offset = QByteArray::fromHex("00000000");
     m_port->setHeattingUnit(lt,rt,bt);
     ui->stackedWidget->setCurrentWidget(ui->page_PreparePrint);
@@ -1469,7 +1459,6 @@ void MainWindow::tprint()
     ui->label_36->setText("Direct Mode");
     ui->label_69->setText("Direct Mode");
     ui->label_308->setText("Direct Mode");
-    ui->label_311->setText("Direct Mode");
 #ifdef OLD
     QString offsethex = QString::asprintf("%08x", offsetnum);
     qDebug()<<"string offset   "<<offsethex;
@@ -1522,7 +1511,6 @@ void MainWindow::tmirro()
         ui->label_36->setText("Mirror Mode");
         ui->label_69->setText("Mirror Mode");
         ui->label_308->setText("Mirror Mode");
-        ui->label_311->setText("Mirror Mode");
         char offsetbuff[4]  = {0};
         offsetbuff[3] = static_cast< char>((offsetnum >> 24) & 0xFF);
         offsetbuff[2] = static_cast< char>((offsetnum >> 16) & 0xFF);
@@ -1563,7 +1551,6 @@ void MainWindow::tdup()
         ui->label_36->setText("Duplicate Mode");
         ui->label_69->setText("Duplicate Mode");
         ui->label_308->setText("Duplicate Mode");
-        ui->label_311->setText("Duplicate Mode");
         char offsetbuff[4]  = {0};
         offsetbuff[3] = static_cast< char>((offsetnum >> 24) & 0xFF);
         offsetbuff[2] = static_cast< char>((offsetnum >> 16) & 0xFF);
@@ -1599,7 +1586,6 @@ void MainWindow::dprint()
     ui->label_36->setText("Direct Mode");
     ui->label_69->setText("Direct Mode");
     ui->label_308->setText("Direct Mode");
-    ui->label_311->setText("Direct Mode");
     offset = QByteArray::fromHex("00000000");
     m_port->setHeattingUnit(lt,rt,bt);
     ui->stackedWidget->setCurrentWidget(ui->page_PreparePrint);
@@ -1933,7 +1919,6 @@ void MainWindow::parseDeepMode(QString printMode)
             ui->label_36->setText("Mirror Mode");
             ui->label_69->setText("Mirror Mode");
             ui->label_308->setText("Mirror Mode");
-            ui->label_311->setText("Mirror Mode");
             this->printMode = 3;
             m_port->setHeattingUnit(lt,lt,bt);
             ui->stackedWidget->setCurrentWidget(ui->page_PreparePrint);
@@ -2021,7 +2006,6 @@ void MainWindow::parseDeepMode(QString printMode)
             ui->label_36->setText("Duplicate Mode");
             ui->label_69->setText("Duplicate Mode");
             ui->label_308->setText("Duplicate Mode");
-            ui->label_311->setText("Duplicate Mode");
             m_port->setHeattingUnit(lt,lt,bt);
             ui->stackedWidget->setCurrentWidget(ui->page_PreparePrint);
             QObject::connect(&m_timer,SIGNAL(timeout()),this,SLOT(jumpSeventeen()));

@@ -49,6 +49,7 @@ void chooseTemp::show()
 void chooseTemp::onTempSelect(int Index)
 {
     QByteArray ret_table[] = {"0", "180", "200", "220", "240", "260"};
+    qDebug()<<Index;
     ret_value.append(ret_table[Index]);
     emit hideWidget();
     this->hide();
