@@ -55,13 +55,13 @@ Rectangle{
     property bool inc: true
     onTriggered: {
       if(inc == true) {
-        if(canvas.stop0 < 0.8)
+        if(canvas.stop0 < 0.78)
           canvas.stop0 = canvas.stop0 + 0.02
         else
           inc = false
       }
       else {
-        if(canvas.stop0 > 0.44)
+        if(canvas.stop0 > 0.46)
           canvas.stop0 = canvas.stop0 - 0.02
         else
           inc = true
@@ -112,11 +112,11 @@ Rectangle{
           ctx.closePath();
       }
       else {
-          gradient = ctx.createRadialGradient(parent.width / 2, parent.height / 2 , parent.width / 2 * 0.7, parent.width / 2, parent.height / 2, parent.width / 2)
+          gradient = ctx.createRadialGradient(parent.width / 2, parent.height / 2 , parent.width / 2 * 0.9, parent.width / 2, parent.height / 2, parent.width / 2)
           gradient.addColorStop(0, "#202020")
-          gradient.addColorStop(0.4, "#202020")
+          gradient.addColorStop(0.5, "#202020")
           gradient.addColorStop(0.44, "#00ff00")
-          gradient.addColorStop(stop0, "#00ff00")
+          gradient.addColorStop(stop0, "#202020")
           gradient.addColorStop(1, "#202020")
 
           ctx.lineWidth = 0.1;

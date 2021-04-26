@@ -12,13 +12,13 @@ Rectangle {
         property bool inc: true
         onTriggered: {
             if(inc == true) {
-                if(canvas.stop0 < 0.8)
+                if(canvas.stop0 < 0.78)
                     canvas.stop0 = canvas.stop0 + 0.02
                 else
                     inc = false
             }
             else {
-                if(canvas.stop0 > 0.44)
+                if(canvas.stop0 > 0.46)
                     canvas.stop0 = canvas.stop0 - 0.02
                 else
                     inc = true
@@ -31,7 +31,7 @@ Rectangle {
     Canvas {
         id: canvas
         property real stop0: 0.5
-        property real thickness: base.width / 2 * 0.7
+        property real thickness: base.width / 2 * 0.9
 
         anchors.fill: parent
 
@@ -43,9 +43,9 @@ Rectangle {
 
             var gradient = ctx.createRadialGradient(parent.width / 2, parent.height / 2 , thickness, parent.width / 2, parent.height / 2, parent.width / 2)
             gradient.addColorStop(0, "#202020")
-            gradient.addColorStop(0.4, "#202020")
+            gradient.addColorStop(0.5, "#202020")
             gradient.addColorStop(0.44, "#ff0000")
-            gradient.addColorStop(stop0, "#ff0000")
+            gradient.addColorStop(stop0, "#202020")
             gradient.addColorStop(1, "#202020")
 
             ctx.lineWidth = 0.1;
