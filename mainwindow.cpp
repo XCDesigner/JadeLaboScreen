@@ -91,9 +91,6 @@ MainWindow::MainWindow(QWidget *parent) :
     /*frist*/
     QObject::connect(m_port, &XhPort::serialIsOpen, this, &MainWindow::serailIsOpen);
     QObject::connect(m_port, &XhPort::firstTestResult, this,&MainWindow::winGfour);
-    /*filament*/
-    QObject::connect(m_port,&XhPort::filamentHeated,this,&MainWindow::filamentOK);
-    /*tool mach set*/
 
     /*tool carb*/
 
@@ -1354,58 +1351,6 @@ void MainWindow::printending()
     ui->stackedWidget->setCurrentWidget(ui->page_PrintFinish);
     m_printsec->stop();
     m_time->setHMS(0,0,0);
-}
-
-void MainWindow::ltemp(QString a)
-{
-    if(a == "OFF")
-    {
-        lheatend = false;
-        ui->pushButton_109->setText("000°C");
-    }
-    else {
-        lheatend =true;
-        ui->pushButton_109->setText(a);
-    }
-    QObject::disconnect(mchoose,&chooseTemp::heatT,this,&MainWindow::ltemp);
-    mchoose->hide();
-    mchoose->close();
-
-    m_port->setHeattingUnit(ui->pushButton_109->text().mid(0,3),ui->pushButton_110->text().mid(0,3));
-
-
-    if(m_timer.isActive())
-    {
-        QObject::disconnect(&m_timer,SIGNAL(timeout()),this,SLOT(filamentTimeout()));
-        m_timer.stop();
-    }
-    QObject::connect(&m_timer,SIGNAL(timeout()),this,SLOT(filamentTimeout()));
-    m_timer.start(1000);
-}
-
-void MainWindow::rtemp(QString a)
-{
-    if(a == "OFF")
-    {
-        rheatend = false;
-        ui->pushButton_110->setText("000°C");
-    }
-    else {
-        rheatend =true;
-        ui->pushButton_110->setText(a);
-    }
-    QObject::disconnect(mchoose,&chooseTemp::heatT,this,&MainWindow::rtemp);
-    mchoose->hide();
-    mchoose->close();
-    m_port->setHeattingUnit(ui->pushButton_109->text().mid(0,3),ui->pushButton_110->text().mid(0,3));
-
-    if(m_timer.isActive())
-    {
-        QObject::disconnect(&m_timer,SIGNAL(timeout()),this,SLOT(filamentTimeout()));
-        m_timer.stop();
-    }
-    QObject::connect(&m_timer,SIGNAL(timeout()),this,SLOT(filamentTimeout()));
-    m_timer.start(1000);
 }
 
 void MainWindow::plt(QString a)

@@ -271,9 +271,6 @@ private slots:
     void printChangeFilament();
     void printTime();
 
-    void filamentTimeout();
-    void filamentOK(bool a );
-
     void buprint();
     void powercancle();
     /******udp**************/
@@ -310,9 +307,6 @@ private slots:
     void changeFilamentTempChecking();
 
     void printending();
-
-    void ltemp(QString a);
-    void rtemp(QString a);
 
     void plt(QString a);
     void prt(QString a);
