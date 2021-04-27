@@ -3,7 +3,7 @@
 
 void MainWindow::updateProcessThread()
 {
-
+    
 }
 
 void MainWindow::updateFileAnalize()
