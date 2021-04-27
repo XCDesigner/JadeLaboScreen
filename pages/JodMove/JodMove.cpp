@@ -54,6 +54,7 @@ void MainWindow::on_pushButton_700_clicked()
 
 void MainWindow::on_pushButton_693_clicked()
 {
+    m_port->setDualMode(0);
     ui->stackedWidget->setCurrentWidget(ui->page_Tools);
 }
 
