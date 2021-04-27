@@ -56,7 +56,6 @@ MainWindow::MainWindow(QWidget *parent) :
     m_fileParser = NULL;
 
     /*开启串口*/
-    serialOpen =false;
     m_port = new XhPort(this);
     m_event = new JLEvent(this);
     serial_port = new JLSerialPort();
@@ -66,22 +65,6 @@ MainWindow::MainWindow(QWidget *parent) :
     QList<QString> port_names = JLSerialPort::getPortNames();
     ui->comboBox_15->addItems(QStringList(port_names));
 
-    //foreach (const QSerialPortInfo &info,QSerialPortInfo::availablePorts())
-    //{
-    //    QSerialPort serial;
-    //    serial.setPort(info);
-    //    if(serial.open(QIODevice::ReadWrite))
-    //    {
-    //        ui->comboBox_15->addItem(serial.portName());
-    //        serial.close();
-    //    }
-    //}
-
-    ui->comboBox_15->addItem("COM16");
-    ui->comboBox_15->addItem("COM17");
-    ui->comboBox_15->addItem("COM18");
-    ui->comboBox_15->addItem("COM19");
-
     m_deepTimer = new QTimer(this);
     QObject::connect(m_deepTimer,&QTimer::timeout,this,&MainWindow::deepTimer);
 
@@ -89,11 +72,6 @@ MainWindow::MainWindow(QWidget *parent) :
     /*绑定串口信号*/
     /*frist*/
     QObject::connect(m_port, &XhPort::firstTestResult, this,&MainWindow::winGfour);
-
-    /*tool carb*/
-
-    QObject::connect(m_port,&XhPort::finished,this,&MainWindow::finished);
-    QObject::connect(m_port,&XhPort::canelk,this,&MainWindow::cancle);
 
     /*print*/
     QObject::connect(m_port,&XhPort::fileSendOver,this,&MainWindow::jumpSixteen);
@@ -147,10 +125,7 @@ MainWindow::MainWindow(QWidget *parent) :
     QScroller::grabGesture(ui->listWidget_3, QScroller::LeftMouseButtonGesture);
 
     /*检测U盘*/
-    fileListTimer = new QTimer(this);
-    QObject::connect(fileListTimer,SIGNAL(timeout()),this,SLOT(fileList()));
-    fileListTimer->start(500);
-
+    QTimer::singleShot(500, this, SLOT(fileList()));
 
     ui->listWidget->clear();
     QDir *m_dir=new QDir(localPath);
@@ -158,28 +133,25 @@ MainWindow::MainWindow(QWidget *parent) :
     QFileInfoList m_fileinfo = m_dir->entryInfoList();
 
     int i = 0;
-    for(i = 0;i< m_fileinfo.count();i++)
-    {
-        m_addItemToList(m_fileinfo.at(i).fileName(),m_fileinfo.at(i).filePath());
-        QFileInfoList m_gcodelist;
-        foreach (QFileInfo fileinfo, m_fileinfo) {
-            if(!fileinfo.isFile())
-                continue;
-            if(0 == fileinfo.suffix().compare("gcode",Qt::CaseInsensitive))
-                m_gcodelist<<fileinfo;
-        }
+    qDebug()<<m_fileinfo.count();
+    QFileInfoList m_gcodelist;
 
-        int i = 0;
-        for(i = 0;i< m_gcodelist.count();i++)
+    foreach (QFileInfo fileinfo, m_fileinfo)
+    {
+        if(!fileinfo.isFile())
+            continue;
+        if(0 == fileinfo.suffix().compare("gcode",Qt::CaseInsensitive))
         {
-            m_addItemToList(m_gcodelist.at(i).fileName(),m_gcodelist.at(i).filePath());
+            qDebug()<<fileinfo.fileName();
+            m_gcodelist<<fileinfo;
         }
     }
-    lheatend = false;
-    rheatend = false;
+
+    for(i = 0;i< m_gcodelist.count();i++)
+    {
+        m_addItemToList(m_gcodelist.at(i).fileName(),m_gcodelist.at(i).filePath());
+    }
     printTimer = new QTimer(this);
-    isPrintFirstAnim=true;
-    isStartFristAnim=false;
     m_opaCity=0.0;
     m_effect=new QGraphicsOpacityEffect();
     m_effect->setOpacity(m_opaCity);
@@ -267,18 +239,17 @@ MainWindow::MainWindow(QWidget *parent) :
 
 #ifdef  XH_LINUX
     m_port->portInit(serialNum);
-    m_port->serialOpen =true;
     ui->stackedWidget->setCurrentWidget(ui->page_GetStart);
     // ui->quickWidget_2->setSource(QUrl("qrc:/pageView.qml"));
     // ui->quickWidget_2->setResizeMode(QQuickWidget::SizeRootObjectToView);
     // ui->quickWidget_2->show();
 
-    serialOpen =true;
     ui->m_StatusBar->setVisible(true);
     QObject::connect(printTimer,&QTimer::timeout,this,&MainWindow::askPrint);
     printTimer->start(1000);
     m_port->powerlostsend();
     skpWin->setXHPort(m_port);
+    skpWin->setScreenStausContext(&screen_status);
     changeFilamentDialog->setXHPort(m_port);
 #endif
 
@@ -342,7 +313,7 @@ void MainWindow::WidgetChanged(int index)
 
 void MainWindow::m_addItemToList(const QString &fileName, QString filePath)
 {
-    qDebug()<<"localADD";
+    // qDebug()<<"localADD";
     if(fileName == "."||fileName == "..")
     {
         return;
@@ -450,17 +421,14 @@ void MainWindow::winGone()
 
 void MainWindow::winGtwo()
 {
-    if(serialOpen)
-    {
-        /*跳页至G2页*/
-        ui->stackedWidget->setCurrentIndex(3);
-        m_timer.stop();
-        m_opaCity=0.0;
-        m_effect->setOpacity(m_opaCity);
-        QObject::disconnect(&m_timer,SIGNAL(timeout()),this,SLOT(winGtwo()));
-        QObject::connect(&m_timer,SIGNAL(timeout()),this,SLOT(jumpThree()));
-        m_timer.start(2000);
-    }
+    /*跳页至G2页*/
+    ui->stackedWidget->setCurrentIndex(3);
+    m_timer.stop();
+    m_opaCity=0.0;
+    m_effect->setOpacity(m_opaCity);
+    QObject::disconnect(&m_timer,SIGNAL(timeout()),this,SLOT(winGtwo()));
+    QObject::connect(&m_timer,SIGNAL(timeout()),this,SLOT(jumpThree()));
+    m_timer.start(2000);
 }
 
 void MainWindow::jumpThree()
@@ -850,71 +818,6 @@ void MainWindow::jumpnineteen()
 
 }
 
-void MainWindow::jumpTwenty(bool a)
-{
-    qDebug()<<a;
-    if(a)
-    {
-        ui->stackedWidget->setCurrentIndex(55);
-        m_port->p_platformCalibration();
-    }
-    else
-    {
-        m_port->p_nozzleHeating();
-    }
-}
-
-void MainWindow::jump22(bool)
-{
-    ui->stackedWidget->setCurrentIndex(59);
-    m_port->n_nozzleCalibration();
-}
-
-void MainWindow::jump24(bool a )
-{
-    if(a) {
-        ui->stackedWidget->setCurrentIndex(64);
-        m_port->x_platformCalibration();
-
-    }
-    else {
-        m_port->x_xyHeating();
-    }
-}
-
-void MainWindow::jump25(bool a)
-{
-//    m_timer.stop();
-//    QObject::disconnect(&m_timer,SIGNAL(timeout()),this,SLOT(jump25()));
-    if(a)
-    {
-        m_port->x_xyCalibration();
-    }
-    else {
-        m_port->x_platformCalibration();
-    }
-}
-
-
-//void MainWindow::printagin()
-//{
-//    if(m_filamentfault!= NULL)
-//    {
-//        if(m_filamentfault->isHidden())
-//        {
-
-//        }
-//        else
-//        {
-//            m_filamentfault->hide();
-//            m_filamentfault->close();
-//            m_filamentfault = NULL;
-//        }
-//    }
-//    ui->stackedWidget->setCurrentWidget(ui->page_Printint);
-//    //    m_timer.start(15);
-//    m_printsec->start(1000);
-//}
 
 void MainWindow::printTime()
 {
@@ -1104,10 +1007,6 @@ void MainWindow::m_chooseEN()
                 offsetnum = a*1000;
                 qDebug()<<"numoffset"<<offsetnum;
             }
-        }
-
-        if(mode == 1) {
-            rt = "0";
         }
 
         m_dam = new DupandMirorr(this);
@@ -1332,16 +1231,7 @@ void MainWindow::fileList()
     }
 
 #endif
-}
-
-void MainWindow::finished()
-{
-    ui->stackedWidget->setCurrentIndex(51);
-}
-
-void MainWindow::cancle()
-{
-    ui->stackedWidget->setCurrentIndex(51);
+    QTimer::singleShot(500, this, SLOT(fileList()));
 }
 
 void MainWindow::printending()
@@ -1682,32 +1572,6 @@ void MainWindow::selftest6()
     ui->pushButton_677->setEnabled(true);
     ui->pushButton_678->setEnabled(true);
     ui->pushButton_679->setEnabled(true);
-}
-
-void MainWindow::parsetclose(int a, int b)
-{
-    m_port->parcom(b);
-    qDebug()<<"2";
-    if(m_parsetdlog!=NULL)
-    {
-        m_parsetdlog->hide();
-        m_parsetdlog->close();
-        m_parsetdlog= NULL;
-    }
-    m_printsec->start(1000);
-}
-
-void MainWindow::parsetexclose(bool l, bool r,bool b)
-{
-    m_port->enHotend(l,r);
-    qDebug()<<"2";
-    if(m_parsetdlog!=NULL)
-    {
-        m_parsetdlog->hide();
-        m_parsetdlog->close();
-        m_parsetdlog= NULL;
-    }
-    m_printsec->start(1000);
 }
 
 void MainWindow::paracktiv(bool a)
@@ -2916,10 +2780,7 @@ void MainWindow::on_pushButton_125_clicked()
 
 void MainWindow::on_pushButton_126_clicked()
 {
-    ui->stackedWidget->setCurrentIndex(24);
-#ifdef XH_VIS
-    ui->m_StatusBar->setVisible(false);
-#endif
+    blockingChangeDialog(QByteArray(), (JLWidget*)skpWin);
 }
 
 void MainWindow::on_pushButton_130_clicked()
@@ -2948,14 +2809,12 @@ void MainWindow::on_pushButton_131_clicked()
 void MainWindow::on_pushButton_354_clicked()
 {
     m_port->portInit(ui->comboBox_15->currentText());
-    m_port->serialOpen =true;
     ui->stackedWidget->setCurrentWidget(ui->page_GetStart);
     m_port->powerlostsend();
     skpWin->setXHPort(m_port);
     skpWin->setScreenStausContext(&screen_status);
     changeFilamentDialog->setXHPort(m_port);
     changeFilamentDialog->setScreenStausContext(&screen_status);
-    serialOpen =true;
     ui->m_StatusBar->setVisible(true);
     QObject::connect(printTimer,&QTimer::timeout,this,&MainWindow::askPrint);
     printTimer->start(1000);
@@ -3158,31 +3017,6 @@ void MainWindow::on_pushButton_455_clicked()
 void MainWindow::on_pushButton_350_clicked()
 {
     ui->stackedWidget->setCurrentWidget(ui->page_LightSetting);
-}
-
-void MainWindow::on_pushButton_clicked()
-{
-    if(test_en == true)
-    {
-        test_en = false;
-    }
-    else
-    {
-        test_en = true;
-        QTimer::singleShot(1000, this, SLOT(TestTimeout()));
-    }
-}
-
-void MainWindow::TestTimeout()
-{
-    counter = counter + 1;
-    QString title;
-    if(test_en == true)
-    {
-        QTimer::singleShot(1000, this, SLOT(TestTimeout()));
-    }
-    title.setNum(counter);
-    ui->pushButton->setText(title);
 }
 
 void MainWindow::onMessageTest(uint8_t Command, uint8_t SubCode, QByteArray Datas)

@@ -107,13 +107,6 @@ private:
     float m_opaCity;
     bool flicker;
 
-    bool isPrintFirstAnim;
-
-    bool isStartFristAnim;
-    bool lheatend;
-    bool rheatend;
-
-    bool serialOpen;
     int printMode;
     int itemMode;
     int timeLonger;
@@ -126,8 +119,6 @@ private:
     QString rt;
     QString bt;
 
-    QString Duplicate_X_Offset;
-    QString Mirror_X_offset;
     QString loaclPATH;
     QString udiskPATH;
     bool openMode;
@@ -196,9 +187,6 @@ private:
     JLWidget *pDialogToShow;
     QByteArray statusWaiting;
 
-    QTimer *t_test;
-    uint8_t counter;
-    bool test_en;
     ScreenStatus screen_status;
     JLSerialPort *serial_port;
 
@@ -217,7 +205,6 @@ private slots:
     //Test
     void onMessageTest(uint8_t Command, uint8_t SubCode, QByteArray Datas);
 
-    void TestTimeout();
     void updateStatusBar();
     void waitforIdleStatus();
     void changePageCallback(QByteArray ReplyData);
@@ -257,13 +244,6 @@ private slots:
     void jumpSeventeen();
     void jumpnineteen();
 
-    void jumpTwenty(bool a);
-
-    void jump22(bool a);
-
-    void jump24(bool a);
-    void jump25(bool a);
-
     void printStop();
     void printPause();
     void printContinue();
@@ -297,8 +277,6 @@ private slots:
 
     void fileList();
 
-    void finished();
-    void cancle();
     void nozzleCalibrationHeating();
     void platformCalibrationHeating();
     void xyCalibrationHeating();
@@ -338,8 +316,6 @@ private slots:
     void selftest5();
     void selftest6();
 
-    void parsetclose(int ,int );
-    void parsetexclose(bool ,bool ,bool );
     void paracktiv(bool );
     void findhotend();
     void cannext(bool );
@@ -851,8 +827,6 @@ private slots:
     void ShowParameterDialogClicked();
     void StopPrintClicked();
     void WidgetChanged(int index);
-
-    void on_pushButton_clicked();
 
     void on_pushButton_648_clicked();
 

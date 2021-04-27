@@ -245,27 +245,6 @@ int XhPage::analysis(QByteArray package)
                         break;
                     /*******tool*********/
                         case '\x03':
-                            if(data[1] == '\x02')
-                            {
-                                if(data[2] == '\x00')
-                                {
-                                    pCalibration(data);
-                                }
-                            }
-                            if(data[1] == '\x05')
-                            {
-                                if(data[2] == '\x00')
-                                {
-                                    emit xXyCalibration();
-                                }
-                            }
-                            if(data[1]=='\x09')
-                            {
-                                if(data[2] == '\x00')
-                                {
-                                    emit finished();
-                                }
-                            }
                             if(data[1]== '\x0A')
                             {
                                 if(data[2] == '\x00')
@@ -548,15 +527,6 @@ void XhPage::tSelfTest(QByteArray data)
 
     }
     //发送自检结果
-}
-
-void XhPage::pCalibration(QByteArray data)
-{
-    qint32 znum1 = (((static_cast< qint32>(data[6])) &  0x0000000000FF) << 24)|(((static_cast< qint32>(data[5])) &  0x0000000000FF) << 16)|(((static_cast< qint32>(data[4])) &  0x0000000000FF) << 8)|(((static_cast< qint32>(data[3])) &  0x0000000000FF) << 0);
-    qint32 znum2 = (((static_cast< qint32>(data[10])) &  0x0000000000FF) << 24)|(((static_cast< qint32>(data[9])) &  0x0000000000FF) << 16)|(((static_cast< qint32>(data[8])) &  0x0000000000FF) << 8)|(((static_cast< qint32>(data[7])) &  0x0000000000FF) << 0);
-    qint32 znum3 = (((static_cast< qint32>(data[14])) &  0x0000000000FF) << 24)|(((static_cast< qint32>(data[13])) &  0x0000000000FF) << 16)|(((static_cast< qint32>(data[12])) &  0x0000000000FF) << 8)|(((static_cast< qint32>(data[11])) &  0x0000000000FF) << 0);
-    qint32 znum4 = (((static_cast< qint32>(data[18])) &  0x0000000000FF) << 24)|(((static_cast< qint32>(data[17])) &  0x0000000000FF) << 16)|(((static_cast< qint32>(data[16])) &  0x0000000000FF) << 8)|(((static_cast< qint32>(data[15])) &  0x0000000000FF) << 0);
-    emit pPlatformCalibration(znum1,znum2,znum3,znum4);
 }
 
 void XhPage::errorLog(QByteArray data)

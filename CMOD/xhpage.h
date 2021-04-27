@@ -40,7 +40,6 @@ public:
     void fTGet(QByteArray data);//温度获取
     /*TOOL页面*/
     void tSelfTest(QByteArray data);//自检
-    void pCalibration(QByteArray data);
 
     void errorLog(QByteArray data);
 
@@ -123,13 +122,11 @@ signals:
     /*tool calibration*/
     void pNozzleHeating(bool );
     void pPlatformCalibration(qint32 ,qint32 ,qint32 ,qint32 );
-    void finished();
 
     void cancle();
     void nNozzleCalibration(int  );
     void xXyHeating(bool );
     void xPlatformCalibration(bool );
-    void xXyCalibration();
 
     void sendFileArry(QByteArray );
     /*print*/

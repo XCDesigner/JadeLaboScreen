@@ -165,8 +165,6 @@ signals:
     void nNozzleCalibration( int );
     void xXyHeating(bool );
     void xPlatformCalibration(bool );
-    void xXyCalibration( );
-    void finished();
     void canelk();
 
     void fileSendOver();
@@ -206,18 +204,14 @@ private slots:
 
     /*tool calibration*/
     void xhpNozzleHeating(bool );
-    void xhpPlatformCalibration(qint32 ,qint32 ,qint32 ,qint32 );
     void xhnNozzleCalibration( int );
     void xhxXyHeating(bool );
     void xhxPlatformCalibration(bool );
-    void xhxXyCalibration( );
 
     void fileSendOverSlot();
     void xhxNoHeating(bool );
     void xhxyCheck(bool );
 
-    void xhfinished();
-    void xhcancle();
     void xhprintend();
 
     void xhpowerlost();

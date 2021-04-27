@@ -26,14 +26,9 @@ XhPort::XhPort(QObject *parent) : QObject(parent)
 
     /*tool calibration*/
     QObject::connect(m_package,&XhPage::pNozzleHeating,this,&XhPort::xhpNozzleHeating);
-    QObject::connect(m_package,&XhPage::pPlatformCalibration,this,&XhPort::xhpPlatformCalibration);
     QObject::connect(m_package,&XhPage::nNozzleCalibration,this,&XhPort::xhnNozzleCalibration);
     QObject::connect(m_package,&XhPage::xXyHeating,this,&XhPort::xhxXyHeating);
     QObject::connect(m_package,&XhPage::xPlatformCalibration,this,&XhPort::xhxPlatformCalibration);
-    QObject::connect(m_package,&XhPage::xXyCalibration,this,&XhPort::xhxXyCalibration);
-
-    QObject::connect(m_package,&XhPage::cancle,this,&XhPort::xhcancle);
-    QObject::connect(m_package,&XhPage::finished,this,&XhPort::xhcancle);
 
     QObject::connect(m_package,&XhPage::fileSendOver,this,&XhPort::fileSendOverSlot);
 
@@ -810,11 +805,6 @@ void XhPort::xhpNozzleHeating(bool a)
     emit pNozzleHeating(a);
 }
 
-void XhPort::xhpPlatformCalibration(qint32 a, qint32 b, qint32 c, qint32 d)
-{
-    emit pPlatformCalibration(a,b,c,d);
-}
-
 void XhPort::xhnNozzleCalibration(int b)
 {
     emit nNozzleCalibration(b);
@@ -830,11 +820,6 @@ void XhPort::xhxPlatformCalibration(bool a )
     emit xPlatformCalibration(a);
 }
 
-void XhPort::xhxXyCalibration()
-{
-    emit xXyCalibration();
-}
-
 void XhPort::fileSendOverSlot()
 {
     emit fileSendOver();
@@ -848,18 +833,6 @@ void XhPort::xhxNoHeating(bool a)
 void XhPort::xhxyCheck(bool a)
 {
     emit xyCheck(a);
-}
-
-void XhPort::xhfinished()
-{
-    emit finished();
-    setHeattingUnit("0","0");
-}
-
-void XhPort::xhcancle()
-{
-    emit canelk();
-    setHeattingUnit("0","0");
 }
 
 void XhPort::xhprintend()

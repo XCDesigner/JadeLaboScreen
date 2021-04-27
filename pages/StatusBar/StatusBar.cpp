@@ -49,6 +49,8 @@ void MainWindow::updateStatusBar()
     ui->label_129->setText(m_string);
 
     if(new_status.Status != 0) {
+        if(new_status.Percent == 0)
+            new_status.Percent = 1;
         ui->quickWidget_3->rootObject()->setProperty("currentPercent", new_status.Percent);
     }
 
