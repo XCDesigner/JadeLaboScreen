@@ -20,12 +20,9 @@ public:
 
 private:
     Ui::updateProgreBar *ui;
-    QQuickItem *item;
 
 public slots:
-    void change(int );
-signals:
-    void sendSignalToQml(int );
+    void change(int);
 
 };
 

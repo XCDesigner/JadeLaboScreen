@@ -10,10 +10,6 @@ updateProgreBar::updateProgreBar(QWidget *parent) :
     ui->quickWidget->setSource(QUrl("qrc:/CircleProgressBar.qml"));
     ui->quickWidget->setResizeMode(QQuickWidget::SizeRootObjectToView);
     ui->quickWidget->setClearColor(QColor("#202023"));
-
-
-    item=ui->quickWidget->rootObject();
-    QObject::connect(this,SIGNAL(sendSignalToQml(int )),item,SIGNAL(receFromWidget(int )));
 }
 
 updateProgreBar::~updateProgreBar()
@@ -26,7 +22,7 @@ void updateProgreBar::show()
     QWidget::show();
 }
 
-void updateProgreBar::change(int a )
+void updateProgreBar::change(int Percent)
 {
-    emit sendSignalToQml(a);
+    ui->quickWidget->rootObject()->setProperty("currentPercent", Percent);
 }
