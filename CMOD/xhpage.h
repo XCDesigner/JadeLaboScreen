@@ -22,7 +22,7 @@ typedef struct {
     float ZHeight;
     int16_t CurTemp[3];
     int16_t TarTemp[3];
-    uint8_t Percent;
+    uint16_t Percent;
     uint8_t Status;
 }strMachineStatus;
 

@@ -12545,6 +12545,14 @@ border: 2px solid rgba(255, 99, 11, 255);</string>
         <height>97</height>
        </rect>
       </property>
+      <property name="font">
+       <font>
+        <family>Barlow</family>
+        <pointsize>-1</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
       <property name="styleSheet">
        <string notr="true">font-weight: bold;
 font-family:Barlow;outline:none;border-radius: 20px;

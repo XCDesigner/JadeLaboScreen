@@ -468,7 +468,7 @@ void XhPage::fTGet(QByteArray data)
         cur_machine_status.TarTemp[2] = (int16_t)(((uint16_t)(data[15] << 8)) | (uint8_t)data[14]);
         cur_machine_status.ZHeight = ((int32_t)(((uint8_t)data.at(19) << 24) | ((uint8_t)data.at(18) << 16) | ((uint8_t)data.at(17) << 8) | (uint8_t)data.at(16))) / 1000.0f;
         cur_machine_status.Status = data[3];
-        cur_machine_status.Percent = data[20];
+        cur_machine_status.Percent = ((uint8_t)data[21] << 8) | data[20] ;
     }
 }
 
@@ -903,7 +903,8 @@ void XhPage::sendUpdate(quint16 packnum, QByteArray pack)
     else
     {
         float x = (float)packnum/(float)k;
-        x = x*100;
+        x = x*1000;
+        qDebug()<<x;
         emit updateSerial((int)x);
     }
     m_timer->start(1000);

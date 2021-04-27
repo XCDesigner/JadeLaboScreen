@@ -33,7 +33,11 @@ Rectangle{
 
   onCurrentPercentChanged: {
     canvas.requestPaint()
-      lable_percent.text = currentPercent + "%"
+      var per_info = "%1.%2%"
+      var b, c
+      b = (currentPercent / 10).toFixed(0)
+      c = (currentPercent % 5).toFixed(0)
+      lable_percent.text =  per_info.arg(b).arg(c)
   }
 
   onFinishEnabledChanged: {
@@ -53,6 +57,8 @@ Rectangle{
     repeat: true
     running: false
     property bool inc: true
+    property real a
+    property string b;
     onTriggered: {
       if(inc == true) {
         if(canvas.stop0 < 0.78)
@@ -107,7 +113,7 @@ Rectangle{
           gradient.addColorStop(0.5, "#FF5B00")
           gradient.addColorStop(0.75, "#F3B67B")
           ctx.strokeStyle = gradient
-          ctx.arc(parent.width / 2, parent.height / 2, parent.width / 2 - 29, -Math.PI / 2, -Math.PI / 2 + percent / 100* (Math.PI * 2), false);
+          ctx.arc(parent.width / 2, parent.height / 2, parent.width / 2 - 29, -Math.PI / 2, -Math.PI / 2 + percent / 1000 * (Math.PI * 2), false);
           ctx.stroke();
           ctx.closePath();
       }
@@ -137,7 +143,7 @@ Rectangle{
     anchors.centerIn: parent
     font {pixelSize: 64; bold: true}
     color: "white"
-    text: currentPercent + "%"
+    text: "0.1%"
   }
 
   MouseArea {
