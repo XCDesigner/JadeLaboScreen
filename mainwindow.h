@@ -172,6 +172,7 @@ private:
     myWifiItem * chooseit;
 
     QByteArray printerUpdateFileBuffer;
+    uint32_t printerUpdatePacks;
 #ifdef XH_LINUX
     const aw_wifi_interface_t *aw_wifi;
     XhControlR818 *udpControl;
@@ -204,11 +205,11 @@ private slots:
     void preparePrinTempChecking();
     void preparePrintPageInit();
 
-    void updateProcessThread();
     void updateFileAnalize();
     void startUpdatePrinter();
     void startUpdateScreen();
-    void sendUpdatePack(uint16_t PackIndex);
+    void sendPrinterUpdatePack(uint16_t PackIndex);
+    void sendEndUpdatePrinter();
     void updateCommandProcess(uint8_t Command, uint8_t SubCode, QByteArray Datas);
 
     //Test
@@ -851,6 +852,8 @@ signals:
     void sendCondition(QByteArray data);
     void sendSignalToQml(int );
     void sendSignalHeating(int , int );
+
+    void printUpdateCompleted();
 private:
     void romClean(int fileSize);
 

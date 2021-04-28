@@ -35,8 +35,8 @@ Rectangle{
     canvas.requestPaint()
       var per_info = "%1.%2%"
       var b, c
-      b = (currentPercent / 10).toFixed(0)
-      c = (currentPercent % 5).toFixed(0)
+      c = (currentPercent % 10).toFixed(0)
+      b = ((currentPercent - c) / 10).toFixed(0)
       lable_percent.text =  per_info.arg(b).arg(c)
   }
 

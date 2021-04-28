@@ -703,7 +703,7 @@ void XhPort::portInit(QString portname)
     m_serial = new JLSerialPort();
     if(m_serial->openPort(portname, 115200))
     {
-        QObject::connect(m_serial, SIGNAL(sigDataParsed(QByteArray)), this, SLOT(readData(QByteArray)));//连接信号槽
+        QObject::connect(m_serial, SIGNAL(sigDataParsed(QByteArray)), this, SLOT(readData(QByteArray)), Qt::QueuedConnection);//连接信号槽
         // QObject::connect(portTimer, &QTimer::timeout, this, &XhPort::serialTest);//连接信号槽
         // portTimer->start(500);
     }
