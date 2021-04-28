@@ -35,12 +35,12 @@ void JLSerialPort::onSerialRead()
 {
     QByteArray datas;
     if(m_port->isOpen())
-        datas = m_port->read(512);
+        datas = m_port->readAll();
     if(datas.size() > 0)
     {
-        // mtx_receiver_buffer.lock();
+        mtx_receiver_buffer.lock();
         receive_buffer.append(datas);
-        // mtx_receiver_buffer.unlock();
+        mtx_receiver_buffer.unlock();
     }
 }
 
@@ -58,9 +58,9 @@ QByteArray JLSerialPort::readData() {
 QByteArray JLSerialPort::parseData() {
     uint32_t rn;
     QByteArray ret = protocal->parseData(receive_buffer, &rn);
-    // mtx_receiver_buffer.lock();
+    mtx_receiver_buffer.lock();
     receive_buffer.remove(0, rn);
-    // mtx_receiver_buffer.unlock();
+    mtx_receiver_buffer.unlock();
     return ret;
 }
 

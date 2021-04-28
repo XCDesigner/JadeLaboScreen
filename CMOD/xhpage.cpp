@@ -85,27 +85,6 @@ XhPage::~XhPage()
 
 int XhPage::analysis(QByteArray package)
 {
-    QFileInfo fi("/mnt/exUDISK/gcode");
-    if(fi.isDir())
-    {
-        if(!logText->isOpen())
-        {
-            logText->open(QIODevice::WriteOnly| QIODevice::Text| QIODevice::Append);
-        }
-        if(logText->isOpen())
-        {
-            QByteArray packLog = logTime->currentTime().toString().toLatin1();
-            packLog.append('\n');
-            packLog.append(package.toHex());
-            packLog.append('\n');
-            int i = logText->write(packLog);
-            logText->flush();
-        }
-        else {
-            qDebug()<<"log text not open";
-        }
-        logText->close();
-    }
     /*判断包头及版本号是否正确*/
     if(package[0]== '\x4A' && package[1]== '\x46')
     {
