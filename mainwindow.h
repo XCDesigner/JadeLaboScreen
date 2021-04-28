@@ -192,6 +192,8 @@ private:
 
     int test_inc;
 
+    QByteArray printerUpdateFileBuffer;
+
 private slots:
     void printMessageProcess(uint8_t, uint8_t, QByteArray Datas);
     void nozzleCalibrationMessageProcess(uint8_t Command, uint8_t SubCode, QByteArray Datas);
@@ -204,6 +206,13 @@ private slots:
 
     //Test
     void onMessageTest(uint8_t Command, uint8_t SubCode, QByteArray Datas);
+
+    void updateProcessThread();
+    void updateFileAnalize();
+    void startUpdatePrinter();
+    void startUpdateScreen();
+    void sendUpdatePack(uint16_t PackIndex);
+    void updateCommandProcess(uint8_t Command, uint8_t SubCode, QByteArray Datas);
 
     void updateStatusBar();
     void waitforIdleStatus();
