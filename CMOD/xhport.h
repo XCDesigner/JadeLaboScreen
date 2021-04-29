@@ -136,6 +136,10 @@ public:
 
     void continuePrint();
 
+    void startUpdate();
+    void sendUpdateData(QByteArray Data);
+    void sendEndUpdate();
+
 private:
     // QSerialPort *m_serial;
     JLSerialPort *m_serial;

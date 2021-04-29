@@ -170,6 +170,9 @@ private:
     int32_t  offsetnum;
 
     myWifiItem * chooseit;
+
+    QByteArray printerUpdateFileBuffer;
+    uint32_t printerUpdatePacks;
 #ifdef XH_LINUX
     const aw_wifi_interface_t *aw_wifi;
     XhControlR818 *udpControl;
@@ -201,6 +204,13 @@ private slots:
     void onFinishPrintClicked();
     void preparePrinTempChecking();
     void preparePrintPageInit();
+
+    void updateFileAnalize();
+    void startUpdatePrinter();
+    void startUpdateScreen();
+    void sendPrinterUpdatePack(uint16_t PackIndex);
+    void sendEndUpdatePrinter();
+    void updateCommandProcess(uint8_t Command, uint8_t SubCode, QByteArray Datas);
 
     //Test
     void onMessageTest(uint8_t Command, uint8_t SubCode, QByteArray Datas);
@@ -842,6 +852,8 @@ signals:
     void sendCondition(QByteArray data);
     void sendSignalToQml(int );
     void sendSignalHeating(int , int );
+
+    void printUpdateCompleted();
 private:
     void romClean(int fileSize);
 

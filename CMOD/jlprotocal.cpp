@@ -53,6 +53,10 @@ QByteArray JLProtocal::parseData(QByteArray SourceData, uint32_t *DataRead) {
                 data_read = data_read + 2;
             }
         }
+        else
+        {
+            break;
+        }
     }
 
     while(SourceData.size() > 8) {

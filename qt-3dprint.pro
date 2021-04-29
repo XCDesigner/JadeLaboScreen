@@ -75,6 +75,7 @@ SOURCES += \
     pages/PrintControl/Printting.cpp \
     pages/PrintSetting/PrintSetting.cpp \
     pages/StatusBar/StatusBar.cpp \
+    pages/Update/UpdateProcess.cpp \
     portreceiver.cpp
 
 HEADERS += \
