@@ -3,10 +3,12 @@
 
 #ifdef XH_LINUX
 #define logPath "/mnt/exUDISK/log.text"
+#include "define/linuxPath.h"
 #endif
 
 #ifdef XH_WIN
 #define logPath QDir::currentPath()+"/log.text"
+#include "define/windowsPath.h"
 #endif
 
 #define XH_LITTLE_BIT_MERGE_16(d1, d2)              ((((d2) << 8) & 0xFF00) | ((d1) & 0x00FF))
@@ -85,7 +87,6 @@ XhPage::~XhPage()
 
 int XhPage::analysis(QByteArray package)
 {
-
     /*判断包头及版本号是否正确*/
     if(package[0]== '\x4A' && package[1]== '\x46')
     {
@@ -244,34 +245,6 @@ int XhPage::analysis(QByteArray package)
                     /**************05族**************/
                     case '\x05':
                         switch (data[1]) {
-                        /*更新程序*/
-                        case '\x00':
-                            if(data[2] == '\x00')
-                            {
-                            }
-                            break;
-                        case '\x01':
-                           {
-                                quint16 pakeNum= XH_LITTLE_BIT_MERGE_16(data[2],data[3]);
-                                QByteArray pack;
-                                pack.append(data[2]);
-                                pack.append(data[3]);
-                                sendUpdate(pakeNum,pack);
-                           }
-                            break;
-                        case '\x02':
-                            {
-                                    m_timer->start(1000);
-                            }
-                            break;
-                        case '\x0B':
-                            {
-                                if(data[2] == '\x00')
-                                {
-                                    emit updateOver();
-                                }
-                            }
-                            break;
                         /*******/
                         case '\x05':
                             if(data[2] == '\x00')
@@ -790,7 +763,7 @@ void XhPage::updateBegin(QString updateFile)
         {
             QByteArray localData = allData.mid((offset[i]+512),size[i]);
 
-            QFile upDateGz("/usr/share/3d_printer/tmp/qt-3dprint.tar");
+            QFile upDateGz(UPDATE_FILE_TMP);
             if(upDateGz.open(QIODevice::ReadWrite))
             {
                 upDateGz.write(localData);
@@ -802,7 +775,7 @@ void XhPage::updateBegin(QString updateFile)
                 qDebug()<<"file info false";
             }
             m_upDater = new XhUpdater(this);
-            m_upDater->startUpdate("/usr/share/3d_printer/tmp/qt-3dprint.tar");
+            m_upDater->startUpdate(UPDATE_FILE_TMP);
             QObject::connect(m_upDater,&XhUpdater::completed,this,&XhPage::updaterOver);
         }
         if(mode[i] == 1)

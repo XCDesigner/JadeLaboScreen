@@ -7,7 +7,7 @@ updateProgreBar::updateProgreBar(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    ui->quickWidget->setSource(QUrl("qrc:/CircleProgressBar.qml"));
+    ui->quickWidget->setSource(QUrl("qrc:/qml/CircleProgressBar.qml"));
     ui->quickWidget->setResizeMode(QQuickWidget::SizeRootObjectToView);
     ui->quickWidget->setClearColor(QColor("#202023"));
 }

@@ -2968,8 +2968,9 @@ void MainWindow::on_pushButton_688_clicked()
 
 void MainWindow::on_pushButton_447_clicked()
 {
-    m_port->updateBegin(UpdateFile);
-    printTimer->stop();
+    updateFileAnalize();
+    // m_port->updateBegin(UpdateFile);
+    // printTimer->stop();
     /*不知道是否弹窗*/
 }
 

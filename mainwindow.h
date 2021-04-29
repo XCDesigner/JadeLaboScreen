@@ -170,9 +170,6 @@ private:
     int32_t  offsetnum;
 
     myWifiItem * chooseit;
-
-    QByteArray printerUpdateFileBuffer;
-    uint32_t printerUpdatePacks;
 #ifdef XH_LINUX
     const aw_wifi_interface_t *aw_wifi;
     XhControlR818 *udpControl;
@@ -195,6 +192,10 @@ private:
 
     int test_inc;
 
+    QByteArray printerUpdateFileBuffer;
+    uint16_t printerUpdatePacks;
+    XhUpdater *m_upDater;
+
 private slots:
     void printMessageProcess(uint8_t, uint8_t, QByteArray Datas);
     void nozzleCalibrationMessageProcess(uint8_t Command, uint8_t SubCode, QByteArray Datas);
@@ -205,15 +206,21 @@ private slots:
     void preparePrinTempChecking();
     void preparePrintPageInit();
 
+    //Test
+    void onMessageTest(uint8_t Command, uint8_t SubCode, QByteArray Datas);
+
+    // Update page
     void updateFileAnalize();
+    QList<uint32_t> getUpdateItem(uint32_t SearchType);
+    QByteArray getUpdateInfo(QList<uint32_t>);
+    QByteArray getUpdateContent(QList<uint32_t>);
     void startUpdatePrinter();
     void startUpdateScreen();
     void sendPrinterUpdatePack(uint16_t PackIndex);
     void sendEndUpdatePrinter();
+    void sendPrinterUpdateInfo();
     void updateCommandProcess(uint8_t Command, uint8_t SubCode, QByteArray Datas);
-
-    //Test
-    void onMessageTest(uint8_t Command, uint8_t SubCode, QByteArray Datas);
+    void rebootSystem();
 
     void updateStatusBar();
     void waitforIdleStatus();

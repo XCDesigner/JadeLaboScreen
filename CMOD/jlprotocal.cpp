@@ -23,7 +23,7 @@ QByteArray JLProtocal::setupPackage(QByteArray Datas) {
     uint32_t checksum;
     checksum = 0;
     for(int i=0;i<Datas.size();i++)
-        checksum += Datas.at(i);
+        checksum += (uint8_t)Datas.at(i);
     ret.append(1, (uint8_t)checksum);
     ret.append(1, (uint8_t)(checksum >> 8));
     ret.append(Datas);
