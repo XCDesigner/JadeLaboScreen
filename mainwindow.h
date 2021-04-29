@@ -193,6 +193,8 @@ private:
     int test_inc;
 
     QByteArray printerUpdateFileBuffer;
+    uint16_t printerUpdatePacks;
+    XhUpdater *m_upDater;
 
 private slots:
     void printMessageProcess(uint8_t, uint8_t, QByteArray Datas);
@@ -207,12 +209,18 @@ private slots:
     //Test
     void onMessageTest(uint8_t Command, uint8_t SubCode, QByteArray Datas);
 
-    void updateProcessThread();
+    // Update page
     void updateFileAnalize();
+    QList<uint32_t> getUpdateItem(uint32_t SearchType);
+    QByteArray getUpdateInfo(QList<uint32_t>);
+    QByteArray getUpdateContent(QList<uint32_t>);
     void startUpdatePrinter();
     void startUpdateScreen();
-    void sendUpdatePack(uint16_t PackIndex);
+    void sendPrinterUpdatePack(uint16_t PackIndex);
+    void sendEndUpdatePrinter();
+    void sendPrinterUpdateInfo();
     void updateCommandProcess(uint8_t Command, uint8_t SubCode, QByteArray Datas);
+    void rebootSystem();
 
     void updateStatusBar();
     void waitforIdleStatus();
@@ -851,6 +859,8 @@ signals:
     void sendCondition(QByteArray data);
     void sendSignalToQml(int );
     void sendSignalHeating(int , int );
+
+    void printUpdateCompleted();
 private:
     void romClean(int fileSize);
 

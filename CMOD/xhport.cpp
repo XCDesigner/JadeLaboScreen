@@ -666,7 +666,7 @@ void XhPort::setExtruderDisable(uint8_t Index)
   */
 void XhPort::startUpdate()
 {
-    m_serial->write(QByteArray::fromHex("0500"));
+    m_serial->writeProtocalData(QByteArray::fromHex("0500"));
 }
 
 /**
@@ -678,7 +678,7 @@ void XhPort::sendUpdateData(QByteArray Data)
 {
     QByteArray s = QByteArray::fromHex("050100");
     s.append(Data);
-    m_serial->write(s);
+    m_serial->writeProtocalData(s);
 }
 
 /**
@@ -687,7 +687,27 @@ void XhPort::sendUpdateData(QByteArray Data)
   */
 void XhPort::sendEndUpdate()
 {
-    m_serial->write(QByteArray::fromHex("050200"));
+    m_serial->writeProtocalData(QByteArray::fromHex("050200"));
+}
+
+/**
+  * @brief  Send printer update information to write to the flash
+  * @retval None
+  */
+void XhPort::sendUpdateInfo(QByteArray InfoData)
+{
+    QByteArray s = QByteArray::fromHex("050B");
+    s.append(InfoData);
+    m_serial->writeProtocalData(s);
+}
+
+/**
+  * @brief  Send reboot system
+  * @retval None
+  */
+void XhPort::sendRebootSystem()
+{
+    m_serial->writeProtocalData(QByteArray::fromHex("050C"));
 }
 
 void XhPort::testdemo()

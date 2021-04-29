@@ -139,6 +139,8 @@ public:
     void startUpdate();
     void sendUpdateData(QByteArray Data);
     void sendEndUpdate();
+    void sendUpdateInfo(QByteArray);
+    void sendRebootSystem();
     
 private:
     // QSerialPort *m_serial;
