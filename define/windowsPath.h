@@ -6,4 +6,6 @@
 #define localPath               QDir::currentPath()+"/3D/"
 #define UpdateFile              "C:/3D/TestPack.JUP"
 
+#define UPDATE_FILE_TMP         QDir::currentPath() + "/Update/J1Screen.tar"
+
 #endif // WINDOWSPATH_H

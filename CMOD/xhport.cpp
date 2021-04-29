@@ -660,6 +660,56 @@ void XhPort::setExtruderDisable(uint8_t Index)
     m_serial->write(buff);
 }
 
+/**
+  * @brief  Request print to start update
+  * @retval None
+  */
+void XhPort::startUpdate()
+{
+    m_serial->writeProtocalData(QByteArray::fromHex("0500"));
+}
+
+/**
+  * @brief  Set extruder enable. This function can be called in Duplicate Mode or Mirror Mode
+  * @param  Data: The datas to send
+  * @retval None
+  */
+void XhPort::sendUpdateData(QByteArray Data)
+{
+    QByteArray s = QByteArray::fromHex("050100");
+    s.append(Data);
+    m_serial->writeProtocalData(s);
+}
+
+/**
+  * @brief  End update.Send this command when there is no package left
+  * @retval None
+  */
+void XhPort::sendEndUpdate()
+{
+    m_serial->writeProtocalData(QByteArray::fromHex("050200"));
+}
+
+/**
+  * @brief  Send printer update information to write to the flash
+  * @retval None
+  */
+void XhPort::sendUpdateInfo(QByteArray InfoData)
+{
+    QByteArray s = QByteArray::fromHex("050B");
+    s.append(InfoData);
+    m_serial->writeProtocalData(s);
+}
+
+/**
+  * @brief  Send reboot system
+  * @retval None
+  */
+void XhPort::sendRebootSystem()
+{
+    m_serial->writeProtocalData(QByteArray::fromHex("050C"));
+}
+
 void XhPort::testdemo()
 {
     QByteArray s = QByteArray::fromHex("84654875294581");
@@ -741,9 +791,6 @@ void XhPort::carbincancel()
 
 void XhPort::updateBegin(QString update)
 {
-//    QByteArray s = QByteArray::fromHex("0500");
-//    QByteArray buff = m_package->groupPage(s);
-//    m_serial->write(buff);
     m_package->updateBegin(update);
 }
 

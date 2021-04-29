@@ -14,4 +14,11 @@
 
 #define selfTestOk                ":/image/testok.png"
 #define selfTestWait            ":/image/wait.png"
+
+#if defined(XH_WIN)
+
+#elif defined(XH_LINUX)
+
+#endif
+
 #endif // IMAGEPATH_H
