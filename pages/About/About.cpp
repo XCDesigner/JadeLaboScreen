@@ -5,7 +5,7 @@
 
 void MainWindow::AboutPageInit()
 {
-    QObject::connect(ui->wqVersion->rootObject(), SIGNAL(), this, SLOT(onAboutReturn));
+    QObject::connect(ui->wqVersion->rootObject(), SIGNAL(clicked()), this, SLOT(onAboutReturn()));
 }
 
 void MainWindow::on_pushButton_126_clicked()
