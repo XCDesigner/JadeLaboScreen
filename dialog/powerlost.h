@@ -15,12 +15,12 @@ class powerLost : public JLWidget
 public:
     explicit powerLost(QWidget *parent = nullptr);
     ~powerLost();
+    void show() override;
+    void init(QByteArray) override;
 
 private slots:
-    void on_pushButton_2_clicked();
-
-signals:
-    void cancel();
+    void on_btnResume_clicked();
+    void on_btnCancel_clicked();
 
 private:
     Ui::powerLost *ui;

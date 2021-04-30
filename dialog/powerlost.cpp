@@ -8,12 +8,31 @@ powerLost::powerLost(QWidget *parent) :
     ui->setupUi(this);
 }
 
+void powerLost::init(QByteArray)
+{
+
+}
+
+void powerLost::show()
+{
+    QWidget::show();
+}
+
 powerLost::~powerLost()
 {
     delete ui;
 }
 
-void powerLost::on_pushButton_2_clicked()
+void powerLost::on_btnResume_clicked()
 {
-    emit cancel();
+    ret_value.append(QByteArray("Recovery"));
+    hide();
+    emit hideWidget();
+}
+
+void powerLost::on_btnCancel_clicked()
+{
+    ret_value.append(QByteArray("Cancel"));
+    hide();
+    emit hideWidget();
 }
