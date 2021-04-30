@@ -854,7 +854,7 @@ private slots:
 
     void on_pushButton_117_clicked();
 
-    void on_AboutReturn();
+    void on_AboutReturn(int);
 
 signals:
     void detection(bool ready);

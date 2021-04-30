@@ -5,7 +5,7 @@
 
 void MainWindow::AboutPageInit()
 {
-    QObject::connect(ui->wqVersion->rootObject(), SIGNAL(clicked()), this, SLOT(on_AboutReturn()));
+    QObject::connect(ui->wqVersion->rootObject(), SIGNAL(clicked(int)), this, SLOT(on_AboutReturn(int)));
 }
 
 void MainWindow::on_pushButton_126_clicked()
@@ -16,7 +16,7 @@ void MainWindow::on_pushButton_126_clicked()
     ui->wqVersion->rootObject()->setProperty("text", version);
 }
 
-void MainWindow::on_AboutReturn()
+void MainWindow::on_AboutReturn(int Index)
 {
     ui->stackedWidget->setCurrentWidget(ui->page_GetStart);
 }
