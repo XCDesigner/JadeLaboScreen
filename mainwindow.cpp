@@ -251,6 +251,9 @@ MainWindow::MainWindow(QWidget *parent) :
     skpWin->setXHPort(m_port);
     skpWin->setScreenStausContext(&screen_status);
     changeFilamentDialog->setXHPort(m_port);
+    changeFilamentDialog->setScreenStausContext(&screen_status);
+    m_setdlog->setScreenStausContext(&screen_status);
+    m_setdlog->setXHPort(m_port);
 #endif
 
 #ifdef XH_WIN
@@ -2815,6 +2818,8 @@ void MainWindow::on_pushButton_354_clicked()
     skpWin->setScreenStausContext(&screen_status);
     changeFilamentDialog->setXHPort(m_port);
     changeFilamentDialog->setScreenStausContext(&screen_status);
+    m_setdlog->setXHPort(m_port);
+    m_setdlog->setScreenStausContext(&screen_status);
     ui->m_StatusBar->setVisible(true);
     QObject::connect(printTimer,&QTimer::timeout,this,&MainWindow::askPrint);
     printTimer->start(1000);

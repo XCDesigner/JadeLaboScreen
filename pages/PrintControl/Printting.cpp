@@ -28,7 +28,6 @@ void MainWindow::ShowParameterDialogClicked()
 {
     QByteArray s = QByteArray::fromHex("0614");
     blockingChangeDialog(s, m_setdlog);
-    m_printsec->stop();
 }
 
 void MainWindow::onFinishPrintClicked()

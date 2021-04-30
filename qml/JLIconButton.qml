@@ -11,6 +11,7 @@ Rectangle {
     property bool enable: true
 
     radius: 20
+    color: "#202020"
 
     signal press()
     signal release()

@@ -34,10 +34,16 @@ private slots:
 
     void increaseCheck();
     void decreaseCheck();
+    void onIncreaseRelease();
+    void onDecreaseRelease();
 
     void buttonClicked(int);
 
     void backupModeChange(int);
+
+private:
+    int getStepValue();
+    int getLongPressStepValue();
 
 private:
     Ui::PrintSetDlog *ui;
@@ -48,12 +54,16 @@ private:
     QQuickWidget *pButtons[7];
     bool button_check_status[7];
 
-    uint8_t temp_percent[3];
-    uint8_t fan_percent[2];
-    uint16_t feedrate_percent;
-    float platform_height;
+    int16_t temp_percent[3];
+    int8_t fan_percent[2];
+    int16_t feedrate_percent;
+    int platform_height;
 
-    uint8_t press_counter;
+    int step_value;
+    int change_value;
+    int step_direction;
+
+    int press_counter;
 signals:
     void closeset(int );
 
