@@ -15,17 +15,16 @@ class filamentFault : public JLWidget
 public:
     explicit filamentFault(QWidget *parent = nullptr);
     ~filamentFault();
+    void show() override;
+    void init(QByteArray) override;
 
 private:
     Ui::filamentFault *ui;
-signals:
-    void resume();
-    void abort();
-    void changeFilament();
+
 private slots:
-    void on_pushButton_clicked();
-    void on_pushButton_3_clicked();
-    void on_pushButton_2_clicked();
+    void on_btnResume_clicked();
+    void on_btnChangeFilament_clicked();
+    void on_btnAbort_clicked();
 };
 
 #endif // FILAMENTFAULT_H

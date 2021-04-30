@@ -13,17 +13,27 @@ filamentFault::~filamentFault()
     delete ui;
 }
 
-void filamentFault::on_pushButton_clicked()
+void filamentFault::init(QByteArray)
 {
-    emit resume();
+
 }
 
-void filamentFault::on_pushButton_3_clicked()
+void filamentFault::show()
 {
-    emit changeFilament();
+    QWidget::show();
 }
 
-void filamentFault::on_pushButton_2_clicked()
+void filamentFault::on_btnResume_clicked()
 {
-    emit abort();
+
+}
+
+void filamentFault::on_btnChangeFilament_clicked()
+{
+
+}
+
+void filamentFault::on_btnAbort_clicked()
+{
+
 }
