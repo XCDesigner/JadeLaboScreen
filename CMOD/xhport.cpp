@@ -605,7 +605,7 @@ void XhPort::setPrintSpeedPercentage(uint16_t Percent)
   * @param  Height: Offset in micronmeters
   * @retval None
   */
-void XhPort::setPrintPlatformOffset(uint32_t Height)
+void XhPort::setPrintPlatformOffset(int32_t Height)
 {
     QByteArray s = QByteArray::fromHex("0613");
     s.append(1, Height);
