@@ -594,7 +594,8 @@ void XhPort::setPrintFanPercentage(int Index, uint8_t Percent)
 void XhPort::setPrintSpeedPercentage(uint16_t Percent)
 {
     QByteArray s = QByteArray::fromHex("0612");
-    s.append(2, Percent);
+    s.append(1, Percent);
+    s.append(1, (Percent >> 8));
     QByteArray buff = m_package->groupPage(s);
     m_serial->write(buff);
 }
@@ -607,7 +608,10 @@ void XhPort::setPrintSpeedPercentage(uint16_t Percent)
 void XhPort::setPrintPlatformOffset(uint32_t Height)
 {
     QByteArray s = QByteArray::fromHex("0613");
-    s.append(4, Height);
+    s.append(1, Height);
+    s.append(1, (Height >> 8));
+    s.append(1, (Height >> 16));
+    s.append(1, (Height >> 24));
     QByteArray buff = m_package->groupPage(s);
     m_serial->write(buff);
 }
