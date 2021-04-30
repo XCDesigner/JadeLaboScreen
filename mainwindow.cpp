@@ -178,7 +178,8 @@ MainWindow::MainWindow(QWidget *parent) :
 
     ui->qw_PreparePrintControl->setSource(QUrl("qrc:/qml/PrintControlBox.qml"));
     ui->qw_PreparePrintControl->setClearColor(QColor(qmlColor));
-    ui->qw_PreparePrintControl->rootObject()->setProperty("settingEnabled", false);
+    ui->qw_PreparePrintControl->rootObject()->setProperty("stopEnabled", true);
+    ui->qw_PreparePrintControl->rootObject()->setProperty("settingEnabled", true);
     ui->qw_PreparePrintControl->rootObject()->setProperty("pauseEnabled", false);
 
     ui->qw_PrintingControl->setSource(QUrl("qrc:/qml/PrintControlBox.qml"));
@@ -224,6 +225,7 @@ MainWindow::MainWindow(QWidget *parent) :
     timer_light_slider = new QTimer(this);
 
     QObject::connect(ui->qw_PreparePrintControl->rootObject(), SIGNAL(stopClicked()), this, SLOT(StopPreHeatting()));
+    QObject::connect(ui->qw_PreparePrintControl->rootObject(), SIGNAL(settingClicked()), this, SLOT(ShowParameterDialogClicked()));
 
     QObject::connect(ui->qw_PrintingControl->rootObject(), SIGNAL(settingClicked()), this, SLOT(ShowParameterDialogClicked()));
     QObject::connect(ui->qw_PrintingControl->rootObject(), SIGNAL(stopClicked()), this, SLOT(StopPrintClicked()));

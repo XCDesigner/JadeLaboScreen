@@ -3,6 +3,7 @@
 
 void MainWindow::preparePrintPageInit()
 {
+    ui->qw_PreparePrintControl->rootObject()->setProperty("settingEnabled", true);
     ui->qw_PreparePrintControl->rootObject()->setProperty("stopEnabled", true);
     QTimer::singleShot(4000, this, SLOT(preparePrinTempChecking()));
     screen_status.setPerformance(PREPARE_PRINT);
@@ -34,6 +35,7 @@ void MainWindow::preparePrinTempChecking()
         qDebug()<<new_status.TarTemp[1];
         if((new_status.CurTemp[0] > (new_status.TarTemp[0] * 0.8)) && (new_status.CurTemp[1] > (new_status.TarTemp[1] * 0.8)))
         {
+            ui->qw_PreparePrintControl->rootObject()->setProperty("settingEnabled", false);
             ui->qw_PreparePrintControl->rootObject()->setProperty("stopEnabled", false);
             screen_status.setPerformance(PRINTING);
         }
