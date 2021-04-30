@@ -60,6 +60,7 @@ SOURCES += \
         main.cpp \
         mainwindow.cpp \
     oldplan/filecheckthread.cpp \
+    pages/About/About.cpp \
     pages/Application/Application.cpp \
     pages/Calibration/NozzleCalibration.cpp \
     pages/Calibration/PlatformCalibration.cpp \

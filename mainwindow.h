@@ -98,6 +98,7 @@ public:
     void changePageOnStatus(QByteArray Status, QWidget *pPage);
 
     void changeFilamentPageInit();
+    void AboutPageInit();
 
 private:
     Ui::MainWindow *ui;
@@ -852,6 +853,8 @@ private slots:
     void on_pushButton_113_clicked();
 
     void on_pushButton_117_clicked();
+
+    void on_AboutReturn();
 
 signals:
     void detection(bool ready);

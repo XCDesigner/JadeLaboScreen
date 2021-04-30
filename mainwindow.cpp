@@ -289,6 +289,9 @@ MainWindow::MainWindow(QWidget *parent) :
 
     QObject::connect(m_port->getXhPage(), SIGNAL(command_received(uint8_t, uint8_t, QByteArray)), this, SLOT(printMessageProcess(uint8_t, uint8_t, QByteArray)));
     QObject::connect(m_port->getXhPage(), SIGNAL(command_received(uint8_t, uint8_t, QByteArray)), this, SLOT(onMessageTest(uint8_t, uint8_t, QByteArray)));
+
+
+    AboutPageInit();
 }
 
 MainWindow::~MainWindow()
@@ -2781,11 +2784,6 @@ void MainWindow::on_pushButton_128_clicked()
 void MainWindow::on_pushButton_125_clicked()
 {
     ui->stackedWidget->setCurrentWidget(ui->page_Tools);
-}
-
-void MainWindow::on_pushButton_126_clicked()
-{
-    blockingChangeDialog(QByteArray(), (JLWidget*)skpWin);
 }
 
 void MainWindow::on_pushButton_130_clicked()
