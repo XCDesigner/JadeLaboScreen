@@ -292,6 +292,8 @@ MainWindow::MainWindow(QWidget *parent) :
 
 
     AboutPageInit();
+
+    ListenerInit();
 }
 
 MainWindow::~MainWindow()

@@ -62,6 +62,7 @@ SOURCES += \
     oldplan/filecheckthread.cpp \
     pages/About/About.cpp \
     pages/Application/Application.cpp \
+    pages/Application/FaultProcess.cpp \
     pages/Calibration/NozzleCalibration.cpp \
     pages/Calibration/PlatformCalibration.cpp \
     pages/Calibration/XYCalibration.cpp \
@@ -89,6 +90,7 @@ HEADERS += \
     CMOD/xhcontrolr818.h \
     CMOD/xhpage.h \
     CMOD/xhport.h \
+    customTypes.h \
     define/imagePath.h \
     define/linuxPath.h \
     define/windowsPath.h \

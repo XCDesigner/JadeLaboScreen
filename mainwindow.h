@@ -1,6 +1,8 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
+#include "customTypes.h"
+
 #include <QMainWindow>
 #include <QWidget>
 #include <QTimer>
@@ -100,6 +102,10 @@ public:
     void changeFilamentPageInit();
     void AboutPageInit();
 
+    void ListenerInit();
+    void AddListen(QByteArray MatchData, pFunction, bool);
+    static void TestListener(QByteArray);
+
 private:
     Ui::MainWindow *ui;
 
@@ -197,6 +203,9 @@ private:
     uint16_t printerUpdatePacks;
     XhUpdater *m_upDater;
 
+    // Message Listen List
+    QList<ListenerItem> lst_listen_item;
+
 private slots:
     void printMessageProcess(uint8_t, uint8_t, QByteArray Datas);
     void nozzleCalibrationMessageProcess(uint8_t Command, uint8_t SubCode, QByteArray Datas);
@@ -206,6 +215,9 @@ private slots:
     void onFinishPrintClicked();
     void preparePrinTempChecking();
     void preparePrintPageInit();
+
+    // Fault detection
+    void onMessageListen(uint8_t, uint8_t, QByteArray);
 
     //Test
     void onMessageTest(uint8_t Command, uint8_t SubCode, QByteArray Datas);
