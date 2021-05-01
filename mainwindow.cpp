@@ -248,13 +248,13 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->m_StatusBar->setVisible(true);
     QObject::connect(printTimer,&QTimer::timeout,this,&MainWindow::askPrint);
     printTimer->start(1000);
-    m_port->powerlostsend();
     skpWin->setXHPort(m_port);
     skpWin->setScreenStausContext(&screen_status);
     changeFilamentDialog->setXHPort(m_port);
     changeFilamentDialog->setScreenStausContext(&screen_status);
     m_setdlog->setScreenStausContext(&screen_status);
     m_setdlog->setXHPort(m_port);
+    PowerLostInit();
 #endif
 
 #ifdef XH_WIN
@@ -840,13 +840,6 @@ void MainWindow::buprint()
     m_deepTimer->stop();
     par->hide();
     par->close();
-}
-
-void MainWindow::powercancle()
-{
-    m_power->hide();
-    m_power->close();
-    m_port->powercancel();
 }
 
 void MainWindow::getCondition()
@@ -2807,7 +2800,6 @@ void MainWindow::on_pushButton_354_clicked()
 {
     m_port->portInit(ui->comboBox_15->currentText());
     ui->stackedWidget->setCurrentWidget(ui->page_GetStart);
-    m_port->powerlostsend();
     skpWin->setXHPort(m_port);
     skpWin->setScreenStausContext(&screen_status);
     changeFilamentDialog->setXHPort(m_port);
@@ -2817,6 +2809,7 @@ void MainWindow::on_pushButton_354_clicked()
     ui->m_StatusBar->setVisible(true);
     QObject::connect(printTimer,&QTimer::timeout,this,&MainWindow::askPrint);
     printTimer->start(1000);
+    PowerLostInit();
     //while(1) {
 
     //}

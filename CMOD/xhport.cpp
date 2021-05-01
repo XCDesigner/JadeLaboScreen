@@ -103,20 +103,6 @@ void XhPort::XYAdjust()
     m_serial->write(buff);
 }
 
-void XhPort::powerlostsend()
-{
-    QByteArray s = QByteArray::fromHex("0103");
-    QByteArray buff = m_package->groupPage(s);
-    m_serial->write(buff);
-}
-
-void XhPort::powercancel()
-{
-    QByteArray s = QByteArray::fromHex("0104");
-    QByteArray buff = m_package->groupPage(s);
-    m_serial->write(buff);
-}
-
 void XhPort::lup()
 {
     QByteArray s = QByteArray::fromHex("0205006079FEFF");
@@ -712,6 +698,24 @@ void XhPort::sendUpdateInfo(QByteArray InfoData)
 void XhPort::sendRebootSystem()
 {
     m_serial->writeProtocalData(QByteArray::fromHex("050C"));
+}
+
+/**
+  * @brief  Get power lost status
+  * @retval None
+  */
+void XhPort::getPowerLostStatus()
+{
+    m_serial->writeProtocalData(QByteArray::fromHex("0103"));
+}
+
+/**
+  * @brief  Mark power lost flag
+  * @retval None
+  */
+void XhPort::markPowerLostFlag()
+{
+    m_serial->writeProtocalData(QByteArray::fromHex("0104"));
 }
 
 void XhPort::testdemo()

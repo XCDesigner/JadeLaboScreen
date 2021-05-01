@@ -32,9 +32,6 @@ public:
     void isXYHeating();//是否在加热？*
     void XYAdjust();//校准XY轴
 
-    void powerlostsend();
-    void powercancel();
-
     /**********FILAMENT**********/
     void lup();
     void ldown();
@@ -141,6 +138,9 @@ public:
     void sendEndUpdate();
     void sendUpdateInfo(QByteArray);
     void sendRebootSystem();
+
+    void getPowerLostStatus();
+    void markPowerLostFlag();
     
 private:
     // QSerialPort *m_serial;

@@ -216,6 +216,8 @@ private slots:
     void preparePrinTempChecking();
     void preparePrintPageInit();
 
+    void PowerLostDialogReturn();
+
     // Fault detection
     void onMessageListen(uint8_t, uint8_t, QByteArray);
 
@@ -281,7 +283,6 @@ private slots:
     void printTime();
 
     void buprint();
-    void powercancle();
     /******udp**************/
     void getCondition();
     void downloadOver(QString );
@@ -877,6 +878,9 @@ signals:
     void printUpdateCompleted();
 private:
     void romClean(int fileSize);
+
+    void PowerLostInit();
+    void PowerTestResult(QByteArray Data);
 
 };
 
