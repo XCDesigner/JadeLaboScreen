@@ -81,7 +81,6 @@ MainWindow::MainWindow(QWidget *parent) :
 //    QObject::connect(m_port,&XhPort::xyCheck,this,&MainWindow::xhxyCheck);
 
     QObject::connect(m_port,&XhPort::filamentlost,this,&MainWindow::filamentlost);
-    QObject::connect(m_port,&XhPort::powerlost,this,&MainWindow::powerlost);
     QObject::connect(m_port,&XhPort::error,this,&MainWindow::error);
     QObject::connect(m_port,&XhPort::selfTest1,this,&MainWindow::selftest1);
     QObject::connect(m_port,&XhPort::selfTest2,this,&MainWindow::selftest2);
@@ -1472,13 +1471,6 @@ void MainWindow::dcancle()
     m_dup->hide();
     m_dup->close();
     m_dup=NULL;
-}
-
-void MainWindow::powerlost()
-{
-    m_power = new powerLost(this);
-    m_power->show();
-    QObject::connect(m_power,&powerLost::cancel,this,&MainWindow::powercancle);
 }
 
 void MainWindow::filamentlost()

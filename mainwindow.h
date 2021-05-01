@@ -331,7 +331,6 @@ private slots:
     void ddup();
     void dcancle();
 
-    void powerlost();
     void filamentlost();
 
     void error(int );
