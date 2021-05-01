@@ -67,6 +67,8 @@ SOURCES += \
     pages/Calibration/PlatformCalibration.cpp \
     pages/Calibration/XYCalibration.cpp \
     pages/ChangeFilament/ChangeFilament.cpp \
+    pages/FaultProcess/FilamentFault.cpp \
+    pages/FaultProcess/PowerRecovery.cpp \
     pages/JodMove/JodMove.cpp \
     pages/Keyboard/KeyBoard.cpp \
     pages/LightSetting/LightSetting.cpp \
