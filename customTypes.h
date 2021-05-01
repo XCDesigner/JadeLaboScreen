@@ -3,9 +3,9 @@
 
 #include <QString>
 #include <QByteArray>
-#include "mainwindow.h"
 
-typedef void (*pFunction)(QByteArray);
+class MainWindow;
+typedef void (MainWindow::*pFunction)(QByteArray);
 
 class ListenerItem
 {

@@ -104,7 +104,7 @@ public:
 
     void ListenerInit();
     void AddListen(QByteArray MatchData, pFunction, bool);
-    static void TestListener(QByteArray);
+    void TestListener(QByteArray);
 
 private:
     Ui::MainWindow *ui;
