@@ -15,7 +15,7 @@
 #define FAULT_FLAG_MOVMENT                (1UL<<11)
 #define FAULT_FLAG_POWER_LOST             (1UL<<31)
 
-void MainWindow::FilamentFaultInit()
+void MainWindow::FaultDetectInit()
 {
     AddListen(QByteArray(QByteArray::fromHex("0608")), &MainWindow::onPauseRequest, true);
     AddListen(QByteArray(QByteArray::fromHex("010100")), &MainWindow::onFaultFlag, true);
@@ -29,5 +29,9 @@ void MainWindow::onPauseRequest(QByteArray Data)
 void MainWindow::onFaultFlag(QByteArray Data)
 {
     uint32_t flag;
-    flag = (uint8_t)Data.at(6) << 24 | (uint8_t)Data.at(5) << 16 | (uint8_t)Data.at(4) << 8 | (uint8_t)Data.at(3);
+
+    flag = (uint32_t)Data.at(6) << 24 | (uint32_t)Data.at(5) << 16 | (uint32_t)Data.at(4) << 8 | (uint32_t)Data.at(3);
+    if(flag & (FAULT_FLAG_FILAMENT0 | FAULT_FLAG_FILAMENT1)) {
+        FilamentFaultDetected();
+    }
 }

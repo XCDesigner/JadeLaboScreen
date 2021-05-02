@@ -39,7 +39,7 @@ void filamentFault::on_btnChangeFilament_clicked()
 
 void filamentFault::on_btnAbort_clicked()
 {
-    ret_value.append(QByteArray("Abort"));
+    ret_value.append(QByteArray("Cancel"));
     hide();
     emit hideWidget();
 }

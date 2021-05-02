@@ -17,7 +17,6 @@ MainWindow::MainWindow(QWidget *parent) :
 
     this->setWindowFlags(Qt::FramelessWindowHint);
     /*初始化*/
-    m_filamentfault = NULL;
     m_WinFiel = NULL;
     par = NULL;
     skpWin = new askPause(this);
@@ -255,6 +254,7 @@ MainWindow::MainWindow(QWidget *parent) :
     m_setdlog->setScreenStausContext(&screen_status);
     m_setdlog->setXHPort(m_port);
     PowerLostInit();
+    FaultDetectInit();
 #endif
 
 #ifdef XH_WIN
@@ -1477,16 +1477,10 @@ void MainWindow::error(int a )
     case 4:
         m_filamentfault = new  filamentFault(this);
         m_filamentfault->show();
-        QObject::connect(m_filamentfault,&filamentFault::abort,this,&MainWindow::Fabort);
-        QObject::connect(m_filamentfault,&filamentFault::resume,this,&MainWindow::Fresume);
-        QObject::connect(m_filamentfault,&filamentFault::changeFilament,this,&MainWindow::Fchangefilament);
         break;
     case 5:
         m_filamentfault = new  filamentFault(this);
         m_filamentfault->show();
-        QObject::connect(m_filamentfault,&filamentFault::abort,this,&MainWindow::Fabort);
-        QObject::connect(m_filamentfault,&filamentFault::resume,this,&MainWindow::Fresume);
-        QObject::connect(m_filamentfault,&filamentFault::changeFilament,this,&MainWindow::Fchangefilament);
         break;
     default:
         break;
@@ -2810,6 +2804,7 @@ void MainWindow::on_pushButton_354_clicked()
     QObject::connect(printTimer,&QTimer::timeout,this,&MainWindow::askPrint);
     printTimer->start(1000);
     PowerLostInit();
+    FaultDetectInit();
     //while(1) {
 
     //}
@@ -2819,9 +2814,6 @@ void MainWindow::on_pushButton_356_clicked()
 {
     m_filamentfault = new  filamentFault(this);
     m_filamentfault->show();
-    QObject::connect(m_filamentfault,&filamentFault::abort,this,&MainWindow::Fabort);
-    QObject::connect(m_filamentfault,&filamentFault::resume,this,&MainWindow::Fresume);
-    QObject::connect(m_filamentfault,&filamentFault::changeFilament,this,&MainWindow::Fchangefilament);
     ui->stackedWidget->setCurrentWidget(ui->page_Printint);
 }
 

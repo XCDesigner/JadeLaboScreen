@@ -220,6 +220,8 @@ private slots:
     void RecoveryStop();
     void RecoverySettingShow();
 
+    void onFilamentFaultDialogReturn();
+
     // Fault detection
     void onMessageListen(uint8_t, uint8_t, QByteArray);
 
@@ -886,9 +888,11 @@ private:
     void AcceptRecoveryInfo(QByteArray Data);
     QString GetRecoveryFile();
 
-    void FilamentFaultInit();
+    void FaultDetectInit();
     void onPauseRequest(QByteArray Data);
     void onFaultFlag(QByteArray Data);
+
+    void FilamentFaultDetected();
 
 };
 
