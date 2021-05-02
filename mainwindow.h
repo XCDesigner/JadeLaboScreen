@@ -886,6 +886,10 @@ private:
     void AcceptRecoveryInfo(QByteArray Data);
     QString GetRecoveryFile();
 
+    void FilamentFaultInit();
+    void onPauseRequest(QByteArray Data);
+    void onFaultFlag(QByteArray Data);
+
 };
 
 #endif // MAINWINDOW_H

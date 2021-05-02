@@ -736,6 +736,15 @@ void XhPort::resumeRecovery()
     m_serial->writeProtocalData(QByteArray::fromHex("060E"));
 }
 
+/**
+  * @brief  Get fault flag
+  * @retval None
+  */
+void XhPort::getFaultFlag()
+{
+    m_serial->writeProtocalData(QByteArray::fromHex("0101"));
+}
+
 void XhPort::testdemo()
 {
     QByteArray s = QByteArray::fromHex("84654875294581");

@@ -1,39 +1,33 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
-void MainWindow::ListenerInit()
+#define FAULT_FLAG_X0_CARRIER             (1UL<<0)
+#define FAULT_FLAG_X1_CARRIER             (1UL<<1)
+#define FAULT_FLAG_Y_AXIS                 (1UL<<2)
+#define FAULT_FLAG_Z_AXIS                 (1UL<<3)
+#define FAULT_FLAG_FILAMENT0              (1UL<<4)
+#define FAULT_FLAG_FILAMENT1              (1UL<<5)
+#define FAULT_FLAG_HEATER0                (1UL<<6)
+#define FAULT_FLAG_HEATER1                (1UL<<7)
+#define FAULT_FLAG_TEMP0                  (1UL<<8)
+#define FAULT_FLAG_TEMP1                  (1UL<<9)
+#define FAULT_FLAG_PROBE                  (1UL<<10)
+#define FAULT_FLAG_MOVMENT                (1UL<<11)
+#define FAULT_FLAG_POWER_LOST             (1UL<<31)
+
+void MainWindow::FilamentFaultInit()
 {
-    QObject::connect(m_port->getXhPage(), SIGNAL(command_received(uint8_t, uint8_t, QByteArray)), this, SLOT(onMessageListen(uint8_t, uint8_t, QByteArray)));
-    // AddListen(QByteArray(QByteArray::fromHex("0100")), &MainWindow::TestListener, true);
+    AddListen(QByteArray(QByteArray::fromHex("0608")), &MainWindow::onPauseRequest, true);
+    AddListen(QByteArray(QByteArray::fromHex("010100")), &MainWindow::onFaultFlag, true);
 }
 
-void MainWindow::onMessageListen(uint8_t Command, uint8_t SubCode, QByteArray MessageData)
+void MainWindow::onPauseRequest(QByteArray Data)
 {
-    if(lst_listen_item.count() > 0)
-    {
-        foreach(ListenerItem tmp, lst_listen_item)
-        {
-            if(MessageData.startsWith(tmp.Data))
-            {
-                if(tmp.Callback != NULL)
-                    (this->*tmp.Callback)(MessageData);
-                if(tmp.Repeated == false)
-                    lst_listen_item.removeOne(tmp);
-            }
-        }
-    }
+    m_port->getFaultFlag();
 }
 
-void MainWindow::AddListen(QByteArray MatchData, pFunction Callback = NULL, bool Repeated = true)
+void MainWindow::onFaultFlag(QByteArray Data)
 {
-    ListenerItem newItem;
-    newItem.Data = MatchData;
-    newItem.Repeated = Repeated;
-    newItem.Callback = Callback;
-    lst_listen_item.append(newItem);
-}
-
-void MainWindow::TestListener(QByteArray Datas)
-{
-    // qDebug()<<"Listen arrived";
+    uint32_t flag;
+    flag = (uint8_t)Data.at(6) << 24 | (uint8_t)Data.at(5) << 16 | (uint8_t)Data.at(4) << 8 | (uint8_t)Data.at(3);
 }

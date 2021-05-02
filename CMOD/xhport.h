@@ -143,6 +143,8 @@ public:
     void markPowerLostFlag();
     void getRecoveryInfo();
     void resumeRecovery();
+
+    void getFaultFlag();
 private:
     // QSerialPort *m_serial;
     JLSerialPort *m_serial;
