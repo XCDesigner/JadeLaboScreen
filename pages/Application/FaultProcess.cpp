@@ -4,7 +4,7 @@
 void MainWindow::ListenerInit()
 {
     QObject::connect(m_port->getXhPage(), SIGNAL(command_received(uint8_t, uint8_t, QByteArray)), this, SLOT(onMessageListen(uint8_t, uint8_t, QByteArray)));
-    AddListen(QByteArray(QByteArray::fromHex("0100")), &MainWindow::TestListener, true);
+    // AddListen(QByteArray(QByteArray::fromHex("0100")), &MainWindow::TestListener, true);
 }
 
 void MainWindow::onMessageListen(uint8_t Command, uint8_t SubCode, QByteArray MessageData)
@@ -35,5 +35,5 @@ void MainWindow::AddListen(QByteArray MatchData, pFunction Callback = NULL, bool
 
 void MainWindow::TestListener(QByteArray Datas)
 {
-    qDebug()<<"Listen arrived";
+    // qDebug()<<"Listen arrived";
 }
