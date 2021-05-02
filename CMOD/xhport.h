@@ -141,7 +141,8 @@ public:
 
     void getPowerLostStatus();
     void markPowerLostFlag();
-    
+    void getRecoveryInfo();
+    void resumeRecovery();
 private:
     // QSerialPort *m_serial;
     JLSerialPort *m_serial;

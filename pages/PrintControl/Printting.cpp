@@ -45,6 +45,7 @@ void MainWindow::onFinishPrintClicked()
 void MainWindow::timeAdd()
 {
     *m_time =  m_time->addSecs(1);
+    ui->label_86->setText(QString::number(m_time->hour())+"H "+QString::number(m_time->minute())+"M");
     ui->label_78->setText(QString::number(m_time->hour())+"H "+QString::number(m_time->minute())+"M");
     ui->label_307->setText(QString::number(m_time->hour())+"H "+QString::number(m_time->minute())+"M");
     ui->label_310->setText(QString::number(m_time->hour())+"H "+QString::number(m_time->minute())+"M");

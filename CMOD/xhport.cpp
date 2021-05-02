@@ -715,7 +715,25 @@ void XhPort::getPowerLostStatus()
   */
 void XhPort::markPowerLostFlag()
 {
-    m_serial->writeProtocalData(QByteArray::fromHex("0104"));
+    m_serial->writeProtocalData(QByteArray::fromHex("060F"));
+}
+
+/**
+  * @brief  Get recovery info
+  * @retval None
+  */
+void XhPort::getRecoveryInfo()
+{
+    m_serial->writeProtocalData(QByteArray::fromHex("0615"));
+}
+
+/**
+  * @brief  Start recovery print
+  * @retval None
+  */
+void XhPort::resumeRecovery()
+{
+    m_serial->writeProtocalData(QByteArray::fromHex("060E"));
 }
 
 void XhPort::testdemo()

@@ -1,6 +1,12 @@
 #ifndef IMAGEPATH_H
 #define IMAGEPATH_H
 
+#if defined(XH_WIN)
+#include "linuxPath.h"
+#elif defined(XH_LINUX)
+#include "windowsPath.h"
+#endif
+
 #define qmlColor "#202023"
 
 
@@ -14,6 +20,8 @@
 
 #define selfTestOk                ":/image/testok.png"
 #define selfTestWait            ":/image/wait.png"
+
+#define RECOVERY_RECORD         RECOVERY_INFO
 
 #if defined(XH_WIN)
 

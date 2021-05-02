@@ -70,7 +70,7 @@ font-family: barlow;
 }</string>
     </property>
     <property name="currentIndex">
-     <number>51</number>
+     <number>8</number>
     </property>
     <widget class="QWidget" name="page_12">
      <widget class="QLabel" name="label_14">
@@ -2352,6 +2352,194 @@ background-color: rgba(255, 255, 255, 0);</string>
      <zorder>label_78</zorder>
      <zorder>qw_PreHeating</zorder>
      <zorder>qw_PreparePrintControl</zorder>
+    </widget>
+    <widget class="QWidget" name="page_PrepareRecovery">
+     <widget class="QQuickWidget" name="qw_RecoveryHeating">
+      <property name="geometry">
+       <rect>
+        <x>70</x>
+        <y>160</y>
+        <width>484</width>
+        <height>484</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(32, 32, 35);</string>
+      </property>
+      <property name="resizeMode">
+       <enum>QQuickWidget::SizeRootObjectToView</enum>
+      </property>
+      <property name="source">
+       <url>
+        <string>qrc:/qml/HeatingCircle.qml</string>
+       </url>
+      </property>
+     </widget>
+     <widget class="QQuickWidget" name="qw_RecoveryControl">
+      <property name="geometry">
+       <rect>
+        <x>590</x>
+        <y>435</y>
+        <width>640</width>
+        <height>240</height>
+       </rect>
+      </property>
+      <property name="resizeMode">
+       <enum>QQuickWidget::SizeRootObjectToView</enum>
+      </property>
+      <property name="source">
+       <url>
+        <string>qrc:/qml/PrintControlBox.qml</string>
+       </url>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_268">
+      <property name="geometry">
+       <rect>
+        <x>590</x>
+        <y>113</y>
+        <width>640</width>
+        <height>300</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: rgba(16, 16, 16, 255);
+font-size: 28px;
+text-align: left;
+font-family: Roboto;
+background-color: rgb(45, 44, 43);
+border: 2px solid rgba(45, 44, 43, 255);
+border-radius: 20px;</string>
+      </property>
+      <property name="text">
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_75">
+      <property name="geometry">
+       <rect>
+        <x>610</x>
+        <y>130</y>
+        <width>611</width>
+        <height>81</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Barlow</family>
+        <pointsize>-1</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: rgba(255, 255, 255, 255);
+font-size: 48px;
+text-align: center;
+font-family: Barlow;
+background-color: rgba(255, 255, 255, 0);
+font-weight: bold;</string>
+      </property>
+      <property name="text">
+       <string>3DBenchy.Gcode</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_43">
+      <property name="geometry">
+       <rect>
+        <x>610</x>
+        <y>250</y>
+        <width>450</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Barlow</family>
+        <pointsize>-1</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">font-weight: bold;color: rgba(255, 255, 255, 255);
+font-size: 40px;
+text-align: center;
+font-family: Barlow;
+background-color: rgba(255, 255, 255, 0);</string>
+      </property>
+      <property name="text">
+       <string>Mirror Mode</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_86">
+      <property name="geometry">
+       <rect>
+        <x>610</x>
+        <y>350</y>
+        <width>181</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Barlow</family>
+        <pointsize>-1</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">font-weight: bold;color: rgba(255, 255, 255, 255);
+font-size: 40px;
+text-align: center;
+font-family: Barlow;
+background-color: rgba(255, 255, 255, 0);</string>
+      </property>
+      <property name="text">
+       <string>0H0M0S</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_44">
+      <property name="geometry">
+       <rect>
+        <x>610</x>
+        <y>200</y>
+        <width>231</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: rgba(255, 255, 255, 255);
+font-size: 24px;
+text-align: center;
+font-family: Barlow;
+background-color: rgba(255, 255, 255, 0);</string>
+      </property>
+      <property name="text">
+       <string>Print Mode:</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_76">
+      <property name="geometry">
+       <rect>
+        <x>610</x>
+        <y>300</y>
+        <width>151</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: rgba(255, 255, 255, 255);
+font-size: 24px;
+text-align: center;
+font-family: Barlow;
+background-color: rgba(255, 255, 255, 0);</string>
+      </property>
+      <property name="text">
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Elapsed Time: &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
+     </widget>
     </widget>
     <widget class="QWidget" name="page_Printint">
      <widget class="QLabel" name="label_270">

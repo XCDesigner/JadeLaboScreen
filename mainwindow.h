@@ -217,6 +217,8 @@ private slots:
     void preparePrintPageInit();
 
     void PowerLostDialogReturn();
+    void RecoveryStop();
+    void RecoverySettingShow();
 
     // Fault detection
     void onMessageListen(uint8_t, uint8_t, QByteArray);
@@ -881,6 +883,8 @@ private:
 
     void PowerLostInit();
     void PowerTestResult(QByteArray Data);
+    void AcceptRecoveryInfo(QByteArray Data);
+    QString GetRecoveryFile();
 
 };
 

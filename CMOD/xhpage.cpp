@@ -119,9 +119,6 @@ int XhPage::analysis(QByteArray package)
                                     fTGet(data);
                                     break;
 
-                                case '\x04':
-
-                                break;
                                 case '\x05':
                                 break;
                                 case '\x06':
@@ -882,7 +879,9 @@ void XhPage::logFindSlot()
         }
 }
 
-
-
-
-
+bool XhPage::setPrintFile(QString FileName)
+{
+    thisFilePath = FileName;
+    m_file = new QFile(thisFilePath);
+    return m_file->open(QIODevice::ReadOnly);
+}

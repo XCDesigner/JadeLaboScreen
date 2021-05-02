@@ -57,6 +57,7 @@ public:
     void sendUpdate(quint16 ,QByteArray );
     void GetMachineStatus(strMachineStatus *pStatus);
 
+    bool setPrintFile(QString);
 private:
     /*包体*/
     QByteArray pageHead;//头
