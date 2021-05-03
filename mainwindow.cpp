@@ -79,8 +79,6 @@ MainWindow::MainWindow(QWidget *parent) :
     QObject::connect(m_port,&XhPort::xNoHeating,this,&MainWindow::cannext);
 //    QObject::connect(m_port,&XhPort::xyCheck,this,&MainWindow::xhxyCheck);
 
-    QObject::connect(m_port,&XhPort::filamentlost,this,&MainWindow::filamentlost);
-    QObject::connect(m_port,&XhPort::error,this,&MainWindow::error);
     QObject::connect(m_port,&XhPort::selfTest1,this,&MainWindow::selftest1);
     QObject::connect(m_port,&XhPort::selfTest2,this,&MainWindow::selftest2);
     QObject::connect(m_port,&XhPort::selfTest3,this,&MainWindow::selftest3);
@@ -88,7 +86,6 @@ MainWindow::MainWindow(QWidget *parent) :
     QObject::connect(m_port,&XhPort::selfTest5,this,&MainWindow::selftest5);
     QObject::connect(m_port,&XhPort::selfTest6,this,&MainWindow::selftest6);
 
-    QObject::connect(m_port,&XhPort::state,this,&MainWindow::state);
     QObject::connect(m_port,&XhPort::xcanone,this,&MainWindow::canone);
     QObject::connect(m_port,&XhPort::xcantwo,this,&MainWindow::cantwo);
     QObject::connect(m_port,&XhPort::updateBeginsignl,this,&MainWindow::updatebegin);
@@ -1464,44 +1461,6 @@ void MainWindow::dcancle()
     m_dup->hide();
     m_dup->close();
     m_dup=NULL;
-}
-
-void MainWindow::filamentlost()
-{
-    m_port->selfTest();
-}
-
-void MainWindow::error(int a )
-{
-    switch (a) {
-    case 4:
-        m_filamentfault = new  filamentFault(this);
-        m_filamentfault->show();
-        break;
-    case 5:
-        m_filamentfault = new  filamentFault(this);
-        m_filamentfault->show();
-        break;
-    default:
-        break;
-    }
-}
-
-void MainWindow::Fresume()
-{
-    m_port->resume();
-}
-
-void MainWindow::Fabort()
-{
-    m_port->abort();
-}
-
-void MainWindow::Fchangefilament()
-{
-    ui->stackedWidget->setCurrentIndex(80);
-    m_filamentfault->hide();
-    m_filamentfault->close();
 }
 
 void MainWindow::selftest1()

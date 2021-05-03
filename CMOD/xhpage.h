@@ -41,17 +41,12 @@ public:
     /*TOOL页面*/
     void tSelfTest(QByteArray data);//自检
 
-    void errorLog(QByteArray data);
-
     /*****************组包******************/
-    QByteArray lightPage(bool ,QString );
     QByteArray groupPage(QByteArray );
 
     QByteArray chooseFile(QString );
     QByteArray analysisFile();
-    void askstate(QByteArray );
     void sendfile(quint32 );
-
 
     void updateBegin(QString );
     void sendUpdate(quint16 ,QByteArray );
@@ -117,16 +112,11 @@ signals:
     /*tool*/
     void disUseFilament(bool );
     void backFactory(bool );
-    /*filament*/
-    void filamentHeated(bool );
 
     /*tool calibration*/
-    void pNozzleHeating(bool );
     void pPlatformCalibration(qint32 ,qint32 ,qint32 ,qint32 );
 
-    void cancle();
     void nNozzleCalibration(int  );
-    void xXyHeating(bool );
     void xPlatformCalibration(bool );
 
     void sendFileArry(QByteArray );
@@ -135,11 +125,6 @@ signals:
     void goOnOk();
     void printend();
 
-    void powerlost();
-    void filamentlost();
-
-    void error(int );
-
     void selfTest1();
     void selfTest2();
     void selfTest3();
@@ -147,7 +132,6 @@ signals:
     void selfTest5();
     void selfTest6();
 
-    void state(QString ,QString ,QString ,QString ,QString ,QString ,QString );
     void canone(int );
     void cantwo(int );
 

@@ -39,26 +39,25 @@ public:
     void rdown();
 
     /**********PRINT IDER**********/
-    QByteArray startPrint(QString );
+    QByteArray startPrint(QString);
     void AcsPrint(QByteArray);
     void pausePrint();
     void stopPrint();
     void regainPrint();
-    void readyprint(int ,QByteArray );
+    void readyprint(int ,QByteArray);
 
-    void enHotend(bool ,bool );
     void enbackup(bool );
-    void setBackupEnableStatus(bool );
+    void setBackupEnableStatus(bool);
     void parcom(int );
     void askHotend();
     void askstate();
 
-    void setPrintTempPercentage(int Index, uint8_t Percent);
-    void setPrintFanPercentage(int Index, uint8_t Percent);
-    void setPrintSpeedPercentage(uint16_t Percent);
-    void setPrintPlatformOffset(int32_t Height);
+    void setPrintTempPercentage(int, uint8_t);
+    void setPrintFanPercentage(int, uint8_t);
+    void setPrintSpeedPercentage(uint16_t);
+    void setPrintPlatformOffset(int32_t);
 
-    void setExtruderDisable(uint8_t Index);
+    void setExtruderDisable(uint8_t);
     /*********ERROR*************/
     void resume();
     void abort();
@@ -67,9 +66,7 @@ public:
 
     /**********TOOL**********/
 
-    void setColorRGB();//设置颜色的RGB值
     void selfTest();//设备自检*
-    void unFilament();//禁止filament
     void factoryReset();//恢复出厂设置
     /*platfrom*/
     void p_nozzleHeating();
@@ -78,36 +75,27 @@ public:
     void finish();
     void cancleCalibration();
     /*nozzle*/
-    void n_nozzleHeating();
     void n_nozzleCalibration();
     /*xy*/
-    void x_xyHeating();
     void x_platformCalibration();
     void x_xyCalibration();
-    /*l hotend*/
-    void l_hotendTest();
-    void l_cooling();
-    /*r hotend*/
-    void r_hotendTest();
-    //暂时不做
-    void relativeMove();//相对模式移动
-    void absoluteMove();//绝对模式移动
-    void homeMove(QByteArray );//移动到起点
-    void moveAxis(int Mode, int X, int Y, int Z);
-    void setDualMode(int Mode);
 
-    void setRGBLight(int R, int G, int B);
+    void homeMove(QByteArray );//移动到起点
+    void moveAxis(int, int, int, int);
+    void setDualMode(int);
+
+    void setRGBLight(int, int, int);
     void setLightOnOff(bool);
 
-    void setHeattingUnit(int Index, int Temp);
-    void setHeattingUnit(int Index0, int Temp0, int Index1, int Temp1);
-    void setHeattingUnit(QString strLeftTemp, QString strRightTemp);
-    void setHeattingUnit(QString strLeftTemp, QString strRightTemp, QString strBedTemp);
+    void setHeattingUnit(int, int);
+    void setHeattingUnit(int, int, int, int);
+    void setHeattingUnit(QString, QString);
+    void setHeattingUnit(QString, QString, QString);
 
-    void setFilamentSensorEnableStatus(bool NewStatus);
+    void setFilamentSensorEnableStatus(bool);
     void getFilamentSensorEnableStatus();
 
-    void changeToolHead(int Index);
+    void changeToolHead(int);
 
     void testdemo();
 
@@ -164,26 +152,17 @@ signals:
     /*tool*/
     void disUseFilament(bool );
     void backFactory(bool );
-    /*filament*/
-    void filamentHeated(bool );
 
     /*tool calibration*/
-    void pNozzleHeating(bool );
     void pPlatformCalibration(qint32 ,qint32 ,qint32 ,qint32 );
-    void nNozzleHeating(bool );
     void nNozzleCalibration( int );
-    void xXyHeating(bool );
     void xPlatformCalibration(bool );
     void canelk();
 
     void fileSendOver();
-    void type(int ,int);
     void printend();
 
     void powerlost();
-    void filamentlost();
-    void error(int );
-
 
     void selfTest1();
     void selfTest2();
@@ -191,7 +170,6 @@ signals:
     void selfTest4();
     void selfTest5();
     void selfTest6();
-    void state(QString ,QString ,QString ,QString ,QString ,QString ,QString );
     void xcanone(int );
     void xcantwo(int );
     void updateBeginsignl();
@@ -208,13 +186,9 @@ private slots:
     /*tool*/
     void xhdisUseFilament(bool );
     void xhbackFactory(bool );
-    /*filament*/
-    void xhfilamentHeated(bool );
 
     /*tool calibration*/
-    void xhpNozzleHeating(bool );
     void xhnNozzleCalibration( int );
-    void xhxXyHeating(bool );
     void xhxPlatformCalibration(bool );
 
     void fileSendOverSlot();
@@ -224,8 +198,6 @@ private slots:
     void xhprintend();
 
     void xhpowerlost();
-    void xhfilamentlost();
-    void xherror(int );
 
     void xhselfTest1();
     void xhselfTest2();
@@ -234,7 +206,6 @@ private slots:
     void xhselfTest5();
     void xhselfTest6();
 
-    void xhstate(QString ,QString ,QString ,QString ,QString ,QString ,QString );
     void xhcanone(int a);
     void xhcantwo(int a);
 

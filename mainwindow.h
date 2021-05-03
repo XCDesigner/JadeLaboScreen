@@ -336,13 +336,6 @@ private slots:
     void ddup();
     void dcancle();
 
-    void filamentlost();
-
-    void error(int );
-    void Fresume();
-    void Fabort();
-    void Fchangefilament();
-
     void selftest1();
     void selftest2();
     void selftest3();
@@ -354,7 +347,6 @@ private slots:
     void findhotend();
     void cannext(bool );
 
-    void state(QString ,QString ,QString ,QString ,QString ,QString ,QString );
     void canone(int a);
     void cantwo(int a);
     void up();

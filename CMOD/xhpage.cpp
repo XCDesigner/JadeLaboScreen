@@ -134,17 +134,7 @@ int XhPage::analysis(QByteArray package)
                                 if(data[2]=='\x00')
                                     emit xyCheck(true);
                                 break;
-                                case '\x01':
-                                    errorLog(data);
-                                break;
-                                case '\x03':
-                                   if(data[3]=='\x01')
-                                    emit powerlost();
-                                break;
-                                case '\x0D':
-                                    if(data[2]=='\x00')
-                                    askstate(data);
-                                break;
+
                                 case '\x0E':
                                     if(data[2]=='\x00')
                                     {
@@ -223,13 +213,6 @@ int XhPage::analysis(QByteArray package)
                         break;
                     /*******tool*********/
                         case '\x03':
-                            if(data[1]== '\x0A')
-                            {
-                                if(data[2] == '\x00')
-                                {
-                                    emit cancle();
-                                }
-                            }
                             if(data[1] == '\x00')
                             {
                                 if(data[2] == '\x00')
@@ -329,10 +312,6 @@ int XhPage::analysis(QByteArray package)
                                 }
                             }
                             break;
-                            case '\x08':
-                            emit filamentlost();
-                            break;
-
                         }
                         break;
                     default:
@@ -479,74 +458,6 @@ void XhPage::tSelfTest(QByteArray data)
     //发送自检结果
 }
 
-void XhPage::errorLog(QByteArray data)
-{
-    if(data[3] == '\x01')
-    {
-        emit error(0);
-    }
-    if(data[3] == '\x02')
-    {
-        emit error(1);
-    }
-    if(data[3] == '\x04')
-    {
-        emit error(2);
-    }
-    if(data[3] == '\x08')
-    {
-        emit error(3);
-    }
-    if(data[3] == '\x10')
-    {
-        emit error(4);
-    }
-    if(data[3] == '\x20')
-    {
-        emit error(5);
-    }
-    if(data[3] == '\x40')
-    {
-        emit error(6);
-    }
-    if(data[3] == '\x80')
-    {
-        emit error(7);
-    }
-    if(data[4] == '\x01')
-    {
-        emit error(8);
-    }
-    if(data[4] == '\x02')
-    {
-        emit error(9);
-    }
-    if(data[4] == '\x04')
-    {
-        emit error(10);
-    }
-    if(data[4] == '\x08')
-    {
-        emit error(11);
-    }
-    if(data[6] == '\x01')
-    {
-        emit error(31);
-    }
-}
-
-QByteArray XhPage::lightPage(bool type, QString str)
-{
-    if(type)
-    {
-        QByteArray data = "";
-    }
-    else
-    {
-        QByteArray m_data = "";
-    }
-}
-
 QByteArray XhPage::groupPage(QByteArray data)
 {
     quint16 nature=0;
@@ -644,24 +555,6 @@ QByteArray XhPage::analysisFile()
     m_file.close();
     QByteArray A;
     return A;
-}
-
-
-
-void XhPage::askstate(QByteArray data)
-{
-    quint16 ltemp = XH_LITTLE_BIT_MERGE_16(data[3], data[4]);
-    quint16 rtemp = XH_LITTLE_BIT_MERGE_16(data[5], data[6]);
-    quint16 bedtemp = XH_LITTLE_BIT_MERGE_16(data[7], data[8]);
-    quint8 lfan = data[9];
-    quint8 rfan = data[10];
-    quint16 FeedRate = XH_LITTLE_BIT_MERGE_16(data[11], data[12]);
-    qint32 PlatformZ = XH_LITTLE_BIT_MERGE_32(data[13], data[14], data[15], data[16]);
-
-    emit state(QString::asprintf("%d",ltemp),QString::asprintf("%d",rtemp),\
-                QString::asprintf("%d",bedtemp),QString::asprintf("%d",lfan),\
-                QString::asprintf("%d",rfan),QString::asprintf("%d",FeedRate),QString::asprintf("%0.1f",PlatformZ/1000.0f));
-
 }
 
 void XhPage::sendfile(quint32 offset)

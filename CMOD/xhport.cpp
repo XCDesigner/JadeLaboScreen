@@ -21,13 +21,9 @@ XhPort::XhPort(QObject *parent) : QObject(parent)
     /*tool*/
     QObject::connect(m_package,&XhPage::disUseFilament,this,&XhPort::xhdisUseFilament);
     QObject::connect(m_package,&XhPage::backFactory,this,&XhPort::xhbackFactory);
-    /*filament*/
-    QObject::connect(m_package,&XhPage::filamentHeated,this,&XhPort::xhfilamentHeated);
 
     /*tool calibration*/
-    QObject::connect(m_package,&XhPage::pNozzleHeating,this,&XhPort::xhpNozzleHeating);
     QObject::connect(m_package,&XhPage::nNozzleCalibration,this,&XhPort::xhnNozzleCalibration);
-    QObject::connect(m_package,&XhPage::xXyHeating,this,&XhPort::xhxXyHeating);
     QObject::connect(m_package,&XhPage::xPlatformCalibration,this,&XhPort::xhxPlatformCalibration);
 
     QObject::connect(m_package,&XhPage::fileSendOver,this,&XhPort::fileSendOverSlot);
@@ -37,16 +33,12 @@ XhPort::XhPort(QObject *parent) : QObject(parent)
 
     QObject::connect(m_package,&XhPage::printend,this,&XhPort::xhprintend);
 
-    QObject::connect(m_package,&XhPage::filamentlost,this,&XhPort::xhfilamentlost);
-    QObject::connect(m_package,&XhPage::powerlost,this,&XhPort::xhpowerlost);
-    QObject::connect(m_package,&XhPage::error,this,&XhPort::xherror);
     QObject::connect(m_package,&XhPage::selfTest1,this,&XhPort::xhselfTest1);
     QObject::connect(m_package,&XhPage::selfTest2,this,&XhPort::xhselfTest2);
     QObject::connect(m_package,&XhPage::selfTest3,this,&XhPort::xhselfTest3);
     QObject::connect(m_package,&XhPage::selfTest4,this,&XhPort::xhselfTest4);
     QObject::connect(m_package,&XhPage::selfTest5,this,&XhPort::xhselfTest5);
     QObject::connect(m_package,&XhPage::selfTest6,this,&XhPort::xhselfTest6);
-    QObject::connect(m_package,&XhPage::state,this,&XhPort::xhstate);
     QObject::connect(m_package,&XhPage::canone,this,&XhPort::xhcanone);
     QObject::connect(m_package,&XhPage::cantwo,this,&XhPort::xhcantwo);
 
@@ -159,22 +151,6 @@ void XhPort::readyprint(int Mode, QByteArray Offset)
     m_serial->write(buff);
 }
 
-void XhPort::enHotend(bool l, bool r)
-{
-    if(!l)
-    {
-        QByteArray s = QByteArray::fromHex("010701");
-        QByteArray buff = m_package->groupPage(s);
-        m_serial->write(buff);
-    }
-    if(!r)
-    {
-        QByteArray s = QByteArray::fromHex("010702");
-        QByteArray buff = m_package->groupPage(s);
-        m_serial->write(buff);
-    }
-}
-
 void XhPort::enbackup(bool a )
 {
     if(a)
@@ -267,13 +243,6 @@ void XhPort::selfTest()
 
 }
 
-void XhPort::unFilament()
-{
-    QByteArray s = QByteArray::fromHex("0900");
-    QByteArray buff = m_package->groupPage(s);
-    m_serial->write(buff);
-}
-
 void XhPort::factoryReset()
 {
     QByteArray s = QByteArray::fromHex("0901");
@@ -316,13 +285,6 @@ void XhPort::n_nozzleCalibration()
     m_serial->write(buff);
 }
 
-void XhPort::x_xyHeating()
-{
-    QByteArray s = QByteArray::fromHex("0405");
-    QByteArray buff = m_package->groupPage(s);
-    m_serial->write(buff);
-}
-
 void XhPort::x_platformCalibration()
 {
     QByteArray s = QByteArray::fromHex("0309");
@@ -335,37 +297,6 @@ void XhPort::x_xyCalibration()
     QByteArray s = QByteArray::fromHex("0305");
     QByteArray buff = m_package->groupPage(s);
     m_serial->write(buff);
-}
-
-void XhPort::l_hotendTest()
-{
-    QByteArray s = QByteArray::fromHex("0801");
-    QByteArray buff = m_package->groupPage(s);
-    m_serial->write(buff);
-}
-
-void XhPort::l_cooling()
-{
-    QByteArray s = QByteArray::fromHex("0802");
-    QByteArray buff = m_package->groupPage(s);
-    m_serial->write(buff);
-}
-
-void XhPort::r_hotendTest()
-{
-    QByteArray s = QByteArray::fromHex("0803");
-    QByteArray buff = m_package->groupPage(s);
-    m_serial->write(buff);
-}
-
-/*相对模式移动*/
-void XhPort::relativeMove()
-{
-
-}
-
-void XhPort::absoluteMove()
-{
 }
 
 /**
@@ -877,24 +808,9 @@ void XhPort::xhbackFactory(bool a)
     emit backFactory(a);
 }
 
-void XhPort::xhfilamentHeated(bool a )
-{
-    emit filamentHeated(a);
-}
-
-void XhPort::xhpNozzleHeating(bool a)
-{
-    emit pNozzleHeating(a);
-}
-
 void XhPort::xhnNozzleCalibration(int b)
 {
     emit nNozzleCalibration(b);
-}
-
-void XhPort::xhxXyHeating(bool a)
-{
-    emit xXyHeating(a);
 }
 
 void XhPort::xhxPlatformCalibration(bool a )
@@ -927,16 +843,6 @@ void XhPort::xhpowerlost()
     emit powerlost();
 }
 
-void XhPort::xhfilamentlost()
-{
-    emit filamentlost();
-}
-
-void XhPort::xherror(int a )
-{
-    emit error(a);
-}
-
 void XhPort::xhselfTest1()
 {
     emit selfTest1();
@@ -965,11 +871,6 @@ void XhPort::xhselfTest5()
 void XhPort::xhselfTest6()
 {
     emit selfTest6();
-}
-
-void XhPort::xhstate(QString a,QString b,QString c,QString d,QString e,QString f,QString g)
-{
-    emit state(a ,b ,c ,d ,e ,f ,g );
 }
 
 void XhPort::xhcanone(int a)
