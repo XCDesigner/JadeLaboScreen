@@ -48,7 +48,6 @@ void MainWindow::timeAdd()
     ui->label_86->setText(QString::number(m_time->hour())+"H "+QString::number(m_time->minute())+"M");
     ui->label_78->setText(QString::number(m_time->hour())+"H "+QString::number(m_time->minute())+"M");
     ui->label_307->setText(QString::number(m_time->hour())+"H "+QString::number(m_time->minute())+"M");
-    ui->label_310->setText(QString::number(m_time->hour())+"H "+QString::number(m_time->minute())+"M");
 }
 
 
@@ -68,7 +67,7 @@ void MainWindow::printMessageProcess(uint8_t Command, uint8_t SubCode, QByteArra
         }
         else if(SubCode == 0x09)
         {
-            ui->quickWidget_3->rootObject()->setProperty("currentPercent", 100);
+            ui->quickWidget_3->rootObject()->setProperty("currentPercent", 1000);
             ui->quickWidget_3->rootObject()->setProperty("finishEnabled", true);
         }
     }

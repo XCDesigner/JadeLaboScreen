@@ -123,7 +123,6 @@ signals:
     /*print*/
     void fileSendOver();//文件传输结束
     void goOnOk();
-    void printend();
 
     void selfTest1();
     void selfTest2();

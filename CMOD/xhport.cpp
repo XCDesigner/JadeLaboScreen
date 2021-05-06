@@ -31,8 +31,6 @@ XhPort::XhPort(QObject *parent) : QObject(parent)
     QObject::connect(m_package,&XhPage::xNoHeating,this,&XhPort::xhxNoHeating);
     QObject::connect(m_package,&XhPage::xyCheck,this,&XhPort::xhxyCheck);
 
-    QObject::connect(m_package,&XhPage::printend,this,&XhPort::xhprintend);
-
     QObject::connect(m_package,&XhPage::selfTest1,this,&XhPort::xhselfTest1);
     QObject::connect(m_package,&XhPage::selfTest2,this,&XhPort::xhselfTest2);
     QObject::connect(m_package,&XhPage::selfTest3,this,&XhPort::xhselfTest3);
@@ -831,11 +829,6 @@ void XhPort::xhxNoHeating(bool a)
 void XhPort::xhxyCheck(bool a)
 {
     emit xyCheck(a);
-}
-
-void XhPort::xhprintend()
-{
-    emit printend();
 }
 
 void XhPort::xhpowerlost()

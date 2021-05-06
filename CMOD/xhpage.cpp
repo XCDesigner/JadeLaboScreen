@@ -302,15 +302,7 @@ int XhPage::analysis(QByteArray package)
 
                             break;
                             case '\x07':
-                            if(data[2]=='\x00')
-                            {
-                                // emit printend();
-                                if(m_file!= nullptr)
-                                {
-                                   m_file->close();
-                                   m_file = nullptr;
-                                }
-                            }
+
                             break;
                         }
                         break;

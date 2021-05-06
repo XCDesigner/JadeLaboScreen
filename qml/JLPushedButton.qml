@@ -9,7 +9,7 @@ Rectangle {
     property alias font: title.font
     property int index: 0
 
-    color: "#2d2c2b"
+    color: "#ff630b"
     radius: 20
 
     signal clicked(int index)
@@ -52,6 +52,7 @@ Rectangle {
 
     Text {
         id: title
+        text: "Text"
         anchors.centerIn: parent
         color: "#ffffff"
         font { family: "barlow"; pixelSize: 28; bold: true }

@@ -17,8 +17,8 @@ MainWindow::MainWindow(QWidget *parent) :
 
     this->setWindowFlags(Qt::FramelessWindowHint);
     /*初始化*/
-    m_WinFiel = NULL;
-    par = NULL;
+    m_WinFile = NULL;
+    pdlg_parsing = NULL;
     skpWin = new askPause(this);
     skpWin->hide();
 
@@ -74,7 +74,6 @@ MainWindow::MainWindow(QWidget *parent) :
 
     /*print*/
     QObject::connect(m_port,&XhPort::fileSendOver,this,&MainWindow::jumpSixteen);
-    QObject::connect(m_port,&XhPort::printend,this,&MainWindow::printending);
 
     QObject::connect(m_port,&XhPort::xNoHeating,this,&MainWindow::cannext);
 //    QObject::connect(m_port,&XhPort::xyCheck,this,&MainWindow::xhxyCheck);
@@ -144,7 +143,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
     for(i = 0;i< m_gcodelist.count();i++)
     {
-        m_addItemToList(m_gcodelist.at(i).fileName(),m_gcodelist.at(i).filePath());
+        m_addItemToList(m_gcodelist.at(i).fileName(),m_gcodelist.at(i).filePath(), QByteArray("Local"));
     }
     printTimer = new QTimer(this);
     m_opaCity=0.0;
@@ -154,10 +153,6 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->quickWidget_3->setSource(QUrl("qrc:/qml/CircleProgressBar.qml"));
     ui->quickWidget_3->setResizeMode(QQuickWidget::SizeRootObjectToView);
     ui->quickWidget_3->setClearColor(QColor(qmlColor));
-
-    ui->quickWidget_5->setSource(QUrl("qrc:/qml/CircleProgressBar.qml"));
-    ui->quickWidget_5->setResizeMode(QQuickWidget::SizeRootObjectToView);
-    ui->quickWidget_5->setClearColor(QColor(qmlColor));
 
     ui->qw_PreHeating->setSource(QUrl("qrc:/qml/HeatingCircle.qml"));
     ui->qw_PreHeating->setResizeMode(QQuickWidget::SizeRootObjectToView);
@@ -204,9 +199,6 @@ MainWindow::MainWindow(QWidget *parent) :
     item=ui->quickWidget_3->rootObject();
     QObject::connect(item,SIGNAL(finishClicked()), this, SLOT(onFinishPrintClicked()));
 
-
-    item3=ui->quickWidget_5->rootObject();
-    QObject::connect(this,SIGNAL(sendSignalToQml(int )),item3,SIGNAL(receFromWidget(int )));
 
     QObject::connect(ui->qw_ExtruderSelect->rootObject(), SIGNAL(clicked()), this, SLOT(ExtruderChange()));
 
@@ -262,7 +254,8 @@ MainWindow::MainWindow(QWidget *parent) :
     m_fileParser = new XhGcodeFileParser(this);
     QObject::connect(m_fileParser,&XhGcodeFileParser::parseByDirectMode,this,&MainWindow::parseMode,Qt::QueuedConnection);
     QObject::connect(m_fileParser,&XhGcodeFileParser::parseByDeepHeader,this,&MainWindow::parseHeader,Qt::QueuedConnection);
-    QObject::connect(m_fileParser,&XhGcodeFileParser::parseDeepSucceded,this,&MainWindow::parseDeep,Qt::QueuedConnection);
+    QObject::connect(m_fileParser,SIGNAL(parseDeepSucceded()),this, SLOT(onParseSuccess()),Qt::QueuedConnection);
+    // QObject::connect(m_fileParser,&XhGcodeFileParser::parseDeepSucceded,this,&MainWindow::parseDeep,Qt::QueuedConnection);
     QObject::connect(m_fileParser,&XhGcodeFileParser::parseByDeepMode,this,&MainWindow::parseDeepMode,Qt::QueuedConnection);
 
     m_event->setup(m_port);
@@ -315,48 +308,6 @@ void MainWindow::WidgetChanged(int index)
     {
         preparePrintPageInit();
     }
-}
-
-void MainWindow::m_addItemToList(const QString &fileName, QString filePath)
-{
-    // qDebug()<<"localADD";
-    if(fileName == "."||fileName == "..")
-    {
-        return;
-    }
-    myListWidgetItem *pWidgetItem = new myListWidgetItem(this);
-    pWidgetItem->m_addItem(fileName,filePath);
-    QListWidgetItem* pItem = new QListWidgetItem(ui->listWidget);
-    pItem->setSizeHint(QSize(1050,127));
-
-//    if(m_map.value(pWidgetItem) == nullptr)
-//    {
-        m_map.insert(pWidgetItem,pItem);
-        ui->listWidget->setItemWidget(pItem,pWidgetItem);
-
-        QObject::connect(pWidgetItem,SIGNAL(deleteItem(myListWidgetItem * )),this,SLOT(m_deleteItem(myListWidgetItem * )));
-        QObject::connect(pWidgetItem,SIGNAL(chooseFile(myListWidgetItem * )),this,SLOT(m_chooseItem(myListWidgetItem * )));
-        //    }
-}
-
-void MainWindow::m_addItemToList(const QString &fileName, QString filePath, QString uDisk)
-{
-    qDebug()<<"udiskADD";
-    if(fileName == "."||fileName == "..")
-    {
-        return;
-    }
-    myListWidgetItem *pWidgetItem = new myListWidgetItem(this);
-    pWidgetItem->m_addItem(fileName,filePath);
-    pWidgetItem->isUDisk = uDisk;
-    QListWidgetItem* pItem = new QListWidgetItem(ui->listWidget_2);
-    pItem->setSizeHint(QSize(930,127));
-
-    m_map.insert(pWidgetItem,pItem);
-    ui->listWidget_2->setItemWidget(pItem,pWidgetItem);
-
-    QObject::connect(pWidgetItem,SIGNAL(deleteItem(myListWidgetItem * )),this,SLOT(m_deleteItem(myListWidgetItem * )));
-    QObject::connect(pWidgetItem,SIGNAL(chooseFile(myListWidgetItem * )),this,SLOT(m_chooseItem(myListWidgetItem * )));
 }
 
 void MainWindow::m_adTtemtowifi(const QString &wifiname, QString wifilevel)
@@ -835,8 +786,8 @@ void MainWindow::buprint()
     ui->stackedWidget->setCurrentWidget(ui->page_GetStart);
 //    m_printsec->stop();
     m_deepTimer->stop();
-    par->hide();
-    par->close();
+    pdlg_parsing->hide();
+    pdlg_parsing->close();
 }
 
 void MainWindow::getCondition()
@@ -854,59 +805,6 @@ void MainWindow::downloadOver(QString fileName)
 #endif
 }
 
-void MainWindow::m_deleteItem(myListWidgetItem *itm)
-{
-    m_delete = new Delete(this);
-    m_delete->show();
-    m_delete->deleteItem = itm;
-    m_delete->filePath = itm->m_filePath;
-    m_delete->fileName = itm->m_fileName;
-    m_delete->setName();
-    QObject::connect(m_delete,SIGNAL(checkDelete(myListWidgetItem * )),this,SLOT(m_deleteTrue(myListWidgetItem * )));
-    QObject::connect(m_delete,SIGNAL(checkCancel(myListWidgetItem * )),this,SLOT(m_deleteFalse(myListWidgetItem * )));
-}
-
-void MainWindow::m_deleteTrue(myListWidgetItem *itm)
-{
-    QFile fileTemp(itm->m_filePath);
-    fileTemp.remove();
-    if(itm->isUDisk == "")
-    {
-        QListWidgetItem *v=m_map.take(itm);
-        ui->listWidget->takeItem(ui->listWidget->row(v));
-        delete v;
-    }else
-    {
-        QListWidgetItem *v=m_map.take(itm);
-        ui->listWidget_2->takeItem(ui->listWidget_2->row(v));
-        delete v;
-    }
-    m_delete->hide();
-    m_delete->close();
-}
-
-void MainWindow::m_deleteFalse(myListWidgetItem *itm)
-{
-    m_delete->hide();
-    m_delete->close();
-}
-
-void MainWindow::m_chooseItem(myListWidgetItem *itm)
-{
-    QListWidgetItem *v =m_map.value(itm);
-
-    m_WinFiel = new chooseFile(this);
-    m_WinFiel->setFileName(itm->m_fileName);
-    m_WinFiel->m_filePath=itm->m_filePath;
-    QObject::connect(m_WinFiel,SIGNAL(choose()),this,SLOT(m_chooseEN()));
-    QObject::connect(m_WinFiel,SIGNAL(cancel()),this,SLOT(m_chooseUEN()));
-    m_WinFiel->show();
-
-    ui->label_72->setText(itm->m_fileName);
-    ui->label_73->setText(itm->m_fileName);
-    ui->label_309->setText(itm->m_fileName);
-}
-
 void MainWindow::connctwifi(myWifiItem *itm)
 {
     ui->label_319->setText(itm->wifiname);
@@ -916,226 +814,18 @@ void MainWindow::connctwifi(myWifiItem *itm)
     chooseit = itm;
 }
 
-void MainWindow::m_chooseEN()
-{
-    loaclPATH.clear();
-    loaclPATH = localPath+m_WinFiel->m_fileName;
-    /* 2021/3/2 cbw */
-    QString a= QDir::currentPath()+"/UD";
-    if(m_WinFiel->m_filePath.left(4) == "/mnt"||m_WinFiel->m_filePath.left(a.size()) == UDiskPath)
-    {
-        QFileInfo directFile(m_WinFiel->m_filePath);
-        romClean(directFile.size());
-        m_fileParser->parseByDirect(m_WinFiel->m_filePath,localPath+m_WinFiel->m_fileName);
-        udiskPATH = m_WinFiel->m_filePath;
-        openMode = false;
-    }
-    else
-    {
-        //解析文件
-        int mode = 0;
-        QFile m_sendFile(m_WinFiel->m_filePath);
-        if(m_sendFile.open(QIODevice::ReadOnly))
-        {
-            QByteArray m_filedata = m_sendFile.readLine();
-            QList<QByteArray> params = m_filedata.split(' ');
-            qDebug()<<params;
-            QByteArray print_mode = params[1].split(':')[1];
-            QString offset = params[2].split(':')[1];
-            lt = params[3].split(':')[1];
-            rt = params[4].split(':')[1];
-            bt = params[5].split(':')[1];
-
-            QString data = m_filedata;
-            if((print_mode == "unknown")|| (print_mode =="Unknown"))
-            {
-                mode = 1;
-                this->printMode = 0;
-            }
-            if(print_mode == "Mirror")
-            {
-                mode = 2;
-            }
-            if(print_mode == "Duplicate")
-            {
-                mode = 3;
-            }
-            if(print_mode == "Unsupport")
-            {
-                mode = 4;
-                this->printMode = 0;
-            }
-            if(print_mode == "Mix")
-            {
-                mode = 5;
-                this->printMode = 6;
-            }
-            if(print_mode == "Orgin-Mirror")
-            {
-                mode = 6;
-                this->printMode = 5;
-            }
-            if(print_mode == "Orgin-Duplicate")
-            {
-                mode = 7;
-                this->printMode = 4;
-            }
-
-            qDebug()<<"offset qstring read"<<offset;
-#ifdef OLD
-            if(offset.contains("-"))
-            {
-                offset = offset.mid(1,offset.size()-1);
-                float a = offset.toFloat();
-                offsetnum = 0 - (a*1000);
-            }
-            else {
-                offsetnum = offset.toInt()*1000;
-            }
-#endif
-            if(offset.contains("-"))
-            {
-                offset = offset.mid(1,offset.size()-1);
-                qDebug()<<"offset"<<offset;
-                float a = offset.toFloat();
-                offsetnum = 0 - (a*1000);
-                qDebug()<<"numoffset"<<offsetnum;
-            }
-            else {
-                float a = offset.toFloat();
-                offsetnum = a*1000;
-                qDebug()<<"numoffset"<<offsetnum;
-            }
-        }
-
-        m_dam = new DupandMirorr(this);
-        QObject::connect(m_dam,&DupandMirorr::print,this,&MainWindow::tprint);
-        QObject::connect(m_dam,&DupandMirorr::mirro,this,&MainWindow::tmirro);
-        QObject::connect(m_dam,&DupandMirorr::dup,this,&MainWindow::tdup);
-        QObject::connect(m_dam,&DupandMirorr::cancle,this,&MainWindow::tcanle);
-
-        switch (mode) {
-        case 1:
-            m_dam->changeMode(0);
-            break;
-        case 2:
-            m_dam->changeMode(2);
-            break;
-        case 3:
-            m_dam->changeMode(3);
-            break;
-        case 4:
-            m_dam->changeMode(1);
-            break;
-        case 5:
-            m_dam->changeMode(1);
-            break;
-        case 6:
-            m_dam->changeMode(1);
-            break;
-        case 7:
-            m_dam->changeMode(1);
-            break;
-        default:
-            break;
-        }
-        openMode =true;
-        m_dam->show();
-        m_WinFiel->hide();
-        m_WinFiel->close();
-
-        m_sendFile.close();
-    }
-    /* over */
-
-//    QStorageInfo storage = QStorageInfo::root();
-//    storage.refresh();
-//    qDebug()<<storage.rootPath();
-//    if(storage.isReadOnly())
-//        qDebug()<<"isReadOnly:"<<storage.isReadOnly();
-//    qDebug()<<"name:"<<storage.name();
-//    qDebug()<<"fileSystemType:"<<storage.fileSystemType();
-//    qDebug()<<"size:"<<storage.bytesTotal()/1000/1000<<"MB";
-//    qDebug()<<"availableSize:"<<storage.bytesAvailable()/1000/1000<<"MB";
-}
-
-void MainWindow::romClean(int fileSize)
-{
-    /*判断存储空间*/
-    QStorageInfo storage = QStorageInfo::root();
-    storage.refresh();
-#ifdef DEBUG
-    qDebug()<<storage.rootPath();
-    if(storage.isReadOnly())
-        qDebug()<<"isReadOnly:"<<storage.isReadOnly();
-    qDebug()<<"name:"<<storage.name();
-    qDebug()<<"fileSystemType:"<<storage.fileSystemType();
-    qDebug()<<"size:"<<storage.bytesTotal()/1000/1000<<"MB";
-    qDebug()<<"availableSize:"<<storage.bytesAvailable()/1000/1000<<"MB";
-#endif
-    int i,j;
-    QDir *dir=new QDir(localPath);
-    QList<QFileInfo> fileInfo = QList<QFileInfo>(dir->entryInfoList());
-    if(fileInfo.size() > 0 )
-    {
-        /*判断文件输入后剩余容量是否小于512MB*/
-        if((storage.bytesAvailable()/1000/1000 - fileSize) < 512)
-        {
-            /*文件最后修改日期排序*/
-            QList<QDateTime> fileTime;
-            for(i = 0; i < fileInfo.size(); i++)
-            {
-                fileTime.append(fileInfo.at(i).lastModified());
-            }
-            qSort(fileTime.begin(), fileTime.end());//容器元素的递增排序
-            /*腾出空间，直到可以容纳输入文件*/
-            while(1)
-            {
-                if((storage.bytesAvailable()/1000/1000 - fileSize) >= 512)
-                {
-                    break;
-                }
-                qDebug()<<"while run";
-                qDebug()<<fileInfo.size();
-                if(fileInfo.size()<= 0 )
-                    break;
-                for (j = 0;j<fileInfo.size();j++)
-                {
-                    qDebug()<<"list"<<j;
-                    if(fileInfo.at(j).lastModified() == fileTime.at(0))
-                    {
-                        qDebug()<<fileInfo.at(j).fileName();
-                        dir->remove(fileInfo.at(j).fileName());
-                        fileInfo.removeAt(j);
-                        fileTime.removeAt(0);
-                    }
-                }
-                storage.refresh();
-                qDebug()<<storage.bytesAvailable()/1000/1000<<"MB";
-            }
-            qDebug()<<fileTime;
-        }
-    }
-}
-
 void MainWindow::m_canPrintFile()
 {
     //等待请求文件内容的指令中
     ui->stackedWidget->setCurrentWidget(ui->page_Printint);
 }
 
-void MainWindow::m_chooseUEN()
-{
-    m_WinFiel->hide();
-    m_WinFiel->close();
-}
-
 void MainWindow::m_parcancel()
 {
     m_timer.stop();
     QObject::disconnect(&m_timer,SIGNAL(timeout()),this,SLOT(jumpSixteen()));
-    par->hide();
-    par->close();
+    pdlg_parsing->hide();
+    pdlg_parsing->close();
 }
 
 void MainWindow::m_backPrint()
@@ -1233,13 +923,6 @@ void MainWindow::fileList()
     QTimer::singleShot(500, this, SLOT(fileList()));
 }
 
-void MainWindow::printending()
-{
-    ui->stackedWidget->setCurrentWidget(ui->page_PrintFinish);
-    m_printsec->stop();
-    m_time->setHMS(0,0,0);
-}
-
 void MainWindow::plt(QString a)
 {
     QObject::disconnect(m_printfilament,&printFlament::heatT,this,&MainWindow::plt);
@@ -1265,7 +948,6 @@ void MainWindow::oneprint()
     this->printMode = 0;
     ui->label_36->setText("Direct Mode");
     ui->label_69->setText("Direct Mode");
-    ui->label_308->setText("Direct Mode");
     offset = QByteArray::fromHex("00000000");
     m_port->setHeattingUnit(lt,rt,bt);
     ui->stackedWidget->setCurrentWidget(ui->page_PreparePrint);
@@ -1290,7 +972,6 @@ void MainWindow::tprint()
 {  
     ui->label_36->setText("Direct Mode");
     ui->label_69->setText("Direct Mode");
-    ui->label_308->setText("Direct Mode");
 #ifdef OLD
     QString offsethex = QString::asprintf("%08x", offsetnum);
     qDebug()<<"string offset   "<<offsethex;
@@ -1344,7 +1025,6 @@ void MainWindow::tmirro()
     {
         ui->label_36->setText("Mirror Mode");
         ui->label_69->setText("Mirror Mode");
-        ui->label_308->setText("Mirror Mode");
         char offsetbuff[4]  = {0};
         offsetbuff[3] = static_cast< char>((offsetnum >> 24) & 0xFF);
         offsetbuff[2] = static_cast< char>((offsetnum >> 16) & 0xFF);
@@ -1362,12 +1042,12 @@ void MainWindow::tmirro()
     }
     else
     {
-        par =new parsing();
-        if(par)
+        pdlg_parsing =new parsing();
+        if(pdlg_parsing)
         {
-            QObject::connect(par,&parsing::cancel,this,&MainWindow::buprint);
+            QObject::connect(pdlg_parsing,&parsing::cancel,this,&MainWindow::buprint);
             m_deepTimer->start(1000);
-            par->show();
+            pdlg_parsing->show();
         }
         m_fileParser->parseByDeep(udiskPATH,loaclPATH);
     }
@@ -1384,7 +1064,6 @@ void MainWindow::tdup()
     {
         ui->label_36->setText("Duplicate Mode");
         ui->label_69->setText("Duplicate Mode");
-        ui->label_308->setText("Duplicate Mode");
         char offsetbuff[4]  = {0};
         offsetbuff[3] = static_cast< char>((offsetnum >> 24) & 0xFF);
         offsetbuff[2] = static_cast< char>((offsetnum >> 16) & 0xFF);
@@ -1403,9 +1082,9 @@ void MainWindow::tdup()
         m_printsec->start(1000);
     }
     else {
-        par =new parsing(this);
-        par->show();
-        QObject::connect(par,&parsing::cancel,this,&MainWindow::buprint);
+        pdlg_parsing =new parsing(this);
+        pdlg_parsing->show();
+        QObject::connect(pdlg_parsing,&parsing::cancel,this,&MainWindow::buprint);
         m_deepTimer->start(1000);
         m_fileParser->parseByDeep(udiskPATH,loaclPATH);
     }
@@ -1419,7 +1098,6 @@ void MainWindow::dprint()
     this->printMode = 0;
     ui->label_36->setText("Direct Mode");
     ui->label_69->setText("Direct Mode");
-    ui->label_308->setText("Direct Mode");
     offset = QByteArray::fromHex("00000000");
     m_port->setHeattingUnit(lt,rt,bt);
     ui->stackedWidget->setCurrentWidget(ui->page_PreparePrint);
@@ -1436,7 +1114,6 @@ void MainWindow::ddup()
     printMode = 2;
     ui->label_36->setText("Duplicate mode");
     ui->label_69->setText("Duplicate mode");
-    ui->label_308->setText("Duplicate mode");
     ui->label_311->setText("Duplicate mode");
     QString offsethex = QString::asprintf("%x", offsetnum);
     QByteArray offsetarry= QByteArray::fromHex(offsethex.toLatin1());
@@ -1659,10 +1336,10 @@ void MainWindow::parseMode(QString printMode)
         }
         m_dam->show();
     }
-    if(m_WinFiel)
+    if(m_WinFile)
     {
-        m_WinFiel->hide();
-        m_WinFiel->close();
+        m_WinFile->hide();
+        m_WinFile->close();
     }
 }
 
@@ -1675,7 +1352,6 @@ void MainWindow::parseDeepMode(QString printMode)
         {
             ui->label_36->setText("Mirror Mode");
             ui->label_69->setText("Mirror Mode");
-            ui->label_308->setText("Mirror Mode");
             this->printMode = 3;
             m_port->setHeattingUnit(lt,lt,bt);
             ui->stackedWidget->setCurrentWidget(ui->page_PreparePrint);
@@ -1762,7 +1438,6 @@ void MainWindow::parseDeepMode(QString printMode)
             this->printMode = 2;
             ui->label_36->setText("Duplicate Mode");
             ui->label_69->setText("Duplicate Mode");
-            ui->label_308->setText("Duplicate Mode");
             m_port->setHeattingUnit(lt,lt,bt);
             ui->stackedWidget->setCurrentWidget(ui->page_PreparePrint);
             QObject::connect(&m_timer,SIGNAL(timeout()),this,SLOT(jumpSeventeen()));
@@ -1879,15 +1554,14 @@ void MainWindow::deepTimer()
 {
     int x= m_fileParser->GetParsedLine();
     qDebug()<<"m_deep timer num "<<x;
-    par->setNum(x);
     if(x == 100)
     {
         m_deepTimer->stop();
         //        QObject::disconnect(m_deepTimer,&QTimer::timeout,this,&MainWindow::deepTimer);
         /*判断是否需要重新选择*/
-        par->hide();
-        par->close();
-        par = NULL;
+        pdlg_parsing->hide();
+        pdlg_parsing->close();
+        pdlg_parsing = NULL;
         m_dam->hide();
         m_dam->close();
         delete  m_dam;

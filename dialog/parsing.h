@@ -4,6 +4,7 @@
 #include <QWidget>
 #include <QQuickItem>
 #include "jlwidget.h"
+#include "CMOD/XhGcodeFileParser.h"
 
 namespace Ui {
 class parsing;
@@ -16,15 +17,22 @@ class parsing : public JLWidget
 public:
     explicit parsing(QWidget *parent = nullptr);
     ~parsing();
-    void setNum(int num);
+    void init(QByteArray, QString, QString, QString);
     void show() override;
 
 private slots:
     void on_pushButton_clicked();
+    void updateParsingStatus();
+    void onParseComplete(QString);
+    void onDelayReturn();
 
 private:
     Ui::parsing *ui;
     QQuickItem *item;
+    XhGcodeFileParser *m_file_parser;
+    bool is_parsing;
+    QString output_file_name;
+    QString req_mode;
 
 signals:
     void cancel();

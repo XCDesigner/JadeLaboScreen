@@ -23,37 +23,49 @@ XhGcodeFileParser::~XhGcodeFileParser()
     delete m_mutex;
 }
 
-void XhGcodeFileParser::parseByDirect(const QString &inputFileName, const QString &outputFileName)
+void XhGcodeFileParser::parseByDirect(const QString &inputFileName, const QString &outputFileName, QByteArray FileFrom)
 {
+    file_from = FileFrom;
+
     m_mutex->lock();
     m_inputFileName = inputFileName;
     m_outputFileName = outputFileName;
     m_mutex->unlock();
     m_parseType.store((int)ParseType::Direct);
-
     start();
 }
 
-void XhGcodeFileParser::parseByDeep(const QString &inputFileName, const QString &outputFileName)
+void XhGcodeFileParser::parseByDeep(const QString &inputFileName, const QString &outputFileName, QByteArray FileFrom)
 {
+    file_from = FileFrom;
     m_mutex->lock();
     m_inputFileName = inputFileName;
     m_outputFileName = outputFileName;
     m_mutex->unlock();
     m_parseType.store((int)ParseType::Deep);
-
     start();
+
+}
+
+void XhGcodeFileParser::parseByDirect(const QString &inputFileName, const QString &outputFileName)
+{
+    parseByDirect(inputFileName, outputFileName, QByteArray(""));
+}
+
+void XhGcodeFileParser::parseByDeep(const QString &inputFileName, const QString &outputFileName)
+{
+    parseByDeep(inputFileName, outputFileName, QByteArray(""));
 }
 
 int XhGcodeFileParser::GetParsedLine()
 {
     if(line_parsed >= (m_sourceGcodeLines->size() - 1))
     {
-        return 100;
+        return 1000;
     }
     else
     {
-        return (int)(line_parsed * 100 / m_sourceGcodeLines->size());
+        return (int)(line_parsed * 1000 / m_sourceGcodeLines->size());
     }
 }
 
@@ -71,14 +83,16 @@ void XhGcodeFileParser::run()
     default:
         break;
     }
-    writeNewFile();
+    if(file_from == "UDisk")
+        writeNewFile();
+    else
+        rewriteLocalFile();
 
     m_mutex->lock();
     QString outputFileName = m_outputFileName;
     m_mutex->unlock();
+    process_status = QByteArray("Complete");
     emit parseSucceded(outputFileName);
-
-
 }
 
 void XhGcodeFileParser::doParseByDirect()
@@ -98,24 +112,27 @@ void XhGcodeFileParser::doParseByDirect()
         qDebug()<<"right_temp"<<m_headerInfo.value("right_temp").toString();
 #endif
     }
-    emit parseByDirectMode(m_headerInfo.value("mode").toString());
-    emit parseByDeepHeader(m_headerInfo.value("left_temp").toString(),m_headerInfo.value("right_temp").toString(),m_headerInfo.value("bed_temp").toString(),m_headerInfo.value("offset").toString());
+    // emit parseByDirectMode(m_headerInfo.value("mode").toString());
+    // emit parseByDeepHeader(m_headerInfo.value("left_temp").toString(),m_headerInfo.value("right_temp").toString(),m_headerInfo.value("bed_temp").toString(),m_headerInfo.value("offset").toString());
 //    exit();
 }
 
 void XhGcodeFileParser::doParseByDeep()
 {
+    process_status = QByteArray("Parsing");
     qDebug()<<"deep1";
     doParseByDirect();
     qDebug()<<"deep2";
     parseWholeFile();
-    emit parseByDeepMode(m_headerInfo.value("mode").toString());
-    emit parseByDeepHeader(m_headerInfo.value("left_temp").toString(),\
-                           m_headerInfo.value("right_temp").toString(),\
-                           m_headerInfo.value("bed_temp").toString(),\
-                           m_headerInfo.value("offset").toString());/* 2021/3/2/ by cbw */
+
+    // emit parseByDeepMode(m_headerInfo.value("mode").toString());
+    // emit parseByDeepHeader(m_headerInfo.value("left_temp").toString(),\
+    //                       m_headerInfo.value("right_temp").toString(),\
+    //                       m_headerInfo.value("bed_temp").toString(),\
+    //                       m_headerInfo.value("offset").toString());/* 2021/3/2/ by cbw */
 
     emit parseDeepSucceded();
+
 //    exit();
 }
 
@@ -152,15 +169,33 @@ void XhGcodeFileParser::loadFile()
             break;
         m_sourceGcodeLines->append(textStream.readLine());
     }
+    in.close();
+}
 
+void XhGcodeFileParser::loadFile(int LinesToLoad)
+{
+    m_mutex->lock();
+    QString inputFileName = m_inputFileName;
+    m_mutex->unlock();
+
+    QFile in(inputFileName);
+    if (!in.open(QIODevice::ReadOnly))
+        return;
+
+    QTextStream textStream(&in);
+    textStream.setCodec("UTF-8");
+    while (LinesToLoad--) {
+        if (textStream.atEnd())
+            break;
+        m_sourceGcodeLines->append(textStream.readLine());
+    }
     in.close();
 }
 
 void XhGcodeFileParser::getJlHeader()
 {
-    if(!m_sourceGcodeLines[0].startsWith(";JL-ParsedResult"))
+    if(!m_sourceGcodeLines->at(0).startsWith(";JL-ParsedResult"))
         return;
-
     m_headerInfo["result"] = true;
     QString firstLine = m_sourceGcodeLines->at(0);
     QStringList options = firstLine.split(" ", QString::SkipEmptyParts);
@@ -177,10 +212,9 @@ void XhGcodeFileParser::getJlHeader()
 void XhGcodeFileParser::parseTop100Lines()
 {
     int lineIndex = 0;
-
     while (lineIndex < 100) {
         QString tmpLine = m_sourceGcodeLines->at(m_lineParsed).trimmed();
-        qDebug()<<tmpLine;
+        // qDebug()<<tmpLine;
         int curLineNumber = m_lineParsed;
         m_lineParsed++;
         if (tmpLine.startsWith(";"))
@@ -192,7 +226,6 @@ void XhGcodeFileParser::parseTop100Lines()
         parseMode(line_cut_comment);
         lineIndex++;
     }
-
 }
 
 QString XhGcodeFileParser::cutComment(QString gcode)
@@ -285,13 +318,13 @@ void XhGcodeFileParser::parseMode(QString &gcode)
             m_tempOffset = getSymbolValue("R", gcode).toInt();
             m_headerInfo["offset"] = getSymbolValue("X", gcode).toFloat();
             m_origin_duplucate_found = true;
-             emit parseByDirectMode("Orgin-Duplicate");/* 2021/3/2/ by cbw */
+            // emit parseByDirectMode("Orgin-Duplicate");/* 2021/3/2/ by cbw */
         } else if (mode == "3") {
             m_headerInfo["mode"] = "Orgin-Mirror";
-             emit parseByDirectMode("Orgin-Mirror");/* 2021/3/2/ by cbw */
+            // emit parseByDirectMode("Orgin-Mirror");/* 2021/3/2/ by cbw */
         } else if (mode == "1") {
             m_headerInfo["mode"] = "Mix";
-             emit parseByDirectMode("Mix");/* 2021/3/2/ by cbw */
+            // emit parseByDirectMode("Mix");/* 2021/3/2/ by cbw */
         }
     }
 }
@@ -310,6 +343,7 @@ void XhGcodeFileParser::parseWholeFile()
     {
         QString tmpLine = m_sourceGcodeLines->at(var);
         line_parsed = var;
+        process_percent = var * 1000 / m_sourceGcodeLines->size();
         if (tmpLine.startsWith(";"))
             continue;
         if (parseMotionMode(tmpLine) == true)
@@ -329,6 +363,7 @@ void XhGcodeFileParser::parseWholeFile()
             }
         }
     }
+    process_percent = 1000;
 
     float xCenter, xSize;
     xSize = 300;
@@ -372,8 +407,101 @@ float XhGcodeFileParser::parseXValue(QString &gcode)
     return x;
 }
 
+void XhGcodeFileParser::rewriteLocalFile()
+{
+    bool need_rewrite = false;
+    QFile old_file(localPath + m_outputFileName);
+    if(old_file.open(QIODevice::ReadOnly) == false)
+    {
+        need_rewrite = true;
+    }
+    else
+    {
+        QTextStream text_reader(&old_file);
+        QString header_line = text_reader.readLine(0);
+        old_file.close();
+        if(header_line != header2StringLine())
+        {
+            qDebug()<<"Old" + header_line;
+            qDebug()<<"New" + header2StringLine();
+            need_rewrite = true;
+        }
+    }
+    if(need_rewrite == true)
+    {
+        qDebug()<<"Rewrite new file";
+        QFile new_file(localPath + "tmpfile.gcode");
+        int retry = 2;
+        do
+        {
+            if(new_file.open(QIODevice::WriteOnly | QIODevice::Truncate) == false)
+                QFile::remove(localPath + "tmpfile.gcode");
+            else
+                break;
+        }while(retry--);
+        if(new_file.isOpen() == true)
+        {
+            QTextStream text_writer(&new_file);
+            text_writer.setCodec("UTF-8");
+            text_writer<<header2StringLine() << "\r\n";
+            int total_line = m_sourceGcodeLines->size();
+            for (int var=m_startLineIndex; var<total_line; var++)
+            {
+                text_writer << m_sourceGcodeLines->at(var) << "\r\n";
+                process_percent = var * 1000 / total_line;
+            }
+            process_percent = 1000;
+            new_file.close();
+            QFile::remove(localPath + m_outputFileName);
+            QFile::rename(localPath + "tmpfile.gcode", localPath + m_outputFileName);
+        }
+        else
+        {
+            qDebug()<<"Temp file create fail!";
+        }
+    }
+}
+
 void XhGcodeFileParser::writeNewFile()
 {
+    qDebug()<<"Write new file";
+    QFile new_file(localPath + "tmpfile.gcode");
+    int retry = 2;
+    do
+    {
+        if(new_file.open(QIODevice::WriteOnly | QIODevice::Truncate) == false)
+            QFile::remove(localPath + "tmpfile.gcode");
+        else
+            break;
+    }while(retry--);
+    if(new_file.isOpen() == true)
+    {
+        qDebug()<<"File Open Success";
+        QTextStream text_writer(&new_file);
+        text_writer.setCodec("UTF-8");
+        text_writer<<header2StringLine() << "\r\n";
+        int total_line = m_sourceGcodeLines->size();
+        for (int var=m_startLineIndex; var<total_line; var++)
+        {
+            text_writer << m_sourceGcodeLines->at(var) << "\r\n";
+            process_percent = var * 1000 / total_line;
+        }
+        process_percent = 1000;
+        new_file.close();
+        QFile::remove(localPath + m_outputFileName);
+        QFile::rename(localPath + "tmpfile.gcode", localPath + m_outputFileName);
+    }
+    else
+    {
+        qDebug()<<"Temp file create fail!";
+    }
+}
+
+#if(0)
+void XhGcodeFileParser::writeFile()
+{
+    process_percent = 0;
+    process_status = QByteArray("Writing File");
     m_mutex->lock();
     QString outputFileName = m_outputFileName;
     m_mutex->unlock();
@@ -385,10 +513,16 @@ void XhGcodeFileParser::writeNewFile()
     QTextStream out(&f);
     out.setCodec("UTF-8");
     out << header2StringLine() << "\r\n";
-    for (int var=m_startLineIndex; var<m_sourceGcodeLines->size(); var++)
+    int total_line = m_sourceGcodeLines->size();
+    for (int var=m_startLineIndex; var<total_line; var++)
+    {
         out << m_sourceGcodeLines->at(var) << "\r\n";
+        process_percent = var * 1000 / total_line;
+    }
+    process_percent = 1000;
     f.close();
 }
+#endif
 
 QString XhGcodeFileParser::header2StringLine()
 {
@@ -400,4 +534,39 @@ QString XhGcodeFileParser::header2StringLine()
     retval = retval + " Bed_temp:" + m_headerInfo["bed_temp"].toString();
 
     return retval;
+}
+
+QVariantMap XhGcodeFileParser::parseQuickly(const QString inputFileName)
+{
+    m_inputFileName = inputFileName;
+    variableInit();
+    loadFile(2000);
+    getJlHeader();
+    if (m_headerInfo["result"] == false)
+    {
+        parseTop100Lines();
+        int l  = m_headerInfo["left_temp"].toString().toInt();
+        m_headerInfo["right_temp"] = QString::number(l+m_tempOffset);
+    }
+    qDebug()<<m_headerInfo["mode"].toString();
+    qDebug()<<m_headerInfo["offset"].toInt();
+    qDebug()<<m_headerInfo["left_temp"].toString();
+    qDebug()<<m_headerInfo["right_temp"].toString();
+    qDebug()<<m_headerInfo["bed_temp"].toString();
+    return m_headerInfo;
+}
+
+void XhGcodeFileParser::clearRam()
+{
+    m_sourceGcodeLines->clear();
+}
+
+QByteArray XhGcodeFileParser::getParseStatus()
+{
+    return process_status;
+}
+
+int XhGcodeFileParser::getPercent()
+{
+    return process_percent;
 }

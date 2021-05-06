@@ -6,6 +6,7 @@
 #include <QStringList>
 #include <QVariantMap>
 #include <QAtomicInt>
+#include "define/imagePath.h"
 
 class XhGcodeFileParser : public QThread
 {
@@ -27,10 +28,19 @@ public:
     explicit XhGcodeFileParser(QObject *parent = nullptr);
     virtual ~XhGcodeFileParser();
 
+    void    parseByDirect(const QString &inputFileName, const QString &outputFileName, QByteArray);
+    void    parseByDeep(const QString &inputFileName, const QString &outputFileName, QByteArray);
+
     void    parseByDirect(const QString &inputFileName, const QString &outputFileName);
     void    parseByDeep(const QString &inputFileName, const QString &outputFileName);
 
+    QVariantMap parseQuickly(const QString inputFileName);
+    void    clearRam();
+    QByteArray getParseStatus();
+    int     getPercent();
+
     int     GetParsedLine();
+
     /* 2021/3/8/ by paladin  over */
 signals:
     void    parseSucceded(QString outputFileName);
@@ -60,12 +70,16 @@ private:
     bool            m_relativeMotion{ false };
     int             line_parsed;
     bool            m_origin_duplucate_found{ false };
+    QByteArray      process_status;
+    int             process_percent;
+    QByteArray      file_from;
 
 private:
     void            doParseByDirect();
     void            doParseByDeep();
     void            variableInit();
     void            loadFile();
+    void            loadFile(int);
     void            getJlHeader();
     void            parseTop100Lines();
     void            parseStartLine(QString &gcode, int lineNumber);
@@ -79,6 +93,7 @@ private:
     void            writeNewFile();
     QString         header2StringLine();
     QString         cutComment(QString gcode);
+    void            rewriteLocalFile();
 };
 
 #endif // XHGCODEFILEPARSER_H

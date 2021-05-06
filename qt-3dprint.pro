@@ -41,7 +41,7 @@ SOURCES += \
     dialog/choosefile.cpp \
     dialog/choosetemp.cpp \
     dialog/delete.cpp \
-    dialog/dupandmirorr.cpp \
+    dialog/dupandmirror.cpp \
     dialog/duponly.cpp \
     dialog/filamentfault.cpp \
     dialog/firststartdialog.cpp \
@@ -50,6 +50,7 @@ SOURCES += \
     dialog/parsing.cpp \
     dialog/powerlost.cpp \
     dialog/printflament.cpp \
+    dialog/printmodeselect.cpp \
     dialog/printsetdlog.cpp \
     dialog/selectmode.cpp \
     dialog/unnoknfile.cpp \
@@ -101,7 +102,7 @@ HEADERS += \
     dialog/choosefile.h \
     dialog/choosetemp.h \
     dialog/delete.h \
-    dialog/dupandmirorr.h \
+    dialog/dupandmirror.h \
     dialog/duponly.h \
     dialog/filamentfault.h \
     dialog/firststartdialog.h \
@@ -110,6 +111,7 @@ HEADERS += \
     dialog/parsing.h \
     dialog/powerlost.h \
     dialog/printflament.h \
+    dialog/printmodeselect.h \
     dialog/printsetdlog.h \
     dialog/selectmode.h \
     dialog/unnoknfile.h \
@@ -128,7 +130,7 @@ FORMS += \
     dialog/choosefile.ui \
     dialog/choosetemp.ui \
     dialog/delete.ui \
-    dialog/dupandmirorr.ui \
+    dialog/dupandmirror.ui \
     dialog/duponly.ui \
     dialog/filamentfault.ui \
     dialog/firststartdialog.ui \
@@ -136,6 +138,7 @@ FORMS += \
     dialog/parsing.ui \
     dialog/powerlost.ui \
     dialog/printflament.ui \
+    dialog/printmodeselect.ui \
     dialog/printsetdlog.ui \
     dialog/selectmode.ui \
     dialog/unnoknfile.ui \

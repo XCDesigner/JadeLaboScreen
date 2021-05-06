@@ -13,6 +13,27 @@ chooseFile::~chooseFile()
     delete ui;
 }
 
+void chooseFile::show()
+{
+    QWidget::show();
+}
+
+void chooseFile::init(myListWidgetItem* pItem)
+{
+    ui->label_2->setText(pItem->m_fileName + "?");
+    ui->label_2->setAlignment(Qt::AlignCenter);
+    m_fileName = pItem->m_fileName;
+    m_filePath = pItem->m_filePath;
+    file_source = pItem->isUDisk;
+    select_item = pItem;
+    ret_value.clear();
+}
+
+myListWidgetItem* chooseFile::getSelectItem()
+{
+    return select_item;
+}
+
 void chooseFile::setFileName(QString fileName)
 {
     ui->label_2->setText(fileName+"?");
@@ -22,10 +43,15 @@ void chooseFile::setFileName(QString fileName)
 
 void chooseFile::on_pushButton_clicked()
 {
-    emit choose();
+    ret_value.append("Confirm");
+    ret_value.append(file_source);
+    emit hideWidget();
+    hide();
 }
 
 void chooseFile::on_pushButton_2_clicked()
 {
-    emit cancel();
+    ret_value.append("Cancel");
+    emit hideWidget();
+    hide();
 }

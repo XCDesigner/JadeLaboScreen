@@ -20,7 +20,7 @@ public:
     QString m_fileName;
     QString m_filePath;
 
-    QString isUDisk;
+    QByteArray isUDisk;
 
 private:
     Ui::myListWidgetItem *ui;

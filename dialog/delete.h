@@ -16,15 +16,19 @@ class Delete : public JLWidget
 public:
     explicit Delete(QWidget *parent = nullptr);
     ~Delete();
+    void show() override;
 
+    void init(QString, myListWidgetItem *);
+    myListWidgetItem*  getDeleteItem();
+    void setName();
+
+private:
     QString fileName;
     QString filePath;
     myListWidgetItem * deleteItem;
-    void setName();
 
 private slots:
     void on_pushButton_clicked();
-
     void on_pushButton_2_clicked();
 
 signals:

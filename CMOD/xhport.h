@@ -160,7 +160,6 @@ signals:
     void canelk();
 
     void fileSendOver();
-    void printend();
 
     void powerlost();
 
@@ -194,8 +193,6 @@ private slots:
     void fileSendOverSlot();
     void xhxNoHeating(bool );
     void xhxyCheck(bool );
-
-    void xhprintend();
 
     void xhpowerlost();
 

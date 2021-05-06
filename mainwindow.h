@@ -42,9 +42,10 @@
 #include "dialog/powerlost.h"
 #include "dialog/printsetdlog.h"
 #include "dialog/parsetdlog.h"
-#include "dialog/dupandmirorr.h"
+#include "dialog/dupandmirror.h"
 #include "dialog/duponly.h"
 #include "dialog/jlwidget.h"
+#include "dialog/printmodeselect.h"
 #include "listwidgetitem/mywifiitem.h"
 #include "dialog/updateprogrebar.h"
 #include "CMOD/XhGcodeFileParser.h"
@@ -55,7 +56,6 @@
 #include "wifi_udhcpc.h"
 #include "CMOD/xhcontrolr818.h"
 #include <stdlib.h>
-#include "define/linuxPath.h"
 #endif
 #include <QPixmap>
 #include <QString>
@@ -65,10 +65,8 @@
 #include <QSet>
 #include <binders.h>
 #include <QScroller>
+
 #include "define/imagePath.h"
-#ifdef XH_WIN
-#include "define/windowsPath.h"
-#endif
 
 #include "CMOD/jlserialport.h"
 #include <QThread>
@@ -89,8 +87,7 @@ public:
     void setLightPic(bool isVisible);
     void setWinPic(bool isVisible);
 
-    void m_addItemToList(const QString& fileName,QString filePath);
-    void m_addItemToList(const QString& fileName,QString filePath,QString uDisk);
+    void m_addItemToList(const QString &, QString, QByteArray);
     void m_adTtemtowifi(const QString& wifiname,QString wifilevel);
 
     //void blockingChangePage(QByteArray Command, QWidget *pPage);
@@ -142,8 +139,8 @@ private:
     QMap<myListWidgetItem *,QListWidgetItem* > m_map;
     QMap<myWifiItem *,QListWidgetItem* >m_wmap;
 
-    chooseFile * m_WinFiel;
-    parsing * par;
+    chooseFile * m_WinFile;
+    parsing *pdlg_parsing;
     askPause * skpWin;
     selectMode * m_mode;
     Delete * m_delete;
@@ -155,6 +152,8 @@ private:
     JLEvent *m_event;
     fileCheckThread *m_thread;
     chooseTemp *mchoose;
+
+    PrintModeSelect *pdlg_select_mode;
 
     UnNoknfile *m_modeone;
     DupandMirorr *m_dam;
@@ -221,6 +220,11 @@ private slots:
     void RecoverySettingShow();
 
     void onFilamentFaultDialogReturn();
+
+    void onFileChooseReturn();
+    void onDeleteFileReturn();
+    void onModeSelectReturn();
+    void onParseComplete();
 
     // Fault detection
     void onMessageListen(uint8_t, uint8_t, QByteArray);
@@ -294,8 +298,6 @@ private slots:
 
 
     void m_deleteItem(myListWidgetItem * itm);
-    void m_deleteTrue(myListWidgetItem * itm);
-    void m_deleteFalse(myListWidgetItem * itm);
     void m_chooseItem(myListWidgetItem * itm);
 
     void connctwifi(myWifiItem* itm);
@@ -317,8 +319,6 @@ private slots:
     void xyCalibrationHeating();
 
     void changeFilamentTempChecking();
-
-    void printending();
 
     void plt(QString a);
     void prt(QString a);

@@ -2,13 +2,12 @@
 #define IMAGEPATH_H
 
 #if defined(XH_WIN)
-#include "linuxPath.h"
-#elif defined(XH_LINUX)
 #include "windowsPath.h"
+#elif defined(XH_LINUX)
+#include "linuxPath.h"
 #endif
 
 #define qmlColor "#202023"
-
 
 #define LogoPic                 ":/image/LogoPic.jpg"
 #define lHotEndActive           ":/image/LHotendActive.png"
@@ -23,10 +22,5 @@
 
 #define RECOVERY_RECORD         RECOVERY_INFO
 
-#if defined(XH_WIN)
-
-#elif defined(XH_LINUX)
-
-#endif
 
 #endif // IMAGEPATH_H

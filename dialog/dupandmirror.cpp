@@ -1,4 +1,4 @@
-#include "dupandmirorr.h"
+#include "dupandmirror.h"
 #include "ui_dupandmirorr.h"
 #include <QDebug>
 
