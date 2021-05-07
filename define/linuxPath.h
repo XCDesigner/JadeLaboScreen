@@ -2,10 +2,11 @@
 #define LINUXPATH_H
 
 #include <QDebug>
+#include <QString>
 
-#define localPath               "/usr/gode/"
-#define UDiskPath               "/mnt/exUDISK/gcode"
-#define UDiskfind               "/mnt/exUDISK/gcode"
+#define localPath               QString("/usr/gode/")
+#define UDiskPath               QString("/mnt/exUDISK/gcode")
+#define UDiskfind               QString("/mnt/exUDISK/gcode")
 #define serialNum               "ttyS2"
 #define UpdateFile              "/mnt/exUDISK/updateFile/TestPack.JUP"
 #define localWIFI               "/usr/share/3d_printer/wifi.txt"
