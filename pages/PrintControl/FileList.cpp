@@ -154,6 +154,21 @@ void MainWindow::onParseComplete()
     {
         qDebug()<<ret[1];
         qDebug()<<ret[2];
+        QVariantMap parse_result = m_fileParser->parseQuickly(localPath + ret[1]);
+        print_desc.Mode = parse_result["mode"].toString();
+        print_desc.LeftTemp = parse_result["left_temp"].toString();
+        print_desc.RightTemp = parse_result["right_temp"].toString();
+        print_desc.BedTemp = parse_result["bed_temp"].toString();
+        print_desc.XOffset = parse_result["offset"].toFloat();
+        print_desc.FileName = localPath + ret[1];
+        if(print_desc.Mode == "Direct")
+            print_desc.RightTemp = QString("0");
+        else if((print_desc.Mode == "Duplicate") || (print_desc.Mode == "Mirror"))
+            print_desc.RightTemp =print_desc.LeftTemp;
+        screen_status.setPerformance(PREPARE_PRINT);
+        m_port->setHeattingUnit(print_desc.LeftTemp, print_desc.RightTemp, print_desc.BedTemp);
+        // Need add check for file is opened successfully
+        ui->stackedWidget->setCurrentWidget(ui->page_PreparePrint);
     }
     else
     {
@@ -166,6 +181,11 @@ void MainWindow::onParseComplete()
     }
     delete pdlg_parsing;
 }
+
+//void MainWindow::PreparePrint(QString FileName)
+//{
+
+//}
 
 void MainWindow::m_deleteItem(myListWidgetItem *itm)
 {

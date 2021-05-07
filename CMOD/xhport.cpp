@@ -674,6 +674,51 @@ void XhPort::getFaultFlag()
     m_serial->writeProtocalData(QByteArray::fromHex("0101"));
 }
 
+/**
+  * @brief  Prepare printing
+  * @param  Mode:
+  * @retval None
+  */
+void XhPort::preparePrint(QString Mode, QByteArray Offset)
+{
+    QByteArray s;
+    QMap<QString, QByteArray> map;
+    map["Direct"] = QByteArray::fromHex("060D00");
+    map["Duplicate"] = QByteArray::fromHex("060D02");
+    map["Mirror"] = QByteArray::fromHex("060D03");
+    map["Origin-Duplicate"] = QByteArray::fromHex("060D04");
+    map["Origin-Mirror"] = QByteArray::fromHex("060D05");
+    map["Origin-Mix"] = QByteArray::fromHex("060D06");
+    map["Unsupport"] = QByteArray::fromHex("060D00");
+
+    s = map[Mode];
+    s.append(Offset);
+    qDebug()<<"send:" << s;
+    m_serial->writeProtocalData(s);
+}
+
+/**
+  * @brief  Start printing
+  * @param  Mode:
+  * @retval None
+  */
+void XhPort::startPrint()
+{
+    QByteArray s = QByteArray::fromHex("0606");
+    uint32_t file_size = m_package->getPrintFileSize();
+    qDebug()<<"Size:" << file_size;
+    s.append(1, file_size);
+    s.append(1, file_size >> 8);
+    s.append(1, file_size >> 16);
+    s.append(1, file_size >> 24);
+    s.append(1, 0xff);
+    s.append(1, 0xff);
+    s.append(1, 0xff);
+    s.append(1, 0xff);
+    qDebug()<<"Start print:" << s;
+    m_serial->writeProtocalData(s);
+}
+
 void XhPort::testdemo()
 {
     QByteArray s = QByteArray::fromHex("84654875294581");

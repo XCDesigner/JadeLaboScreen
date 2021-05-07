@@ -38,7 +38,7 @@ void askPause::init(QByteArray InitData)
     else if((cur_status.Status == 2) || (cur_status.Status == 4)) {
         ui->quickWidget->rootObject()->setProperty("curStatus", "pause");
 
-        if((pscreen_status->getPrintMode() == 2) || (pscreen_status->getPrintMode() == 3) || (pscreen_status->getPrintMode() == 4) || (pscreen_status->getPrintMode() == 5)) {
+        if((pscreen_status->getPrintMode() == "Duplicate") || (pscreen_status->getPrintMode() == "Mirror") || (pscreen_status->getPrintMode() == "Origin-Duplicate") || (pscreen_status->getPrintMode() == "Origin-Mirror")) {
             ui->quickWidget->rootObject()->setProperty("nonAvoidEnable", true);
             last_left_extruder_enable = pscreen_status->isExtruderEnabled(0);
             last_right_extruder_enable = pscreen_status->isExtruderEnabled(1);

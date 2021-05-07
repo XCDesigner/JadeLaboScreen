@@ -123,6 +123,8 @@ private:
     QString rt;
     QString bt;
 
+    strPrintDesc print_desc;
+
     QString loaclPATH;
     QString udiskPATH;
     bool openMode;
@@ -865,9 +867,9 @@ private slots:
     void on_AboutReturn(int);
 
 signals:
-    void detection(bool ready);
+    void detection(bool);
     void updateNum(int );
-    void sendCondition(QByteArray data);
+    void sendCondition(QByteArray);
     void sendSignalToQml(int );
     void sendSignalHeating(int , int );
 
@@ -876,15 +878,17 @@ private:
     void romClean(int fileSize);
 
     void PowerLostInit();
-    void PowerTestResult(QByteArray Data);
-    void AcceptRecoveryInfo(QByteArray Data);
+    void PowerTestResult(QByteArray);
+    void AcceptRecoveryInfo(QByteArray);
     QString GetRecoveryFile();
 
     void FaultDetectInit();
-    void onPauseRequest(QByteArray Data);
-    void onFaultFlag(QByteArray Data);
+    void onPauseRequest(QByteArray);
+    void onFaultFlag(QByteArray);
 
     void FilamentFaultDetected();
+
+    void onPreparePirntComplete(QByteArray);
 
 };
 

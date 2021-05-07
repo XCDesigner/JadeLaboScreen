@@ -27,10 +27,15 @@ void ScreenStatus::setPerformance(uint8_t NewPerformance)
 
 void ScreenStatus::setPrintMode(uint8_t Mode)
 {
+    status.tmp_print_mode = Mode;
+}
+
+void ScreenStatus::setPrintMode(QByteArray Mode)
+{
     status.print_mode = Mode;
 }
 
-uint8_t ScreenStatus::getPrintMode()
+QByteArray ScreenStatus::getPrintMode()
 {
     return status.print_mode;
 }

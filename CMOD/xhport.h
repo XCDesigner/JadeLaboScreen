@@ -64,6 +64,9 @@ public:
     void testr();
     void testb();
 
+    void preparePrint(QString Mode, QByteArray Offset);
+    void startPrint();
+
     /**********TOOL**********/
 
     void selfTest();//设备自检*

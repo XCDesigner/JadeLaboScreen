@@ -1,6 +1,7 @@
 #ifndef SCREENSTATUS_H
 #define SCREENSTATUS_H
 #include "stdint.h"
+#include <QByteArray>
 
 enum {
     IDLE = 0,
@@ -13,13 +14,14 @@ enum {
 };
 
 typedef struct{
+    QByteArray print_mode;
     bool Wifi;
     bool UDisk;
     bool Light;
     uint16_t CurrentTemp[3];
     uint16_t TargetTemp[3];
     uint32_t ZHeight;
-    uint8_t print_mode;
+    uint8_t tmp_print_mode;
     bool extruder_enabled[2];
     uint8_t performance;
 }strScreenStatus;
@@ -33,6 +35,8 @@ public:
     uint8_t getPerformance();
     void setPerformance(uint8_t);
     void setPrintMode(uint8_t);
+    void setPrintMode(QByteArray);
+    QByteArray getPrintMode();
     void setWifiStatus(bool);
     void setUdiskStatus(bool);
     void setLightStatus(bool);
@@ -41,7 +45,6 @@ public:
     bool getUdiskStatus();
     bool getLightStatus();
     void getTemp(int16_t*, int16_t*);
-    uint8_t getPrintMode();
     bool isExtruderEnabled(uint8_t);
     void setExtruderEnabled(uint8_t, bool);
 private:

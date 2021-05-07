@@ -53,6 +53,7 @@ public:
     void GetMachineStatus(strMachineStatus *pStatus);
 
     bool setPrintFile(QString);
+    uint32_t getPrintFileSize();
 private:
     /*包体*/
     QByteArray pageHead;//头

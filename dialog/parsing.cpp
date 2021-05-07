@@ -8,7 +8,8 @@ parsing::parsing(QWidget *parent) :
     ui->setupUi(this);
     ui->quickWidget->setSource(QUrl("qrc:/qml/CircleProgressBar.qml"));
     ui->quickWidget->setResizeMode(QQuickWidget::SizeRootObjectToView);
-    ui->quickWidget->setClearColor(QColor("#2d2c2b"));
+    ui->quickWidget->setClearColor(QColor("#202023"));
+    ui->quickWidget->rootObject()->setProperty("currentPercent", 0);
 
     m_file_parser = new XhGcodeFileParser(this);
     QObject::connect(m_file_parser, SIGNAL(parseSucceded(QString)), this, SLOT(onParseComplete(QString)));
@@ -71,6 +72,7 @@ void parsing::onDelayReturn()
         ret_value.append(QByteArray(output_file_name.toUtf8()));
         ret_value.append(QByteArray(req_mode.toUtf8()));
     }
+    ui->quickWidget->rootObject()->setProperty("currentPercent", 0);
     emit hideWidget();
     hide();
 }

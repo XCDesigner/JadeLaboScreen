@@ -284,7 +284,7 @@ int XhPage::analysis(QByteArray package)
                             case '\x0D':
                             if(data[2] == '\x00')
                             {
-                                 emit fileSendOver();
+                                 // emit fileSendOver();
                             }
                             break;
                             case '\x02':
@@ -767,6 +767,21 @@ void XhPage::logFindSlot()
 bool XhPage::setPrintFile(QString FileName)
 {
     thisFilePath = FileName;
+    if(m_file != nullptr)
+    {
+        if(m_file->isOpen() == true)
+            m_file->close();
+        delete m_file;
+    }
     m_file = new QFile(thisFilePath);
     return m_file->open(QIODevice::ReadOnly);
+}
+
+uint32_t XhPage::getPrintFileSize()
+{
+    qDebug()<<m_file->size();
+    if(m_file->isOpen() == true)
+        return m_file->size();
+    else
+        return 0;
 }

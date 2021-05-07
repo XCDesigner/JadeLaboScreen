@@ -27,4 +27,14 @@ public:
     pFunction Callback;
 };
 
+typedef struct
+{
+    QString FileName;
+    QString Mode;
+    QString LeftTemp;
+    QString RightTemp;
+    QString BedTemp;
+    float XOffset;
+}strPrintDesc;
+
 #endif // CUSTOM_TYPES_H
