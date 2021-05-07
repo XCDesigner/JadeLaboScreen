@@ -16,7 +16,7 @@ PrintModeSelect::PrintModeSelect(QWidget *parent) :
     ui->qw_btnMirror->rootObject()->setProperty("text", "Mirror");
     ui->qw_btnCancel->rootObject()->setProperty("text", "Cancel");
 
-    QFont *fonts = new QFont("barlow", 32, -1, false);
+    QFont *fonts = new QFont("barlow", 26, -1, false);
     fonts->setBold(true);
     ui->qw_btnDirect->rootObject()->setProperty("font", *fonts);
     ui->qw_btnDuplicate->rootObject()->setProperty("font", *fonts);

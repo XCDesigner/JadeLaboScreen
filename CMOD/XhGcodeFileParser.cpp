@@ -26,7 +26,7 @@ XhGcodeFileParser::~XhGcodeFileParser()
 void XhGcodeFileParser::parseByDirect(const QString &inputFileName, const QString &outputFileName, QByteArray FileFrom)
 {
     file_from = FileFrom;
-
+    process_percent = 0;
     m_mutex->lock();
     m_inputFileName = inputFileName;
     m_outputFileName = outputFileName;
@@ -38,6 +38,7 @@ void XhGcodeFileParser::parseByDirect(const QString &inputFileName, const QStrin
 void XhGcodeFileParser::parseByDeep(const QString &inputFileName, const QString &outputFileName, QByteArray FileFrom)
 {
     file_from = FileFrom;
+    process_percent = 0;
     m_mutex->lock();
     m_inputFileName = inputFileName;
     m_outputFileName = outputFileName;
@@ -343,7 +344,7 @@ void XhGcodeFileParser::parseWholeFile()
     {
         QString tmpLine = m_sourceGcodeLines->at(var);
         line_parsed = var;
-        process_percent = var * 1000 / m_sourceGcodeLines->size();
+        process_percent = (uint32_t)var * 1000 / (uint32_t)m_sourceGcodeLines->size();
         if (tmpLine.startsWith(";"))
             continue;
         if (parseMotionMode(tmpLine) == true)
@@ -448,7 +449,7 @@ void XhGcodeFileParser::rewriteLocalFile()
             for (int var=m_startLineIndex; var<total_line; var++)
             {
                 text_writer << m_sourceGcodeLines->at(var) << "\r\n";
-                process_percent = var * 1000 / total_line;
+                process_percent = (uint32_t)var * 1000 / (uint32_t)total_line;
             }
             process_percent = 1000;
             new_file.close();
