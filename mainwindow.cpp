@@ -25,6 +25,9 @@ MainWindow::MainWindow(QWidget *parent) :
     changeFilamentDialog = new changeFilamentDlg(this);
     changeFilamentDialog->hide();
 
+    pdlg_warning = new WarningDialog(this);
+    pdlg_warning->hide();
+
     QObject::connect(skpWin, SIGNAL(hideWidget()), this, SLOT(onPauseDialogHide()));
     m_mode = NULL;
     m_delete = NULL;
@@ -249,8 +252,6 @@ MainWindow::MainWindow(QWidget *parent) :
 #ifdef XH_WIN
     ui->stackedWidget->setCurrentWidget(ui->page_WinStartup);
 #endif
-    pdlg_warning = new WarningDialog(this);
-    pdlg_warning->hide();
 
     setWinPic(false);
     m_fileParser = new XhGcodeFileParser(this);
