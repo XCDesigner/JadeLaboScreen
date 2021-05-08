@@ -1,6 +1,12 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
+void MainWindow::platformCalibrateFail()
+{
+    m_port->setHeattingUnit(0, 0);
+    ui->stackedWidget->setCurrentWidget(ui->page_PlatformCali_0);
+}
+
 void MainWindow::on_pushButton_242_clicked()
 {
     m_port->setHeattingUnit("200","200");

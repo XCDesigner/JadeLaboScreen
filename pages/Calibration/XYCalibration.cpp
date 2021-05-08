@@ -1,6 +1,12 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
+void MainWindow::xyCalibrateFail()
+{
+    m_port->setHeattingUnit(0, 0);
+    ui->stackedWidget->setCurrentWidget(ui->page_Calibration);
+}
+
 void MainWindow::on_pushButton_631_clicked()
 {
     ui->stackedWidget->setCurrentWidget(ui->page_XYCali_1);

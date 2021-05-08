@@ -28,6 +28,9 @@ PrintSetDlog::PrintSetDlog(QWidget *parent) :
     ui->qw_FeedRatePercent->setSource(QUrl("qrc:/qml/JLPushedButton.qml"));
     ui->qw_FeedRatePercent->setClearColor(QColor(qmlColor));
 
+    ui->qw_FlowratePercent->setSource(QUrl("qrc:/qml/JLPushedButton.qml"));
+    ui->qw_FlowratePercent->setClearColor(QColor(qmlColor));
+
     ui->qw_PlatformHeight->setSource(QUrl("qrc:/qml/JLPushedButton.qml"));
     ui->qw_PlatformHeight->setClearColor(QColor(qmlColor));
 
@@ -52,8 +55,9 @@ PrintSetDlog::PrintSetDlog(QWidget *parent) :
     pButtons[4] = ui->qw_RightFan;
     pButtons[5] = ui->qw_FeedRatePercent;
     pButtons[6] = ui->qw_PlatformHeight;
+    pButtons[7] = ui->qw_FlowratePercent;
 
-    for(int i=0;i<7;i++) {
+    for(int i=0;i<8;i++) {
         pButtons[i]->rootObject()->setProperty("index", i);
         pButtons[i]->rootObject()->setProperty("enable", true);
         QObject::connect(pButtons[i]->rootObject(), SIGNAL(clicked(int)), this, SLOT(buttonClicked(int)));

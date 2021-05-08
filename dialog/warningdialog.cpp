@@ -6,8 +6,15 @@ WarningDialog::WarningDialog(QWidget *parent) :
     ui(new Ui::WarningDialog)
 {
     ui->setupUi(this);
+
+    ui->qw_Icon->rootObject()->setProperty("icon", "qrc:/image/warning.png");
+    ui->qw_Icon->rootObject()->setProperty("pressedIcon", "qrc:/image/warning.png");
+    ui->qw_Icon->setClearColor(QColor(32, 32, 32));
+
     tips.insert("Filament", "Filament fault error!");
-    tips.insert("Axis", "Axis fault");
+    tips.insert("Movement", "Axis movement fault");
+    tips.insert("PlatformCalibrate", "Platform Calibration fault. Please remove the glass first");
+    tips.insert("XYCalibrate", "XY Calibration fault. Please blush the head");
 }
 
 WarningDialog::~WarningDialog()

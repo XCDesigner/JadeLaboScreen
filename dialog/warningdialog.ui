@@ -29,7 +29,7 @@
     <string/>
    </property>
   </widget>
-  <widget class="QQuickWidget" name="quickWidget">
+  <widget class="QQuickWidget" name="qw_Icon">
    <property name="geometry">
     <rect>
      <x>40</x>

@@ -51,8 +51,8 @@ private:
     QTimer *m_tmr_check_increase;
     QTimer *m_tmr_check_decrease;
 
-    QQuickWidget *pButtons[7];
-    bool button_check_status[7];
+    QQuickWidget *pButtons[8];
+    bool button_check_status[8];
 
     int16_t temp_percent[3];
     int8_t fan_percent[2];

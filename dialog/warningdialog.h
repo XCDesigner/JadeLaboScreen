@@ -2,6 +2,7 @@
 #define WARNINGDIALOG_H
 
 #include "jlwidget.h"
+#include <QQuickItem>
 
 namespace Ui {
 class WarningDialog;

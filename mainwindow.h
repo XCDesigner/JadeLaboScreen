@@ -891,6 +891,9 @@ private:
     void FilamentFaultDetected();
     void MovementFaultDetected();
 
+    void platformCalibrateFail();
+    void xyCalibrateFail();
+
     void onPreparePirntComplete(QByteArray);
 
 };

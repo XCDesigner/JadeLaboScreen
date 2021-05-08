@@ -13,6 +13,13 @@ Image {
 
     signal clicked()
 
+    onIconChanged: {
+        if(checked == true)
+            source = pressedIcon
+        else
+            source = icon
+    }
+
     onCheckedChanged: {
         if(checked == true)
             source = pressedIcon
