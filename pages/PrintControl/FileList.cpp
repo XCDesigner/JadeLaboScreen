@@ -161,17 +161,21 @@ void MainWindow::onParseComplete()
         print_desc.BedTemp = parse_result["bed_temp"].toString();
         print_desc.XOffset = parse_result["offset"].toFloat();
         print_desc.FileName = localPath + ret[1];
+        ui->label_36->setText(ret[2]);
+        ui->label_69->setText(ret[2]);
         if(print_desc.Mode == "Direct")
             print_desc.RightTemp = QString("0");
         else if((print_desc.Mode == "Duplicate") || (print_desc.Mode == "Mirror"))
             print_desc.RightTemp =print_desc.LeftTemp;
         screen_status.setPerformance(PREPARE_PRINT);
+        qDebug()<<"Temp:" << print_desc.LeftTemp << " " << print_desc.RightTemp;
         m_port->setHeattingUnit(print_desc.LeftTemp, print_desc.RightTemp, print_desc.BedTemp);
         // Need add check for file is opened successfully
         ui->stackedWidget->setCurrentWidget(ui->page_PreparePrint);
     }
     else
     {
+        qDebug()<<"Mode unsupported!";
         QVariantMap parse_result = m_fileParser->parseQuickly(localPath + ret[1]);
         pdlg_select_mode = new PrintModeSelect(this);
         qDebug()<<parse_result["mode"].toByteArray();

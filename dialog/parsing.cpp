@@ -60,18 +60,23 @@ void parsing::onParseComplete(QString FileName)
 void parsing::onDelayReturn()
 {
     QVariantMap parsed_result = m_file_parser->parseQuickly(localPath + output_file_name);
-    qDebug()<<req_mode;
-    if((req_mode != "Direct") && (parsed_result["mode"].toString() != req_mode))
+    qDebug()<<"Req Mode: " << req_mode;
+    QString support_mode = parsed_result["mode"].toString();
+    if(req_mode != "Direct")
     {
-        ret_value.append("Fail");
-        ret_value.append(QByteArray(output_file_name.toUtf8()));
+        if(((req_mode == "Duplicate") || (req_mode == "Mirror")) && (support_mode == "Mirror"))
+            ret_value.append("Success");
+        else if((req_mode == "Duplicate") && (support_mode == "Duplicate"))
+            ret_value.append("Success");
+        else
+            ret_value.append("Fail");
     }
     else
     {
         ret_value.append("Success");
-        ret_value.append(QByteArray(output_file_name.toUtf8()));
-        ret_value.append(QByteArray(req_mode.toUtf8()));
     }
+    ret_value.append(QByteArray(output_file_name.toUtf8()));
+    ret_value.append(QByteArray(req_mode.toUtf8()));
     ui->quickWidget->rootObject()->setProperty("currentPercent", 0);
     emit hideWidget();
     hide();

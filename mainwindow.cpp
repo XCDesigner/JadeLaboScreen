@@ -257,7 +257,7 @@ MainWindow::MainWindow(QWidget *parent) :
     m_fileParser = new XhGcodeFileParser(this);
     QObject::connect(m_fileParser,&XhGcodeFileParser::parseByDirectMode,this,&MainWindow::parseMode,Qt::QueuedConnection);
     QObject::connect(m_fileParser,&XhGcodeFileParser::parseByDeepHeader,this,&MainWindow::parseHeader,Qt::QueuedConnection);
-    QObject::connect(m_fileParser,SIGNAL(parseDeepSucceded()),this, SLOT(onParseSuccess()),Qt::QueuedConnection);
+    // QObject::connect(m_fileParser,SIGNAL(parseDeepSucceded()),this, SLOT(onParseSuccess()),Qt::QueuedConnection);
     // QObject::connect(m_fileParser,&XhGcodeFileParser::parseDeepSucceded,this,&MainWindow::parseDeep,Qt::QueuedConnection);
     QObject::connect(m_fileParser,&XhGcodeFileParser::parseByDeepMode,this,&MainWindow::parseDeepMode,Qt::QueuedConnection);
 

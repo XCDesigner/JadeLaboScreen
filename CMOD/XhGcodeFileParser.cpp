@@ -121,9 +121,9 @@ void XhGcodeFileParser::doParseByDirect()
 void XhGcodeFileParser::doParseByDeep()
 {
     process_status = QByteArray("Parsing");
-    qDebug()<<"deep1";
+    // qDebug()<<"deep1";
     doParseByDirect();
-    qDebug()<<"deep2";
+    // qDebug()<<"deep2";
     parseWholeFile();
 
     // emit parseByDeepMode(m_headerInfo.value("mode").toString());
@@ -549,11 +549,11 @@ QVariantMap XhGcodeFileParser::parseQuickly(const QString inputFileName)
         int l  = m_headerInfo["left_temp"].toString().toInt();
         m_headerInfo["right_temp"] = QString::number(l+m_tempOffset);
     }
-    qDebug()<<m_headerInfo["mode"].toString();
-    qDebug()<<m_headerInfo["offset"].toInt();
-    qDebug()<<m_headerInfo["left_temp"].toString();
-    qDebug()<<m_headerInfo["right_temp"].toString();
-    qDebug()<<m_headerInfo["bed_temp"].toString();
+    // qDebug()<<m_headerInfo["mode"].toString();
+    // qDebug()<<m_headerInfo["offset"].toInt();
+    // qDebug()<<m_headerInfo["left_temp"].toString();
+    // qDebug()<<m_headerInfo["right_temp"].toString();
+    // qDebug()<<m_headerInfo["bed_temp"].toString();
     return m_headerInfo;
 }
 
