@@ -5,6 +5,9 @@
 
 void MainWindow::FilamentFaultDetected()
 {
+    pdlg_warning->init(QByteArray("Filament"));
+    pdlg_warning->show();
+
     m_filamentfault = new filamentFault(this);
     m_filamentfault->init(QByteArray());
     m_filamentfault->show();
@@ -26,6 +29,5 @@ void MainWindow::onFilamentFaultDialogReturn()
     {
 
     }
-
     delete m_filamentfault;
 }

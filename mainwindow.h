@@ -48,6 +48,7 @@
 #include "dialog/printmodeselect.h"
 #include "listwidgetitem/mywifiitem.h"
 #include "dialog/updateprogrebar.h"
+#include "dialog/warningdialog.h"
 #include "CMOD/XhGcodeFileParser.h"
 #include "CMOD/screenstatus.h"
 #include "listwidgetitem/mylistwidgetitem.h"
@@ -156,6 +157,7 @@ private:
     chooseTemp *mchoose;
 
     PrintModeSelect *pdlg_select_mode;
+    WarningDialog *pdlg_warning;
 
     UnNoknfile *m_modeone;
     DupandMirorr *m_dam;
@@ -887,6 +889,7 @@ private:
     void onFaultFlag(QByteArray);
 
     void FilamentFaultDetected();
+    void MovementFaultDetected();
 
     void onPreparePirntComplete(QByteArray);
 

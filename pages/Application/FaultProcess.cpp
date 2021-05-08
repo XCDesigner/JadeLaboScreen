@@ -34,4 +34,7 @@ void MainWindow::onFaultFlag(QByteArray Data)
     if(flag & (FAULT_FLAG_FILAMENT0 | FAULT_FLAG_FILAMENT1)) {
         FilamentFaultDetected();
     }
+    else if(flag & FAULT_FLAG_MOVMENT) {
+        MovementFaultDetected();
+    }
 }
