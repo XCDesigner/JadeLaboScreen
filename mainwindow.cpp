@@ -250,6 +250,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->stackedWidget->setCurrentWidget(ui->page_WinStartup);
 #endif
     pdlg_warning = new WarningDialog(this);
+    pdlg_warning->hide();
 
     setWinPic(false);
     m_fileParser = new XhGcodeFileParser(this);
