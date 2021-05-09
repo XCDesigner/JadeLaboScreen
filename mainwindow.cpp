@@ -1379,7 +1379,7 @@ void MainWindow::on_pushButton_340_clicked()
     if(aw_wifi == NULL)
     {
         ui->listWidget_3->clear();
-        ui->stackedWidget->setCurrentIndex(65);
+        ui->stackedWidget->setCurrentWidget(ui->page_WifiConnect_0);
         aw_wifi = aw_wifi_on(tWifi_event_callback,0);
         if(aw_wifi == NULL)
         {
@@ -1438,7 +1438,7 @@ void MainWindow::on_pushButton_340_clicked()
                                         /*如果连接成功*/
                                         qDebug()<<"connect success!";
                                         start_udhcpc();
-                                        ui->stackedWidget->setCurrentIndex(68);
+                                        ui->stackedWidget->setCurrentWidget(ui->page_WifiConnect_2);
                                         setWinPic(true);
                                         udpControl = new XhControlR818(this);
                                         QObject::connect(udpControl,&XhControlR818::signalsAskCondition,this,&MainWindow::getCondition);
@@ -1449,7 +1449,7 @@ void MainWindow::on_pushButton_340_clicked()
                                     else
                                     {
                                         qDebug()<<"connect bad";
-                                        ui->stackedWidget->setCurrentIndex(67);
+                                        ui->stackedWidget->setCurrentWidget(ui->page_WifiConnect_1);
                                         setWinPic(false);
                                     }
                                     return;
