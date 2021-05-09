@@ -624,7 +624,7 @@ void MainWindow::downloadOver(QString fileName)
 void MainWindow::connctwifi(myWifiItem *itm)
 {
     ui->label_319->setText(itm->wifiname);
-    ui->stackedWidget->setCurrentIndex(82);
+    ui->stackedWidget->setCurrentWidget(ui->page_KeyBoard);
     ui->stackedWidget_2->setCurrentIndex(0);
     chooseit = NULL;
     chooseit = itm;
