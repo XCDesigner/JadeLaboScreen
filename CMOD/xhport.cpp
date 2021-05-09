@@ -717,6 +717,17 @@ void XhPort::startPrint()
     m_serial->writeProtocalData(s);
 }
 
+/**
+  * @brief  Start printing
+  * @param  Mode:
+  * @retval None
+  */
+void XhPort::getFirmwareVersion()
+{
+    QByteArray s = QByteArray::fromHex("0503");
+    m_serial->writeProtocalData(s);
+}
+
 void XhPort::testdemo()
 {
     QByteArray s = QByteArray::fromHex("84654875294581");

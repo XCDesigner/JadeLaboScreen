@@ -1260,50 +1260,14 @@ void MainWindow::on_pushButton_299_clicked()
 #endif
 }
 
-void MainWindow::on_pushButton_628_clicked()
-{
-    ui->stackedWidget->setCurrentWidget(ui->page_GetStart);
-}
-
-void MainWindow::on_pushButton_629_clicked()
-{
-    ui->stackedWidget->setCurrentWidget(ui->page_ChangeFilament);
-}
-
 void MainWindow::on_pushButton_627_clicked()
 {
     ui->stackedWidget->setCurrentWidget(ui->page_Tools);
 }
 
-void MainWindow::on_pushButton_630_clicked()
-{
-    ui->stackedWidget->setCurrentIndex(24);
-#ifdef XH_VIS
-    ui->m_StatusBar->setVisible(false);
-#endif
-}
-
-void MainWindow::on_pushButton_643_clicked()
-{
-    ui->stackedWidget->setCurrentWidget(ui->page_GetStart);
-}
-
-void MainWindow::on_pushButton_644_clicked()
-{
-    ui->stackedWidget->setCurrentWidget(ui->page_ChangeFilament);
-}
-
 void MainWindow::on_pushButton_646_clicked()
 {
     ui->stackedWidget->setCurrentWidget(ui->page_Tools);
-}
-
-void MainWindow::on_pushButton_645_clicked()
-{
-    ui->stackedWidget->setCurrentIndex(24);
-#ifdef XH_VIS
-    ui->m_StatusBar->setVisible(false);
-#endif
 }
 
 void MainWindow::on_pushButton_347_clicked()

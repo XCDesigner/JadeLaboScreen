@@ -105,6 +105,8 @@ public:
     void AddListen(QByteArray MatchData, pFunction, bool);
     void TestListener(QByteArray);
 
+    void onFirmwareVersionReceived(QByteArray);
+
 private:
     Ui::MainWindow *ui;
 
@@ -209,7 +211,7 @@ private:
     // Message Listen List
     QList<ListenerItem> lst_listen_item;
 
-    QUdpSocket *sock;
+    QTcpSocket *sock;
 
 private slots:
     void printMessageProcess(uint8_t, uint8_t, QByteArray Datas);
@@ -510,23 +512,11 @@ private slots:
 
     void on_pushButton_299_clicked();
 
-    void on_pushButton_628_clicked();
-
-    void on_pushButton_629_clicked();
-
     void on_pushButton_627_clicked();
-
-    void on_pushButton_630_clicked();
 
     void on_pushButton_637_clicked();
 
-    void on_pushButton_643_clicked();
-
-    void on_pushButton_644_clicked();
-
     void on_pushButton_646_clicked();
-
-    void on_pushButton_645_clicked();
 
     void on_pushButton_347_clicked();
 
