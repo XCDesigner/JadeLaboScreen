@@ -24,6 +24,13 @@
 #include <QMessageBox>
 #include <QMutex>
 #include <QStorageInfo>
+#include <QTcpSocket>
+#include <QCamera>
+#include <QCameraInfo>
+#include <QCameraImageCapture>
+#include <QCameraViewfinder>
+#include <QCameraCaptureBufferFormatControl>
+#include <QCameraViewfinderSettings>
 #include "CMOD/xhpage.h"
 #include "CMOD/xhEvent.h"
 #include "CMOD/xhport.h"
@@ -207,6 +214,8 @@ private:
 
     // Message Listen List
     QList<ListenerItem> lst_listen_item;
+
+    QCamera *p_camera;
 
 private slots:
     void printMessageProcess(uint8_t, uint8_t, QByteArray Datas);
@@ -837,6 +846,8 @@ private slots:
     void on_pushButton_117_clicked();
 
     void on_AboutReturn(int);
+
+    void on_pushButton_clicked();
 
 signals:
     void detection(bool);
