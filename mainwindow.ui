@@ -70,7 +70,7 @@ font-family: barlow;
 }</string>
     </property>
     <property name="currentIndex">
-     <number>51</number>
+     <number>43</number>
     </property>
     <widget class="QWidget" name="page_12">
      <widget class="QLabel" name="label_14">
@@ -9028,19 +9028,6 @@ background-color: rgb(255, 255, 255);</string>
        <string>PushButton</string>
       </property>
      </widget>
-     <widget class="QCameraViewfinder" name="label_camera">
-      <property name="geometry">
-       <rect>
-        <x>40</x>
-        <y>440</y>
-        <width>261</width>
-        <height>181</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>TextLabel</string>
-      </property>
-     </widget>
     </widget>
     <widget class="QWidget" name="page_81">
      <widget class="QPushButton" name="pushButton_356">
@@ -12811,19 +12798,6 @@ border: 2px solid rgba(255, 99, 11, 255);</string>
        </url>
       </property>
      </widget>
-     <widget class="QCameraViewfinder" name="label_camera_2">
-      <property name="geometry">
-       <rect>
-        <x>90</x>
-        <y>370</y>
-        <width>261</width>
-        <height>181</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>TextLabel</string>
-      </property>
-     </widget>
      <widget class="QPushButton" name="pushButton_2">
       <property name="geometry">
        <rect>
@@ -13069,11 +13043,6 @@ font-weight: bold;</string>
    <class>QQuickWidget</class>
    <extends>QWidget</extends>
    <header location="global">QtQuickWidgets/QQuickWidget</header>
-  </customwidget>
-  <customwidget>
-   <class>QCameraViewfinder</class>
-   <extends>QLabel</extends>
-   <header location="global">qcameraviewfinder.h</header>
   </customwidget>
  </customwidgets>
  <resources/>

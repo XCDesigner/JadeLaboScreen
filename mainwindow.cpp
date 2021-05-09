@@ -1789,56 +1789,6 @@ void MainWindow::onMessageTest(uint8_t Command, uint8_t SubCode, QByteArray Data
 void MainWindow::on_pushButton_clicked()
 {
 
-//    QTcpSocket *sock = new QTcpSocket();
-//    sock->bind(QHostAddress::Any, 1234, QAbstractSocket::DontShareAddress);
-//    sock->connectToHost("127.0.0.1", 3333, QIODevice::ReadWrite);
-//    if(sock->isOpen() == true)
-//    {
-//        sock->write("Hello");
-//        sock->close();
-//    }
-    const QList<QCameraInfo> cameras = QCameraInfo::availableCameras();
-    for (const QCameraInfo &cameraInfo : cameras) {
-        qDebug()<< cameraInfo;
-        //if (cameraInfo.deviceName() == "mycamera")
-        //    camera = new QCamera(cameraInfo);
-    }
-    if(cameras.count() > 0)
-    {
-        p_camera = new QCamera(cameras.at(0), this);
-        p_camera->setCaptureMode(QCamera::CaptureVideo);
-
-        QCameraViewfinderSettings *p_set = new QCameraViewfinderSettings();
-        QCameraViewfinder *viewfinder = ui->label_camera;
-
-        QList<QCameraViewfinderSettings > ViewSets = p_camera->supportedViewfinderSettings();   //可以打印出该camera支持的所有的分辨率及格式
-        foreach (QCameraViewfinderSettings ViewSet, ViewSets) {
-            qDebug()<<"haha"<<ViewSet.pixelFormat()<<" "<<ViewSet.resolution().width()<<" "<<ViewSet.resolution().height()<<","<<ViewSet.minimumFrameRate();
-        }
-
-//        p_set->setPixelFormat(QVideoFrame::Format_Jpeg);  //设置视频格式为Jpeg，对应CaptureVideoFrame中的Format_Jpeg格式。
-//        p_set->setMinimumFrameRate(30);  //设置最小的帧率
-//        p_set->setMaximumFrameRate(30);   //设置最大的帧率
-//        p_set->setResolution(1280, 710);   //设置获取的视频流的分辨率(因为此高分辨率是jpeg格式传输的)
-//        p_camera->setViewfinderSettings(*p_set);
-
-
-
-        p_camera->setViewfinder(viewfinder);
-
-        QCameraImageCapture *imageCapture = new QCameraImageCapture(p_camera);
-
-        p_camera->setCaptureMode(QCamera::CaptureStillImage);
-        p_camera->start();
-        //on half pressed shutter button
-        // p_camera->searchAndLock();
-
-        //on shutter button pressed
-        // imageCapture->capture();
-
-        //on shutter button released
-        // p_camera->unlock();
-    }
 }
 
 void MainWindow::on_pushButton_2_clicked()
@@ -1855,46 +1805,5 @@ void MainWindow::on_pushButton_2_clicked()
 
 void MainWindow::on_pushButton_3_clicked()
 {
-    const QList<QCameraInfo> cameras = QCameraInfo::availableCameras();
-    for (const QCameraInfo &cameraInfo : cameras) {
-        qDebug()<< cameraInfo;
-        //if (cameraInfo.deviceName() == "mycamera")
-        //    camera = new QCamera(cameraInfo);
-    }
-    if(cameras.count() > 0)
-    {
-        p_camera = new QCamera(cameras.at(1), this);
-        p_camera->setCaptureMode(QCamera::CaptureVideo);
 
-        QCameraViewfinderSettings *p_set = new QCameraViewfinderSettings();
-        QCameraViewfinder *viewfinder = ui->label_camera_2;
-
-        QList<QCameraViewfinderSettings > ViewSets = p_camera->supportedViewfinderSettings();   //可以打印出该camera支持的所有的分辨率及格式
-        foreach (QCameraViewfinderSettings ViewSet, ViewSets) {
-            qDebug()<<"haha"<<ViewSet.pixelFormat()<<" "<<ViewSet.resolution().width()<<" "<<ViewSet.resolution().height()<<","<<ViewSet.minimumFrameRate();
-        }
-
-//        p_set->setPixelFormat(QVideoFrame::Format_Jpeg);  //设置视频格式为Jpeg，对应CaptureVideoFrame中的Format_Jpeg格式。
-//        p_set->setMinimumFrameRate(30);  //设置最小的帧率
-//        p_set->setMaximumFrameRate(30);   //设置最大的帧率
-//        p_set->setResolution(1280, 710);   //设置获取的视频流的分辨率(因为此高分辨率是jpeg格式传输的)
-//        p_camera->setViewfinderSettings(*p_set);
-
-
-
-        p_camera->setViewfinder(viewfinder);
-
-        QCameraImageCapture *imageCapture = new QCameraImageCapture(p_camera);
-
-        p_camera->setCaptureMode(QCamera::CaptureStillImage);
-        p_camera->start();
-        //on half pressed shutter button
-        // p_camera->searchAndLock();
-
-        //on shutter button pressed
-        // imageCapture->capture();
-
-        //on shutter button released
-        // p_camera->unlock();
-    }
 }
