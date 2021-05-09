@@ -172,8 +172,6 @@ signals:
     void selfTest4();
     void selfTest5();
     void selfTest6();
-    void xcanone(int );
-    void xcantwo(int );
     void updateBeginsignl();
     void xhupdateNum(int );
 public slots:
@@ -205,9 +203,6 @@ private slots:
     void xhselfTest4();
     void xhselfTest5();
     void xhselfTest6();
-
-    void xhcanone(int a);
-    void xhcantwo(int a);
 
     void updateBeginSlot();
     void updateCheck(QByteArray );

@@ -137,7 +137,6 @@ private:
     QTimer *fileListTimer;
     QTimer *printTimer;
     QTimer *print;
-    QTimer *m_deepTimer;
 
     QMap<myListWidgetItem *,QListWidgetItem* > m_map;
     QMap<myWifiItem *,QListWidgetItem* >m_wmap;
@@ -279,11 +278,6 @@ private slots:
     void shineone();
     void shinetwo();
 
-    void jumpthirteen();
-    void jumpFourteen();
-    void jumpFifteen();
-
-    void jumpSixteen();
     void askPrint();
     void jumpSeventeen();
     void jumpnineteen();
@@ -294,7 +288,6 @@ private slots:
     void printChangeFilament();
     void printTime();
 
-    void buprint();
     /******udp**************/
     void getCondition();
     void downloadOver(QString );
@@ -305,9 +298,7 @@ private slots:
     void m_chooseItem(myListWidgetItem * itm);
 
     void connctwifi(myWifiItem* itm);
-    void m_chooseEN();
     void m_canPrintFile();
-    void m_chooseUEN();
     void m_parcancel();
 
     void m_backPrint();
@@ -327,19 +318,6 @@ private slots:
     void plt(QString a);
     void prt(QString a);
 
-    void oneprint();
-    void oneparser();
-    void onecancel();
-
-    void tprint();
-    void tcanle();
-    void tmirro();
-    void tdup();
-
-    void dprint();
-    void ddup();
-    void dcancle();
-
     void selftest1();
     void selftest2();
     void selftest3();
@@ -351,21 +329,13 @@ private slots:
     void findhotend();
     void cannext(bool );
 
-    void canone(int a);
-    void cantwo(int a);
     void up();
     void down();
 
     void updatebegin();
     void updateNumx(int );
 
-    void parseMode(QString printMode);
-    void parseDeepMode(QString printMode);
-    void parseHeader(QString left_temp, QString right_temp, QString bed_temp, QString offset);
-    void parseDeep();
     void timeAdd();
-
-    void deepTimer();
 
     void on_pushButton_129_clicked();
 

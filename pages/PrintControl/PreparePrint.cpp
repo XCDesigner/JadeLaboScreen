@@ -7,6 +7,7 @@ void MainWindow::preparePrintPageInit()
     ui->qw_PreparePrintControl->rootObject()->setProperty("stopEnabled", true);
     QTimer::singleShot(4000, this, SLOT(preparePrinTempChecking()));
     screen_status.setPerformance(PREPARE_PRINT);
+    m_printsec->start(1000);
 }
 
 void MainWindow::StopPreHeatting() 

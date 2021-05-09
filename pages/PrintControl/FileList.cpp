@@ -186,11 +186,6 @@ void MainWindow::onParseComplete()
     delete pdlg_parsing;
 }
 
-//void MainWindow::PreparePrint(QString FileName)
-//{
-
-//}
-
 void MainWindow::m_deleteItem(myListWidgetItem *itm)
 {
     m_delete = new Delete(this);
@@ -221,139 +216,6 @@ void MainWindow::onDeleteFileReturn()
         }
     }
     delete m_delete;
-}
-
-void MainWindow::m_chooseEN()
-{
-    loaclPATH.clear();
-    loaclPATH = localPath+m_WinFile->m_fileName;
-    /* 2021/3/2 cbw */
-    QString a= QDir::currentPath()+"/UD";
-    if(m_WinFile->m_filePath.left(4) == "/mnt"||m_WinFile->m_filePath.left(a.size()) == UDiskPath)
-    {
-        QFileInfo directFile(m_WinFile->m_filePath);
-        romClean(directFile.size());
-        m_fileParser->parseByDirect(m_WinFile->m_filePath,localPath+m_WinFile->m_fileName);
-        udiskPATH = m_WinFile->m_filePath;
-        openMode = false;
-    }
-    else
-    {
-        //解析文件
-        int mode = 0;
-        QFile m_sendFile(m_WinFile->m_filePath);
-        if(m_sendFile.open(QIODevice::ReadOnly))
-        {
-            QByteArray m_filedata = m_sendFile.readLine();
-            QList<QByteArray> params = m_filedata.split(' ');
-            qDebug()<<params;
-            QByteArray print_mode = params[1].split(':')[1];
-            QString offset = params[2].split(':')[1];
-            lt = params[3].split(':')[1];
-            rt = params[4].split(':')[1];
-            bt = params[5].split(':')[1];
-
-            QString data = m_filedata;
-            if((print_mode == "unknown")|| (print_mode =="Unknown"))
-            {
-                mode = 1;
-                this->printMode = 0;
-            }
-            if(print_mode == "Mirror")
-            {
-                mode = 2;
-            }
-            if(print_mode == "Duplicate")
-            {
-                mode = 3;
-            }
-            if(print_mode == "Unsupport")
-            {
-                mode = 4;
-                this->printMode = 0;
-            }
-            if(print_mode == "Mix")
-            {
-                mode = 5;
-                this->printMode = 6;
-            }
-            if(print_mode == "Orgin-Mirror")
-            {
-                mode = 6;
-                this->printMode = 5;
-            }
-            if(print_mode == "Orgin-Duplicate")
-            {
-                mode = 7;
-                this->printMode = 4;
-            }
-
-            qDebug()<<"offset qstring read"<<offset;
-
-            if(offset.contains("-"))
-            {
-                offset = offset.mid(1,offset.size()-1);
-                qDebug()<<"offset"<<offset;
-                float a = offset.toFloat();
-                offsetnum = 0 - (a*1000);
-                qDebug()<<"numoffset"<<offsetnum;
-            }
-            else {
-                float a = offset.toFloat();
-                offsetnum = a*1000;
-                qDebug()<<"numoffset"<<offsetnum;
-            }
-        }
-
-        m_dam = new DupandMirorr(this);
-        QObject::connect(m_dam,&DupandMirorr::print,this,&MainWindow::tprint);
-        QObject::connect(m_dam,&DupandMirorr::mirro,this,&MainWindow::tmirro);
-        QObject::connect(m_dam,&DupandMirorr::dup,this,&MainWindow::tdup);
-        QObject::connect(m_dam,&DupandMirorr::cancle,this,&MainWindow::tcanle);
-
-        switch (mode) {
-        case 1:
-            m_dam->changeMode(0);
-            break;
-        case 2:
-            m_dam->changeMode(2);
-            break;
-        case 3:
-            m_dam->changeMode(3);
-            break;
-        case 4:
-            m_dam->changeMode(1);
-            break;
-        case 5:
-            m_dam->changeMode(1);
-            break;
-        case 6:
-            m_dam->changeMode(1);
-            break;
-        case 7:
-            m_dam->changeMode(1);
-            break;
-        default:
-            break;
-        }
-        openMode =true;
-        m_dam->show();
-        m_WinFile->hide();
-        m_WinFile->close();
-
-        m_sendFile.close();
-    }
-    /* over */
-
-//    QStorageInfo storage = QStorageInfo::root();
-//    storage.refresh();
-//    qDebug()<<storage.rootPath();
-//    if(storage.isReadOnly())
-//        qDebug()<<"isReadOnly:"<<storage.isReadOnly();
-//    qDebug()<<"name:"<<storage.name();
-//    qDebug()<<"fileSystemType:"<<storage.fileSystemType();
-//    qDebug()<<"size:"<<storage.bytesTotal()/1000/1000<<"MB";
-//    qDebug()<<"availableSize:"<<storage.bytesAvailable()/1000/1000<<"MB";
 }
 
 void MainWindow::romClean(int fileSize)
@@ -413,10 +275,4 @@ void MainWindow::romClean(int fileSize)
             qDebug()<<fileTime;
         }
     }
-}
-
-void MainWindow::m_chooseUEN()
-{
-    m_WinFile->hide();
-    m_WinFile->close();
 }

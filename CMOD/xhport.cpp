@@ -37,8 +37,6 @@ XhPort::XhPort(QObject *parent) : QObject(parent)
     QObject::connect(m_package,&XhPage::selfTest4,this,&XhPort::xhselfTest4);
     QObject::connect(m_package,&XhPage::selfTest5,this,&XhPort::xhselfTest5);
     QObject::connect(m_package,&XhPage::selfTest6,this,&XhPort::xhselfTest6);
-    QObject::connect(m_package,&XhPage::canone,this,&XhPort::xhcanone);
-    QObject::connect(m_package,&XhPage::cantwo,this,&XhPort::xhcantwo);
 
     QObject::connect(m_package,&XhPage::updateBeginSignls,this,&XhPort::updateBeginSlot);
     QObject::connect(m_package,&XhPage::updateCheck,this,&XhPort::updateCheck);
@@ -909,18 +907,6 @@ void XhPort::xhselfTest5()
 void XhPort::xhselfTest6()
 {
     emit selfTest6();
-}
-
-void XhPort::xhcanone(int a)
-{
-    emit xcanone(a);
-    qDebug()<<"port"<<a;
-}
-
-void XhPort::xhcantwo(int a)
-{
-    emit xcantwo(a);
-    qDebug()<<"port"<<a;
 }
 
 void XhPort::updateBeginSlot()

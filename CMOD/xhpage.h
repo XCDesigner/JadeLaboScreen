@@ -132,9 +132,6 @@ signals:
     void selfTest5();
     void selfTest6();
 
-    void canone(int );
-    void cantwo(int );
-
     void updateBeginSignls();
     void updateSerial(int );
     void updateCheck(QByteArray );

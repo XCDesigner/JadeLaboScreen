@@ -44,12 +44,6 @@ public:
     /* 2021/3/8/ by paladin  over */
 signals:
     void    parseSucceded(QString outputFileName);
-    /* 2021/3/2/ by cbw */
-    void    parseByDirectMode(QString printMode);
-    void    parseByDeepMode(QString printMode);
-    void    parseByDeepHeader(QString left_temp, QString right_temp, QString bed_temp, QString offset);
-    void    parseDeepSucceded();
-    /* 2021/3/2/ by cbw  over */
 
 protected:
     virtual void run() override;

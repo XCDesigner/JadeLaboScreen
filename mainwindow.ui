@@ -70,7 +70,7 @@ font-family: barlow;
 }</string>
     </property>
     <property name="currentIndex">
-     <number>21</number>
+     <number>43</number>
     </property>
     <widget class="QWidget" name="page_12">
      <widget class="QLabel" name="label_14">
@@ -2312,7 +2312,7 @@ font-family: Barlow;
 background-color: rgba(255, 255, 255, 0);</string>
       </property>
       <property name="text">
-       <string>0H0M0S</string>
+       <string>0h 0m</string>
       </property>
      </widget>
      <widget class="QQuickWidget" name="qw_PreHeating">
@@ -2629,7 +2629,7 @@ font-family: Barlow;
 background-color: rgba(255, 255, 255, 0);</string>
       </property>
       <property name="text">
-       <string>0H0M0S</string>
+       <string>0h 0m</string>
       </property>
      </widget>
      <widget class="QLabel" name="label_69">

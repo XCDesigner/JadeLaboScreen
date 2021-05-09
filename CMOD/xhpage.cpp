@@ -135,42 +135,6 @@ int XhPage::analysis(QByteArray package)
                                     emit xyCheck(true);
                                 break;
 
-                                case '\x0E':
-                                    if(data[2]=='\x00')
-                                    {
-                                        if(data[3] == '\x00')
-                                        {
-                                            emit canone(0);
-                                        }
-                                        if(data[3] == '\x01')
-                                        {
-                                            emit canone(1);
-                                        }
-                                        if(data[3] == '\x02')
-                                        {
-                                            emit canone(2);
-                                        }
-                                    }
-                                break;
-                                case '\x10':
-                                if(data[2]=='\x00')
-                                {
-                                    if(data[3] == '\x00')
-                                    {
-                                        emit cantwo(0);
-                                    }
-                                    if(data[3] == '\x01')
-                                    {
-                                        emit cantwo(1);
-
-                                    }
-                                    if(data[3] == '\x02')
-                                    {
-                                        emit cantwo(2);
-                                    }
-                                }
-                            break;
-
                             default:
                                 break;
                             }

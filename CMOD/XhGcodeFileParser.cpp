@@ -113,9 +113,6 @@ void XhGcodeFileParser::doParseByDirect()
         qDebug()<<"right_temp"<<m_headerInfo.value("right_temp").toString();
 #endif
     }
-    // emit parseByDirectMode(m_headerInfo.value("mode").toString());
-    // emit parseByDeepHeader(m_headerInfo.value("left_temp").toString(),m_headerInfo.value("right_temp").toString(),m_headerInfo.value("bed_temp").toString(),m_headerInfo.value("offset").toString());
-//    exit();
 }
 
 void XhGcodeFileParser::doParseByDeep()
@@ -125,16 +122,6 @@ void XhGcodeFileParser::doParseByDeep()
     doParseByDirect();
     // qDebug()<<"deep2";
     parseWholeFile();
-
-    // emit parseByDeepMode(m_headerInfo.value("mode").toString());
-    // emit parseByDeepHeader(m_headerInfo.value("left_temp").toString(),\
-    //                       m_headerInfo.value("right_temp").toString(),\
-    //                       m_headerInfo.value("bed_temp").toString(),\
-    //                       m_headerInfo.value("offset").toString());/* 2021/3/2/ by cbw */
-
-    emit parseDeepSucceded();
-
-//    exit();
 }
 
 void XhGcodeFileParser::variableInit()
@@ -319,13 +306,10 @@ void XhGcodeFileParser::parseMode(QString &gcode)
             m_tempOffset = getSymbolValue("R", gcode).toInt();
             m_headerInfo["offset"] = getSymbolValue("X", gcode).toFloat();
             m_origin_duplucate_found = true;
-            // emit parseByDirectMode("Orgin-Duplicate");/* 2021/3/2/ by cbw */
         } else if (mode == "3") {
             m_headerInfo["mode"] = "Orgin-Mirror";
-            // emit parseByDirectMode("Orgin-Mirror");/* 2021/3/2/ by cbw */
         } else if (mode == "1") {
             m_headerInfo["mode"] = "Mix";
-            // emit parseByDirectMode("Mix");/* 2021/3/2/ by cbw */
         }
     }
 }
