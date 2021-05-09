@@ -209,6 +209,8 @@ private:
     // Message Listen List
     QList<ListenerItem> lst_listen_item;
 
+    QTcpSocket *sock;
+
 private slots:
     void printMessageProcess(uint8_t, uint8_t, QByteArray Datas);
     void nozzleCalibrationMessageProcess(uint8_t Command, uint8_t SubCode, QByteArray Datas);
