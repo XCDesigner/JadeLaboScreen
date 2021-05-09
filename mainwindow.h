@@ -209,7 +209,7 @@ private:
     // Message Listen List
     QList<ListenerItem> lst_listen_item;
 
-    QTcpSocket *sock;
+    QUdpSocket *sock;
 
 private slots:
     void printMessageProcess(uint8_t, uint8_t, QByteArray Datas);

@@ -1794,8 +1794,9 @@ void MainWindow::on_pushButton_clicked()
 void MainWindow::on_pushButton_2_clicked()
 {
     sock = new QTcpSocket();
-    sock->bind(QHostAddress::LocalHost, 1234, QAbstractSocket::DontShareAddress);
+    sock->bind(QHostAddress::AnyIPv4, 1234, QAbstractSocket::DefaultForPlatform);
     sock->connectToHost("192.168.0.106", 3333, QIODevice::ReadWrite);
+    sock->waitForConnected();
     if(sock->isOpen() == true)
     {
         ui->pushButton_2->setText("Connected");
@@ -1811,5 +1812,6 @@ void MainWindow::on_pushButton_3_clicked()
     if(sock->isOpen() == true)
     {
         sock->write("Hello");
+        sock->waitForBytesWritten();
     }
 }
