@@ -1617,7 +1617,7 @@ void MainWindow::on_pushButton_689_clicked()
     {
         qDebug()<<"connect success!";
         start_udhcpc();
-        ui->stackedWidget->setCurrentIndex(84);
+        ui->stackedWidget->setCurrentWidget(ui->page_GetStart);
         setWinPic(true);
 
         QFile wifiConnect(localWIFI);
@@ -1794,12 +1794,17 @@ void MainWindow::on_pushButton_clicked()
 void MainWindow::on_pushButton_2_clicked()
 {
     QTcpSocket *sock = new QTcpSocket();
-    sock->bind(QHostAddress::Any, 1234, QAbstractSocket::DontShareAddress);
+    sock->bind(QHostAddress::LocalHost, 1234, QAbstractSocket::DontShareAddress);
     sock->connectToHost("192.168.0.106", 3333, QIODevice::ReadWrite);
     if(sock->isOpen() == true)
     {
+        ui->pushButton_2->setText("Connected");
         sock->write("Hello");
         sock->close();
+    }
+    else
+    {
+        ui->pushButton_2->setText("Disconnected");
     }
 }
 
