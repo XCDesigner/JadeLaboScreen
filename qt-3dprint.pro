@@ -29,9 +29,12 @@ CONFIG += c++11
 SOURCES += \
     CMOD/XhGcodeFileParser.cpp \
     CMOD/XhUpdater.cpp \
+    CMOD/jlnetport.cpp \
     CMOD/jlprotocal.cpp \
     CMOD/jlserialport.cpp \
     CMOD/screenstatus.cpp \
+    CMOD/tcpcontroler.cpp \
+    CMOD/udplistener.cpp \
     CMOD/xhEvent.cpp \
     CMOD/xhcontrolr818.cpp \
     CMOD/xhpage.cpp \
@@ -83,14 +86,18 @@ SOURCES += \
     pages/PrintSetting/PrintSetting.cpp \
     pages/StatusBar/StatusBar.cpp \
     pages/Update/UpdateProcess.cpp \
+    pages/Wifi/Wifi.cpp \
     portreceiver.cpp
 
 HEADERS += \
     CMOD/XhGcodeFileParser.h \
     CMOD/XhUpdater.h \
+    CMOD/jlnetport.h \
     CMOD/jlprotocal.h \
     CMOD/jlserialport.h \
     CMOD/screenstatus.h \
+    CMOD/tcpcontroler.h \
+    CMOD/udplistener.h \
     CMOD/xhEvent.h \
     CMOD/xhcontrolr818.h \
     CMOD/xhpage.h \

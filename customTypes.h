@@ -37,4 +37,20 @@ typedef struct
     float XOffset;
 }strPrintDesc;
 
+class UdpListener;
+class TcpControler;
+typedef void (UdpListener::*pUdpProcess)(QByteArray);
+typedef void (TcpControler::*pTcpProcess)(QByteArray);
+typedef struct
+{
+    uint16_t Command;
+    pUdpProcess pProcessFunction;
+}strUDPMessageMap;
+
+typedef struct
+{
+    uint16_t Command;
+    pTcpProcess pProcessFunction;
+}strTCPMessageMap;
+
 #endif // CUSTOM_TYPES_H

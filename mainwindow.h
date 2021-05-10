@@ -28,6 +28,8 @@
 #include "CMOD/xhpage.h"
 #include "CMOD/xhEvent.h"
 #include "CMOD/xhport.h"
+#include "CMOD/udplistener.h"
+#include "CMOD/tcpcontroler.h"
 #include "dialog/choosefile.h"
 #include "dialog/parsing.h"
 #include "dialog/askpause.h"
@@ -107,6 +109,9 @@ public:
 
     void onFirmwareVersionReceived(QByteArray);
 
+    void wifiPageInit();
+
+
 private:
     Ui::MainWindow *ui;
 
@@ -158,13 +163,17 @@ private:
     fileCheckThread *m_thread;
     chooseTemp *mchoose;
 
+    UdpListener *m_udp_listener;
+    TcpControler *m_tcp_controler;
+    uint8_t last_download_type;
+    QString last_download_filename;
+
     PrintModeSelect *pdlg_select_mode;
     WarningDialog *pdlg_warning;
 
     UnNoknfile *m_modeone;
     DupandMirorr *m_dam;
     duponly *m_dup;
-
 
     QQuickItem *item;
     QQuickItem *item3;
@@ -207,11 +216,12 @@ private:
     QByteArray printerUpdateFileBuffer;
     uint16_t printerUpdatePacks;
     XhUpdater *m_upDater;
+    updateProgreBar *pdlg_Download;
 
     // Message Listen List
     QList<ListenerItem> lst_listen_item;
 
-    QTcpSocket *sock;
+
 
 private slots:
     void printMessageProcess(uint8_t, uint8_t, QByteArray Datas);
@@ -234,6 +244,12 @@ private slots:
     void onModeSelectReturn();
     void onParseComplete();
 
+    // wifi
+    void wifiConnectEvent(QByteArray);
+    void wifiDownloadEvent(QString, QByteArray);
+    void wifiPrint(QString, QString, QString);
+    void wifiParseComplete();
+
     // Fault detection
     void onMessageListen(uint8_t, uint8_t, QByteArray);
 
@@ -241,7 +257,7 @@ private slots:
     void onMessageTest(uint8_t Command, uint8_t SubCode, QByteArray Datas);
 
     // Update page
-    void updateFileAnalize();
+    void updateFileAnalize(QString);
     QList<uint32_t> getUpdateItem(uint32_t SearchType);
     QByteArray getUpdateInfo(QList<uint32_t>);
     QByteArray getUpdateContent(QList<uint32_t>);

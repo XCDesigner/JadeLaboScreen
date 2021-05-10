@@ -3,8 +3,11 @@
 #include "CMOD/XhUpdater.h"
 #include <QThread>
 
-void MainWindow::updateFileAnalize()
+void MainWindow::updateFileAnalize(QString SourceFile)
 {
+    if(QFile::exists(UpdateFile) == true)
+        QFile::remove(UpdateFile);
+    QFile::copy(SourceFile, UpdateFile);
     QList<uint32_t> printer_update_info;
     printer_update_info = getUpdateItem(1);
     qDebug()<<printer_update_info;

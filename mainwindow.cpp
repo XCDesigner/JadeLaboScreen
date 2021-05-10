@@ -273,6 +273,10 @@ MainWindow::MainWindow(QWidget *parent) :
     AboutPageInit();
 
     ListenerInit();
+
+    #if defined(XH_WIN)
+    wifiPageInit();
+    #endif
 }
 
 MainWindow::~MainWindow()
@@ -1680,7 +1684,7 @@ void MainWindow::on_pushButton_688_clicked()
 
 void MainWindow::on_pushButton_447_clicked()
 {
-    updateFileAnalize();
+    updateFileAnalize(UpdateSourceFile);
     // m_port->updateBegin(UpdateFile);
     // printTimer->stop();
     /*不知道是否弹窗*/
@@ -1757,25 +1761,10 @@ void MainWindow::on_pushButton_clicked()
 
 void MainWindow::on_pushButton_2_clicked()
 {
-    sock = new QTcpSocket();
-    sock->bind(QHostAddress::AnyIPv4, 1234, QAbstractSocket::DefaultForPlatform);
-    sock->connectToHost("192.168.0.106", 3333, QIODevice::ReadWrite);
-    sock->waitForConnected();
-    if(sock->isOpen() == true)
-    {
-        ui->pushButton_2->setText("Connected");
-    }
-    else
-    {
-        ui->pushButton_2->setText("Disconnected");
-    }
+
 }
 
 void MainWindow::on_pushButton_3_clicked()
 {
-    if(sock->isOpen() == true)
-    {
-        sock->write("Hello");
-        sock->waitForBytesWritten();
-    }
+
 }
