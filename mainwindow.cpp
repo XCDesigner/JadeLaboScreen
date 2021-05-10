@@ -1841,18 +1841,6 @@ void MainWindow::on_pushButton_clicked()
     }
 }
 
-void MainWindow::on_pushButton_2_clicked()
-{
-    QTcpSocket *sock = new QTcpSocket();
-    sock->bind(QHostAddress::Any, 1234, QAbstractSocket::DontShareAddress);
-    sock->connectToHost("192.168.0.106", 3333, QIODevice::ReadWrite);
-    if(sock->isOpen() == true)
-    {
-        sock->write("Hello");
-        sock->close();
-    }
-}
-
 void MainWindow::on_pushButton_3_clicked()
 {
     const QList<QCameraInfo> cameras = QCameraInfo::availableCameras();
@@ -1863,7 +1851,7 @@ void MainWindow::on_pushButton_3_clicked()
     }
     if(cameras.count() > 0)
     {
-        p_camera = new QCamera(cameras.at(1), this);
+        p_camera = new QCamera(cameras.at(0), this);
         p_camera->setCaptureMode(QCamera::CaptureVideo);
 
         QCameraViewfinderSettings *p_set = new QCameraViewfinderSettings();
