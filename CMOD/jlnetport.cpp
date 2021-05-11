@@ -12,6 +12,12 @@ void JLNetPort::StartWork()
     QObject::connect(p_Socket, SIGNAL(readyRead()), this, SLOT(onSocketRead()));
 }
 
+void JLNetPort::StopWork()
+{
+    terminate();
+    QObject::disconnect(p_Socket, SIGNAL(readyRead()), this, SLOT(onSocketRead()));
+}
+
 void JLNetPort::onSocketRead()
 {
     QByteArray datas = readData();

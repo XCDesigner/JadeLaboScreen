@@ -19,6 +19,12 @@ TcpControler::TcpControler()
     StartWork();
 }
 
+TcpControler::~TcpControler()
+{
+    StopWork();
+    delete p_Socket;
+}
+
 QByteArray TcpControler::readData()
 {
     if(p_Socket == nullptr)

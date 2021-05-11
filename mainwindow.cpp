@@ -274,9 +274,9 @@ MainWindow::MainWindow(QWidget *parent) :
 
     ListenerInit();
 
-    #if defined(XH_WIN)
+    // #if defined(XH_WIN)
     wifiPageInit();
-    #endif
+    // #endif
 }
 
 MainWindow::~MainWindow()
@@ -1408,6 +1408,7 @@ void MainWindow::on_pushButton_340_clicked()
                                         start_udhcpc();
                                         ui->stackedWidget->setCurrentWidget(ui->page_WifiConnect_2);
                                         setWinPic(true);
+                                        wifiControlerInit();
                                         udpControl = new XhControlR818(this);
                                         QObject::connect(udpControl,&XhControlR818::signalsAskCondition,this,&MainWindow::getCondition);
                                         QObject::connect(this,&MainWindow::sendCondition,udpControl,&XhControlR818::slotAskCondition);
@@ -1587,6 +1588,7 @@ void MainWindow::on_pushButton_689_clicked()
         start_udhcpc();
         ui->stackedWidget->setCurrentWidget(ui->page_GetStart);
         setWinPic(true);
+        wifiControlerInit();
 
         QFile wifiConnect(localWIFI);
         QTextStream textStream(&wifiConnect);
@@ -1766,5 +1768,5 @@ void MainWindow::on_pushButton_2_clicked()
 
 void MainWindow::on_pushButton_3_clicked()
 {
-
+    wifiControlerInit();
 }

@@ -9,6 +9,7 @@ class TcpControler : public JLNetPort
     Q_OBJECT
 public:
     TcpControler();
+    ~TcpControler();
 
     void writeProtocalData(QByteArray);
     bool connectServer(QString, int);

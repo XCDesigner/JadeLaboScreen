@@ -110,6 +110,7 @@ public:
     void onFirmwareVersionReceived(QByteArray);
 
     void wifiPageInit();
+    void wifiControlerInit();
 
 
 private:
@@ -245,7 +246,7 @@ private slots:
     void onParseComplete();
 
     // wifi
-    void wifiConnectEvent(QByteArray);
+    void wifiConnectEvent(QList<QByteArray>);
     void wifiDownloadEvent(QString, QByteArray);
     void wifiPrint(QString, QString, QString);
     void wifiParseComplete();

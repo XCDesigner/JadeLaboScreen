@@ -82,8 +82,13 @@ void UdpListener::broadCastReply(QByteArray Data)
 
 void UdpListener::connectRequest(QByteArray Data)
 {
+    QList<QByteArray> ret;
+    ret.append("Connect Request");
+    ret.append(host.toString().toUtf8());
+    ret.append("8888");
+
     connectReply(QByteArray());
-    emit sigManageEvent(QByteArray("Connect Request"));
+    emit sigManageEvent(ret);
     if(isConnected == true) {
 
     }
@@ -100,8 +105,10 @@ void UdpListener::connectReply(QByteArray Data)
 
 void UdpListener::disconnectRequest(QByteArray Data)
 {
+    QList<QByteArray> ret;
+    ret.append("Disconnect Request");
     disconnectReply(QByteArray());
-    emit sigManageEvent(QByteArray("Disconnect Request"));
+    emit sigManageEvent(ret);
     if(isConnected == true) {
 
     }

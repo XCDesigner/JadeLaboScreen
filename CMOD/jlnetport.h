@@ -19,6 +19,7 @@ public:
     JLNetPort();
 
     void StartWork();
+    void StopWork();
 
 private slots:
     void onSocketRead();

@@ -5,21 +5,39 @@
 
 void MainWindow::wifiPageInit()
 {
+    m_tcp_controler = nullptr;
     m_udp_listener = new UdpListener();
     m_udp_listener->startListen(9999);
-    m_tcp_controler = new TcpControler();
-    QObject::connect(m_udp_listener, SIGNAL(sigManageEvent(QByteArray)), this, SLOT(wifiConnectEvent(QByteArray)));
+    QObject::connect(m_udp_listener, SIGNAL(sigManageEvent(QList<QByteArray>)), this, SLOT(wifiConnectEvent(QList<QByteArray>)));
+}
+
+void MainWindow::wifiControlerInit()
+{
+    if(m_tcp_controler == nullptr)
+    {
+        qDebug()<<"Inited";
+        m_tcp_controler = new TcpControler();
+    }
+    else {
+        qDebug()<<"Reinited";
+        QObject::disconnect(m_tcp_controler, SIGNAL(downloadEvent(QString, QByteArray)), this, SLOT(wifiDownloadEvent(QString, QByteArray)));
+        delete m_tcp_controler;
+        m_tcp_controler = new TcpControler();
+    }
     QObject::connect(m_tcp_controler, SIGNAL(downloadEvent(QString, QByteArray)), this, SLOT(wifiDownloadEvent(QString, QByteArray)));
 }
 
-void MainWindow::wifiConnectEvent(QByteArray Data)
+void MainWindow::wifiConnectEvent(QList<QByteArray> Data)
 {
+    QByteArray command = Data.at(0);
     qDebug()<<Data;
-    if(Data == "Connect Request")
+    if(command == "Connect Request")
     {
-        m_tcp_controler->connectServer("192.168.1.6", 8888);
+        QString ip = Data.at(1);
+        int port = Data.at(2).toInt();
+        m_tcp_controler->connectServer(ip, port);
     }
-    else if(Data == "Disconnect Request")
+    else if(command == "Disconnect Request")
     {
         m_tcp_controler->disconnectServer();
     }

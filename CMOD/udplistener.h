@@ -35,7 +35,7 @@ private:
     bool isConnected;
 
 signals:
-    void sigManageEvent(QByteArray);
+    void sigManageEvent(QList<QByteArray>);
 };
 
 #endif // UPDLISTENER_H
