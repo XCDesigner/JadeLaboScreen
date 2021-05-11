@@ -7,6 +7,16 @@ chooseTemp::chooseTemp(QWidget *parent) :
 {
     ui->setupUi(this);
 
+
+}
+
+chooseTemp::~chooseTemp()
+{
+    delete ui;
+}
+
+void chooseTemp::init(QString str)
+{
     item[0] = ui->qw_TempOff;
     item[1] = ui->qw_Temp180;
     item[2] = ui->qw_Temp200;
@@ -31,16 +41,6 @@ chooseTemp::chooseTemp(QWidget *parent) :
         QObject::connect(item[i]->rootObject(), SIGNAL(clicked(int)), this, SLOT(onTempSelect(int)));
     }
     item[0]->rootObject()->setProperty("enable", false);
-}
-
-chooseTemp::~chooseTemp()
-{
-    delete ui;
-}
-
-void chooseTemp::init(QString str)
-{
-
 }
 
 void chooseTemp::show()
