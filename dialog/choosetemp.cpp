@@ -6,8 +6,6 @@ chooseTemp::chooseTemp(QWidget *parent) :
     ui(new Ui::chooseTemp)
 {
     ui->setupUi(this);
-
-
 }
 
 chooseTemp::~chooseTemp()

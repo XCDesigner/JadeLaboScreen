@@ -36,6 +36,7 @@ void MainWindow::changeFilamentTempChecking()
 void MainWindow::leftSetTemp()
 {
     mchoose = new chooseTemp(this);
+    mchoose->init(QByteArray());
     QObject::connect(mchoose, SIGNAL(hideWidget()), this, SLOT(onSetTemp()), Qt::QueuedConnection);
     changeFilamentSelectExtruder = 0;
     mchoose->show();
