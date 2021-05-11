@@ -36,7 +36,7 @@ void chooseTemp::init(QString str)
         // item[i]->rootObject()->setProperty("borderWidth", 5);
         // item[i]->rootObject()->setProperty("borderColor", "#f0f0f0");
         // QMetaObject::invokeMethod(item[i]->rootObject(), "setBorder", Q_ARG(int, 5), Q_ARG(QVariant, "#b0b0b0"));
-        QObject::connect(item[i]->rootObject(), SIGNAL(clicked(int)), this, SLOT(onTempSelect(int)));
+        QObject::connect(item[i]->rootObject(), SIGNAL(click(int)), this, SLOT(onTempSelect(int)));
     }
     item[0]->rootObject()->setProperty("enable", false);
 }
