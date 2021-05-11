@@ -27,8 +27,8 @@ chooseTemp::chooseTemp(QWidget *parent) :
         item[i]->rootObject()->setProperty("enable", true);
         item[i]->rootObject()->setProperty("isPressed", false);
         item[i]->setClearColor("#202020");
-        item[i]->rootObject()->setProperty("borderWidth", 5);
-        item[i]->rootObject()->setProperty("borderColor", "#f0f0f0");
+        // item[i]->rootObject()->setProperty("borderWidth", 5);
+        // item[i]->rootObject()->setProperty("borderColor", "#f0f0f0");
         // QMetaObject::invokeMethod(item[i]->rootObject(), "setBorder", Q_ARG(int, 5), Q_ARG(QVariant, "#b0b0b0"));
         QObject::connect(item[i]->rootObject(), SIGNAL(clicked(int)), this, SLOT(onTempSelect(int)));
     }
