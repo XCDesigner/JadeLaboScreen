@@ -27,6 +27,7 @@ void MainWindow::ShowPauseDialogClicked()
 void MainWindow::ShowParameterDialogClicked()
 {
     QByteArray s = QByteArray::fromHex("0614");
+    m_setdlog->setPrintMode(print_desc.ParsedMode);
     blockingChangeDialog(s, m_setdlog);
 }
 

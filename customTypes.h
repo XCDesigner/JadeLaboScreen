@@ -35,6 +35,7 @@ typedef struct
     QString RightTemp;
     QString BedTemp;
     float XOffset;
+    QString ParsedMode;
 }strPrintDesc;
 
 class UdpListener;

@@ -19,12 +19,13 @@ class PrintSetDlog : public JLWidget
 public:
     explicit PrintSetDlog(QWidget *parent = nullptr);
     ~PrintSetDlog();
-    void initnum(QString a, QString b, QString c, QString d, QString e, QString f, QString g);
+    void initnum(QString, QString, QString, QString, QString, QString, QString, QString, QString);
     void backup(int a );
     void updateButtonCheckStatus(int);
     void setXHPort(XhPort *pPort);
     void sendSetting();
     void init(QByteArray) override;
+    void setPrintMode(QString);
 
 private slots:
     void on_pushButton_clicked();
@@ -50,14 +51,16 @@ private:
 
     QTimer *m_tmr_check_increase;
     QTimer *m_tmr_check_decrease;
+    QString print_mode;
 
-    QQuickWidget *pButtons[8];
-    bool button_check_status[8];
+    QQuickWidget *pButtons[9];
+    bool button_check_status[9];
 
     int16_t temp_percent[3];
     int8_t fan_percent[2];
     int16_t feedrate_percent;
     int platform_height;
+    uint16_t flowrate_percent[2];
 
     int step_value;
     int change_value;

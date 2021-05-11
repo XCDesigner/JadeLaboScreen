@@ -55,6 +55,7 @@ public:
     void setPrintTempPercentage(int, uint8_t);
     void setPrintFanPercentage(int, uint8_t);
     void setPrintSpeedPercentage(uint16_t);
+    void setFlowratePercentage(uint8_t, uint16_t);
     void setPrintPlatformOffset(int32_t);
 
     void setExtruderDisable(uint8_t);

@@ -16,7 +16,7 @@ PrintModeSelect::PrintModeSelect(QWidget *parent) :
     ui->qw_btnMirror->rootObject()->setProperty("text", "Mirror");
     ui->qw_btnCancel->rootObject()->setProperty("text", "Cancel");
 
-    QFont *fonts = new QFont("barlow", 26, -1, false);
+    QFont *fonts = new QFont("barlow", 10, -1, false);
     fonts->setBold(true);
     ui->qw_btnDirect->rootObject()->setProperty("font", *fonts);
     ui->qw_btnDuplicate->rootObject()->setProperty("font", *fonts);
@@ -61,7 +61,7 @@ void PrintModeSelect::init(QByteArray InitData, myListWidgetItem *pSelectItem)
     p_file_item = pSelectItem;
     input_file = p_file_item->m_filePath;
     output_file_name = p_file_item->m_fileName;
-    if((InitData == "Orgin-Mirror") || (InitData == "Orgin-Duplicate") || (InitData == "Unsupport"))
+    if((InitData == "Orgin-Mirror") || (InitData == "Orgin-Duplicate") || (InitData == "Unsupport") || (InitData == "Mix"))
     {
         ui->qw_btnDuplicate->rootObject()->setProperty("enable", false);
         ui->qw_btnMirror->rootObject()->setProperty("enable", false);

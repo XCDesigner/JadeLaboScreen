@@ -514,6 +514,22 @@ void XhPort::setPrintSpeedPercentage(uint16_t Percent)
 }
 
 /**
+  * @brief  Set extruder flow rate
+  * @param  Extruder: Target extruder,0 for left, 1 for right
+  * @param  Percent: Percentage
+  * @retval None
+  */
+void XhPort::setFlowratePercentage(uint8_t Extruder, uint16_t Percent)
+{
+    QByteArray s = QByteArray::fromHex("0616");
+    s.append(1, Extruder);
+    s.append(1, Percent);
+    s.append(1, (Percent >> 8));
+    QByteArray buff = m_package->groupPage(s);
+    m_serial->write(buff);
+}
+
+/**
   * @brief  Set print platform offset
   * @param  Height: Offset in micronmeters
   * @retval None

@@ -155,6 +155,7 @@ void MainWindow::onParseComplete()
         qDebug()<<ret[1];
         qDebug()<<ret[2];
         QVariantMap parse_result = m_fileParser->parseQuickly(localPath + ret[1]);
+        print_desc.ParsedMode = parse_result["mode"].toString();
         print_desc.Mode = ret[2];
         print_desc.LeftTemp = parse_result["left_temp"].toString();
         print_desc.RightTemp = parse_result["right_temp"].toString();
