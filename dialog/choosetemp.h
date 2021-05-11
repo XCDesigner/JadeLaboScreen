@@ -24,6 +24,8 @@ public:
 private:
     Ui::chooseTemp *ui;
 
+    QQuickWidget *item[6];
+
 signals:
     void heatT(QString str);
 private slots:

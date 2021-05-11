@@ -56,7 +56,7 @@ Rectangle {
             isPressed: true
             width: 1008
             height: 120
-            onClicked: {
+            onClick: {
                 if(text == "Pause")
                     base.pauseClicked()
                 else if(text == "Continue")
@@ -70,7 +70,7 @@ Rectangle {
             isPressed: true
             width: 1008
             height: 120
-            onClicked: base.changeFilamentClicked()
+            onClick: base.changeFilamentClicked()
         }
 
         RowLayout {
@@ -81,7 +81,7 @@ Rectangle {
                 height: 120
                 isPressed: true
                 text: "Left Extruder Enable"
-                onClicked: {
+                onClick: {
                     if(leftExtruderEnable.isPressed == true)
                     {
                         if(rightExtruderEnable.isPressed == true)
@@ -99,7 +99,7 @@ Rectangle {
                 height: 120
                 isPressed: true
                 text: "Right Extruder Enable"
-                onClicked: {
+                onClick: {
                     if(rightExtruderEnable.isPressed == true)
                     {
                         if(leftExtruderEnable.isPressed == true)
@@ -119,7 +119,7 @@ Rectangle {
             isPressed: true
             width: 1008
             height: 120
-            onClicked: base.cancelClicked()
+            onClick: base.cancelClicked()
         }
     }
 }

@@ -7,8 +7,6 @@ chooseTemp::chooseTemp(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    QQuickWidget *item[6];
-
     item[0] = ui->qw_TempOff;
     item[1] = ui->qw_Temp180;
     item[2] = ui->qw_Temp200;
@@ -32,6 +30,7 @@ chooseTemp::chooseTemp(QWidget *parent) :
         // QMetaObject::invokeMethod(item[i]->rootObject(), "setBorder", Q_ARG(int, 5), Q_ARG(QVariant, "#b0b0b0"));
         QObject::connect(item[i]->rootObject(), SIGNAL(clicked(int)), this, SLOT(onTempSelect(int)));
     }
+    item[0]->rootObject()->setProperty("enable", false);
 }
 
 chooseTemp::~chooseTemp()
@@ -53,7 +52,7 @@ void chooseTemp::show()
 void chooseTemp::onTempSelect(int Index)
 {
     QByteArray ret_table[] = {"0", "180", "200", "220", "240", "260"};
-    qDebug()<<Index;
+    item[Index]->rootObject()->setProperty("isPressed", false);
     ret_value.append(ret_table[Index]);
     emit hideWidget();
     this->hide();

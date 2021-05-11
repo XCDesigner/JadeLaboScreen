@@ -64,11 +64,11 @@ PrintSetDlog::PrintSetDlog(QWidget *parent) :
     for(int i=0;i<9;i++) {
         pButtons[i]->rootObject()->setProperty("index", i);
         pButtons[i]->rootObject()->setProperty("enable", true);
-        QObject::connect(pButtons[i]->rootObject(), SIGNAL(clicked(int)), this, SLOT(buttonClicked(int)));
+        QObject::connect(pButtons[i]->rootObject(), SIGNAL(click(int)), this, SLOT(buttonClicked(int)));
     }
 
     ui->qw_BackupMode->rootObject()->setProperty("index", 10);
-    QObject::connect(ui->qw_BackupMode->rootObject(), SIGNAL(clicked(int)), this, SLOT(backupModeChange(int)));
+    QObject::connect(ui->qw_BackupMode->rootObject(), SIGNAL(click(int)), this, SLOT(backupModeChange(int)));
 
     QObject::connect(ui->qw_Increase->rootObject(), SIGNAL(press()), this, SLOT(onIncreaseClicked()));
     QObject::connect(ui->qw_Decrease->rootObject(), SIGNAL(press()), this, SLOT(onDecreaseClicked()));
