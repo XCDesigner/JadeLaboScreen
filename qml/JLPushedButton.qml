@@ -8,11 +8,21 @@ Rectangle {
     property alias text: title.text
     property alias font: title.font
     property int index: 0
+    property int borderWidth: 0
+    property color borderColor: color
 
     color: "#ff630b"
     radius: 20
 
     signal clicked(int index)
+
+    onBorderWidthChanged: {
+        base.border.width = borderWidth
+    }
+
+    onBorderColorChanged: {
+        base.border.color = borderColor
+    }
 
     onIsPressedChanged: {
         if(enable == true)
@@ -60,7 +70,7 @@ Rectangle {
 
     MouseArea {
         anchors.fill: parent
-        onPressed: {
+        onReleased: {
             if(base.enable == true)
                 base.clicked(base.index)
         }
