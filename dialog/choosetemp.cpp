@@ -24,6 +24,8 @@ chooseTemp::chooseTemp(QWidget *parent) :
         item[i]->rootObject()->setProperty("text", itemText[i]);
         item[i]->rootObject()->setProperty("radius", radius[i]);
         item[i]->rootObject()->setProperty("index", i);
+        item[i]->rootObject()->setProperty("enable", true);
+        item[i]->rootObject()->setProperty("isPressed", false);
         item[i]->setClearColor("#202020");
         item[i]->rootObject()->setProperty("borderWidth", 5);
         item[i]->rootObject()->setProperty("borderColor", "#f0f0f0");

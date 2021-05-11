@@ -279,7 +279,7 @@ MainWindow::MainWindow(QWidget *parent) :
     // #endif
 
     pMovie = new QMovie(this);
-    pMovie->setFileName("/usr/share/git/test.gif");
+    pMovie->setFileName("/usr/share/gif/test.gif");
 }
 
 MainWindow::~MainWindow()
