@@ -3,6 +3,7 @@
 
 #include <QDir>
 
+#define downloadPath            QDir::currentPath()+"/download"
 #define downloadUpdateFile      QDir::currentPath()+"/download/Update.JUP"
 #define downloadGcodeFile       QDir::currentPath()+"/download/tmp.gcode"
 #define downloadFile            QDir::currentPath()+"/download/tmp.file"

@@ -35,6 +35,7 @@ void MainWindow::wifiConnectEvent(QList<QByteArray> Data)
     {
         QString ip = Data.at(1);
         int port = Data.at(2).toInt();
+        ui->wqVersion->rootObject()->setProperty("text", ip);
         m_tcp_controler->connectServer(ip, port);
     }
     else if(command == "Disconnect Request")
@@ -62,6 +63,9 @@ void MainWindow::wifiDownloadEvent(QString EventName, QByteArray Data)
     {
         pdlg_Download->hide();
         delete pdlg_Download;
+        QDir dir(downloadPath);
+        if(dir.exists() == false)
+            dir.mkdir(downloadPath);
         if(last_download_type == 1)
         {
             if(QFile::exists(downloadUpdateFile) == true)

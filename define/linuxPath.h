@@ -4,8 +4,9 @@
 #include <QDebug>
 #include <QString>
 
+#define downloadPath            QString("/usr/share/download")
 #define downloadUpdateFile      QString("/usr/share/download/Update.JUP")
-#define downloadGcodeFile      QString("/usr/share/download/tmp.gcode")
+#define downloadGcodeFile       QString("/usr/share/download/tmp.gcode")
 #define downloadFile            QString("/usr/share/download/tmp.file")
 #define localPath               QString("/usr/gode/")
 #define UDiskPath               QString("/mnt/exUDISK/gcode")
