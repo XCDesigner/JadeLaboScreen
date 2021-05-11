@@ -25,6 +25,7 @@
 #include <QMutex>
 #include <QStorageInfo>
 #include <QTcpSocket>
+#include <QMovie>
 #include "CMOD/xhpage.h"
 #include "CMOD/xhEvent.h"
 #include "CMOD/xhport.h"
@@ -222,7 +223,7 @@ private:
     // Message Listen List
     QList<ListenerItem> lst_listen_item;
 
-
+    QMovie *pMovie;
 
 private slots:
     void printMessageProcess(uint8_t, uint8_t, QByteArray Datas);

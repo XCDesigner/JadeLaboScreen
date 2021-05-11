@@ -70,7 +70,7 @@ Rectangle {
 
     MouseArea {
         anchors.fill: parent
-        onReleased: {
+        onClicked: {
             if(base.enable == true)
                 base.clicked(base.index)
         }

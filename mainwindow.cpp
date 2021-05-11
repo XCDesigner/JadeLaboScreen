@@ -277,6 +277,9 @@ MainWindow::MainWindow(QWidget *parent) :
     // #if defined(XH_WIN)
     wifiPageInit();
     // #endif
+
+    pMovie = new QMovie(this);
+    pMovie->setFileName("/usr/share/git/test.gif");
 }
 
 MainWindow::~MainWindow()
@@ -964,6 +967,9 @@ void MainWindow::on_pushButton_236_clicked()
 
 void MainWindow::on_pushButton_237_clicked()
 {
+    pMovie->start();
+    ui->label_300->setMovie(pMovie);
+    ui->label_300->setScaledContents(true);
     ui->stackedWidget->setCurrentWidget(ui->page_XYCali_0);
 }
 

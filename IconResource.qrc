@@ -134,5 +134,6 @@
         <file>qml/PauseDialogItem.qml</file>
         <file>qml/JLHeatingUnit.qml</file>
         <file>qml/HeatingCircle.qml</file>
+        <file>image/test.gif</file>
     </qresource>
 </RCC>
