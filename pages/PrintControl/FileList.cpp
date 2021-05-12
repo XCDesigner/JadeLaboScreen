@@ -103,7 +103,7 @@ void MainWindow::m_addItemToList(const QString &fileName, QString filePath, QByt
 
 void MainWindow::m_chooseItem(myListWidgetItem *itm)
 {
-    m_WinFile = new chooseFile(this);
+    m_WinFile = new chooseFile();
     m_WinFile->init(itm);
     QObject::connect(m_WinFile, SIGNAL(hideWidget()), this, SLOT(onFileChooseReturn()), Qt::QueuedConnection);
     m_WinFile->show();
@@ -120,7 +120,7 @@ void MainWindow::onFileChooseReturn()
     if(ret[0] == "Confirm")
     {
         QVariantMap parse_result = m_fileParser->parseQuickly(p_item->m_filePath);
-        pdlg_select_mode = new PrintModeSelect();;
+        pdlg_select_mode = new PrintModeSelect();
         pdlg_select_mode->init(QByteArray(parse_result["mode"].toByteArray()), p_item);
         pdlg_select_mode->show();
         QObject::connect(pdlg_select_mode, SIGNAL(hideWidget()), this, SLOT(onModeSelectReturn()), Qt::QueuedConnection);
@@ -140,7 +140,7 @@ void MainWindow::onModeSelectReturn()
         QString output_file_name = pdlg_select_mode->getOutputFileName();
         delete pdlg_select_mode;
 
-        pdlg_parsing = new parsing(this);
+        pdlg_parsing = new parsing();
         pdlg_parsing->init(QByteArray(), ret[0], input_file, output_file_name);
         pdlg_parsing->show();
         QObject::connect(pdlg_parsing, SIGNAL(hideWidget()), this, SLOT(onParseComplete()), Qt::QueuedConnection);
@@ -178,7 +178,7 @@ void MainWindow::onParseComplete()
     {
         qDebug()<<"Mode unsupported!";
         QVariantMap parse_result = m_fileParser->parseQuickly(localPath + ret[1]);
-        pdlg_select_mode = new PrintModeSelect(this);
+        pdlg_select_mode = new PrintModeSelect();
         qDebug()<<parse_result["mode"].toByteArray();
         pdlg_select_mode->init(QByteArray(parse_result["mode"].toByteArray()), localPath+ret[1], ret[1]);
         pdlg_select_mode->show();
@@ -189,7 +189,7 @@ void MainWindow::onParseComplete()
 
 void MainWindow::m_deleteItem(myListWidgetItem *itm)
 {
-    m_delete = new Delete(this);
+    m_delete = new Delete();
     m_delete->init(itm->m_fileName, itm);
     m_delete->show();
     QObject::connect(m_delete, SIGNAL(hideWidget()), this, SLOT(onDeleteFileReturn()), Qt::QueuedConnection);
