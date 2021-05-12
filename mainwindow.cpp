@@ -1687,3 +1687,8 @@ void MainWindow::on_pushButton_121_clicked()
 {
     ui->stackedWidget->setCurrentWidget(ui->page_Tools);
 }
+
+void MainWindow::on_pushButton_146_clicked()
+{
+    ui->stackedWidget->setCurrentWidget(ui->page_ChangeFilament);
+}

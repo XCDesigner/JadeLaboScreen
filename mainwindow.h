@@ -862,6 +862,8 @@ private slots:
 
     void on_pushButton_121_clicked();
 
+    void on_pushButton_146_clicked();
+
 signals:
     void detection(bool);
     void updateNum(int );
