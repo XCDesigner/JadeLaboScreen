@@ -12,17 +12,17 @@ Rectangle {
     onValueChanged: {
         if(value > 0)
         {
-            img.source = "/image/turn_dec.png"
+            img.source = "qrc:/image/turn_dec.png"
             label.text = value.toString()
         }
         else if(value < 0)
         {
-            img.source = "/image/turn_inc.png"
+            img.source = "qrc:/image/turn_inc.png"
             label.text = (-value).toString()
         }
         else
         {
-            img.source = "/image/turn_dec.png"
+            img.source = ""
             label.text = value.toString()
         }
     }
@@ -41,6 +41,6 @@ Rectangle {
         horizontalAlignment: Text.AlignHCenter
         anchors.centerIn: parent
         color: "white"
-        font { family: "barlow"; pixelSize: 64; bold: true }
+        font { family: "barlow"; pixelSize: 32; bold: true }
     }
 }
