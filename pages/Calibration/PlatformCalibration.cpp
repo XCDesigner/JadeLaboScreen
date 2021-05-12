@@ -117,9 +117,9 @@ void MainWindow::platformCalibrationMessageProcess(uint8_t Command, uint8_t SubC
             }
             else
             {
-                ui->qw_PlatformCalibrateP1->setProperty("value", (int)z_diff[0]);
-                ui->qw_PlatformCalibrateP2->setProperty("value", (int)z_diff[1]);
-                ui->qw_PlatformCalibrateP3->setProperty("value", (int)z_diff[3]);
+                ui->qw_PlatformCalibrateP1->rootObject()->setProperty("value", (int)z_diff[0]);
+                ui->qw_PlatformCalibrateP2->rootObject()->setProperty("value", (int)z_diff[1]);
+                ui->qw_PlatformCalibrateP3->rootObject()->setProperty("value", (int)z_diff[3]);
                 ui->stackedWidget->setCurrentWidget(ui->page_PlatformCali_3);
             }
         }
