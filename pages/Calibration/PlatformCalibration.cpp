@@ -11,9 +11,9 @@ void MainWindow::on_pushButton_242_clicked()
 {
     m_port->setHeattingUnit("200","200");
     ui->stackedWidget->setCurrentWidget(ui->page_PlatformCali_1);
-    ui->qw_PlatformCalibrateP1->setClearColor(QColor(qmlColor));
-    ui->qw_PlatformCalibrateP2->setClearColor(QColor(qmlColor));
-    ui->qw_PlatformCalibrateP3->setClearColor(QColor(qmlColor));
+    ui->qw_PlatformCalibrateP1->setClearColor("#202020");
+    ui->qw_PlatformCalibrateP2->setClearColor("#202020");
+    ui->qw_PlatformCalibrateP3->setClearColor("#202020");
     screen_status.setPerformance(PLATFORM_CALIBRATING);
     QTimer::singleShot(500, this, SLOT(platformCalibrationHeating()));
 }
@@ -117,9 +117,9 @@ void MainWindow::platformCalibrationMessageProcess(uint8_t Command, uint8_t SubC
             }
             else
             {
-                ui->qw_PlatformCalibrateP1->setProperty("value", z_diff[0]);
-                ui->qw_PlatformCalibrateP2->setProperty("value", z_diff[1]);
-                ui->qw_PlatformCalibrateP3->setProperty("value", z_diff[3]);
+                ui->qw_PlatformCalibrateP1->setProperty("value", (int)z_diff[0]);
+                ui->qw_PlatformCalibrateP2->setProperty("value", (int)z_diff[1]);
+                ui->qw_PlatformCalibrateP3->setProperty("value", (int)z_diff[3]);
                 ui->stackedWidget->setCurrentWidget(ui->page_PlatformCali_3);
             }
         }

@@ -10,6 +10,7 @@ void MainWindow::xyCalibrateFail()
 void MainWindow::on_pushButton_631_clicked()
 {
     ui->stackedWidget->setCurrentWidget(ui->page_XYCali_1);
+    ui->qw_NozzleCalibrateP1->setClearColor("#202020");
     m_port->setHeattingUnit("200","200");
     QTimer::singleShot(500, this, SLOT(xyCalibrationHeating()));
     screen_status.setPerformance(XY_CALIBRATING);
