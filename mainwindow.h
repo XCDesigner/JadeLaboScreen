@@ -223,8 +223,6 @@ private:
     // Message Listen List
     QList<ListenerItem> lst_listen_item;
 
-    QMovie *pMovie;
-
 private slots:
     void printMessageProcess(uint8_t, uint8_t, QByteArray Datas);
     void nozzleCalibrationMessageProcess(uint8_t Command, uint8_t SubCode, QByteArray Datas);
@@ -432,8 +430,6 @@ private slots:
 
     void on_pushButton_172_clicked();
 
-    void on_pushButton_173_clicked();
-
     void on_pushButton_341_clicked();
 
     void on_pushButton_670_clicked();
@@ -442,51 +438,35 @@ private slots:
 
     void on_pushButton_669_clicked();
 
-    void on_pushButton_671_clicked();
-
     void on_pushButton_667_clicked();
 
     void on_pushButton_179_clicked();
 
     void on_pushButton_181_clicked();
 
-    void on_pushButton_178_clicked();
-
     void on_pushButton_193_clicked();
 
     void on_pushButton_190_clicked();
-
-    void on_pushButton_191_clicked();
 
     void on_pushButton_202_clicked();
 
     void on_pushButton_203_clicked();
 
-    void on_pushButton_205_clicked();
-
     void on_pushButton_210_clicked();
 
     void on_pushButton_209_clicked();
-
-    void on_pushButton_211_clicked();
 
     void on_pushButton_216_clicked();
 
     void on_pushButton_214_clicked();
 
-    void on_pushButton_215_clicked();
-
     void on_pushButton_220_clicked();
 
     void on_pushButton_223_clicked();
 
-    void on_pushButton_221_clicked();
-
     void on_pushButton_227_clicked();
 
     void on_pushButton_226_clicked();
-
-    void on_pushButton_228_clicked();
 
     void on_pushButton_243_clicked();
 
@@ -494,15 +474,11 @@ private slots:
 
     void on_pushButton_232_clicked();
 
-    void on_pushButton_234_clicked();
-
     void on_pushButton_240_clicked();
 
     void on_pushButton_238_clicked();
 
     void on_pushButton_239_clicked();
-
-    void on_pushButton_241_clicked();
 
     void on_pushButton_248_clicked();
 
@@ -512,23 +488,17 @@ private slots:
 
     void on_pushButton_254_clicked();
 
-    void on_pushButton_255_clicked();
-
     void on_pushButton_284_clicked();
 
     void on_pushButton_285_clicked();
 
     void on_pushButton_282_clicked();
 
-    void on_pushButton_283_clicked();
-
     void on_pushButton_298_clicked();
 
     void on_pushButton_301_clicked();
 
     void on_pushButton_300_clicked();
-
-    void on_pushButton_299_clicked();
 
     void on_pushButton_627_clicked();
 
@@ -565,8 +535,6 @@ private slots:
     void on_pushButton_133_clicked();
 
     void on_pushButton_132_clicked();
-
-    void on_pushButton_131_clicked();
 
     void on_pushButton_149_clicked();
 
@@ -854,6 +822,8 @@ private slots:
     void on_pushButton_2_clicked();
 
     void on_pushButton_3_clicked();
+
+    void on_pushButton_272_clicked();
 
 signals:
     void detection(bool);

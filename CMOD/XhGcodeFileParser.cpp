@@ -426,6 +426,7 @@ void XhGcodeFileParser::rewriteLocalFile()
         }while(retry--);
         if(new_file.isOpen() == true)
         {
+            process_status = QByteArray("Writing to local");
             QTextStream text_writer(&new_file);
             text_writer.setCodec("UTF-8");
             text_writer<<header2StringLine() << "\r\n";
@@ -462,6 +463,7 @@ void XhGcodeFileParser::writeNewFile()
     if(new_file.isOpen() == true)
     {
         qDebug()<<"File Open Success";
+        process_status = QByteArray("Writing to local");
         QTextStream text_writer(&new_file);
         text_writer.setCodec("UTF-8");
         text_writer<<header2StringLine() << "\r\n";

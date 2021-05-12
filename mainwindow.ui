@@ -70,7 +70,7 @@ font-family: barlow;
 }</string>
     </property>
     <property name="currentIndex">
-     <number>20</number>
+     <number>5</number>
     </property>
     <widget class="QWidget" name="page_12">
      <widget class="QLabel" name="label_14">
@@ -4404,6 +4404,233 @@ font-family: Roboto;</string>
       </property>
      </widget>
     </widget>
+    <widget class="QWidget" name="page_ManualControl">
+     <widget class="QPushButton" name="pushButton_274">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>540</y>
+        <width>180</width>
+        <height>180</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">outline:none;image: url(:/image/AboutInactive.png);border:none;</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_77">
+      <property name="geometry">
+       <rect>
+        <x>422</x>
+        <y>338</y>
+        <width>89</width>
+        <height>89</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">image: url(:/image/Icon.png);
+background-color: rgb(45, 44, 43);</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton_269">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>180</width>
+        <height>180</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">image: url(:/image/PrintInactive.png);border:none;outline:none;</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton_272">
+      <property name="geometry">
+       <rect>
+        <x>186</x>
+        <y>509</y>
+        <width>1059</width>
+        <height>180</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Barlow</family>
+        <pointsize>-1</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">outline:none;border-radius: 20px;
+color: rgb(255, 255, 255);
+font-size: 36px;
+text-align: center;
+font-family: Barlow;
+border: 2px solid rgba(45, 44, 43, 255);
+background-color: rgb(45, 44, 43);
+padding-left:-100px;
+font-weight: bold;
+font-family:Barlow;</string>
+      </property>
+      <property name="text">
+       <string>AxisControl</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton_271">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>360</y>
+        <width>180</width>
+        <height>180</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">outline:none;image: url(:/image/ToolsActive(2).png);border:none;</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton_273">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>180</y>
+        <width>180</width>
+        <height>180</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">outline:none;image: url(:/image/FilamentInactive.png);border:none;
+outline:none;</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_68">
+      <property name="geometry">
+       <rect>
+        <x>422</x>
+        <y>547</y>
+        <width>89</width>
+        <height>89</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">image: url(:/image/Icon.png);
+background-color: rgb(45, 44, 43);</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_74">
+      <property name="geometry">
+       <rect>
+        <x>422</x>
+        <y>125</y>
+        <width>89</width>
+        <height>89</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">image: url(:/image/Icon.png);
+background-color: rgb(45, 44, 43);</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton_268">
+      <property name="geometry">
+       <rect>
+        <x>186</x>
+        <y>300</y>
+        <width>1059</width>
+        <height>180</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Barlow</family>
+        <pointsize>-1</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">outline:none;border-radius: 20px;
+color: rgb(255, 255, 255);
+font-size: 36px;
+text-align: center;
+font-family: Barlow;
+border: 2px solid rgba(45, 44, 43, 255);
+background-color: rgb(45, 44, 43);
+padding-left:-90px;
+font-weight: bold;
+font-family:Barlow;</string>
+      </property>
+      <property name="text">
+       <string>Temp Control</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton_270">
+      <property name="geometry">
+       <rect>
+        <x>186</x>
+        <y>87</y>
+        <width>1059</width>
+        <height>180</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Barlow</family>
+        <pointsize>-1</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">outline:none;border-radius: 20px;
+color: rgb(255, 255, 255);
+font-size: 36px;
+text-align: center;
+font-family: Barlow;
+border: 2px solid rgba(45, 44, 43, 255);
+background-color: rgb(45, 44, 43);
+padding-left:-50px;
+font-weight: bold;
+font-family:Barlow;</string>
+      </property>
+      <property name="text">
+       <string>Extruder Control</string>
+      </property>
+     </widget>
+     <zorder>pushButton_274</zorder>
+     <zorder>pushButton_269</zorder>
+     <zorder>pushButton_272</zorder>
+     <zorder>pushButton_271</zorder>
+     <zorder>pushButton_273</zorder>
+     <zorder>label_68</zorder>
+     <zorder>pushButton_268</zorder>
+     <zorder>pushButton_270</zorder>
+     <zorder>label_74</zorder>
+     <zorder>label_77</zorder>
+    </widget>
     <widget class="QWidget" name="page_Calibration">
      <widget class="QPushButton" name="pushButton_231">
       <property name="geometry">
@@ -5445,8 +5672,8 @@ border-radius: 20px;</string>
      <widget class="QLabel" name="label_251">
       <property name="geometry">
        <rect>
-        <x>672</x>
-        <y>123</y>
+        <x>670</x>
+        <y>120</y>
         <width>574</width>
         <height>84</height>
        </rect>
@@ -5463,66 +5690,13 @@ background-color: rgb(45, 44, 43);</string>
 height according to the instructions.</string>
       </property>
      </widget>
-     <widget class="QLabel" name="label_252">
-      <property name="geometry">
-       <rect>
-        <x>683</x>
-        <y>365</y>
-        <width>135</width>
-        <height>135</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">border-image: url(:/image/turn.png);
-background-color: rgba(255, 255, 255, 0);</string>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-     </widget>
-     <widget class="QLabel" name="label_253">
-      <property name="geometry">
-       <rect>
-        <x>830</x>
-        <y>330</y>
-        <width>190</width>
-        <height>190</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">font-family:Barlow;
-font-size:64px;
-color: rgb(255, 255, 255);
-background-color: rgb(45, 44, 43);</string>
-      </property>
-      <property name="text">
-       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;2&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-      </property>
-     </widget>
-     <widget class="QLabel" name="label_254">
-      <property name="geometry">
-       <rect>
-        <x>1035</x>
-        <y>365</y>
-        <width>135</width>
-        <height>135</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">border-image: url(:/image/turn.png);
-background-color: rgba(255, 255, 255, 0);</string>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-     </widget>
      <widget class="QLabel" name="label_295">
       <property name="geometry">
        <rect>
-        <x>194</x>
-        <y>138</y>
-        <width>430</width>
-        <height>381</height>
+        <x>195</x>
+        <y>140</y>
+        <width>440</width>
+        <height>400</height>
        </rect>
       </property>
       <property name="styleSheet">
@@ -5531,6 +5705,19 @@ image: url(:/image/bamp3.png);</string>
       </property>
       <property name="text">
        <string/>
+      </property>
+     </widget>
+     <widget class="QQuickWidget" name="qw_PlatformCalibrateP1">
+      <property name="geometry">
+       <rect>
+        <x>840</x>
+        <y>320</y>
+        <width>190</width>
+        <height>190</height>
+       </rect>
+      </property>
+      <property name="resizeMode">
+       <enum>QQuickWidget::SizeRootObjectToView</enum>
       </property>
      </widget>
     </widget>
@@ -5580,23 +5767,6 @@ border: 2px solid rgba(67, 67, 67, 255);</string>
       </property>
       <property name="text">
        <string>Cancel</string>
-      </property>
-     </widget>
-     <widget class="QLabel" name="label_255">
-      <property name="geometry">
-       <rect>
-        <x>1035</x>
-        <y>365</y>
-        <width>135</width>
-        <height>135</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">border-image: url(:/image/turn.png);
-background-color: rgba(255, 255, 255, 0);</string>
-      </property>
-      <property name="text">
-       <string/>
       </property>
      </widget>
      <widget class="QPushButton" name="pushButton_374">
@@ -5678,47 +5848,11 @@ border: 2px solid rgba(255, 99, 11, 255);</string>
        <string/>
       </property>
      </widget>
-     <widget class="QLabel" name="label_256">
-      <property name="geometry">
-       <rect>
-        <x>840</x>
-        <y>330</y>
-        <width>190</width>
-        <height>190</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">font-family:Barlow;
-font-size:64px;
-color: rgb(255, 255, 255);
-background-color: rgb(45, 44, 43);</string>
-      </property>
-      <property name="text">
-       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;3&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-      </property>
-     </widget>
-     <widget class="QLabel" name="label_257">
-      <property name="geometry">
-       <rect>
-        <x>693</x>
-        <y>365</y>
-        <width>135</width>
-        <height>135</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">border-image: url(:/image/turn.png);
-background-color: rgba(255, 255, 255, 0);</string>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-     </widget>
      <widget class="QLabel" name="label_258">
       <property name="geometry">
        <rect>
-        <x>660</x>
-        <y>110</y>
+        <x>670</x>
+        <y>120</y>
         <width>601</width>
         <height>181</height>
        </rect>
@@ -5762,10 +5896,10 @@ border-radius: 20px;</string>
      <widget class="QLabel" name="label_296">
       <property name="geometry">
        <rect>
-        <x>188</x>
-        <y>126</y>
-        <width>448</width>
-        <height>384</height>
+        <x>195</x>
+        <y>140</y>
+        <width>440</width>
+        <height>400</height>
        </rect>
       </property>
       <property name="styleSheet">
@@ -5776,18 +5910,29 @@ image: url(:/image/Bitmap4.png);</string>
        <string/>
       </property>
      </widget>
+     <widget class="QQuickWidget" name="qw_PlatformCalibrateP2">
+      <property name="geometry">
+       <rect>
+        <x>840</x>
+        <y>320</y>
+        <width>190</width>
+        <height>190</height>
+       </rect>
+      </property>
+      <property name="resizeMode">
+       <enum>QQuickWidget::SizeRootObjectToView</enum>
+      </property>
+     </widget>
      <zorder>label_259</zorder>
      <zorder>pushButton_372</zorder>
      <zorder>pushButton_373</zorder>
-     <zorder>label_255</zorder>
      <zorder>pushButton_374</zorder>
      <zorder>pushButton_375</zorder>
      <zorder>pushButton_376</zorder>
      <zorder>pushButton_377</zorder>
-     <zorder>label_256</zorder>
-     <zorder>label_257</zorder>
      <zorder>label_258</zorder>
      <zorder>label_296</zorder>
+     <zorder>qw_PlatformCalibrateP2</zorder>
     </widget>
     <widget class="QWidget" name="page_PlatformCali_5">
      <widget class="QPushButton" name="pushButton_254">
@@ -5917,59 +6062,6 @@ border: 2px solid rgba(67, 67, 67, 255);</string>
        <string>Cancel</string>
       </property>
      </widget>
-     <widget class="QLabel" name="label_260">
-      <property name="geometry">
-       <rect>
-        <x>1035</x>
-        <y>365</y>
-        <width>135</width>
-        <height>135</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">border-image: url(:/image/turn.png);
-background-color: rgba(255, 255, 255, 0);</string>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-     </widget>
-     <widget class="QLabel" name="label_261">
-      <property name="geometry">
-       <rect>
-        <x>830</x>
-        <y>330</y>
-        <width>190</width>
-        <height>190</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">font-family:Barlow;
-font-size:64px;
-color: rgb(255, 255, 255);
-background-color: rgb(45, 44, 43);</string>
-      </property>
-      <property name="text">
-       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;9&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-      </property>
-     </widget>
-     <widget class="QLabel" name="label_262">
-      <property name="geometry">
-       <rect>
-        <x>693</x>
-        <y>365</y>
-        <width>135</width>
-        <height>135</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">border-image: url(:/image/turn.png);
-background-color: rgba(255, 255, 255, 0);</string>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-     </widget>
      <widget class="QLabel" name="label_263">
       <property name="geometry">
        <rect>
@@ -5995,8 +6087,8 @@ border-radius: 20px;</string>
      <widget class="QLabel" name="label_264">
       <property name="geometry">
        <rect>
-        <x>660</x>
-        <y>130</y>
+        <x>670</x>
+        <y>120</y>
         <width>571</width>
         <height>101</height>
        </rect>
@@ -6016,10 +6108,10 @@ calibrated successfully.</string>
      <widget class="QLabel" name="label_297">
       <property name="geometry">
        <rect>
-        <x>191</x>
-        <y>126</y>
+        <x>195</x>
+        <y>140</y>
         <width>440</width>
-        <height>406</height>
+        <height>400</height>
        </rect>
       </property>
       <property name="styleSheet">
@@ -6030,11 +6122,21 @@ image: url(:/image/Bitmap5.png);</string>
        <string/>
       </property>
      </widget>
+     <widget class="QQuickWidget" name="qw_PlatformCalibrateP3">
+      <property name="geometry">
+       <rect>
+        <x>840</x>
+        <y>320</y>
+        <width>190</width>
+        <height>190</height>
+       </rect>
+      </property>
+      <property name="resizeMode">
+       <enum>QQuickWidget::SizeRootObjectToView</enum>
+      </property>
+     </widget>
      <zorder>label_263</zorder>
-     <zorder>label_260</zorder>
-     <zorder>label_261</zorder>
      <zorder>label_264</zorder>
-     <zorder>label_262</zorder>
      <zorder>pushButton_254</zorder>
      <zorder>pushButton_255</zorder>
      <zorder>pushButton_256</zorder>
@@ -6042,6 +6144,7 @@ image: url(:/image/Bitmap5.png);</string>
      <zorder>pushButton_259</zorder>
      <zorder>pushButton_253</zorder>
      <zorder>label_297</zorder>
+     <zorder>qw_PlatformCalibrateP3</zorder>
     </widget>
     <widget class="QWidget" name="page_NozzleCali_0">
      <widget class="QPushButton" name="pushButton_282">
@@ -6614,8 +6717,8 @@ border-radius: 20px;</string>
      <widget class="QLabel" name="label_150">
       <property name="geometry">
        <rect>
-        <x>672</x>
-        <y>123</y>
+        <x>640</x>
+        <y>90</y>
         <width>611</width>
         <height>161</height>
        </rect>
@@ -6678,59 +6781,6 @@ border: 2px solid rgba(255, 99, 11, 255);</string>
        <string>Done</string>
       </property>
      </widget>
-     <widget class="QPushButton" name="pushButton_304">
-      <property name="geometry">
-       <rect>
-        <x>693</x>
-        <y>365</y>
-        <width>135</width>
-        <height>135</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">border-image: url(:/image/turn.png);
-background-color: rgba(255, 255, 255, 0);</string>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="pushButton_305">
-      <property name="geometry">
-       <rect>
-        <x>1035</x>
-        <y>365</y>
-        <width>135</width>
-        <height>135</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">border-image: url(:/image/turn.png);
-background-color: rgba(255, 255, 255, 0);</string>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-     </widget>
-     <widget class="QLabel" name="label_151">
-      <property name="geometry">
-       <rect>
-        <x>830</x>
-        <y>340</y>
-        <width>190</width>
-        <height>190</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">font-family:Barlow;
-font-size:64px;
-color: rgb(255, 255, 255);
-background-color: rgb(45, 44, 43);</string>
-      </property>
-      <property name="text">
-       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:48pt;&quot;&gt;3&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-      </property>
-     </widget>
      <widget class="QLabel" name="label_265">
       <property name="geometry">
        <rect>
@@ -6770,8 +6820,25 @@ image: url(:/image/Bitmap2.png);</string>
        <string/>
       </property>
      </widget>
+     <widget class="QQuickWidget" name="qw_NozzleCalibrateP1">
+      <property name="geometry">
+       <rect>
+        <x>840</x>
+        <y>320</y>
+        <width>190</width>
+        <height>190</height>
+       </rect>
+      </property>
+      <property name="resizeMode">
+       <enum>QQuickWidget::SizeRootObjectToView</enum>
+      </property>
+      <property name="source">
+       <url>
+        <string>qrc:/qml/TurningLabel.qml</string>
+       </url>
+      </property>
+     </widget>
      <zorder>label_265</zorder>
-     <zorder>label_151</zorder>
      <zorder>pushButton_298</zorder>
      <zorder>pushButton_299</zorder>
      <zorder>pushButton_300</zorder>
@@ -6779,9 +6846,8 @@ image: url(:/image/Bitmap2.png);</string>
      <zorder>label_150</zorder>
      <zorder>pushButton_302</zorder>
      <zorder>pushButton_303</zorder>
-     <zorder>pushButton_304</zorder>
-     <zorder>pushButton_305</zorder>
      <zorder>label_306</zorder>
+     <zorder>qw_NozzleCalibrateP1</zorder>
     </widget>
     <widget class="QWidget" name="page_NozzleCali_4">
      <widget class="QPushButton" name="pushButton_306">
@@ -7030,22 +7096,6 @@ background-color: rgb(45, 44, 43);</string>
        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;This operation will executes the following steps:&lt;/p&gt;&lt;p&gt;1. Heat up hotend (do not touch nozzle)&lt;/p&gt;&lt;p&gt;2. Run XY calibration&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
       </property>
      </widget>
-     <widget class="QLabel" name="label_300">
-      <property name="geometry">
-       <rect>
-        <x>198</x>
-        <y>145</y>
-        <width>500</width>
-        <height>420</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">border-image: url(:/image/test.gif);</string>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-     </widget>
      <widget class="QPushButton" name="pushButton_631">
       <property name="geometry">
        <rect>
@@ -7114,15 +7164,33 @@ border-radius: 20px;</string>
        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
       </property>
      </widget>
+     <widget class="QQuickWidget" name="qw_XYGif0">
+      <property name="geometry">
+       <rect>
+        <x>198</x>
+        <y>145</y>
+        <width>500</width>
+        <height>420</height>
+       </rect>
+      </property>
+      <property name="resizeMode">
+       <enum>QQuickWidget::SizeRootObjectToView</enum>
+      </property>
+      <property name="source">
+       <url>
+        <string>qrc:/qml/GifPlayer.qml</string>
+       </url>
+      </property>
+     </widget>
      <zorder>label_266</zorder>
      <zorder>pushButton_627</zorder>
      <zorder>pushButton_628</zorder>
      <zorder>pushButton_629</zorder>
      <zorder>pushButton_630</zorder>
      <zorder>label_299</zorder>
-     <zorder>label_300</zorder>
      <zorder>pushButton_631</zorder>
      <zorder>pushButton_632</zorder>
+     <zorder>qw_XYGif0</zorder>
     </widget>
     <widget class="QWidget" name="page_XYCali_1">
      <widget class="QPushButton" name="pushButton_633">
@@ -9003,10 +9071,10 @@ background-color: rgb(255, 255, 255);</string>
      <widget class="QQuickWidget" name="quickWidget_7">
       <property name="geometry">
        <rect>
-        <x>760</x>
-        <y>130</y>
-        <width>484</width>
-        <height>484</height>
+        <x>740</x>
+        <y>250</y>
+        <width>534</width>
+        <height>336</height>
        </rect>
       </property>
       <property name="resizeMode">
@@ -9014,7 +9082,7 @@ background-color: rgb(255, 255, 255);</string>
       </property>
       <property name="source">
        <url>
-        <string>qrc:/qml/CircleProgressBar.qml</string>
+        <string>qrc:/qml/JLHeatingUnit2.qml</string>
        </url>
       </property>
      </widget>

@@ -23,10 +23,10 @@ background-color: rgba(255, 255, 255, 100);</string>
   <widget class="QPushButton" name="pushButton">
    <property name="geometry">
     <rect>
-     <x>362</x>
-     <y>600</y>
-     <width>551</width>
-     <height>63</height>
+     <x>720</x>
+     <y>506</y>
+     <width>420</width>
+     <height>96</height>
     </rect>
    </property>
    <property name="styleSheet">
@@ -51,6 +51,13 @@ border: 2px solid rgba(67, 67, 67, 255);</string>
      <height>720</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <family>Adobe Arabic</family>
+     <weight>75</weight>
+     <bold>true</bold>
+    </font>
+   </property>
    <property name="styleSheet">
     <string notr="true">background-color: rgb(32, 32, 35);</string>
    </property>
@@ -61,8 +68,8 @@ border: 2px solid rgba(67, 67, 67, 255);</string>
   <widget class="QQuickWidget" name="quickWidget">
    <property name="geometry">
     <rect>
-     <x>395</x>
-     <y>70</y>
+     <x>84</x>
+     <y>125</y>
      <width>484</width>
      <height>484</height>
     </rect>
@@ -74,15 +81,44 @@ border: 2px solid rgba(67, 67, 67, 255);</string>
     <enum>QQuickWidget::SizeRootObjectToView</enum>
    </property>
   </widget>
+  <widget class="QLabel" name="label">
+   <property name="geometry">
+    <rect>
+     <x>780</x>
+     <y>280</y>
+     <width>300</width>
+     <height>58</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Barlow</family>
+     <pointsize>36</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: transparent;
+color: &quot;#ffffff&quot;;
+font-family: Barlow;
+align: center;</string>
+   </property>
+   <property name="text">
+    <string>Parsing</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
   <zorder>label_3</zorder>
   <zorder>pushButton</zorder>
   <zorder>quickWidget</zorder>
+  <zorder>label</zorder>
  </widget>
  <customwidgets>
   <customwidget>
    <class>QQuickWidget</class>
    <extends>QWidget</extends>
-   <header>QtQuickWidgets/QQuickWidget</header>
+   <header location="global">QtQuickWidgets/QQuickWidget</header>
   </customwidget>
  </customwidgets>
  <resources/>

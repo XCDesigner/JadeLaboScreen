@@ -14,7 +14,7 @@ Rectangle {
     color: "#ff630b"
     radius: 20
 
-    signal click(int index)
+    signal clicked(int index)
 
     onBorderWidthChanged: {
         base.border.width = borderWidth
@@ -72,7 +72,7 @@ Rectangle {
         anchors.fill: parent
         onClicked: {
             if(base.enable == true)
-                base.click(base.index)
+                base.clicked(base.index)
         }
     }
 }

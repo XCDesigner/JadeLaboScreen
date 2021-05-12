@@ -277,9 +277,6 @@ MainWindow::MainWindow(QWidget *parent) :
     // #if defined(XH_WIN)
     wifiPageInit();
     // #endif
-
-    pMovie = new QMovie(this);
-    pMovie->setFileName("/usr/share/gif/test.gif");
 }
 
 MainWindow::~MainWindow()
@@ -876,13 +873,12 @@ void MainWindow::on_pushButton_174_clicked()
 
 void MainWindow::on_pushButton_175_clicked()
 {
-    QByteArray prepare_manual_move = QByteArray::fromHex("0209");
-    blockingChangePage(prepare_manual_move, ui->page_JodMove);
+    ui->stackedWidget->setCurrentWidget(ui->page_ManualControl);
 }
 
 void MainWindow::on_pushButton_176_clicked()
 {
-    ui->stackedWidget->setCurrentIndex(42);
+
 }
 
 void MainWindow::on_pushButton_177_clicked()
@@ -967,9 +963,8 @@ void MainWindow::on_pushButton_236_clicked()
 
 void MainWindow::on_pushButton_237_clicked()
 {
-    pMovie->start();
-    ui->label_300->setMovie(pMovie);
-    ui->label_300->setScaledContents(true);
+    ui->qw_XYGif0->rootObject()->setProperty("source", "qrc:/image/test.gif");
+    ui->qw_XYGif0->rootObject()->setProperty("playing", true);
     ui->stackedWidget->setCurrentWidget(ui->page_XYCali_0);
 }
 
@@ -993,14 +988,6 @@ void MainWindow::on_pushButton_172_clicked()
     ui->stackedWidget->setCurrentWidget(ui->page_ChangeFilament);
 }
 
-void MainWindow::on_pushButton_173_clicked()
-{
-    ui->stackedWidget->setCurrentIndex(24);
-#ifdef XH_VIS
-    ui->m_StatusBar->setVisible(false);
-#endif
-}
-
 void MainWindow::on_pushButton_341_clicked()
 {
     ui->stackedWidget->setCurrentWidget(ui->page_FILSensorsetting);
@@ -1021,14 +1008,6 @@ void MainWindow::on_pushButton_669_clicked()
     ui->stackedWidget->setCurrentWidget(ui->page_Tools);
 }
 
-void MainWindow::on_pushButton_671_clicked()
-{
-    ui->stackedWidget->setCurrentIndex(24);
-#ifdef XH_VIS
-    ui->m_StatusBar->setVisible(false);
-#endif
-}
-
 void MainWindow::on_pushButton_667_clicked()
 {
     ui->stackedWidget->setCurrentWidget(ui->page_Tools);
@@ -1044,14 +1023,6 @@ void MainWindow::on_pushButton_181_clicked()
     ui->stackedWidget->setCurrentWidget(ui->page_ChangeFilament);
 }
 
-void MainWindow::on_pushButton_178_clicked()
-{
-    ui->stackedWidget->setCurrentIndex(24);
-#ifdef XH_VIS
-    ui->m_StatusBar->setVisible(false);
-#endif
-}
-
 void MainWindow::on_pushButton_193_clicked()
 {
     ui->stackedWidget->setCurrentWidget(ui->page_GetStart);
@@ -1060,14 +1031,6 @@ void MainWindow::on_pushButton_193_clicked()
 void MainWindow::on_pushButton_190_clicked()
 {
     ui->stackedWidget->setCurrentWidget(ui->page_ChangeFilament);
-}
-
-void MainWindow::on_pushButton_191_clicked()
-{
-    ui->stackedWidget->setCurrentIndex(24);
-#ifdef XH_VIS
-    ui->m_StatusBar->setVisible(false);
-#endif
 }
 
 void MainWindow::on_pushButton_202_clicked()
@@ -1080,14 +1043,6 @@ void MainWindow::on_pushButton_203_clicked()
     ui->stackedWidget->setCurrentWidget(ui->page_ChangeFilament);
 }
 
-void MainWindow::on_pushButton_205_clicked()
-{
-    ui->stackedWidget->setCurrentIndex(24);
-#ifdef XH_VIS
-    ui->m_StatusBar->setVisible(false);
-#endif
-}
-
 void MainWindow::on_pushButton_210_clicked()
 {
     ui->stackedWidget->setCurrentWidget(ui->page_GetStart);
@@ -1096,14 +1051,6 @@ void MainWindow::on_pushButton_210_clicked()
 void MainWindow::on_pushButton_209_clicked()
 {
     ui->stackedWidget->setCurrentWidget(ui->page_ChangeFilament);
-}
-
-void MainWindow::on_pushButton_211_clicked()
-{
-    ui->stackedWidget->setCurrentIndex(24);
-#ifdef XH_VIS
-    ui->m_StatusBar->setVisible(false);
-#endif
 }
 
 void MainWindow::on_pushButton_216_clicked()
@@ -1116,14 +1063,6 @@ void MainWindow::on_pushButton_214_clicked()
     ui->stackedWidget->setCurrentWidget(ui->page_ChangeFilament);
 }
 
-void MainWindow::on_pushButton_215_clicked()
-{
-    ui->stackedWidget->setCurrentIndex(24);
-#ifdef XH_VIS
-    ui->m_StatusBar->setVisible(false);
-#endif
-}
-
 void MainWindow::on_pushButton_220_clicked()
 {
     ui->stackedWidget->setCurrentWidget(ui->page_GetStart);
@@ -1132,14 +1071,6 @@ void MainWindow::on_pushButton_220_clicked()
 void MainWindow::on_pushButton_223_clicked()
 {
     ui->stackedWidget->setCurrentWidget(ui->page_ChangeFilament);
-}
-
-void MainWindow::on_pushButton_221_clicked()
-{
-    ui->stackedWidget->setCurrentIndex(24);
-#ifdef XH_VIS
-    ui->m_StatusBar->setVisible(false);
-#endif
 }
 
 void MainWindow::on_pushButton_227_clicked()
@@ -1152,14 +1083,6 @@ void MainWindow::on_pushButton_226_clicked()
     ui->stackedWidget->setCurrentWidget(ui->page_ChangeFilament);
 }
 
-void MainWindow::on_pushButton_228_clicked()
-{
-    ui->stackedWidget->setCurrentIndex(24);
-#ifdef XH_VIS
-    ui->m_StatusBar->setVisible(false);
-#endif
-}
-
 void MainWindow::on_pushButton_231_clicked()
 {
     ui->stackedWidget->setCurrentWidget(ui->page_ChangeFilament);
@@ -1168,14 +1091,6 @@ void MainWindow::on_pushButton_231_clicked()
 void MainWindow::on_pushButton_232_clicked()
 {
     ui->stackedWidget->setCurrentWidget(ui->page_GetStart);
-}
-
-void MainWindow::on_pushButton_234_clicked()
-{
-    ui->stackedWidget->setCurrentIndex(24);
-#ifdef XH_VIS
-    ui->m_StatusBar->setVisible(false);
-#endif
 }
 
 void MainWindow::on_pushButton_240_clicked()
@@ -1193,14 +1108,6 @@ void MainWindow::on_pushButton_239_clicked()
     ui->stackedWidget->setCurrentWidget(ui->page_Tools);
 }
 
-void MainWindow::on_pushButton_241_clicked()
-{
-    ui->stackedWidget->setCurrentIndex(24);
-#ifdef XH_VIS
-    ui->m_StatusBar->setVisible(false);
-#endif
-}
-
 void MainWindow::on_pushButton_256_clicked()
 {
     ui->stackedWidget->setCurrentWidget(ui->page_GetStart);
@@ -1214,14 +1121,6 @@ void MainWindow::on_pushButton_257_clicked()
 void MainWindow::on_pushButton_254_clicked()
 {
     ui->stackedWidget->setCurrentWidget(ui->page_Tools);
-}
-
-void MainWindow::on_pushButton_255_clicked()
-{
-    ui->stackedWidget->setCurrentIndex(24);
-#ifdef XH_VIS
-    ui->m_StatusBar->setVisible(false);
-#endif
 }
 
 void MainWindow::on_pushButton_284_clicked()
@@ -1239,14 +1138,6 @@ void MainWindow::on_pushButton_282_clicked()
     ui->stackedWidget->setCurrentWidget(ui->page_Tools);
 }
 
-void MainWindow::on_pushButton_283_clicked()
-{
-    ui->stackedWidget->setCurrentIndex(24);
-#ifdef XH_VIS
-    ui->m_StatusBar->setVisible(false);
-#endif
-}
-
 void MainWindow::on_pushButton_298_clicked()
 {
     ui->stackedWidget->setCurrentWidget(ui->page_GetStart);
@@ -1260,14 +1151,6 @@ void MainWindow::on_pushButton_301_clicked()
 void MainWindow::on_pushButton_300_clicked()
 {
     ui->stackedWidget->setCurrentWidget(ui->page_Tools);
-}
-
-void MainWindow::on_pushButton_299_clicked()
-{
-    ui->stackedWidget->setCurrentIndex(24);
-#ifdef XH_VIS
-    ui->m_StatusBar->setVisible(false);
-#endif
 }
 
 void MainWindow::on_pushButton_627_clicked()
@@ -1490,10 +1373,7 @@ void MainWindow::on_pushButton_677_clicked()
     ui->label_224->clear();
     ui->label_225->clear();
     ui->label_285->clear();
-    ui->stackedWidget->setCurrentIndex(24);
-#ifdef XH_VIS
-    ui->m_StatusBar->setVisible(false);
-#endif
+    ui->stackedWidget->setCurrentWidget(ui->page_About);
 }
 
 void MainWindow::on_pushButton_128_clicked()
@@ -1519,14 +1399,6 @@ void MainWindow::on_pushButton_133_clicked()
 void MainWindow::on_pushButton_132_clicked()
 {
     ui->stackedWidget->setCurrentWidget(ui->page_Tools);
-}
-
-void MainWindow::on_pushButton_131_clicked()
-{
-    ui->stackedWidget->setCurrentIndex(24);
-#ifdef XH_VIS
-    ui->m_StatusBar->setVisible(false);
-#endif
 }
 
 void MainWindow::on_pushButton_354_clicked()
@@ -1764,7 +1636,8 @@ void MainWindow::onMessageTest(uint8_t Command, uint8_t SubCode, QByteArray Data
 
 void MainWindow::on_pushButton_clicked()
 {
-
+    ui->quickWidget_7->rootObject()->setProperty("source", "qrc:/image/test.gif");
+    ui->quickWidget_7->rootObject()->setProperty("playing", "true");
 }
 
 void MainWindow::on_pushButton_2_clicked()
@@ -1775,4 +1648,10 @@ void MainWindow::on_pushButton_2_clicked()
 void MainWindow::on_pushButton_3_clicked()
 {
     wifiControlerInit();
+}
+
+void MainWindow::on_pushButton_272_clicked()
+{
+    QByteArray prepare_manual_move = QByteArray::fromHex("0209");
+    blockingChangePage(prepare_manual_move, ui->page_JodMove);
 }

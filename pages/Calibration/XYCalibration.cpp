@@ -58,7 +58,7 @@ void MainWindow::xyCalibrationMessageProcess(uint8_t Command, uint8_t SubCode, Q
         if(SubCode == 0x05) {
             m_port->setHeattingUnit("0","0");
             screen_status.setPerformance(IDLE);
-            ui->stackedWidget->setCurrentWidget(ui->page_PlatformCali_6);
+            ui->stackedWidget->setCurrentWidget(ui->page_XYCali_3);
             QObject::disconnect(m_port->getXhPage(), SIGNAL(command_received(uint8_t, uint8_t, QByteArray)), this, SLOT(xyCalibrationMessageProcess(uint8_t, uint8_t, QByteArray)));
         }
     }

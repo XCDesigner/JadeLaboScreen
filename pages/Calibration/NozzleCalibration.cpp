@@ -11,7 +11,6 @@ void MainWindow::on_pushButton_286_clicked()
 
 void MainWindow::on_pushButton_648_clicked()
 {
-    qDebug()<<"123213";
     m_port->setHeattingUnit("0","0");
     ui->stackedWidget->setCurrentWidget(ui->page_Calibration);
     screen_status.setPerformance(IDLE);
@@ -73,8 +72,7 @@ void MainWindow::nozzleCalibrationMessageProcess(uint8_t Command, uint8_t SubCod
             if(z_diff != 0) 
             {
                 ui->stackedWidget->setCurrentWidget(ui->page_NozzleCali_3);
-                ui->label_151->setNum(z_diff);
-                ui->label_151->setAlignment(Qt::AlignCenter);
+                ui->qw_NozzleCalibrateP1->setProperty("value", z_diff);
             }
             else
             {

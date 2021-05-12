@@ -114,12 +114,9 @@ void MainWindow::platformCalibrationMessageProcess(uint8_t Command, uint8_t SubC
             }
             else
             {
-                ui->label_253->setNum((int)(z_diff[0]));
-                ui->label_253->setAlignment(Qt::AlignCenter);
-                ui->label_261->setNum((int)(z_diff[3]));
-                ui->label_261->setAlignment(Qt::AlignCenter);
-                ui->label_256->setNum((int)(z_diff[1]));
-                ui->label_256->setAlignment(Qt::AlignCenter);
+                ui->qw_PlatformCalibrateP1->setProperty("value", z_diff[0]);
+                ui->qw_PlatformCalibrateP2->setProperty("value", z_diff[1]);
+                ui->qw_PlatformCalibrateP3->setProperty("value", z_diff[3]);
                 ui->stackedWidget->setCurrentWidget(ui->page_PlatformCali_3);
             }
         }

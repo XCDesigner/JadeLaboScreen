@@ -135,5 +135,12 @@
         <file>qml/JLHeatingUnit.qml</file>
         <file>qml/HeatingCircle.qml</file>
         <file>image/test.gif</file>
+        <file>image/turn_dec.png</file>
+        <file>image/turn_inc.png</file>
+        <file>qml/TurningLabel.qml</file>
+        <file>qml/GifPlayer.qml</file>
+        <file>qml/JLHeatingUnit2.qml</file>
+        <file>image/left_heating_bg.png</file>
+        <file>qml/TempButton.qml</file>
     </qresource>
 </RCC>

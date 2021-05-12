@@ -32,10 +32,10 @@
   <widget class="QQuickWidget" name="qw_Icon">
    <property name="geometry">
     <rect>
-     <x>40</x>
-     <y>90</y>
-     <width>460</width>
-     <height>460</height>
+     <x>80</x>
+     <y>107</y>
+     <width>470</width>
+     <height>464</height>
     </rect>
    </property>
    <property name="resizeMode">
@@ -50,10 +50,10 @@
   <widget class="QLabel" name="label">
    <property name="geometry">
     <rect>
-     <x>560</x>
-     <y>90</y>
-     <width>671</width>
-     <height>461</height>
+     <x>610</x>
+     <y>140</y>
+     <width>621</width>
+     <height>81</height>
     </rect>
    </property>
    <property name="font">
@@ -65,7 +65,7 @@
    <property name="styleSheet">
     <string notr="true">color: white;
 font-family: &quot;barlow&quot;;
-font-size: 32px;</string>
+font-size: 48px;</string>
    </property>
    <property name="text">
     <string>TextLabel</string>
@@ -74,15 +74,15 @@ font-size: 32px;</string>
     <enum>Qt::RichText</enum>
    </property>
    <property name="alignment">
-    <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+    <set>Qt::AlignHCenter|Qt::AlignTop</set>
    </property>
   </widget>
   <widget class="QPushButton" name="pushButton_359">
    <property name="geometry">
     <rect>
-     <x>70</x>
-     <y>590</y>
-     <width>1161</width>
+     <x>720</x>
+     <y>506</y>
+     <width>420</width>
      <height>96</height>
     </rect>
    </property>

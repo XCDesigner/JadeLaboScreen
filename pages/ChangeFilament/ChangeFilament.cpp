@@ -83,6 +83,7 @@ void MainWindow::leftRetract()
 void MainWindow::rightSetTemp()
 {
     mchoose = new chooseTemp(this);
+    mchoose->init(QByteArray());
     QObject::connect(mchoose, SIGNAL(hideWidget()), this, SLOT(onSetTemp()), Qt::QueuedConnection);
     changeFilamentSelectExtruder = 1;
     mchoose->show();
@@ -100,6 +101,8 @@ void MainWindow::rightRetract()
 
 void MainWindow::on_pushButton_359_clicked()
 {
+    ui->qw_LeftHeating->rootObject()->setProperty("text", "0°C");
+    ui->qw_RightHeating->rootObject()->setProperty("text", "0°C");
     m_port->setHeattingUnit("0","0");
     ui->pushButton_113->setEnabled(true);
     ui->pushButton_117->setEnabled(true);

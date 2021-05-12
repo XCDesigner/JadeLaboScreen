@@ -44,6 +44,7 @@ void parsing::updateParsingStatus()
         QByteArray status = m_file_parser->getParseStatus();
         int percent = m_file_parser->getPercent();
         ui->quickWidget->rootObject()->setProperty("currentPercent", percent);
+        ui->label->setText(status);
         QTimer::singleShot(50, this, SLOT(updateParsingStatus()));
     }
 }
@@ -53,6 +54,7 @@ void parsing::onParseComplete(QString FileName)
     output_file_name = FileName;
     qDebug()<<FileName;
     is_parsing = false;
+    ui->label->setText("Complete");
     ui->quickWidget->rootObject()->setProperty("currentPercent", 1000);
     QTimer::singleShot(500, this, SLOT(onDelayReturn()));
 }
