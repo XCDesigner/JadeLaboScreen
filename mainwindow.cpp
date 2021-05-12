@@ -1638,8 +1638,7 @@ void MainWindow::onMessageTest(uint8_t Command, uint8_t SubCode, QByteArray Data
 
 void MainWindow::on_pushButton_clicked()
 {
-    ui->quickWidget_7->rootObject()->setProperty("source", "qrc:/image/test.gif");
-    ui->quickWidget_7->rootObject()->setProperty("playing", "true");
+    ui->quickWidget_7->rootObject()->setProperty("value", 10);
 }
 
 void MainWindow::on_pushButton_2_clicked()

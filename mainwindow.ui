@@ -70,7 +70,7 @@ font-family: barlow;
 }</string>
     </property>
     <property name="currentIndex">
-     <number>5</number>
+     <number>46</number>
     </property>
     <widget class="QWidget" name="page_12">
      <widget class="QLabel" name="label_14">
@@ -9282,10 +9282,10 @@ background-color: rgb(255, 255, 255);</string>
      <widget class="QQuickWidget" name="quickWidget_7">
       <property name="geometry">
        <rect>
-        <x>740</x>
-        <y>250</y>
-        <width>534</width>
-        <height>336</height>
+        <x>860</x>
+        <y>420</y>
+        <width>181</width>
+        <height>181</height>
        </rect>
       </property>
       <property name="resizeMode">
@@ -9293,7 +9293,7 @@ background-color: rgb(255, 255, 255);</string>
       </property>
       <property name="source">
        <url>
-        <string>qrc:/qml/JLHeatingUnit2.qml</string>
+        <string>qrc:/qml/TurningLabel.qml</string>
        </url>
       </property>
      </widget>
