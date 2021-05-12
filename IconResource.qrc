@@ -134,7 +134,6 @@
         <file>qml/PauseDialogItem.qml</file>
         <file>qml/JLHeatingUnit.qml</file>
         <file>qml/HeatingCircle.qml</file>
-        <file>image/test.gif</file>
         <file>image/turn_dec.png</file>
         <file>image/turn_inc.png</file>
         <file>qml/TurningLabel.qml</file>
@@ -142,5 +141,11 @@
         <file>qml/JLHeatingUnit2.qml</file>
         <file>image/left_heating_bg.png</file>
         <file>qml/TempButton.qml</file>
+        <file>image/right_cooldown.png</file>
+        <file>image/left_cooldown.png</file>
+        <file>image/right_heating_bg.png</file>
+        <file>image/bed_cooldown.png</file>
+        <file>image/bed_heating_bg.png</file>
+        <file>qml/JLHeatingbed.qml</file>
     </qresource>
 </RCC>

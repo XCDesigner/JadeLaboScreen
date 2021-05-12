@@ -23,7 +23,7 @@ Rectangle {
         id: label
         anchors.centerIn: parent
         color: "#f0f0f0"
-        font { family: "barlow"; pixelSize: 32; bold: true}
+        font { family: "barlow"; pixelSize: 48; bold: true}
         text: "0°C"
     }
 

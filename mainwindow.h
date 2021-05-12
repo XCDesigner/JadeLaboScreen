@@ -40,6 +40,8 @@
 #include "dialog/delete.h"
 #include "oldplan/filecheckthread.h"
 #include "dialog/choosetemp.h"
+#include "dialog/chooseextrudertemp.h"
+#include "dialog/choosebedtemp.h"
 #include "dialog/unnoknfile.h"
 #include "dialog/filamentfault.h"
 #include "dialog/printflament.h"
@@ -113,6 +115,9 @@ public:
     void wifiPageInit();
     void wifiControlerInit();
 
+    void TempControlInit();
+
+
 
 private:
     Ui::MainWindow *ui;
@@ -164,6 +169,10 @@ private:
     JLEvent *m_event;
     fileCheckThread *m_thread;
     chooseTemp *mchoose;
+
+    ChooseExtruderTemp *pdlg_choose_extruder_temp;
+    ChooseBedTemp *pdlg_choose_bed_temp;
+
 
     UdpListener *m_udp_listener;
     TcpControler *m_tcp_controler;
@@ -268,6 +277,14 @@ private slots:
     void sendPrinterUpdateInfo();
     void updateCommandProcess(uint8_t Command, uint8_t SubCode, QByteArray Datas);
     void rebootSystem();
+
+    // Temp control
+    void tempControlChooseExtrudeTemp(int);
+    void tempControlExtruderCooldown(int);
+    void tempControlChooseBedTemp();
+    void tempControlBedCooldown();
+    void tempControlChooseExtruderTempReturn();
+    void tempControlChooseBedTempReturn();
 
     void updateStatusBar();
     void waitforIdleStatus();
@@ -824,6 +841,18 @@ private slots:
     void on_pushButton_3_clicked();
 
     void on_pushButton_272_clicked();
+
+    void on_pushButton_269_clicked();
+
+    void on_pushButton_273_clicked();
+
+    void on_pushButton_268_clicked();
+
+    void on_pushButton_119_clicked();
+    
+    void on_pushButton_120_clicked();
+
+    void on_pushButton_121_clicked();
 
 signals:
     void detection(bool);

@@ -42,6 +42,7 @@ SOURCES += \
     dialog/askpause.cpp \
     dialog/changefilamentdlg.cpp \
     dialog/choosebedtemp.cpp \
+    dialog/chooseextrudertemp.cpp \
     dialog/choosefile.cpp \
     dialog/choosetemp.cpp \
     dialog/delete.cpp \
@@ -79,6 +80,7 @@ SOURCES += \
     pages/JodMove/JodMove.cpp \
     pages/Keyboard/KeyBoard.cpp \
     pages/LightSetting/LightSetting.cpp \
+    pages/ManualControl/TempControl.cpp \
     pages/PauseDialog/PauseDialog.cpp \
     pages/PrintControl/FileList.cpp \
     pages/PrintControl/PreparePrint.cpp \
@@ -110,6 +112,7 @@ HEADERS += \
     dialog/askpause.h \
     dialog/changefilamentdlg.h \
     dialog/choosebedtemp.h \
+    dialog/chooseextrudertemp.h \
     dialog/choosefile.h \
     dialog/choosetemp.h \
     dialog/delete.h \
@@ -140,6 +143,7 @@ FORMS += \
     dialog/askpause.ui \
     dialog/changefilamentdlg.ui \
     dialog/choosebedtemp.ui \
+    dialog/chooseextrudertemp.ui \
     dialog/choosefile.ui \
     dialog/choosetemp.ui \
     dialog/delete.ui \

@@ -277,6 +277,8 @@ MainWindow::MainWindow(QWidget *parent) :
     // #if defined(XH_WIN)
     wifiPageInit();
     // #endif
+
+    TempControlInit();
 }
 
 MainWindow::~MainWindow()
@@ -1654,4 +1656,34 @@ void MainWindow::on_pushButton_272_clicked()
 {
     QByteArray prepare_manual_move = QByteArray::fromHex("0209");
     blockingChangePage(prepare_manual_move, ui->page_JodMove);
+}
+
+void MainWindow::on_pushButton_269_clicked()
+{
+    ui->stackedWidget->setCurrentWidget(ui->page_GetStart);
+}
+
+void MainWindow::on_pushButton_273_clicked()
+{
+    ui->stackedWidget->setCurrentWidget(ui->page_ChangeFilament);
+}
+
+void MainWindow::on_pushButton_268_clicked()
+{
+    ui->stackedWidget->setCurrentWidget(ui->page_TempControl);
+}
+
+void MainWindow::on_pushButton_119_clicked()
+{
+    ui->stackedWidget->setCurrentWidget(ui->page_GetStart);
+}
+
+void MainWindow::on_pushButton_120_clicked()
+{
+    ui->stackedWidget->setCurrentWidget(ui->page_ChangeFilament);
+}
+
+void MainWindow::on_pushButton_121_clicked()
+{
+    ui->stackedWidget->setCurrentWidget(ui->page_Tools);
 }

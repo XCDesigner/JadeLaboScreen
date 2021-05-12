@@ -3,38 +3,24 @@ import QtQuick 2.0
 Rectangle {
     id: base
 
-    property int unitIndicator: 0
     property int value;
 
-    width: 534
-    height: 336
+    width: 1080
+    height: 270
     radius: 20
     color: "#2d2c2b"
 
-    signal choseTempClicked(int Indicator)
-    signal cooldownClicked(int Indicator)
+    signal choseTempClicked()
+    signal cooldownClicked()
 
     onValueChanged: {
         txtTargetTemp.text = value.toString() + "°C"
     }
 
-    onUnitIndicatorChanged: {
-        if(unitIndicator == 0)
-        {
-            background.source = "/image/left_heating_bg.png"
-            btnCooldown.source = "/image/left_cooldown.png"
-        }
-        else if(unitIndicator == 1)
-        {
-            background.source = "/image/right_heating_bg.png"
-            btnCooldown.source = "/image/right_cooldown.png"
-        }
-    }
-
     Image {
         id: background
         anchors.fill: parent
-        source: "qrc:/image/left_heating_bg.png"
+        source: "qrc:/image/bed_heating_bg.png"
     }
 
     Rectangle {
@@ -61,23 +47,23 @@ Rectangle {
         MouseArea {
             anchors.fill: parent
             onClicked: {
-                base.choseTempClicked(base.unitIndicator)
+                base.choseTempClicked()
             }
         }
     }
 
     Image {
         id: btnCooldown
-        source: "qrc:/image/left_cooldown.png"
-        x: 38
-        y: 207
+        source: "/image/bed_cooldown.png"
+        x: 582
+        y: 122
         width: 464
         height: 96
 
         MouseArea {
             anchors.fill: parent
             onClicked: {
-                base.cooldownClicked(base.unitIndicator);
+                base.cooldownClicked();
             }
         }
     }
