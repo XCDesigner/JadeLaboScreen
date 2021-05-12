@@ -70,7 +70,7 @@ font-family: barlow;
 }</string>
     </property>
     <property name="currentIndex">
-     <number>30</number>
+     <number>28</number>
     </property>
     <widget class="QWidget" name="page_12">
      <widget class="QLabel" name="label_14">
@@ -5872,8 +5872,8 @@ border: 2px solid rgba(67, 67, 67, 255);</string>
 font-size: 28px;
 text-align: left;
 font-family: Roboto;
-background-color: rgb(45, 44, 43);
-border: 2px solid rgba(45, 44, 43, 255);
+background-color: rgb(32, 32, 32);
+border: 2px solid rgba(32, 32, 32, 255);
 border-radius: 20px;</string>
       </property>
       <property name="text">
@@ -5894,7 +5894,7 @@ border-radius: 20px;</string>
 font-size: 32px;
 text-align: center;
 font-family: Barlow;
-background-color: rgb(45, 44, 43);</string>
+background-color: rgb(32, 32, 32);</string>
       </property>
       <property name="text">
        <string>Turn the knob to adjust the platform 
@@ -6078,7 +6078,7 @@ border: 2px solid rgba(255, 99, 11, 255);</string>
 font-size: 32px;
 text-align: center;
 font-family: Barlow;
-background-color: rgb(45, 44, 43);</string>
+background-color: rgb(32, 32, 32);</string>
       </property>
       <property name="text">
        <string>Checking Platfrom
@@ -6101,8 +6101,8 @@ Some points haven’t been calibrated
 font-size: 28px;
 text-align: left;
 font-family: Roboto;
-background-color: rgb(45, 44, 43);
-border: 2px solid rgba(45, 44, 43, 255);
+background-color: rgb(32, 32, 32);
+border: 2px solid rgba(32, 32, 32, 255);
 border-radius: 20px;</string>
       </property>
       <property name="text">
@@ -6297,8 +6297,8 @@ border: 2px solid rgba(67, 67, 67, 255);</string>
 font-size: 28px;
 text-align: left;
 font-family: Roboto;
-background-color: rgb(45, 44, 43);
-border: 2px solid rgba(45, 44, 43, 255);
+background-color: rgb(32, 32, 32);
+border: 2px solid rgba(32, 32, 32, 255);
 border-radius: 20px;</string>
       </property>
       <property name="text">
@@ -6319,7 +6319,7 @@ border-radius: 20px;</string>
 font-size: 32px;
 text-align: center;
 font-family: Barlow;
-background-color: rgb(45, 44, 43);</string>
+background-color: rgb(32, 32, 32);</string>
       </property>
       <property name="text">
        <string>Congratulations! The platform has been 
@@ -6954,7 +6954,7 @@ border-radius: 20px;</string>
 font-size: 32px;
 text-align: center;
 font-family: Barlow;
-background-color: rgb(45, 44, 43);</string>
+background-color: rgb(32, 32, 32);</string>
       </property>
       <property name="text">
        <string>Turn the knob to adjust the nozzle height 
@@ -7021,8 +7021,8 @@ border: 2px solid rgba(255, 99, 11, 255);</string>
 font-size: 28px;
 text-align: left;
 font-family: Roboto;
-background-color: rgb(45, 44, 43);
-border: 2px solid rgba(45, 44, 43, 255);
+background-color: rgb(32, 32, 32);
+border: 2px solid rgba(32, 32, 32, 255);
 border-radius: 20px;</string>
       </property>
       <property name="text">
