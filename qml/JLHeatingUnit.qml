@@ -120,7 +120,7 @@ Rectangle {
         width: 220
         height: 72
         radius: 20
-        color: "#ff930b"
+        color: "#ff630b"
         Image {
             x: 170
             y: 20

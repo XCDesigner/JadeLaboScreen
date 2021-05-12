@@ -32,7 +32,7 @@ Rectangle {
         width: 220
         height: 72
         radius: 8
-        color: "#ff930b"
+        color: "#ff630b"
 
         Text {
             id: txtTargetTemp
