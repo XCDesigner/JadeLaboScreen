@@ -147,5 +147,12 @@
         <file>image/bed_cooldown.png</file>
         <file>image/bed_heating_bg.png</file>
         <file>qml/JLHeatingbed.qml</file>
+        <file>qml/ExtruderSelect.qml</file>
+        <file>image/extruder_bg.png</file>
+        <file>qml/ExtruderUnit.qml</file>
+        <file>image/extrude_disable.png</file>
+        <file>image/extrude_enable.png</file>
+        <file>image/retract_disable.png</file>
+        <file>image/retract_enable.png</file>
     </qresource>
 </RCC>

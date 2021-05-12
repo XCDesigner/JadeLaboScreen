@@ -35,17 +35,21 @@ void MainWindow::changeFilamentTempChecking()
 
 void MainWindow::leftSetTemp()
 {
-    mchoose = new chooseTemp(this);
-    mchoose->init(QByteArray());
-    QObject::connect(mchoose, SIGNAL(hideWidget()), this, SLOT(onSetTemp()), Qt::QueuedConnection);
+    pdlg_choose_extruder_temp = new ChooseExtruderTemp();
+    QByteArray init_data;
+    init_data.append(1, 0);
+    pdlg_choose_extruder_temp->init(init_data);
+    QObject::connect(pdlg_choose_extruder_temp, SIGNAL(hideWidget()), this, SLOT(onSetTemp()), Qt::QueuedConnection);
     changeFilamentSelectExtruder = 0;
-    mchoose->show();
+    pdlg_choose_extruder_temp->show();
 }
 
 void MainWindow::onSetTemp()
 {
-    QList<QByteArray> ret = mchoose->get_return_value();
-    if(ret[0].toInt() != 0)
+    QList<QByteArray> ret = pdlg_choose_extruder_temp->get_return_value();
+    int index = ret.at(0).toUInt();
+    int temp = ret.at(1).toUInt();
+    if(temp != 0)
     {
         ui->pushButton_113->setEnabled(false);
         ui->pushButton_117->setEnabled(false);
@@ -57,16 +61,16 @@ void MainWindow::onSetTemp()
         ui->pushButton_117->setEnabled(true);
         ui->pushButton_118->setEnabled(true);
     }
-    if(changeFilamentSelectExtruder == 0)
+    if(index == 0)
     {
-        ui->qw_LeftHeating->rootObject()->setProperty("text", ret[0] + "°C");
+        ui->qw_LeftHeating->rootObject()->setProperty("text", ret.at(1) + "°C");
     }
     else
     {
-        ui->qw_RightHeating->rootObject()->setProperty("text", ret[0] + "°C");
+        ui->qw_RightHeating->rootObject()->setProperty("text", ret.at(1) + "°C");
     }
-    m_port->setHeattingUnit(changeFilamentSelectExtruder, ret[0].toUInt());
-    delete mchoose;
+    m_port->setHeattingUnit(index, ret.at(1).toUInt());
+    delete pdlg_choose_extruder_temp;
 }
 
 
@@ -82,11 +86,13 @@ void MainWindow::leftRetract()
 
 void MainWindow::rightSetTemp()
 {
-    mchoose = new chooseTemp(this);
-    mchoose->init(QByteArray());
-    QObject::connect(mchoose, SIGNAL(hideWidget()), this, SLOT(onSetTemp()), Qt::QueuedConnection);
+    pdlg_choose_extruder_temp = new ChooseExtruderTemp();
+    QByteArray init_data;
+    init_data.append(1, 1);
+    pdlg_choose_extruder_temp->init(init_data);
+    QObject::connect(pdlg_choose_extruder_temp, SIGNAL(hideWidget()), this, SLOT(onSetTemp()), Qt::QueuedConnection);
     changeFilamentSelectExtruder = 1;
-    mchoose->show();
+    pdlg_choose_extruder_temp->show();
 }
 
 void MainWindow::rightExtrude()
@@ -101,8 +107,8 @@ void MainWindow::rightRetract()
 
 void MainWindow::on_pushButton_359_clicked()
 {
-    ui->qw_LeftHeating->rootObject()->setProperty("text", "0°C");
-    ui->qw_RightHeating->rootObject()->setProperty("text", "0°C");
+    ui->qw_LeftHeating->rootObject()->setProperty("text", "000°C");
+    ui->qw_RightHeating->rootObject()->setProperty("text", "000°C");
     m_port->setHeattingUnit("0","0");
     ui->pushButton_113->setEnabled(true);
     ui->pushButton_117->setEnabled(true);

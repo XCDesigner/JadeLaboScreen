@@ -19,7 +19,7 @@ void MainWindow::TempControlInit() {
 }
 
 void MainWindow::tempControlChooseExtrudeTemp(int Index) {
-    pdlg_choose_extruder_temp = new ChooseExtruderTemp(this);
+    pdlg_choose_extruder_temp = new ChooseExtruderTemp();
     QByteArray init_data;
     init_data.append(1, Index);
     pdlg_choose_extruder_temp->init(init_data);
@@ -36,7 +36,7 @@ void MainWindow::tempControlExtruderCooldown(int Index) {
 }
 
 void MainWindow::tempControlChooseBedTemp() {
-    pdlg_choose_bed_temp = new ChooseBedTemp(this);
+    pdlg_choose_bed_temp = new ChooseBedTemp();
     pdlg_choose_bed_temp->init(QByteArray());
     pdlg_choose_bed_temp->show();
     QObject::connect(pdlg_choose_bed_temp, SIGNAL(hideWidget()), this, SLOT(tempControlChooseBedTempReturn()), Qt::QueuedConnection);

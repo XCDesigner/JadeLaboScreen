@@ -15,7 +15,10 @@ Rectangle {
     signal cooldownClicked(int Indicator)
 
     onValueChanged: {
-        txtTargetTemp.text = value.toString() + "°C"
+        if(value == 0)
+            txtTargetTemp.text = "000°C"
+        else
+            txtTargetTemp.text = value.toString() + "°C"
     }
 
     onUnitIndicatorChanged: {
@@ -47,10 +50,9 @@ Rectangle {
 
         Text {
             id: txtTargetTemp
-            x: 39
-            y: 15
-            width: 120
-            height: 58
+            anchors.centerIn: parent
+            //width: 120
+            //height: 58
             text: "000°C"
             font {pixelSize: 36; family: "Barlow"; bold: true}
             horizontalAlignment: Text.AlignLeft

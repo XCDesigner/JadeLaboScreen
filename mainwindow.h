@@ -116,6 +116,7 @@ public:
     void wifiControlerInit();
 
     void TempControlInit();
+    void ExtrudeControlInit();
 
 
 
@@ -285,6 +286,13 @@ private slots:
     void tempControlBedCooldown();
     void tempControlChooseExtruderTempReturn();
     void tempControlChooseBedTempReturn();
+
+    // Extrude control
+    void extrudeControlChooseTemp(int);
+    void extrudeControlChooseDistance(int);
+    void extrudeControlExtrude(int);
+    void extrudeControlRetract(int);
+    void extrudeControlSelectExtruder(int);
 
     void updateStatusBar();
     void waitforIdleStatus();

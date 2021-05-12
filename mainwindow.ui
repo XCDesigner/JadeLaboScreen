@@ -70,7 +70,7 @@ font-family: barlow;
 }</string>
     </property>
     <property name="currentIndex">
-     <number>6</number>
+     <number>8</number>
     </property>
     <widget class="QWidget" name="page_12">
      <widget class="QLabel" name="label_14">
@@ -1819,6 +1819,95 @@ border: 2px solid rgb(255, 99, 11) ;</string>
       </property>
      </widget>
     </widget>
+    <widget class="QWidget" name="page_ExtrudeControl">
+     <widget class="QQuickWidget" name="qw_Extrude">
+      <property name="geometry">
+       <rect>
+        <x>167</x>
+        <y>186</y>
+        <width>1094</width>
+        <height>513</height>
+       </rect>
+      </property>
+      <property name="resizeMode">
+       <enum>QQuickWidget::SizeRootObjectToView</enum>
+      </property>
+      <property name="source">
+       <url>
+        <string>qrc:/qml/ExtruderUnit.qml</string>
+       </url>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton_124">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>540</y>
+        <width>180</width>
+        <height>180</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">outline:none;image: url(:/image/AboutInactive.png);
+border:none;</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton_140">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>360</y>
+        <width>180</width>
+        <height>180</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">outline:none;image: url(:/image/ToolsInactive.png);
+border:none;</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton_141">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>180</width>
+        <height>180</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">outline:none;image: url(:/image/PrintInactive.png);
+border:none;</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QQuickWidget" name="qw_ExtrudeSelect">
+      <property name="geometry">
+       <rect>
+        <x>175</x>
+        <y>85</y>
+        <width>1090</width>
+        <height>80</height>
+       </rect>
+      </property>
+      <property name="resizeMode">
+       <enum>QQuickWidget::SizeRootObjectToView</enum>
+      </property>
+      <property name="source">
+       <url>
+        <string>qrc:/qml/ExtruderSelect.qml</string>
+       </url>
+      </property>
+     </widget>
+    </widget>
     <widget class="QWidget" name="page_TempControl">
      <widget class="QQuickWidget" name="qw_LeftHeatingUnit">
       <property name="geometry">
@@ -1902,23 +1991,6 @@ border:none;</string>
       </property>
       <property name="styleSheet">
        <string notr="true">outline:none;image: url(:/image/FilamentActive(2).png);
-border:none;</string>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="pushButton_121">
-      <property name="geometry">
-       <rect>
-        <x>0</x>
-        <y>360</y>
-        <width>180</width>
-        <height>180</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">outline:none;image: url(:/image/ToolsInactive.png);
 border:none;</string>
       </property>
       <property name="text">
