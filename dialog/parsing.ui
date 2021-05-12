@@ -84,18 +84,18 @@ border: 2px solid rgba(67, 67, 67, 255);</string>
   <widget class="QLabel" name="label">
    <property name="geometry">
     <rect>
-     <x>619</x>
-     <y>280</y>
-     <width>621</width>
-     <height>58</height>
+     <x>599</x>
+     <y>230</y>
+     <width>661</width>
+     <height>111</height>
     </rect>
    </property>
    <property name="font">
     <font>
      <family>Barlow</family>
-     <pointsize>14</pointsize>
-     <weight>75</weight>
-     <bold>true</bold>
+     <pointsize>12</pointsize>
+     <weight>50</weight>
+     <bold>false</bold>
     </font>
    </property>
    <property name="styleSheet">

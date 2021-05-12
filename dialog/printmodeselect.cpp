@@ -44,7 +44,7 @@ void PrintModeSelect::init(QByteArray InitData, QString InputFile, QString Outpu
 {
     input_file = InputFile;
     output_file_name = OutputFile;
-    if((InitData == "Orgin-Mirror") || (InitData == "Orgin-Duplicate") || (InitData == "Unsupport"))
+    if((InitData == "Orgin-Mirror") || (InitData == "Orgin-Duplicate") || (InitData == "Unsupport") || (InitData == "Mix"))
     {
         ui->qw_btnDuplicate->rootObject()->setProperty("enable", false);
         ui->qw_btnMirror->rootObject()->setProperty("enable", false);
