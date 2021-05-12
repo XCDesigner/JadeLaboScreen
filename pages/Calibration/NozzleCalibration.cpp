@@ -73,7 +73,7 @@ void MainWindow::nozzleCalibrationMessageProcess(uint8_t Command, uint8_t SubCod
             if(z_diff != 0) 
             {
                 ui->stackedWidget->setCurrentWidget(ui->page_NozzleCali_3);
-                ui->qw_NozzleCalibrateP1->setProperty("value", (int)z_diff);
+                ui->qw_NozzleCalibrateP1->rootObject()->setProperty("value", (int)z_diff);
             }
             else
             {
