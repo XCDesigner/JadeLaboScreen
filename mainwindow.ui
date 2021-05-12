@@ -70,7 +70,7 @@ font-family: barlow;
 }</string>
     </property>
     <property name="currentIndex">
-     <number>26</number>
+     <number>30</number>
     </property>
     <widget class="QWidget" name="page_12">
      <widget class="QLabel" name="label_14">
@@ -5930,6 +5930,11 @@ image: url(:/image/bamp3.png);</string>
       <property name="resizeMode">
        <enum>QQuickWidget::SizeRootObjectToView</enum>
       </property>
+      <property name="source">
+       <url>
+        <string>qrc:/qml/TurningLabel.qml</string>
+       </url>
+      </property>
      </widget>
     </widget>
     <widget class="QWidget" name="page_PlatformCali_4">
@@ -6132,6 +6137,11 @@ image: url(:/image/Bitmap4.png);</string>
       </property>
       <property name="resizeMode">
        <enum>QQuickWidget::SizeRootObjectToView</enum>
+      </property>
+      <property name="source">
+       <url>
+        <string>qrc:/qml/TurningLabel.qml</string>
+       </url>
       </property>
      </widget>
      <zorder>label_259</zorder>
@@ -6344,6 +6354,11 @@ image: url(:/image/Bitmap5.png);</string>
       </property>
       <property name="resizeMode">
        <enum>QQuickWidget::SizeRootObjectToView</enum>
+      </property>
+      <property name="source">
+       <url>
+        <string>qrc:/qml/TurningLabel.qml</string>
+       </url>
       </property>
      </widget>
      <zorder>label_263</zorder>

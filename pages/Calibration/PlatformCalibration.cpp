@@ -11,6 +11,9 @@ void MainWindow::on_pushButton_242_clicked()
 {
     m_port->setHeattingUnit("200","200");
     ui->stackedWidget->setCurrentWidget(ui->page_PlatformCali_1);
+    ui->qw_PlatformCalibrateP1->setClearColor(QColor(qmlColor));
+    ui->qw_PlatformCalibrateP2->setClearColor(QColor(qmlColor));
+    ui->qw_PlatformCalibrateP3->setClearColor(QColor(qmlColor));
     screen_status.setPerformance(PLATFORM_CALIBRATING);
     QTimer::singleShot(500, this, SLOT(platformCalibrationHeating()));
 }
