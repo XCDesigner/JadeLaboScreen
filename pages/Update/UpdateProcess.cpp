@@ -68,7 +68,7 @@ QList<uint32_t> MainWindow::getUpdateItem(uint32_t SearchType)
             return ret;
         for(uint32_t i=0;i<items;i++)
         {
-            int j = i * 4;
+            int j = i * 12;
             type = (uint8_t)header[7 + j] << 24 | (uint8_t)header[6 + j] << 16 | (uint8_t)header[5 + j] << 8 | (uint8_t)header[4 + j];
             offset = (uint8_t)header[11 + j] << 24 | (uint8_t)header[10 + j] << 16 | (uint8_t)header[9 + j] << 8 | (uint8_t)header[8 + j];
             size = (uint8_t)header[15 + j] << 24 | (uint8_t)header[14 + j] << 16 | (uint8_t)header[13 + j] << 8 | (uint8_t)header[12 + j];
