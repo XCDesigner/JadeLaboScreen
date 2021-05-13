@@ -6,13 +6,14 @@ Rectangle {
     property int indicator: 0
     property bool extruderEnabled: false
     property int temp: 0
-    property alias distance: txtTargetDistance.text
+    property string distance: "1"
 
     property bool enableMotor: false
 
-
     property int leftTemp: 0
     property int rightTemp: 0
+    property string leftDistance: "0.1"
+    property string rightDistance: "0.1"
 
 
     width: 1094
@@ -48,6 +49,14 @@ Rectangle {
             rightTemp = temp
     }
 
+    onDistanceChanged: {
+        if(indicator == 0)
+            leftDistance = distance
+        else
+            rightDistance = distance
+        txtTargetDistance.text = distance + "mm"
+    }
+
     onIndicatorChanged: {
         if(indicator == 0)
         {
@@ -56,6 +65,7 @@ Rectangle {
                 txtTargetTemp.text = "000°C"
             else
                 txtTargetTemp.text = leftTemp.toString() + "°C"
+            distance = leftDistance
         }
         else
         {
@@ -64,6 +74,7 @@ Rectangle {
                 txtTargetTemp.text = "000°C"
             else
                 txtTargetTemp.text = rightTemp.toString() + "°C"
+            distance = rightDistance
         }
     }
 

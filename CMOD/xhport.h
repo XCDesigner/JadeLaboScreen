@@ -38,6 +38,8 @@ public:
     void rup();
     void rdown();
 
+    void ExtruderMotion(uint8_t Index, int32_t Distance);
+
     /**********PRINT IDER**********/
     QByteArray startPrint(QString);
     void AcsPrint(QByteArray);

@@ -31,25 +31,24 @@ void MainWindow::extrudeControlCooldown(int Index)
 
 void MainWindow::extrudeControlChooseDistance(int Index)
 {
-
+    pdlg_choose_distance = new ChooseDistance();
+    QByteArray init_data;
+    init_data.append(1, Index);
+    pdlg_choose_distance->init(init_data);
+    pdlg_choose_distance->show();
+    QObject::connect(pdlg_choose_distance, SIGNAL(hideWidget()), this, SLOT(extrudeControlChooseDistanceReturn()), Qt::QueuedConnection);
 }
 
 void MainWindow::extrudeControlExtrude(int Index)
 {
-    qDebug()<<Index << "extrude";
-    if(Index == 0)
-        m_port->ldown();
-    else
-        m_port->rdown();
+    float dis = ui->qw_Extrude->rootObject()->property("distance").toFloat() * 1000.0f;
+    m_port->ExtruderMotion(Index, dis);
 }
 
 void MainWindow::extrudeControlRetract(int Index)
 {
-    qDebug()<<Index << "retract";
-    if(Index == 0)
-        m_port->lup();
-    else
-        m_port->rup();
+    float dis = ui->qw_Extrude->rootObject()->property("distance").toFloat() * -1000.0f;
+    m_port->ExtruderMotion(Index, dis);
 }
 
 void MainWindow::extrudeControlSelectExtruder(int Index)
@@ -70,7 +69,10 @@ void MainWindow::extrudeControlChooseTempReturn()
 
 void MainWindow::extrudeControlChooseDistanceReturn()
 {
-
+    QList<QByteArray> ret = pdlg_choose_distance->get_return_value();
+    QString str_distance = ret.at(1);
+    ui->qw_Extrude->rootObject()->setProperty("distance", str_distance);
+    delete pdlg_choose_distance;
 }
 
 void MainWindow::extruderControlCheckTemp()

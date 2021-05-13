@@ -20,7 +20,7 @@ public:
     void show() override;
 
 private slots:
-    void onDistanceSelect(int);
+    void onDistanceSelect(QString);
 
 private:
     Ui::ChooseDistance *ui;

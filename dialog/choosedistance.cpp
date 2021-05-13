@@ -7,17 +7,17 @@ ChooseDistance::ChooseDistance(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    ui->qw_001mm->rootObject()->setProperty("temperature", 180);
+    ui->qw_001mm->rootObject()->setProperty("distance", "1");
     ui->qw_001mm->setClearColor("#2d2b2c");
-    QObject::connect(ui->qw_001mm->rootObject(), SIGNAL(clicked(int)), this, SLOT(onTempSelect(int)));
+    QObject::connect(ui->qw_001mm->rootObject(), SIGNAL(clicked(QString)), this, SLOT(onDistanceSelect(QString)));
 
-    ui->qw_010mm->rootObject()->setProperty("temperature", 200);
+    ui->qw_010mm->rootObject()->setProperty("distance", "10");
     ui->qw_010mm->setClearColor("#2d2b2c");
-    QObject::connect(ui->qw_010mm->rootObject(), SIGNAL(clicked(int)), this, SLOT(onTempSelect(int)));
+    QObject::connect(ui->qw_010mm->rootObject(), SIGNAL(clicked(QString)), this, SLOT(onDistanceSelect(QString)));
 
-    ui->qw_100mm->rootObject()->setProperty("temperature", 220);
+    ui->qw_100mm->rootObject()->setProperty("distance", "100");
     ui->qw_100mm->setClearColor("#2d2b2c");
-    QObject::connect(ui->qw_100mm->rootObject(), SIGNAL(clicked(int)), this, SLOT(onTempSelect(int)));
+    QObject::connect(ui->qw_100mm->rootObject(), SIGNAL(clicked(QString)), this, SLOT(onDistanceSelect(QString)));
 
 }
 
@@ -37,10 +37,10 @@ void ChooseDistance::show()
     QWidget::show();
 }
 
-void ChooseDistance::onDistanceSelect(int Value)
+void ChooseDistance::onDistanceSelect(QString Value)
 {
     ret_value.append(QByteArray().setNum(extruder_index));
-    ret_value.append(QByteArray().setNum(Value));
+    ret_value.append(Value.toUtf8());
     emit hideWidget();
     this->hide();
 }

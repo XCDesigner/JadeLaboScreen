@@ -154,5 +154,6 @@
         <file>image/extrude_enable.png</file>
         <file>image/retract_disable.png</file>
         <file>image/retract_enable.png</file>
+        <file>qml/DistanceButtonSelect.qml</file>
     </qresource>
 </RCC>

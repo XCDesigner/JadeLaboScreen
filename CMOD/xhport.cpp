@@ -734,7 +734,7 @@ void XhPort::startPrint()
 }
 
 /**
-  * @brief  Start printing
+  * @brief  Get firmware version
   * @param  Mode:
   * @retval None
   */
@@ -742,6 +742,24 @@ void XhPort::getFirmwareVersion()
 {
     QByteArray s = QByteArray::fromHex("0503");
     m_serial->writeProtocalData(s);
+}
+
+/**
+  * @brief  Extruder action. Extrude or retract
+  * @param  Index: Extruder index
+  * @param  Distance: Distance in um
+  * @retval None
+  */
+void XhPort::ExtruderMotion(uint8_t Index, int32_t Distance)
+{
+    QByteArray s = QByteArray::fromHex("0205");
+    s.append(1, Index);
+    s.append(1, Distance);
+    s.append(1, Distance >> 8);
+    s.append(1, Distance >> 16);
+    s.append(1, Distance >> 24);
+    QByteArray buff = m_package->groupPage(s);
+    m_serial->write(buff);
 }
 
 void XhPort::testdemo()

@@ -42,6 +42,7 @@
 #include "dialog/choosetemp.h"
 #include "dialog/chooseextrudertemp.h"
 #include "dialog/choosebedtemp.h"
+#include "dialog/choosedistance.h"
 #include "dialog/unnoknfile.h"
 #include "dialog/filamentfault.h"
 #include "dialog/printflament.h"
@@ -173,7 +174,7 @@ private:
 
     ChooseExtruderTemp *pdlg_choose_extruder_temp;
     ChooseBedTemp *pdlg_choose_bed_temp;
-
+    ChooseDistance *pdlg_choose_distance;
 
     UdpListener *m_udp_listener;
     TcpControler *m_tcp_controler;

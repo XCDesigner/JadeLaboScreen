@@ -27,7 +27,7 @@
    </property>
    <property name="source">
     <url>
-     <string>qrc:/qml/TempButton.qml</string>
+     <string>qrc:/qml/DistanceButtonSelect.qml</string>
     </url>
    </property>
   </widget>
@@ -45,7 +45,7 @@
    </property>
    <property name="source">
     <url>
-     <string>qrc:/qml/TempButton.qml</string>
+     <string>qrc:/qml/DistanceButtonSelect.qml</string>
     </url>
    </property>
   </widget>
@@ -63,7 +63,7 @@
    </property>
    <property name="source">
     <url>
-     <string>qrc:/qml/TempButton.qml</string>
+     <string>qrc:/qml/DistanceButtonSelect.qml</string>
     </url>
    </property>
   </widget>
