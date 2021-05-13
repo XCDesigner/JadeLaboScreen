@@ -3,7 +3,7 @@ import QtQuick 2.0
 Rectangle {
     id: base
 
-    property string distance: "0.1"
+    property string distance: "1"
 
     width: 180
     height: 180
