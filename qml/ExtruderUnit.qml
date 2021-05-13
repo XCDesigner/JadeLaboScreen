@@ -12,8 +12,8 @@ Rectangle {
 
     property int leftTemp: 0
     property int rightTemp: 0
-    property string leftDistance: "0.1"
-    property string rightDistance: "0.1"
+    property string leftDistance: "1"
+    property string rightDistance: "1"
 
 
     width: 1094
