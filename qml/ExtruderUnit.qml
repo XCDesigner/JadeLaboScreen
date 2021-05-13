@@ -138,7 +138,7 @@ Rectangle {
             anchors.centerIn: parent
             // width: 120
             height: 58
-            text: "0.1mm"
+            text: "1mm"
             font {pixelSize: 36; family: "Barlow"; bold: true}
             horizontalAlignment: Text.AlignLeft
             verticalAlignment: Text.AlignVCenter
