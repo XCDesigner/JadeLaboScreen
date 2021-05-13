@@ -42,6 +42,7 @@ SOURCES += \
     dialog/askpause.cpp \
     dialog/changefilamentdlg.cpp \
     dialog/choosebedtemp.cpp \
+    dialog/choosedistance.cpp \
     dialog/chooseextrudertemp.cpp \
     dialog/choosefile.cpp \
     dialog/choosetemp.cpp \
@@ -113,6 +114,7 @@ HEADERS += \
     dialog/askpause.h \
     dialog/changefilamentdlg.h \
     dialog/choosebedtemp.h \
+    dialog/choosedistance.h \
     dialog/chooseextrudertemp.h \
     dialog/choosefile.h \
     dialog/choosetemp.h \
@@ -144,6 +146,7 @@ FORMS += \
     dialog/askpause.ui \
     dialog/changefilamentdlg.ui \
     dialog/choosebedtemp.ui \
+    dialog/choosedistance.ui \
     dialog/chooseextrudertemp.ui \
     dialog/choosefile.ui \
     dialog/choosetemp.ui \

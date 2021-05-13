@@ -70,7 +70,7 @@ font-family: barlow;
 }</string>
     </property>
     <property name="currentIndex">
-     <number>28</number>
+     <number>6</number>
     </property>
     <widget class="QWidget" name="page_12">
      <widget class="QLabel" name="label_14">
@@ -1855,23 +1855,6 @@ border:none;</string>
        <string/>
       </property>
      </widget>
-     <widget class="QPushButton" name="pushButton_140">
-      <property name="geometry">
-       <rect>
-        <x>0</x>
-        <y>360</y>
-        <width>180</width>
-        <height>180</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">outline:none;image: url(:/image/ToolsInactive.png);
-border:none;</string>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-     </widget>
      <widget class="QPushButton" name="pushButton_141">
       <property name="geometry">
        <rect>
@@ -1905,6 +1888,38 @@ border:none;</string>
        <url>
         <string>qrc:/qml/ExtruderSelect.qml</string>
        </url>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton_457">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>180</y>
+        <width>180</width>
+        <height>180</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">outline:none;image: url(:/image/FilamentInactive.png);border:none;</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton_458">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>360</y>
+        <width>180</width>
+        <height>180</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">outline:none;image: url(:/image/ToolsActive(2).png);border:none;</string>
+      </property>
+      <property name="text">
+       <string/>
       </property>
      </widget>
     </widget>

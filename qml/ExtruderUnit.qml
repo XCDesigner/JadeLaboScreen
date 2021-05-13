@@ -8,6 +8,12 @@ Rectangle {
     property int temp: 0
     property alias distance: txtTargetDistance.text
 
+    property bool enableMotor: false
+
+
+    property int leftTemp: 0
+    property int rightTemp: 0
+
 
     width: 1094
     height: 513
@@ -20,15 +26,45 @@ Rectangle {
     signal chooseTempClicked(int Indicator)
     signal chooseDistanceClicked(int Indicator)
 
+    onEnableMotorChanged: {
+        if(enableMotor == true){
+            btnExtrude.source = "/image/extrude_enable.png"
+            btnRetract.source = "/image/retract_enable.png"
+        }
+        else {
+            btnExtrude.source = "/image/extrude_disable.png"
+            btnRetract.source = "/image/retract_disable.png"
+        }
+    }
+
     onTempChanged: {
-        txtTargetTemp.text = temp.toString() + "°C"
+        if(temp == 0)
+            txtTargetTemp.text = "000°C"
+        else
+            txtTargetTemp.text = temp.toString() + "°C"
+        if(indicator == 0)
+            leftTemp = temp
+        else
+            rightTemp = temp
     }
 
     onIndicatorChanged: {
         if(indicator == 0)
+        {
             btnCooldown.source = "/image/left_cooldown.png"
+            if(leftTemp == 0)
+                txtTargetTemp.text = "000°C"
+            else
+                txtTargetTemp.text = leftTemp.toString() + "°C"
+        }
         else
+        {
             btnCooldown.source = "/image/right_cooldown.png"
+            if(rightTemp == 0)
+                txtTargetTemp.text = "000°C"
+            else
+                txtTargetTemp.text = rightTemp.toString() + "°C"
+        }
     }
 
     onExtruderEnabledChanged: {
@@ -56,13 +92,12 @@ Rectangle {
         width: 220
         height: 72
         radius: 8
-        color: "#ff930b"
+        color: "#ff630b"
 
         Text {
             id: txtTargetTemp
-            x: 39
-            y: 15
-            width: 120
+            anchors.centerIn: parent
+            // width: 120
             height: 58
             text: "000°C"
             font {pixelSize: 36; family: "Barlow"; bold: true}
@@ -85,13 +120,12 @@ Rectangle {
         width: 220
         height: 72
         radius: 8
-        color: "#ff930b"
+        color: "#ff630b"
 
         Text {
             id: txtTargetDistance
-            x: 39
-            y: 15
-            width: 120
+            anchors.centerIn: parent
+            // width: 120
             height: 58
             text: "0.1mm"
             font {pixelSize: 36; family: "Barlow"; bold: true}
@@ -136,7 +170,8 @@ Rectangle {
         MouseArea {
             anchors.fill: parent
             onClicked: {
-                base.extrudeClicked(base.indicator);
+                if(base.enableMotor == true)
+                    base.extrudeClicked(base.indicator);
             }
         }
     }
@@ -152,7 +187,8 @@ Rectangle {
         MouseArea {
             anchors.fill: parent
             onClicked: {
-                base.extrudeClicked(base.indicator);
+                if(base.enableMotor == true)
+                    base.retractClicked(base.indicator);
             }
         }
     }

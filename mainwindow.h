@@ -293,6 +293,10 @@ private slots:
     void extrudeControlExtrude(int);
     void extrudeControlRetract(int);
     void extrudeControlSelectExtruder(int);
+    void extrudeControlCooldown(int Index);
+    void extrudeControlChooseTempReturn();
+    void extrudeControlChooseDistanceReturn();
+    void extruderControlCheckTemp();
 
     void updateStatusBar();
     void waitforIdleStatus();
@@ -587,8 +591,6 @@ private slots:
 
     void on_pushButton_262_clicked();
 
-    void on_pushButton_100_clicked();
-
     void on_pushButton_101_clicked();
 
     void on_pushButton_371_clicked();
@@ -856,13 +858,23 @@ private slots:
 
     void on_pushButton_268_clicked();
 
-    void on_pushButton_119_clicked();
-    
+    void on_pushButton_100_clicked();
+
     void on_pushButton_120_clicked();
 
     void on_pushButton_121_clicked();
 
+    void on_pushButton_119_clicked();
+
     void on_pushButton_146_clicked();
+
+    void on_pushButton_270_clicked();
+
+    void on_pushButton_141_clicked();
+
+    void on_pushButton_457_clicked();
+
+    void on_pushButton_458_clicked();
 
 signals:
     void detection(bool);

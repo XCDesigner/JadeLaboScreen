@@ -279,6 +279,7 @@ MainWindow::MainWindow(QWidget *parent) :
     // #endif
 
     TempControlInit();
+    ExtrudeControlInit();
 }
 
 MainWindow::~MainWindow()

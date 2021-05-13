@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>ChooseDistance</class>
+ <widget class="QWidget" name="ChooseDistance">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1280</width>
+    <height>720</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <widget class="QQuickWidget" name="qw_001mm">
+   <property name="geometry">
+    <rect>
+     <x>312</x>
+     <y>264</y>
+     <width>180</width>
+     <height>180</height>
+    </rect>
+   </property>
+   <property name="resizeMode">
+    <enum>QQuickWidget::SizeRootObjectToView</enum>
+   </property>
+   <property name="source">
+    <url>
+     <string>qrc:/qml/TempButton.qml</string>
+    </url>
+   </property>
+  </widget>
+  <widget class="QQuickWidget" name="qw_010mm">
+   <property name="geometry">
+    <rect>
+     <x>549</x>
+     <y>264</y>
+     <width>180</width>
+     <height>180</height>
+    </rect>
+   </property>
+   <property name="resizeMode">
+    <enum>QQuickWidget::SizeRootObjectToView</enum>
+   </property>
+   <property name="source">
+    <url>
+     <string>qrc:/qml/TempButton.qml</string>
+    </url>
+   </property>
+  </widget>
+  <widget class="QQuickWidget" name="qw_100mm">
+   <property name="geometry">
+    <rect>
+     <x>788</x>
+     <y>264</y>
+     <width>180</width>
+     <height>180</height>
+    </rect>
+   </property>
+   <property name="resizeMode">
+    <enum>QQuickWidget::SizeRootObjectToView</enum>
+   </property>
+   <property name="source">
+    <url>
+     <string>qrc:/qml/TempButton.qml</string>
+    </url>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1280</width>
+     <height>720</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Adobe Arabic</family>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgba(32, 32, 35, 255);</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <zorder>label</zorder>
+  <zorder>qw_001mm</zorder>
+  <zorder>qw_010mm</zorder>
+  <zorder>qw_100mm</zorder>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>QQuickWidget</class>
+   <extends>QWidget</extends>
+   <header location="global">QtQuickWidgets/QQuickWidget</header>
+  </customwidget>
+ </customwidgets>
+ <resources/>
+ <connections/>
+</ui>

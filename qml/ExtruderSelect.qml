@@ -1,18 +1,21 @@
 import QtQuick 2.0
 
-Item {
+Rectangle {
     id: base
 
     property int indicator: 0
     width: 1090
     height: 80
+    radius: 20
+    border.width: 4
+    border.color: "#f0f0f0"
 
     signal clicked(int Indicator)
 
     onIndicatorChanged: {
         if(indicator == 0) {
             btnleft.color = "#2d2c2b"
-            leftcornet.col = "#2d2c2b"
+            leftcornet.color = "#2d2c2b"
             btnright.color = "#202020"
             rightcorner.color = "#202020"
             leftlabel.color = "#f0f0f0"
@@ -20,7 +23,7 @@ Item {
         }
         else if(indicator == 1) {
             btnleft.color = "#202020"
-            leftcornet.col = "#202020"
+            leftcornet.color = "#202020"
             btnright.color = "#2d2c2b"
             rightcorner.color = "#2d2c2b"
             leftlabel.color = "#8f8f8f"
@@ -30,10 +33,10 @@ Item {
 
     Rectangle {
         id: btnleft
-        x: 20
-        y: 0
-        width: 525
-        height: 80
+        x: 24
+        y: 4
+        width: 521
+        height: 72
         color: "#2d2c2b"
         MouseArea {
             anchors.fill: parent
@@ -53,10 +56,10 @@ Item {
 
     Rectangle {
         id: btnright
-        x: 545
-        y: 0
-        width: 525
-        height: 80
+        x: 541
+        y: 4
+        width: 521
+        height: 72
         color: "#202020"
         MouseArea {
             anchors.fill: parent
@@ -78,9 +81,9 @@ Item {
         id: leftcornet
         radius: 20
         width: 40
-        height: 80
-        x: 0
-        y: 0
+        height: 72
+        x: 4
+        y: 4
         color: "#2d2c2b"
     }
 
@@ -88,9 +91,9 @@ Item {
         id: rightcorner
         radius: 20
         width: 40
-        height: 80
-        x: 1050
-        y: 0
+        height: 72
+        x: 1046
+        y: 4
         color: "#202020"
     }
 
