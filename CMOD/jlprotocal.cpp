@@ -84,7 +84,7 @@ QByteArray JLProtocal::parseDataV30(QByteArray SourceData, uint32_t *DataRead)
         uint8_t len_checksum;
 
         command_len = ((uint8_t)SourceData.at(4) << 8) | (uint8_t)SourceData.at(3);
-        len_checksum = SourceData.at(4) | SourceData.at(3);
+        len_checksum = SourceData.at(4) ^ SourceData.at(3);
 
         if(len_checksum != (uint8_t)SourceData.at(5))
         {
