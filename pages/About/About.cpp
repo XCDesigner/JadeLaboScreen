@@ -6,6 +6,8 @@
 void MainWindow::AboutPageInit()
 {
     QObject::connect(ui->wqVersion->rootObject(), SIGNAL(clicked(int)), this, SLOT(on_AboutReturn(int)));
+    AddListen(QByteArray(QByteArray::fromHex("0B0100")), &MainWindow::TMCReadback, true);
+    QTimer::singleShot(500, this, SLOT(aboutTimerTester()));
 }
 
 void MainWindow::on_pushButton_126_clicked()
@@ -27,4 +29,29 @@ void MainWindow::onFirmwareVersionReceived(QByteArray Datas)
 {
     QString ver = QString(Datas.mid(3, -1));
     ui->wqVersionFirmware->rootObject()->setProperty("text", ver);
+}
+
+void MainWindow::on_checkBox_stateChanged(int arg1)
+{
+
+}
+
+void MainWindow::aboutTimerTester()
+{
+    if(ui->checkBox->isChecked() == true) {
+        QByteArray regs = QByteArray::fromHex("001241");
+        m_port->getTMCValue(2, regs);
+    }
+    QTimer::singleShot(500, this, SLOT(aboutTimerTester()));
+}
+
+void MainWindow::TMCReadback(QByteArray Data)
+{
+    if(Data.mid(0, 3).toHex() == "0b0100") {
+        qDebug()<<Data;
+        QString gconf = Data.mid(5, 4).toHex() + "\n";
+        QString step = Data.mid(10, 4).toHex() + "\n";
+        QString sg_result = Data.mid(15, 4).toHex() + "\n";
+        ui->label->setText("GConf:" + gconf + "STEP:" + step + "SG_RESULT:" + sg_result);
+    }
 }

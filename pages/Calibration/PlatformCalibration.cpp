@@ -1,6 +1,13 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
+void MainWindow::platformCalibratePageinit()
+{
+    ui->qw_SetBuildplatThickness->setClearColor("#2d2c2b");
+    QObject::connect(ui->qw_SetBuildplatThickness->rootObject(), SIGNAL(clicked(int)), this, SLOT(onSetBuildplatThicknessClicked(int)));
+
+}
+
 void MainWindow::platformCalibrateFail()
 {
     m_port->setHeattingUnit(0, 0);
@@ -9,13 +16,8 @@ void MainWindow::platformCalibrateFail()
 
 void MainWindow::on_pushButton_242_clicked()
 {
-    m_port->setHeattingUnit("200","200");
-    ui->stackedWidget->setCurrentWidget(ui->page_PlatformCali_1);
-    ui->qw_PlatformCalibrateP1->setClearColor("#202020");
-    ui->qw_PlatformCalibrateP2->setClearColor("#202020");
-    ui->qw_PlatformCalibrateP3->setClearColor("#202020");
-    screen_status.setPerformance(PLATFORM_CALIBRATING);
-    QTimer::singleShot(500, this, SLOT(platformCalibrationHeating()));
+    AddListen(QByteArray::fromHex("030C00"), &MainWindow::BuildplateProcess, false);
+    m_port->getBuildplatThickness();
 }
 
 void MainWindow::on_pushButton_243_clicked()
@@ -124,4 +126,42 @@ void MainWindow::platformCalibrationMessageProcess(uint8_t Command, uint8_t SubC
             }
         }
     }
+}
+
+void MainWindow::onSetBuildplatThicknessClicked(int Index)
+{
+    pdlg_Input = new InputDialog();
+    QString init_data;
+    init_data = ui->qw_SetBuildplatThickness->rootObject()->property("text").toString();
+    init_data = init_data.left(init_data.length() - 2);
+    pdlg_Input->init(init_data.toUtf8());
+    QObject::connect(pdlg_Input, SIGNAL(hideWidget()), this, SLOT(onSetBuildplatThicknessReturn()), Qt::QueuedConnection);
+    pdlg_Input->show();
+}
+
+void MainWindow::onSetBuildplatThicknessReturn()
+{
+    QList<QByteArray> ret = pdlg_Input->get_return_value();
+    QString str_value = QString(ret.at(0));
+    float value = str_value.toFloat();
+    ui->qw_SetBuildplatThickness->rootObject()->setProperty("text", str_value + "mm");
+    m_port->setBuildplatThickness(value);
+    delete pdlg_Input;
+}
+
+void MainWindow::BuildplateProcess(QByteArray Datas)
+{
+    if((Datas.at(0) == 0x03) && (Datas.at(1) == 0x0C)) {
+        float thickness = ((uint8_t)Datas.at(6) << 24 | (uint8_t)Datas.at(5) << 16 | (uint8_t)Datas.at(4) << 8 | (uint8_t)Datas.at(3)) / 1000.0f;
+        char str_value[10];
+        sprintf(str_value, "%0.2fmm", thickness);
+        qDebug()<<str_value;
+        ui->qw_SetBuildplatThickness->rootObject()->setProperty("text", str_value);
+        ui->stackedWidget->setCurrentWidget(ui->page_PlatformCali_7);
+    }
+}
+
+void MainWindow::on_pushButton_276_clicked()
+{
+    ui->stackedWidget->setCurrentWidget(ui->page_PlatformCali_0);
 }

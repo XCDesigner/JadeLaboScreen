@@ -70,7 +70,7 @@ font-family: barlow;
 }</string>
     </property>
     <property name="currentIndex">
-     <number>6</number>
+     <number>25</number>
     </property>
     <widget class="QWidget" name="page_12">
      <widget class="QLabel" name="label_14">
@@ -1693,7 +1693,7 @@ background-color: rgb(45, 44, 43);</string>
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>180</width>
+        <width>160</width>
         <height>180</height>
        </rect>
       </property>
@@ -1710,7 +1710,7 @@ border:none;</string>
        <rect>
         <x>0</x>
         <y>180</y>
-        <width>180</width>
+        <width>160</width>
         <height>180</height>
        </rect>
       </property>
@@ -1727,7 +1727,7 @@ border:none;</string>
        <rect>
         <x>0</x>
         <y>360</y>
-        <width>180</width>
+        <width>160</width>
         <height>180</height>
        </rect>
       </property>
@@ -1744,7 +1744,7 @@ border:none;</string>
        <rect>
         <x>0</x>
         <y>540</y>
-        <width>180</width>
+        <width>160</width>
         <height>180</height>
        </rect>
       </property>
@@ -1843,7 +1843,7 @@ border: 2px solid rgb(255, 99, 11) ;</string>
        <rect>
         <x>0</x>
         <y>540</y>
-        <width>180</width>
+        <width>160</width>
         <height>180</height>
        </rect>
       </property>
@@ -1860,7 +1860,7 @@ border:none;</string>
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>180</width>
+        <width>160</width>
         <height>180</height>
        </rect>
       </property>
@@ -1895,7 +1895,7 @@ border:none;</string>
        <rect>
         <x>0</x>
         <y>180</y>
-        <width>180</width>
+        <width>160</width>
         <height>180</height>
        </rect>
       </property>
@@ -1911,7 +1911,7 @@ border:none;</string>
        <rect>
         <x>0</x>
         <y>360</y>
-        <width>180</width>
+        <width>160</width>
         <height>180</height>
        </rect>
       </property>
@@ -1983,7 +1983,7 @@ border:none;</string>
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>180</width>
+        <width>160</width>
         <height>180</height>
        </rect>
       </property>
@@ -2000,7 +2000,7 @@ border:none;</string>
        <rect>
         <x>0</x>
         <y>540</y>
-        <width>180</width>
+        <width>160</width>
         <height>180</height>
        </rect>
       </property>
@@ -2017,7 +2017,7 @@ border:none;</string>
        <rect>
         <x>0</x>
         <y>180</y>
-        <width>180</width>
+        <width>160</width>
         <height>180</height>
        </rect>
       </property>
@@ -2033,7 +2033,7 @@ border:none;</string>
        <rect>
         <x>0</x>
         <y>360</y>
-        <width>180</width>
+        <width>160</width>
         <height>180</height>
        </rect>
       </property>
@@ -2051,7 +2051,7 @@ border:none;</string>
        <rect>
         <x>0</x>
         <y>360</y>
-        <width>180</width>
+        <width>160</width>
         <height>180</height>
        </rect>
       </property>
@@ -2068,7 +2068,7 @@ border:none;</string>
        <rect>
         <x>0</x>
         <y>540</y>
-        <width>180</width>
+        <width>160</width>
         <height>180</height>
        </rect>
       </property>
@@ -2084,7 +2084,7 @@ border:none;</string>
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>180</width>
+        <width>160</width>
         <height>180</height>
        </rect>
       </property>
@@ -2101,7 +2101,7 @@ border:none;</string>
        <rect>
         <x>0</x>
         <y>180</y>
-        <width>180</width>
+        <width>160</width>
         <height>180</height>
        </rect>
       </property>
@@ -2207,7 +2207,7 @@ text-align: center;
        <rect>
         <x>0</x>
         <y>180</y>
-        <width>180</width>
+        <width>160</width>
         <height>180</height>
        </rect>
       </property>
@@ -2223,7 +2223,7 @@ text-align: center;
        <rect>
         <x>0</x>
         <y>540</y>
-        <width>180</width>
+        <width>160</width>
         <height>180</height>
        </rect>
       </property>
@@ -2239,7 +2239,7 @@ text-align: center;
        <rect>
         <x>0</x>
         <y>360</y>
-        <width>180</width>
+        <width>160</width>
         <height>180</height>
        </rect>
       </property>
@@ -2255,7 +2255,7 @@ text-align: center;
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>180</width>
+        <width>160</width>
         <height>180</height>
        </rect>
       </property>
@@ -2991,7 +2991,7 @@ border:1px solid gray</string>
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>180</width>
+        <width>160</width>
         <height>180</height>
        </rect>
       </property>
@@ -3007,7 +3007,7 @@ border:1px solid gray</string>
        <rect>
         <x>0</x>
         <y>360</y>
-        <width>180</width>
+        <width>160</width>
         <height>180</height>
        </rect>
       </property>
@@ -3023,7 +3023,7 @@ border:1px solid gray</string>
        <rect>
         <x>0</x>
         <y>180</y>
-        <width>180</width>
+        <width>160</width>
         <height>180</height>
        </rect>
       </property>
@@ -3039,7 +3039,7 @@ border:1px solid gray</string>
        <rect>
         <x>0</x>
         <y>540</y>
-        <width>180</width>
+        <width>160</width>
         <height>180</height>
        </rect>
       </property>
@@ -4636,7 +4636,7 @@ font-family: Roboto;</string>
        <rect>
         <x>0</x>
         <y>540</y>
-        <width>180</width>
+        <width>160</width>
         <height>180</height>
        </rect>
       </property>
@@ -4669,7 +4669,7 @@ background-color: rgb(45, 44, 43);</string>
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>180</width>
+        <width>160</width>
         <height>180</height>
        </rect>
       </property>
@@ -4718,7 +4718,7 @@ font-family:Barlow;</string>
        <rect>
         <x>0</x>
         <y>360</y>
-        <width>180</width>
+        <width>160</width>
         <height>180</height>
        </rect>
       </property>
@@ -4734,7 +4734,7 @@ font-family:Barlow;</string>
        <rect>
         <x>0</x>
         <y>180</y>
-        <width>180</width>
+        <width>160</width>
         <height>180</height>
        </rect>
       </property>
@@ -4863,7 +4863,7 @@ font-family:Barlow;</string>
        <rect>
         <x>0</x>
         <y>180</y>
-        <width>180</width>
+        <width>160</width>
         <height>180</height>
        </rect>
       </property>
@@ -4880,7 +4880,7 @@ outline:none;</string>
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>180</width>
+        <width>160</width>
         <height>180</height>
        </rect>
       </property>
@@ -4896,7 +4896,7 @@ outline:none;</string>
        <rect>
         <x>0</x>
         <y>360</y>
-        <width>180</width>
+        <width>160</width>
         <height>180</height>
        </rect>
       </property>
@@ -4912,7 +4912,7 @@ outline:none;</string>
        <rect>
         <x>0</x>
         <y>540</y>
-        <width>180</width>
+        <width>160</width>
         <height>180</height>
        </rect>
       </property>
@@ -5074,76 +5074,12 @@ background-color: rgb(45, 44, 43);</string>
       </property>
      </widget>
     </widget>
-    <widget class="QWidget" name="page_PlatformCali_0">
-     <widget class="QPushButton" name="pushButton_238">
-      <property name="geometry">
-       <rect>
-        <x>0</x>
-        <y>180</y>
-        <width>180</width>
-        <height>180</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">outline:none;image: url(:/image/FilamentInactive.png);border:none;</string>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="pushButton_239">
-      <property name="geometry">
-       <rect>
-        <x>0</x>
-        <y>360</y>
-        <width>180</width>
-        <height>180</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">outline:none;image: url(:/image/ToolsActive(2).png);border:none;</string>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="pushButton_240">
-      <property name="geometry">
-       <rect>
-        <x>0</x>
-        <y>0</y>
-        <width>180</width>
-        <height>180</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">outline:none;image: url(:/image/PrintInactive.png);border:none;</string>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="pushButton_241">
-      <property name="geometry">
-       <rect>
-        <x>0</x>
-        <y>540</y>
-        <width>180</width>
-        <height>180</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">outline:none;image: url(:/image/AboutInactive.png);border:none;</string>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="pushButton_242">
+    <widget class="QWidget" name="page_PlatformCali_7">
+     <widget class="QPushButton" name="pushButton_275">
       <property name="geometry">
        <rect>
         <x>550</x>
-        <y>600</y>
+        <y>602</y>
         <width>702</width>
         <height>96</height>
        </rect>
@@ -5167,14 +5103,14 @@ font-family: Barlow;
 border: 2px solid rgb(255, 99, 11) ;</string>
       </property>
       <property name="text">
-       <string>Start</string>
+       <string>Next</string>
       </property>
      </widget>
-     <widget class="QPushButton" name="pushButton_243">
+     <widget class="QPushButton" name="pushButton_276">
       <property name="geometry">
        <rect>
         <x>167</x>
-        <y>598</y>
+        <y>600</y>
         <width>362</width>
         <height>96</height>
        </rect>
@@ -5198,7 +5134,285 @@ border: 2px solid rgba(67, 67, 67, 255);font-weight: bold;
 font-family:Barlow;</string>
       </property>
       <property name="text">
-       <string>Back</string>
+       <string>Previous</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_117">
+      <property name="geometry">
+       <rect>
+        <x>184</x>
+        <y>90</y>
+        <width>1080</width>
+        <height>480</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: rgba(16, 16, 16, 255);
+font-size: 28px;
+text-align: left;
+font-family: Roboto;
+background-color: rgb(45, 44, 43);
+border: 2px solid rgba(45, 44, 43, 255);
+border-radius: 20px;</string>
+      </property>
+      <property name="text">
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_131">
+      <property name="geometry">
+       <rect>
+        <x>170</x>
+        <y>110</y>
+        <width>382</width>
+        <height>377</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">border-image: url(:/image/picShow1.jpg);</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton_277">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>160</width>
+        <height>180</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">outline:none;image: url(:/image/PrintInactive.png);border:none;</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton_278">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>360</y>
+        <width>160</width>
+        <height>180</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">outline:none;image: url(:/image/ToolsActive(2).png);border:none;</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton_279">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>540</y>
+        <width>160</width>
+        <height>180</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">outline:none;image: url(:/image/AboutInactive.png);border:none;</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton_280">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>180</y>
+        <width>160</width>
+        <height>180</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">outline:none;image: url(:/image/FilamentInactive.png);border:none;</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QQuickWidget" name="qw_SetBuildplatThickness">
+      <property name="geometry">
+       <rect>
+        <x>820</x>
+        <y>324</y>
+        <width>162</width>
+        <height>72</height>
+       </rect>
+      </property>
+      <property name="resizeMode">
+       <enum>QQuickWidget::SizeRootObjectToView</enum>
+      </property>
+      <property name="source">
+       <url>
+        <string>qrc:/qml/JLPushedButton.qml</string>
+       </url>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_2">
+      <property name="geometry">
+       <rect>
+        <x>580</x>
+        <y>130</y>
+        <width>661</width>
+        <height>111</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Barlow</family>
+        <pointsize>12</pointsize>
+        <weight>50</weight>
+        <bold>false</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: transparent;
+color: &quot;#ffffff&quot;;
+font-family: Barlow;
+align: center;</string>
+      </property>
+      <property name="text">
+       <string>Input platform thickness</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="page_PlatformCali_0">
+     <widget class="QPushButton" name="pushButton_238">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>180</y>
+        <width>160</width>
+        <height>180</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">outline:none;image: url(:/image/FilamentInactive.png);border:none;</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton_239">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>360</y>
+        <width>160</width>
+        <height>180</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">outline:none;image: url(:/image/ToolsActive(2).png);border:none;</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton_240">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>160</width>
+        <height>180</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">outline:none;image: url(:/image/PrintInactive.png);border:none;</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton_241">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>540</y>
+        <width>160</width>
+        <height>180</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">outline:none;image: url(:/image/AboutInactive.png);border:none;</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton_242">
+      <property name="geometry">
+       <rect>
+        <x>719</x>
+        <y>600</y>
+        <width>531</width>
+        <height>96</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Barlow</family>
+        <pointsize>-1</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">font-weight: bold;
+font-family:Barlow;outline:none;border-radius: 20px;
+background-color: rgb(255, 99, 11);
+color: rgb(255, 255, 255);
+font-size: 36px;
+text-align: center;
+font-family: Barlow;
+border: 2px solid rgb(255, 99, 11) ;</string>
+      </property>
+      <property name="text">
+       <string>Auto Mode</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton_243">
+      <property name="geometry">
+       <rect>
+        <x>167</x>
+        <y>598</y>
+        <width>501</width>
+        <height>96</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Barlow</family>
+        <pointsize>-1</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">outline:none;border-radius: 20px;
+background-color: rgb(67, 67, 67);
+color: rgba(255, 255, 255, 255);
+font-size: 36px;
+text-align: center;
+font-family: Barlow;
+border: 2px solid rgba(67, 67, 67, 255);font-weight: bold;
+font-family:Barlow;</string>
+      </property>
+      <property name="text">
+       <string>Manual Mode</string>
       </property>
      </widget>
      <widget class="QLabel" name="label_115">
@@ -5306,7 +5520,7 @@ font-family:Barlow;</string>
        <rect>
         <x>0</x>
         <y>360</y>
-        <width>180</width>
+        <width>160</width>
         <height>180</height>
        </rect>
       </property>
@@ -5323,7 +5537,7 @@ border:none;</string>
        <rect>
         <x>0</x>
         <y>540</y>
-        <width>180</width>
+        <width>160</width>
         <height>180</height>
        </rect>
       </property>
@@ -5340,7 +5554,7 @@ border:none;</string>
        <rect>
         <x>0</x>
         <y>180</y>
-        <width>180</width>
+        <width>160</width>
         <height>180</height>
        </rect>
       </property>
@@ -5356,7 +5570,7 @@ border:none;</string>
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>180</width>
+        <width>160</width>
         <height>180</height>
        </rect>
       </property>
@@ -5464,7 +5678,7 @@ border-radius: 20px;</string>
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>180</width>
+        <width>160</width>
         <height>180</height>
        </rect>
       </property>
@@ -5480,7 +5694,7 @@ border-radius: 20px;</string>
        <rect>
         <x>0</x>
         <y>180</y>
-        <width>180</width>
+        <width>160</width>
         <height>180</height>
        </rect>
       </property>
@@ -5496,7 +5710,7 @@ border-radius: 20px;</string>
        <rect>
         <x>0</x>
         <y>540</y>
-        <width>180</width>
+        <width>160</width>
         <height>180</height>
        </rect>
       </property>
@@ -5512,7 +5726,7 @@ border-radius: 20px;</string>
        <rect>
         <x>0</x>
         <y>360</y>
-        <width>180</width>
+        <width>160</width>
         <height>180</height>
        </rect>
       </property>
@@ -5596,7 +5810,7 @@ border-radius: 20px;</string>
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>180</width>
+        <width>160</width>
         <height>180</height>
        </rect>
       </property>
@@ -5612,7 +5826,7 @@ border-radius: 20px;</string>
        <rect>
         <x>0</x>
         <y>180</y>
-        <width>180</width>
+        <width>160</width>
         <height>180</height>
        </rect>
       </property>
@@ -5644,7 +5858,7 @@ border-radius: 20px;</string>
        <rect>
         <x>0</x>
         <y>540</y>
-        <width>180</width>
+        <width>160</width>
         <height>180</height>
        </rect>
       </property>
@@ -5660,7 +5874,7 @@ border-radius: 20px;</string>
        <rect>
         <x>0</x>
         <y>360</y>
-        <width>180</width>
+        <width>160</width>
         <height>180</height>
        </rect>
       </property>
@@ -5752,7 +5966,7 @@ border-radius: 20px;</string>
        <rect>
         <x>0</x>
         <y>540</y>
-        <width>180</width>
+        <width>160</width>
         <height>180</height>
        </rect>
       </property>
@@ -5799,7 +6013,7 @@ font-family:Barlow;</string>
        <rect>
         <x>0</x>
         <y>360</y>
-        <width>180</width>
+        <width>160</width>
         <height>180</height>
        </rect>
       </property>
@@ -5815,7 +6029,7 @@ font-family:Barlow;</string>
        <rect>
         <x>0</x>
         <y>180</y>
-        <width>180</width>
+        <width>160</width>
         <height>180</height>
        </rect>
       </property>
@@ -5831,7 +6045,7 @@ font-family:Barlow;</string>
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>180</width>
+        <width>160</width>
         <height>180</height>
        </rect>
       </property>
@@ -5958,7 +6172,7 @@ image: url(:/image/bamp3.png);</string>
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>180</width>
+        <width>160</width>
         <height>180</height>
        </rect>
       </property>
@@ -6005,7 +6219,7 @@ border: 2px solid rgba(67, 67, 67, 255);</string>
        <rect>
         <x>0</x>
         <y>180</y>
-        <width>180</width>
+        <width>160</width>
         <height>180</height>
        </rect>
       </property>
@@ -6052,7 +6266,7 @@ border: 2px solid rgba(255, 99, 11, 255);</string>
        <rect>
         <x>0</x>
         <y>540</y>
-        <width>180</width>
+        <width>160</width>
         <height>180</height>
        </rect>
       </property>
@@ -6068,7 +6282,7 @@ border: 2px solid rgba(255, 99, 11, 255);</string>
        <rect>
         <x>0</x>
         <y>360</y>
-        <width>180</width>
+        <width>160</width>
         <height>180</height>
        </rect>
       </property>
@@ -6176,7 +6390,7 @@ image: url(:/image/Bitmap4.png);</string>
        <rect>
         <x>0</x>
         <y>360</y>
-        <width>180</width>
+        <width>160</width>
         <height>180</height>
        </rect>
       </property>
@@ -6192,7 +6406,7 @@ image: url(:/image/Bitmap4.png);</string>
        <rect>
         <x>0</x>
         <y>540</y>
-        <width>180</width>
+        <width>160</width>
         <height>180</height>
        </rect>
       </property>
@@ -6209,7 +6423,7 @@ image: url(:/image/Bitmap4.png);</string>
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>180</width>
+        <width>160</width>
         <height>180</height>
        </rect>
       </property>
@@ -6225,7 +6439,7 @@ image: url(:/image/Bitmap4.png);</string>
        <rect>
         <x>0</x>
         <y>180</y>
-        <width>180</width>
+        <width>160</width>
         <height>180</height>
        </rect>
       </property>
@@ -6393,7 +6607,7 @@ image: url(:/image/Bitmap5.png);</string>
        <rect>
         <x>0</x>
         <y>360</y>
-        <width>180</width>
+        <width>160</width>
         <height>180</height>
        </rect>
       </property>
@@ -6409,7 +6623,7 @@ image: url(:/image/Bitmap5.png);</string>
        <rect>
         <x>0</x>
         <y>540</y>
-        <width>180</width>
+        <width>160</width>
         <height>180</height>
        </rect>
       </property>
@@ -6425,7 +6639,7 @@ image: url(:/image/Bitmap5.png);</string>
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>180</width>
+        <width>160</width>
         <height>180</height>
        </rect>
       </property>
@@ -6441,7 +6655,7 @@ image: url(:/image/Bitmap5.png);</string>
        <rect>
         <x>0</x>
         <y>180</y>
-        <width>180</width>
+        <width>160</width>
         <height>180</height>
        </rect>
       </property>
@@ -6608,7 +6822,7 @@ image: url(:/image/Bitmap.png);</string>
        <rect>
         <x>0</x>
         <y>360</y>
-        <width>180</width>
+        <width>160</width>
         <height>180</height>
        </rect>
       </property>
@@ -6624,7 +6838,7 @@ image: url(:/image/Bitmap.png);</string>
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>180</width>
+        <width>160</width>
         <height>180</height>
        </rect>
       </property>
@@ -6640,7 +6854,7 @@ image: url(:/image/Bitmap.png);</string>
        <rect>
         <x>0</x>
         <y>180</y>
-        <width>180</width>
+        <width>160</width>
         <height>180</height>
        </rect>
       </property>
@@ -6656,7 +6870,7 @@ image: url(:/image/Bitmap.png);</string>
        <rect>
         <x>0</x>
         <y>540</y>
-        <width>180</width>
+        <width>160</width>
         <height>180</height>
        </rect>
       </property>
@@ -6764,7 +6978,7 @@ border: 2px solid rgba(67, 67, 67, 255);</string>
        <rect>
         <x>0</x>
         <y>360</y>
-        <width>180</width>
+        <width>160</width>
         <height>180</height>
        </rect>
       </property>
@@ -6780,7 +6994,7 @@ border: 2px solid rgba(67, 67, 67, 255);</string>
        <rect>
         <x>0</x>
         <y>540</y>
-        <width>180</width>
+        <width>160</width>
         <height>180</height>
        </rect>
       </property>
@@ -6797,7 +7011,7 @@ border: 2px solid rgba(67, 67, 67, 255);</string>
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>180</width>
+        <width>160</width>
         <height>180</height>
        </rect>
       </property>
@@ -6813,7 +7027,7 @@ border: 2px solid rgba(67, 67, 67, 255);</string>
        <rect>
         <x>0</x>
         <y>180</y>
-        <width>180</width>
+        <width>160</width>
         <height>180</height>
        </rect>
       </property>
@@ -6896,7 +7110,7 @@ border-radius: 20px;</string>
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>180</width>
+        <width>160</width>
         <height>180</height>
        </rect>
       </property>
@@ -6912,7 +7126,7 @@ border-radius: 20px;</string>
        <rect>
         <x>0</x>
         <y>540</y>
-        <width>180</width>
+        <width>160</width>
         <height>180</height>
        </rect>
       </property>
@@ -6928,7 +7142,7 @@ border-radius: 20px;</string>
        <rect>
         <x>0</x>
         <y>360</y>
-        <width>180</width>
+        <width>160</width>
         <height>180</height>
        </rect>
       </property>
@@ -6944,7 +7158,7 @@ border-radius: 20px;</string>
        <rect>
         <x>0</x>
         <y>180</y>
-        <width>180</width>
+        <width>160</width>
         <height>180</height>
        </rect>
       </property>
@@ -7096,7 +7310,7 @@ image: url(:/image/Bitmap2.png);</string>
        <rect>
         <x>0</x>
         <y>360</y>
-        <width>180</width>
+        <width>160</width>
         <height>180</height>
        </rect>
       </property>
@@ -7112,7 +7326,7 @@ image: url(:/image/Bitmap2.png);</string>
        <rect>
         <x>0</x>
         <y>180</y>
-        <width>180</width>
+        <width>160</width>
         <height>180</height>
        </rect>
       </property>
@@ -7154,7 +7368,7 @@ border: 2px solid rgba(255, 99, 11, 255);</string>
        <rect>
         <x>0</x>
         <y>540</y>
-        <width>180</width>
+        <width>160</width>
         <height>180</height>
        </rect>
       </property>
@@ -7207,7 +7421,7 @@ font-family: Barlow;</string>
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>180</width>
+        <width>160</width>
         <height>180</height>
        </rect>
       </property>
@@ -7258,7 +7472,7 @@ border-radius: 20px;</string>
        <rect>
         <x>0</x>
         <y>360</y>
-        <width>180</width>
+        <width>160</width>
         <height>180</height>
        </rect>
       </property>
@@ -7274,7 +7488,7 @@ border-radius: 20px;</string>
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>180</width>
+        <width>160</width>
         <height>180</height>
        </rect>
       </property>
@@ -7290,7 +7504,7 @@ border-radius: 20px;</string>
        <rect>
         <x>0</x>
         <y>180</y>
-        <width>180</width>
+        <width>160</width>
         <height>180</height>
        </rect>
       </property>
@@ -7306,7 +7520,7 @@ border-radius: 20px;</string>
        <rect>
         <x>0</x>
         <y>540</y>
-        <width>180</width>
+        <width>160</width>
         <height>180</height>
        </rect>
       </property>
@@ -7439,7 +7653,7 @@ border-radius: 20px;</string>
        <rect>
         <x>0</x>
         <y>360</y>
-        <width>180</width>
+        <width>160</width>
         <height>180</height>
        </rect>
       </property>
@@ -7455,7 +7669,7 @@ border-radius: 20px;</string>
        <rect>
         <x>0</x>
         <y>540</y>
-        <width>180</width>
+        <width>160</width>
         <height>180</height>
        </rect>
       </property>
@@ -7471,7 +7685,7 @@ border-radius: 20px;</string>
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>180</width>
+        <width>160</width>
         <height>180</height>
        </rect>
       </property>
@@ -7487,7 +7701,7 @@ border-radius: 20px;</string>
        <rect>
         <x>0</x>
         <y>180</y>
-        <width>180</width>
+        <width>160</width>
         <height>180</height>
        </rect>
       </property>
@@ -7594,7 +7808,7 @@ border-radius: 20px;</string>
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>180</width>
+        <width>160</width>
         <height>180</height>
        </rect>
       </property>
@@ -7610,7 +7824,7 @@ border-radius: 20px;</string>
        <rect>
         <x>0</x>
         <y>180</y>
-        <width>180</width>
+        <width>160</width>
         <height>180</height>
        </rect>
       </property>
@@ -7626,7 +7840,7 @@ border-radius: 20px;</string>
        <rect>
         <x>0</x>
         <y>540</y>
-        <width>180</width>
+        <width>160</width>
         <height>180</height>
        </rect>
       </property>
@@ -7642,7 +7856,7 @@ border-radius: 20px;</string>
        <rect>
         <x>0</x>
         <y>360</y>
-        <width>180</width>
+        <width>160</width>
         <height>180</height>
        </rect>
       </property>
@@ -7725,7 +7939,7 @@ border-radius: 20px;</string>
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>180</width>
+        <width>160</width>
         <height>180</height>
        </rect>
       </property>
@@ -7741,7 +7955,7 @@ border-radius: 20px;</string>
        <rect>
         <x>0</x>
         <y>180</y>
-        <width>180</width>
+        <width>160</width>
         <height>180</height>
        </rect>
       </property>
@@ -7757,7 +7971,7 @@ border-radius: 20px;</string>
        <rect>
         <x>0</x>
         <y>540</y>
-        <width>180</width>
+        <width>160</width>
         <height>180</height>
        </rect>
       </property>
@@ -7773,7 +7987,7 @@ border-radius: 20px;</string>
        <rect>
         <x>0</x>
         <y>360</y>
-        <width>180</width>
+        <width>160</width>
         <height>180</height>
        </rect>
       </property>
@@ -8429,7 +8643,7 @@ font-family: Roboto;</string>
        <rect>
         <x>0</x>
         <y>180</y>
-        <width>180</width>
+        <width>160</width>
         <height>180</height>
        </rect>
       </property>
@@ -8445,7 +8659,7 @@ font-family: Roboto;</string>
        <rect>
         <x>0</x>
         <y>360</y>
-        <width>180</width>
+        <width>160</width>
         <height>180</height>
        </rect>
       </property>
@@ -8461,7 +8675,7 @@ font-family: Roboto;</string>
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>180</width>
+        <width>160</width>
         <height>180</height>
        </rect>
       </property>
@@ -8477,7 +8691,7 @@ font-family: Roboto;</string>
        <rect>
         <x>0</x>
         <y>540</y>
-        <width>180</width>
+        <width>160</width>
         <height>180</height>
        </rect>
       </property>
@@ -8782,7 +8996,7 @@ font-family:Barlow;</string>
        <rect>
         <x>0</x>
         <y>540</y>
-        <width>180</width>
+        <width>160</width>
         <height>180</height>
        </rect>
       </property>
@@ -8798,7 +9012,7 @@ font-family:Barlow;</string>
        <rect>
         <x>0</x>
         <y>360</y>
-        <width>180</width>
+        <width>160</width>
         <height>180</height>
        </rect>
       </property>
@@ -8814,7 +9028,7 @@ font-family:Barlow;</string>
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>180</width>
+        <width>160</width>
         <height>180</height>
        </rect>
       </property>
@@ -8830,7 +9044,7 @@ font-family:Barlow;</string>
        <rect>
         <x>0</x>
         <y>180</y>
-        <width>180</width>
+        <width>160</width>
         <height>180</height>
        </rect>
       </property>
@@ -8883,7 +9097,7 @@ border: 2px solid rgba(255, 99, 11, 255);</string>
        <rect>
         <x>0</x>
         <y>180</y>
-        <width>180</width>
+        <width>160</width>
         <height>180</height>
        </rect>
       </property>
@@ -8899,7 +9113,7 @@ border: 2px solid rgba(255, 99, 11, 255);</string>
        <rect>
         <x>0</x>
         <y>540</y>
-        <width>180</width>
+        <width>160</width>
         <height>180</height>
        </rect>
       </property>
@@ -8916,7 +9130,7 @@ outline:none；</string>
        <rect>
         <x>0</x>
         <y>360</y>
-        <width>180</width>
+        <width>160</width>
         <height>180</height>
        </rect>
       </property>
@@ -8932,7 +9146,7 @@ outline:none；</string>
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>180</width>
+        <width>160</width>
         <height>180</height>
        </rect>
       </property>
@@ -9312,10 +9526,10 @@ background-color: rgb(255, 255, 255);</string>
      <widget class="QQuickWidget" name="quickWidget_7">
       <property name="geometry">
        <rect>
-        <x>860</x>
-        <y>420</y>
-        <width>181</width>
-        <height>181</height>
+        <x>70</x>
+        <y>360</y>
+        <width>247</width>
+        <height>72</height>
        </rect>
       </property>
       <property name="resizeMode">
@@ -9323,7 +9537,7 @@ background-color: rgb(255, 255, 255);</string>
       </property>
       <property name="source">
        <url>
-        <string>qrc:/qml/TurningLabel.qml</string>
+        <string>qrc:/qml/EditComboBox.qml</string>
        </url>
       </property>
      </widget>
@@ -9338,6 +9552,24 @@ background-color: rgb(255, 255, 255);</string>
       </property>
       <property name="text">
        <string>PushButton</string>
+      </property>
+     </widget>
+     <widget class="QQuickWidget" name="quickWidget">
+      <property name="geometry">
+       <rect>
+        <x>750</x>
+        <y>60</y>
+        <width>428</width>
+        <height>572</height>
+       </rect>
+      </property>
+      <property name="resizeMode">
+       <enum>QQuickWidget::SizeRootObjectToView</enum>
+      </property>
+      <property name="source">
+       <url>
+        <string>qrc:/qml/DigitalKeyBoard.qml</string>
+       </url>
       </property>
      </widget>
     </widget>
@@ -9808,7 +10040,7 @@ background-color: rgba(45, 44, 43, 255);</string>
        <rect>
         <x>0</x>
         <y>180</y>
-        <width>180</width>
+        <width>160</width>
         <height>180</height>
        </rect>
       </property>
@@ -9829,7 +10061,7 @@ background-color: rgba(45, 44, 43, 255);</string>
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>180</width>
+        <width>160</width>
         <height>180</height>
        </rect>
       </property>
@@ -9850,7 +10082,7 @@ background-color: rgba(45, 44, 43, 255);</string>
        <rect>
         <x>0</x>
         <y>540</y>
-        <width>180</width>
+        <width>160</width>
         <height>180</height>
        </rect>
       </property>
@@ -9871,7 +10103,7 @@ background-color: rgba(45, 44, 43, 255);</string>
        <rect>
         <x>0</x>
         <y>360</y>
-        <width>180</width>
+        <width>160</width>
         <height>180</height>
        </rect>
       </property>
@@ -10050,7 +10282,7 @@ outline:none;</string>
        <rect>
         <x>0</x>
         <y>180</y>
-        <width>180</width>
+        <width>160</width>
         <height>180</height>
        </rect>
       </property>
@@ -10071,7 +10303,7 @@ outline:none;</string>
        <rect>
         <x>0</x>
         <y>540</y>
-        <width>180</width>
+        <width>160</width>
         <height>180</height>
        </rect>
       </property>
@@ -10114,7 +10346,7 @@ border: 2px solid rgba(67, 67, 67, 255);</string>
        <rect>
         <x>0</x>
         <y>360</y>
-        <width>180</width>
+        <width>160</width>
         <height>180</height>
        </rect>
       </property>
@@ -10135,7 +10367,7 @@ border: 2px solid rgba(67, 67, 67, 255);</string>
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>180</width>
+        <width>160</width>
         <height>180</height>
        </rect>
       </property>
@@ -10237,7 +10469,7 @@ font-family: Barlow;
 border: 1px solid rgba(79, 79, 79, 255);</string>
       </property>
       <property name="currentIndex">
-       <number>1</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="key_1">
        <widget class="QPushButton" name="pushButton_138">
@@ -12497,7 +12729,7 @@ image: url(:/image/ze-cross.png);</string>
        <rect>
         <x>0</x>
         <y>180</y>
-        <width>180</width>
+        <width>160</width>
         <height>180</height>
        </rect>
       </property>
@@ -12563,7 +12795,7 @@ background-color: rgba(45, 44, 43, 255);</string>
        <rect>
         <x>0</x>
         <y>360</y>
-        <width>180</width>
+        <width>160</width>
         <height>180</height>
        </rect>
       </property>
@@ -12584,7 +12816,7 @@ background-color: rgba(45, 44, 43, 255);</string>
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>180</width>
+        <width>160</width>
         <height>180</height>
        </rect>
       </property>
@@ -12605,7 +12837,7 @@ background-color: rgba(45, 44, 43, 255);</string>
        <rect>
         <x>0</x>
         <y>540</y>
-        <width>180</width>
+        <width>160</width>
         <height>180</height>
        </rect>
       </property>
@@ -12692,7 +12924,7 @@ image: url(:/image/check.png);</string>
        <rect>
         <x>0</x>
         <y>540</y>
-        <width>180</width>
+        <width>160</width>
         <height>180</height>
        </rect>
       </property>
@@ -12758,7 +12990,7 @@ font-size:48px;</string>
        <rect>
         <x>0</x>
         <y>180</y>
-        <width>180</width>
+        <width>160</width>
         <height>180</height>
        </rect>
       </property>
@@ -12801,7 +13033,7 @@ border: 2px solid rgba(255, 99, 11, 255);</string>
        <rect>
         <x>0</x>
         <y>360</y>
-        <width>180</width>
+        <width>160</width>
         <height>180</height>
        </rect>
       </property>
@@ -12822,7 +13054,7 @@ border: 2px solid rgba(255, 99, 11, 255);</string>
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>180</width>
+        <width>160</width>
         <height>180</height>
        </rect>
       </property>
@@ -13113,8 +13345,8 @@ border: 2px solid rgba(255, 99, 11, 255);</string>
      <widget class="QPushButton" name="pushButton_2">
       <property name="geometry">
        <rect>
-        <x>440</x>
-        <y>370</y>
+        <x>750</x>
+        <y>470</y>
         <width>331</width>
         <height>141</height>
        </rect>
@@ -13129,8 +13361,8 @@ border: 2px solid rgba(255, 99, 11, 255);</string>
      <widget class="QPushButton" name="pushButton_3">
       <property name="geometry">
        <rect>
-        <x>870</x>
-        <y>370</y>
+        <x>740</x>
+        <y>300</y>
         <width>331</width>
         <height>141</height>
        </rect>
@@ -13160,14 +13392,41 @@ border: 2px solid rgba(255, 99, 11, 255);</string>
        </url>
       </property>
      </widget>
-     <widget class="QLineEdit" name="lineEdit_2">
+     <widget class="QLabel" name="label">
       <property name="geometry">
        <rect>
-        <x>450</x>
-        <y>510</y>
-        <width>113</width>
-        <height>20</height>
+        <x>60</x>
+        <y>360</y>
+        <width>381</width>
+        <height>321</height>
        </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Adobe Arabic</family>
+        <pointsize>28</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color:white;</string>
+      </property>
+      <property name="text">
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;GCONF:&lt;/p&gt;&lt;p&gt;STEP:&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
+     </widget>
+     <widget class="QCheckBox" name="checkBox">
+      <property name="geometry">
+       <rect>
+        <x>70</x>
+        <y>290</y>
+        <width>181</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>CheckBox</string>
       </property>
      </widget>
     </widget>

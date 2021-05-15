@@ -33,7 +33,6 @@ void MainWindow::ShowParameterDialogClicked()
 
 void MainWindow::onFinishPrintClicked()
 {
-    m_printsec->stop();
     ui->stackedWidget->setCurrentWidget(ui->page_GetStart);
     ui->quickWidget_3->rootObject()->setProperty("currentPercent", 0);
     ui->quickWidget_3->rootObject()->setProperty("finishEnabled", false);
@@ -62,6 +61,7 @@ void MainWindow::printMessageProcess(uint8_t Command, uint8_t SubCode, QByteArra
         }
         else if(SubCode == 0x07)
         {
+            m_printsec->stop();
             ui->qw_PrintingControl->rootObject()->setProperty("settingEnabled", false);
             ui->qw_PrintingControl->rootObject()->setProperty("stopEnabled", false);
             ui->qw_PrintingControl->rootObject()->setProperty("pauseEnabled", false);

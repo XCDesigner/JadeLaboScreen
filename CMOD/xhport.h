@@ -90,6 +90,9 @@ public:
     void moveAxis(int, int, int, int);
     void setDualMode(int);
 
+    void getBuildplatThickness();
+    void setBuildplatThickness(float);
+
     void setRGBLight(int, int, int);
     void setLightOnOff(bool);
 
@@ -141,6 +144,8 @@ public:
     void resumeRecovery();
 
     void getFaultFlag();
+
+    void getTMCValue(uint8_t, QByteArray Address);
 private:
     // QSerialPort *m_serial;
     JLSerialPort *m_serial;

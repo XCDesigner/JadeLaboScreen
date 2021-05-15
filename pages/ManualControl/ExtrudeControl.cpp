@@ -116,5 +116,5 @@ void MainWindow::on_pushButton_457_clicked()
 
 void MainWindow::on_pushButton_458_clicked()
 {
-    ui->stackedWidget->setCurrentWidget(ui->page_ManualControl);
+    ui->stackedWidget->setCurrentWidget(ui->page_Tools);
 }

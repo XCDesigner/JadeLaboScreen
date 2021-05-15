@@ -280,6 +280,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
     TempControlInit();
     ExtrudeControlInit();
+    platformCalibratePageinit();
 }
 
 MainWindow::~MainWindow()
@@ -1639,7 +1640,10 @@ void MainWindow::onMessageTest(uint8_t Command, uint8_t SubCode, QByteArray Data
 
 void MainWindow::on_pushButton_clicked()
 {
-    ui->quickWidget_7->rootObject()->setProperty("value", 10);
+    pdlg_Input = new InputDialog();
+    pdlg_Input->init(QByteArray().append(1, 5));
+    pdlg_Input->show();
+
 }
 
 void MainWindow::on_pushButton_2_clicked()
@@ -1691,4 +1695,15 @@ void MainWindow::on_pushButton_121_clicked()
 void MainWindow::on_pushButton_146_clicked()
 {
     ui->stackedWidget->setCurrentWidget(ui->page_ChangeFilament);
+}
+
+void MainWindow::on_pushButton_275_clicked()
+{
+    m_port->setHeattingUnit("200","200");
+    ui->stackedWidget->setCurrentWidget(ui->page_PlatformCali_1);
+    ui->qw_PlatformCalibrateP1->setClearColor("#202020");
+    ui->qw_PlatformCalibrateP2->setClearColor("#202020");
+    ui->qw_PlatformCalibrateP3->setClearColor("#202020");
+    screen_status.setPerformance(PLATFORM_CALIBRATING);
+    QTimer::singleShot(500, this, SLOT(platformCalibrationHeating()));
 }

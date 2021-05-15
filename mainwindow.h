@@ -50,6 +50,7 @@
 #include "dialog/printsetdlog.h"
 #include "dialog/parsetdlog.h"
 #include "dialog/dupandmirror.h"
+#include "dialog/inputdialog.h"
 #include "dialog/duponly.h"
 #include "dialog/jlwidget.h"
 #include "dialog/printmodeselect.h"
@@ -106,6 +107,7 @@ public:
 
     void changeFilamentPageInit();
     void AboutPageInit();
+    void platformCalibratePageinit();
 
     void ListenerInit();
     void AddListen(QByteArray MatchData, pFunction, bool);
@@ -118,7 +120,7 @@ public:
 
     void TempControlInit();
     void ExtrudeControlInit();
-
+    void TMCReadback(QByteArray);
 
 
 private:
@@ -183,6 +185,7 @@ private:
 
     PrintModeSelect *pdlg_select_mode;
     WarningDialog *pdlg_warning;
+    InputDialog *pdlg_Input;
 
     UnNoknfile *m_modeone;
     DupandMirorr *m_dam;
@@ -239,6 +242,9 @@ private slots:
     void nozzleCalibrationMessageProcess(uint8_t Command, uint8_t SubCode, QByteArray Datas);
     void platformCalibrationMessageProcess(uint8_t Command, uint8_t SubCode, QByteArray Datas);
     void xyCalibrationMessageProcess(uint8_t Command, uint8_t SubCode, QByteArray Datas);
+    void onSetBuildplatThicknessClicked(int Index);
+    void BuildplateProcess(QByteArray Datas);
+    void onSetBuildplatThicknessReturn();
 
     void onFinishPrintClicked();
     void preparePrinTempChecking();
@@ -298,6 +304,8 @@ private slots:
     void extrudeControlChooseTempReturn();
     void extrudeControlChooseDistanceReturn();
     void extruderControlCheckTemp();
+
+    void aboutTimerTester();
 
     void updateStatusBar();
     void waitforIdleStatus();
@@ -876,6 +884,12 @@ private slots:
     void on_pushButton_457_clicked();
 
     void on_pushButton_458_clicked();
+
+    void on_checkBox_stateChanged(int arg1);
+
+    void on_pushButton_276_clicked();
+
+    void on_pushButton_275_clicked();
 
 signals:
     void detection(bool);

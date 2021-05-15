@@ -762,6 +762,30 @@ void XhPort::ExtruderMotion(uint8_t Index, int32_t Distance)
     m_serial->write(buff);
 }
 
+/**
+  * @brief  Get buildplat thickness
+  * @retval None
+  */
+void XhPort::getBuildplatThickness()
+{
+    m_serial->writeProtocalData(QByteArray::fromHex("030C"));
+}
+
+/**
+  * @brief  Get buildplat thickness
+  * @retval None
+  */
+void XhPort::setBuildplatThickness(float Thickness)
+{
+    QByteArray buff = QByteArray::fromHex("030D");
+    uint32_t int_value = Thickness * 1000.0f;
+    buff.append(1, int_value);
+    buff.append(1, int_value >> 8);
+    buff.append(1, int_value >> 16);
+    buff.append(1, int_value >> 24);
+    m_serial->writeProtocalData(buff);
+}
+
 void XhPort::testdemo()
 {
     QByteArray s = QByteArray::fromHex("84654875294581");
@@ -1012,3 +1036,11 @@ JLSerialPort* XhPort::getSerialPort()
 {
     return m_serial;
 }
+
+void XhPort::getTMCValue(uint8_t MotorIndex, QByteArray Address) {
+    QByteArray s = QByteArray::fromHex("0B01");
+    s.append(1, MotorIndex);
+    s.append(Address);
+    m_serial->writeProtocalData(s);
+}
+
