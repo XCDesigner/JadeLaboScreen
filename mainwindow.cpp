@@ -187,10 +187,6 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->qw_StatusNotice->rootObject()->setProperty("wifiVisible", false);
     ui->qw_StatusNotice->rootObject()->setProperty("lightChecked", false);
 
-    ui->quickWidget_7->setClearColor(QColor(qmlColor));
-    ui->quickWidget_7->rootObject()->setProperty("finishEnabled", true);
-
-
     item=ui->quickWidget_3->rootObject();
     QObject::connect(item,SIGNAL(finishClicked()), this, SLOT(onFinishPrintClicked()));
 

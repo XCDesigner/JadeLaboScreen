@@ -9523,24 +9523,6 @@ background-color: rgb(255, 255, 255);</string>
        </rect>
       </property>
      </widget>
-     <widget class="QQuickWidget" name="quickWidget_7">
-      <property name="geometry">
-       <rect>
-        <x>70</x>
-        <y>360</y>
-        <width>247</width>
-        <height>72</height>
-       </rect>
-      </property>
-      <property name="resizeMode">
-       <enum>QQuickWidget::SizeRootObjectToView</enum>
-      </property>
-      <property name="source">
-       <url>
-        <string>qrc:/qml/EditComboBox.qml</string>
-       </url>
-      </property>
-     </widget>
      <widget class="QPushButton" name="pushButton">
       <property name="geometry">
        <rect>

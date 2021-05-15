@@ -5,8 +5,8 @@ Rectangle {
     id: base
     radius: 20
 
-    width: 428
-    height: 572
+    width: 432
+    height: 580
 
     color: "#2d2c2b"
 
