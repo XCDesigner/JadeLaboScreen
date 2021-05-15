@@ -15,18 +15,15 @@ Rectangle {
 
     signal keyEnter(string value)
 
-    GridLayout {
-        anchors.centerIn: parent
-        rows: 4
-        columns: 3
-        rowSpacing: 4
-        columnSpacing: 4
+    Rectangle {
+        anchors.fill: parent
+
         Rectangle {
             color: "#ff630b"
+            x: 4
+            y: 4
             width: 140
             height: 140
-            Layout.column: 0
-            Layout.row: 0
             radius: 10
             border.color: base.keyBorderColor
             border.width: base.keyBorderWidth
@@ -47,10 +44,10 @@ Rectangle {
 
         Rectangle {
             color: "#ff630b"
+            x: 144
+            y: 4
             width: 140
             height: 140
-            Layout.column: 1
-            Layout.row: 0
             radius: 10
             border.color: base.keyBorderColor
             border.width: base.keyBorderWidth
@@ -70,10 +67,10 @@ Rectangle {
 
         Rectangle {
             color: "#ff630b"
+            x: 288
+            y: 4
             width: 140
             height: 140
-            Layout.column: 2
-            Layout.row: 0
             radius: 10
             border.color: base.keyBorderColor
             border.width: base.keyBorderWidth
@@ -93,10 +90,10 @@ Rectangle {
 
         Rectangle {
             color: "#ff630b"
+            x: 4
+            y: 144
             width: 140
             height: 140
-            Layout.column: 0
-            Layout.row: 1
             radius: 10
             border.color: base.keyBorderColor
             border.width: base.keyBorderWidth
@@ -115,10 +112,10 @@ Rectangle {
         }
 
         Rectangle {color: "#ff630b"
+            x: 144
+            y: 144
             width: 140
             height: 140
-            Layout.column: 1
-            Layout.row: 1
             radius: 10
             border.color: base.keyBorderColor
             border.width: base.keyBorderWidth
@@ -138,10 +135,10 @@ Rectangle {
 
         Rectangle {
             color: "#ff630b"
+            x: 288
+            y: 144
             width: 140
             height: 140
-            Layout.column: 2
-            Layout.row: 1
             radius: 10
             border.color: base.keyBorderColor
             border.width: base.keyBorderWidth
@@ -161,10 +158,10 @@ Rectangle {
 
         Rectangle {
             color: "#ff630b"
+            x: 4
+            y: 288
             width: 140
             height: 140
-            Layout.column: 0
-            Layout.row: 2
             radius: 10
             border.color: base.keyBorderColor
             border.width: base.keyBorderWidth
@@ -184,10 +181,10 @@ Rectangle {
 
         Rectangle {
             color: "#ff630b"
+            x: 144
+            y: 288
             width: 140
             height: 140
-            Layout.column: 1
-            Layout.row: 2
             radius: 10
             border.color: base.keyBorderColor
             border.width: base.keyBorderWidth
@@ -207,10 +204,10 @@ Rectangle {
 
         Rectangle {
             color: "#ff630b"
+            x: 288
+            y: 288
             width: 140
             height: 140
-            Layout.column: 2
-            Layout.row: 2
             radius: 10
             border.color: base.keyBorderColor
             border.width: base.keyBorderWidth
@@ -230,10 +227,10 @@ Rectangle {
 
         Rectangle {
             color: "#ff630b"
+            x: 4
+            y: 432
             width: 140
             height: 140
-            Layout.column: 0
-            Layout.row: 3
             radius: 10
             border.color: base.keyBorderColor
             border.width: base.keyBorderWidth
@@ -253,10 +250,10 @@ Rectangle {
 
         Rectangle {
             color: "#ff630b"
+            x: 144
+            y: 432
             width: 140
             height: 140
-            Layout.column: 1
-            Layout.row: 3
             radius: 10
             border.color: base.keyBorderColor
             border.width: base.keyBorderWidth
@@ -276,10 +273,10 @@ Rectangle {
 
         Rectangle {
             color: "#ff630b"
+            x: 288
+            y: 432
             width: 140
             height: 140
-            Layout.column: 2
-            Layout.row: 3
             radius: 10
             border.color: base.keyBorderColor
             border.width: base.keyBorderWidth

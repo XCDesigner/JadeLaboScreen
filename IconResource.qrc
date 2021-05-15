@@ -156,6 +156,5 @@
         <file>image/retract_enable.png</file>
         <file>qml/DistanceButtonSelect.qml</file>
         <file>qml/DigitalKeyBoard.qml</file>
-        <file>qml/EditComboBox.qml</file>
     </qresource>
 </RCC>
