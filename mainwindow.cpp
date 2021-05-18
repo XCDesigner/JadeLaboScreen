@@ -217,6 +217,8 @@ MainWindow::MainWindow(QWidget *parent) :
     m_time = new QTime(0,0,0);
     QObject::connect(m_printsec,&QTimer::timeout,this,&MainWindow::timeAdd);
 
+    ListenerInit();
+
 #ifdef  XH_LINUX
     m_port->portInit(serialNum);
     ui->stackedWidget->setCurrentWidget(ui->page_GetStart);
@@ -267,8 +269,6 @@ MainWindow::MainWindow(QWidget *parent) :
 
 
     AboutPageInit();
-
-    ListenerInit();
 
     // #if defined(XH_WIN)
     wifiPageInit();
