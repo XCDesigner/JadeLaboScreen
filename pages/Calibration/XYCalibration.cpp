@@ -1,9 +1,16 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
-void MainWindow::xyCalibrateFail()
+void MainWindow::xyCalibratePageinit()
+{
+    AddListen(QByteArray::fromHex("0305FE"), &MainWindow::xyCalibrateFail, true);
+}
+
+void MainWindow::xyCalibrateFail(QByteArray Datas)
 {
     m_port->setHeattingUnit(0, 0);
+    pdlg_warning->init(QByteArray("XYCalibrate"));
+    pdlg_warning->show();
     ui->stackedWidget->setCurrentWidget(ui->page_Calibration);
 }
 
@@ -19,8 +26,10 @@ void MainWindow::on_pushButton_631_clicked()
 void MainWindow::on_pushButton_637_clicked()
 {
     m_port->setHeattingUnit("0","0");
+    m_port->carbinfinished();
     screen_status.setPerformance(IDLE);
     ui->stackedWidget->setCurrentWidget(ui->page_Calibration);
+    QThread::msleep(200);
 }
 
 void MainWindow::on_pushButton_632_clicked()

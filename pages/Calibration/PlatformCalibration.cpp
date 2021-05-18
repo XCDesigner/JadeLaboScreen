@@ -5,13 +5,17 @@ void MainWindow::platformCalibratePageinit()
 {
     ui->qw_SetBuildplatThickness->setClearColor("#2d2c2b");
     QObject::connect(ui->qw_SetBuildplatThickness->rootObject(), SIGNAL(clicked(int)), this, SLOT(onSetBuildplatThicknessClicked(int)));
-
+    AddListen(QByteArray::fromHex("0302FE"), &MainWindow::platformCalibrateFail, true);
 }
 
-void MainWindow::platformCalibrateFail()
+void MainWindow::platformCalibrateFail(QByteArray Datas)
 {
+    m_port->carbincancel();
+    QThread::msleep(20);
     m_port->setHeattingUnit(0, 0);
-    ui->stackedWidget->setCurrentWidget(ui->page_PlatformCali_0);
+    pdlg_warning->init(QByteArray("PlatformCalibrate"));
+    pdlg_warning->show();
+    ui->stackedWidget->setCurrentWidget(ui->page_Calibration);
 }
 
 void MainWindow::on_pushButton_242_clicked()
@@ -46,11 +50,12 @@ void MainWindow::on_pushButton_253_clicked()
 
 void MainWindow::on_pushButton_365_clicked()
 {
+    m_port->carbinfinished();
     m_port->setHeattingUnit("0","0");
     screen_status.setPerformance(IDLE);
     ui->stackedWidget->setCurrentWidget(ui->page_Calibration);
     QObject::disconnect(m_port->getXhPage(), SIGNAL(command_received(uint8_t, uint8_t, QByteArray)), this, SLOT(platformCalibrationMessageProcess(uint8_t, uint8_t, QByteArray)));
-    m_port->carbinfinished();
+    QThread::msleep(200);
 }
 
 void MainWindow::on_pushButton_367_clicked()
@@ -65,6 +70,7 @@ void MainWindow::on_pushButton_371_clicked()
     screen_status.setPerformance(IDLE);
     QObject::disconnect(m_port->getXhPage(), SIGNAL(command_received(uint8_t, uint8_t, QByteArray)), this, SLOT(platformCalibrationMessageProcess(uint8_t, uint8_t, QByteArray)));
     m_port->carbincancel();
+    QThread::msleep(20);
 }
 
 void MainWindow::on_pushButton_375_clicked()
@@ -79,6 +85,7 @@ void MainWindow::on_pushButton_373_clicked()
     screen_status.setPerformance(IDLE);
     QObject::disconnect(m_port->getXhPage(), SIGNAL(command_received(uint8_t, uint8_t, QByteArray)), this, SLOT(platformCalibrationMessageProcess(uint8_t, uint8_t, QByteArray)));
     m_port->carbincancel();
+    QThread::msleep(20);
 }
 
 void MainWindow::platformCalibrationHeating()

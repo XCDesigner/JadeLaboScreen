@@ -1044,3 +1044,13 @@ void XhPort::getTMCValue(uint8_t MotorIndex, QByteArray Address) {
     m_serial->writeProtocalData(s);
 }
 
+void XhPort::trigFILSample() {
+    QByteArray s = QByteArray::fromHex("0B06");
+    m_serial->writeProtocalData(s);
+}
+
+void XhPort::getFILValue() {
+    QByteArray s = QByteArray::fromHex("0B07");
+    m_serial->writeProtocalData(s);
+}
+

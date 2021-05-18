@@ -7,6 +7,10 @@ void MainWindow::preparePrintPageInit()
     ui->qw_PreparePrintControl->rootObject()->setProperty("stopEnabled", true);
     QTimer::singleShot(4000, this, SLOT(preparePrinTempChecking()));
     screen_status.setPerformance(PREPARE_PRINT);
+    print_start_time.setDate(QDate(2021, 1, 1));
+    print_end_time.setDate(QDate(2021, 1, 1));
+    print_start_time.setTime(QTime(0, 0, 0));
+    print_end_time.setTime(QTime(0, 0, 0));
     m_printsec->start(1000);
 }
 

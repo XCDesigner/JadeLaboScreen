@@ -44,10 +44,18 @@ void MainWindow::onFinishPrintClicked()
 
 void MainWindow::timeAdd()
 {
-    *m_time =  m_time->addSecs(1);
-    ui->label_86->setText(QString::number(m_time->hour())+"h "+QString::number(m_time->minute())+"m");
-    ui->label_78->setText(QString::number(m_time->hour())+"h "+QString::number(m_time->minute())+"m");
-    ui->label_307->setText(QString::number(m_time->hour())+"h "+QString::number(m_time->minute())+"m");
+    print_end_time = print_end_time.addSecs(1);
+    qint64 del = print_start_time.secsTo(print_end_time);
+    int days = del / 3600 / 24;
+    del = del % (3600 * 24);
+    int hours = del / 3600;
+    del = del % 3600;
+    int minutes = del / 60;
+    char strtime[32];
+    sprintf(strtime, "%dd %dh %dm", days, hours, minutes);
+    ui->label_86->setText(strtime);
+    ui->label_78->setText(strtime);
+    ui->label_307->setText(strtime);
 }
 
 

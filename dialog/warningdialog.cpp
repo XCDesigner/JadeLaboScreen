@@ -14,7 +14,8 @@ WarningDialog::WarningDialog(QWidget *parent) :
     tips.insert("Filament", "Filament fault error!");
     tips.insert("Movement", "Axis movement fault");
     tips.insert("PlatformCalibrate", "Platform Calibration fault. Please remove the glass first");
-    tips.insert("XYCalibrate", "XY Calibration fault. Please blush the head");
+    tips.insert("XYCalibrate", "XY Calibration fault. Please keep the nozzle clean and remove the glass");
+    tips.insert("NozzleCalibrate", "Nozzle Calibration fault. Please keep the nozzle clean and remove the glass");
 }
 
 WarningDialog::~WarningDialog()

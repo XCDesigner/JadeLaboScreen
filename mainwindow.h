@@ -16,6 +16,7 @@
 #include <QListWidgetItem>
 #include <QQuickItem>
 #include <QTime>
+#include <QDateTime>
 #include <QFile>
 #include <QDir>
 #include <QFileDialog>
@@ -108,6 +109,8 @@ public:
     void changeFilamentPageInit();
     void AboutPageInit();
     void platformCalibratePageinit();
+    void xyCalibratePageinit();
+    void nozzleCalibratePageinit();
 
     void ListenerInit();
     void AddListen(QByteArray MatchData, pFunction, bool);
@@ -120,7 +123,7 @@ public:
 
     void TempControlInit();
     void ExtrudeControlInit();
-    void TMCReadback(QByteArray);
+    void DebugCallback(QByteArray);
 
 
 private:
@@ -236,6 +239,10 @@ private:
 
     // Message Listen List
     QList<ListenerItem> lst_listen_item;
+
+    QDateTime print_start_time;
+    QDateTime print_end_time;
+
 
 private slots:
     void printMessageProcess(uint8_t, uint8_t, QByteArray Datas);
@@ -885,8 +892,6 @@ private slots:
 
     void on_pushButton_458_clicked();
 
-    void on_checkBox_stateChanged(int arg1);
-
     void on_pushButton_276_clicked();
 
     void on_pushButton_275_clicked();
@@ -914,8 +919,9 @@ private:
     void FilamentFaultDetected();
     void MovementFaultDetected();
 
-    void platformCalibrateFail();
-    void xyCalibrateFail();
+    void platformCalibrateFail(QByteArray);
+    void xyCalibrateFail(QByteArray);
+    void nozzleCalibrateFail(QByteArray Datas);
 
     void onPreparePirntComplete(QByteArray);
 

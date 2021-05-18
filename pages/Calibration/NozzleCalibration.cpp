@@ -1,6 +1,19 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
+void MainWindow::nozzleCalibratePageinit()
+{
+    AddListen(QByteArray::fromHex("0300FE"), &MainWindow::nozzleCalibrateFail, true);
+}
+
+void MainWindow::nozzleCalibrateFail(QByteArray Datas)
+{
+    m_port->setHeattingUnit(0, 0);
+    pdlg_warning->init(QByteArray("NozzleCalibrate"));
+    pdlg_warning->show();
+    ui->stackedWidget->setCurrentWidget(ui->page_Calibration);
+}
+
 void MainWindow::on_pushButton_286_clicked()
 {
     ui->stackedWidget->setCurrentWidget(ui->page_NozzleCali_1);
@@ -35,6 +48,7 @@ void MainWindow::on_pushButton_302_clicked()
     m_port->setHeattingUnit("0","0");
     ui->stackedWidget->setCurrentWidget(ui->page_Calibration);
     screen_status.setPerformance(IDLE);
+    QThread::msleep(20);
 }
 
 void MainWindow::on_pushButton_287_clicked()

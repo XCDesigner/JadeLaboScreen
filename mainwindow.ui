@@ -70,7 +70,7 @@ font-family: barlow;
 }</string>
     </property>
     <property name="currentIndex">
-     <number>47</number>
+     <number>55</number>
     </property>
     <widget class="QWidget" name="page_12">
      <widget class="QLabel" name="label_14">
@@ -5075,6 +5075,13 @@ background-color: rgb(45, 44, 43);</string>
      </widget>
     </widget>
     <widget class="QWidget" name="page_PlatformCali_7">
+     <property name="font">
+      <font>
+       <pointsize>16</pointsize>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
+     </property>
      <widget class="QPushButton" name="pushButton_275">
       <property name="geometry">
        <rect>
@@ -5269,7 +5276,7 @@ border-radius: 20px;</string>
       <property name="font">
        <font>
         <family>Barlow</family>
-        <pointsize>28</pointsize>
+        <pointsize>-1</pointsize>
         <weight>75</weight>
         <bold>true</bold>
        </font>
@@ -5278,6 +5285,7 @@ border-radius: 20px;</string>
        <string notr="true">background-color: transparent;
 color: &quot;#ffffff&quot;;
 font-family: Barlow;
+font-size: 22px;
 align: center;</string>
       </property>
       <property name="text">
@@ -9532,6 +9540,12 @@ background-color: rgb(255, 255, 255);</string>
         <height>141</height>
        </rect>
       </property>
+      <property name="font">
+       <font>
+        <family>Adobe Arabic</family>
+        <pointsize>16</pointsize>
+       </font>
+      </property>
       <property name="text">
        <string>PushButton</string>
       </property>
@@ -13327,8 +13341,8 @@ border: 2px solid rgba(255, 99, 11, 255);</string>
      <widget class="QPushButton" name="pushButton_2">
       <property name="geometry">
        <rect>
-        <x>750</x>
-        <y>470</y>
+        <x>910</x>
+        <y>520</y>
         <width>331</width>
         <height>141</height>
        </rect>
@@ -13343,8 +13357,8 @@ border: 2px solid rgba(255, 99, 11, 255);</string>
      <widget class="QPushButton" name="pushButton_3">
       <property name="geometry">
        <rect>
-        <x>740</x>
-        <y>300</y>
+        <x>910</x>
+        <y>350</y>
         <width>331</width>
         <height>141</height>
        </rect>
@@ -13409,6 +13423,30 @@ border: 2px solid rgba(255, 99, 11, 255);</string>
       </property>
       <property name="text">
        <string>CheckBox</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_3">
+      <property name="geometry">
+       <rect>
+        <x>490</x>
+        <y>360</y>
+        <width>381</width>
+        <height>321</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Adobe Arabic</family>
+        <pointsize>28</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color:white;</string>
+      </property>
+      <property name="text">
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;GCONF:&lt;/p&gt;&lt;p&gt;STEP:&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
       </property>
      </widget>
     </widget>

@@ -277,7 +277,10 @@ MainWindow::MainWindow(QWidget *parent) :
     TempControlInit();
     ExtrudeControlInit();
     platformCalibratePageinit();
+    xyCalibratePageinit();
+    nozzleCalibratePageinit();
 }
+
 
 MainWindow::~MainWindow()
 {
