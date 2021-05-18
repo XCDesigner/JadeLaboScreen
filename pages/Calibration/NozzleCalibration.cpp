@@ -3,15 +3,6 @@
 
 void MainWindow::nozzleCalibratePageinit()
 {
-    AddListen(QByteArray::fromHex("0300FE"), &MainWindow::nozzleCalibrateFail, true);
-}
-
-void MainWindow::nozzleCalibrateFail(QByteArray Datas)
-{
-    m_port->setHeattingUnit(0, 0);
-    pdlg_warning->init(QByteArray("NozzleCalibrate"));
-    pdlg_warning->show();
-    ui->stackedWidget->setCurrentWidget(ui->page_Calibration);
 }
 
 void MainWindow::on_pushButton_286_clicked()
@@ -64,7 +55,7 @@ void MainWindow::nozzleCalibrationHeating()
 
     if(screen_status.getPerformance() == NOZZLE_CALIBRATING)
     {
-        if((new_status.CurTemp[0] >190 ) && (new_status.CurTemp[1] >190))
+        if((new_status.CurTemp[0] > 190) && (new_status.CurTemp[1] > 190))
         {
             m_port->n_nozzleCalibration();
             ui->stackedWidget->setCurrentWidget(ui->page_NozzleCali_2);
@@ -79,20 +70,29 @@ void MainWindow::nozzleCalibrationHeating()
 
 void MainWindow::nozzleCalibrationMessageProcess(uint8_t Command, uint8_t SubCode, QByteArray Datas)
 {
+    uint8_t result = (uint8_t)Datas.at(2);
     if(Command == 0x03)
     {
         if(SubCode == 0x00) 
         {
-            float z_diff = (int32_t)(((uint8_t)Datas.at(6) << 24) | ((uint8_t)Datas.at(5) << 16) | ((uint8_t)Datas.at(4) << 8) | (uint8_t)Datas.at(3)) / 1000.0f;
-            if(z_diff != 0) 
-            {
-                ui->stackedWidget->setCurrentWidget(ui->page_NozzleCali_3);
-                ui->qw_NozzleCalibrateP1->rootObject()->setProperty("value", (int)z_diff);
+            if(result == 0) {
+                float z_diff = (int32_t)(((uint8_t)Datas.at(6) << 24) | ((uint8_t)Datas.at(5) << 16) | ((uint8_t)Datas.at(4) << 8) | (uint8_t)Datas.at(3)) / 1000.0f;
+                if(z_diff != 0)
+                {
+                    ui->stackedWidget->setCurrentWidget(ui->page_NozzleCali_3);
+                    ui->qw_NozzleCalibrateP1->rootObject()->setProperty("value", (int)z_diff);
+                }
+                else
+                {
+                    ui->stackedWidget->setCurrentWidget(ui->page_NozzleCali_4);
+                    QObject::disconnect(m_port->getXhPage(), SIGNAL(command_received(uint8_t, uint8_t, QByteArray)), this, SLOT(nozzleCalibrationMessageProcess(uint8_t, uint8_t, QByteArray)));
+                }
             }
-            else
-            {
-                ui->stackedWidget->setCurrentWidget(ui->page_NozzleCali_4);
-                QObject::disconnect(m_port->getXhPage(), SIGNAL(command_received(uint8_t, uint8_t, QByteArray)), this, SLOT(nozzleCalibrationMessageProcess(uint8_t, uint8_t, QByteArray)));
+            else {
+                m_port->setHeattingUnit(0, 0);
+                pdlg_warning->init(QByteArray("NozzleCalibrate"));
+                pdlg_warning->show();
+                ui->stackedWidget->setCurrentWidget(ui->page_Calibration);
             }
         }
     }

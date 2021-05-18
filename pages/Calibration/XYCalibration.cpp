@@ -3,15 +3,6 @@
 
 void MainWindow::xyCalibratePageinit()
 {
-    AddListen(QByteArray::fromHex("0305FE"), &MainWindow::xyCalibrateFail, true);
-}
-
-void MainWindow::xyCalibrateFail(QByteArray Datas)
-{
-    m_port->setHeattingUnit(0, 0);
-    pdlg_warning->init(QByteArray("XYCalibrate"));
-    pdlg_warning->show();
-    ui->stackedWidget->setCurrentWidget(ui->page_Calibration);
 }
 
 void MainWindow::on_pushButton_631_clicked()
@@ -48,7 +39,7 @@ void MainWindow::xyCalibrationHeating() {
     m_port->getXhPage()->GetMachineStatus(&new_status);
     if(screen_status.getPerformance() == XY_CALIBRATING)
     {
-        if((new_status.CurTemp[0] > 190 ) && (new_status.CurTemp[1] > 190))
+        if((new_status.CurTemp[0] > 190) && (new_status.CurTemp[1] > 190))
         {
             m_port->x_xyCalibration();
             ui->stackedWidget->setCurrentWidget(ui->page_XYCali_2);
@@ -63,13 +54,22 @@ void MainWindow::xyCalibrationHeating() {
 
 void MainWindow::xyCalibrationMessageProcess(uint8_t Command, uint8_t SubCode, QByteArray Datas)
 {
+    uint8_t result = (uint8_t)Datas.at(2);
     if(Command == 0x03)
     {
         if(SubCode == 0x05) {
-            m_port->setHeattingUnit("0","0");
-            screen_status.setPerformance(IDLE);
-            ui->stackedWidget->setCurrentWidget(ui->page_XYCali_3);
-            QObject::disconnect(m_port->getXhPage(), SIGNAL(command_received(uint8_t, uint8_t, QByteArray)), this, SLOT(xyCalibrationMessageProcess(uint8_t, uint8_t, QByteArray)));
+            if(result == 0) {
+                m_port->setHeattingUnit("0","0");
+                screen_status.setPerformance(IDLE);
+                ui->stackedWidget->setCurrentWidget(ui->page_XYCali_3);
+                QObject::disconnect(m_port->getXhPage(), SIGNAL(command_received(uint8_t, uint8_t, QByteArray)), this, SLOT(xyCalibrationMessageProcess(uint8_t, uint8_t, QByteArray)));
+            }
+            else {
+                m_port->setHeattingUnit(0, 0);
+                pdlg_warning->init(QByteArray("XYCalibrate"));
+                pdlg_warning->show();
+                ui->stackedWidget->setCurrentWidget(ui->page_Calibration);
+            }
         }
     }
 }

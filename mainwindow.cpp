@@ -1695,14 +1695,3 @@ void MainWindow::on_pushButton_146_clicked()
 {
     ui->stackedWidget->setCurrentWidget(ui->page_ChangeFilament);
 }
-
-void MainWindow::on_pushButton_275_clicked()
-{
-    m_port->setHeattingUnit("200","200");
-    ui->stackedWidget->setCurrentWidget(ui->page_PlatformCali_1);
-    ui->qw_PlatformCalibrateP1->setClearColor("#202020");
-    ui->qw_PlatformCalibrateP2->setClearColor("#202020");
-    ui->qw_PlatformCalibrateP3->setClearColor("#202020");
-    screen_status.setPerformance(PLATFORM_CALIBRATING);
-    QTimer::singleShot(500, this, SLOT(platformCalibrationHeating()));
-}

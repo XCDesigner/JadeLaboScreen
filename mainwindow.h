@@ -919,10 +919,6 @@ private:
     void FilamentFaultDetected();
     void MovementFaultDetected();
 
-    void platformCalibrateFail(QByteArray);
-    void xyCalibrateFail(QByteArray);
-    void nozzleCalibrateFail(QByteArray Datas);
-
     void onPreparePirntComplete(QByteArray);
 
 };

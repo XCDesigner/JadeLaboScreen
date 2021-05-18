@@ -4,18 +4,18 @@
 void MainWindow::platformCalibratePageinit()
 {
     ui->qw_SetBuildplatThickness->setClearColor("#2d2c2b");
+    ui->qw_PlatformCalibrateP1->setClearColor("#202020");
+    ui->qw_PlatformCalibrateP2->setClearColor("#202020");
+    ui->qw_PlatformCalibrateP3->setClearColor("#202020");
     QObject::connect(ui->qw_SetBuildplatThickness->rootObject(), SIGNAL(clicked(int)), this, SLOT(onSetBuildplatThicknessClicked(int)));
-    AddListen(QByteArray::fromHex("0302FE"), &MainWindow::platformCalibrateFail, true);
 }
 
-void MainWindow::platformCalibrateFail(QByteArray Datas)
+void MainWindow::on_pushButton_275_clicked()
 {
-    m_port->carbincancel();
-    QThread::msleep(20);
-    m_port->setHeattingUnit(0, 0);
-    pdlg_warning->init(QByteArray("PlatformCalibrate"));
-    pdlg_warning->show();
-    ui->stackedWidget->setCurrentWidget(ui->page_Calibration);
+    m_port->setHeattingUnit("200","200");
+    ui->stackedWidget->setCurrentWidget(ui->page_PlatformCali_1);
+    screen_status.setPerformance(PLATFORM_CALIBRATING);
+    QTimer::singleShot(500, this, SLOT(platformCalibrationHeating()));
 }
 
 void MainWindow::on_pushButton_242_clicked()
@@ -95,7 +95,7 @@ void MainWindow::platformCalibrationHeating()
 
     if(screen_status.getPerformance() == PLATFORM_CALIBRATING)
     {
-        if((new_status.CurTemp[0] >190 ) && (new_status.CurTemp[1] >190))
+        if((new_status.CurTemp[0] > 190) && (new_status.CurTemp[1] > 190))
         {
             m_port->p_platformCalibration();
             ui->stackedWidget->setCurrentWidget(ui->page_PlatformCali_2);
@@ -111,25 +111,37 @@ void MainWindow::platformCalibrationHeating()
 
 void MainWindow::platformCalibrationMessageProcess(uint8_t Command, uint8_t SubCode, QByteArray Datas)
 {
+    uint8_t result = (uint8_t)Datas.at(2);
     if(Command == 0x03)
     {
         if(SubCode == 0x02) {
-            float z_diff[4];
-            z_diff[0] = (int32_t)(((uint8_t)Datas.at(6) << 24) | ((uint8_t)Datas.at(5) << 16) | ((uint8_t)Datas.at(4) << 8) | (uint8_t)Datas.at(3)) / 1000.0f;
-            z_diff[1] = (int32_t)(((uint8_t)Datas.at(10) << 24) | ((uint8_t)Datas.at(9) << 16) | ((uint8_t)Datas.at(8) << 8) | (uint8_t)Datas.at(7)) / 1000.0f;
-            z_diff[2] = (int32_t)(((uint8_t)Datas.at(14) << 24) | ((uint8_t)Datas.at(13) << 16) | ((uint8_t)Datas.at(12) << 8) | (uint8_t)Datas.at(11)) / 1000.0f;
-            z_diff[3] = (int32_t)(((uint8_t)Datas.at(18) << 24) | ((uint8_t)Datas.at(17) << 16) | ((uint8_t)Datas.at(16) << 8) | (uint8_t)Datas.at(15)) / 1000.0f;
-            if((z_diff[0] == 0) && (z_diff[1] == 0) && (z_diff[2] == 0) && (z_diff[3] == 0))
-            {
-                ui->stackedWidget->setCurrentWidget(ui->page_PlatformCali_6);
-                QObject::disconnect(m_port->getXhPage(), SIGNAL(command_received(uint8_t, uint8_t, QByteArray)), this, SLOT(platformCalibrationMessageProcess(uint8_t, uint8_t, QByteArray)));
+            if(result == 0) {
+                float z_diff[4];
+                z_diff[0] = (int32_t)(((uint8_t)Datas.at(6) << 24) | ((uint8_t)Datas.at(5) << 16) | ((uint8_t)Datas.at(4) << 8) | (uint8_t)Datas.at(3)) / 1000.0f;
+                z_diff[1] = (int32_t)(((uint8_t)Datas.at(10) << 24) | ((uint8_t)Datas.at(9) << 16) | ((uint8_t)Datas.at(8) << 8) | (uint8_t)Datas.at(7)) / 1000.0f;
+                z_diff[2] = (int32_t)(((uint8_t)Datas.at(14) << 24) | ((uint8_t)Datas.at(13) << 16) | ((uint8_t)Datas.at(12) << 8) | (uint8_t)Datas.at(11)) / 1000.0f;
+                z_diff[3] = (int32_t)(((uint8_t)Datas.at(18) << 24) | ((uint8_t)Datas.at(17) << 16) | ((uint8_t)Datas.at(16) << 8) | (uint8_t)Datas.at(15)) / 1000.0f;
+                if((z_diff[0] == 0) && (z_diff[1] == 0) && (z_diff[2] == 0) && (z_diff[3] == 0))
+                {
+                    ui->stackedWidget->setCurrentWidget(ui->page_PlatformCali_6);
+                    QObject::disconnect(m_port->getXhPage(), SIGNAL(command_received(uint8_t, uint8_t, QByteArray)), this, SLOT(platformCalibrationMessageProcess(uint8_t, uint8_t, QByteArray)));
+                }
+                else
+                {
+                    ui->qw_PlatformCalibrateP1->rootObject()->setProperty("value", (int)z_diff[0]);
+                    ui->qw_PlatformCalibrateP2->rootObject()->setProperty("value", (int)z_diff[1]);
+                    ui->qw_PlatformCalibrateP3->rootObject()->setProperty("value", (int)z_diff[3]);
+                    ui->stackedWidget->setCurrentWidget(ui->page_PlatformCali_3);
+                }
             }
-            else
-            {
-                ui->qw_PlatformCalibrateP1->rootObject()->setProperty("value", (int)z_diff[0]);
-                ui->qw_PlatformCalibrateP2->rootObject()->setProperty("value", (int)z_diff[1]);
-                ui->qw_PlatformCalibrateP3->rootObject()->setProperty("value", (int)z_diff[3]);
-                ui->stackedWidget->setCurrentWidget(ui->page_PlatformCali_3);
+            else {
+                m_port->carbincancel();
+                QThread::msleep(20);
+                ui->stackedWidget->setCurrentWidget(ui->page_PlatformCali_0);
+                m_port->setHeattingUnit(0, 0);
+                pdlg_warning->init(QByteArray("PlatformCalibrate"));
+                pdlg_warning->show();
+
             }
         }
     }
