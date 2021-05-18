@@ -914,6 +914,7 @@ private:
 
     void FaultDetectInit();
     void onPauseRequest(QByteArray);
+    void onAbortRequest(QByteArray Data);
     void onFaultFlag(QByteArray);
 
     void FilamentFaultDetected();

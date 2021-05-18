@@ -18,10 +18,16 @@
 void MainWindow::FaultDetectInit()
 {
     AddListen(QByteArray(QByteArray::fromHex("0608")), &MainWindow::onPauseRequest, true);
+    AddListen(QByteArray(QByteArray::fromHex("060A")), &MainWindow::onAbortRequest, true);
     AddListen(QByteArray(QByteArray::fromHex("010100")), &MainWindow::onFaultFlag, true);
 }
 
 void MainWindow::onPauseRequest(QByteArray Data)
+{
+    m_port->getFaultFlag();
+}
+
+void MainWindow::onAbortRequest(QByteArray Data)
 {
     m_port->getFaultFlag();
 }
