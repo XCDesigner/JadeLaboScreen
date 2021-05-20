@@ -41,6 +41,6 @@ Rectangle {
         horizontalAlignment: Text.AlignHCenter
         anchors.centerIn: parent
         color: "white"
-        font { family: "barlow"; pixelSize: 32; bold: true }
+        font { family: "barlow"; pixelSize: 36; bold: true }
     }
 }

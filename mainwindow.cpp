@@ -966,8 +966,6 @@ void MainWindow::on_pushButton_236_clicked()
 
 void MainWindow::on_pushButton_237_clicked()
 {
-    ui->qw_XYGif0->rootObject()->setProperty("source", "qrc:/image/test.gif");
-    ui->qw_XYGif0->rootObject()->setProperty("playing", true);
     ui->stackedWidget->setCurrentWidget(ui->page_XYCali_0);
 }
 

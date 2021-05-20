@@ -156,5 +156,12 @@
         <file>image/retract_enable.png</file>
         <file>qml/DistanceButtonSelect.qml</file>
         <file>qml/DigitalKeyBoard.qml</file>
+        <file>image/platform_0.png</file>
+        <file>image/platform_1.png</file>
+        <file>image/platform_2.png</file>
+        <file>image/platform_3.png</file>
+        <file>image/nozzle_0.png</file>
+        <file>image/xy_0.png</file>
+        <file>image/nozzle_1.png</file>
     </qresource>
 </RCC>

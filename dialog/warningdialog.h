@@ -25,6 +25,7 @@ private slots:
 private:
     Ui::WarningDialog *ui;
     QMap<QString, QString> tips;
+    QMap<QString, QString> images;
 };
 
 #endif // WARNINGDIALOG_H

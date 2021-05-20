@@ -70,7 +70,7 @@ font-family: barlow;
 }</string>
     </property>
     <property name="currentIndex">
-     <number>24</number>
+     <number>37</number>
     </property>
     <widget class="QWidget" name="page_12">
      <widget class="QLabel" name="label_14">
@@ -5171,12 +5171,12 @@ border-radius: 20px;</string>
        <rect>
         <x>170</x>
         <y>110</y>
-        <width>382</width>
-        <height>377</height>
+        <width>380</width>
+        <height>380</height>
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true">border-image: url(:/image/picShow1.jpg);</string>
+       <string notr="true">border-image: url(:/image/platform_1.png);</string>
       </property>
       <property name="text">
        <string/>
@@ -5450,12 +5450,12 @@ border-radius: 20px;</string>
        <rect>
         <x>188</x>
         <y>145</y>
-        <width>382</width>
-        <height>377</height>
+        <width>380</width>
+        <height>380</height>
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true">border-image: url(:/image/picShow1.jpg);</string>
+       <string notr="true">border-image: url(:/image/platform_0.png);</string>
       </property>
       <property name="text">
        <string/>
@@ -5464,10 +5464,10 @@ border-radius: 20px;</string>
      <widget class="QLabel" name="label_61">
       <property name="geometry">
        <rect>
-        <x>583</x>
-        <y>150</y>
-        <width>666</width>
-        <height>411</height>
+        <x>600</x>
+        <y>250</y>
+        <width>631</width>
+        <height>241</height>
        </rect>
       </property>
       <property name="styleSheet">
@@ -5478,24 +5478,18 @@ font-family: Barlow;
 background-color: rgba(255, 255, 255, 0);</string>
       </property>
       <property name="text">
-       <string>1. Remove the glass plate before calibration.
-2. J1 will automatically heat up the nozzle to
- melt any remaining filament on the tip of the
- nozzle.
-3. J1 will run auto home.
-4. One of the extruders will go through four corners of 
-the platform and measure the distance to the platform.
-5. Turn the knobs on the platform as indicated in the
- touchscreen.
-6. J1 will check the calibration result and let you to fine
- tune the calibration if needed.</string>
+       <string>This operation will excutes the following steps:
+1. Heat up the hotend (do not touch nozzle);
+2. Run 4 calibration points;
+3. Twist adjust knob as known picture;
+       Please remove glass print plate;</string>
       </property>
      </widget>
      <widget class="QLabel" name="label_79">
       <property name="geometry">
        <rect>
-        <x>583</x>
-        <y>90</y>
+        <x>600</x>
+        <y>190</y>
         <width>601</width>
         <height>61</height>
        </rect>
@@ -5510,7 +5504,7 @@ the platform and measure the distance to the platform.
       </property>
       <property name="styleSheet">
        <string notr="true">color: rgba(255, 255, 255, 255);
-font-size: 48px;
+font-size: 40px;
 text-align: center;
 font-family: Barlow;
 background-color: rgba(255, 255, 255, 0);
@@ -5518,7 +5512,7 @@ font-weight: bold;
 font-family:Barlow;</string>
       </property>
       <property name="text">
-       <string>Platform Calibration</string>
+       <string>Platform Calibration Tips</string>
       </property>
      </widget>
     </widget>
@@ -6143,13 +6137,13 @@ height according to the instructions.</string>
        <rect>
         <x>195</x>
         <y>140</y>
-        <width>440</width>
-        <height>400</height>
+        <width>380</width>
+        <height>380</height>
        </rect>
       </property>
       <property name="styleSheet">
        <string notr="true">background-color: rgba(255, 255, 255, 0);
-image: url(:/image/bamp3.png);</string>
+image: url(:/image/platform_2.png);</string>
       </property>
       <property name="text">
        <string/>
@@ -6351,13 +6345,13 @@ border-radius: 20px;</string>
        <rect>
         <x>195</x>
         <y>140</y>
-        <width>440</width>
-        <height>400</height>
+        <width>380</width>
+        <height>380</height>
        </rect>
       </property>
       <property name="styleSheet">
        <string notr="true">background-color: rgba(255, 255, 255, 0);
-image: url(:/image/Bitmap4.png);</string>
+image: url(:/image/platform_3.png);</string>
       </property>
       <property name="text">
        <string/>
@@ -6723,10 +6717,10 @@ border: 2px solid rgba(67, 67, 67, 255);</string>
      <widget class="QLabel" name="label_143">
       <property name="geometry">
        <rect>
-        <x>600</x>
-        <y>160</y>
-        <width>666</width>
-        <height>411</height>
+        <x>610</x>
+        <y>200</y>
+        <width>561</width>
+        <height>241</height>
        </rect>
       </property>
       <property name="styleSheet">
@@ -6737,15 +6731,14 @@ font-family: Barlow;
 background-color: rgba(255, 255, 255, 0);</string>
       </property>
       <property name="text">
-       <string>1.Remove the glass plate before calibration.
-2.J1 will automatically heat up the nozzle to melt any
- remaining filament on the tip of the nozzle.
-3.J1 will run auto home.
-4.One of the extruders will move to a specific position.
-5.Turn the knob on the extruder as indicated in the
- touchscreen.
-6.J1 will check the calibration result and let you to fine 
-tune the calibration if needed.</string>
+       <string>This operation will excutes the following steps:
+1. Heat up the hotend (do not touch nozzle);
+2. Nozzle selfcheck;
+3. Twist adjust knob as shown picture;
+      Please remove glass print plate;</string>
+      </property>
+      <property name="wordWrap">
+       <bool>true</bool>
       </property>
      </widget>
      <widget class="QLabel" name="label_122">
@@ -6770,12 +6763,29 @@ border-radius: 20px;</string>
        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
       </property>
      </widget>
-     <widget class="QLabel" name="label_80">
+     <widget class="QLabel" name="label_298">
       <property name="geometry">
        <rect>
-        <x>600</x>
-        <y>90</y>
-        <width>601</width>
+        <x>209</x>
+        <y>120</y>
+        <width>380</width>
+        <height>380</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgba(255, 255, 255, 0);
+image: url(:/image/nozzle_0.png);</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_309">
+      <property name="geometry">
+       <rect>
+        <x>610</x>
+        <y>160</y>
+        <width>591</width>
         <height>61</height>
        </rect>
       </property>
@@ -6783,34 +6793,19 @@ border-radius: 20px;</string>
        <font>
         <family>Barlow</family>
         <pointsize>-1</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
        </font>
       </property>
       <property name="styleSheet">
        <string notr="true">color: rgba(255, 255, 255, 255);
-font-size: 48px;
+font-size: 40px;
 text-align: center;
 font-family: Barlow;
-background-color: rgba(255, 255, 255, 0);</string>
+background-color: rgb(45, 44, 43);</string>
       </property>
       <property name="text">
-       <string>Nozzle Z-Offset Calibration</string>
-      </property>
-     </widget>
-     <widget class="QLabel" name="label_298">
-      <property name="geometry">
-       <rect>
-        <x>209</x>
-        <y>120</y>
-        <width>321</width>
-        <height>424</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">background-color: rgba(255, 255, 255, 0);
-image: url(:/image/Bitmap.png);</string>
-      </property>
-      <property name="text">
-       <string/>
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Nozzle Calibration Tips&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
       </property>
      </widget>
      <zorder>label_122</zorder>
@@ -6821,8 +6816,8 @@ image: url(:/image/Bitmap.png);</string>
      <zorder>pushButton_286</zorder>
      <zorder>pushButton_287</zorder>
      <zorder>label_143</zorder>
-     <zorder>label_80</zorder>
      <zorder>label_298</zorder>
+     <zorder>label_309</zorder>
     </widget>
     <widget class="QWidget" name="page_NozzleCali_1">
      <widget class="QPushButton" name="pushButton_288">
@@ -7183,7 +7178,7 @@ border-radius: 20px;</string>
         <x>640</x>
         <y>90</y>
         <width>611</width>
-        <height>161</height>
+        <height>201</height>
        </rect>
       </property>
       <property name="styleSheet">
@@ -7194,8 +7189,13 @@ font-family: Barlow;
 background-color: rgb(32, 32, 32);</string>
       </property>
       <property name="text">
-       <string>Turn the knob to adjust the nozzle height 
-according to the instructions.</string>
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Twist the right hotend knob to adjust the nozzle height, as shown above. Twist the direction of the knob according to the illuminated icon below. &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+      </property>
+      <property name="wordWrap">
+       <bool>true</bool>
       </property>
      </widget>
      <widget class="QPushButton" name="pushButton_302">
@@ -7265,19 +7265,22 @@ border-radius: 20px;</string>
       <property name="text">
        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
       </property>
+      <property name="wordWrap">
+       <bool>true</bool>
+      </property>
      </widget>
      <widget class="QLabel" name="label_306">
       <property name="geometry">
        <rect>
         <x>202</x>
         <y>135</y>
-        <width>412</width>
-        <height>371</height>
+        <width>380</width>
+        <height>380</height>
        </rect>
       </property>
       <property name="styleSheet">
        <string notr="true">background-color: rgba(255, 255, 255, 0);
-image: url(:/image/Bitmap2.png);</string>
+image: url(:/image/nozzle_1.png);</string>
       </property>
       <property name="text">
        <string/>
@@ -7542,10 +7545,10 @@ border-radius: 20px;</string>
      <widget class="QLabel" name="label_299">
       <property name="geometry">
        <rect>
-        <x>731</x>
-        <y>277</y>
-        <width>541</width>
-        <height>191</height>
+        <x>620</x>
+        <y>240</y>
+        <width>591</width>
+        <height>301</height>
        </rect>
       </property>
       <property name="styleSheet">
@@ -7556,7 +7559,10 @@ font-family: Barlow;
 background-color: rgb(45, 44, 43);</string>
       </property>
       <property name="text">
-       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;This operation will executes the following steps:&lt;/p&gt;&lt;p&gt;1. Heat up hotend (do not touch nozzle)&lt;/p&gt;&lt;p&gt;2. Run XY calibration&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;This operation will excutes the following steps:&lt;/p&gt;&lt;p&gt;1. Heat up the hotend (do not touch nozzle);&lt;/p&gt;&lt;p&gt;2. Run XY Calibration;&lt;/p&gt;&lt;p&gt;      Please remove glass print plate;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
+      <property name="wordWrap">
+       <bool>true</bool>
       </property>
      </widget>
      <widget class="QPushButton" name="pushButton_631">
@@ -7627,22 +7633,55 @@ border-radius: 20px;</string>
        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
       </property>
      </widget>
-     <widget class="QQuickWidget" name="qw_XYGif0">
+     <widget class="QLabel" name="label_308">
       <property name="geometry">
        <rect>
-        <x>198</x>
-        <y>145</y>
-        <width>500</width>
-        <height>420</height>
+        <x>202</x>
+        <y>135</y>
+        <width>380</width>
+        <height>380</height>
        </rect>
       </property>
-      <property name="resizeMode">
-       <enum>QQuickWidget::SizeRootObjectToView</enum>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgba(255, 255, 255, 0);
+image: url(:/image/xy_0.png);</string>
       </property>
-      <property name="source">
-       <url>
-        <string>qrc:/qml/GifPlayer.qml</string>
-       </url>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+      </property>
+      <property name="wordWrap">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_300">
+      <property name="geometry">
+       <rect>
+        <x>620</x>
+        <y>200</y>
+        <width>591</width>
+        <height>61</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Barlow</family>
+        <pointsize>-1</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: rgba(255, 255, 255, 255);
+font-size: 40px;
+text-align: center;
+font-family: Barlow;
+background-color: rgb(45, 44, 43);</string>
+      </property>
+      <property name="text">
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;XY Axis Calibration Tips&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
       </property>
      </widget>
      <zorder>label_266</zorder>
@@ -7653,7 +7692,8 @@ border-radius: 20px;</string>
      <zorder>label_299</zorder>
      <zorder>pushButton_631</zorder>
      <zorder>pushButton_632</zorder>
-     <zorder>qw_XYGif0</zorder>
+     <zorder>label_308</zorder>
+     <zorder>label_300</zorder>
     </widget>
     <widget class="QWidget" name="page_XYCali_1">
      <widget class="QPushButton" name="pushButton_633">
