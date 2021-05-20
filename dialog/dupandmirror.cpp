@@ -1,5 +1,5 @@
 #include "dupandmirror.h"
-#include "ui_dupandmirorr.h"
+#include "ui_dupandmirror.h"
 #include <QDebug>
 
 int DupandMirorr::num = 0;
