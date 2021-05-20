@@ -53,7 +53,7 @@
      <x>610</x>
      <y>140</y>
      <width>621</width>
-     <height>81</height>
+     <height>261</height>
     </rect>
    </property>
    <property name="font">
@@ -65,7 +65,7 @@
    <property name="styleSheet">
     <string notr="true">color: white;
 font-family: &quot;barlow&quot;;
-font-size: 48px;</string>
+font-size: 28px;</string>
    </property>
    <property name="text">
     <string>TextLabel</string>
@@ -74,7 +74,7 @@ font-size: 48px;</string>
     <enum>Qt::RichText</enum>
    </property>
    <property name="alignment">
-    <set>Qt::AlignHCenter|Qt::AlignTop</set>
+    <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
    </property>
   </widget>
   <widget class="QPushButton" name="pushButton_359">

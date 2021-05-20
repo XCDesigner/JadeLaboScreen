@@ -16,6 +16,8 @@ WarningDialog::WarningDialog(QWidget *parent) :
     tips.insert("PlatformCalibrate", "Platform Calibration fault. Please remove the glass first");
     tips.insert("XYCalibrate", "XY Calibration fault. Please keep the nozzle clean and remove the glass");
     tips.insert("NozzleCalibrate", "Nozzle Calibration fault. Please keep the nozzle clean and remove the glass");
+
+    ui->label->setWordWrap(true);
 }
 
 WarningDialog::~WarningDialog()
