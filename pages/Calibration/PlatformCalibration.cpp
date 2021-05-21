@@ -75,7 +75,9 @@ void MainWindow::on_pushButton_371_clicked()
 
 void MainWindow::on_pushButton_375_clicked()
 {
-    ui->stackedWidget->setCurrentWidget(ui->page_PlatformCali_5);
+    // ui->stackedWidget->setCurrentWidget(ui->page_PlatformCali_5);
+    ui->stackedWidget->setCurrentWidget(ui->page_PlatformCali_2);
+    m_port->p_platformCalibration();
 }
 
 void MainWindow::on_pushButton_373_clicked()
