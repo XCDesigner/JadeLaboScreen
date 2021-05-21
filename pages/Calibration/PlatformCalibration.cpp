@@ -12,7 +12,9 @@ void MainWindow::platformCalibratePageinit()
 
 void MainWindow::on_pushButton_275_clicked()
 {
-    m_port->setHeattingUnit("200","200");
+    m_port->setHeattingUnit(0, 200);
+    m_port->setHeattingUnit(1, 200);
+    m_port->setHeattingUnit(2, 60);
     ui->stackedWidget->setCurrentWidget(ui->page_PlatformCali_1);
     screen_status.setPerformance(PLATFORM_CALIBRATING);
     QTimer::singleShot(500, this, SLOT(platformCalibrationHeating()));
@@ -31,7 +33,9 @@ void MainWindow::on_pushButton_243_clicked()
 
 void MainWindow::on_pushButton_248_clicked()
 {
-    m_port->setHeattingUnit("0","0");
+    m_port->setHeattingUnit(0, 0);
+    m_port->setHeattingUnit(1, 0);
+    m_port->setHeattingUnit(2, 0);
     screen_status.setPerformance(IDLE);
     ui->stackedWidget->setCurrentWidget(ui->page_Calibration);
 }
@@ -51,7 +55,9 @@ void MainWindow::on_pushButton_253_clicked()
 void MainWindow::on_pushButton_365_clicked()
 {
     m_port->carbinfinished();
-    m_port->setHeattingUnit("0","0");
+    m_port->setHeattingUnit(0, 0);
+    m_port->setHeattingUnit(1, 0);
+    m_port->setHeattingUnit(2, 0);
     screen_status.setPerformance(IDLE);
     ui->stackedWidget->setCurrentWidget(ui->page_Calibration);
     QObject::disconnect(m_port->getXhPage(), SIGNAL(command_received(uint8_t, uint8_t, QByteArray)), this, SLOT(platformCalibrationMessageProcess(uint8_t, uint8_t, QByteArray)));
@@ -65,7 +71,9 @@ void MainWindow::on_pushButton_367_clicked()
 
 void MainWindow::on_pushButton_371_clicked()
 {
-    m_port->setHeattingUnit("0","0");
+    m_port->setHeattingUnit(0, 0);
+    m_port->setHeattingUnit(1, 0);
+    m_port->setHeattingUnit(2, 0);
     ui->stackedWidget->setCurrentWidget(ui->page_Calibration);
     screen_status.setPerformance(IDLE);
     QObject::disconnect(m_port->getXhPage(), SIGNAL(command_received(uint8_t, uint8_t, QByteArray)), this, SLOT(platformCalibrationMessageProcess(uint8_t, uint8_t, QByteArray)));
@@ -82,7 +90,9 @@ void MainWindow::on_pushButton_375_clicked()
 
 void MainWindow::on_pushButton_373_clicked()
 {
-    m_port->setHeattingUnit("0","0");
+    m_port->setHeattingUnit(0, 0);
+    m_port->setHeattingUnit(1, 0);
+    m_port->setHeattingUnit(2, 0);
     ui->stackedWidget->setCurrentWidget(ui->page_Calibration);
     screen_status.setPerformance(IDLE);
     QObject::disconnect(m_port->getXhPage(), SIGNAL(command_received(uint8_t, uint8_t, QByteArray)), this, SLOT(platformCalibrationMessageProcess(uint8_t, uint8_t, QByteArray)));
@@ -141,6 +151,8 @@ void MainWindow::platformCalibrationMessageProcess(uint8_t Command, uint8_t SubC
                 QThread::msleep(20);
                 ui->stackedWidget->setCurrentWidget(ui->page_PlatformCali_0);
                 m_port->setHeattingUnit(0, 0);
+                m_port->setHeattingUnit(1, 0);
+                m_port->setHeattingUnit(2, 0);
                 pdlg_warning->init(QByteArray("PlatformCalibrate"));
                 pdlg_warning->show();
 

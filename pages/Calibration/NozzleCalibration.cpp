@@ -9,14 +9,18 @@ void MainWindow::on_pushButton_286_clicked()
 {
     ui->stackedWidget->setCurrentWidget(ui->page_NozzleCali_1);
     ui->qw_NozzleCalibrateP1->setClearColor(QColor(qmlColor));
-    m_port->setHeattingUnit("200","200");
+    m_port->setHeattingUnit(0, 200);
+    m_port->setHeattingUnit(1, 200);
+    m_port->setHeattingUnit(2, 60);
     screen_status.setPerformance(NOZZLE_CALIBRATING);
     QTimer::singleShot(500, this, SLOT(nozzleCalibrationHeating()));
 }
 
 void MainWindow::on_pushButton_648_clicked()
 {
-    m_port->setHeattingUnit("0","0");
+    m_port->setHeattingUnit(0, 0);
+    m_port->setHeattingUnit(1, 0);
+    m_port->setHeattingUnit(2, 0);
     ui->stackedWidget->setCurrentWidget(ui->page_Calibration);
     screen_status.setPerformance(IDLE);
 }
@@ -25,7 +29,9 @@ void MainWindow::on_pushButton_308_clicked()
 {
     ui->stackedWidget->setCurrentWidget(ui->page_Calibration);
     screen_status.setPerformance(IDLE);
-    m_port->setHeattingUnit("0","0");
+    m_port->setHeattingUnit(0, 0);
+    m_port->setHeattingUnit(1, 0);
+    m_port->setHeattingUnit(2, 0);
 }
 
 void MainWindow::on_pushButton_303_clicked()
@@ -36,7 +42,9 @@ void MainWindow::on_pushButton_303_clicked()
 
 void MainWindow::on_pushButton_302_clicked()
 {
-    m_port->setHeattingUnit("0","0");
+    m_port->setHeattingUnit(0, 0);
+    m_port->setHeattingUnit(1, 0);
+    m_port->setHeattingUnit(2, 0);
     ui->stackedWidget->setCurrentWidget(ui->page_Calibration);
     screen_status.setPerformance(IDLE);
     QThread::msleep(20);
@@ -90,6 +98,8 @@ void MainWindow::nozzleCalibrationMessageProcess(uint8_t Command, uint8_t SubCod
             }
             else {
                 m_port->setHeattingUnit(0, 0);
+                m_port->setHeattingUnit(1, 0);
+                m_port->setHeattingUnit(2, 0);
                 pdlg_warning->init(QByteArray("NozzleCalibrate"));
                 pdlg_warning->show();
                 ui->stackedWidget->setCurrentWidget(ui->page_Calibration);
