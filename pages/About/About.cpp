@@ -17,7 +17,7 @@ void MainWindow::on_pushButton_126_clicked()
     sprintf(version, "Ver:%s-%s", __DATE__, __TIME__);
     m_port->getFirmwareVersion();
     AddListen(QByteArray(QByteArray::fromHex("0503")), &MainWindow::onFirmwareVersionReceived, false);
-    ui->wqVersion->rootObject()->setProperty("text", version);
+    ui->quickWidget_2->rootObject()->setProperty("icon", "qrc:/image/platform_warning.png");
 }
 
 void MainWindow::on_AboutReturn(int Index)
@@ -35,7 +35,7 @@ void MainWindow::aboutTimerTester()
 {
     if(ui->checkBox->isChecked() == true) {
         QByteArray regs = QByteArray::fromHex("001241");
-        m_port->getTMCValue(0, regs);
+        m_port->getTMCValue(3, regs);
         m_port->trigFILSample();
         m_port->getFILValue();
     }

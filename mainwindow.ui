@@ -70,7 +70,7 @@ font-family: barlow;
 }</string>
     </property>
     <property name="currentIndex">
-     <number>37</number>
+     <number>55</number>
     </property>
     <widget class="QWidget" name="page_12">
      <widget class="QLabel" name="label_14">
@@ -13383,7 +13383,7 @@ border: 2px solid rgba(255, 99, 11, 255);</string>
        <rect>
         <x>910</x>
         <y>520</y>
-        <width>331</width>
+        <width>181</width>
         <height>141</height>
        </rect>
       </property>
@@ -13399,12 +13399,13 @@ border: 2px solid rgba(255, 99, 11, 255);</string>
        <rect>
         <x>910</x>
         <y>350</y>
-        <width>331</width>
+        <width>181</width>
         <height>141</height>
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true">background-color: white</string>
+       <string notr="true">background-color: white;
+font-size: 32px;</string>
       </property>
       <property name="text">
        <string>PushButton</string>
@@ -13487,6 +13488,24 @@ border: 2px solid rgba(255, 99, 11, 255);</string>
       </property>
       <property name="text">
        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;GCONF:&lt;/p&gt;&lt;p&gt;STEP:&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
+     </widget>
+     <widget class="QQuickWidget" name="quickWidget_2">
+      <property name="geometry">
+       <rect>
+        <x>1120</x>
+        <y>350</y>
+        <width>101</width>
+        <height>131</height>
+       </rect>
+      </property>
+      <property name="resizeMode">
+       <enum>QQuickWidget::SizeRootObjectToView</enum>
+      </property>
+      <property name="source">
+       <url>
+        <string>qrc:/qml/IconCheckedButton.qml</string>
+       </url>
       </property>
      </widget>
     </widget>

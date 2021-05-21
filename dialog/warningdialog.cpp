@@ -34,6 +34,7 @@ WarningDialog::~WarningDialog()
 void WarningDialog::init(QByteArray InitData)
 {
     ui->label->setText(tips.value(QString(InitData)));
+    qDebug()<<images.value(QString(InitData));
     ui->qw_Icon->rootObject()->setProperty("icon", images.value(QString(InitData)));
     ui->qw_Icon->rootObject()->setProperty("pressedIcon", images.value(QString(InitData)));
 }

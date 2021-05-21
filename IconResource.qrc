@@ -163,5 +163,8 @@
         <file>image/nozzle_0.png</file>
         <file>image/xy_0.png</file>
         <file>image/nozzle_1.png</file>
+        <file>image/platform_warning.png</file>
+        <file>image/xy_warning.png</file>
+        <file>image/nozzle_warning.png</file>
     </qresource>
 </RCC>
