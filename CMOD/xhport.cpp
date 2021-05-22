@@ -793,7 +793,8 @@ void XhPort::setBuildplatThickness(float Thickness)
   */
 void XhPort::prepareChangeFilament()
 {
-    m_serial->writeProtocalData(QByteArray::fromHex("020A"));
+    QByteArray buff = QByteArray::fromHex("020A");
+    m_serial->writeProtocalData(buff);
 }
 
 void XhPort::testdemo()
