@@ -986,6 +986,7 @@ void MainWindow::on_pushButton_170_clicked()
 
 void MainWindow::on_pushButton_172_clicked()
 {
+    m_port->prepareChangeFilament();
     ui->stackedWidget->setCurrentWidget(ui->page_ChangeFilament);
 }
 
@@ -1001,6 +1002,7 @@ void MainWindow::on_pushButton_670_clicked()
 
 void MainWindow::on_pushButton_668_clicked()
 {
+    m_port->prepareChangeFilament();
     ui->stackedWidget->setCurrentWidget(ui->page_ChangeFilament);
 }
 
@@ -1021,6 +1023,7 @@ void MainWindow::on_pushButton_179_clicked()
 
 void MainWindow::on_pushButton_181_clicked()
 {
+    m_port->prepareChangeFilament();
     ui->stackedWidget->setCurrentWidget(ui->page_ChangeFilament);
 }
 
@@ -1031,6 +1034,7 @@ void MainWindow::on_pushButton_193_clicked()
 
 void MainWindow::on_pushButton_190_clicked()
 {
+    m_port->prepareChangeFilament();
     ui->stackedWidget->setCurrentWidget(ui->page_ChangeFilament);
 }
 
@@ -1041,6 +1045,7 @@ void MainWindow::on_pushButton_202_clicked()
 
 void MainWindow::on_pushButton_203_clicked()
 {
+    m_port->prepareChangeFilament();
     ui->stackedWidget->setCurrentWidget(ui->page_ChangeFilament);
 }
 
@@ -1051,6 +1056,7 @@ void MainWindow::on_pushButton_210_clicked()
 
 void MainWindow::on_pushButton_209_clicked()
 {
+    m_port->prepareChangeFilament();
     ui->stackedWidget->setCurrentWidget(ui->page_ChangeFilament);
 }
 
@@ -1061,6 +1067,7 @@ void MainWindow::on_pushButton_216_clicked()
 
 void MainWindow::on_pushButton_214_clicked()
 {
+    m_port->prepareChangeFilament();
     ui->stackedWidget->setCurrentWidget(ui->page_ChangeFilament);
 }
 
@@ -1071,6 +1078,7 @@ void MainWindow::on_pushButton_220_clicked()
 
 void MainWindow::on_pushButton_223_clicked()
 {
+    m_port->prepareChangeFilament();
     ui->stackedWidget->setCurrentWidget(ui->page_ChangeFilament);
 }
 
@@ -1081,11 +1089,13 @@ void MainWindow::on_pushButton_227_clicked()
 
 void MainWindow::on_pushButton_226_clicked()
 {
+    m_port->prepareChangeFilament();
     ui->stackedWidget->setCurrentWidget(ui->page_ChangeFilament);
 }
 
 void MainWindow::on_pushButton_231_clicked()
 {
+    m_port->prepareChangeFilament();
     ui->stackedWidget->setCurrentWidget(ui->page_ChangeFilament);
 }
 
@@ -1101,6 +1111,7 @@ void MainWindow::on_pushButton_240_clicked()
 
 void MainWindow::on_pushButton_238_clicked()
 {
+    m_port->prepareChangeFilament();
     ui->stackedWidget->setCurrentWidget(ui->page_ChangeFilament);
 }
 
@@ -1116,6 +1127,7 @@ void MainWindow::on_pushButton_256_clicked()
 
 void MainWindow::on_pushButton_257_clicked()
 {
+    m_port->prepareChangeFilament();
     ui->stackedWidget->setCurrentWidget(ui->page_ChangeFilament);
 }
 
@@ -1131,6 +1143,7 @@ void MainWindow::on_pushButton_284_clicked()
 
 void MainWindow::on_pushButton_285_clicked()
 {
+    m_port->prepareChangeFilament();
     ui->stackedWidget->setCurrentWidget(ui->page_ChangeFilament);
 }
 
@@ -1146,6 +1159,7 @@ void MainWindow::on_pushButton_298_clicked()
 
 void MainWindow::on_pushButton_301_clicked()
 {
+    m_port->prepareChangeFilament();
     ui->stackedWidget->setCurrentWidget(ui->page_ChangeFilament);
 }
 
@@ -1352,6 +1366,7 @@ void MainWindow::on_pushButton_676_clicked()
     ui->label_224->clear();
     ui->label_225->clear();
     ui->label_285->clear();
+    m_port->prepareChangeFilament();
     ui->stackedWidget->setCurrentWidget(ui->page_ChangeFilament);
 }
 
@@ -1379,6 +1394,7 @@ void MainWindow::on_pushButton_677_clicked()
 
 void MainWindow::on_pushButton_128_clicked()
 {
+    m_port->prepareChangeFilament();
     ui->stackedWidget->setCurrentWidget(ui->page_ChangeFilament);
 }
 
@@ -1389,6 +1405,7 @@ void MainWindow::on_pushButton_125_clicked()
 
 void MainWindow::on_pushButton_130_clicked()
 {
+    m_port->prepareChangeFilament();
     ui->stackedWidget->setCurrentWidget(ui->page_ChangeFilament);
 }
 
@@ -1666,6 +1683,7 @@ void MainWindow::on_pushButton_269_clicked()
 
 void MainWindow::on_pushButton_273_clicked()
 {
+    m_port->prepareChangeFilament();
     ui->stackedWidget->setCurrentWidget(ui->page_ChangeFilament);
 }
 
@@ -1681,6 +1699,7 @@ void MainWindow::on_pushButton_119_clicked()
 
 void MainWindow::on_pushButton_120_clicked()
 {
+    m_port->prepareChangeFilament();
     ui->stackedWidget->setCurrentWidget(ui->page_ChangeFilament);
 }
 
@@ -1691,5 +1710,6 @@ void MainWindow::on_pushButton_121_clicked()
 
 void MainWindow::on_pushButton_146_clicked()
 {
+    m_port->prepareChangeFilament();
     ui->stackedWidget->setCurrentWidget(ui->page_ChangeFilament);
 }

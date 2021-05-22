@@ -772,7 +772,7 @@ void XhPort::getBuildplatThickness()
 }
 
 /**
-  * @brief  Get buildplat thickness
+  * @brief  Set buildplat thickness
   * @retval None
   */
 void XhPort::setBuildplatThickness(float Thickness)
@@ -784,6 +784,16 @@ void XhPort::setBuildplatThickness(float Thickness)
     buff.append(1, int_value >> 16);
     buff.append(1, int_value >> 24);
     m_serial->writeProtocalData(buff);
+}
+
+/**
+  * @brief  Prepare change filament
+  * @param  Mode:
+  * @retval None
+  */
+void XhPort::prepareChangeFilament()
+{
+    m_serial->writeProtocalData(QByteArray::fromHex("020A"));
 }
 
 void XhPort::testdemo()

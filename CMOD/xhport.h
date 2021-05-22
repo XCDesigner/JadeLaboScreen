@@ -39,6 +39,7 @@ public:
     void rdown();
 
     void ExtruderMotion(uint8_t Index, int32_t Distance);
+    void prepareChangeFilament();
 
     /**********PRINT IDER**********/
     QByteArray startPrint(QString);
