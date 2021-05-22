@@ -7,7 +7,7 @@ Rectangle {
     width: 190
     height: 190
 
-    property int value: 0
+    property int value: 99
 
     onValueChanged: {
         if(value > 0)
