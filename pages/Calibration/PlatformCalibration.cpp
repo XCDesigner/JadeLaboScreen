@@ -44,6 +44,9 @@ void MainWindow::on_pushButton_259_clicked()
 {
     ui->stackedWidget->setCurrentWidget(ui->page_PlatformCali_2);
     m_port->p_platformCalibration();
+    ui->qw_PlatformCalibrateP1->rootObject()->setProperty("value", 99);
+    ui->qw_PlatformCalibrateP2->rootObject()->setProperty("value", 99);
+    ui->qw_PlatformCalibrateP3->rootObject()->setProperty("value", 99);
 }
 
 void MainWindow::on_pushButton_253_clicked()
