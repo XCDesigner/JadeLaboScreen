@@ -164,7 +164,7 @@ void MainWindow::onParseComplete()
         print_desc.FileName = localPath + ret[1];
         ui->label_36->setText(ret[2]);
         ui->label_69->setText(ret[2]);
-        if((print_desc.Mode == "Duplicate") || (print_desc.Mode == "Mirror") || (print_desc.Mode == "Mix"))
+        if((print_desc.Mode == "Duplicate") || (print_desc.Mode == "Mirror"))
             print_desc.RightTemp =print_desc.LeftTemp;
         screen_status.setPerformance(PREPARE_PRINT);
         qDebug()<<"Temp:" << print_desc.LeftTemp << " " << print_desc.RightTemp;

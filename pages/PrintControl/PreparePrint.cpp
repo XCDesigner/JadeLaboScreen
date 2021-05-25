@@ -55,7 +55,7 @@ void MainWindow::preparePrinTempChecking()
             offset.append(1, int_offset >> 16);
             offset.append(1, int_offset >> 24);
             m_port->getXhPage()->setPrintFile(print_desc.FileName);
-            qDebug()<<print_desc.Mode;
+            qDebug()<<"StartPrint:" << print_desc.ParsedMode;
             m_port->preparePrint(print_desc.Mode, offset);
             qDebug()<<"readyprint offset " << offset;
             qDebug()<<"readyprint mode" << printMode;

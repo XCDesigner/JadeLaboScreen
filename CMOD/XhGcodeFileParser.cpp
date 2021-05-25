@@ -106,7 +106,8 @@ void XhGcodeFileParser::doParseByDirect()
     {
         parseTop100Lines();
         int l  = m_headerInfo["left_temp"].toString().toInt();
-        m_headerInfo["right_temp"] = QString::number(l+m_tempOffset);
+        if((m_headerInfo["mode"].toString() == "Orgin-Mirror") || (m_headerInfo["mode"].toString() == "Orgin-Duplicate"))
+            m_headerInfo["right_temp"] = QString::number(l+m_tempOffset);
 #ifdef DEBUG
         qDebug()<<"left_temp"<<l<<m_headerInfo.value("left_temp").toString();
         qDebug()<<"mtempOffset"<<m_tempOffset;
@@ -280,10 +281,12 @@ void XhGcodeFileParser::parseTemp(QString &gcode)
                 m_headerInfo["right_temp"] = tempValue;
             }
         } else {
-            if (m_lastToolHead == 0)
+            if (m_lastToolHead == 0) {
                 m_headerInfo["left_temp"] = tempValue;
-            else if (m_lastToolHead == 1)
+            }
+            else if (m_lastToolHead == 1) {
                 m_headerInfo["right_temp"] = tempValue;
+            }
         }
     } else if ((gcode.contains("M140") || gcode.contains("M190")) && gcode.contains("S")) {
         QString tempValue = getSymbolValue("S", gcode);
@@ -293,7 +296,7 @@ void XhGcodeFileParser::parseTemp(QString &gcode)
 
 void XhGcodeFileParser::parseToolHead(QString &gcode)
 {
-    if (gcode.contains("T"))
+    if (gcode.startsWith("T"))
         m_lastToolHead = getSymbolValue("T",gcode).toInt();
 }
 
