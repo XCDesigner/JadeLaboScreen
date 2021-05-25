@@ -166,7 +166,7 @@ void MainWindow::onParseComplete()
         ui->label_69->setText(ret[2]);
         if(print_desc.Mode == "Direct")
             print_desc.RightTemp = QString("0");
-        else if((print_desc.Mode == "Duplicate") || (print_desc.Mode == "Mirror"))
+        else if((print_desc.Mode == "Duplicate") || (print_desc.Mode == "Mirror") || (print_desc.Mode == "Mix"))
             print_desc.RightTemp =print_desc.LeftTemp;
         screen_status.setPerformance(PREPARE_PRINT);
         qDebug()<<"Temp:" << print_desc.LeftTemp << " " << print_desc.RightTemp;
