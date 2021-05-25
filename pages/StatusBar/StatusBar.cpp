@@ -29,6 +29,23 @@ void MainWindow::StatusNotice_Light_clicked()
         m_port->setLightOnOff(false);
 }
 
+void MainWindow::StatusNotice_Stepper_clicked()
+{
+    QQuickItem *item;
+    item = ui->qw_StatusNotice->rootObject();
+    if(item->property("stepperChecked").toBool() == true)
+    {
+        m_port->setStepperOnOff(false);
+        ui->qw_StatusNotice->rootObject()->setProperty("stepperChecked", false);
+    }
+    else
+    {
+        m_port->setStepperOnOff(true);
+        ui->qw_StatusNotice->rootObject()->setProperty("stepperChecked", true);
+    }
+    qDebug()<<"StepperClicked";
+}
+
 void MainWindow::updateStatusBar()
 {
     strMachineStatus new_status;
@@ -53,6 +70,11 @@ void MainWindow::updateStatusBar()
             new_status.Percent = 1;
         ui->quickWidget_3->rootObject()->setProperty("currentPercent", new_status.Percent);
     }
+
+    if(new_status.StepperHold == 1)
+        ui->qw_StatusNotice->rootObject()->setProperty("stepperChecked", true);
+    else
+        ui->qw_StatusNotice->rootObject()->setProperty("stepperChecked", false);
 
     if(new_status.CurTemp[0] > 70 || new_status.TarTemp[0] > 0) {
         ui->label_124->setPixmap(QPixmap(lHotEndActive));

@@ -379,6 +379,22 @@ void XhPort::setLightOnOff(bool OnOff)
 }
 
 /**
+  * @brief  Set stepper onoff
+  * @param  OnOff
+  * @retval None
+  */
+void XhPort::setStepperOnOff(bool OnOff)
+{
+    QByteArray s = QByteArray::fromHex("020B");
+    if(OnOff == true)
+        s.append(1, 1);
+    else
+        s.append(1, 0);
+    QByteArray buff = m_package->groupPage(s);
+    m_serial->write(buff);
+}
+
+/**
   * @brief  Set temperature to the heating unit
   * @param  Index: Index of the heating unit. 0 for left extruder, 1 for right extruder, 2 for heatedbed
   * @param  Temp: Target temperature

@@ -91,10 +91,10 @@ Rectangle {
         width: 48
         height: 42
         checked: true
-        canBeChecked: false
+        canBeChecked: true
         anchors { right: icbWifi.left; margins: 10}
-        icon: "qrc:/image/stepper_disable.png"
-        pressedIcon: "qrc:/image/stepper_enable.png"
+        icon: "qrc:/image/stepper_enable.png"
+        pressedIcon: "qrc:/image/stepper_disable.png"
         onClicked: base.stepperClicked()
     }
 }

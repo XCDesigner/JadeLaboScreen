@@ -108,7 +108,7 @@ void MainWindow::platformCalibrationHeating()
 
     if(screen_status.getPerformance() == PLATFORM_CALIBRATING)
     {
-        if((new_status.CurTemp[0] > 190) && (new_status.CurTemp[1] > 190))
+        if((new_status.CurTemp[0] > 210) && (new_status.CurTemp[1] > 210))
         {
             m_port->p_platformCalibration();
             ui->stackedWidget->setCurrentWidget(ui->page_PlatformCali_2);

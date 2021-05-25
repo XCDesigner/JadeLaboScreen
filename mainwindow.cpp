@@ -194,6 +194,7 @@ MainWindow::MainWindow(QWidget *parent) :
     QObject::connect(ui->qw_ExtruderSelect->rootObject(), SIGNAL(clicked()), this, SLOT(ExtruderChange()));
 
     QObject::connect(ui->qw_StatusNotice->rootObject(), SIGNAL(lightClicked()), this, SLOT(StatusNotice_Light_clicked()));
+    QObject::connect(ui->qw_StatusNotice->rootObject(), SIGNAL(stepperClicked()), this, SLOT(StatusNotice_Stepper_clicked()));
 
     qw_DistanceItem = ui->qw_Distance->rootObject();
 

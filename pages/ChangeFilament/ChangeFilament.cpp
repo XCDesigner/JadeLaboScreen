@@ -113,6 +113,7 @@ void MainWindow::on_pushButton_359_clicked()
     ui->pushButton_113->setEnabled(true);
     ui->pushButton_117->setEnabled(true);
     ui->pushButton_118->setEnabled(true);
+    ui->stackedWidget->setCurrentWidget(ui->page_GetStart);
 }
 
 void MainWindow::on_pushButton_113_clicked()

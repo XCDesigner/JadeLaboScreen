@@ -43,7 +43,7 @@ void MainWindow::xyCalibrationHeating() {
     m_port->getXhPage()->GetMachineStatus(&new_status);
     if(screen_status.getPerformance() == XY_CALIBRATING)
     {
-        if((new_status.CurTemp[0] > 190) && (new_status.CurTemp[1] > 190))
+        if((new_status.CurTemp[0] > 10) && (new_status.CurTemp[1] > 210))
         {
             m_port->x_xyCalibration();
             ui->stackedWidget->setCurrentWidget(ui->page_XYCali_2);

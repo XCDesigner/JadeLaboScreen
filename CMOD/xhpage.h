@@ -24,6 +24,7 @@ typedef struct {
     int16_t TarTemp[3];
     uint16_t Percent;
     uint8_t Status;
+    uint8_t StepperHold;
 }strMachineStatus;
 
 class XhPage : public QObject

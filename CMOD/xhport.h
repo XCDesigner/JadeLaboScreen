@@ -96,6 +96,7 @@ public:
 
     void setRGBLight(int, int, int);
     void setLightOnOff(bool);
+    void setStepperOnOff(bool);
 
     void setHeattingUnit(int, int);
     void setHeattingUnit(int, int, int, int);

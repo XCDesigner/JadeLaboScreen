@@ -70,7 +70,7 @@ font-family: barlow;
 }</string>
     </property>
     <property name="currentIndex">
-     <number>31</number>
+     <number>5</number>
     </property>
     <widget class="QWidget" name="page_12">
      <widget class="QLabel" name="label_14">
@@ -1784,7 +1784,7 @@ font-family: Barlow;
 border: 2px solid rgb(255, 99, 11) ;</string>
       </property>
       <property name="text">
-       <string>Cancle</string>
+       <string>Exit</string>
       </property>
      </widget>
      <widget class="QPushButton" name="pushButton_456">

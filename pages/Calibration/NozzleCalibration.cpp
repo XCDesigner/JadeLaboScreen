@@ -63,7 +63,7 @@ void MainWindow::nozzleCalibrationHeating()
 
     if(screen_status.getPerformance() == NOZZLE_CALIBRATING)
     {
-        if((new_status.CurTemp[0] > 190) && (new_status.CurTemp[1] > 190))
+        if((new_status.CurTemp[0] > 210) && (new_status.CurTemp[1] > 210))
         {
             m_port->n_nozzleCalibration();
             ui->stackedWidget->setCurrentWidget(ui->page_NozzleCali_2);

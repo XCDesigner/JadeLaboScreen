@@ -844,6 +844,7 @@ private slots:
     void ExtruderChange();
 
     void StatusNotice_Light_clicked();
+    void StatusNotice_Stepper_clicked();
 
     void ShowPauseDialogClicked();
     void ShowParameterDialogClicked();
