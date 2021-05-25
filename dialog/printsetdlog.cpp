@@ -306,64 +306,20 @@ void PrintSetDlog::buttonClicked(int Index)
     }
 }
 
+void PrintSetDlog::UncheckAllButton()
+{
+    for(int i=0;i<9;i++)
+    {
+        button_check_status[i] = false;
+        pButtons[i]->rootObject()->setProperty("isPressed", false);
+    }
+}
+
 void PrintSetDlog::updateButtonCheckStatus(int Index)
 {
-    if((Index == 0) || (Index == 1) || (Index == 2)) 
-    {
-        button_check_status[3] = button_check_status[4] = button_check_status[5] = button_check_status[6] = button_check_status[7] = button_check_status[8] = false;
-        pButtons[3]->rootObject()->setProperty("isPressed", false);
-        pButtons[4]->rootObject()->setProperty("isPressed", false);
-        pButtons[5]->rootObject()->setProperty("isPressed", false);
-        pButtons[6]->rootObject()->setProperty("isPressed", false);
-        pButtons[7]->rootObject()->setProperty("isPressed", false);
-        pButtons[8]->rootObject()->setProperty("isPressed", false);
-    }
-    else if((Index == 3) || (Index == 4))
-    {
-        button_check_status[0] = button_check_status[1] = button_check_status[2] = button_check_status[5] = button_check_status[6] = button_check_status[7] = button_check_status[8] = false;
-        pButtons[0]->rootObject()->setProperty("isPressed", false);
-        pButtons[1]->rootObject()->setProperty("isPressed", false);
-        pButtons[2]->rootObject()->setProperty("isPressed", false);
-        pButtons[5]->rootObject()->setProperty("isPressed", false);
-        pButtons[6]->rootObject()->setProperty("isPressed", false);
-        pButtons[7]->rootObject()->setProperty("isPressed", false);
-        pButtons[8]->rootObject()->setProperty("isPressed", false);
-    }
-    else if(Index == 5)
-    {
-        button_check_status[0] = button_check_status[1] = button_check_status[2] = button_check_status[3] = button_check_status[4] = button_check_status[6] = button_check_status[7] = button_check_status[8] = false;
-        pButtons[0]->rootObject()->setProperty("isPressed", false);
-        pButtons[1]->rootObject()->setProperty("isPressed", false);
-        pButtons[2]->rootObject()->setProperty("isPressed", false);
-        pButtons[3]->rootObject()->setProperty("isPressed", false);
-        pButtons[4]->rootObject()->setProperty("isPressed", false);
-        pButtons[6]->rootObject()->setProperty("isPressed", false);
-        pButtons[7]->rootObject()->setProperty("isPressed", false);
-        pButtons[8]->rootObject()->setProperty("isPressed", false);
-    }
-    else if(Index == 6)
-    {
-        button_check_status[0] = button_check_status[1] = button_check_status[2] = button_check_status[3] = button_check_status[4] = button_check_status[5] = button_check_status[7] = button_check_status[8] = false;
-        pButtons[0]->rootObject()->setProperty("isPressed", false);
-        pButtons[1]->rootObject()->setProperty("isPressed", false);
-        pButtons[2]->rootObject()->setProperty("isPressed", false);
-        pButtons[3]->rootObject()->setProperty("isPressed", false);
-        pButtons[4]->rootObject()->setProperty("isPressed", false);
-        pButtons[5]->rootObject()->setProperty("isPressed", false);
-        pButtons[7]->rootObject()->setProperty("isPressed", false);
-        pButtons[8]->rootObject()->setProperty("isPressed", false);
-    }
-    else if((Index == 7) || (Index == 8))
-    {
-        button_check_status[0] = button_check_status[1] = button_check_status[2] = button_check_status[3] = button_check_status[4] = button_check_status[5] = button_check_status[6] = false;
-        pButtons[0]->rootObject()->setProperty("isPressed", false);
-        pButtons[1]->rootObject()->setProperty("isPressed", false);
-        pButtons[2]->rootObject()->setProperty("isPressed", false);
-        pButtons[3]->rootObject()->setProperty("isPressed", false);
-        pButtons[4]->rootObject()->setProperty("isPressed", false);
-        pButtons[5]->rootObject()->setProperty("isPressed", false);
-        pButtons[6]->rootObject()->setProperty("isPressed", false);
-    }
+    UncheckAllButton();
+    pButtons[Index]->rootObject()->setProperty("isPressed", true);
+    button_check_status[Index] = true;
 }
 
 void PrintSetDlog::sendSetting()

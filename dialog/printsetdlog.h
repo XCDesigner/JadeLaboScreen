@@ -45,6 +45,7 @@ private slots:
 private:
     int getStepValue();
     int getLongPressStepValue();
+    void UncheckAllButton();
 
 private:
     Ui::PrintSetDlog *ui;
