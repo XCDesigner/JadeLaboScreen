@@ -166,5 +166,7 @@
         <file>image/platform_warning.png</file>
         <file>image/xy_warning.png</file>
         <file>image/nozzle_warning.png</file>
+        <file>image/stepper_disable.png</file>
+        <file>image/stepper_enable.png</file>
     </qresource>
 </RCC>

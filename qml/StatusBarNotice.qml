@@ -14,6 +14,7 @@ Rectangle {
     property alias udiskChecked: icbUdisk.checked
     property alias lightChecked: icbLight.checked
     property alias wifiChecked: icbWifi.checked
+    property alias stepperChecked: icbStepper.checked
 
     property alias udiskIcon: icbUdisk.icon
     property alias udiskPressedIcon: icbUdisk.pressedIcon
@@ -21,10 +22,13 @@ Rectangle {
     property alias lightPressedIcon: icbLight.pressedIcon
     property alias wifiIcon: icbWifi.icon
     property alias wifiPressedIcon: icbWifi.pressedIcon
+    property alias stepperIcon: icbStepper.icon
+    property alias stepperPressedIcon: icbStepper.pressedIcon
 
     signal udiskClicked()
     signal lightClicked()
     signal wifiClicked()
+    signal stepperClicked()
 
     onUdiskVisibleChanged: {
         if(udiskVisible == false)
@@ -80,5 +84,17 @@ Rectangle {
         icon: "qrc:/image/Wifi.png"
         pressedIcon: "qrc:/image/Wifi.png"
         onClicked: base.wifiClicked()
+    }
+
+    IconCheckedButton {
+        id: icbStepper
+        width: 48
+        height: 42
+        checked: true
+        canBeChecked: false
+        anchors { right: icbWifi.left; margins: 10}
+        icon: "qrc:/image/stepper_disable.png"
+        pressedIcon: "qrc:/image/stepper_enable.png"
+        onClicked: base.stepperClicked()
     }
 }

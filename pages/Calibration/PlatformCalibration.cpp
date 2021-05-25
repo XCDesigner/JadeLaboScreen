@@ -12,8 +12,8 @@ void MainWindow::platformCalibratePageinit()
 
 void MainWindow::on_pushButton_275_clicked()
 {
-    m_port->setHeattingUnit(0, 200);
-    m_port->setHeattingUnit(1, 200);
+    m_port->setHeattingUnit(0, 220);
+    m_port->setHeattingUnit(1, 220);
     m_port->setHeattingUnit(2, 60);
     ui->stackedWidget->setCurrentWidget(ui->page_PlatformCali_1);
     screen_status.setPerformance(PLATFORM_CALIBRATING);
