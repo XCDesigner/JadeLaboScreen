@@ -5,6 +5,8 @@
 
 void MainWindow::updateFileAnalize(QString SourceFile)
 {
+    if(QFile::exists(SourceFile) == false)
+        return;
     if(QFile::exists(UpdateFile) == true)
         QFile::remove(UpdateFile);
     QFile::copy(SourceFile, UpdateFile);
