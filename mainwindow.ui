@@ -70,7 +70,7 @@ font-family: barlow;
 }</string>
     </property>
     <property name="currentIndex">
-     <number>35</number>
+     <number>32</number>
     </property>
     <widget class="QWidget" name="page_12">
      <widget class="QLabel" name="label_14">
@@ -5445,28 +5445,12 @@ border-radius: 20px;</string>
        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
       </property>
      </widget>
-     <widget class="QLabel" name="label_116">
-      <property name="geometry">
-       <rect>
-        <x>188</x>
-        <y>145</y>
-        <width>380</width>
-        <height>380</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">border-image: url(:/image/platform_0.png);</string>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-     </widget>
      <widget class="QLabel" name="label_61">
       <property name="geometry">
        <rect>
-        <x>600</x>
+        <x>240</x>
         <y>250</y>
-        <width>631</width>
+        <width>991</width>
         <height>241</height>
        </rect>
       </property>
@@ -5479,18 +5463,19 @@ background-color: rgba(255, 255, 255, 0);</string>
       </property>
       <property name="text">
        <string>This operation will excutes the following steps:
-1. Heat up the hotend (do not touch nozzle);
-2. Run 4 calibration points;
-3. Twist adjust knob as known picture;
-       Please remove glass print plate;</string>
+1. Please remove glass print plate;
+2. Heat up the hotend (do not touch nozzle);
+3. Run 4 calibration points;
+4. Twist adjust knob as known picture;
+</string>
       </property>
      </widget>
      <widget class="QLabel" name="label_79">
       <property name="geometry">
        <rect>
-        <x>600</x>
+        <x>240</x>
         <y>190</y>
-        <width>601</width>
+        <width>961</width>
         <height>61</height>
        </rect>
       </property>
@@ -6671,9 +6656,9 @@ image: url(:/image/Bitmap5.png);</string>
      <widget class="QPushButton" name="pushButton_286">
       <property name="geometry">
        <rect>
-        <x>564</x>
+        <x>719</x>
         <y>600</y>
-        <width>690</width>
+        <width>541</width>
         <height>96</height>
        </rect>
       </property>
@@ -6688,7 +6673,7 @@ font-family: Barlow;
 border: 2px solid rgba(255, 99, 11, 255);</string>
       </property>
       <property name="text">
-       <string>Start</string>
+       <string>Auto Mode</string>
       </property>
      </widget>
      <widget class="QPushButton" name="pushButton_287">
@@ -6696,7 +6681,7 @@ border: 2px solid rgba(255, 99, 11, 255);</string>
        <rect>
         <x>182</x>
         <y>598</y>
-        <width>362</width>
+        <width>521</width>
         <height>96</height>
        </rect>
       </property>
@@ -6711,15 +6696,15 @@ font-family: Barlow;
 border: 2px solid rgba(67, 67, 67, 255);</string>
       </property>
       <property name="text">
-       <string>Back</string>
+       <string>Manual Mode</string>
       </property>
      </widget>
      <widget class="QLabel" name="label_143">
       <property name="geometry">
        <rect>
-        <x>610</x>
+        <x>210</x>
         <y>200</y>
-        <width>561</width>
+        <width>961</width>
         <height>241</height>
        </rect>
       </property>
@@ -6732,10 +6717,11 @@ background-color: rgba(255, 255, 255, 0);</string>
       </property>
       <property name="text">
        <string>This operation will excutes the following steps:
-1. Heat up the hotend (do not touch nozzle);
-2. Nozzle selfcheck;
-3. Twist adjust knob as shown picture;
-      Please remove glass print plate;</string>
+1. Please remove glass print plate;
+2. Heat up the hotend (do not touch nozzle);
+3. Nozzle selfcheck;
+4. Twist adjust knob as shown picture;
+</string>
       </property>
       <property name="wordWrap">
        <bool>true</bool>
@@ -6763,29 +6749,12 @@ border-radius: 20px;</string>
        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
       </property>
      </widget>
-     <widget class="QLabel" name="label_298">
-      <property name="geometry">
-       <rect>
-        <x>209</x>
-        <y>120</y>
-        <width>380</width>
-        <height>380</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">background-color: rgba(255, 255, 255, 0);
-image: url(:/image/nozzle_0.png);</string>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-     </widget>
      <widget class="QLabel" name="label_309">
       <property name="geometry">
        <rect>
-        <x>610</x>
+        <x>210</x>
         <y>160</y>
-        <width>591</width>
+        <width>991</width>
         <height>61</height>
        </rect>
       </property>
@@ -6816,7 +6785,6 @@ background-color: rgb(45, 44, 43);</string>
      <zorder>pushButton_286</zorder>
      <zorder>pushButton_287</zorder>
      <zorder>label_143</zorder>
-     <zorder>label_298</zorder>
      <zorder>label_309</zorder>
     </widget>
     <widget class="QWidget" name="page_NozzleCali_1">
@@ -7550,9 +7518,9 @@ border-radius: 20px;</string>
      <widget class="QLabel" name="label_299">
       <property name="geometry">
        <rect>
-        <x>620</x>
+        <x>220</x>
         <y>240</y>
-        <width>591</width>
+        <width>991</width>
         <height>301</height>
        </rect>
       </property>
@@ -7573,9 +7541,9 @@ background-color: rgb(45, 44, 43);</string>
      <widget class="QPushButton" name="pushButton_631">
       <property name="geometry">
        <rect>
-        <x>568</x>
+        <x>719</x>
         <y>600</y>
-        <width>684</width>
+        <width>541</width>
         <height>96</height>
        </rect>
       </property>
@@ -7590,7 +7558,7 @@ font-family: Barlow;
 border: 2px solid rgba(255, 99, 11, 255);</string>
       </property>
       <property name="text">
-       <string>Next</string>
+       <string>Auto Mode</string>
       </property>
      </widget>
      <widget class="QPushButton" name="pushButton_632">
@@ -7598,7 +7566,7 @@ border: 2px solid rgba(255, 99, 11, 255);</string>
        <rect>
         <x>183</x>
         <y>598</y>
-        <width>362</width>
+        <width>521</width>
         <height>96</height>
        </rect>
       </property>
@@ -7613,7 +7581,7 @@ font-family: Barlow;
 border: 2px solid rgba(67, 67, 67, 255);</string>
       </property>
       <property name="text">
-       <string>Back</string>
+       <string>Manual Mode</string>
       </property>
      </widget>
      <widget class="QLabel" name="label_266">
@@ -7638,35 +7606,12 @@ border-radius: 20px;</string>
        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
       </property>
      </widget>
-     <widget class="QLabel" name="label_308">
-      <property name="geometry">
-       <rect>
-        <x>202</x>
-        <y>135</y>
-        <width>380</width>
-        <height>380</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">background-color: rgba(255, 255, 255, 0);
-image: url(:/image/xy_0.png);</string>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
-      </property>
-      <property name="wordWrap">
-       <bool>true</bool>
-      </property>
-     </widget>
      <widget class="QLabel" name="label_300">
       <property name="geometry">
        <rect>
-        <x>620</x>
+        <x>220</x>
         <y>200</y>
-        <width>591</width>
+        <width>991</width>
         <height>61</height>
        </rect>
       </property>
@@ -7697,7 +7642,6 @@ background-color: rgb(45, 44, 43);</string>
      <zorder>label_299</zorder>
      <zorder>pushButton_631</zorder>
      <zorder>pushButton_632</zorder>
-     <zorder>label_308</zorder>
      <zorder>label_300</zorder>
     </widget>
     <widget class="QWidget" name="page_XYCali_1">
