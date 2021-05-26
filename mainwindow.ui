@@ -6144,10 +6144,10 @@ image: url(:/image/platform_2.png);</string>
      <widget class="QQuickWidget" name="qw_PlatformCalibrateP1">
       <property name="geometry">
        <rect>
-        <x>850</x>
-        <y>380</y>
-        <width>180</width>
-        <height>120</height>
+        <x>740</x>
+        <y>290</y>
+        <width>360</width>
+        <height>240</height>
        </rect>
       </property>
       <property name="resizeMode">
@@ -6350,10 +6350,10 @@ image: url(:/image/platform_3.png);</string>
      <widget class="QQuickWidget" name="qw_PlatformCalibrateP2">
       <property name="geometry">
        <rect>
-        <x>850</x>
-        <y>380</y>
-        <width>180</width>
-        <height>120</height>
+        <x>740</x>
+        <y>290</y>
+        <width>360</width>
+        <height>240</height>
        </rect>
       </property>
       <property name="resizeMode">
