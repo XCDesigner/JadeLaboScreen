@@ -70,7 +70,7 @@ font-family: barlow;
 }</string>
     </property>
     <property name="currentIndex">
-     <number>32</number>
+     <number>30</number>
     </property>
     <widget class="QWidget" name="page_12">
      <widget class="QLabel" name="label_14">
@@ -5297,6 +5297,13 @@ align: center;</string>
      </widget>
     </widget>
     <widget class="QWidget" name="page_PlatformCali_0">
+     <property name="styleSheet">
+      <string>color: rgba(255, 255, 255, 255);
+font-size: 32px;
+text-align: center;
+font-family: Barlow;
+background-color: rgba(255, 255, 255, 0);</string>
+     </property>
      <widget class="QPushButton" name="pushButton_238">
       <property name="geometry">
        <rect>
@@ -5456,7 +5463,7 @@ border-radius: 20px;</string>
       </property>
       <property name="styleSheet">
        <string notr="true">color: rgba(255, 255, 255, 255);
-font-size: 28px;
+font-size: 32px;
 text-align: center;
 font-family: Barlow;
 background-color: rgba(255, 255, 255, 0);</string>
@@ -5474,7 +5481,7 @@ background-color: rgba(255, 255, 255, 0);</string>
       <property name="geometry">
        <rect>
         <x>240</x>
-        <y>190</y>
+        <y>170</y>
         <width>961</width>
         <height>61</height>
        </rect>
@@ -6285,8 +6292,8 @@ border: 2px solid rgba(255, 99, 11, 255);</string>
        <rect>
         <x>670</x>
         <y>120</y>
-        <width>601</width>
-        <height>181</height>
+        <width>574</width>
+        <height>84</height>
        </rect>
       </property>
       <property name="styleSheet">
@@ -6297,10 +6304,8 @@ font-family: Barlow;
 background-color: rgb(32, 32, 32);</string>
       </property>
       <property name="text">
-       <string>Checking Platfrom
-Some points haven’t been calibrated 
- correctly. Run the platform calibration again 
- to further refine the calibration.</string>
+       <string>Turn the knob to adjust the platform 
+height according to the instructions.</string>
       </property>
      </widget>
      <widget class="QLabel" name="label_259">
@@ -6589,6 +6594,13 @@ image: url(:/image/Bitmap5.png);</string>
      <zorder>qw_PlatformCalibrateP3</zorder>
     </widget>
     <widget class="QWidget" name="page_NozzleCali_0">
+     <property name="styleSheet">
+      <string>color: rgba(255, 255, 255, 255);
+font-size: 32px;
+text-align: center;
+font-family: Barlow;
+background-color: rgba(255, 255, 255, 0);</string>
+     </property>
      <widget class="QPushButton" name="pushButton_282">
       <property name="geometry">
        <rect>
@@ -6710,7 +6722,7 @@ border: 2px solid rgba(67, 67, 67, 255);</string>
       </property>
       <property name="styleSheet">
        <string notr="true">color: rgba(255, 255, 255, 255);
-font-size: 28px;
+font-size: 32px;
 text-align: center;
 font-family: Barlow;
 background-color: rgba(255, 255, 255, 0);</string>
@@ -6753,7 +6765,7 @@ border-radius: 20px;</string>
       <property name="geometry">
        <rect>
         <x>210</x>
-        <y>160</y>
+        <y>130</y>
         <width>991</width>
         <height>61</height>
        </rect>
@@ -7209,7 +7221,7 @@ font-family: Barlow;
 border: 2px solid rgba(255, 99, 11, 255);</string>
       </property>
       <property name="text">
-       <string>Done</string>
+       <string>Redo</string>
       </property>
      </widget>
      <widget class="QLabel" name="label_265">
@@ -7572,7 +7584,7 @@ border: 2px solid rgba(255, 99, 11, 255);</string>
       </property>
       <property name="styleSheet">
        <string notr="true">font-weight: bold;
-font-family:Barlow;border-radius: 20px;
+font-family:Barlow;outline:none;border-radius: 20px;
 background-color: rgb(67, 67, 67);
 color: rgba(255, 255, 255, 255);
 font-size: 36px;
