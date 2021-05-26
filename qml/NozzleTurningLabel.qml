@@ -4,20 +4,20 @@ Rectangle {
     id: base
 
     color: "transparent"
-    width: 260
-    height: 246
+    width: 244
+    height: 310
 
     property int value: 99
 
     onValueChanged: {
         if(value > 0)
         {
-            img.source = "qrc:/image/nozzle_up.png"
+            img.source = "qrc:/image/nozzle_up2.png"
             label.text = value.toString()
         }
         else if(value < 0)
         {
-            img.source = "qrc:/image/nozzle_down.png"
+            img.source = "qrc:/image/nozzle_down2.png"
             label.text = (-value).toString()
         }
         else
@@ -30,16 +30,16 @@ Rectangle {
     Image {
         id: img
         anchors.fill: parent
-        source: "/image/nozzle_up.png"
+        source: "/image/nozzle_up2.png"
         sourceSize.width: width
         sourceSize.height: height
     }
 
     Rectangle {
         color: "transparent"
-        height: parent.height
-        width: 60
-        anchors { left: parent.left }
+        height: 60
+        width: parent.width
+        anchors { bottom: parent.bottom }
         Text {
             id: label
             text: "3"

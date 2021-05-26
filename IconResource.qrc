@@ -173,5 +173,7 @@
         <file>qml/NozzleTurningLabel.qml</file>
         <file>image/nozzle_down.png</file>
         <file>image/nozzle_up.png</file>
+        <file>image/nozzle_down2.png</file>
+        <file>image/nozzle_up2.png</file>
     </qresource>
 </RCC>
