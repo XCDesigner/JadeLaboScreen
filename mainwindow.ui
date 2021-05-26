@@ -70,7 +70,7 @@ font-family: barlow;
 }</string>
     </property>
     <property name="currentIndex">
-     <number>43</number>
+     <number>30</number>
     </property>
     <widget class="QWidget" name="page_12">
      <widget class="QLabel" name="label_14">
@@ -6152,10 +6152,10 @@ image: url(:/image/platform_2.png);</string>
      <widget class="QQuickWidget" name="qw_PlatformCalibrateP1">
       <property name="geometry">
        <rect>
-        <x>840</x>
-        <y>320</y>
-        <width>190</width>
-        <height>190</height>
+        <x>850</x>
+        <y>380</y>
+        <width>180</width>
+        <height>120</height>
        </rect>
       </property>
       <property name="resizeMode">
@@ -6260,7 +6260,7 @@ font-family: Barlow;
 border: 2px solid rgba(255, 99, 11, 255);</string>
       </property>
       <property name="text">
-       <string>NEXT</string>
+       <string>Redo</string>
       </property>
      </widget>
      <widget class="QPushButton" name="pushButton_376">
@@ -6360,10 +6360,10 @@ image: url(:/image/platform_3.png);</string>
      <widget class="QQuickWidget" name="qw_PlatformCalibrateP2">
       <property name="geometry">
        <rect>
-        <x>840</x>
-        <y>320</y>
-        <width>190</width>
-        <height>190</height>
+        <x>850</x>
+        <y>380</y>
+        <width>180</width>
+        <height>120</height>
        </rect>
       </property>
       <property name="resizeMode">
@@ -6577,10 +6577,10 @@ image: url(:/image/Bitmap5.png);</string>
      <widget class="QQuickWidget" name="qw_PlatformCalibrateP3">
       <property name="geometry">
        <rect>
-        <x>840</x>
-        <y>320</y>
-        <width>190</width>
-        <height>190</height>
+        <x>850</x>
+        <y>380</y>
+        <width>180</width>
+        <height>120</height>
        </rect>
       </property>
       <property name="resizeMode">
@@ -7289,18 +7289,23 @@ image: url(:/image/nozzle_1.png);</string>
      <widget class="QQuickWidget" name="qw_NozzleCalibrateP1">
       <property name="geometry">
        <rect>
-        <x>840</x>
-        <y>320</y>
-        <width>190</width>
-        <height>190</height>
+        <x>750</x>
+        <y>300</y>
+        <width>360</width>
+        <height>246</height>
        </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Adobe Arabic</family>
+       </font>
       </property>
       <property name="resizeMode">
        <enum>QQuickWidget::SizeRootObjectToView</enum>
       </property>
       <property name="source">
        <url>
-        <string>qrc:/qml/TurningLabel.qml</string>
+        <string>qrc:/qml/NozzleTurningLabel.qml</string>
        </url>
       </property>
      </widget>
@@ -9593,10 +9598,10 @@ background-color: rgb(255, 255, 255);</string>
      <widget class="QQuickWidget" name="quickWidget">
       <property name="geometry">
        <rect>
-        <x>750</x>
-        <y>60</y>
-        <width>428</width>
-        <height>572</height>
+        <x>910</x>
+        <y>350</y>
+        <width>260</width>
+        <height>246</height>
        </rect>
       </property>
       <property name="resizeMode">
@@ -9604,7 +9609,7 @@ background-color: rgb(255, 255, 255);</string>
       </property>
       <property name="source">
        <url>
-        <string>qrc:/qml/DigitalKeyBoard.qml</string>
+        <string>qrc:/qml/NozzleTurningLabel.qml</string>
        </url>
       </property>
      </widget>

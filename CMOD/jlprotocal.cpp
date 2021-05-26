@@ -47,6 +47,7 @@ QByteArray JLProtocal::parseDataV30(QByteArray SourceData, uint32_t *DataRead)
         {
             SourceData.remove(0, 1);
             data_read = data_read + 1;
+            qDebug()<<"P0";
             continue;
         }
         if(SourceData.size() > 1)
@@ -57,6 +58,7 @@ QByteArray JLProtocal::parseDataV30(QByteArray SourceData, uint32_t *DataRead)
             }
             else
             {
+                qDebug()<<"P1";
                 SourceData.remove(0, 2);
                 data_read = data_read + 2;
             }
@@ -72,12 +74,14 @@ QByteArray JLProtocal::parseDataV30(QByteArray SourceData, uint32_t *DataRead)
         {
             data_read++;
             SourceData.remove(0, 1);
+            qDebug()<<"P2";
             continue;
         }
         if(SourceData.at(1) != header[1])
         {
             data_read = data_read + 2;
             SourceData.remove(0, 2);
+            qDebug()<<"P3";
             continue;
         }
         uint32_t command_len = 0;
@@ -90,6 +94,7 @@ QByteArray JLProtocal::parseDataV30(QByteArray SourceData, uint32_t *DataRead)
         {
             data_read = data_read + 2;
             SourceData.remove(0, 2);
+            qDebug()<<"P4";
             continue;
         }
 
@@ -97,6 +102,7 @@ QByteArray JLProtocal::parseDataV30(QByteArray SourceData, uint32_t *DataRead)
         if(command_len >1024) {
             data_read = data_read + 2;
             SourceData.remove(0, 2);
+            qDebug()<<"P5";
             continue;
         }
 
@@ -119,6 +125,7 @@ QByteArray JLProtocal::parseDataV30(QByteArray SourceData, uint32_t *DataRead)
             data_read = data_read + 2;
             SourceData.remove(0, 2);
             ret_datas.clear();
+            qDebug()<<"P6";
             continue;
         }
 

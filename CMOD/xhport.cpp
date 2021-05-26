@@ -713,12 +713,13 @@ void XhPort::preparePrint(QString Mode, QByteArray Offset)
 {
     QByteArray s;
     QMap<QString, QByteArray> map;
+    qDebug()<<"prepare mode:" << Mode;
     map["Direct"] = QByteArray::fromHex("060D00");
+    map["Mix"] = QByteArray::fromHex("060D01");
     map["Duplicate"] = QByteArray::fromHex("060D02");
     map["Mirror"] = QByteArray::fromHex("060D03");
     map["Origin-Duplicate"] = QByteArray::fromHex("060D04");
     map["Origin-Mirror"] = QByteArray::fromHex("060D05");
-    map["Origin-Mix"] = QByteArray::fromHex("060D06");
     map["Unsupport"] = QByteArray::fromHex("060D00");
 
     s = map[Mode];
@@ -811,6 +812,16 @@ void XhPort::prepareChangeFilament()
 {
     QByteArray buff = QByteArray::fromHex("020A");
     m_serial->writeProtocalData(buff);
+}
+
+/**
+  * @brief  Send test
+  * @param  Datas: Data to send
+  * @retval None
+  */
+void XhPort::SendTest(QByteArray Datas)
+{
+    m_serial->writeProtocalData(Datas);
 }
 
 void XhPort::testdemo()

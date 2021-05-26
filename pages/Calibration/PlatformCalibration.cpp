@@ -86,7 +86,8 @@ void MainWindow::on_pushButton_371_clicked()
 
 void MainWindow::on_pushButton_375_clicked()
 {
-    ui->stackedWidget->setCurrentWidget(ui->page_PlatformCali_5);
+    on_pushButton_259_clicked();
+    // ui->stackedWidget->setCurrentWidget(ui->page_PlatformCali_5);
 }
 
 void MainWindow::on_pushButton_373_clicked()

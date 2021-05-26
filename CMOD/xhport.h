@@ -150,6 +150,8 @@ public:
     void getTMCValue(uint8_t, QByteArray Address);
     void trigFILSample();
     void getFILValue();
+
+    void SendTest(QByteArray Datas);
 private:
     // QSerialPort *m_serial;
     JLSerialPort *m_serial;
