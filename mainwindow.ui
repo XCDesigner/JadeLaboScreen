@@ -7289,10 +7289,10 @@ image: url(:/image/nozzle_1.png);</string>
      <widget class="QQuickWidget" name="qw_NozzleCalibrateP1">
       <property name="geometry">
        <rect>
-        <x>760</x>
-        <y>270</y>
-        <width>294</width>
-        <height>310</height>
+        <x>800</x>
+        <y>290</y>
+        <width>266</width>
+        <height>248</height>
        </rect>
       </property>
       <property name="font">

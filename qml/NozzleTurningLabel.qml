@@ -4,8 +4,8 @@ Rectangle {
     id: base
 
     color: "transparent"
-    width: 244
-    height: 310
+    width: 266
+    height: 248
 
     property int value: 99
 
