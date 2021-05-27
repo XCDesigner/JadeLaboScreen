@@ -60,4 +60,48 @@ void MainWindow::DebugCallback(QByteArray Data)
         QString fil2_raw = Data.mid(15, 4).toHex() + "\n";
         ui->label_3->setText("FIL1:" + fil1 + "FIL1_Raw:" + fil1_raw + "FIL2:" + fil2 + "FIL2_Raw:" + fil2_raw);
     }
+    else if(prefix == "0b0f00") {
+        bool added = false;
+        test_counter = test_counter + 1;
+        for(uint i=0;i<sizeof(test_buffer);i++)
+        {
+            if(test_buffer[i] != 0xff)
+            {
+                added = true;
+                test_buffer[i]++;
+                break;
+            }
+        }
+        if(added == false)
+        {
+            for(uint i=0;i<sizeof(test_buffer);i++)
+            {
+                test_buffer[i] = 0;
+            }
+        }
+        if(test_counter == 65535)
+        {
+            qDebug()<<"test_counter:" << test_counter;
+        }
+        m_port->SendTest(QByteArray::fromRawData((char*)test_buffer, sizeof(test_buffer)));
+    }
+}
+
+void MainWindow::on_pushButton_3_clicked()
+{
+    qDebug()<<"Start";
+    test_counter = 0;
+    for(uint i=0;i<sizeof(test_buffer);i++)
+    {
+        test_buffer[i] = 0;
+    }
+    m_port->SendTest(QByteArray::fromRawData((char*)test_buffer, sizeof(test_buffer)));
+}
+
+void MainWindow::on_pushButton_2_clicked()
+{
+    foreach(QByteArray tmp, command_received_list)
+    {
+        qDebug()<<tmp;
+    }
 }

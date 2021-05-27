@@ -1661,16 +1661,6 @@ void MainWindow::on_pushButton_clicked()
 
 }
 
-void MainWindow::on_pushButton_2_clicked()
-{
-
-}
-
-void MainWindow::on_pushButton_3_clicked()
-{
-    wifiControlerInit();
-}
-
 void MainWindow::on_pushButton_272_clicked()
 {
     QByteArray prepare_manual_move = QByteArray::fromHex("0209");

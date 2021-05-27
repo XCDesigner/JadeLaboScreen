@@ -30,7 +30,6 @@ Rectangle {
     Image {
         id: img
         anchors.fill: parent
-        source: "qrc:/image/nozzle_up2.png"
         sourceSize.width: width
         sourceSize.height: height
     }

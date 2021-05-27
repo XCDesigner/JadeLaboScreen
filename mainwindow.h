@@ -127,6 +127,9 @@ public:
 
 
 private:
+    uint8_t test_buffer[512];
+    uint32_t test_counter;
+
     Ui::MainWindow *ui;
 
     int changeFilamentSelectExtruder;
@@ -242,6 +245,8 @@ private:
 
     QDateTime print_start_time;
     QDateTime print_end_time;
+
+    QList<QByteArray> command_received_list;
 
 
 private slots:

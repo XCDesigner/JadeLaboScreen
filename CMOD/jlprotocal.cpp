@@ -125,7 +125,7 @@ QByteArray JLProtocal::parseDataV30(QByteArray SourceData, uint32_t *DataRead)
             data_read = data_read + 2;
             SourceData.remove(0, 2);
             ret_datas.clear();
-            qDebug()<<"P6";
+            qDebug()<<cal_checksum << checksum << "P6";
             continue;
         }
 

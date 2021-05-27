@@ -721,6 +721,7 @@ void XhPort::preparePrint(QString Mode, QByteArray Offset)
     map["Origin-Duplicate"] = QByteArray::fromHex("060D04");
     map["Origin-Mirror"] = QByteArray::fromHex("060D05");
     map["Unsupport"] = QByteArray::fromHex("060D00");
+    map["Unknown"] = QByteArray::fromHex("060D00");
 
     s = map[Mode];
     s.append(Offset);
@@ -821,7 +822,9 @@ void XhPort::prepareChangeFilament()
   */
 void XhPort::SendTest(QByteArray Datas)
 {
-    m_serial->writeProtocalData(Datas);
+    QByteArray buff = QByteArray::fromHex("0b0f");
+    buff.append(Datas);
+    m_serial->writeProtocalData(buff);
 }
 
 void XhPort::testdemo()
