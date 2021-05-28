@@ -106,7 +106,7 @@ void XhGcodeFileParser::doParseByDirect()
     {
         parseTop100Lines();
         int l  = m_headerInfo["left_temp"].toString().toInt();
-        if((m_headerInfo["mode"].toString() == "Orgin-Mirror") || (m_headerInfo["mode"].toString() == "Orgin-Duplicate"))
+        if((m_headerInfo["mode"].toString() == "Origin-Mirror") || (m_headerInfo["mode"].toString() == "Origin-Duplicate"))
             m_headerInfo["right_temp"] = QString::number(l+m_tempOffset);
 #ifdef DEBUG
         qDebug()<<"left_temp"<<l<<m_headerInfo.value("left_temp").toString();
@@ -305,12 +305,12 @@ void XhGcodeFileParser::parseMode(QString &gcode)
     if (gcode.contains("M605") && gcode.contains("S")) {
         auto mode = getSymbolValue("S", gcode);
         if (mode == "2") {
-            m_headerInfo["mode"] = "Orgin-Duplicate";
+            m_headerInfo["mode"] = "Origin-Duplicate";
             m_tempOffset = getSymbolValue("R", gcode).toInt();
             m_headerInfo["offset"] = getSymbolValue("X", gcode).toFloat();
             m_origin_duplucate_found = true;
         } else if (mode == "3") {
-            m_headerInfo["mode"] = "Orgin-Mirror";
+            m_headerInfo["mode"] = "Origin-Mirror";
         } else if (mode == "1") {
             m_headerInfo["mode"] = "Mix";
         }
