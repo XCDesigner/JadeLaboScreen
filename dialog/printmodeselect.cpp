@@ -44,7 +44,7 @@ void PrintModeSelect::init(QByteArray InitData, QString InputFile, QString Outpu
 {
     input_file = InputFile;
     output_file_name = OutputFile;
-    if((InitData == "Orgin-Mirror") || (InitData == "Orgin-Duplicate") || (InitData == "Unsupport") || (InitData == "Mix"))
+    if((InitData == "Origin-Mirror") || (InitData == "Origin-Duplicate") || (InitData == "Unsupport") || (InitData == "Mix"))
     {
         ui->qw_btnDuplicate->rootObject()->setProperty("enable", false);
         ui->qw_btnMirror->rootObject()->setProperty("enable", false);
@@ -61,7 +61,7 @@ void PrintModeSelect::init(QByteArray InitData, myListWidgetItem *pSelectItem)
     p_file_item = pSelectItem;
     input_file = p_file_item->m_filePath;
     output_file_name = p_file_item->m_fileName;
-    if((InitData == "Orgin-Mirror") || (InitData == "Orgin-Duplicate") || (InitData == "Unsupport") || (InitData == "Mix"))
+    if((InitData == "Origin-Mirror") || (InitData == "Origin-Duplicate") || (InitData == "Unsupport") || (InitData == "Mix"))
     {
         ui->qw_btnDuplicate->rootObject()->setProperty("enable", false);
         ui->qw_btnMirror->rootObject()->setProperty("enable", false);
