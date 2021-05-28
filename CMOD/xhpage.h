@@ -108,9 +108,7 @@ signals:
     void command_received(uint8_t, uint8_t, QByteArray);
     /*first start*/
     void firstTestResult(bool ,bool ,bool ,bool ,bool );
-    void firstTemperatureResult(int ,int ,int ,int ,int ,int ,int ,QByteArray );
     void xNoHeating(bool );
-    void xyCheck(bool );
     /*tool*/
     void disUseFilament(bool );
     void backFactory(bool );
@@ -123,7 +121,6 @@ signals:
 
     void sendFileArry(QByteArray );
     /*print*/
-    void fileSendOver();//文件传输结束
     void goOnOk();
 
     void selfTest1();

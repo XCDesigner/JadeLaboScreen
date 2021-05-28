@@ -17,7 +17,6 @@ XhPort::XhPort(QObject *parent) : QObject(parent)
     QObject::connect(m_package,&XhPage::sendFileArry,this,&XhPort::sendfile);
 
     QObject::connect(m_package,&XhPage::firstTestResult,this,&XhPort::xhfirstTestResult);
-    QObject::connect(m_package,&XhPage::firstTemperatureResult,this,&XhPort::xhfirstTemperatureResult);
     /*tool*/
     QObject::connect(m_package,&XhPage::disUseFilament,this,&XhPort::xhdisUseFilament);
     QObject::connect(m_package,&XhPage::backFactory,this,&XhPort::xhbackFactory);
@@ -26,10 +25,7 @@ XhPort::XhPort(QObject *parent) : QObject(parent)
     QObject::connect(m_package,&XhPage::nNozzleCalibration,this,&XhPort::xhnNozzleCalibration);
     QObject::connect(m_package,&XhPage::xPlatformCalibration,this,&XhPort::xhxPlatformCalibration);
 
-    QObject::connect(m_package,&XhPage::fileSendOver,this,&XhPort::fileSendOverSlot);
-
     QObject::connect(m_package,&XhPage::xNoHeating,this,&XhPort::xhxNoHeating);
-    QObject::connect(m_package,&XhPage::xyCheck,this,&XhPort::xhxyCheck);
 
     QObject::connect(m_package,&XhPage::selfTest1,this,&XhPort::xhselfTest1);
     QObject::connect(m_package,&XhPage::selfTest2,this,&XhPort::xhselfTest2);
@@ -125,18 +121,6 @@ QByteArray XhPort::startPrint(QString m_filePath)
     return  buff;
 }
 
-void XhPort::AcsPrint(QByteArray a)
-{
-    m_serial->write(a);
-}
-
-void XhPort::regainPrint()
-{
-    QByteArray s = QByteArray::fromHex("060C");
-    QByteArray buff = m_package->groupPage(s);
-    m_serial->write(buff);
-}
-
 void XhPort::readyprint(int Mode, QByteArray Offset)
 {
     QByteArray s;
@@ -172,21 +156,6 @@ void XhPort::setBackupEnableStatus(bool Enable)
     }
     else {
         QByteArray s = QByteArray::fromHex("010F00");
-        QByteArray buff = m_package->groupPage(s);
-        m_serial->write(buff);
-    }
-}
-
-void XhPort::parcom(int a )
-{
-    if(a == 0)
-    {
-        QByteArray s = QByteArray::fromHex("010F00");
-        QByteArray buff = m_package->groupPage(s);
-        m_serial->write(buff);
-    }
-    else {
-        QByteArray s = QByteArray::fromHex("010F01");
         QByteArray buff = m_package->groupPage(s);
         m_serial->write(buff);
     }
@@ -944,11 +913,6 @@ void XhPort::xhfirstTestResult(bool a, bool b, bool c, bool d, bool e)
     emit firstTestResult(a,b,c,d,e);
 }
 
-void XhPort::xhfirstTemperatureResult(int a, int b, int c, int d , int e, int f, int g, QByteArray data )
-{
-    emit firstTemperatureResult(a,b,c,d,e,f,g,data);
-}
-
 void XhPort::xhdisUseFilament(bool a)
 {
     emit disUseFilament(a);
@@ -969,19 +933,9 @@ void XhPort::xhxPlatformCalibration(bool a )
     emit xPlatformCalibration(a);
 }
 
-void XhPort::fileSendOverSlot()
-{
-    emit fileSendOver();
-}
-
 void XhPort::xhxNoHeating(bool a)
 {
     emit xNoHeating(a);
-}
-
-void XhPort::xhxyCheck(bool a)
-{
-    emit xyCheck(a);
 }
 
 void XhPort::xhpowerlost()

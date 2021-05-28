@@ -125,6 +125,9 @@ public:
     void ExtrudeControlInit();
     void DebugCallback(QByteArray);
 
+    // Change Hotend
+    void changeHotendPageInit();
+
 
 private:
     uint8_t test_buffer[512];
@@ -417,8 +420,6 @@ private slots:
     void on_pushButton_174_clicked();
 
     void on_pushButton_175_clicked();
-
-    void on_pushButton_176_clicked();
 
     void on_pushButton_177_clicked();
 
@@ -834,13 +835,23 @@ private slots:
     void LightSliderReleased();
     void LightSettingTimer();
 
-    void leftSetTemp();
-    void leftExtrude();
-    void leftRetract();
-    void rightSetTemp();
-    void rightExtrude();
-    void rightRetract();
-    void onSetTemp();
+    // Change filament
+    void changeFilamentLeftSetTemp();
+    void changeFilamentLeftExtrude();
+    void changeFilamentLeftRetract();
+    void changeFilamentRightSetTemp();
+    void changeFilamentRightExtrude();
+    void changeFilamentRightRetract();
+    void changeFilamentSetTemp();
+
+    // Change hotend
+    void changeHotendLeftSetTemp();
+    void changeHotendLeftExtrude();
+    void changeHotendLeftRetract();
+    void changeHotendRightSetTemp();
+    void changeHotendRightExtrude();
+    void changeHotendRightRetract();
+    void changeHotendSetTemp();
 
     void StopPreHeatting();
 
@@ -901,6 +912,23 @@ private slots:
     void on_pushButton_276_clicked();
 
     void on_pushButton_275_clicked();
+
+    void on_pushButton_176_clicked();
+
+    void onChangeHotend_btnClick_0(int);
+    void onChangeHotend_btnClick_1(int);
+    void onChangeHotend_btnClick_2(int);
+    void onChangeHotend_btnClick_3(int);
+    void onChangeHotend_btnClick_4(int);
+    void onChangeHotend_btnClick_5(int);
+    void onChangeHotend_btnClick_6(int);
+    void onChangeHotend_btnClick_7(int);
+    void onChangeHotend_btnClick_8(int);
+    void onChangeHotend_btnClick_9(int);
+    void onChangeHotend_btnClick_10(int);
+    void onChangeHotend_btnClick_11(int);
+    void onChangeHotend_btnClick_12(int);
+    void onChangeHotend_btnClick_13(int);
 
 signals:
     void detection(bool);

@@ -119,8 +119,6 @@ int XhPage::analysis(QByteArray package)
                                     fTGet(data);
                                     break;
 
-                                case '\x05':
-                                break;
                                 case '\x06':
                                 if(data[2]=='\x00')
                                 {
@@ -130,11 +128,6 @@ int XhPage::analysis(QByteArray package)
                                     }
                                 }
                                 break;
-                                case '\x07':
-                                if(data[2]=='\x00')
-                                    emit xyCheck(true);
-                                break;
-
                             default:
                                 break;
                             }
@@ -245,15 +238,6 @@ int XhPage::analysis(QByteArray package)
                                     sendfile(offset);
                             break;
                                 }
-                            case '\x0D':
-                            if(data[2] == '\x00')
-                            {
-                                 // emit fileSendOver();
-                            }
-                            break;
-                            case '\x02':
-
-                            break;
                             case '\x01':
                             if(data[2]=='\x00')
                                 if(m_file!= nullptr)
@@ -261,12 +245,6 @@ int XhPage::analysis(QByteArray package)
                                     m_file->close();
                                     m_file = nullptr;
                                 }
-                            break;
-                            case '\x0C':
-
-                            break;
-                            case '\x07':
-
                             break;
                         }
                         break;

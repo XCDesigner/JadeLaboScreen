@@ -43,15 +43,12 @@ public:
 
     /**********PRINT IDER**********/
     QByteArray startPrint(QString);
-    void AcsPrint(QByteArray);
     void pausePrint();
     void stopPrint();
-    void regainPrint();
     void readyprint(int ,QByteArray);
 
     void enbackup(bool );
     void setBackupEnableStatus(bool);
-    void parcom(int );
     void askHotend();
     void askstate();
 
@@ -162,12 +159,9 @@ private:
     QTimer *portTimer;//专门用于测试通讯串口的计时器
 
 signals:
-
     void firstTestResult(bool ,bool ,bool ,bool ,bool );
-    void firstTemperatureResult(int ,int ,int ,int ,int ,int ,int ,QByteArray );
     void platCheck(bool );
     void xNoHeating(bool );
-    void xyCheck(bool );
     /*tool*/
     void disUseFilament(bool );
     void backFactory(bool );
@@ -177,8 +171,6 @@ signals:
     void nNozzleCalibration( int );
     void xPlatformCalibration(bool );
     void canelk();
-
-    void fileSendOver();
 
     void powerlost();
 
@@ -198,7 +190,6 @@ private slots:
     void sendfile(QByteArray );
 
     void xhfirstTestResult(bool ,bool ,bool ,bool ,bool );
-    void xhfirstTemperatureResult(int ,int ,int ,int ,int ,int ,int ,QByteArray );
     /*tool*/
     void xhdisUseFilament(bool );
     void xhbackFactory(bool );
@@ -207,9 +198,7 @@ private slots:
     void xhnNozzleCalibration( int );
     void xhxPlatformCalibration(bool );
 
-    void fileSendOverSlot();
     void xhxNoHeating(bool );
-    void xhxyCheck(bool );
 
     void xhpowerlost();
 

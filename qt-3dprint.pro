@@ -76,6 +76,7 @@ SOURCES += \
     pages/Calibration/PlatformCalibration.cpp \
     pages/Calibration/XYCalibration.cpp \
     pages/ChangeFilament/ChangeFilament.cpp \
+    pages/ChangeHotend/ChangeHotend.cpp \
     pages/FaultProcess/Axis.cpp \
     pages/FaultProcess/Filament.cpp \
     pages/FaultProcess/PowerRecovery.cpp \

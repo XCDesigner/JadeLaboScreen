@@ -73,7 +73,6 @@ MainWindow::MainWindow(QWidget *parent) :
     QObject::connect(m_port, &XhPort::firstTestResult, this,&MainWindow::winGfour);
 
     QObject::connect(m_port,&XhPort::xNoHeating,this,&MainWindow::cannext);
-//    QObject::connect(m_port,&XhPort::xyCheck,this,&MainWindow::xhxyCheck);
 
     QObject::connect(m_port,&XhPort::selfTest1,this,&MainWindow::selftest1);
     QObject::connect(m_port,&XhPort::selfTest2,this,&MainWindow::selftest2);
@@ -254,16 +253,16 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->qw_LeftHeating->rootObject()->setProperty("indicatorIcon", "qrc:/image/LeftHotendIndecator.png");
     ui->qw_LeftHeating->rootObject()->setProperty("indicatorText", "Left Extruder");
     ui->qw_LeftHeating->rootObject()->setProperty("extrudeEnable", false);
-    QObject::connect(ui->qw_LeftHeating->rootObject(), SIGNAL(choseTempClicked()), this, SLOT(leftSetTemp()));
-    QObject::connect(ui->qw_LeftHeating->rootObject(), SIGNAL(extruderClicked()), this, SLOT(leftExtrude()));
-    QObject::connect(ui->qw_LeftHeating->rootObject(), SIGNAL(retackClicked()), this, SLOT(leftRetract()));
+    QObject::connect(ui->qw_LeftHeating->rootObject(), SIGNAL(choseTempClicked()), this, SLOT(changeFilamentLeftSetTemp()));
+    QObject::connect(ui->qw_LeftHeating->rootObject(), SIGNAL(extruderClicked()), this, SLOT(changeFilamentLeftExtrude()));
+    QObject::connect(ui->qw_LeftHeating->rootObject(), SIGNAL(retackClicked()), this, SLOT(changeFilamentLeftRetract()));
 
     ui->qw_RightHeating->rootObject()->setProperty("indicatorIcon", "qrc:/image/RightHotendIndecator.png");
     ui->qw_RightHeating->rootObject()->setProperty("indicatorText", "Right Extruder");
     ui->qw_RightHeating->rootObject()->setProperty("extrudeEnable", false);
-    QObject::connect(ui->qw_RightHeating->rootObject(), SIGNAL(choseTempClicked()), this, SLOT(rightSetTemp()));
-    QObject::connect(ui->qw_RightHeating->rootObject(), SIGNAL(extruderClicked()), this, SLOT(rightExtrude()));
-    QObject::connect(ui->qw_RightHeating->rootObject(), SIGNAL(retackClicked()), this, SLOT(rightRetract()));
+    QObject::connect(ui->qw_RightHeating->rootObject(), SIGNAL(choseTempClicked()), this, SLOT(changeFilamentRightSetTemp()));
+    QObject::connect(ui->qw_RightHeating->rootObject(), SIGNAL(extruderClicked()), this, SLOT(changeFilamentRightExtrude()));
+    QObject::connect(ui->qw_RightHeating->rootObject(), SIGNAL(retackClicked()), this, SLOT(changeFilamentRightRetract()));
 
     QObject::connect(m_port->getXhPage(), SIGNAL(command_received(uint8_t, uint8_t, QByteArray)), this, SLOT(printMessageProcess(uint8_t, uint8_t, QByteArray)));
     QObject::connect(m_port->getXhPage(), SIGNAL(command_received(uint8_t, uint8_t, QByteArray)), this, SLOT(onMessageTest(uint8_t, uint8_t, QByteArray)));
@@ -280,6 +279,7 @@ MainWindow::MainWindow(QWidget *parent) :
     platformCalibratePageinit();
     xyCalibratePageinit();
     nozzleCalibratePageinit();
+    changeHotendPageInit();
 }
 
 
@@ -878,11 +878,6 @@ void MainWindow::on_pushButton_174_clicked()
 void MainWindow::on_pushButton_175_clicked()
 {
     ui->stackedWidget->setCurrentWidget(ui->page_ManualControl);
-}
-
-void MainWindow::on_pushButton_176_clicked()
-{
-
 }
 
 void MainWindow::on_pushButton_177_clicked()

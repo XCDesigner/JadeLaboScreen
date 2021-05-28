@@ -91,9 +91,9 @@ Rectangle {
         width: 140
         height: 140
         color: "#ff630b"
-        icon: "qrc:/image/UpEnable.png"
-        pressedIcon: "qrc:/image/UpActive.png"
-        disableIcon: "qrc:/image/UpDisable.png"
+        icon: "qrc:/image/unload_enable.png"
+        pressedIcon: "qrc:/image/unload_pressed.png"
+        disableIcon: "qrc:/image/unload_disable.png"
         onRelease: {
             base.retackClicked()
         }
@@ -106,9 +106,9 @@ Rectangle {
         width: 140
         height: 140
         color: "#ff630b"
-        icon: "qrc:/image/DownEnable.png"
-        pressedIcon: "qrc:/image/DownActived.png"
-        disableIcon: "qrc:/image/DownDisable.png"
+        icon: "qrc:/image/load_enable.png"
+        pressedIcon: "qrc:/image/load_pressed.png"
+        disableIcon: "qrc:/image/load_disable.png"
         onRelease: {
             base.extruderClicked()
         }

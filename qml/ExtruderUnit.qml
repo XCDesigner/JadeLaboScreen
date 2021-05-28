@@ -4,11 +4,9 @@ Rectangle {
     id: base
 
     property int indicator: 0
-    property bool extruderEnabled: false
+    property bool extruderEnabled: true
     property int temp: 0
     property string distance: "1"
-
-    property bool enableMotor: false
 
     property int leftTemp: 0
     property int rightTemp: 0
@@ -26,17 +24,6 @@ Rectangle {
     signal retractClicked(int Indicator)
     signal chooseTempClicked(int Indicator)
     signal chooseDistanceClicked(int Indicator)
-
-    onEnableMotorChanged: {
-        if(enableMotor == true){
-            btnExtrude.source = "/image/extrude_enable.png"
-            btnRetract.source = "/image/retract_enable.png"
-        }
-        else {
-            btnExtrude.source = "/image/extrude_disable.png"
-            btnRetract.source = "/image/retract_disable.png"
-        }
-    }
 
     onTempChanged: {
         if(temp == 0)
@@ -80,12 +67,12 @@ Rectangle {
 
     onExtruderEnabledChanged: {
         if(extruderEnabled == true) {
-            btnExtrude.source = "/image/extrude_enable.png"
-            btnRetract.source = "/image/retract_enable.png"
+            btnLoad.enable = true
+            btnUnload.enable = true
         }
         else {
-            btnExtrude.source = "/image/extrude_disenable.png"
-            btnRetract.source = "/image/retract_disenable.png"
+            btnLoad.enable = false
+            btnUnload.enable = false
         }
     }
 
@@ -169,38 +156,31 @@ Rectangle {
         }
     }
 
-    Image {
-        id: btnExtrude
-        source: "/image/extrude_disable.png"
+    JLIconButton {
+        id: btnLoad
         x: 904
-
         y: 39
         width: 140
         height: 140
-
-        MouseArea {
-            anchors.fill: parent
-            onClicked: {
-                if(base.enableMotor == true)
-                    base.extrudeClicked(base.indicator);
-            }
+        icon: "qrc:/image/load_enable.png"
+        pressedIcon: "qrc:/image/load_pressed.png"
+        disableIcon: "qrc:/image/load_disable.png"
+        onRelease: {
+            base.extrudeClicked(base.indicator);
         }
     }
 
-    Image {
-        id: btnRetract
-        source: "/image/retract_disable.png"
+    JLIconButton {
+        id: btnUnload
         x: 596
         y: 39
         width: 140
         height: 140
-
-        MouseArea {
-            anchors.fill: parent
-            onClicked: {
-                if(base.enableMotor == true)
-                    base.retractClicked(base.indicator);
-            }
+        icon: "qrc:/image/unload_enable.png"
+        pressedIcon: "qrc:/image/unload_pressed.png"
+        disableIcon: "qrc:/image/unload_disable.png"
+        onRelease: {
+            base.retractClicked(base.indicator);
         }
     }
 }

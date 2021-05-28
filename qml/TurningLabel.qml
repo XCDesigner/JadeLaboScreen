@@ -39,14 +39,14 @@ Rectangle {
         color: "transparent"
         height: 60
         width: parent.width
-        anchors { bottom: parent.bottom }
+        anchors { bottom: parent.bottom; margins: 20 }
         Text {
             id: label
             text: "3"
             horizontalAlignment: Text.AlignHCenter
             anchors.centerIn: parent
             color: "white"
-            font { family: "barlow"; pixelSize: 36; bold: true }
+            font { family: "barlow"; pixelSize: 42; bold: true }
         }
     }
 }

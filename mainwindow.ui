@@ -70,7 +70,7 @@ font-family: barlow;
 }</string>
     </property>
     <property name="currentIndex">
-     <number>24</number>
+     <number>5</number>
     </property>
     <widget class="QWidget" name="page_12">
      <widget class="QLabel" name="label_14">
@@ -3203,265 +3203,75 @@ font-family:Barlow;</string>
        <string>Machine Setting</string>
       </property>
      </widget>
+     <zorder>pushButton_170</zorder>
+     <zorder>pushButton_171</zorder>
+     <zorder>pushButton_172</zorder>
+     <zorder>pushButton_173</zorder>
+     <zorder>pushButton_174</zorder>
+     <zorder>pushButton_175</zorder>
+     <zorder>pushButton_177</zorder>
+     <zorder>pushButton_176</zorder>
     </widget>
-    <widget class="QWidget" name="page_43">
-     <widget class="QPushButton" name="pushButton_178">
-      <property name="geometry">
-       <rect>
-        <x>0</x>
-        <y>540</y>
-        <width>180</width>
-        <height>180</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">image: url(:/image/AboutInactive.png);
-border:none;</string>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="pushButton_179">
-      <property name="geometry">
-       <rect>
-        <x>0</x>
-        <y>0</y>
-        <width>180</width>
-        <height>180</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">border:none;image: url(:/image/PrintInactive.png);</string>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="pushButton_180">
-      <property name="geometry">
-       <rect>
-        <x>0</x>
-        <y>360</y>
-        <width>180</width>
-        <height>180</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">image: url(:/image/ToolsActive(2).png);
-border:none;</string>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="pushButton_181">
+    <widget class="QWidget" name="page_ChangeHotend_0">
+     <widget class="QPushButton" name="pushButton_326">
       <property name="geometry">
        <rect>
         <x>0</x>
         <y>180</y>
-        <width>180</width>
+        <width>160</width>
         <height>180</height>
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true">image: url(:/image/FilamentInactive.png);
-border:none;</string>
+       <string notr="true">outline:none;image: url(:/image/FilamentInactive.png);border:none;</string>
       </property>
       <property name="text">
        <string/>
       </property>
      </widget>
-     <widget class="QLabel" name="label_85">
-      <property name="geometry">
-       <rect>
-        <x>229</x>
-        <y>88</y>
-        <width>990</width>
-        <height>311</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">left: 229px;
-top: 88px;
-width: 990px;
-height: 311px;
-line-height: 41px;
-color: rgba(16, 16, 16, 255);
-font-size: 28px;
-text-align: left;
-font-family: Roboto;</string>
-      </property>
-      <property name="text">
-       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Select hotend to execute hotend change operation&lt;/p&gt;&lt;p&gt;The operation will executes the following steps:&lt;/p&gt;&lt;p&gt;1. Heat up selected hotend (do not touch nozzle)&lt;/p&gt;&lt;p&gt;2. Unload material&lt;/p&gt;&lt;p&gt;3. Hotend cool down              &lt;/p&gt;&lt;p&gt;4. Remove/install hotend&lt;/p&gt;&lt;p&gt;5. Heat up and load material &lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="pushButton_182">
-      <property name="geometry">
-       <rect>
-        <x>474</x>
-        <y>517</y>
-        <width>200</width>
-        <height>100</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">left: 474px;
-top: 517px;
-width: 200px;
-height: 100px;
-line-height: 52px;
-border-radius: 20px;
-color: rgba(16, 16, 16, 255);
-font-size: 36px;
-text-align: center;
-font-family: Roboto;
-border: 1px solid rgba(0, 0, 0, 1);</string>
-      </property>
-      <property name="text">
-       <string>L Hotend</string>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="pushButton_183">
-      <property name="geometry">
-       <rect>
-        <x>735</x>
-        <y>517</y>
-        <width>200</width>
-        <height>100</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">left: 735px;
-top: 517px;
-width: 200px;
-height: 100px;
-line-height: 52px;
-border-radius: 20px;
-color: rgba(16, 16, 16, 255);
-font-size: 36px;
-text-align: center;
-font-family: Roboto;
-border: 1px solid rgba(0, 0, 0, 1);</string>
-      </property>
-      <property name="text">
-       <string>R Hotend</string>
-      </property>
-     </widget>
-    </widget>
-    <widget class="QWidget" name="page_45">
-     <widget class="QPushButton" name="pushButton_190">
-      <property name="geometry">
-       <rect>
-        <x>0</x>
-        <y>180</y>
-        <width>180</width>
-        <height>180</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">
-width: 180px;
-height: 180px;
-line-height: 46px;
-background-color: rgba(255, 255, 255, 0);
-color: rgba(16, 16, 16, 255);
-font-size: 32px;
-text-align: center;
-font-family: Roboto;
-border: 1px solid rgba(255, 255, 255, 0);</string>
-      </property>
-      <property name="text">
-       <string>FILAMENT</string>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="pushButton_191">
-      <property name="geometry">
-       <rect>
-        <x>0</x>
-        <y>540</y>
-        <width>180</width>
-        <height>180</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">left: 0px;
-top: 0px;
-width: 180px;
-height: 180px;
-line-height: 46px;
-background-color: rgba(255, 255, 255, 0);
-color: rgba(16, 16, 16, 255);
-font-size: 32px;
-text-align: center;
-font-family: Roboto;
-border: 1px solid rgba(255, 255, 255, 0);</string>
-      </property>
-      <property name="text">
-       <string>ABOUT</string>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="pushButton_192">
+     <widget class="QPushButton" name="pushButton_327">
       <property name="geometry">
        <rect>
         <x>0</x>
         <y>360</y>
-        <width>180</width>
+        <width>160</width>
         <height>180</height>
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true">
-line-height: 46px;
-border-radius: 30px;
-background-color: rgba(255, 255, 255, 100);
-color: rgba(16, 16, 16, 255);
-font-size: 32px;
-text-align: center;
-
-font-family: Roboto;
-border: 1px solid rgba(202, 208, 74, 255);</string>
+       <string notr="true">outline:none;image: url(:/image/ToolsActive(2).png);border:none;</string>
       </property>
       <property name="text">
-       <string>TOOL</string>
+       <string/>
       </property>
      </widget>
-     <widget class="QPushButton" name="pushButton_193">
+     <widget class="QPushButton" name="pushButton_328">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>540</y>
+        <width>160</width>
+        <height>180</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">outline:none;image: url(:/image/AboutInactive.png);border:none;</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton_329">
       <property name="geometry">
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>180</width>
+        <width>160</width>
         <height>180</height>
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true">
-width: 180px;
-height: 180px;
-line-height: 46px;
-background-color: rgba(255, 255, 255, 0);
-color: rgba(16, 16, 16, 255);
-font-size: 32px;
-text-align: center;
-font-family: Roboto;
-border: 1px solid rgba(255, 255, 255, 0);</string>
-      </property>
-      <property name="text">
-       <string>PRINT</string>
-      </property>
-     </widget>
-     <widget class="QLabel" name="label_91">
-      <property name="geometry">
-       <rect>
-        <x>258</x>
-        <y>84</y>
-        <width>391</width>
-        <height>260</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">border-image: url(:/image/pageViewPic2.jpg);</string>
+       <string notr="true">outline:none;image: url(:/image/PrintInactive.png);border:none;</string>
       </property>
       <property name="text">
        <string/>
@@ -3470,1082 +3280,702 @@ border: 1px solid rgba(255, 255, 255, 0);</string>
      <widget class="QLabel" name="label_92">
       <property name="geometry">
        <rect>
-        <x>910</x>
-        <y>84</y>
-        <width>195</width>
-        <height>260</height>
+        <x>178</x>
+        <y>145</y>
+        <width>382</width>
+        <height>286</height>
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true">border-image: url(:/image/picShow3.jpg);</string>
+       <string notr="true">border-image: url(:/image/changehotend_tip_0.png);</string>
       </property>
       <property name="text">
        <string/>
       </property>
      </widget>
-     <widget class="QLabel" name="label_94">
+     <widget class="QLabel" name="label_90">
       <property name="geometry">
        <rect>
-        <x>258</x>
-        <y>381</y>
-        <width>935</width>
-        <height>167</height>
+        <x>620</x>
+        <y>210</y>
+        <width>588</width>
+        <height>360</height>
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true">left: 258px;
-top: 381px;
-width: 935px;
-height: 167px;
-line-height: 52px;
-color: rgba(16, 16, 16, 255);
-font-size: 36px;
+       <string notr="true">color: rgba(255, 255, 255, 255);
+font-size: 32px;
 text-align: center;
-font-family: Roboto;</string>
+font-family: Barlow;
+background-color: rgba(255, 255, 255, 0);</string>
       </property>
       <property name="text">
-       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Material in Hotend, need to unload material first,&lt;/p&gt;&lt;p&gt;please click unload botton then remove material as &lt;/p&gt;&lt;p&gt;shown above.&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       <string>This operation will excutes the following steps:
+1. Heat up the hotend (do not touch nozzle);
+2. Unload material;
+3. Hotend cool down;
+4. Remove/install hotend;
+5. Nozzle calibration;</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+      </property>
+      <property name="wordWrap">
+       <bool>true</bool>
       </property>
      </widget>
-     <widget class="QPushButton" name="pushButton_194">
+     <widget class="QLabel" name="label_96">
       <property name="geometry">
        <rect>
-        <x>466</x>
-        <y>603</y>
-        <width>200</width>
-        <height>80</height>
+        <x>620</x>
+        <y>90</y>
+        <width>567</width>
+        <height>120</height>
        </rect>
       </property>
+      <property name="font">
+       <font>
+        <family>Barlow</family>
+        <pointsize>-1</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
       <property name="styleSheet">
-       <string notr="true">left: 466px;
-top: 603px;
-width: 200px;
-height: 80px;
-line-height: 52px;
-border-radius: 20px;
-background-color: rgba(255, 255, 255, 100);
-color: rgba(16, 16, 16, 255);
-font-size: 36px;
+       <string notr="true">color: rgba(255, 255, 255, 255);
+font-size: 40px;
 text-align: center;
-font-family: Roboto;
-border: 2px solid rgba(0, 0, 0, 1);</string>
+font-family: Barlow;
+background-color: rgba(255, 255, 255, 0);
+font-weight: bold;
+font-family:Barlow;</string>
       </property>
       <property name="text">
-       <string>Unload</string>
+       <string>Select hotend to excute hotend change operation </string>
+      </property>
+      <property name="wordWrap">
+       <bool>true</bool>
       </property>
      </widget>
-     <widget class="QPushButton" name="pushButton_195">
+     <widget class="QQuickWidget" name="qw_btnChangeHotend_0">
       <property name="geometry">
        <rect>
-        <x>751</x>
-        <y>603</y>
-        <width>200</width>
-        <height>80</height>
+        <x>170</x>
+        <y>600</y>
+        <width>533</width>
+        <height>96</height>
        </rect>
       </property>
-      <property name="styleSheet">
-       <string notr="true">left: 466px;
-top: 603px;
-width: 200px;
-height: 80px;
-line-height: 52px;
-border-radius: 20px;
-background-color: rgba(255, 255, 255, 100);
-color: rgba(16, 16, 16, 255);
-font-size: 36px;
-text-align: center;
-font-family: Roboto;
-border: 2px solid rgba(0, 0, 0, 1);</string>
+      <property name="resizeMode">
+       <enum>QQuickWidget::SizeRootObjectToView</enum>
       </property>
-      <property name="text">
-       <string>Previous</string>
+     </widget>
+     <widget class="QQuickWidget" name="qw_btnChangeHotend_1">
+      <property name="geometry">
+       <rect>
+        <x>725</x>
+        <y>600</y>
+        <width>533</width>
+        <height>96</height>
+       </rect>
+      </property>
+      <property name="resizeMode">
+       <enum>QQuickWidget::SizeRootObjectToView</enum>
       </property>
      </widget>
     </widget>
-    <widget class="QWidget" name="page_47">
-     <widget class="QPushButton" name="pushButton_202">
+    <widget class="QWidget" name="page_ChangeHotend_1">
+     <widget class="QLabel" name="label_91">
+      <property name="geometry">
+       <rect>
+        <x>178</x>
+        <y>145</y>
+        <width>382</width>
+        <height>286</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">border-image: url(:/image/changehotend_tip_1.png);</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton_333">
       <property name="geometry">
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>180</width>
+        <width>160</width>
         <height>180</height>
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true">
-width: 180px;
-height: 180px;
-line-height: 46px;
-background-color: rgba(255, 255, 255, 0);
-color: rgba(16, 16, 16, 255);
-font-size: 32px;
-text-align: center;
-font-family: Roboto;
-border: 1px solid rgba(255, 255, 255, 0);</string>
+       <string notr="true">outline:none;image: url(:/image/PrintInactive.png);border:none;</string>
       </property>
       <property name="text">
-       <string>PRINT</string>
+       <string/>
       </property>
      </widget>
-     <widget class="QPushButton" name="pushButton_203">
+     <widget class="QPushButton" name="pushButton_330">
       <property name="geometry">
        <rect>
         <x>0</x>
         <y>180</y>
-        <width>180</width>
+        <width>160</width>
         <height>180</height>
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true">
-width: 180px;
-height: 180px;
-line-height: 46px;
-background-color: rgba(255, 255, 255, 0);
-color: rgba(16, 16, 16, 255);
-font-size: 32px;
-text-align: center;
-font-family: Roboto;
-border: 1px solid rgba(255, 255, 255, 0);</string>
+       <string notr="true">outline:none;image: url(:/image/FilamentInactive.png);border:none;</string>
       </property>
       <property name="text">
-       <string>FILAMENT</string>
+       <string/>
       </property>
      </widget>
-     <widget class="QPushButton" name="pushButton_204">
+     <widget class="QPushButton" name="pushButton_331">
       <property name="geometry">
        <rect>
         <x>0</x>
         <y>360</y>
-        <width>180</width>
+        <width>160</width>
         <height>180</height>
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true">
-line-height: 46px;
-border-radius: 30px;
-background-color: rgba(255, 255, 255, 100);
-color: rgba(16, 16, 16, 255);
-font-size: 32px;
-text-align: center;
-
-font-family: Roboto;
-border: 1px solid rgba(202, 208, 74, 255);</string>
+       <string notr="true">outline:none;image: url(:/image/ToolsActive(2).png);border:none;</string>
       </property>
       <property name="text">
-       <string>TOOL</string>
+       <string/>
       </property>
      </widget>
-     <widget class="QPushButton" name="pushButton_205">
+     <widget class="QPushButton" name="pushButton_332">
       <property name="geometry">
        <rect>
         <x>0</x>
         <y>540</y>
-        <width>180</width>
+        <width>160</width>
         <height>180</height>
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true">left: 0px;
-top: 0px;
-width: 180px;
-height: 180px;
-line-height: 46px;
-background-color: rgba(255, 255, 255, 0);
-color: rgba(16, 16, 16, 255);
+       <string notr="true">outline:none;image: url(:/image/AboutInactive.png);border:none;</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_89">
+      <property name="geometry">
+       <rect>
+        <x>588</x>
+        <y>227</y>
+        <width>560</width>
+        <height>340</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: rgba(255, 255, 255, 255);
 font-size: 32px;
 text-align: center;
-font-family: Roboto;
-border: 1px solid rgba(255, 255, 255, 0);</string>
+font-family: Barlow;
+background-color: rgba(255, 255, 255, 0);</string>
       </property>
       <property name="text">
-       <string>ABOUT</string>
+       <string>1. If there are material in hotend, please unload it first;
+2. If there are not material in hotend, remove hotedn by following steps;</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+      </property>
+      <property name="wordWrap">
+       <bool>true</bool>
       </property>
      </widget>
-     <widget class="QLabel" name="label_97">
+     <widget class="QQuickWidget" name="qw_btnChangeHotend_3">
       <property name="geometry">
        <rect>
-        <x>290</x>
-        <y>80</y>
-        <width>300</width>
-        <height>200</height>
+        <x>515</x>
+        <y>598</y>
+        <width>737</width>
+        <height>96</height>
        </rect>
       </property>
-      <property name="styleSheet">
-       <string notr="true">border-image: url(:/pageViewPic1.jpg);</string>
-      </property>
-      <property name="text">
-       <string/>
+      <property name="resizeMode">
+       <enum>QQuickWidget::SizeRootObjectToView</enum>
       </property>
      </widget>
-     <widget class="QLabel" name="label_98">
+     <widget class="QQuickWidget" name="qw_btnChangeHotend_2">
       <property name="geometry">
        <rect>
-        <x>939</x>
-        <y>84</y>
-        <width>200</width>
-        <height>200</height>
+        <x>186</x>
+        <y>598</y>
+        <width>305</width>
+        <height>96</height>
        </rect>
       </property>
-      <property name="styleSheet">
-       <string notr="true">border-image: url(:/picShow2.jpg);</string>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-     </widget>
-     <widget class="QLabel" name="label_99">
-      <property name="geometry">
-       <rect>
-        <x>258</x>
-        <y>320</y>
-        <width>981</width>
-        <height>167</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">left: 258px;
-top: 320px;
-width: 935px;
-height: 167px;
-line-height: 52px;
-color: rgba(16, 16, 16, 255);
-font-size: 36px;
-text-align: center;
-font-family: Roboto;</string>
-      </property>
-      <property name="text">
-       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Remove Hotend as shown above, then click below button.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="pushButton_206">
-      <property name="geometry">
-       <rect>
-        <x>466</x>
-        <y>603</y>
-        <width>200</width>
-        <height>80</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">
-line-height: 52px;
-border-radius: 20px;
-background-color: rgba(255, 255, 255, 100);
-color: rgba(16, 16, 16, 255);
-font-size: 36px;
-text-align: center;
-font-family: Roboto;
-border: 2px solid rgba(0, 0, 0, 1);</string>
-      </property>
-      <property name="text">
-       <string>Removed</string>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="pushButton_207">
-      <property name="geometry">
-       <rect>
-        <x>751</x>
-        <y>603</y>
-        <width>200</width>
-        <height>80</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">left: 751px;
-top: 603px;
-width: 200px;
-height: 80px;
-line-height: 52px;
-border-radius: 20px;
-background-color: rgba(255, 255, 255, 100);
-color: rgba(16, 16, 16, 255);
-font-size: 36px;
-text-align: center;
-font-family: Roboto;
-border: 2px solid rgba(0, 0, 0, 1);</string>
-      </property>
-      <property name="text">
-       <string>Previous</string>
+      <property name="resizeMode">
+       <enum>QQuickWidget::SizeRootObjectToView</enum>
       </property>
      </widget>
     </widget>
-    <widget class="QWidget" name="page_48">
-     <widget class="QPushButton" name="pushButton_208">
-      <property name="geometry">
-       <rect>
-        <x>0</x>
-        <y>360</y>
-        <width>180</width>
-        <height>180</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">
-line-height: 46px;
-border-radius: 30px;
-background-color: rgba(255, 255, 255, 100);
-color: rgba(16, 16, 16, 255);
-font-size: 32px;
-text-align: center;
-
-font-family: Roboto;
-border: 1px solid rgba(202, 208, 74, 255);</string>
-      </property>
-      <property name="text">
-       <string>TOOL</string>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="pushButton_209">
+    <widget class="QWidget" name="page_ChangeHotend_2">
+     <widget class="QPushButton" name="pushButton_334">
       <property name="geometry">
        <rect>
         <x>0</x>
         <y>180</y>
-        <width>180</width>
+        <width>160</width>
         <height>180</height>
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true">
-width: 180px;
-height: 180px;
-line-height: 46px;
-background-color: rgba(255, 255, 255, 0);
-color: rgba(16, 16, 16, 255);
-font-size: 32px;
-text-align: center;
-font-family: Roboto;
-border: 1px solid rgba(255, 255, 255, 0);</string>
+       <string notr="true">outline:none;image: url(:/image/FilamentInactive.png);border:none;</string>
       </property>
       <property name="text">
-       <string>FILAMENT</string>
+       <string/>
       </property>
      </widget>
-     <widget class="QPushButton" name="pushButton_210">
+     <widget class="QPushButton" name="pushButton_355">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>360</y>
+        <width>160</width>
+        <height>180</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">outline:none;image: url(:/image/ToolsActive(2).png);border:none;</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton_459">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>540</y>
+        <width>160</width>
+        <height>180</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">outline:none;image: url(:/image/AboutInactive.png);border:none;</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton_460">
       <property name="geometry">
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>180</width>
+        <width>160</width>
         <height>180</height>
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true">
-width: 180px;
-height: 180px;
-line-height: 46px;
-background-color: rgba(255, 255, 255, 0);
-color: rgba(16, 16, 16, 255);
-font-size: 32px;
-text-align: center;
-font-family: Roboto;
-border: 1px solid rgba(255, 255, 255, 0);</string>
-      </property>
-      <property name="text">
-       <string>PRINT</string>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="pushButton_211">
-      <property name="geometry">
-       <rect>
-        <x>0</x>
-        <y>540</y>
-        <width>180</width>
-        <height>180</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">left: 0px;
-top: 0px;
-width: 180px;
-height: 180px;
-line-height: 46px;
-background-color: rgba(255, 255, 255, 0);
-color: rgba(16, 16, 16, 255);
-font-size: 32px;
-text-align: center;
-font-family: Roboto;
-border: 1px solid rgba(255, 255, 255, 0);</string>
-      </property>
-      <property name="text">
-       <string>ABOUT</string>
-      </property>
-     </widget>
-     <widget class="QLabel" name="label_100">
-      <property name="geometry">
-       <rect>
-        <x>290</x>
-        <y>80</y>
-        <width>300</width>
-        <height>200</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">border-image: url(:/picShow2.jpg);</string>
+       <string notr="true">outline:none;image: url(:/image/PrintInactive.png);border:none;</string>
       </property>
       <property name="text">
        <string/>
       </property>
      </widget>
-     <widget class="QLabel" name="label_101">
+     <widget class="QQuickWidget" name="qw_btnChangeHotend_4">
       <property name="geometry">
        <rect>
-        <x>939</x>
-        <y>84</y>
-        <width>200</width>
-        <height>200</height>
+        <x>186</x>
+        <y>598</y>
+        <width>305</width>
+        <height>96</height>
        </rect>
       </property>
-      <property name="styleSheet">
-       <string notr="true">border-image: url(:/image/picShow3.jpg);</string>
-      </property>
-      <property name="text">
-       <string/>
+      <property name="resizeMode">
+       <enum>QQuickWidget::SizeRootObjectToView</enum>
       </property>
      </widget>
-     <widget class="QLabel" name="label_102">
+     <widget class="QQuickWidget" name="qw_btnChangeHotend_5">
       <property name="geometry">
        <rect>
-        <x>258</x>
-        <y>320</y>
-        <width>971</width>
-        <height>167</height>
+        <x>515</x>
+        <y>598</y>
+        <width>737</width>
+        <height>96</height>
        </rect>
       </property>
-      <property name="styleSheet">
-       <string notr="true">left: 258px;
-top: 320px;
-width: 935px;
-height: 167px;
-line-height: 52px;
-color: rgba(16, 16, 16, 255);
-font-size: 36px;
-text-align: center;
-font-family: Roboto;</string>
-      </property>
-      <property name="text">
-       <string>Install Hotend as shown above, then click below button.</string>
+      <property name="resizeMode">
+       <enum>QQuickWidget::SizeRootObjectToView</enum>
       </property>
      </widget>
-     <widget class="QPushButton" name="pushButton_212">
+     <widget class="QQuickWidget" name="qw_heatingUnitChangehotend_L">
       <property name="geometry">
        <rect>
-        <x>466</x>
-        <y>603</y>
-        <width>200</width>
-        <height>80</height>
+        <x>180</x>
+        <y>70</y>
+        <width>520</width>
+        <height>480</height>
        </rect>
       </property>
-      <property name="styleSheet">
-       <string notr="true">left: 466px;
-top: 603px;
-width: 200px;
-height: 80px;
-line-height: 52px;
-border-radius: 20px;
-background-color: rgba(255, 255, 255, 100);
-color: rgba(16, 16, 16, 255);
-font-size: 36px;
-text-align: center;
-font-family: Roboto;
-border: 2px solid rgba(0, 0, 0, 1);</string>
+      <property name="resizeMode">
+       <enum>QQuickWidget::SizeRootObjectToView</enum>
       </property>
-      <property name="text">
-       <string>Installed</string>
+      <property name="source">
+       <url>
+        <string>qrc:/qml/JLHeatingUnit.qml</string>
+       </url>
       </property>
      </widget>
-     <widget class="QPushButton" name="pushButton_213">
+     <widget class="QQuickWidget" name="qw_heatingUnitChangehotend_R">
       <property name="geometry">
        <rect>
-        <x>751</x>
-        <y>603</y>
-        <width>200</width>
-        <height>80</height>
+        <x>730</x>
+        <y>70</y>
+        <width>520</width>
+        <height>480</height>
        </rect>
       </property>
-      <property name="styleSheet">
-       <string notr="true">
-line-height: 52px;
-border-radius: 20px;
-background-color: rgba(255, 255, 255, 100);
-color: rgba(16, 16, 16, 255);
-font-size: 36px;
-text-align: center;
-font-family: Roboto;
-border: 2px solid rgba(0, 0, 0, 1);</string>
+      <property name="resizeMode">
+       <enum>QQuickWidget::SizeRootObjectToView</enum>
       </property>
-      <property name="text">
-       <string>Previous</string>
+      <property name="source">
+       <url>
+        <string>qrc:/qml/JLHeatingUnit.qml</string>
+       </url>
       </property>
      </widget>
     </widget>
-    <widget class="QWidget" name="page_49">
-     <widget class="QPushButton" name="pushButton_214">
-      <property name="geometry">
-       <rect>
-        <x>0</x>
-        <y>180</y>
-        <width>180</width>
-        <height>180</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">
-width: 180px;
-height: 180px;
-line-height: 46px;
-background-color: rgba(255, 255, 255, 0);
-color: rgba(16, 16, 16, 255);
-font-size: 32px;
-text-align: center;
-font-family: Roboto;
-border: 1px solid rgba(255, 255, 255, 0);</string>
-      </property>
-      <property name="text">
-       <string>FILAMENT</string>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="pushButton_215">
-      <property name="geometry">
-       <rect>
-        <x>0</x>
-        <y>540</y>
-        <width>180</width>
-        <height>180</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">left: 0px;
-top: 0px;
-width: 180px;
-height: 180px;
-line-height: 46px;
-background-color: rgba(255, 255, 255, 0);
-color: rgba(16, 16, 16, 255);
-font-size: 32px;
-text-align: center;
-font-family: Roboto;
-border: 1px solid rgba(255, 255, 255, 0);</string>
-      </property>
-      <property name="text">
-       <string>ABOUT</string>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="pushButton_216">
+    <widget class="QWidget" name="page_ChangeHotend_3">
+     <widget class="QPushButton" name="pushButton_464">
       <property name="geometry">
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>180</width>
+        <width>160</width>
         <height>180</height>
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true">
-width: 180px;
-height: 180px;
-line-height: 46px;
-background-color: rgba(255, 255, 255, 0);
-color: rgba(16, 16, 16, 255);
-font-size: 32px;
-text-align: center;
-font-family: Roboto;
-border: 1px solid rgba(255, 255, 255, 0);</string>
+       <string notr="true">outline:none;image: url(:/image/PrintInactive.png);border:none;</string>
       </property>
       <property name="text">
-       <string>PRINT</string>
+       <string/>
       </property>
      </widget>
-     <widget class="QPushButton" name="pushButton_217">
+     <widget class="QPushButton" name="pushButton_461">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>180</y>
+        <width>160</width>
+        <height>180</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">outline:none;image: url(:/image/FilamentInactive.png);border:none;</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton_463">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>540</y>
+        <width>160</width>
+        <height>180</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">outline:none;image: url(:/image/AboutInactive.png);border:none;</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton_462">
       <property name="geometry">
        <rect>
         <x>0</x>
         <y>360</y>
-        <width>180</width>
+        <width>160</width>
         <height>180</height>
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true">
-line-height: 46px;
-border-radius: 30px;
-background-color: rgba(255, 255, 255, 100);
-color: rgba(16, 16, 16, 255);
-font-size: 32px;
-text-align: center;
-
-font-family: Roboto;
-border: 1px solid rgba(202, 208, 74, 255);</string>
+       <string notr="true">outline:none;image: url(:/image/ToolsActive(2).png);border:none;</string>
       </property>
       <property name="text">
-       <string>TOOL</string>
+       <string/>
       </property>
      </widget>
-     <widget class="QLabel" name="label_103">
+     <widget class="QQuickWidget" name="qw_btnChangeHotend_6">
       <property name="geometry">
        <rect>
-        <x>465</x>
-        <y>150</y>
-        <width>445</width>
-        <height>99</height>
+        <x>186</x>
+        <y>598</y>
+        <width>305</width>
+        <height>96</height>
+       </rect>
+      </property>
+      <property name="resizeMode">
+       <enum>QQuickWidget::SizeRootObjectToView</enum>
+      </property>
+     </widget>
+     <widget class="QQuickWidget" name="qw_btnChangeHotend_7">
+      <property name="geometry">
+       <rect>
+        <x>515</x>
+        <y>598</y>
+        <width>737</width>
+        <height>96</height>
+       </rect>
+      </property>
+      <property name="resizeMode">
+       <enum>QQuickWidget::SizeRootObjectToView</enum>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="page_ChangeHotend_4">
+     <widget class="QPushButton" name="pushButton_468">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>160</width>
+        <height>180</height>
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true">left: 465px;
-top: 150px;
-width: 445px;
-height: 99px;
-line-height: 52px;
-color: rgba(16, 16, 16, 255);
-font-size: 36px;
+       <string notr="true">outline:none;image: url(:/image/PrintInactive.png);border:none;</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton_466">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>360</y>
+        <width>160</width>
+        <height>180</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">outline:none;image: url(:/image/ToolsActive(2).png);border:none;</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton_467">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>540</y>
+        <width>160</width>
+        <height>180</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">outline:none;image: url(:/image/AboutInactive.png);border:none;</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton_465">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>180</y>
+        <width>160</width>
+        <height>180</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">outline:none;image: url(:/image/FilamentInactive.png);border:none;</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_308">
+      <property name="geometry">
+       <rect>
+        <x>453</x>
+        <y>326</y>
+        <width>118</width>
+        <height>28</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgba(255, 255, 255, 0);border-image: url(:/image/waiting.png);</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_310">
+      <property name="geometry">
+       <rect>
+        <x>600</x>
+        <y>310</y>
+        <width>481</width>
+        <height>57</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">font-weight: bold;
+font-family:Barlow;background-color: rgba(255, 255, 255, 0);color: rgba(255, 255, 255, 255);
+font-size: 42px;
 text-align: left;
-font-family: Roboto;</string>
+font-family: Barlow;</string>
       </property>
       <property name="text">
-       <string>Heating R Hotend</string>
-      </property>
-     </widget>
-     <widget class="QLabel" name="label_104">
-      <property name="geometry">
-       <rect>
-        <x>465</x>
-        <y>263</y>
-        <width>445</width>
-        <height>99</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">line-height: 52px;
-color: rgba(16, 16, 16, 255);
-font-size: 36px;
-text-align: left;
-font-family: Roboto;</string>
-      </property>
-      <property name="text">
-       <string>Wati for detect material</string>
-      </property>
-     </widget>
-     <widget class="QLabel" name="label_106">
-      <property name="geometry">
-       <rect>
-        <x>417</x>
-        <y>376</y>
-        <width>551</width>
-        <height>100</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">line-height: 52px;
-color: rgba(16, 16, 16, 255);
-font-size: 36px;
-text-align: left;
-font-family: Roboto;</string>
-      </property>
-      <property name="text">
-       <string>L Hotend material no detected</string>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="pushButton_218">
-      <property name="geometry">
-       <rect>
-        <x>466</x>
-        <y>603</y>
-        <width>200</width>
-        <height>80</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">left: 466px;
-top: 603px;
-width: 200px;
-height: 80px;
-line-height: 52px;
-border-radius: 20px;
-background-color: rgba(255, 255, 255, 100);
-color: rgba(16, 16, 16, 255);
-font-size: 36px;
-text-align: center;
-font-family: Roboto;
-border: 2px solid rgba(0, 0, 0, 1);</string>
-      </property>
-      <property name="text">
-       <string>Next</string>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="pushButton_219">
-      <property name="geometry">
-       <rect>
-        <x>751</x>
-        <y>603</y>
-        <width>200</width>
-        <height>80</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">left: 466px;
-top: 603px;
-width: 200px;
-height: 80px;
-line-height: 52px;
-border-radius: 20px;
-background-color: rgba(255, 255, 255, 100);
-color: rgba(16, 16, 16, 255);
-font-size: 36px;
-text-align: center;
-font-family: Roboto;
-border: 2px solid rgba(0, 0, 0, 1);</string>
-      </property>
-      <property name="text">
-       <string>Previous333</string>
-      </property>
-     </widget>
-     <widget class="QLabel" name="label_107">
-      <property name="geometry">
-       <rect>
-        <x>920</x>
-        <y>170</y>
-        <width>50</width>
-        <height>50</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">border-image: url(:/image/ready.png);</string>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-     </widget>
-     <widget class="QLabel" name="label_108">
-      <property name="geometry">
-       <rect>
-        <x>920</x>
-        <y>290</y>
-        <width>50</width>
-        <height>50</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">border-image: url(:/image/ready.png);</string>
-      </property>
-      <property name="text">
-       <string/>
+       <string>Cooling  Hotend</string>
       </property>
      </widget>
     </widget>
-    <widget class="QWidget" name="page_50">
-     <widget class="QPushButton" name="pushButton_220">
+    <widget class="QWidget" name="page_ChangeHotend_5">
+     <widget class="QPushButton" name="pushButton_472">
       <property name="geometry">
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>180</width>
+        <width>160</width>
         <height>180</height>
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true">
-width: 180px;
-height: 180px;
-line-height: 46px;
-background-color: rgba(255, 255, 255, 0);
-color: rgba(16, 16, 16, 255);
-font-size: 32px;
-text-align: center;
-font-family: Roboto;
-border: 1px solid rgba(255, 255, 255, 0);</string>
+       <string notr="true">outline:none;image: url(:/image/PrintInactive.png);border:none;</string>
       </property>
       <property name="text">
-       <string>PRINT</string>
+       <string/>
       </property>
      </widget>
-     <widget class="QPushButton" name="pushButton_221">
+     <widget class="QPushButton" name="pushButton_471">
       <property name="geometry">
        <rect>
         <x>0</x>
         <y>540</y>
-        <width>180</width>
+        <width>160</width>
         <height>180</height>
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true">left: 0px;
-top: 0px;
-width: 180px;
-height: 180px;
-line-height: 46px;
-background-color: rgba(255, 255, 255, 0);
-color: rgba(16, 16, 16, 255);
-font-size: 32px;
-text-align: center;
-font-family: Roboto;
-border: 1px solid rgba(255, 255, 255, 0);</string>
+       <string notr="true">outline:none;image: url(:/image/AboutInactive.png);border:none;</string>
       </property>
       <property name="text">
-       <string>ABOUT</string>
+       <string/>
       </property>
      </widget>
-     <widget class="QPushButton" name="pushButton_222">
-      <property name="geometry">
-       <rect>
-        <x>0</x>
-        <y>360</y>
-        <width>180</width>
-        <height>180</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">
-line-height: 46px;
-border-radius: 30px;
-background-color: rgba(255, 255, 255, 100);
-color: rgba(16, 16, 16, 255);
-font-size: 32px;
-text-align: center;
-
-font-family: Roboto;
-border: 1px solid rgba(202, 208, 74, 255);</string>
-      </property>
-      <property name="text">
-       <string>TOOL</string>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="pushButton_223">
+     <widget class="QPushButton" name="pushButton_469">
       <property name="geometry">
        <rect>
         <x>0</x>
         <y>180</y>
-        <width>180</width>
+        <width>160</width>
         <height>180</height>
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true">
-width: 180px;
-height: 180px;
-line-height: 46px;
-background-color: rgba(255, 255, 255, 0);
-color: rgba(16, 16, 16, 255);
+       <string notr="true">outline:none;image: url(:/image/FilamentInactive.png);border:none;</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton_470">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>360</y>
+        <width>160</width>
+        <height>180</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">outline:none;image: url(:/image/ToolsActive(2).png);border:none;</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_93">
+      <property name="geometry">
+       <rect>
+        <x>224</x>
+        <y>221</y>
+        <width>382</width>
+        <height>286</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">border-image: url(:/image/changehotend_tip_5.png);</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_88">
+      <property name="geometry">
+       <rect>
+        <x>614</x>
+        <y>267</y>
+        <width>560</width>
+        <height>340</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: rgba(255, 255, 255, 255);
 font-size: 32px;
 text-align: center;
-font-family: Roboto;
-border: 1px solid rgba(255, 255, 255, 0);</string>
+font-family: Barlow;
+background-color: rgba(255, 255, 255, 0);</string>
       </property>
       <property name="text">
-       <string>FILAMENT</string>
+       <string>Remove Hotend as shown above, then click below button.</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+      </property>
+      <property name="wordWrap">
+       <bool>true</bool>
       </property>
      </widget>
-     <widget class="QLabel" name="label_109">
+     <widget class="QQuickWidget" name="qw_btnChangeHotend_9">
       <property name="geometry">
        <rect>
-        <x>258</x>
-        <y>84</y>
-        <width>391</width>
-        <height>260</height>
+        <x>515</x>
+        <y>598</y>
+        <width>737</width>
+        <height>96</height>
        </rect>
       </property>
-      <property name="styleSheet">
-       <string notr="true">border-image: url(:/image/pageViewPic2.jpg);</string>
-      </property>
-      <property name="text">
-       <string/>
+      <property name="resizeMode">
+       <enum>QQuickWidget::SizeRootObjectToView</enum>
       </property>
      </widget>
-     <widget class="QLabel" name="label_110">
+     <widget class="QQuickWidget" name="qw_btnChangeHotend_8">
       <property name="geometry">
        <rect>
-        <x>910</x>
-        <y>84</y>
-        <width>195</width>
-        <height>260</height>
+        <x>186</x>
+        <y>598</y>
+        <width>305</width>
+        <height>96</height>
        </rect>
       </property>
-      <property name="styleSheet">
-       <string notr="true">border-image: url(:/image/picShow3.jpg);</string>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-     </widget>
-     <widget class="QLabel" name="label_111">
-      <property name="geometry">
-       <rect>
-        <x>258</x>
-        <y>381</y>
-        <width>935</width>
-        <height>167</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">left: 258px;
-top: 381px;
-width: 935px;
-height: 167px;
-line-height: 52px;
-color: rgba(16, 16, 16, 255);
-font-size: 36px;
-text-align: center;
-font-family: Roboto;</string>
-      </property>
-      <property name="text">
-       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;Insert new material as shown above, then click load &lt;/p&gt;&lt;p align=&quot;center&quot;&gt;botton&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="pushButton_224">
-      <property name="geometry">
-       <rect>
-        <x>466</x>
-        <y>603</y>
-        <width>200</width>
-        <height>80</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">left: 466px;
-top: 603px;
-width: 200px;
-height: 80px;
-line-height: 52px;
-border-radius: 20px;
-background-color: rgba(255, 255, 255, 100);
-color: rgba(16, 16, 16, 255);
-font-size: 36px;
-text-align: center;
-font-family: Roboto;
-border: 2px solid rgba(0, 0, 0, 1);</string>
-      </property>
-      <property name="text">
-       <string>Load</string>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="pushButton_225">
-      <property name="geometry">
-       <rect>
-        <x>751</x>
-        <y>603</y>
-        <width>200</width>
-        <height>80</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">line-height: 52px;
-border-radius: 20px;
-background-color: rgba(255, 255, 255, 100);
-color: rgba(16, 16, 16, 255);
-font-size: 36px;
-text-align: center;
-font-family: Roboto;
-border: 2px solid rgba(0, 0, 0, 1);</string>
-      </property>
-      <property name="text">
-       <string>Previous</string>
+      <property name="resizeMode">
+       <enum>QQuickWidget::SizeRootObjectToView</enum>
       </property>
      </widget>
     </widget>
-    <widget class="QWidget" name="page_51">
-     <widget class="QPushButton" name="pushButton_226">
-      <property name="geometry">
-       <rect>
-        <x>0</x>
-        <y>180</y>
-        <width>180</width>
-        <height>180</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">
-width: 180px;
-height: 180px;
-line-height: 46px;
-background-color: rgba(255, 255, 255, 0);
-color: rgba(16, 16, 16, 255);
-font-size: 32px;
-text-align: center;
-font-family: Roboto;
-border: 1px solid rgba(255, 255, 255, 0);</string>
-      </property>
-      <property name="text">
-       <string>FILAMENT</string>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="pushButton_227">
-      <property name="geometry">
-       <rect>
-        <x>0</x>
-        <y>0</y>
-        <width>180</width>
-        <height>180</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">
-width: 180px;
-height: 180px;
-line-height: 46px;
-background-color: rgba(255, 255, 255, 0);
-color: rgba(16, 16, 16, 255);
-font-size: 32px;
-text-align: center;
-font-family: Roboto;
-border: 1px solid rgba(255, 255, 255, 0);</string>
-      </property>
-      <property name="text">
-       <string>PRINT</string>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="pushButton_228">
-      <property name="geometry">
-       <rect>
-        <x>0</x>
-        <y>540</y>
-        <width>180</width>
-        <height>180</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">left: 0px;
-top: 0px;
-width: 180px;
-height: 180px;
-line-height: 46px;
-background-color: rgba(255, 255, 255, 0);
-color: rgba(16, 16, 16, 255);
-font-size: 32px;
-text-align: center;
-font-family: Roboto;
-border: 1px solid rgba(255, 255, 255, 0);</string>
-      </property>
-      <property name="text">
-       <string>ABOUT</string>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="pushButton_229">
-      <property name="geometry">
-       <rect>
-        <x>0</x>
-        <y>360</y>
-        <width>180</width>
-        <height>180</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">
-line-height: 46px;
-border-radius: 30px;
-background-color: rgba(255, 255, 255, 100);
-color: rgba(16, 16, 16, 255);
-font-size: 32px;
-text-align: center;
-
-font-family: Roboto;
-border: 1px solid rgba(202, 208, 74, 255);</string>
-      </property>
-      <property name="text">
-       <string>TOOL</string>
-      </property>
-     </widget>
+    <widget class="QWidget" name="page_ChangeHotend_6">
      <widget class="QPushButton" name="pushButton_230">
       <property name="geometry">
        <rect>
@@ -4573,60 +4003,268 @@ border: 2px solid rgba(0, 0, 0, 1);</string>
        <string>Finish</string>
       </property>
      </widget>
-     <widget class="QLabel" name="label_112">
+     <widget class="QPushButton" name="pushButton_476">
       <property name="geometry">
        <rect>
-        <x>258</x>
-        <y>381</y>
-        <width>971</width>
-        <height>167</height>
+        <x>0</x>
+        <y>0</y>
+        <width>160</width>
+        <height>180</height>
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true">left: 258px;
-top: 381px;
-width: 935px;
-height: 167px;
-line-height: 52px;
-color: rgba(16, 16, 16, 255);
-font-size: 36px;
+       <string notr="true">outline:none;image: url(:/image/PrintInactive.png);border:none;</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton_474">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>360</y>
+        <width>160</width>
+        <height>180</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">outline:none;image: url(:/image/ToolsActive(2).png);border:none;</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton_475">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>540</y>
+        <width>160</width>
+        <height>180</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">outline:none;image: url(:/image/AboutInactive.png);border:none;</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton_473">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>180</y>
+        <width>160</width>
+        <height>180</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">outline:none;image: url(:/image/FilamentInactive.png);border:none;</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_94">
+      <property name="geometry">
+       <rect>
+        <x>218</x>
+        <y>205</y>
+        <width>332</width>
+        <height>249</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">border-image: url(:/image/changehotend_tip_6.png);</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_87">
+      <property name="geometry">
+       <rect>
+        <x>614</x>
+        <y>267</y>
+        <width>600</width>
+        <height>340</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: rgba(255, 255, 255, 255);
+font-size: 32px;
 text-align: center;
-font-family: Roboto;</string>
+font-family: Barlow;
+background-color: rgba(255, 255, 255, 0);</string>
       </property>
       <property name="text">
-       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;When material comes from nozzle as shown above, click &lt;/p&gt;&lt;p align=&quot;center&quot;&gt;finish botton to complete the operation. &lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       <string>Install Hotend as shown above, then click below button.</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+      </property>
+      <property name="wordWrap">
+       <bool>true</bool>
       </property>
      </widget>
-     <widget class="QLabel" name="label_113">
+     <widget class="QQuickWidget" name="qw_btnChangeHotend_10">
       <property name="geometry">
        <rect>
-        <x>258</x>
-        <y>84</y>
-        <width>391</width>
-        <height>260</height>
+        <x>186</x>
+        <y>598</y>
+        <width>305</width>
+        <height>96</height>
+       </rect>
+      </property>
+      <property name="resizeMode">
+       <enum>QQuickWidget::SizeRootObjectToView</enum>
+      </property>
+     </widget>
+     <widget class="QQuickWidget" name="qw_btnChangeHotend_11">
+      <property name="geometry">
+       <rect>
+        <x>515</x>
+        <y>598</y>
+        <width>737</width>
+        <height>96</height>
+       </rect>
+      </property>
+      <property name="resizeMode">
+       <enum>QQuickWidget::SizeRootObjectToView</enum>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="page_ChangeHotend_7">
+     <widget class="QPushButton" name="pushButton_477">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>180</y>
+        <width>160</width>
+        <height>180</height>
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true">border-image: url(:/image/pageViewPic2.jpg);</string>
+       <string notr="true">outline:none;image: url(:/image/FilamentInactive.png);border:none;</string>
       </property>
       <property name="text">
        <string/>
       </property>
      </widget>
-     <widget class="QLabel" name="label_114">
+     <widget class="QPushButton" name="pushButton_478">
       <property name="geometry">
        <rect>
-        <x>910</x>
-        <y>84</y>
-        <width>195</width>
-        <height>260</height>
+        <x>0</x>
+        <y>360</y>
+        <width>160</width>
+        <height>180</height>
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true">border-image: url(:/image/picShow3.jpg);</string>
+       <string notr="true">outline:none;image: url(:/image/ToolsActive(2).png);border:none;</string>
       </property>
       <property name="text">
        <string/>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton_479">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>540</y>
+        <width>160</width>
+        <height>180</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">outline:none;image: url(:/image/AboutInactive.png);border:none;</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton_480">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>160</width>
+        <height>180</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">outline:none;image: url(:/image/PrintInactive.png);border:none;</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_95">
+      <property name="geometry">
+       <rect>
+        <x>218</x>
+        <y>205</y>
+        <width>332</width>
+        <height>249</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">border-image: url(:/image/changehotend_tip_7.png);</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_85">
+      <property name="geometry">
+       <rect>
+        <x>614</x>
+        <y>239</y>
+        <width>960</width>
+        <height>240</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: rgba(255, 255, 255, 255);
+font-size: 32px;
+text-align: center;
+font-family: Barlow;
+background-color: rgba(255, 255, 255, 0);</string>
+      </property>
+      <property name="text">
+       <string>Hot end change complete! 
+Recommend to excute calibration.</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+      </property>
+     </widget>
+     <widget class="QQuickWidget" name="qw_btnChangeHotend_12">
+      <property name="geometry">
+       <rect>
+        <x>186</x>
+        <y>598</y>
+        <width>305</width>
+        <height>96</height>
+       </rect>
+      </property>
+      <property name="resizeMode">
+       <enum>QQuickWidget::SizeRootObjectToView</enum>
+      </property>
+     </widget>
+     <widget class="QQuickWidget" name="qw_btnChangeHotend_13">
+      <property name="geometry">
+       <rect>
+        <x>515</x>
+        <y>598</y>
+        <width>737</width>
+        <height>96</height>
+       </rect>
+      </property>
+      <property name="resizeMode">
+       <enum>QQuickWidget::SizeRootObjectToView</enum>
       </property>
      </widget>
     </widget>

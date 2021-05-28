@@ -29,9 +29,6 @@
         <file>image/ConfirmDialog.png</file>
         <file>image/delete.png</file>
         <file>image/down.png</file>
-        <file>image/DownActived.png</file>
-        <file>image/DownDisable.png</file>
-        <file>image/DownEnable.png</file>
         <file>image/FilamentActive(2).png</file>
         <file>image/FilamentInactive.png</file>
         <file>image/FileIcon.png</file>
@@ -49,8 +46,6 @@
         <file>image/LHotendActive.png</file>
         <file>image/LHotendInactive.png</file>
         <file>image/Light.png</file>
-        <file>image/LoadButton.png</file>
-        <file>image/LoadButtonActive.png</file>
         <file>image/LogoPic.jpg</file>
         <file>image/ManualIcon(1).png</file>
         <file>image/ManualIcon(2).png</file>
@@ -99,13 +94,8 @@
         <file>image/ToolsInactive.png</file>
         <file>image/turn.png</file>
         <file>image/Udisk.png</file>
-        <file>image/UnloadButton.png</file>
-        <file>image/UnloadButtonActive.png</file>
         <file>image/unready.png</file>
         <file>image/up.png</file>
-        <file>image/UpActive.png</file>
-        <file>image/UpDisable.png</file>
-        <file>image/UpEnable.png</file>
         <file>image/wait.png</file>
         <file>image/waiting.png</file>
         <file>image/warning.png</file>
@@ -150,10 +140,6 @@
         <file>qml/ExtruderSelect.qml</file>
         <file>image/extruder_bg.png</file>
         <file>qml/ExtruderUnit.qml</file>
-        <file>image/extrude_disable.png</file>
-        <file>image/extrude_enable.png</file>
-        <file>image/retract_disable.png</file>
-        <file>image/retract_enable.png</file>
         <file>qml/DistanceButtonSelect.qml</file>
         <file>qml/DigitalKeyBoard.qml</file>
         <file>image/platform_0.png</file>
@@ -175,5 +161,16 @@
         <file>image/nozzle_up.png</file>
         <file>image/nozzle_down2.png</file>
         <file>image/nozzle_up2.png</file>
+        <file>image/changehotend_tip_0.png</file>
+        <file>image/changehotend_tip_1.png</file>
+        <file>image/changehotend_tip_6.png</file>
+        <file>image/changehotend_tip_7.png</file>
+        <file>image/changehotend_tip_5.png</file>
+        <file>image/unload_disable.png</file>
+        <file>image/unload_enable.png</file>
+        <file>image/unload_pressed.png</file>
+        <file>image/load_disable.png</file>
+        <file>image/load_pressed.png</file>
+        <file>image/load_enable.png</file>
     </qresource>
 </RCC>

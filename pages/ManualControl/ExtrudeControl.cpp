@@ -27,6 +27,7 @@ void MainWindow::extrudeControlCooldown(int Index)
 {
     ui->qw_Extrude->rootObject()->setProperty("temp", 0);
     m_port->setHeattingUnit(Index, 0);
+    extruderControlCheckTemp();
 }
 
 void MainWindow::extrudeControlChooseDistance(int Index)
@@ -53,8 +54,8 @@ void MainWindow::extrudeControlRetract(int Index)
 
 void MainWindow::extrudeControlSelectExtruder(int Index)
 {
-    qDebug()<<Index;
     ui->qw_Extrude->rootObject()->setProperty("indicator", Index);
+    extruderControlCheckTemp();
 }
 
 void MainWindow::extrudeControlChooseTempReturn()
@@ -82,16 +83,16 @@ void MainWindow::extruderControlCheckTemp()
         strMachineStatus cur_status;
         m_port->getXhPage()->GetMachineStatus(&cur_status);
         if(index == 0) {
-            if(cur_status.CurTemp[0] > 175)
-                ui->qw_Extrude->rootObject()->setProperty("enableMotor", true);
+            if((cur_status.CurTemp[0] > cur_status.TarTemp[0] - 5) && (cur_status.TarTemp[0] > 0))
+                ui->qw_Extrude->rootObject()->setProperty("extruderEnabled", true);
             else
-                ui->qw_Extrude->rootObject()->setProperty("enableMotor", false);
+                ui->qw_Extrude->rootObject()->setProperty("extruderEnabled", false);
         }
         else {
-            if(cur_status.CurTemp[1] > 175)
-                ui->qw_Extrude->rootObject()->setProperty("enableMotor", true);
+            if((cur_status.CurTemp[1] > cur_status.TarTemp[1] - 5) && (cur_status.TarTemp[1] > 0))
+                ui->qw_Extrude->rootObject()->setProperty("extruderEnabled", true);
             else
-                ui->qw_Extrude->rootObject()->setProperty("enableMotor", false);
+                ui->qw_Extrude->rootObject()->setProperty("extruderEnabled", false);
         }
         QTimer::singleShot(200, this, SLOT(extruderControlCheckTemp()));
     }
