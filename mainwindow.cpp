@@ -954,11 +954,13 @@ void MainWindow::on_pushButton_230_clicked()
 
 void MainWindow::on_pushButton_235_clicked()
 {
+    first_calibration = true;
     ui->stackedWidget->setCurrentWidget(ui->page_PlatformCali_0);
 }
 
 void MainWindow::on_pushButton_236_clicked()
 {
+    first_calibration = true;
     ui->stackedWidget->setCurrentWidget(ui->page_NozzleCali_0);
 }
 

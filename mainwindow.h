@@ -251,6 +251,7 @@ private:
 
     QList<QByteArray> command_received_list;
 
+    bool first_calibration;
 
 private slots:
     void printMessageProcess(uint8_t, uint8_t, QByteArray Datas);

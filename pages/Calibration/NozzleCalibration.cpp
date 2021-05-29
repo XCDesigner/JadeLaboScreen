@@ -85,6 +85,16 @@ void MainWindow::nozzleCalibrationMessageProcess(uint8_t Command, uint8_t SubCod
         {
             if(result == 0) {
                 float z_diff = (int32_t)(((uint8_t)Datas.at(6) << 24) | ((uint8_t)Datas.at(5) << 16) | ((uint8_t)Datas.at(4) << 8) | (uint8_t)Datas.at(3)) / 1000.0f;
+
+                if(first_calibration == true)
+                {
+                    first_calibration = false;
+                }
+                else
+                {
+                    z_diff = 0;
+                }
+
                 if(z_diff != 0)
                 {
                     ui->stackedWidget->setCurrentWidget(ui->page_NozzleCali_3);
