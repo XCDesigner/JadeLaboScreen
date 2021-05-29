@@ -36,6 +36,16 @@ void JLSerialPort::onSerialRead()
     QByteArray datas;
     if(m_port->isOpen())
         datas = m_port->readAll();
+    recv_log.append(datas);
+    if(recv_log.size() > 20480)
+    {
+        QFile file(LogFile);
+        file.open(QIODevice::Append);
+        file.seek(file.size());
+        file.write(recv_log);
+        recv_log.clear();
+        file.close();
+    }
     if(datas.size() > 0)
     {
         mtx_receiver_buffer.lock();

@@ -6,9 +6,9 @@ void MainWindow::changeFilamentPageInit()
     char temp[20];
     strMachineStatus new_status;
     m_port->getXhPage()->GetMachineStatus(&new_status);
-    sprintf(temp, "%d°C", new_status.TarTemp[0]);
+    sprintf(temp, "%03d°C", new_status.TarTemp[0]);
     ui->qw_LeftHeating->rootObject()->setProperty("text", temp);
-    sprintf(temp, "%d°C", new_status.TarTemp[1]);
+    sprintf(temp, "%03d°C", new_status.TarTemp[1]);
     ui->qw_RightHeating->rootObject()->setProperty("text", temp);
     screen_status.setPerformance(CHANGE_FILAMENT);
     ui->qw_LeftHeating->rootObject()->setProperty("extrudeEnable", false);

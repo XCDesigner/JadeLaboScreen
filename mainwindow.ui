@@ -70,7 +70,7 @@ font-family: barlow;
 }</string>
     </property>
     <property name="currentIndex">
-     <number>5</number>
+     <number>9</number>
     </property>
     <widget class="QWidget" name="page_12">
      <widget class="QLabel" name="label_14">
@@ -2338,13 +2338,13 @@ QScrollBar::up-arrow:vertical, QScrollBar::down-arrow:vertical {
         <x>180</x>
         <y>167</y>
         <width>1050</width>
-        <height>553</height>
+        <height>400</height>
        </rect>
       </property>
       <property name="styleSheet">
        <string notr="true">QListWidget{
 	border: 1px solid rgba(45, 44, 43, 100);
-	background-color: rgba(255, 255, 255, 0);
+	background-color: rgba(255, 255, 255, 100);
 outline:none;
 font-weight: bold;
 font-family:Barlow;
@@ -2360,6 +2360,9 @@ QListWidget::item:hover {
 QListWidget::QScrollBar{
 		width:20px;
 }</string>
+      </property>
+      <property name="autoScrollMargin">
+       <number>110</number>
       </property>
      </widget>
      <widget class="QPushButton" name="pushButton_101">

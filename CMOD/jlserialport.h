@@ -6,6 +6,9 @@
 #include <QDebug>
 #include <QSerialPort>
 #include <QSerialPortInfo>
+#include <QIODevice>
+#include "define/imagePath.h"
+#include <QFile>
 #include "portreceiver.h"
 #include "jlprotocal.h"
 
@@ -31,6 +34,7 @@ protected:
 private:
     QSerialPort *m_port;
     JLProtocal *protocal;
+    QByteArray recv_log;
 };
 
 #endif // JLSERIALPORT_H

@@ -12,6 +12,7 @@
 #define localPath               QDir::currentPath()+"/3D/"
 #define UpdateFile              QDir::currentPath()+"/updatefiles/local_update.JUP"
 #define UpdateSourceFile        QDir::currentPath()+"/UD/TestPack.JUP"
+#define LogFile                 QDir::currentPath()+"/UD/Log.bin"
 
 #define UPDATE_FILE_TMP         QDir::currentPath() + "/Update/J1Screen.tar"
 
