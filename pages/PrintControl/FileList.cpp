@@ -93,7 +93,7 @@ void MainWindow::m_addItemToList(const QString &fileName, QString filePath, QByt
         ui->listWidget->setItemWidget(pItem,pWidgetItem);
 
     }
-    pItem->setSizeHint(QSize(930,127));
+    pItem->setSizeHint(QSize(930,120));
 
     m_map.insert(pWidgetItem,pItem);
 

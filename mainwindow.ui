@@ -2299,7 +2299,7 @@ font-size: 32px;
         <x>180</x>
         <y>167</y>
         <width>1050</width>
-        <height>553</height>
+        <height>480</height>
        </rect>
       </property>
       <property name="styleSheet">
@@ -2338,13 +2338,13 @@ QScrollBar::up-arrow:vertical, QScrollBar::down-arrow:vertical {
         <x>180</x>
         <y>167</y>
         <width>1050</width>
-        <height>400</height>
+        <height>480</height>
        </rect>
       </property>
       <property name="styleSheet">
        <string notr="true">QListWidget{
 	border: 1px solid rgba(45, 44, 43, 100);
-	background-color: rgba(255, 255, 255, 100);
+	background-color: rgba(255, 255, 255, 0);
 outline:none;
 font-weight: bold;
 font-family:Barlow;
