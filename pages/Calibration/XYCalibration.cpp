@@ -9,8 +9,8 @@ void MainWindow::on_pushButton_631_clicked()
 {
     ui->stackedWidget->setCurrentWidget(ui->page_XYCali_1);
     ui->qw_NozzleCalibrateP1->setClearColor("#202020");
-    m_port->setHeattingUnit(0, 220);
-    m_port->setHeattingUnit(1, 220);
+    m_port->setHeattingUnit(0, 150);
+    m_port->setHeattingUnit(1, 150);
     m_port->setHeattingUnit(2, 60);
     QTimer::singleShot(500, this, SLOT(xyCalibrationHeating()));
     screen_status.setPerformance(XY_CALIBRATING);
@@ -43,7 +43,7 @@ void MainWindow::xyCalibrationHeating() {
     m_port->getXhPage()->GetMachineStatus(&new_status);
     if(screen_status.getPerformance() == XY_CALIBRATING)
     {
-        if((new_status.CurTemp[0] > 10) && (new_status.CurTemp[1] > 210))
+        if((new_status.CurTemp[0] > 140) && (new_status.CurTemp[1] > 140))
         {
             m_port->x_xyCalibration();
             ui->stackedWidget->setCurrentWidget(ui->page_XYCali_2);

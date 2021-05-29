@@ -9,8 +9,8 @@ void MainWindow::on_pushButton_286_clicked()
 {
     ui->stackedWidget->setCurrentWidget(ui->page_NozzleCali_1);
     ui->qw_NozzleCalibrateP1->setClearColor(QColor(qmlColor));
-    m_port->setHeattingUnit(0, 220);
-    m_port->setHeattingUnit(1, 220);
+    m_port->setHeattingUnit(0, 150);
+    m_port->setHeattingUnit(1, 150);
     m_port->setHeattingUnit(2, 60);
     screen_status.setPerformance(NOZZLE_CALIBRATING);
     QTimer::singleShot(500, this, SLOT(nozzleCalibrationHeating()));
@@ -63,7 +63,7 @@ void MainWindow::nozzleCalibrationHeating()
 
     if(screen_status.getPerformance() == NOZZLE_CALIBRATING)
     {
-        if((new_status.CurTemp[0] > 210) && (new_status.CurTemp[1] > 210))
+        if((new_status.CurTemp[0] > 140) && (new_status.CurTemp[1] > 140))
         {
             m_port->n_nozzleCalibration();
             ui->stackedWidget->setCurrentWidget(ui->page_NozzleCali_2);

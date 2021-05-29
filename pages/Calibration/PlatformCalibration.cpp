@@ -12,8 +12,8 @@ void MainWindow::platformCalibratePageinit()
 
 void MainWindow::on_pushButton_275_clicked()
 {
-    m_port->setHeattingUnit(0, 220);
-    m_port->setHeattingUnit(1, 220);
+    m_port->setHeattingUnit(0, 150);
+    m_port->setHeattingUnit(1, 150);
     m_port->setHeattingUnit(2, 60);
     ui->stackedWidget->setCurrentWidget(ui->page_PlatformCali_1);
     screen_status.setPerformance(PLATFORM_CALIBRATING);
@@ -109,7 +109,7 @@ void MainWindow::platformCalibrationHeating()
 
     if(screen_status.getPerformance() == PLATFORM_CALIBRATING)
     {
-        if((new_status.CurTemp[0] > 210) && (new_status.CurTemp[1] > 210))
+        if((new_status.CurTemp[0] > 140) && (new_status.CurTemp[1] > 140))
         {
             m_port->p_platformCalibration();
             ui->stackedWidget->setCurrentWidget(ui->page_PlatformCali_2);
