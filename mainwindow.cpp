@@ -97,7 +97,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->listWidget->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     ui->listWidget->setHorizontalScrollMode(QListWidget::QAbstractItemView::ScrollPerPixel);
     ui->listWidget->setVerticalScrollMode(QListWidget::ScrollPerItem);
-    QScroller::grabGesture(ui->listWidget, QScroller::TouchGesture);
+    QScroller::grabGesture(ui->listWidget, QScroller::LeftMouseButtonGesture);
 
     ui->listWidget_2->setViewMode(QListView::ListMode);
     ui->listWidget_2->setFlow(QListView::TopToBottom);
@@ -105,7 +105,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->listWidget_2->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     ui->listWidget_2->setHorizontalScrollMode(QListWidget::ScrollPerPixel);
     ui->listWidget_2->setVerticalScrollMode(QListWidget::ScrollPerItem);
-    QScroller::grabGesture(ui->listWidget_2, QScroller::TouchGesture);
+    QScroller::grabGesture(ui->listWidget_2, QScroller::LeftMouseButtonGesture);
 
     ui->listWidget_3->setViewMode(QListView::ListMode);
     ui->listWidget_3->setFlow(QListView::TopToBottom);
