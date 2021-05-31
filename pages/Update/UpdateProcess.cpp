@@ -131,6 +131,7 @@ void MainWindow::rebootSystem()
 {
     qDebug()<<"Send Reboot system";
     m_port->sendRebootSystem();
+    QObject::disconnect(m_port->getXhPage(), SIGNAL(command_received(uint8_t, uint8_t, QByteArray)), this, SLOT(updateCommandProcess(uint8_t, uint8_t, QByteArray)));
 }
 
 void MainWindow::startUpdateScreen()
