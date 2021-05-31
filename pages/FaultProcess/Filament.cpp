@@ -23,7 +23,7 @@ void MainWindow::onFilamentFaultDialogReturn()
     }
     else if(ret[0] == "Resume")
     {
-        m_port->resume();
+        m_port->continuePrint();
     }
     else if(ret[0] == "Cancel")
     {

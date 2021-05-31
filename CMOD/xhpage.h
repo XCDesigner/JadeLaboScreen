@@ -108,17 +108,11 @@ signals:
     void command_received(uint8_t, uint8_t, QByteArray);
     /*first start*/
     void firstTestResult(bool ,bool ,bool ,bool ,bool );
-    void xNoHeating(bool );
     /*tool*/
     void disUseFilament(bool );
     void backFactory(bool );
 
     /*tool calibration*/
-    void pPlatformCalibration(qint32 ,qint32 ,qint32 ,qint32 );
-
-    void nNozzleCalibration(int  );
-    void xPlatformCalibration(bool );
-
     void sendFileArry(QByteArray );
     /*print*/
     void goOnOk();

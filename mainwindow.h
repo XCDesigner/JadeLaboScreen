@@ -353,7 +353,7 @@ private slots:
     void shineone();
     void shinetwo();
 
-    void askPrint();
+    void getMachineStatus();
     void jumpSeventeen();
     void jumpnineteen();
 
@@ -400,13 +400,6 @@ private slots:
     void selftest5();
     void selftest6();
 
-    void paracktiv(bool );
-    void findhotend();
-    void cannext(bool );
-
-    void up();
-    void down();
-
     void updatebegin();
     void updateNumx(int );
 
@@ -423,30 +416,6 @@ private slots:
     void on_pushButton_175_clicked();
 
     void on_pushButton_177_clicked();
-
-    void on_pushButton_182_clicked();
-
-    void on_pushButton_183_clicked();
-
-    void on_pushButton_194_clicked();
-
-    void on_pushButton_195_clicked();
-
-    void on_pushButton_206_clicked();
-
-    void on_pushButton_207_clicked();
-
-    void on_pushButton_212_clicked();
-
-    void on_pushButton_213_clicked();
-
-    void on_pushButton_218_clicked();
-
-    void on_pushButton_219_clicked();
-
-    void on_pushButton_224_clicked();
-
-    void on_pushButton_225_clicked();
 
     void on_pushButton_230_clicked();
 
@@ -476,8 +445,6 @@ private slots:
 
     void on_pushButton_233_clicked();
 
-    void on_pushButton_180_clicked();
-
     void on_pushButton_170_clicked();
 
     void on_pushButton_172_clicked();
@@ -491,34 +458,6 @@ private slots:
     void on_pushButton_669_clicked();
 
     void on_pushButton_667_clicked();
-
-    void on_pushButton_179_clicked();
-
-    void on_pushButton_181_clicked();
-
-    void on_pushButton_193_clicked();
-
-    void on_pushButton_190_clicked();
-
-    void on_pushButton_202_clicked();
-
-    void on_pushButton_203_clicked();
-
-    void on_pushButton_210_clicked();
-
-    void on_pushButton_209_clicked();
-
-    void on_pushButton_216_clicked();
-
-    void on_pushButton_214_clicked();
-
-    void on_pushButton_220_clicked();
-
-    void on_pushButton_223_clicked();
-
-    void on_pushButton_227_clicked();
-
-    void on_pushButton_226_clicked();
 
     void on_pushButton_243_clicked();
 
@@ -891,12 +830,6 @@ private slots:
     void on_pushButton_273_clicked();
 
     void on_pushButton_268_clicked();
-
-    void on_pushButton_100_clicked();
-
-    void on_pushButton_120_clicked();
-
-    void on_pushButton_121_clicked();
 
     void on_pushButton_119_clicked();
 

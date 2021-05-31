@@ -25,7 +25,7 @@ public:
 
     /*屏幕主动请求接口函数(*表示指令发出后需要等待主控回复)*/
     /**********Frist Start**********/
-    void askTemperature();//开机请求各项温度*
+    void getMachineStatus();//开机请求各项温度*
     void askStatus();//开机请求设备状态*
     void isHeating();//正在加热？*
     void calibrationPlatform();//校准平台*
@@ -47,10 +47,7 @@ public:
     void stopPrint();
     void readyprint(int ,QByteArray);
 
-    void enbackup(bool );
     void setBackupEnableStatus(bool);
-    void askHotend();
-    void askstate();
 
     void setPrintTempPercentage(int, uint8_t);
     void setPrintFanPercentage(int, uint8_t);
@@ -59,11 +56,6 @@ public:
     void setPrintPlatformOffset(int32_t);
 
     void setExtruderDisable(uint8_t);
-    /*********ERROR*************/
-    void resume();
-    void abort();
-    void testr();
-    void testb();
 
     void preparePrint(QString Mode, QByteArray Offset);
     void startPrint();
@@ -118,8 +110,6 @@ public:
     void selftest4();
     void selftest5();
 //    void selftest6();
-    void backupsend();
-    void backuptsend();
 
     void carbinfinished();
     void carbincancel();
@@ -160,17 +150,9 @@ private:
 
 signals:
     void firstTestResult(bool ,bool ,bool ,bool ,bool );
-    void platCheck(bool );
-    void xNoHeating(bool );
     /*tool*/
     void disUseFilament(bool );
     void backFactory(bool );
-
-    /*tool calibration*/
-    void pPlatformCalibration(qint32 ,qint32 ,qint32 ,qint32 );
-    void nNozzleCalibration( int );
-    void xPlatformCalibration(bool );
-    void canelk();
 
     void powerlost();
 
@@ -193,12 +175,6 @@ private slots:
     /*tool*/
     void xhdisUseFilament(bool );
     void xhbackFactory(bool );
-
-    /*tool calibration*/
-    void xhnNozzleCalibration( int );
-    void xhxPlatformCalibration(bool );
-
-    void xhxNoHeating(bool );
 
     void xhpowerlost();
 

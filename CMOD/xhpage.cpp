@@ -118,16 +118,6 @@ int XhPage::analysis(QByteArray package)
                                 case '\x00':
                                     fTGet(data);
                                     break;
-
-                                case '\x06':
-                                if(data[2]=='\x00')
-                                {
-                                    if(data[3]=='\x03')
-                                    {
-                                        emit xNoHeating(true);
-                                    }
-                                }
-                                break;
                             default:
                                 break;
                             }
@@ -167,17 +157,6 @@ int XhPage::analysis(QByteArray package)
                             break;
 
                         }
-                        break;
-                    /*******tool*********/
-                        case '\x03':
-                            if(data[1] == '\x00')
-                            {
-                                if(data[2] == '\x00')
-                                {
-                                    qint32 num = (((static_cast< qint32>(data[6])) &  0x0000000000FF) << 24)|(((static_cast< qint32>(data[5])) &  0x0000000000FF) << 16)|(((static_cast< qint32>(data[4])) &  0x0000000000FF) << 8)|(((static_cast< qint32>(data[3])) &  0x0000000000FF) << 0);
-                                    emit nNozzleCalibration(num);
-                                }
-                            }
                         break;
                     /**************05族**************/
                     case '\x05':

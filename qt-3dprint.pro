@@ -82,7 +82,8 @@ SOURCES += \
     pages/FaultProcess/PowerRecovery.cpp \
     pages/JodMove/JodMove.cpp \
     pages/Keyboard/KeyBoard.cpp \
-    pages/LightSetting/LightSetting.cpp \
+    pages/MachineSetting/LightSetting/LightSetting.cpp \
+    pages/MachineSetting/SelfTest/SelfTest.cpp \
     pages/ManualControl/ExtrudeControl.cpp \
     pages/ManualControl/TempControl.cpp \
     pages/PauseDialog/PauseDialog.cpp \

@@ -9,14 +9,9 @@
         <file>image/antOutline-wifi.png</file>
         <file>image/bamp3.png</file>
         <file>image/BedActive.png</file>
-        <file>image/Bitmap.png</file>
-        <file>image/Bitmap2.png</file>
-        <file>image/Bitmap4.png</file>
-        <file>image/Bitmap5.png</file>
         <file>image/boat.png</file>
         <file>image/calibrationIcon(2).png</file>
         <file>image/calibrationIcon.png</file>
-        <file>image/Cancel.png</file>
         <file>image/ChangeHotendIcon(1).png</file>
         <file>image/ChangeHotendIcon(2).png</file>
         <file>image/ChangeHotendIcon.png</file>
@@ -25,15 +20,12 @@
         <file>image/check.png</file>
         <file>image/close.png</file>
         <file>image/color.png</file>
-        <file>image/ConfirmButton.png</file>
         <file>image/ConfirmDialog.png</file>
         <file>image/delete.png</file>
         <file>image/down.png</file>
         <file>image/FilamentActive(2).png</file>
         <file>image/FilamentInactive.png</file>
         <file>image/FileIcon.png</file>
-        <file>image/File-List.png</file>
-        <file>image/FileSource.png</file>
         <file>image/go.png</file>
         <file>image/Help.png</file>
         <file>image/HelpButton.png</file>
@@ -56,19 +48,13 @@
         <file>image/moveUP.png</file>
         <file>image/nozzle.png</file>
         <file>image/OptionButton.png</file>
-        <file>image/pageViewPic1.jpg</file>
-        <file>image/pageViewPic2.jpg</file>
         <file>image/Path Copy.png</file>
         <file>image/Path.png</file>
         <file>image/pause.png</file>
-        <file>image/picShow1.jpg</file>
-        <file>image/picShow2.jpg</file>
-        <file>image/picShow3.jpg</file>
         <file>image/Print.png</file>
         <file>image/PrintActive(2).png</file>
         <file>image/PrintInactive.png</file>
         <file>image/PrintMode.png</file>
-        <file>image/Progressbar.png</file>
         <file>image/ready.png</file>
         <file>image/Rectangle.png</file>
         <file>image/remove.png</file>
@@ -124,8 +110,6 @@
         <file>qml/PauseDialogItem.qml</file>
         <file>qml/JLHeatingUnit.qml</file>
         <file>qml/HeatingCircle.qml</file>
-        <file>image/turn_dec.png</file>
-        <file>image/turn_inc.png</file>
         <file>qml/TurningLabel.qml</file>
         <file>qml/GifPlayer.qml</file>
         <file>qml/JLHeatingUnit2.qml</file>

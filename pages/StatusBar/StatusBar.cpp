@@ -1,6 +1,11 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
+void MainWindow::getMachineStatus()
+{
+    m_port->getMachineStatus();
+}
+
 void MainWindow::setUSBpic(bool isVisible)
 {
     ui->qw_StatusNotice->rootObject()->setProperty("udiskVisible", isVisible);

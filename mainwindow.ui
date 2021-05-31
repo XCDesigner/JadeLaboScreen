@@ -70,7 +70,7 @@ font-family: barlow;
 }</string>
     </property>
     <property name="currentIndex">
-     <number>9</number>
+     <number>44</number>
     </property>
     <widget class="QWidget" name="page_12">
      <widget class="QLabel" name="label_14">
@@ -2130,7 +2130,6 @@ border:none;</string>
       <property name="styleSheet">
        <string notr="true">color: rgba(255, 255, 255, 255);
 font-size: 80px;
-
 font-family:Barlow;</string>
       </property>
       <property name="text">
@@ -2521,7 +2520,7 @@ font-weight: bold;</string>
        <rect>
         <x>610</x>
         <y>350</y>
-        <width>181</width>
+        <width>380</width>
         <height>41</height>
        </rect>
       </property>
@@ -2541,7 +2540,7 @@ font-family: Barlow;
 background-color: rgba(255, 255, 255, 0);</string>
       </property>
       <property name="text">
-       <string>0h 0m</string>
+       <string>0d 0h 0m</string>
       </property>
      </widget>
      <widget class="QQuickWidget" name="qw_PreHeating">
@@ -2706,7 +2705,7 @@ background-color: rgba(255, 255, 255, 0);</string>
        <rect>
         <x>610</x>
         <y>350</y>
-        <width>181</width>
+        <width>380</width>
         <height>41</height>
        </rect>
       </property>
@@ -2726,7 +2725,7 @@ font-family: Barlow;
 background-color: rgba(255, 255, 255, 0);</string>
       </property>
       <property name="text">
-       <string>0H0M0S</string>
+       <string>0d 0h 0m</string>
       </property>
      </widget>
      <widget class="QLabel" name="label_44">
@@ -2838,7 +2837,7 @@ background-color: rgba(255, 255, 255, 0);</string>
        <rect>
         <x>610</x>
         <y>350</y>
-        <width>183</width>
+        <width>380</width>
         <height>41</height>
        </rect>
       </property>
@@ -2858,7 +2857,7 @@ font-family: Barlow;
 background-color: rgba(255, 255, 255, 0);</string>
       </property>
       <property name="text">
-       <string>0h 0m</string>
+       <string>0d 0h 0m</string>
       </property>
      </widget>
      <widget class="QLabel" name="label_69">

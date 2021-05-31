@@ -21,12 +21,6 @@ XhPort::XhPort(QObject *parent) : QObject(parent)
     QObject::connect(m_package,&XhPage::disUseFilament,this,&XhPort::xhdisUseFilament);
     QObject::connect(m_package,&XhPage::backFactory,this,&XhPort::xhbackFactory);
 
-    /*tool calibration*/
-    QObject::connect(m_package,&XhPage::nNozzleCalibration,this,&XhPort::xhnNozzleCalibration);
-    QObject::connect(m_package,&XhPage::xPlatformCalibration,this,&XhPort::xhxPlatformCalibration);
-
-    QObject::connect(m_package,&XhPage::xNoHeating,this,&XhPort::xhxNoHeating);
-
     QObject::connect(m_package,&XhPage::selfTest1,this,&XhPort::xhselfTest1);
     QObject::connect(m_package,&XhPage::selfTest2,this,&XhPort::xhselfTest2);
     QObject::connect(m_package,&XhPage::selfTest3,this,&XhPort::xhselfTest3);
@@ -50,12 +44,6 @@ XhPort::~XhPort()
     delete m_package;
 }
 
-/*请求温度*/
-void XhPort::askTemperature()
-{
-    QByteArray buff = QByteArray::fromHex("4A4630020002E001000100");
-    m_serial->write(buff);
-}
 /*请求状态*/
 void XhPort::askStatus()
 {
@@ -131,21 +119,6 @@ void XhPort::readyprint(int Mode, QByteArray Offset)
     m_serial->write(buff);
 }
 
-void XhPort::enbackup(bool a )
-{
-    if(a)
-    {
-        QByteArray s = QByteArray::fromHex("011101");
-        QByteArray buff = m_package->groupPage(s);
-        m_serial->write(buff);
-    }
-    else {
-        QByteArray s = QByteArray::fromHex("011100");
-        QByteArray buff = m_package->groupPage(s);
-        m_serial->write(buff);
-    }
-}
-
 void XhPort::setBackupEnableStatus(bool Enable)
 {
     if(Enable == true)
@@ -159,44 +132,6 @@ void XhPort::setBackupEnableStatus(bool Enable)
         QByteArray buff = m_package->groupPage(s);
         m_serial->write(buff);
     }
-}
-
-void XhPort::askHotend()
-{
-    QByteArray s = QByteArray::fromHex("0106");
-    QByteArray buff = m_package->groupPage(s);
-    m_serial->write(buff);
-}
-
-void XhPort::askstate()
-{
-    QByteArray s = QByteArray::fromHex("010D");
-    QByteArray buff = m_package->groupPage(s);
-    m_serial->write(buff);
-}
-
-void XhPort::resume()
-{
-    QByteArray buff = QByteArray::fromHex("4A4630020002001200060C");
-    m_serial->write(buff);
-}
-
-void XhPort::abort()
-{
-    QByteArray buff = QByteArray::fromHex("4A46300200020007000601");
-    m_serial->write(buff);
-}
-
-void XhPort::testr()
-{
-    QByteArray buff = QByteArray::fromHex("4A4630060006001D000B0210000000");
-    m_serial->write(buff);
-}
-
-void XhPort::testb()
-{
-    QByteArray buff = QByteArray::fromHex("4A4630020002000E000B03");
-    m_serial->write(buff);
 }
 
 /*设备自检*/
@@ -265,6 +200,15 @@ void XhPort::x_xyCalibration()
 }
 
 /**
+  * @brief  Request printer status
+  * @retval None
+  */
+void XhPort::getMachineStatus()
+{
+    m_serial->writeProtocalData(QByteArray::fromHex("0100"));
+}
+
+/**
   * @brief  Request home aixs 
   * @param  AxisFlag: Flags, {XAxis, YAxis, ZAxis}. 1 for home
   * @retval None
@@ -273,8 +217,7 @@ void XhPort::homeMove(QByteArray AxisFlag)
 {
     QByteArray s = QByteArray::fromHex("0203");
     s.append(AxisFlag);
-    QByteArray buff = m_package->groupPage(s);
-    m_serial->write(buff);
+    m_serial->writeProtocalData(s);
 }
 
 /**
@@ -847,20 +790,6 @@ void XhPort::selftest5()
     m_serial->write(buff);
 }
 
-void XhPort::backupsend()
-{
-    QByteArray s = QByteArray::fromHex("010E");
-    QByteArray buff = m_package->groupPage(s);
-    m_serial->write(buff);
-}
-
-void XhPort::backuptsend()
-{
-    QByteArray s = QByteArray::fromHex("0110");
-    QByteArray buff = m_package->groupPage(s);
-    m_serial->write(buff);
-}
-
 void XhPort::carbinfinished()
 {
     QByteArray s = QByteArray::fromHex("0309");
@@ -921,21 +850,6 @@ void XhPort::xhdisUseFilament(bool a)
 void XhPort::xhbackFactory(bool a)
 {
     emit backFactory(a);
-}
-
-void XhPort::xhnNozzleCalibration(int b)
-{
-    emit nNozzleCalibration(b);
-}
-
-void XhPort::xhxPlatformCalibration(bool a )
-{
-    emit xPlatformCalibration(a);
-}
-
-void XhPort::xhxNoHeating(bool a)
-{
-    emit xNoHeating(a);
 }
 
 void XhPort::xhpowerlost()

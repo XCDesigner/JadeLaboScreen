@@ -72,8 +72,6 @@ MainWindow::MainWindow(QWidget *parent) :
     /*frist*/
     QObject::connect(m_port, &XhPort::firstTestResult, this,&MainWindow::winGfour);
 
-    QObject::connect(m_port,&XhPort::xNoHeating,this,&MainWindow::cannext);
-
     QObject::connect(m_port,&XhPort::selfTest1,this,&MainWindow::selftest1);
     QObject::connect(m_port,&XhPort::selfTest2,this,&MainWindow::selftest2);
     QObject::connect(m_port,&XhPort::selfTest3,this,&MainWindow::selftest3);
@@ -229,7 +227,7 @@ MainWindow::MainWindow(QWidget *parent) :
     // ui->quickWidget_2->show();
 
     ui->m_StatusBar->setVisible(true);
-    QObject::connect(printTimer,&QTimer::timeout,this,&MainWindow::askPrint);
+    QObject::connect(printTimer,&QTimer::timeout,this,&MainWindow::getMachineStatus);
     printTimer->start(1000);
     skpWin->setXHPort(m_port);
     skpWin->setScreenStausContext(&screen_status);
@@ -405,7 +403,7 @@ void MainWindow::winGfour(bool a, bool b, bool c, bool d, bool e)
     {
         /*正常启动*/
         ui->stackedWidget->setCurrentIndex(5);
-        m_port->askTemperature();
+        m_port->getMachineStatus();
 
         QObject::connect(&m_timer,SIGNAL(timeout()),this,SLOT(jumpFour()));
         m_timer.start(2000);
@@ -571,12 +569,6 @@ void MainWindow::shinetwo()
         ui->pushButton_41->setGraphicsEffect(m_effect);
     }
 #endif
-}
-
-
-void MainWindow::askPrint()
-{
-    m_port->askTemperature();
 }
 
 void MainWindow::jumpSeventeen()
@@ -811,36 +803,6 @@ void MainWindow::selftest6()
     ui->pushButton_679->setEnabled(true);
 }
 
-void MainWindow::paracktiv(bool a)
-{
-    qDebug()<<"3";
-    m_port->enbackup(a);
-}
-
-void MainWindow::findhotend()
-{
-    m_port->askHotend();
-    m_port->backuptsend();
-}
-
-void MainWindow::cannext(bool )
-{
-    if(m_parsetdlog!=NULL)
-    {
-        m_parsetdlog->seten(true,true);
-    }
-}
-
-void MainWindow::up()
-{
-    m_port->backuptsend();
-}
-
-void MainWindow::down()
-{
-    m_port->backupsend();
-}
-
 void MainWindow::updatebegin()
 {
     /*进度条*/
@@ -887,66 +849,6 @@ void MainWindow::on_pushButton_177_clicked()
     ui->stackedWidget->setCurrentWidget(ui->page_MachineSetting);
 }
 
-void MainWindow::on_pushButton_182_clicked()
-{
-    ui->stackedWidget->setCurrentIndex(43);
-}
-
-void MainWindow::on_pushButton_183_clicked()
-{
-    ui->stackedWidget->setCurrentIndex(48);
-}
-
-void MainWindow::on_pushButton_194_clicked()
-{
-    ui->stackedWidget->setCurrentIndex(45);
-}
-
-void MainWindow::on_pushButton_195_clicked()
-{
-    ui->stackedWidget->setCurrentIndex(43);
-}
-
-void MainWindow::on_pushButton_206_clicked()
-{
-    ui->stackedWidget->setCurrentIndex(47);
-}
-
-void MainWindow::on_pushButton_207_clicked()
-{
-    ui->stackedWidget->setCurrentIndex(45);
-}
-
-void MainWindow::on_pushButton_212_clicked()
-{
-    ui->stackedWidget->setCurrentIndex(48);
-}
-
-void MainWindow::on_pushButton_213_clicked()
-{
-    ui->stackedWidget->setCurrentIndex(46);
-}
-
-void MainWindow::on_pushButton_218_clicked()
-{
-    ui->stackedWidget->setCurrentIndex(49);
-}
-
-void MainWindow::on_pushButton_219_clicked()
-{
-    ui->stackedWidget->setCurrentIndex(47);
-}
-
-void MainWindow::on_pushButton_224_clicked()
-{
-    ui->stackedWidget->setCurrentIndex(50);
-}
-
-void MainWindow::on_pushButton_225_clicked()
-{
-    ui->stackedWidget->setCurrentIndex(48);
-}
-
 void MainWindow::on_pushButton_230_clicked()
 {
     ui->stackedWidget->setCurrentIndex(42);
@@ -970,11 +872,6 @@ void MainWindow::on_pushButton_237_clicked()
 }
 
 void MainWindow::on_pushButton_233_clicked()
-{
-    ui->stackedWidget->setCurrentWidget(ui->page_Tools);
-}
-
-void MainWindow::on_pushButton_180_clicked()
 {
     ui->stackedWidget->setCurrentWidget(ui->page_Tools);
 }
@@ -1014,83 +911,6 @@ void MainWindow::on_pushButton_669_clicked()
 void MainWindow::on_pushButton_667_clicked()
 {
     ui->stackedWidget->setCurrentWidget(ui->page_Tools);
-}
-
-void MainWindow::on_pushButton_179_clicked()
-{
-    ui->stackedWidget->setCurrentWidget(ui->page_GetStart);
-}
-
-void MainWindow::on_pushButton_181_clicked()
-{
-    m_port->prepareChangeFilament();
-    ui->stackedWidget->setCurrentWidget(ui->page_ChangeFilament);
-}
-
-void MainWindow::on_pushButton_193_clicked()
-{
-    ui->stackedWidget->setCurrentWidget(ui->page_GetStart);
-}
-
-void MainWindow::on_pushButton_190_clicked()
-{
-    m_port->prepareChangeFilament();
-    ui->stackedWidget->setCurrentWidget(ui->page_ChangeFilament);
-}
-
-void MainWindow::on_pushButton_202_clicked()
-{
-    ui->stackedWidget->setCurrentWidget(ui->page_GetStart);
-}
-
-void MainWindow::on_pushButton_203_clicked()
-{
-    m_port->prepareChangeFilament();
-    ui->stackedWidget->setCurrentWidget(ui->page_ChangeFilament);
-}
-
-void MainWindow::on_pushButton_210_clicked()
-{
-    ui->stackedWidget->setCurrentWidget(ui->page_GetStart);
-}
-
-void MainWindow::on_pushButton_209_clicked()
-{
-    m_port->prepareChangeFilament();
-    ui->stackedWidget->setCurrentWidget(ui->page_ChangeFilament);
-}
-
-void MainWindow::on_pushButton_216_clicked()
-{
-    ui->stackedWidget->setCurrentWidget(ui->page_GetStart);
-}
-
-void MainWindow::on_pushButton_214_clicked()
-{
-    m_port->prepareChangeFilament();
-    ui->stackedWidget->setCurrentWidget(ui->page_ChangeFilament);
-}
-
-void MainWindow::on_pushButton_220_clicked()
-{
-    ui->stackedWidget->setCurrentWidget(ui->page_GetStart);
-}
-
-void MainWindow::on_pushButton_223_clicked()
-{
-    m_port->prepareChangeFilament();
-    ui->stackedWidget->setCurrentWidget(ui->page_ChangeFilament);
-}
-
-void MainWindow::on_pushButton_227_clicked()
-{
-    ui->stackedWidget->setCurrentWidget(ui->page_GetStart);
-}
-
-void MainWindow::on_pushButton_226_clicked()
-{
-    m_port->prepareChangeFilament();
-    ui->stackedWidget->setCurrentWidget(ui->page_ChangeFilament);
 }
 
 void MainWindow::on_pushButton_231_clicked()
@@ -1197,11 +1017,6 @@ void MainWindow::on_pushButton_347_clicked()
     ui->pushButton_679->setEnabled(false);
     m_port->selftest1();
     ui->label_164->setPixmap(QPixmap(selfTestWait));
-}
-
-void MainWindow::on_pushButton_342_clicked()
-{
-    ui->stackedWidget->setCurrentWidget(ui->page_SelfTest_0);
 }
 
 void MainWindow::on_pushButton_348_clicked()
@@ -1430,7 +1245,7 @@ void MainWindow::on_pushButton_354_clicked()
     m_setdlog->setXHPort(m_port);
     m_setdlog->setScreenStausContext(&screen_status);
     ui->m_StatusBar->setVisible(true);
-    QObject::connect(printTimer,&QTimer::timeout,this,&MainWindow::askPrint);
+    QObject::connect(printTimer,&QTimer::timeout,this,&MainWindow::getMachineStatus);
     printTimer->start(1000);
     PowerLostInit();
     FaultDetectInit();
@@ -1460,11 +1275,6 @@ void MainWindow::on_pushButton_262_clicked()
     m_printfilament->init(ui->pushButton_262->text());
     m_printfilament->show();
     QObject::connect(m_printfilament,&printFlament::heatT,this,&MainWindow::prt);
-}
-
-void MainWindow::on_pushButton_100_clicked()
-{
-    ui->stackedWidget->setCurrentWidget(ui->page_GetStart);
 }
 
 void MainWindow::on_pushButton_689_clicked()
@@ -1588,17 +1398,6 @@ void MainWindow::on_pushButton_447_clicked()
     /*不知道是否弹窗*/
 }
 
-void MainWindow::on_pushButton_692_clicked()
-{
-    ui->label_164->clear();
-    ui->label_192->clear();
-    ui->label_193->clear();
-    ui->label_224->clear();
-    ui->label_225->clear();
-    ui->label_285->clear();
-    ui->stackedWidget->setCurrentWidget(ui->page_SelfTest_0);
-}
-
 void MainWindow::on_pushButton_453_clicked(bool checked)
 {
     if(!checked)
@@ -1685,17 +1484,6 @@ void MainWindow::on_pushButton_268_clicked()
 void MainWindow::on_pushButton_119_clicked()
 {
     ui->stackedWidget->setCurrentWidget(ui->page_GetStart);
-}
-
-void MainWindow::on_pushButton_120_clicked()
-{
-    m_port->prepareChangeFilament();
-    ui->stackedWidget->setCurrentWidget(ui->page_ChangeFilament);
-}
-
-void MainWindow::on_pushButton_121_clicked()
-{
-    ui->stackedWidget->setCurrentWidget(ui->page_Tools);
 }
 
 void MainWindow::on_pushButton_146_clicked()

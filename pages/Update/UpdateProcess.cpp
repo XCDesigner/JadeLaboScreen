@@ -13,7 +13,9 @@ void MainWindow::updateFileAnalize(QString SourceFile)
     QList<uint32_t> printer_update_info;
     printer_update_info = getUpdateItem(1);
     qDebug()<<printer_update_info;
-    if(printer_update_info.count() > 0) {
+    printTimer->stop();
+    if(printer_update_info.count() > 0)
+    {
         printerUpdateFileBuffer = getUpdateContent(printer_update_info);
         QByteArray update_info = getUpdateInfo(printer_update_info);
         printerUpdatePacks = printerUpdateFileBuffer.size() / 512;
@@ -22,7 +24,8 @@ void MainWindow::updateFileAnalize(QString SourceFile)
         qDebug()<<printerUpdatePacks;
         startUpdatePrinter();
     }
-    else {
+    else
+    {
         startUpdateScreen();
     }
 }
