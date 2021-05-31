@@ -72,16 +72,6 @@ MainWindow::MainWindow(QWidget *parent) :
     /*frist*/
     QObject::connect(m_port, &XhPort::firstTestResult, this,&MainWindow::winGfour);
 
-    QObject::connect(m_port,&XhPort::selfTest1,this,&MainWindow::selftest1);
-    QObject::connect(m_port,&XhPort::selfTest2,this,&MainWindow::selftest2);
-    QObject::connect(m_port,&XhPort::selfTest3,this,&MainWindow::selftest3);
-    QObject::connect(m_port,&XhPort::selfTest4,this,&MainWindow::selftest4);
-    QObject::connect(m_port,&XhPort::selfTest5,this,&MainWindow::selftest5);
-    QObject::connect(m_port,&XhPort::selfTest6,this,&MainWindow::selftest6);
-
-    QObject::connect(m_port,&XhPort::updateBeginsignl,this,&MainWindow::updatebegin);
-    QObject::connect(m_port,&XhPort::xhupdateNum,this,&MainWindow::updateNumx);
-
     print = new QTimer(this);
     QObject::connect(print,&QTimer::timeout,this,&MainWindow::printTime);
     /*设置透明度淡入淡出*/
@@ -744,79 +734,6 @@ void MainWindow::prt(QString a)
     ui->pushButton_262->setText(a);
 }
 
-void MainWindow::selftest1()
-{
-    ui->label_164->setPixmap(QPixmap(selfTestOk));
-    m_port->selftest2();
-    ui->label_192->setPixmap(QPixmap(selfTestWait));
-}
-
-void MainWindow::selftest2()
-{
-    ui->label_192->setPixmap(QPixmap(selfTestOk));
-    m_port->selftest3();
-    ui->label_193->setPixmap(QPixmap(selfTestWait));
-}
-
-void MainWindow::selftest3()
-{
-    ui->label_193->setPixmap(QPixmap(selfTestOk));
-    m_port->selftest4();
-    ui->label_224->setPixmap(QPixmap(selfTestWait));
-}
-
-void MainWindow::selftest4()
-{
-    ui->label_224->setPixmap(QPixmap(selfTestOk));
-    m_port->selftest5();
-    ui->label_225->setPixmap(QPixmap(selfTestWait));
-}
-
-void MainWindow::selftest5()
-{
-    ui->label_225->setPixmap(QPixmap(selfTestOk));
-    ui->pushButton_348->setVisible(true);
-    ui->pushButton_347->setVisible(true);
-
-
-    ui->pushButton_676->setEnabled(true);
-    ui->pushButton_677->setEnabled(true);
-    ui->pushButton_678->setEnabled(true);
-    ui->pushButton_679->setEnabled(true);
-
-    ui->stackedWidget->setCurrentWidget(ui->page_SelfTestSucess);
-//    m_port->selfTest();
-//    ui->label_285->setPixmap(QPixmap(selfTestWait));
-}
-
-void MainWindow::selftest6()
-{
-    ui->label_285->setPixmap(QPixmap(selfTestOk));
-
-    ui->pushButton_348->setVisible(true);
-    ui->pushButton_347->setVisible(true);
-
-
-    ui->pushButton_676->setEnabled(true);
-    ui->pushButton_677->setEnabled(true);
-    ui->pushButton_678->setEnabled(true);
-    ui->pushButton_679->setEnabled(true);
-}
-
-void MainWindow::updatebegin()
-{
-    /*进度条*/
-    m_update = new updateProgreBar();
-    QObject::connect(this,&MainWindow::updateNum,m_update,&updateProgreBar::change);
-    m_update->show();
-}
-
-void MainWindow::updateNumx(int q )
-{
-    emit updateNum(q);
-}
-
-
 void MainWindow::on_pushButton_129_clicked()
 {
     ui->stackedWidget->setCurrentWidget(ui->page_FileList);
@@ -996,27 +913,6 @@ void MainWindow::on_pushButton_627_clicked()
 void MainWindow::on_pushButton_646_clicked()
 {
     ui->stackedWidget->setCurrentWidget(ui->page_Tools);
-}
-
-void MainWindow::on_pushButton_347_clicked()
-{
-    ui->label_164->clear();
-    ui->label_192->clear();
-    ui->label_193->clear();
-    ui->label_224->clear();
-    ui->label_225->clear();
-    ui->label_285->clear();
-
-    ui->pushButton_348->setVisible(false);
-    ui->pushButton_347->setVisible(false);
-
-
-    ui->pushButton_676->setEnabled(false);
-    ui->pushButton_677->setEnabled(false);
-    ui->pushButton_678->setEnabled(false);
-    ui->pushButton_679->setEnabled(false);
-    m_port->selftest1();
-    ui->label_164->setPixmap(QPixmap(selfTestWait));
 }
 
 void MainWindow::on_pushButton_348_clicked()
@@ -1394,8 +1290,6 @@ void MainWindow::on_pushButton_447_clicked()
 {
     updateFileAnalize(UpdateSourceFile);
     // m_port->updateBegin(UpdateFile);
-    // printTimer->stop();
-    /*不知道是否弹窗*/
 }
 
 void MainWindow::on_pushButton_453_clicked(bool checked)

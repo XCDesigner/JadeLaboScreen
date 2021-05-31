@@ -16,3 +16,8 @@ void MainWindow::on_pushButton_692_clicked()
     ui->label_285->clear();
     ui->stackedWidget->setCurrentWidget(ui->page_SelfTest_0);
 }
+
+void MainWindow::on_pushButton_347_clicked()
+{
+
+}

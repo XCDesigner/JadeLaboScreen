@@ -26,10 +26,10 @@ XhPage::XhPage(QObject *parent) : QObject(parent)
     pageNature[0] ='\xE0';
     pagedataNature = "";
     /*包头固定为JF*/
-    pageHead.append('\x4A');
-    pageHead.append('\x46');
+    pageHead.append(0x4a);
+    pageHead.append(0x46);
     /*版本号为0x30*/
-    pageType.append('\x30');
+    pageType.append(0x30);
     /*变量初始化*/
     Axistesting = true;
     Heatingtesting = true;
@@ -52,10 +52,8 @@ XhPage::XhPage(QObject *parent) : QObject(parent)
     on = true;
 
     m_timer = new QTimer(this);
-    QObject::connect(m_timer,&QTimer::timeout,this,&XhPage::timeEimt);
 
     logTime = new QTime();
-    logFind = new QTimer(this);
     logText = new QFile(logPath);
     QFileInfo fi("/mnt/exUDISK/gcode");
 
@@ -68,15 +66,6 @@ XhPage::XhPage(QObject *parent) : QObject(parent)
     cur_machine_status.Percent = 0;
     cur_machine_status.ZHeight = 0;
     cur_machine_status.Status = 0;
-
-    if(fi.isDir())
-    {
-        QObject::connect(logFind,&QTimer::timeout,this,&XhPage::logFindSlot);
-        if(!logText->open(QIODevice::WriteOnly| QIODevice::Text| QIODevice::Append))
-        {
-            logFind->start(1000);
-        }
-    }
 }
 
 XhPage::~XhPage()
@@ -112,9 +101,6 @@ int XhPage::analysis(QByteArray package)
                     /********first start********/
                         case '\x01':
                             switch (data[1]) {
-                                case '\x02':
-                                    fSelfTest(data);
-                                    break;
                                 case '\x00':
                                     fTGet(data);
                                     break;
@@ -125,19 +111,6 @@ int XhPage::analysis(QByteArray package)
                     /*******tool machine set*********/
                         case '\x09':
                         switch (data[1]) {
-                            case '\x00':
-                            {
-                                if(data[2] == '\x00')
-                                {
-                                    emit disUseFilament(true);
-                                }
-                                if (data[2] == '\xFF')
-                                {
-                                    emit disUseFilament(true);
-                                }
-
-                                break;
-                            }
                             case '\x01':
                                 if(data[2] == '\x00')
                                 {
@@ -148,56 +121,6 @@ int XhPage::analysis(QByteArray package)
                                     emit backFactory(true);
                                 }
                                 break;
-
-                            case '\x03':
-                                tSelfTest(data);
-                                break;
-
-                        default:
-                            break;
-
-                        }
-                        break;
-                    /**************05族**************/
-                    case '\x05':
-                        switch (data[1]) {
-                        /*******/
-                        case '\x05':
-                            if(data[2] == '\x00')
-                            {
-                                emit selfTest1();
-                            }
-                            break;
-                        case '\x06':
-                            if(data[2] == '\x00')
-                            {
-                                emit selfTest2();
-                            }
-                            break;
-                        case '\x07':
-                            if(data[2] == '\x00')
-                            {
-                                emit selfTest3();
-                            }
-                            break;
-                        case '\x08':
-                            if(data[2] == '\x00')
-                            {
-                                emit selfTest4();
-                            }
-                            break;
-                        case '\x09':
-                            if(data[2] == '\x00')
-                            {
-                                emit selfTest5();
-                            }
-                            break;
-                        case '\x0A':
-                            if(data[2] == '\x00')
-                            {
-                                emit selfTest6();
-                            }
-                            break;
                         default:
                             break;
 
@@ -256,48 +179,6 @@ int XhPage::analysis(QByteArray package)
     return 0;
 }
 
-void XhPage::fSelfTest(QByteArray data)
-{
-    switch(data[2]){
-        case '\x00':
-        break;
-
-    default:
-        for (int i = 0; i < 8; ++i) {
-            if ((data[2] >> i) & 0x01) {
-                if(i == 0)
-                {
-                    Axistesting = false;
-                }
-                if(i == 1)
-                {
-                    qDebug()<<" Heating test error";
-                    Heatingtesting = false;
-                }
-                if(i == 2)
-                {
-                    qDebug()<<"  Platfom check error";
-                    Platfomcheck = false;
-                }
-                if(i == 3)
-                {
-                    qDebug()<<" Nozzle height check error";
-                    Nozzleheightcheck = false;
-                }
-                if(i == 4)
-                {
-                    qDebug()<<" XY check error";
-                    XYcheck = false;
-                }
-            }
-        }
-        break;
-
-    }
-    //发送自检结果
-    emit firstTestResult(Axistesting,Heatingtesting,Platfomcheck,Nozzleheightcheck,XYcheck);
-}
-
 void XhPage::fTGet(QByteArray data)
 {
     if(data[2] == '\x00')
@@ -323,53 +204,6 @@ void XhPage::fTGet(QByteArray data)
 void XhPage::GetMachineStatus(strMachineStatus *pStatus)
 {
     *pStatus = cur_machine_status;
-}
-
-void XhPage::tSelfTest(QByteArray data)
-{
-    switch(data[2]){
-        case '\x00':
-        break;
-
-    default:
-        for (int i = 0; i < 8; ++i) {
-            if ((data[2] >> i) & 0x01) {
-                if(i == 0)
-                {
-                    qDebug()<<" Axis test error";
-                    Taxistesting = false;
-                }
-                if(i == 1)
-                {
-                    qDebug()<<" Heating test error";
-                    Theatingtesting = false;
-                }
-                if(i == 2)
-                {
-                    qDebug()<<"  Material extrude test";
-                    Tmaterialextrudetest = false;
-                }
-                if(i == 3)
-                {
-                    qDebug()<<"  Platfom check error";
-                    Tplatfomcheck = false;
-                }
-                if(i == 4)
-                {
-                    qDebug()<<" Nozzle height check error";
-                    Tnozzleheightcheck = false;
-                }
-                if(i == 5)
-                {
-                    qDebug()<<" XY check error";
-                    TxYcheck = false;
-                }
-            }
-        }
-        break;
-
-    }
-    //发送自检结果
 }
 
 QByteArray XhPage::groupPage(QByteArray data)
@@ -513,177 +347,6 @@ void XhPage::sendfile(quint32 offset)
     pageData.append(datalen);
     pageData.append(data);
     emit sendFileArry(groupPage(pageData));
-}
-
-void XhPage::updateBegin(QString updateFile)
-{
-    if(m_updateFile == nullptr)
-    {
-        m_updateFile = new QFile(updateFile);
-
-        if(!m_updateFile->open(QIODevice::ReadOnly))
-        {
-            qDebug()<<"cant open update 1";
-            return;
-        }
-    }
-    else
-    {
-        m_updateFile->close();
-        delete m_updateFile;
-
-        m_updateFile = new QFile(updateFile);
-
-        if(!m_updateFile->open(QIODevice::ReadOnly))
-        {
-            qDebug()<<"cant open update 2";
-            return;
-        }
-    }
-    if(!m_updateFile->isOpen())
-    {
-        qDebug()<<"file cant open";
-        return;
-    }
-    QByteArray allData;
-    allData =  m_updateFile->readAll();
-    quint32 num = XH_LITTLE_BIT_MERGE_32(allData[0],allData[1],allData[2],allData[3]);
-    modenum = num;
-    memset(mode,5,sizeof (mode));
-    memset(offset,5,sizeof (mode));
-    memset(size,5,sizeof (mode));
-
-    for (quint32 var = 0; var < num; var++) {
-        mode[var] = XH_LITTLE_BIT_MERGE_32(allData[(var*12)+4],allData[(var*12)+5],allData[(var*12)+6],allData[(var*12)+7]);
-        offset[var] = XH_LITTLE_BIT_MERGE_32(allData[(var*12)+8],allData[(var*12)+9],allData[(var*12)+10],allData[(var*12)+11]);
-        size[var] = XH_LITTLE_BIT_MERGE_32(allData[(var*12)+12],allData[(var*12)+13],allData[(var*12)+14],allData[(var*12)+15]);
-    }
-
-    bool printNeedUpdate = false;
-
-    for (quint32  i= 0;  i< num; i++)
-    {
-        if(mode[i] == 0)
-        {
-            QByteArray localData = allData.mid((offset[i]+512),size[i]);
-
-            QFile upDateGz(UPDATE_FILE_TMP);
-            if(upDateGz.open(QIODevice::ReadWrite))
-            {
-                upDateGz.write(localData);
-                upDateGz.flush();
-                upDateGz.close();
-            }
-            else
-            {
-                qDebug()<<"file info false";
-            }
-            m_upDater = new XhUpdater(this);
-            m_upDater->startUpdate(UPDATE_FILE_TMP);
-            QObject::connect(m_upDater,&XhUpdater::completed,this,&XhPage::updaterOver);
-        }
-        if(mode[i] == 1)
-        {
-            qDebug()<<"print update begin";
-            emit updateBeginSignls();
-            printNeedUpdate = true;
-        }
-        if(mode[i] == 2)
-        {
-
-        }
-    }
-    if(printNeedUpdate != true)
-    {
-        /*机器不需要升级，直接重启*/
-        emit updateOver();
-    }
-    inu = new QTextStream(m_updateFile);
-}
-
-void XhPage::sendUpdate(quint16 packnum, QByteArray pack)
-{
-    int dataSize = 0;
-    for (int i = 0;i<modenum;i++)
-    {
-        if(mode[i] == 1)
-        {
-            inu->seek(offset[i]);
-            dataSize = size[i];
-        }
-    }
-    QString dataHeat = inu->read(512);
-    QString data = inu->read(dataSize-512);
-    if(packnum<((dataSize/512)-1))
-    {
-        QByteArray sendData = data.mid(packnum*512,512).toLatin1();
-        QByteArray send = QByteArray::fromHex("050100");
-        send.append(pack);
-        send.append(sendData);
-        emit updateSend(groupPage(send),1,pack);
-        on=true;
-    }
-    else
-    {
-        QByteArray sendData = data.mid(packnum*512,(dataSize-512)-(packnum*512)).toLatin1();
-        QByteArray send = QByteArray::fromHex("050100");
-        send.append(pack);
-        send.append(sendData);
-        if(on)
-        {
-            emit updateSend(groupPage(send),0,pack);
-        }
-        else
-        {
-            emit updateSend("",2,pack);
-        }
-        on = false;
-        int n = 0;
-        QByteArray a  = dataHeat.toLatin1();
-        for (int i =a.size()-1 ; i>0;i--) {
-            if(a[i] == '\x00')
-            {
-                n = i;
-                break;
-            }
-        }
-        QString checked = dataHeat.left(n+1);
-        QByteArray check = checked.toLatin1();
-        updateCheckSend = QByteArray::fromHex("050B");
-        updateCheckSend.append(check);
-    }
-    int  k = (dataSize-512)/512;
-    if(packnum == 0)
-    {
-        emit updateSerial(0);
-    }
-    else
-    {
-        float x = (float)packnum/(float)k;
-        x = x*1000;
-        qDebug()<<x;
-        emit updateSerial((int)x);
-    }
-    m_timer->start(1000);
-}
-
-void XhPage::timeEimt()
-{
-    emit updateCheck(groupPage(updateCheckSend));
-    m_timer->stop();
-}
-
-void XhPage::updaterOver()
-{
-    delete  m_upDater;
-}
-
-void XhPage::logFindSlot()
-{
-    if(logText->open(QIODevice::WriteOnly| QIODevice::Text| QIODevice::Append))
-        {
-            logFind->stop();
-        }
 }
 
 bool XhPage::setPrintFile(QString FileName)

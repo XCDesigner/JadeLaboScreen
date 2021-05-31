@@ -18,23 +18,7 @@ XhPort::XhPort(QObject *parent) : QObject(parent)
 
     QObject::connect(m_package,&XhPage::firstTestResult,this,&XhPort::xhfirstTestResult);
     /*tool*/
-    QObject::connect(m_package,&XhPage::disUseFilament,this,&XhPort::xhdisUseFilament);
     QObject::connect(m_package,&XhPage::backFactory,this,&XhPort::xhbackFactory);
-
-    QObject::connect(m_package,&XhPage::selfTest1,this,&XhPort::xhselfTest1);
-    QObject::connect(m_package,&XhPage::selfTest2,this,&XhPort::xhselfTest2);
-    QObject::connect(m_package,&XhPage::selfTest3,this,&XhPort::xhselfTest3);
-    QObject::connect(m_package,&XhPage::selfTest4,this,&XhPort::xhselfTest4);
-    QObject::connect(m_package,&XhPage::selfTest5,this,&XhPort::xhselfTest5);
-    QObject::connect(m_package,&XhPage::selfTest6,this,&XhPort::xhselfTest6);
-
-    QObject::connect(m_package,&XhPage::updateBeginSignls,this,&XhPort::updateBeginSlot);
-    QObject::connect(m_package,&XhPage::updateCheck,this,&XhPort::updateCheck);
-    QObject::connect(m_package,&XhPage::updateSend,this,&XhPort::updateSend);
-    QObject::connect(m_package,&XhPage::updateOver,this,&XhPort::updateOver);
-    QObject::connect(m_package,&XhPage::updateSerial,this,&XhPort::updateNum);
-
-
 }
 
 XhPort::~XhPort()
@@ -132,15 +116,6 @@ void XhPort::setBackupEnableStatus(bool Enable)
         QByteArray buff = m_package->groupPage(s);
         m_serial->write(buff);
     }
-}
-
-/*设备自检*/
-void XhPort::selfTest()
-{
-    QByteArray s = QByteArray::fromHex("050A");
-    QByteArray buff = m_package->groupPage(s);
-    m_serial->write(buff);
-
 }
 
 void XhPort::factoryReset()
@@ -762,34 +737,6 @@ void XhPort::portInit(QString portname)
     }
 }
 
-void XhPort::selftest2()
-{
-    QByteArray s = QByteArray::fromHex("0506");
-    QByteArray buff = m_package->groupPage(s);
-    m_serial->write(buff);
-}
-
-void XhPort::selftest3()
-{
-    QByteArray s = QByteArray::fromHex("0507");
-    QByteArray buff = m_package->groupPage(s);
-    m_serial->write(buff);
-}
-
-void XhPort::selftest4()
-{
-    QByteArray s = QByteArray::fromHex("0508");
-    QByteArray buff = m_package->groupPage(s);
-    m_serial->write(buff);
-}
-
-void XhPort::selftest5()
-{
-    QByteArray s = QByteArray::fromHex("0509");
-    QByteArray buff = m_package->groupPage(s);
-    m_serial->write(buff);
-}
-
 void XhPort::carbinfinished()
 {
     QByteArray s = QByteArray::fromHex("0309");
@@ -800,18 +747,6 @@ void XhPort::carbinfinished()
 void XhPort::carbincancel()
 {
     QByteArray s = QByteArray::fromHex("030A");
-    QByteArray buff = m_package->groupPage(s);
-    m_serial->write(buff);
-}
-
-void XhPort::updateBegin(QString update)
-{
-    m_package->updateBegin(update);
-}
-
-void XhPort::selftest1()
-{
-    QByteArray s = QByteArray::fromHex("05050F");
     QByteArray buff = m_package->groupPage(s);
     m_serial->write(buff);
 }
@@ -842,98 +777,9 @@ void XhPort::xhfirstTestResult(bool a, bool b, bool c, bool d, bool e)
     emit firstTestResult(a,b,c,d,e);
 }
 
-void XhPort::xhdisUseFilament(bool a)
-{
-    emit disUseFilament(a);
-}
-
 void XhPort::xhbackFactory(bool a)
 {
     emit backFactory(a);
-}
-
-void XhPort::xhpowerlost()
-{
-    emit powerlost();
-}
-
-void XhPort::xhselfTest1()
-{
-    emit selfTest1();
-}
-
-void XhPort::xhselfTest2()
-{
-    emit selfTest2();
-}
-
-void XhPort::xhselfTest3()
-{
-    emit selfTest3();
-}
-
-void XhPort::xhselfTest4()
-{
-    emit selfTest4();
-}
-
-void XhPort::xhselfTest5()
-{
-    emit selfTest5();
-}
-
-void XhPort::xhselfTest6()
-{
-    emit selfTest6();
-}
-
-void XhPort::updateBeginSlot()
-{
-    /*开始更新*/
-    QByteArray s = QByteArray::fromHex("0500");
-    QByteArray buff = m_package->groupPage(s);
-    m_serial->write(buff);
-    emit updateBeginsignl();
-}
-
-void XhPort::updateCheck(QByteArray a)
-{
-    m_serial->write(a);
-}
-
-void XhPort::updateSend(QByteArray a, int b, QByteArray c)
-{
-    if(b == 1)
-    {
-        m_serial->write(a);
-    }
-    if(b == 0)
-    {
-        m_serial->write(a);
-        QByteArray s = QByteArray::fromHex("0502");
-        s.append(c);
-        QByteArray buff = m_package->groupPage(s);
-        m_serial->write(buff);
-    }
-    if(b == 2)
-    {
-        QByteArray s = QByteArray::fromHex("0502");
-        s.append(c);
-        QByteArray buff = m_package->groupPage(s);
-        m_serial->write(buff);
-    }
-}
-
-void XhPort::updateOver()
-{
-    QByteArray s = QByteArray::fromHex("050C");
-    QByteArray buff = m_package->groupPage(s);
-    m_serial->write(buff);
-}
-
-void XhPort::updateNum(int a)
-{
-    emit xhupdateNum(a);
 }
 
 XhPage* XhPort::getXhPage()

@@ -14,8 +14,6 @@ void MainWindow::onPauseDialogHide()
         printContinue();
     else if(ret[0] == "ChangeFilament")
         printChangeFilament();
-    else if(ret[0] == "Cancel")
-        ;
 }
 
 void MainWindow::printStop()

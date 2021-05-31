@@ -393,16 +393,6 @@ private slots:
     void plt(QString a);
     void prt(QString a);
 
-    void selftest1();
-    void selftest2();
-    void selftest3();
-    void selftest4();
-    void selftest5();
-    void selftest6();
-
-    void updatebegin();
-    void updateNumx(int );
-
     void timeAdd();
 
     void on_pushButton_129_clicked();

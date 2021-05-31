@@ -37,10 +37,8 @@ public:
     /*****************解包******************/
     int analysis(QByteArray package);
     /*frist start页面*/
-    void fSelfTest(QByteArray data);//自检
     void fTGet(QByteArray data);//温度获取
     /*TOOL页面*/
-    void tSelfTest(QByteArray data);//自检
 
     /*****************组包******************/
     QByteArray groupPage(QByteArray );
@@ -49,7 +47,6 @@ public:
     QByteArray analysisFile();
     void sendfile(quint32 );
 
-    void updateBegin(QString );
     void sendUpdate(quint16 ,QByteArray );
     void GetMachineStatus(strMachineStatus *pStatus);
 
@@ -91,7 +88,6 @@ private:
     /*LOG*/
     QFile *logText;
     QTime *logTime;
-    QTimer *logFind;
     QTextStream *inu;
     QByteArray updateCheckSend;
     int mode[512];
@@ -109,31 +105,12 @@ signals:
     /*first start*/
     void firstTestResult(bool ,bool ,bool ,bool ,bool );
     /*tool*/
-    void disUseFilament(bool );
     void backFactory(bool );
 
     /*tool calibration*/
     void sendFileArry(QByteArray );
     /*print*/
     void goOnOk();
-
-    void selfTest1();
-    void selfTest2();
-    void selfTest3();
-    void selfTest4();
-    void selfTest5();
-    void selfTest6();
-
-    void updateBeginSignls();
-    void updateSerial(int );
-    void updateCheck(QByteArray );
-    void updateOver();
-    void updateSend(QByteArray ,int ,QByteArray );
-
-public slots:
-    void timeEimt();
-    void updaterOver();
-    void logFindSlot();
 };
 
 #endif // XHPAGE_H

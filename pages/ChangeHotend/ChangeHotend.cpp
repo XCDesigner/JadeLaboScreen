@@ -153,7 +153,6 @@ void MainWindow::changeHotendSetTemp()
 {
     QList<QByteArray> ret = pdlg_choose_extruder_temp->get_return_value();
     int index = ret.at(0).toUInt();
-    int temp = ret.at(1).toUInt();
     if(index == 0)
     {
         ui->qw_heatingUnitChangehotend_L->rootObject()->setProperty("text", ret.at(1) + "°C");

@@ -62,7 +62,6 @@ public:
 
     /**********TOOL**********/
 
-    void selfTest();//设备自检*
     void factoryReset();//恢复出厂设置
     /*platfrom*/
     void p_nozzleHeating();
@@ -104,13 +103,6 @@ public:
     void portInit(QString );//初始化串口
     bool serialOpen;//串口是否打开
 
-    void selftest1();
-    void selftest2();
-    void selftest3();
-    void selftest4();
-    void selftest5();
-//    void selftest6();
-
     void carbinfinished();
     void carbincancel();
 
@@ -151,19 +143,7 @@ private:
 signals:
     void firstTestResult(bool ,bool ,bool ,bool ,bool );
     /*tool*/
-    void disUseFilament(bool );
     void backFactory(bool );
-
-    void powerlost();
-
-    void selfTest1();
-    void selfTest2();
-    void selfTest3();
-    void selfTest4();
-    void selfTest5();
-    void selfTest6();
-    void updateBeginsignl();
-    void xhupdateNum(int );
 public slots:
 
 private slots:
@@ -173,23 +153,7 @@ private slots:
 
     void xhfirstTestResult(bool ,bool ,bool ,bool ,bool );
     /*tool*/
-    void xhdisUseFilament(bool );
     void xhbackFactory(bool );
-
-    void xhpowerlost();
-
-    void xhselfTest1();
-    void xhselfTest2();
-    void xhselfTest3();
-    void xhselfTest4();
-    void xhselfTest5();
-    void xhselfTest6();
-
-    void updateBeginSlot();
-    void updateCheck(QByteArray );
-    void updateSend(QByteArray ,int ,QByteArray );
-    void updateOver();
-    void updateNum(int );
 
     void readData(QByteArray Data);
 };
