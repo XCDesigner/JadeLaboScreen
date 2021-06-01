@@ -15,6 +15,7 @@ void MainWindow::on_pushButton_126_clicked()
     ui->stackedWidget->setCurrentWidget(ui->page_About);
     char version[30];
     sprintf(version, "Ver:%s-%s", __DATE__, __TIME__);
+    ui->wqVersion->rootObject()->setProperty("text", version);
     m_port->getFirmwareVersion();
     AddListen(QByteArray(QByteArray::fromHex("0503")), &MainWindow::onFirmwareVersionReceived, false);
     ui->quickWidget_2->rootObject()->setProperty("icon", "qrc:/image/platform_warning.png");
