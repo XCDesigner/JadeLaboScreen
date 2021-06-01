@@ -34,8 +34,8 @@ void MainWindow::onFirmwareVersionReceived(QByteArray Datas)
 void MainWindow::aboutTimerTester()
 {
     if(ui->checkBox->isChecked() == true) {
-        QByteArray regs = QByteArray::fromHex("001241");
-        m_port->getTMCValue(0, regs);
+        QByteArray regs = QByteArray::fromHex("0012416f");
+        m_port->getTMCValue(1, regs);
         m_port->trigFILSample();
         m_port->getFILValue();
     }
@@ -46,12 +46,15 @@ void MainWindow::DebugCallback(QByteArray Data)
 {
     QByteArray prefix = Data.mid(0, 3).toHex();
     if(prefix == "0b0100") {
-        QString gconf = Data.mid(5, 4).toHex() + "\n";
-        QString step = Data.mid(10, 4).toHex() + "\n";
-        QString sg_result = Data.mid(15, 4).toHex() + "\n";
         char value[32];
+        QByteArray tmp;
+        QString gconf = Data.mid(8, 1).toHex() + Data.mid(7, 1).toHex() + Data.mid(6, 1).toHex() + Data.mid(5, 1).toHex() + "\n";
+        QString step = Data.mid(13, 1).toHex() + Data.mid(12, 1).toHex() + Data.mid(11, 1).toHex() + Data.mid(10, 1).toHex() + "\n";
+        QString sg_result = (Data.mid(18, 1) + Data.mid(17, 1) + Data.mid(16, 1) + Data.mid(15, 1)) + "\n";
+
+        QString pwm_scale = Data.mid(22, 1).toHex() + "\n";
         sprintf(value, "%d\n", ((uint8_t)Data.at(16) << 8) | (uint8_t)Data.at(15));
-        ui->label->setText("GConf:" + gconf + "STEP:" + step + "SG_RESULT:" + value);
+        ui->label->setText("GConf:" + gconf + "STEP:" + step + "SG_RESULT:" + value + "PWM:" + pwm_scale);
     }
     else if(prefix == "0b0700") {
         QString fil1 = Data.mid(3, 4).toHex() + "\n";
