@@ -58,9 +58,16 @@ void MainWindow::preparePrinTempChecking()
             qDebug()<<"StartPrint:" << print_desc.ParsedMode;
             // Direct mode contains "Direct" "Origin-Mirror" "Origin-Duplicate" "Mix" "Unsupport"
             if(print_desc.Mode == "Direct")
-                m_port->preparePrint(print_desc.ParsedMode, offset);
+            {
+                if((print_desc.ParsedMode == "Origin-Mirror") || (print_desc.ParsedMode == "Origin-Duplicate"))
+                    m_port->preparePrint(print_desc.ParsedMode, offset);
+                else
+                    m_port->preparePrint(print_desc.Mode, offset);
+            }
             else
+            {
                 m_port->preparePrint(print_desc.Mode, offset);
+            }
             qDebug()<<"readyprint offset " << offset;
             qDebug()<<"readyprint mode" << printMode;
             AddListen(QByteArray(QByteArray::fromHex("060D00")), &MainWindow::onPreparePirntComplete, false);
