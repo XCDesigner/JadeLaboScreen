@@ -135,14 +135,6 @@ void MainWindow::platformCalibrationMessageProcess(uint8_t Command, uint8_t SubC
                 z_diff[1] = (int32_t)(((uint8_t)Datas.at(10) << 24) | ((uint8_t)Datas.at(9) << 16) | ((uint8_t)Datas.at(8) << 8) | (uint8_t)Datas.at(7)) / 1000.0f;
                 z_diff[2] = (int32_t)(((uint8_t)Datas.at(14) << 24) | ((uint8_t)Datas.at(13) << 16) | ((uint8_t)Datas.at(12) << 8) | (uint8_t)Datas.at(11)) / 1000.0f;
                 z_diff[3] = (int32_t)(((uint8_t)Datas.at(18) << 24) | ((uint8_t)Datas.at(17) << 16) | ((uint8_t)Datas.at(16) << 8) | (uint8_t)Datas.at(15)) / 1000.0f;
-                if(first_calibration == true)
-                {
-                    first_calibration = false;
-                }
-                else
-                {
-                    z_diff[0] = z_diff[1] = z_diff[2] = z_diff[3];
-                }
                 if((z_diff[0] == 0) && (z_diff[1] == 0) && (z_diff[2] == 0) && (z_diff[3] == 0))
                 {
                     ui->stackedWidget->setCurrentWidget(ui->page_PlatformCali_6);
