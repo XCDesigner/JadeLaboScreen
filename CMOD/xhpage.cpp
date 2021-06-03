@@ -51,10 +51,6 @@ XhPage::XhPage(QObject *parent) : QObject(parent)
     inu = nullptr;
     on = true;
 
-    m_timer = new QTimer(this);
-
-    logTime = new QTime();
-    logText = new QFile(logPath);
     QFileInfo fi("/mnt/exUDISK/gcode");
 
     cur_machine_status.CurTemp[0] = 0;
@@ -70,8 +66,6 @@ XhPage::XhPage(QObject *parent) : QObject(parent)
 
 XhPage::~XhPage()
 {
-    logText->close();
-    delete logText;
 }
 
 int XhPage::analysis(QByteArray package)

@@ -85,9 +85,6 @@ private:
     QTextStream *in;
     /*当前升级文件*/
     QFile *m_updateFile;
-    /*LOG*/
-    QFile *logText;
-    QTime *logTime;
     QTextStream *inu;
     QByteArray updateCheckSend;
     int mode[512];
@@ -95,7 +92,6 @@ private:
     int size[512];
     int modenum;
     bool on;
-    QTimer *m_timer;
 
     XhUpdater *m_upDater;
 
