@@ -50,8 +50,7 @@ private:
 private:
     Ui::PrintSetDlog *ui;
 
-    QTimer *m_tmr_check_increase;
-    QTimer *m_tmr_check_decrease;
+    QTimer *m_tmr_press_check;
     QString print_mode;
 
     QQuickWidget *pButtons[9];

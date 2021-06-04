@@ -93,15 +93,14 @@ border: 2px solid rgba(67, 67, 67, 255);</string>
    <property name="font">
     <font>
      <family>Barlow</family>
-     <pointsize>12</pointsize>
-     <weight>50</weight>
-     <bold>false</bold>
+     <pointsize>-1</pointsize>
     </font>
    </property>
    <property name="styleSheet">
     <string notr="true">background-color: transparent;
 color: &quot;#ffffff&quot;;
 font-family: Barlow;
+font-size:32px;
 align: center;</string>
    </property>
    <property name="text">

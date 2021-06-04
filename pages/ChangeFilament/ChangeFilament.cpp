@@ -115,6 +115,7 @@ void MainWindow::changeFilamentRightRetract()
 
 void MainWindow::on_pushButton_359_clicked()
 {
+    screen_status.setPerformance(IDLE);
     ui->qw_LeftHeating->rootObject()->setProperty("text", "000°C");
     ui->qw_RightHeating->rootObject()->setProperty("text", "000°C");
     m_port->setHeattingUnit("0","0");

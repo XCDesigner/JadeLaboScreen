@@ -7,8 +7,7 @@ PrintSetDlog::PrintSetDlog(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    m_tmr_check_increase = new QTimer(this);
-    m_tmr_check_decrease = new QTimer(this);
+    m_tmr_press_check = new QTimer(this);
 
     ui->qw_LeftTemp->setSource(QUrl("qrc:/qml/JLPushedButton.qml"));
     ui->qw_LeftTemp->setClearColor(QColor(qmlColor));
@@ -204,7 +203,7 @@ void PrintSetDlog::onIncreaseClicked()
     change_value = step_value * step_direction;
     sendSetting();
     if(button_check_status[6] == false)
-        m_tmr_check_increase->singleShot(50, this, SLOT(increaseCheck()));
+        m_tmr_press_check->singleShot(50, this, SLOT(increaseCheck()));
 }
 
 void PrintSetDlog::onIncreaseRelease()
@@ -221,7 +220,7 @@ void PrintSetDlog::onDecreaseClicked()
     change_value = step_value * step_direction;
     sendSetting();
     if(button_check_status[6] == false)
-        m_tmr_check_increase->singleShot(50, this, SLOT(decreaseCheck()));
+        m_tmr_press_check->singleShot(50, this, SLOT(decreaseCheck()));
 }
 
 void PrintSetDlog::onDecreaseRelease()
@@ -234,7 +233,7 @@ void PrintSetDlog::increaseCheck()
 {
     if(ui->qw_Increase->rootObject()->property("isPressed").toBool() == true) {
         change_value = getLongPressStepValue() * step_direction;
-        m_tmr_check_increase->singleShot(50, this, SLOT(increaseCheck()));
+        m_tmr_press_check->singleShot(50, this, SLOT(increaseCheck()));
         if(press_counter < 400)
             press_counter++;
         if(press_counter > 10) {
@@ -248,7 +247,7 @@ void PrintSetDlog::decreaseCheck()
 {
     if(ui->qw_Decrease->rootObject()->property("isPressed").toBool() == true) {
         change_value = getLongPressStepValue() * step_direction;
-        m_tmr_check_increase->singleShot(50, this, SLOT(decreaseCheck()));
+        m_tmr_press_check->singleShot(50, this, SLOT(decreaseCheck()));
         if(press_counter < 400)
             press_counter++;
         if(press_counter > 10) {
