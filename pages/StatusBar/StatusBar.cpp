@@ -54,7 +54,10 @@ void MainWindow::StatusNotice_Stepper_clicked()
 void MainWindow::updateStatusBar()
 {
     strMachineStatus new_status;
+    uint8_t screen_performace;
     m_port->getXhPage()->GetMachineStatus(&new_status);
+    screen_performace = screen_status.getPerformance();
+
     screen_status.setTemp(new_status.CurTemp, new_status.TarTemp);
 
     char m_string[20] ="";
@@ -97,10 +100,8 @@ void MainWindow::updateStatusBar()
     else {
         ui->label_128->setPixmap(QPixmap(bedInactive));
     }
-    QTimer::singleShot(200, this, SLOT(updateStatusBar()));
-
-    #ifdef XH_LINUX
-        // currentState.clear();
-        // currentState = data;
-    #endif
+    if(screen_performace == IDLE)
+        QTimer::singleShot(200, this, SLOT(updateStatusBar()));
+    else
+        QTimer::singleShot(500, this, SLOT(updateStatusBar()));
 }

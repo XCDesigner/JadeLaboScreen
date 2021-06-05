@@ -146,10 +146,6 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->qw_Distance->setResizeMode(QQuickWidget::SizeRootObjectToView);
     ui->qw_Distance->setClearColor(QColor(qmlColor));
 
-    ui->qw_LightSlider->setSource(QUrl("qrc:/qml/JFSliderBar.qml"));
-    ui->qw_LightSlider->setResizeMode(QQuickWidget::SizeRootObjectToView);
-    ui->qw_LightSlider->setClearColor(QColor(qmlColor));
-
     ui->qw_PreparePrintControl->setSource(QUrl("qrc:/qml/PrintControlBox.qml"));
     ui->qw_PreparePrintControl->setClearColor(QColor(qmlColor));
     ui->qw_PreparePrintControl->rootObject()->setProperty("stopEnabled", true);
@@ -179,18 +175,12 @@ MainWindow::MainWindow(QWidget *parent) :
     item=ui->quickWidget_3->rootObject();
     QObject::connect(item,SIGNAL(finishClicked()), this, SLOT(onFinishPrintClicked()));
 
-
     QObject::connect(ui->qw_ExtruderSelect->rootObject(), SIGNAL(clicked()), this, SLOT(ExtruderChange()));
 
     QObject::connect(ui->qw_StatusNotice->rootObject(), SIGNAL(lightClicked()), this, SLOT(StatusNotice_Light_clicked()));
     QObject::connect(ui->qw_StatusNotice->rootObject(), SIGNAL(stepperClicked()), this, SLOT(StatusNotice_Stepper_clicked()));
 
     qw_DistanceItem = ui->qw_Distance->rootObject();
-
-    qw_LightItem = ui->qw_LightSlider->rootObject();
-    QObject::connect(qw_LightItem, SIGNAL(released()), this, SLOT(LightSliderReleased()));
-    QObject::connect(qw_LightItem, SIGNAL(pressed()), this, SLOT(LightSliderPressed()));
-    timer_light_slider = new QTimer(this);
 
     QObject::connect(ui->qw_PreparePrintControl->rootObject(), SIGNAL(stopClicked()), this, SLOT(StopPreHeatting()));
     QObject::connect(ui->qw_PreparePrintControl->rootObject(), SIGNAL(settingClicked()), this, SLOT(ShowParameterDialogClicked()));
@@ -270,6 +260,7 @@ MainWindow::MainWindow(QWidget *parent) :
     xyCalibratePageinit();
     nozzleCalibratePageinit();
     changeHotendPageInit();
+    LightSettingPageInit();
 }
 
 
@@ -1320,11 +1311,6 @@ void MainWindow::on_pushButton_455_clicked()
 #ifdef XH_VIS
     ui->m_StatusBar->setVisible(true);
 #endif
-}
-
-void MainWindow::on_pushButton_350_clicked()
-{
-    ui->stackedWidget->setCurrentWidget(ui->page_LightSetting);
 }
 
 void MainWindow::onMessageTest(uint8_t Command, uint8_t SubCode, QByteArray Datas)

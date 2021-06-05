@@ -125,6 +125,8 @@ public:
     void ExtrudeControlInit();
     void DebugCallback(QByteArray);
 
+    void LightSettingPageInit();
+
     // Change Hotend
     void changeHotendPageInit();
 

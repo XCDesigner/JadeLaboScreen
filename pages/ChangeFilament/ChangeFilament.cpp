@@ -79,6 +79,7 @@ void MainWindow::changeFilamentSetTemp()
         ui->qw_RightHeating->rootObject()->setProperty("text", ret.at(1) + "°C");
     }
     m_port->setHeattingUnit(index, ret.at(1).toUInt());
+    pdlg_choose_extruder_temp->close();
     delete pdlg_choose_extruder_temp;
 }
 
