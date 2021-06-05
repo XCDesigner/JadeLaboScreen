@@ -2,7 +2,7 @@
 
 JLWidget::JLWidget(QWidget *parent) : QWidget(parent)
 {
-    setAttribute(Qt::WA_DeleteOnClose, true);
+    // setAttribute(Qt::WA_DeleteOnClose, true);
 }
 
 void JLWidget::init(QByteArray InitData)

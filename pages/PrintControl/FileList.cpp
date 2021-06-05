@@ -134,14 +134,14 @@ void MainWindow::onModeSelectReturn()
     QObject::disconnect(pdlg_select_mode, SIGNAL(hideWidget()), this, SLOT(onModeSelectReturn()));
     if(ret[0] == "Cancel")
     {
-        pdlg_select_mode->close();
+        // pdlg_select_mode->close();
         delete pdlg_select_mode;
     }
     else
     {
         QString input_file = pdlg_select_mode->getInputFileName();
         QString output_file_name = pdlg_select_mode->getOutputFileName();
-        pdlg_select_mode->close();
+        // pdlg_select_mode->close();
         delete pdlg_select_mode;
 
         pdlg_parsing = new parsing();
