@@ -11,6 +11,7 @@
 #include <QFile>
 #include "portreceiver.h"
 #include "jlprotocal.h"
+#include <QMutex>
 
 class JLSerialPort : public portReceiver
 {
@@ -35,6 +36,7 @@ private:
     QSerialPort *m_port;
     JLProtocal *protocal;
     QByteArray recv_log;
+    QMutex mtx_port_write;
 };
 
 #endif // JLSERIALPORT_H

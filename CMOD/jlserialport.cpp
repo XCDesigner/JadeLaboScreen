@@ -80,7 +80,11 @@ void JLSerialPort::write(QByteArray DataToWrite) {
 
 void JLSerialPort::writeData(QByteArray DataToWrite) {
     if(m_port->isOpen())
+    {
+        mtx_port_write.lock();
         m_port->write(DataToWrite);
+        mtx_port_write.unlock();
+    }
 }
 
 void JLSerialPort::writeProtocalData(QByteArray SourceData) {
