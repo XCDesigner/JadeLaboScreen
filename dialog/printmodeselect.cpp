@@ -18,6 +18,7 @@ PrintModeSelect::PrintModeSelect(QWidget *parent) :
 
     QFont *fonts = new QFont("barlow", 10, -1, false);
     fonts->setBold(true);
+    fonts->setPixelSize(32);
     ui->qw_btnDirect->rootObject()->setProperty("font", *fonts);
     ui->qw_btnDuplicate->rootObject()->setProperty("font", *fonts);
     ui->qw_btnMirror->rootObject()->setProperty("font", *fonts);

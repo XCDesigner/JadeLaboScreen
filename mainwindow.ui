@@ -70,7 +70,7 @@ font-family: barlow;
 }</string>
     </property>
     <property name="currentIndex">
-     <number>48</number>
+     <number>11</number>
     </property>
     <widget class="QWidget" name="page_12">
      <widget class="QLabel" name="label_14">
@@ -2486,35 +2486,6 @@ background-color: rgba(255, 255, 255, 0);</string>
        <string>Mirror Mode</string>
       </property>
      </widget>
-     <widget class="QLabel" name="label_72">
-      <property name="geometry">
-       <rect>
-        <x>610</x>
-        <y>130</y>
-        <width>611</width>
-        <height>81</height>
-       </rect>
-      </property>
-      <property name="font">
-       <font>
-        <family>Barlow</family>
-        <pointsize>-1</pointsize>
-        <weight>75</weight>
-        <bold>true</bold>
-       </font>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">color: rgba(255, 255, 255, 255);
-font-size: 48px;
-text-align: center;
-font-family: Barlow;
-background-color: rgba(255, 255, 255, 0);
-font-weight: bold;</string>
-      </property>
-      <property name="text">
-       <string>3DBenchy.Gcode</string>
-      </property>
-     </widget>
      <widget class="QLabel" name="label_78">
       <property name="geometry">
        <rect>
@@ -2564,7 +2535,7 @@ background-color: rgba(255, 255, 255, 0);</string>
        <rect>
         <x>590</x>
         <y>435</y>
-        <width>640</width>
+        <width>610</width>
         <height>240</height>
        </rect>
       </property>
@@ -2572,14 +2543,32 @@ background-color: rgba(255, 255, 255, 0);</string>
        <enum>QQuickWidget::SizeRootObjectToView</enum>
       </property>
      </widget>
+     <widget class="QQuickWidget" name="qw_FileName_1">
+      <property name="geometry">
+       <rect>
+        <x>610</x>
+        <y>130</y>
+        <width>600</width>
+        <height>80</height>
+       </rect>
+      </property>
+      <property name="resizeMode">
+       <enum>QQuickWidget::SizeRootObjectToView</enum>
+      </property>
+      <property name="source">
+       <url>
+        <string>qrc:/qml/JLScrollLabel.qml</string>
+       </url>
+      </property>
+     </widget>
      <zorder>label_267</zorder>
      <zorder>label_70</zorder>
      <zorder>label_35</zorder>
      <zorder>label_36</zorder>
-     <zorder>label_72</zorder>
      <zorder>label_78</zorder>
      <zorder>qw_PreHeating</zorder>
      <zorder>qw_PreparePrintControl</zorder>
+     <zorder>qw_FileName_1</zorder>
     </widget>
     <widget class="QWidget" name="page_PrepareRecovery">
      <widget class="QQuickWidget" name="qw_RecoveryHeating">
@@ -2641,35 +2630,6 @@ border-radius: 20px;</string>
       </property>
       <property name="text">
        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-      </property>
-     </widget>
-     <widget class="QLabel" name="label_75">
-      <property name="geometry">
-       <rect>
-        <x>610</x>
-        <y>130</y>
-        <width>611</width>
-        <height>81</height>
-       </rect>
-      </property>
-      <property name="font">
-       <font>
-        <family>Barlow</family>
-        <pointsize>-1</pointsize>
-        <weight>75</weight>
-        <bold>true</bold>
-       </font>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">color: rgba(255, 255, 255, 255);
-font-size: 48px;
-text-align: center;
-font-family: Barlow;
-background-color: rgba(255, 255, 255, 0);
-font-weight: bold;</string>
-      </property>
-      <property name="text">
-       <string>3DBenchy.Gcode</string>
       </property>
      </widget>
      <widget class="QLabel" name="label_43">
@@ -2766,6 +2726,24 @@ background-color: rgba(255, 255, 255, 0);</string>
       </property>
       <property name="text">
        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Elapsed Time: &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
+     </widget>
+     <widget class="QQuickWidget" name="qw_FileName_2">
+      <property name="geometry">
+       <rect>
+        <x>610</x>
+        <y>130</y>
+        <width>600</width>
+        <height>80</height>
+       </rect>
+      </property>
+      <property name="resizeMode">
+       <enum>QQuickWidget::SizeRootObjectToView</enum>
+      </property>
+      <property name="source">
+       <url>
+        <string>qrc:/qml/JLScrollLabel.qml</string>
+       </url>
       </property>
      </widget>
     </widget>
@@ -2888,35 +2866,6 @@ background-color: rgba(255, 255, 255, 0);</string>
        <string>Mirror Mode</string>
       </property>
      </widget>
-     <widget class="QLabel" name="label_73">
-      <property name="geometry">
-       <rect>
-        <x>610</x>
-        <y>130</y>
-        <width>611</width>
-        <height>81</height>
-       </rect>
-      </property>
-      <property name="font">
-       <font>
-        <family>Barlow</family>
-        <pointsize>-1</pointsize>
-        <weight>75</weight>
-        <bold>true</bold>
-       </font>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">color: rgba(255, 255, 255, 255);
-font-size: 48px;
-text-align: center;
-font-family: Barlow;
-background-color: rgba(255, 255, 255, 0);
-font-weight: bold;</string>
-      </property>
-      <property name="text">
-       <string>3DBenchy.Gcode</string>
-      </property>
-     </widget>
      <widget class="QQuickWidget" name="quickWidget_3">
       <property name="geometry">
        <rect>
@@ -2944,6 +2893,24 @@ font-weight: bold;</string>
       </property>
       <property name="resizeMode">
        <enum>QQuickWidget::SizeRootObjectToView</enum>
+      </property>
+     </widget>
+     <widget class="QQuickWidget" name="qw_FileName_0">
+      <property name="geometry">
+       <rect>
+        <x>610</x>
+        <y>130</y>
+        <width>600</width>
+        <height>80</height>
+       </rect>
+      </property>
+      <property name="resizeMode">
+       <enum>QQuickWidget::SizeRootObjectToView</enum>
+      </property>
+      <property name="source">
+       <url>
+        <string>qrc:/qml/JLScrollLabel.qml</string>
+       </url>
       </property>
      </widget>
     </widget>
@@ -9209,50 +9176,22 @@ background-color: rgb(255, 255, 255);</string>
        <string>PushButton</string>
       </property>
      </widget>
-     <widget class="QQuickWidget" name="quickWidget">
+     <widget class="QLineEdit" name="lineEdit_2">
       <property name="geometry">
        <rect>
         <x>910</x>
-        <y>350</y>
-        <width>260</width>
-        <height>246</height>
+        <y>200</y>
+        <width>211</width>
+        <height>71</height>
        </rect>
       </property>
-      <property name="resizeMode">
-       <enum>QQuickWidget::SizeRootObjectToView</enum>
+      <property name="styleSheet">
+       <string notr="true">color: rgb(255, 255, 255);
+font-size:32px;</string>
       </property>
-      <property name="source">
-       <url>
-        <string>qrc:/qml/NozzleTurningLabel.qml</string>
-       </url>
+      <property name="text">
+       <string>ffffff</string>
       </property>
-     </widget>
-     <widget class="QWidget" name="widget" native="true">
-      <property name="geometry">
-       <rect>
-        <x>170</x>
-        <y>100</y>
-        <width>561</width>
-        <height>61</height>
-       </rect>
-      </property>
-      <widget class="QLabel" name="label_4">
-       <property name="geometry">
-        <rect>
-         <x>10</x>
-         <y>0</y>
-         <width>321</width>
-         <height>61</height>
-        </rect>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">font-size:28px;
-color:rgb(255, 255, 255);</string>
-       </property>
-       <property name="text">
-        <string>TextLabel</string>
-       </property>
-      </widget>
      </widget>
     </widget>
     <widget class="QWidget" name="page_81">

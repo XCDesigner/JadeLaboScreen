@@ -156,5 +156,6 @@
         <file>image/load_disable.png</file>
         <file>image/load_pressed.png</file>
         <file>image/load_enable.png</file>
+        <file>qml/JLScrollLabel.qml</file>
     </qresource>
 </RCC>

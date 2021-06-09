@@ -247,6 +247,13 @@ MainWindow::MainWindow(QWidget *parent) :
     QObject::connect(m_port->getXhPage(), SIGNAL(command_received(uint8_t, uint8_t, QByteArray)), this, SLOT(printMessageProcess(uint8_t, uint8_t, QByteArray)));
     QObject::connect(m_port->getXhPage(), SIGNAL(command_received(uint8_t, uint8_t, QByteArray)), this, SLOT(onMessageTest(uint8_t, uint8_t, QByteArray)));
 
+    ui->qw_FileName_0->setClearColor("#2d2c2b");
+    ui->qw_FileName_1->setClearColor("#2d2c2b");
+    ui->qw_FileName_2->setClearColor("#2d2c2b");
+    ui->qw_FileName_0->setSource(QUrl("qrc:/qml/JLScrollLabel.qml"));
+    ui->qw_FileName_1->setSource(QUrl("qrc:/qml/JLScrollLabel.qml"));
+    ui->qw_FileName_2->setSource(QUrl("qrc:/qml/JLScrollLabel.qml"));
+
 
     AboutPageInit();
 
@@ -261,13 +268,6 @@ MainWindow::MainWindow(QWidget *parent) :
     nozzleCalibratePageinit();
     changeHotendPageInit();
     LightSettingPageInit();
-    QTimer::singleShot(100, this, SLOT(tim_test()));
-}
-
-void MainWindow::tim_test()
-{
-    ui->label_4->scroll(-5, 0);
-    QTimer::singleShot(100, this, SLOT(tim_test()));
 }
 
 
@@ -1340,9 +1340,6 @@ void MainWindow::onMessageTest(uint8_t Command, uint8_t SubCode, QByteArray Data
 
 void MainWindow::on_pushButton_clicked()
 {
-    pdlg_Input = new InputDialog();
-    pdlg_Input->init(QByteArray().append(1, 5));
-    pdlg_Input->show();
 
 }
 

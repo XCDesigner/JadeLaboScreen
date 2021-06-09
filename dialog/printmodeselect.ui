@@ -61,6 +61,11 @@ font-size: 48px;
      <height>120</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <family>Adobe Arabic</family>
+    </font>
+   </property>
    <property name="resizeMode">
     <enum>QQuickWidget::SizeRootObjectToView</enum>
    </property>

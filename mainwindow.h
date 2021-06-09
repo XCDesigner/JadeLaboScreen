@@ -856,8 +856,6 @@ private slots:
     void onChangeHotend_btnClick_12(int);
     void onChangeHotend_btnClick_13(int);
 
-    void tim_test();
-
 signals:
     void detection(bool);
     void updateNum(int );

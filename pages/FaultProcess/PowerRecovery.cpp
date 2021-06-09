@@ -88,9 +88,9 @@ QString MainWindow::GetRecoveryFile()
     if(pfile->open(QIODevice::ReadOnly | QIODevice::Text) == true)
     {
         QByteArray line = pfile->readLine(0);
-        ui->label_75->setText(line);
-        ui->label_73->setText(line);
-        ui->label_72->setText(line);
+        ui->qw_FileName_0->rootObject()->setProperty("text", line);
+        ui->qw_FileName_1->rootObject()->setProperty("text", line);
+        ui->qw_FileName_2->rootObject()->setProperty("text", line);
         qDebug()<<line;
         ret = QString(line);
         pfile->close();
