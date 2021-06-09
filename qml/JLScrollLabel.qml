@@ -8,8 +8,8 @@ Rectangle {
     color: "transparent"
 
     onTextChanged: {
-        if(label.advance.width > 300) {
-            label.x = 0
+        if(label.advance.width > base.width) {
+            label.x = 150
             tmr.running = true
         }
         else {
@@ -27,7 +27,7 @@ Rectangle {
             if(tmr.running == true)
                 label.x = label.x - 5
             if(label.x <= -label.advance.width)
-                label.x = 0
+                label.x = 150
         }
     }
 
