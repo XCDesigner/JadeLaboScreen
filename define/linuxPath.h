@@ -24,6 +24,7 @@
 //    qDebug()<<"tWifi_event_callback";
 //}
 
+#define RECOVERY_INFO_PATH      "/usr/share/3d_printer"
 #define RECOVERY_INFO           "/usr/share/3d_printer/recovery_info.txt"
 
 #endif // LINUXPATH_H

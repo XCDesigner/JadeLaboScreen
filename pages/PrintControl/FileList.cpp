@@ -141,6 +141,7 @@ void MainWindow::onModeSelectReturn()
     {
         QString input_file = pdlg_select_mode->getInputFileName();
         QString output_file_name = pdlg_select_mode->getOutputFileName();
+        WriteRecoveryFilaName(output_file_name);
         // pdlg_select_mode->close();
         delete pdlg_select_mode;
 

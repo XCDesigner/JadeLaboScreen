@@ -49,6 +49,8 @@ background-color: rgba(255, 255, 255, 200);</string>
     <enum>QQuickWidget::SizeRootObjectToView</enum>
    </property>
   </widget>
+  <zorder>quickWidget</zorder>
+  <zorder>label_2</zorder>
  </widget>
  <customwidgets>
   <customwidget>

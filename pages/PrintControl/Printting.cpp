@@ -65,7 +65,7 @@ void MainWindow::printMessageProcess(uint8_t Command, uint8_t SubCode, QByteArra
     {
         if(SubCode == 0x06)
         {
-            ui->stackedWidget->setCurrentWidget(ui->page_Printint);
+            ui->stackedWidget->setCurrentWidget(ui->page_Printing);
         }
         else if(SubCode == 0x07)
         {

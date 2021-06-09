@@ -856,6 +856,8 @@ private slots:
     void onChangeHotend_btnClick_12(int);
     void onChangeHotend_btnClick_13(int);
 
+    void tim_test();
+
 signals:
     void detection(bool);
     void updateNum(int );
@@ -871,6 +873,7 @@ private:
     void PowerTestResult(QByteArray);
     void AcceptRecoveryInfo(QByteArray);
     QString GetRecoveryFile();
+    void WriteRecoveryFilaName(QString FileName);
 
     void FaultDetectInit();
     void onPauseRequest(QByteArray);

@@ -261,6 +261,13 @@ MainWindow::MainWindow(QWidget *parent) :
     nozzleCalibratePageinit();
     changeHotendPageInit();
     LightSettingPageInit();
+    QTimer::singleShot(100, this, SLOT(tim_test()));
+}
+
+void MainWindow::tim_test()
+{
+    ui->label_4->scroll(-5, 0);
+    QTimer::singleShot(100, this, SLOT(tim_test()));
 }
 
 
@@ -616,7 +623,7 @@ void MainWindow::connctwifi(myWifiItem *itm)
 void MainWindow::m_canPrintFile()
 {
     //等待请求文件内容的指令中
-    ui->stackedWidget->setCurrentWidget(ui->page_Printint);
+    ui->stackedWidget->setCurrentWidget(ui->page_Printing);
 }
 
 void MainWindow::m_parcancel()
@@ -1145,7 +1152,7 @@ void MainWindow::on_pushButton_356_clicked()
 {
     m_filamentfault = new  filamentFault(this);
     m_filamentfault->show();
-    ui->stackedWidget->setCurrentWidget(ui->page_Printint);
+    ui->stackedWidget->setCurrentWidget(ui->page_Printing);
 }
 
 void MainWindow::on_pushButton_263_clicked()

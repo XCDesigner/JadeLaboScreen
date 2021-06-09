@@ -20,6 +20,7 @@
 #define selfTestOk                ":/image/testok.png"
 #define selfTestWait            ":/image/wait.png"
 
+#define RECOVERY_RECORD_PATH    RECOVERY_INFO_PATH
 #define RECOVERY_RECORD         RECOVERY_INFO
 
 

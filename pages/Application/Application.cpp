@@ -78,23 +78,23 @@ void MainWindow::ListenerInit()
 
 void MainWindow::onMessageListen(uint8_t Command, uint8_t SubCode, QByteArray MessageData)
 {
-    bool found = false;
-    QByteArray s;
-    s.append(1, Command);
-    s.append(1, SubCode);
-    foreach(QByteArray tmp, command_received_list)
-    {
-        if(tmp == s)
-        {
-            found = true;
-            break;
-        }
-    }
-    if(found == false)
-    {
-        command_received_list.append(s);
-        qDebug()<<"New Command:" << s;
-    }
+    // bool found = false;
+    // QByteArray s;
+    // s.append(1, Command);
+    // s.append(1, SubCode);
+    // foreach(QByteArray tmp, command_received_list)
+    // {
+    //     if(tmp == s)
+    //     {
+    //         found = true;
+    //         break;
+    //     }
+    // }
+    // if(found == false)
+    // {
+    //     command_received_list.append(s);
+    //     qDebug()<<"New Command:" << s;
+    // }
     if(lst_listen_item.count() > 0)
     {
         foreach(ListenerItem tmp, lst_listen_item)

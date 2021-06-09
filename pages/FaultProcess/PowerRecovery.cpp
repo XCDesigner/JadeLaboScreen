@@ -39,6 +39,8 @@ void MainWindow::AcceptRecoveryInfo(QByteArray Data)
     m_port->setPrintFanPercentage(1, (uint8_t)Data.at(10));
     // Carrier Mode 1Byte
     ui->label_43->setText(mode[(uint8_t)Data.at(11)]);
+    ui->label_36->setText(mode[(uint8_t)Data.at(11)]);
+    ui->label_69->setText(mode[(uint8_t)Data.at(11)]);
 
     // Mirror enabled 1Byte
 
@@ -87,10 +89,30 @@ QString MainWindow::GetRecoveryFile()
     {
         QByteArray line = pfile->readLine(0);
         ui->label_75->setText(line);
+        ui->label_73->setText(line);
+        ui->label_72->setText(line);
         qDebug()<<line;
         ret = QString(line);
+        pfile->close();
     }
     return ret;
+}
+
+void MainWindow::WriteRecoveryFilaName(QString FileName)
+{
+    qDebug()<<"WriteRecovery";
+    QFile *pfile = new QFile(RECOVERY_RECORD);
+    QDir *pDir = new QDir(RECOVERY_RECORD_PATH);
+    if(pDir->exists() == false)
+    {
+        pDir->mkpath(RECOVERY_RECORD_PATH);
+    }
+    if(pfile->open(QIODevice::WriteOnly | QIODevice::Truncate | QIODevice::Text) == true)
+    {
+        QTextStream writer(pfile);
+        writer<< FileName + "\n";
+        pfile->close();
+    }
 }
 
 void MainWindow::RecoveryStop()

@@ -70,7 +70,7 @@ font-family: barlow;
 }</string>
     </property>
     <property name="currentIndex">
-     <number>5</number>
+     <number>48</number>
     </property>
     <widget class="QWidget" name="page_12">
      <widget class="QLabel" name="label_14">
@@ -2769,7 +2769,7 @@ background-color: rgba(255, 255, 255, 0);</string>
       </property>
      </widget>
     </widget>
-    <widget class="QWidget" name="page_Printint">
+    <widget class="QWidget" name="page_Printing">
      <widget class="QLabel" name="label_270">
       <property name="geometry">
        <rect>
@@ -9226,6 +9226,33 @@ background-color: rgb(255, 255, 255);</string>
         <string>qrc:/qml/NozzleTurningLabel.qml</string>
        </url>
       </property>
+     </widget>
+     <widget class="QWidget" name="widget" native="true">
+      <property name="geometry">
+       <rect>
+        <x>170</x>
+        <y>100</y>
+        <width>561</width>
+        <height>61</height>
+       </rect>
+      </property>
+      <widget class="QLabel" name="label_4">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>0</y>
+         <width>321</width>
+         <height>61</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">font-size:28px;
+color:rgb(255, 255, 255);</string>
+       </property>
+       <property name="text">
+        <string>TextLabel</string>
+       </property>
+      </widget>
      </widget>
     </widget>
     <widget class="QWidget" name="page_81">
