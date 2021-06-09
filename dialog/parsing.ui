@@ -94,6 +94,8 @@ border: 2px solid rgba(67, 67, 67, 255);</string>
     <font>
      <family>Barlow</family>
      <pointsize>-1</pointsize>
+     <weight>75</weight>
+     <bold>true</bold>
     </font>
    </property>
    <property name="styleSheet">
@@ -101,6 +103,7 @@ border: 2px solid rgba(67, 67, 67, 255);</string>
 color: &quot;#ffffff&quot;;
 font-family: Barlow;
 font-size:32px;
+font-weight: bold;
 align: center;</string>
    </property>
    <property name="text">
