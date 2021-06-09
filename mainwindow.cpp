@@ -695,13 +695,13 @@ void MainWindow::fileList()
     udisk.close();
     if(mountEcho.contains("/mnt/exUDISK"))
     {
-        qDebug()<<"mount";
+        // qDebug()<<"mount";
         ui->qw_StatusNotice->rootObject()->setProperty("udiskVisible", true);
         ui->pushButton_101->setEnabled(true);
     }
     else
     {
-        qDebug()<<"no mount";
+        // qDebug()<<"no mount";
         ui->qw_StatusNotice->rootObject()->setProperty("udiskVisible", false);
         ui->pushButton_101->setEnabled(false);
         ui->listWidget_2->setVisible(false);
