@@ -270,7 +270,7 @@ MainWindow::MainWindow(QWidget *parent) :
     LightSettingPageInit();
 
     pMovie = new QMovie(this);
-    pMovie->setFileName("qrc:/image/test.gif");
+    pMovie->setFileName("/image/test.gif");
 }
 
 
