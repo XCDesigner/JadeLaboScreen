@@ -95,6 +95,7 @@ QString MainWindow::GetRecoveryFile()
         ret = QString(line);
         pfile->close();
     }
+    delete pfile;
     return ret;
 }
 
@@ -113,6 +114,8 @@ void MainWindow::WriteRecoveryFilaName(QString FileName)
         writer<< FileName + "\n";
         pfile->close();
     }
+    delete pfile;
+    delete pDir;
 }
 
 void MainWindow::RecoveryStop()

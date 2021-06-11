@@ -715,26 +715,6 @@ void MainWindow::fileList()
     QTimer::singleShot(500, this, SLOT(fileList()));
 }
 
-void MainWindow::plt(QString a)
-{
-    QObject::disconnect(m_printfilament,&printFlament::heatT,this,&MainWindow::plt);
-    m_printfilament->hide();
-    m_printfilament->close();
-
-    m_port->setHeattingUnit(ui->pushButton_263->text().mid(0,3),ui->pushButton_262->text().mid(0,3));
-    ui->pushButton_263->setText(a);
-}
-
-void MainWindow::prt(QString a)
-{
-    QObject::disconnect(m_printfilament,&printFlament::heatT,this,&MainWindow::prt);
-    m_printfilament->hide();
-    m_printfilament->close();
-
-    m_port->setHeattingUnit(ui->pushButton_263->text().mid(0,3),ui->pushButton_262->text().mid(0,3));
-    ui->pushButton_262->setText(a);
-}
-
 void MainWindow::on_pushButton_129_clicked()
 {
     ui->stackedWidget->setCurrentWidget(ui->page_FileList);
@@ -1156,22 +1136,6 @@ void MainWindow::on_pushButton_356_clicked()
     m_filamentfault = new  filamentFault(this);
     m_filamentfault->show();
     ui->stackedWidget->setCurrentWidget(ui->page_Printing);
-}
-
-void MainWindow::on_pushButton_263_clicked()
-{
-    m_printfilament = new printFlament(this);
-    m_printfilament->init(ui->pushButton_263->text());
-    m_printfilament->show();
-    QObject::connect(m_printfilament,&printFlament::heatT,this,&MainWindow::plt);
-}
-
-void MainWindow::on_pushButton_262_clicked()
-{
-    m_printfilament = new printFlament(this);
-    m_printfilament->init(ui->pushButton_262->text());
-    m_printfilament->show();
-    QObject::connect(m_printfilament,&printFlament::heatT,this,&MainWindow::prt);
 }
 
 void MainWindow::on_pushButton_689_clicked()

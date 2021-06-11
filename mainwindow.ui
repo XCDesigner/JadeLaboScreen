@@ -70,7 +70,7 @@ font-family: barlow;
 }</string>
     </property>
     <property name="currentIndex">
-     <number>56</number>
+     <number>13</number>
     </property>
     <widget class="QWidget" name="page_12">
      <widget class="QLabel" name="label_14">
@@ -2941,7 +2941,7 @@ border:1px solid gray</string>
       <property name="geometry">
        <rect>
         <x>1170</x>
-        <y>30</y>
+        <y>120</y>
         <width>80</width>
         <height>80</height>
        </rect>

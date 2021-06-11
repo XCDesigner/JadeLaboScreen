@@ -395,9 +395,6 @@ private slots:
 
     void changeFilamentTempChecking();
 
-    void plt(QString a);
-    void prt(QString a);
-
     void timeAdd();
 
     void on_pushButton_129_clicked();
@@ -543,10 +540,6 @@ private slots:
     void on_pushButton_308_clicked();
 
     void on_pushButton_356_clicked();
-
-    void on_pushButton_263_clicked();
-
-    void on_pushButton_262_clicked();
 
     void on_pushButton_101_clicked();
 
