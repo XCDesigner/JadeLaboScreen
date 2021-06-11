@@ -270,7 +270,7 @@ MainWindow::MainWindow(QWidget *parent) :
     LightSettingPageInit();
 
     pMovie = new QMovie(this);
-    pMovie->setFileName("/image/test.gif");
+    pMovie->setFileName("/usr/share/3d_printer/test.gif");
 }
 
 
