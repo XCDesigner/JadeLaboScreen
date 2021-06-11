@@ -25,6 +25,7 @@
 #include <QMessageBox>
 #include <QMutex>
 #include <QStorageInfo>
+#include <QMovie>
 #include <QTcpSocket>
 #include <QMovie>
 #include "CMOD/xhpage.h"
@@ -218,6 +219,8 @@ private:
     int32_t  offsetnum;
 
     myWifiItem * chooseit;
+
+    QMovie *pMovie;
 #ifdef XH_LINUX
     const aw_wifi_interface_t *aw_wifi;
     XhControlR818 *udpControl;

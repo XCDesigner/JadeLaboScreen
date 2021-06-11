@@ -268,6 +268,9 @@ MainWindow::MainWindow(QWidget *parent) :
     nozzleCalibratePageinit();
     changeHotendPageInit();
     LightSettingPageInit();
+
+    pMovie = new QMovie(this);
+    pMovie->setFileName("qrc:/image/test.gif");
 }
 
 

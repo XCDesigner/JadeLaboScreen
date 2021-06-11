@@ -104,8 +104,7 @@ void MainWindow::on_pushButton_3_clicked()
 
 void MainWindow::on_pushButton_2_clicked()
 {
-    foreach(QByteArray tmp, command_received_list)
-    {
-        qDebug()<<tmp;
-    }
+    pMovie->start();
+    ui->label_4->setMovie(pMovie);
+    ui->label_4->setScaledContents(true);
 }
