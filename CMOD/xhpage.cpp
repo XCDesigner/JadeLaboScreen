@@ -97,7 +97,6 @@ int XhPage::analysis(QByteArray package)
                             switch (data[1]) {
                                 case '\x00':
                                     fTGet(data);
-                                    data.clear();
                                     break;
                             default:
                                 break;
