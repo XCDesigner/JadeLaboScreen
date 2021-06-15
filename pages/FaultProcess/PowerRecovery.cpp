@@ -18,7 +18,7 @@ void MainWindow::PowerLostInit()
 
 void MainWindow::PowerTestResult(QByteArray Data)
 {
-    if(Data.at(2) == 0x01)
+    if(Data.at(3) == 0x01)
     {
         m_power = new powerLost();
         m_power->init(QByteArray());
