@@ -129,6 +129,24 @@ font-size: 48px;
     </url>
    </property>
   </widget>
+  <widget class="QQuickWidget" name="quickWidget">
+   <property name="geometry">
+    <rect>
+     <x>40</x>
+     <y>30</y>
+     <width>70</width>
+     <height>70</height>
+    </rect>
+   </property>
+   <property name="resizeMode">
+    <enum>QQuickWidget::SizeRootObjectToView</enum>
+   </property>
+   <property name="source">
+    <url>
+     <string>qrc:/qml/Test.qml</string>
+    </url>
+   </property>
+  </widget>
  </widget>
  <customwidgets>
   <customwidget>

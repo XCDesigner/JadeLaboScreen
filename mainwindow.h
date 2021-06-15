@@ -203,9 +203,6 @@ private:
     DupandMirorr *m_dam;
     duponly *m_dup;
 
-    QQuickItem *item;
-    QQuickItem *item3;
-    QQuickItem *item4;
     QQuickItem *qw_DistanceItem;
     QQuickItem *qw_LightItem;
 

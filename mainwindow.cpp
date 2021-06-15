@@ -38,7 +38,6 @@ MainWindow::MainWindow(QWidget *parent) :
     m_event = NULL;
 
     m_modeone = NULL;
-    item = NULL;
     m_filamentfault = NULL;
     m_printfilament = NULL;
 

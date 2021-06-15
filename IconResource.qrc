@@ -158,5 +158,6 @@
         <file>image/load_enable.png</file>
         <file>qml/JLScrollLabel.qml</file>
         <file>image/test.gif</file>
+        <file>qml/Test.qml</file>
     </qresource>
 </RCC>
