@@ -119,6 +119,7 @@ public:
     void sendUpdateInfo(QByteArray);
     void sendRebootSystem();
 
+    void trigglePowerLost();
     void getPowerLostStatus();
     void markPowerLostFlag();
     void getRecoveryInfo();

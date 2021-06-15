@@ -17,8 +17,11 @@
 
 void MainWindow::FaultDetectInit()
 {
+    // Pause event detection
     AddListen(QByteArray(QByteArray::fromHex("0608")), &MainWindow::onPauseRequest, true);
+    // Abort event detection
     AddListen(QByteArray(QByteArray::fromHex("060A")), &MainWindow::onAbortRequest, true);
+    // Get fault flag
     AddListen(QByteArray(QByteArray::fromHex("010100")), &MainWindow::onFaultFlag, true);
 }
 

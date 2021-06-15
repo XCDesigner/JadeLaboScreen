@@ -574,6 +574,15 @@ void XhPort::getRecoveryInfo()
 }
 
 /**
+  * @brief  Triggle power lost event
+  * @retval None
+  */
+void XhPort::trigglePowerLost()
+{
+    m_serial->writeProtocalData(QByteArray::fromHex("0B03"));
+}
+
+/**
   * @brief  Start recovery print
   * @retval None
   */

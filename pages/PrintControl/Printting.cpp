@@ -88,3 +88,8 @@ void MainWindow::printMessageProcess(uint8_t Command, uint8_t SubCode, QByteArra
         }
     }
 }
+
+void MainWindow::on_pushButton_4_clicked()
+{
+   m_port->trigglePowerLost();
+}

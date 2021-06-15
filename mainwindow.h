@@ -852,6 +852,8 @@ private slots:
     void onChangeHotend_btnClick_12(int);
     void onChangeHotend_btnClick_13(int);
 
+    void on_pushButton_4_clicked();
+
 signals:
     void detection(bool);
     void updateNum(int );
