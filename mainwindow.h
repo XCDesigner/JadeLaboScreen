@@ -265,7 +265,7 @@ private slots:
     void onSetBuildplatThicknessReturn();
 
     void onFinishPrintClicked();
-    void preparePrinTempChecking();
+    void preparePrintTempChecking();
     void preparePrintPageInit();
 
     void PowerLostDialogReturn();

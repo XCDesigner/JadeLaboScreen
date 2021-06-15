@@ -40,6 +40,7 @@ SOURCES += \
     CMOD/xhcontrolr818.cpp \
     CMOD/xhpage.cpp \
     CMOD/xhport.cpp \
+    customwidget/jlbutton.cpp \
     dialog/askpause.cpp \
     dialog/changefilamentdlg.cpp \
     dialog/choosebedtemp.cpp \
@@ -112,6 +113,7 @@ HEADERS += \
     CMOD/xhpage.h \
     CMOD/xhport.h \
     customTypes.h \
+    customwidget/jlbutton.h \
     define/imagePath.h \
     define/linuxPath.h \
     define/windowsPath.h \
@@ -148,6 +150,7 @@ HEADERS += \
 
 
 FORMS += \
+    customwidget/jlbutton.ui \
     dialog/askpause.ui \
     dialog/changefilamentdlg.ui \
     dialog/choosebedtemp.ui \

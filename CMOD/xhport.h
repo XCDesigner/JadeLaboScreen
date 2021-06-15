@@ -120,6 +120,7 @@ public:
     void sendRebootSystem();
 
     void trigglePowerLost();
+    void triggleFilamentRunout(uint8_t Index);
     void getPowerLostStatus();
     void markPowerLostFlag();
     void getRecoveryInfo();

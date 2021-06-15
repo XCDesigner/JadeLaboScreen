@@ -583,6 +583,18 @@ void XhPort::trigglePowerLost()
 }
 
 /**
+  * @brief  Triggle filament runout event
+  * @retval None
+  */
+void XhPort::triggleFilamentRunout(uint8_t Index)
+{
+    if(Index == 0)
+        m_serial->writeProtocalData(QByteArray::fromHex("0B0800"));
+    else
+        m_serial->writeProtocalData(QByteArray::fromHex("0B0801"));
+}
+
+/**
   * @brief  Start recovery print
   * @retval None
   */

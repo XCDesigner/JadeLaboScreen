@@ -51,10 +51,12 @@ void MainWindow::AcceptRecoveryInfo(QByteArray Data)
     m_port->setHeattingUnit(0, temp[0]);
     m_port->setHeattingUnit(1, temp[1]);
     m_port->setHeattingUnit(2, temp[2]);
-    ui->stackedWidget->setCurrentWidget(ui->page_PrepareRecovery);
-    QObject::connect(&m_timer,SIGNAL(timeout()),this,SLOT(jumpSeventeen()));
-    m_printsec->start(1000);
-    m_timer.start(100);
+    screen_status.setPerformance(PREPARE_RECOVERY);
+    ui->stackedWidget->setCurrentWidget(ui->page_PreparePrint);
+    // ui->stackedWidget->setCurrentWidget(ui->page_PrepareRecovery);
+    // QObject::connect(&m_timer,SIGNAL(timeout()),this,SLOT(jumpSeventeen()));
+    // m_printsec->start(1000);
+    // m_timer.start(100);
 }
 
 void MainWindow::PowerLostDialogReturn()
@@ -62,10 +64,12 @@ void MainWindow::PowerLostDialogReturn()
     QList<QByteArray> ret = m_power->get_return_value();
     if(ret[0] == "Cancel")
     {
+        qDebug()<<"Cancel power lost";
         m_port->markPowerLostFlag();
     }
     else if(ret[0] == "Recovery")
     {
+        qDebug()<<"Power lost recovery";
         if(m_port->getXhPage()->setPrintFile(GetRecoveryFile()) == true)
         {
             qDebug()<<"Set file success";
@@ -74,6 +78,7 @@ void MainWindow::PowerLostDialogReturn()
         }
         else
         {
+            qDebug()<<"Set file fail" << GetRecoveryFile();
             m_port->markPowerLostFlag();
         }
     }
@@ -82,17 +87,17 @@ void MainWindow::PowerLostDialogReturn()
 
 QString MainWindow::GetRecoveryFile()
 {
-    qDebug()<<RECOVERY_RECORD;
     QFile *pfile = new QFile(RECOVERY_RECORD);
     QString ret = "";
     if(pfile->open(QIODevice::ReadOnly | QIODevice::Text) == true)
     {
         QByteArray line = pfile->readLine(0);
+        QString file_path = QString(localPath);
         ui->qw_FileName_0->rootObject()->setProperty("text", line);
         ui->qw_FileName_1->rootObject()->setProperty("text", line);
         ui->qw_FileName_2->rootObject()->setProperty("text", line);
-        qDebug()<<line;
-        ret = QString(line);
+        ret = QString(file_path + line).trimmed();
+        qDebug()<< ret;
         pfile->close();
     }
     delete pfile;

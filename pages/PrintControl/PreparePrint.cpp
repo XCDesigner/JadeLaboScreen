@@ -5,8 +5,7 @@ void MainWindow::preparePrintPageInit()
 {
     ui->qw_PreparePrintControl->rootObject()->setProperty("settingEnabled", true);
     ui->qw_PreparePrintControl->rootObject()->setProperty("stopEnabled", true);
-    QTimer::singleShot(4000, this, SLOT(preparePrinTempChecking()));
-    screen_status.setPerformance(PREPARE_PRINT);
+    QTimer::singleShot(4000, this, SLOT(preparePrintTempChecking()));
     print_start_time.setDate(QDate(2021, 1, 1));
     print_end_time.setDate(QDate(2021, 1, 1));
     print_start_time.setTime(QTime(0, 0, 0));
@@ -22,7 +21,7 @@ void MainWindow::StopPreHeatting()
     changePageOnStatus(QByteArray::fromHex("00"), ui->page_GetStart);
 }
 
-void MainWindow::preparePrinTempChecking()
+void MainWindow::preparePrintTempChecking()
 {
     strMachineStatus new_status;
     m_port->getXhPage()->GetMachineStatus(&new_status);
@@ -35,7 +34,7 @@ void MainWindow::preparePrinTempChecking()
         }
         else
         {
-            QTimer::singleShot(200, this, SLOT(preparePrinTempChecking()));
+            QTimer::singleShot(200, this, SLOT(preparePrintTempChecking()));
         }
     }
     else
@@ -84,7 +83,7 @@ void MainWindow::preparePrinTempChecking()
             }
             else
             {
-                QTimer::singleShot(200, this, SLOT(preparePrinTempChecking()));
+                QTimer::singleShot(200, this, SLOT(preparePrintTempChecking()));
             }
         }
     }
