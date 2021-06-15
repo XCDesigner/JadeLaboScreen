@@ -5,7 +5,6 @@
 
 void MainWindow::PowerLostInit()
 {
-    m_port->getPowerLostStatus();
     ui->qw_RecoveryHeating->setClearColor(QColor(qmlColor));
     ui->qw_RecoveryControl->setClearColor(QColor(qmlColor));
     ui->qw_RecoveryControl->rootObject()->setProperty("settingEnabled", false);
@@ -14,6 +13,7 @@ void MainWindow::PowerLostInit()
     AddListen(QByteArray(QByteArray::fromHex("0103")), &MainWindow::PowerTestResult, false);
     QObject::connect(ui->qw_RecoveryControl->rootObject(), SIGNAL(stopClicked()), this, SLOT(RecoveryStop()));
     QObject::connect(ui->qw_RecoveryControl->rootObject(), SIGNAL(settingClicked()), this, SLOT(RecoverySettingShow()));
+    m_port->getPowerLostStatus();
 }
 
 void MainWindow::PowerTestResult(QByteArray Data)

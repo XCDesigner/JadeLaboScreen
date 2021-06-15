@@ -60,13 +60,11 @@ MainWindow::MainWindow(QWidget *parent) :
     /*开启串口*/
     m_port = new XhPort(this);
     m_event = new JLEvent(this);
-    serial_port = new JLSerialPort();
-    serial_port->openPort("COM3");
-    serial_port->start();
 
+#ifdef XH_WIN
     QList<QString> port_names = JLSerialPort::getPortNames();
     ui->comboBox_15->addItems(QStringList(port_names));
-
+#endif
 
     /*绑定串口信号*/
     /*frist*/
