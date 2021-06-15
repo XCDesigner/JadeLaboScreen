@@ -170,8 +170,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->qw_StatusNotice->rootObject()->setProperty("wifiVisible", false);
     ui->qw_StatusNotice->rootObject()->setProperty("lightChecked", false);
 
-    item=ui->quickWidget_3->rootObject();
-    QObject::connect(item,SIGNAL(finishClicked()), this, SLOT(onFinishPrintClicked()));
+    QObject::connect(ui->quickWidget_3->rootObject(),SIGNAL(finishClicked()), this, SLOT(onFinishPrintClicked()));
 
     QObject::connect(ui->qw_ExtruderSelect->rootObject(), SIGNAL(clicked()), this, SLOT(ExtruderChange()));
 
@@ -253,22 +252,22 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->qw_FileName_2->setSource(QUrl("qrc:/qml/JLScrollLabel.qml"));
 
 
-    AboutPageInit();
+    // AboutPageInit();
 
-    // #if defined(XH_WIN)
-    wifiPageInit();
-    // #endif
+    // // #if defined(XH_WIN)
+    // wifiPageInit();
+    // // #endif
 
-    TempControlInit();
-    ExtrudeControlInit();
-    platformCalibratePageinit();
-    xyCalibratePageinit();
-    nozzleCalibratePageinit();
-    changeHotendPageInit();
-    LightSettingPageInit();
+    // TempControlInit();
+    // ExtrudeControlInit();
+    // platformCalibratePageinit();
+    // xyCalibratePageinit();
+    // nozzleCalibratePageinit();
+    // changeHotendPageInit();
+    // LightSettingPageInit();
 
-    pMovie = new QMovie(this);
-    pMovie->setFileName("/usr/share/3d_printer/test.gif");
+    // pMovie = new QMovie(this);
+    // pMovie->setFileName("/usr/share/3d_printer/test.gif");
 }
 
 
