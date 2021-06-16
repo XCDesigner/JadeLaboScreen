@@ -5,14 +5,7 @@
 
 void MainWindow::PowerLostInit()
 {
-    ui->qw_RecoveryHeating->setClearColor(QColor(qmlColor));
-    ui->qw_RecoveryControl->setClearColor(QColor(qmlColor));
-    ui->qw_RecoveryControl->rootObject()->setProperty("settingEnabled", false);
-    ui->qw_RecoveryControl->rootObject()->setProperty("stopEnabled", true);
-    ui->qw_RecoveryControl->rootObject()->setProperty("pauseEnabled", false);
     AddListen(QByteArray(QByteArray::fromHex("0103")), &MainWindow::PowerTestResult, false);
-    QObject::connect(ui->qw_RecoveryControl->rootObject(), SIGNAL(stopClicked()), this, SLOT(RecoveryStop()));
-    QObject::connect(ui->qw_RecoveryControl->rootObject(), SIGNAL(settingClicked()), this, SLOT(RecoverySettingShow()));
     m_port->getPowerLostStatus();
 }
 
@@ -38,7 +31,6 @@ void MainWindow::AcceptRecoveryInfo(QByteArray Data)
     m_port->setPrintFanPercentage(0, (uint8_t)Data.at(9));
     m_port->setPrintFanPercentage(1, (uint8_t)Data.at(10));
     // Carrier Mode 1Byte
-    ui->label_43->setText(mode[(uint8_t)Data.at(11)]);
     ui->label_36->setText(mode[(uint8_t)Data.at(11)]);
     ui->label_69->setText(mode[(uint8_t)Data.at(11)]);
 
@@ -95,7 +87,6 @@ QString MainWindow::GetRecoveryFile()
         QString file_path = QString(localPath);
         ui->qw_FileName_0->rootObject()->setProperty("text", line);
         ui->qw_FileName_1->rootObject()->setProperty("text", line);
-        ui->qw_FileName_2->rootObject()->setProperty("text", line);
         ret = QString(file_path + line).trimmed();
         qDebug()<< ret;
         pfile->close();

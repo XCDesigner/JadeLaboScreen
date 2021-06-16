@@ -245,11 +245,8 @@ MainWindow::MainWindow(QWidget *parent) :
 
     ui->qw_FileName_0->setClearColor("#2d2c2b");
     ui->qw_FileName_1->setClearColor("#2d2c2b");
-    ui->qw_FileName_2->setClearColor("#2d2c2b");
     ui->qw_FileName_0->setSource(QUrl("qrc:/qml/JLScrollLabel.qml"));
     ui->qw_FileName_1->setSource(QUrl("qrc:/qml/JLScrollLabel.qml"));
-    ui->qw_FileName_2->setSource(QUrl("qrc:/qml/JLScrollLabel.qml"));
-
 
     // AboutPageInit();
 

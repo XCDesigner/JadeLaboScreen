@@ -70,7 +70,7 @@ font-family: barlow;
 }</string>
     </property>
     <property name="currentIndex">
-     <number>12</number>
+     <number>16</number>
     </property>
     <widget class="QWidget" name="page_12">
      <widget class="QLabel" name="label_14">
@@ -2570,183 +2570,6 @@ background-color: rgba(255, 255, 255, 0);</string>
      <zorder>qw_PreparePrintControl</zorder>
      <zorder>qw_FileName_1</zorder>
     </widget>
-    <widget class="QWidget" name="page_PrepareRecovery">
-     <widget class="QQuickWidget" name="qw_RecoveryHeating">
-      <property name="geometry">
-       <rect>
-        <x>70</x>
-        <y>160</y>
-        <width>484</width>
-        <height>484</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">background-color: rgb(32, 32, 35);</string>
-      </property>
-      <property name="resizeMode">
-       <enum>QQuickWidget::SizeRootObjectToView</enum>
-      </property>
-      <property name="source">
-       <url>
-        <string>qrc:/qml/HeatingCircle.qml</string>
-       </url>
-      </property>
-     </widget>
-     <widget class="QQuickWidget" name="qw_RecoveryControl">
-      <property name="geometry">
-       <rect>
-        <x>590</x>
-        <y>435</y>
-        <width>640</width>
-        <height>240</height>
-       </rect>
-      </property>
-      <property name="resizeMode">
-       <enum>QQuickWidget::SizeRootObjectToView</enum>
-      </property>
-      <property name="source">
-       <url>
-        <string>qrc:/qml/PrintControlBox.qml</string>
-       </url>
-      </property>
-     </widget>
-     <widget class="QLabel" name="label_268">
-      <property name="geometry">
-       <rect>
-        <x>590</x>
-        <y>113</y>
-        <width>640</width>
-        <height>300</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">color: rgba(16, 16, 16, 255);
-font-size: 28px;
-text-align: left;
-font-family: Roboto;
-background-color: rgb(45, 44, 43);
-border: 2px solid rgba(45, 44, 43, 255);
-border-radius: 20px;</string>
-      </property>
-      <property name="text">
-       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-      </property>
-     </widget>
-     <widget class="QLabel" name="label_43">
-      <property name="geometry">
-       <rect>
-        <x>610</x>
-        <y>250</y>
-        <width>450</width>
-        <height>41</height>
-       </rect>
-      </property>
-      <property name="font">
-       <font>
-        <family>Barlow</family>
-        <pointsize>-1</pointsize>
-        <weight>75</weight>
-        <bold>true</bold>
-       </font>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">font-weight: bold;color: rgba(255, 255, 255, 255);
-font-size: 40px;
-text-align: center;
-font-family: Barlow;
-background-color: rgba(255, 255, 255, 0);</string>
-      </property>
-      <property name="text">
-       <string>Mirror Mode</string>
-      </property>
-     </widget>
-     <widget class="QLabel" name="label_86">
-      <property name="geometry">
-       <rect>
-        <x>610</x>
-        <y>350</y>
-        <width>380</width>
-        <height>41</height>
-       </rect>
-      </property>
-      <property name="font">
-       <font>
-        <family>Barlow</family>
-        <pointsize>-1</pointsize>
-        <weight>75</weight>
-        <bold>true</bold>
-       </font>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">font-weight: bold;color: rgba(255, 255, 255, 255);
-font-size: 40px;
-text-align: center;
-font-family: Barlow;
-background-color: rgba(255, 255, 255, 0);</string>
-      </property>
-      <property name="text">
-       <string>0d 0h 0m</string>
-      </property>
-     </widget>
-     <widget class="QLabel" name="label_44">
-      <property name="geometry">
-       <rect>
-        <x>610</x>
-        <y>200</y>
-        <width>231</width>
-        <height>41</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">color: rgba(255, 255, 255, 255);
-font-size: 24px;
-text-align: center;
-font-family: Barlow;
-background-color: rgba(255, 255, 255, 0);</string>
-      </property>
-      <property name="text">
-       <string>Print Mode:</string>
-      </property>
-     </widget>
-     <widget class="QLabel" name="label_76">
-      <property name="geometry">
-       <rect>
-        <x>610</x>
-        <y>300</y>
-        <width>151</width>
-        <height>41</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">color: rgba(255, 255, 255, 255);
-font-size: 24px;
-text-align: center;
-font-family: Barlow;
-background-color: rgba(255, 255, 255, 0);</string>
-      </property>
-      <property name="text">
-       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Elapsed Time: &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-      </property>
-     </widget>
-     <widget class="QQuickWidget" name="qw_FileName_2">
-      <property name="geometry">
-       <rect>
-        <x>610</x>
-        <y>130</y>
-        <width>600</width>
-        <height>80</height>
-       </rect>
-      </property>
-      <property name="resizeMode">
-       <enum>QQuickWidget::SizeRootObjectToView</enum>
-      </property>
-      <property name="source">
-       <url>
-        <string>qrc:/qml/JLScrollLabel.qml</string>
-       </url>
-      </property>
-     </widget>
-    </widget>
     <widget class="QWidget" name="page_Printing">
      <widget class="QLabel" name="label_270">
       <property name="geometry">
@@ -3342,32 +3165,6 @@ font-family:Barlow;</string>
        <bool>true</bool>
       </property>
      </widget>
-     <widget class="QQuickWidget" name="qw_btnChangeHotend_0">
-      <property name="geometry">
-       <rect>
-        <x>170</x>
-        <y>600</y>
-        <width>533</width>
-        <height>96</height>
-       </rect>
-      </property>
-      <property name="resizeMode">
-       <enum>QQuickWidget::SizeRootObjectToView</enum>
-      </property>
-     </widget>
-     <widget class="QQuickWidget" name="qw_btnChangeHotend_1">
-      <property name="geometry">
-       <rect>
-        <x>725</x>
-        <y>600</y>
-        <width>533</width>
-        <height>96</height>
-       </rect>
-      </property>
-      <property name="resizeMode">
-       <enum>QQuickWidget::SizeRootObjectToView</enum>
-      </property>
-     </widget>
     </widget>
     <widget class="QWidget" name="page_ChangeHotend_1">
      <widget class="QLabel" name="label_91">
@@ -3477,32 +3274,6 @@ background-color: rgba(255, 255, 255, 0);</string>
        <bool>true</bool>
       </property>
      </widget>
-     <widget class="QQuickWidget" name="qw_btnChangeHotend_3">
-      <property name="geometry">
-       <rect>
-        <x>515</x>
-        <y>598</y>
-        <width>737</width>
-        <height>96</height>
-       </rect>
-      </property>
-      <property name="resizeMode">
-       <enum>QQuickWidget::SizeRootObjectToView</enum>
-      </property>
-     </widget>
-     <widget class="QQuickWidget" name="qw_btnChangeHotend_2">
-      <property name="geometry">
-       <rect>
-        <x>186</x>
-        <y>598</y>
-        <width>305</width>
-        <height>96</height>
-       </rect>
-      </property>
-      <property name="resizeMode">
-       <enum>QQuickWidget::SizeRootObjectToView</enum>
-      </property>
-     </widget>
     </widget>
     <widget class="QWidget" name="page_ChangeHotend_2">
      <widget class="QPushButton" name="pushButton_334">
@@ -3567,32 +3338,6 @@ background-color: rgba(255, 255, 255, 0);</string>
       </property>
       <property name="text">
        <string/>
-      </property>
-     </widget>
-     <widget class="QQuickWidget" name="qw_btnChangeHotend_4">
-      <property name="geometry">
-       <rect>
-        <x>186</x>
-        <y>598</y>
-        <width>305</width>
-        <height>96</height>
-       </rect>
-      </property>
-      <property name="resizeMode">
-       <enum>QQuickWidget::SizeRootObjectToView</enum>
-      </property>
-     </widget>
-     <widget class="QQuickWidget" name="qw_btnChangeHotend_5">
-      <property name="geometry">
-       <rect>
-        <x>515</x>
-        <y>598</y>
-        <width>737</width>
-        <height>96</height>
-       </rect>
-      </property>
-      <property name="resizeMode">
-       <enum>QQuickWidget::SizeRootObjectToView</enum>
       </property>
      </widget>
      <widget class="QQuickWidget" name="qw_heatingUnitChangehotend_L">
@@ -3695,32 +3440,6 @@ background-color: rgba(255, 255, 255, 0);</string>
       </property>
       <property name="text">
        <string/>
-      </property>
-     </widget>
-     <widget class="QQuickWidget" name="qw_btnChangeHotend_6">
-      <property name="geometry">
-       <rect>
-        <x>186</x>
-        <y>598</y>
-        <width>305</width>
-        <height>96</height>
-       </rect>
-      </property>
-      <property name="resizeMode">
-       <enum>QQuickWidget::SizeRootObjectToView</enum>
-      </property>
-     </widget>
-     <widget class="QQuickWidget" name="qw_btnChangeHotend_7">
-      <property name="geometry">
-       <rect>
-        <x>515</x>
-        <y>598</y>
-        <width>737</width>
-        <height>96</height>
-       </rect>
-      </property>
-      <property name="resizeMode">
-       <enum>QQuickWidget::SizeRootObjectToView</enum>
       </property>
      </widget>
     </widget>
@@ -3933,32 +3652,6 @@ background-color: rgba(255, 255, 255, 0);</string>
        <bool>true</bool>
       </property>
      </widget>
-     <widget class="QQuickWidget" name="qw_btnChangeHotend_9">
-      <property name="geometry">
-       <rect>
-        <x>515</x>
-        <y>598</y>
-        <width>737</width>
-        <height>96</height>
-       </rect>
-      </property>
-      <property name="resizeMode">
-       <enum>QQuickWidget::SizeRootObjectToView</enum>
-      </property>
-     </widget>
-     <widget class="QQuickWidget" name="qw_btnChangeHotend_8">
-      <property name="geometry">
-       <rect>
-        <x>186</x>
-        <y>598</y>
-        <width>305</width>
-        <height>96</height>
-       </rect>
-      </property>
-      <property name="resizeMode">
-       <enum>QQuickWidget::SizeRootObjectToView</enum>
-      </property>
-     </widget>
     </widget>
     <widget class="QWidget" name="page_ChangeHotend_6">
      <widget class="QPushButton" name="pushButton_230">
@@ -4094,32 +3787,6 @@ background-color: rgba(255, 255, 255, 0);</string>
        <bool>true</bool>
       </property>
      </widget>
-     <widget class="QQuickWidget" name="qw_btnChangeHotend_10">
-      <property name="geometry">
-       <rect>
-        <x>186</x>
-        <y>598</y>
-        <width>305</width>
-        <height>96</height>
-       </rect>
-      </property>
-      <property name="resizeMode">
-       <enum>QQuickWidget::SizeRootObjectToView</enum>
-      </property>
-     </widget>
-     <widget class="QQuickWidget" name="qw_btnChangeHotend_11">
-      <property name="geometry">
-       <rect>
-        <x>515</x>
-        <y>598</y>
-        <width>737</width>
-        <height>96</height>
-       </rect>
-      </property>
-      <property name="resizeMode">
-       <enum>QQuickWidget::SizeRootObjectToView</enum>
-      </property>
-     </widget>
     </widget>
     <widget class="QWidget" name="page_ChangeHotend_7">
      <widget class="QPushButton" name="pushButton_477">
@@ -4224,32 +3891,6 @@ Recommend to excute calibration.</string>
       </property>
       <property name="alignment">
        <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
-      </property>
-     </widget>
-     <widget class="QQuickWidget" name="qw_btnChangeHotend_12">
-      <property name="geometry">
-       <rect>
-        <x>186</x>
-        <y>598</y>
-        <width>305</width>
-        <height>96</height>
-       </rect>
-      </property>
-      <property name="resizeMode">
-       <enum>QQuickWidget::SizeRootObjectToView</enum>
-      </property>
-     </widget>
-     <widget class="QQuickWidget" name="qw_btnChangeHotend_13">
-      <property name="geometry">
-       <rect>
-        <x>515</x>
-        <y>598</y>
-        <width>737</width>
-        <height>96</height>
-       </rect>
-      </property>
-      <property name="resizeMode">
-       <enum>QQuickWidget::SizeRootObjectToView</enum>
       </property>
      </widget>
     </widget>

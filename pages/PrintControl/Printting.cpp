@@ -53,7 +53,6 @@ void MainWindow::timeAdd()
     int minutes = del / 60;
     char strtime[32];
     sprintf(strtime, "%dd %dh %dm", days, hours, minutes);
-    ui->label_86->setText(strtime);
     ui->label_78->setText(strtime);
     ui->label_307->setText(strtime);
 }

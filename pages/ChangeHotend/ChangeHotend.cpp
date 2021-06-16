@@ -3,50 +3,50 @@
 
 void MainWindow::changeHotendPageInit()
 {
-    QString btnText[] = {"L Hotendd", "R Hotendd", "Previous", "Next", "Previous", "Next", "Previous", "Next", "Previous", "Removed", "Previous", "Installed", "Finish", "GoCalibratetion"};
-    QString btnBackColor[] = {"#ff630b", "#ff630b", "#434343", "#ff630b", "#434343", "#ff630b", "#434343", "#ff630b", "#434343", "#ff630b", "#434343", "#ff630b", "#ff630b", "#ff630b"};
-    QQuickWidget *pbutton[14];
-    pbutton[0] = ui->qw_btnChangeHotend_0;
-    pbutton[1] = ui->qw_btnChangeHotend_1;
-    pbutton[2] = ui->qw_btnChangeHotend_2;
-    pbutton[3] = ui->qw_btnChangeHotend_3;
-    pbutton[4] = ui->qw_btnChangeHotend_4;
-    pbutton[5] = ui->qw_btnChangeHotend_5;
-    pbutton[6] = ui->qw_btnChangeHotend_6;
-    pbutton[7] = ui->qw_btnChangeHotend_7;
-    pbutton[8] = ui->qw_btnChangeHotend_8;
-    pbutton[9] = ui->qw_btnChangeHotend_9;
-    pbutton[10] = ui->qw_btnChangeHotend_10;
-    pbutton[11] = ui->qw_btnChangeHotend_11;
-    pbutton[12] = ui->qw_btnChangeHotend_12;
-    pbutton[13] = ui->qw_btnChangeHotend_13;
+//    QString btnText[] = {"L Hotendd", "R Hotendd", "Previous", "Next", "Previous", "Next", "Previous", "Next", "Previous", "Removed", "Previous", "Installed", "Finish", "GoCalibratetion"};
+//    QString btnBackColor[] = {"#ff630b", "#ff630b", "#434343", "#ff630b", "#434343", "#ff630b", "#434343", "#ff630b", "#434343", "#ff630b", "#434343", "#ff630b", "#ff630b", "#ff630b"};
+//    QQuickWidget *pbutton[14];
+//    pbutton[0] = ui->qw_btnChangeHotend_0;
+//    pbutton[1] = ui->qw_btnChangeHotend_1;
+//    pbutton[2] = ui->qw_btnChangeHotend_2;
+//    pbutton[3] = ui->qw_btnChangeHotend_3;
+//    pbutton[4] = ui->qw_btnChangeHotend_4;
+//    pbutton[5] = ui->qw_btnChangeHotend_5;
+//    pbutton[6] = ui->qw_btnChangeHotend_6;
+//    pbutton[7] = ui->qw_btnChangeHotend_7;
+//    pbutton[8] = ui->qw_btnChangeHotend_8;
+//    pbutton[9] = ui->qw_btnChangeHotend_9;
+//    pbutton[10] = ui->qw_btnChangeHotend_10;
+//    pbutton[11] = ui->qw_btnChangeHotend_11;
+//    pbutton[12] = ui->qw_btnChangeHotend_12;
+//    pbutton[13] = ui->qw_btnChangeHotend_13;
 
-    for(uint i=0;i<14;i++)
-    {
-        pbutton[i]->setSource(QUrl("qrc:/qml/JLPushedButton.qml"));
-        pbutton[i]->setClearColor(QColor(qmlColor));
-        pbutton[i]->rootObject()->setProperty("text", btnText[i]);
-        pbutton[i]->rootObject()->setProperty("color", btnBackColor[i]);
-    }
+//    for(uint i=0;i<14;i++)
+//    {
+//        pbutton[i]->setSource(QUrl("qrc:/qml/JLPushedButton.qml"));
+//        pbutton[i]->setClearColor(QColor(qmlColor));
+//        pbutton[i]->rootObject()->setProperty("text", btnText[i]);
+//        pbutton[i]->rootObject()->setProperty("color", btnBackColor[i]);
+//    }
 
     ui->qw_heatingUnitChangehotend_L->rootObject()->setProperty("text", "200°C");
     ui->qw_heatingUnitChangehotend_R->rootObject()->setProperty("text", "200°C");
 
 
-    QObject::connect(pbutton[0]->rootObject(), SIGNAL(clicked(int)), this, SLOT(onChangeHotend_btnClick_0(int)));
-    QObject::connect(pbutton[1]->rootObject(), SIGNAL(clicked(int)), this, SLOT(onChangeHotend_btnClick_1(int)));
-    QObject::connect(pbutton[2]->rootObject(), SIGNAL(clicked(int)), this, SLOT(onChangeHotend_btnClick_2(int)));
-    QObject::connect(pbutton[3]->rootObject(), SIGNAL(clicked(int)), this, SLOT(onChangeHotend_btnClick_3(int)));
-    QObject::connect(pbutton[4]->rootObject(), SIGNAL(clicked(int)), this, SLOT(onChangeHotend_btnClick_4(int)));
-    QObject::connect(pbutton[5]->rootObject(), SIGNAL(clicked(int)), this, SLOT(onChangeHotend_btnClick_5(int)));
-    QObject::connect(pbutton[6]->rootObject(), SIGNAL(clicked(int)), this, SLOT(onChangeHotend_btnClick_6(int)));
-    QObject::connect(pbutton[7]->rootObject(), SIGNAL(clicked(int)), this, SLOT(onChangeHotend_btnClick_7(int)));
-    QObject::connect(pbutton[8]->rootObject(), SIGNAL(clicked(int)), this, SLOT(onChangeHotend_btnClick_8(int)));
-    QObject::connect(pbutton[9]->rootObject(), SIGNAL(clicked(int)), this, SLOT(onChangeHotend_btnClick_9(int)));
-    QObject::connect(pbutton[10]->rootObject(), SIGNAL(clicked(int)), this, SLOT(onChangeHotend_btnClick_10(int)));
-    QObject::connect(pbutton[11]->rootObject(), SIGNAL(clicked(int)), this, SLOT(onChangeHotend_btnClick_11(int)));
-    QObject::connect(pbutton[12]->rootObject(), SIGNAL(clicked(int)), this, SLOT(onChangeHotend_btnClick_12(int)));
-    QObject::connect(pbutton[13]->rootObject(), SIGNAL(clicked(int)), this, SLOT(onChangeHotend_btnClick_13(int)));
+//    QObject::connect(pbutton[0]->rootObject(), SIGNAL(clicked(int)), this, SLOT(onChangeHotend_btnClick_0(int)));
+//    QObject::connect(pbutton[1]->rootObject(), SIGNAL(clicked(int)), this, SLOT(onChangeHotend_btnClick_1(int)));
+//    QObject::connect(pbutton[2]->rootObject(), SIGNAL(clicked(int)), this, SLOT(onChangeHotend_btnClick_2(int)));
+//    QObject::connect(pbutton[3]->rootObject(), SIGNAL(clicked(int)), this, SLOT(onChangeHotend_btnClick_3(int)));
+//    QObject::connect(pbutton[4]->rootObject(), SIGNAL(clicked(int)), this, SLOT(onChangeHotend_btnClick_4(int)));
+//    QObject::connect(pbutton[5]->rootObject(), SIGNAL(clicked(int)), this, SLOT(onChangeHotend_btnClick_5(int)));
+//    QObject::connect(pbutton[6]->rootObject(), SIGNAL(clicked(int)), this, SLOT(onChangeHotend_btnClick_6(int)));
+//    QObject::connect(pbutton[7]->rootObject(), SIGNAL(clicked(int)), this, SLOT(onChangeHotend_btnClick_7(int)));
+//    QObject::connect(pbutton[8]->rootObject(), SIGNAL(clicked(int)), this, SLOT(onChangeHotend_btnClick_8(int)));
+//    QObject::connect(pbutton[9]->rootObject(), SIGNAL(clicked(int)), this, SLOT(onChangeHotend_btnClick_9(int)));
+//    QObject::connect(pbutton[10]->rootObject(), SIGNAL(clicked(int)), this, SLOT(onChangeHotend_btnClick_10(int)));
+//    QObject::connect(pbutton[11]->rootObject(), SIGNAL(clicked(int)), this, SLOT(onChangeHotend_btnClick_11(int)));
+//    QObject::connect(pbutton[12]->rootObject(), SIGNAL(clicked(int)), this, SLOT(onChangeHotend_btnClick_12(int)));
+//    QObject::connect(pbutton[13]->rootObject(), SIGNAL(clicked(int)), this, SLOT(onChangeHotend_btnClick_13(int)));
 
     ui->qw_heatingUnitChangehotend_L->rootObject()->setProperty("indicatorIcon", "qrc:/image/LeftHotendIndecator.png");
     ui->qw_heatingUnitChangehotend_L->rootObject()->setProperty("indicatorText", "Left Extruder");

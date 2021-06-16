@@ -110,14 +110,12 @@ void MainWindow::m_chooseItem(myListWidgetItem *itm)
 
     ui->qw_FileName_0->rootObject()->setProperty("text", itm->m_fileName);
     ui->qw_FileName_1->rootObject()->setProperty("text", itm->m_fileName);
-    ui->qw_FileName_2->rootObject()->setProperty("text", itm->m_fileName);
 }
 
 void MainWindow::onFileChooseReturn()
 {
     QList<QByteArray> ret = m_WinFile->get_return_value();
     myListWidgetItem *p_item = m_WinFile->getSelectItem();
-    // m_WinFile->close();
     delete m_WinFile;
     if(ret[0] == "Confirm")
     {
@@ -135,7 +133,6 @@ void MainWindow::onModeSelectReturn()
     QObject::disconnect(pdlg_select_mode, SIGNAL(hideWidget()), this, SLOT(onModeSelectReturn()));
     if(ret[0] == "Cancel")
     {
-        // pdlg_select_mode->close();
         delete pdlg_select_mode;
     }
     else
@@ -143,7 +140,6 @@ void MainWindow::onModeSelectReturn()
         QString input_file = pdlg_select_mode->getInputFileName();
         QString output_file_name = pdlg_select_mode->getOutputFileName();
         WriteRecoveryFilaName(output_file_name);
-        // pdlg_select_mode->close();
         delete pdlg_select_mode;
 
         pdlg_parsing = new parsing();
@@ -189,7 +185,6 @@ void MainWindow::onParseComplete()
         pdlg_select_mode->show();
         QObject::connect(pdlg_select_mode, SIGNAL(hideWidget()), this, SLOT(onModeSelectReturn()), Qt::QueuedConnection);
     }
-    // pdlg_parsing->close();
     delete pdlg_parsing;
 }
 
@@ -223,7 +218,6 @@ void MainWindow::onDeleteFileReturn()
         }
     }
     QObject::disconnect(m_delete, SIGNAL(hideWidget()), this, SLOT(onDeleteFileReturn()));
-    // m_delete->close();
     delete m_delete;
 }
 
