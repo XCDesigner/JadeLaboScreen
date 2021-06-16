@@ -1,6 +1,11 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
+void MainWindow::JodMovePageInit()
+{
+    QObject::connect(ui->label_7, SIGNAL(clicked()), this, SLOT(ExtruderChange()));
+}
+
 void MainWindow::on_pushButton_698_clicked()
 {
     QVariant i = qw_DistanceItem->property("distance");
@@ -60,7 +65,7 @@ void MainWindow::on_pushButton_693_clicked()
 
 void MainWindow::ExtruderChange()
 {
-    if(ui->qw_ExtruderSelect->rootObject()->property("enable").toBool() == true) {
+    if(ui->label_7->getEnableStatus() == true) {
         m_port->changeToolHead(0);
         qDebug()<<"Left";
     }

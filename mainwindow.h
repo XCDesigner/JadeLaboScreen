@@ -112,6 +112,7 @@ public:
     void platformCalibratePageinit();
     void xyCalibratePageinit();
     void nozzleCalibratePageinit();
+    void JodMovePageInit();
 
     void ListenerInit();
     void AddListen(QByteArray MatchData, pFunction, bool);
@@ -729,10 +730,6 @@ private slots:
     void on_pushButton_447_clicked();
 
     void on_pushButton_692_clicked();
-
-    void on_pushButton_453_clicked(bool checked);
-
-    void on_pushButton_454_clicked(bool checked);
 
     void on_pushButton_455_clicked();
 

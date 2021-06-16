@@ -155,14 +155,6 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->qw_PrintingControl->rootObject()->setProperty("settingEnabled", true);
     ui->qw_PrintingControl->rootObject()->setProperty("pauseEnabled", true);
 
-    ui->qw_FilSensor->setSource(QUrl("qrc:/qml/JFOnOffSwitch.qml"));
-    ui->qw_FilSensor->setResizeMode(QQuickWidget::SizeRootObjectToView);
-    ui->qw_FilSensor->setClearColor(QColor(qmlColor));
-
-    ui->qw_ExtruderSelect->setSource(QUrl("qrc:/qml/JFOnOffSwitch.qml"));
-    ui->qw_ExtruderSelect->setResizeMode(QQuickWidget::SizeRootObjectToView);
-    ui->qw_ExtruderSelect->setClearColor(QColor(qmlColor));
-
     ui->qw_StatusNotice->setSource(QUrl("qrc:/qml/StatusBarNotice.qml"));
     ui->qw_StatusNotice->setClearColor(QColor(qmlColor));
     ui->qw_StatusNotice->rootObject()->setProperty("udiskVisible", false);
@@ -170,8 +162,6 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->qw_StatusNotice->rootObject()->setProperty("lightChecked", false);
 
     QObject::connect(ui->quickWidget_3->rootObject(),SIGNAL(finishClicked()), this, SLOT(onFinishPrintClicked()));
-
-    QObject::connect(ui->qw_ExtruderSelect->rootObject(), SIGNAL(clicked()), this, SLOT(ExtruderChange()));
 
     QObject::connect(ui->qw_StatusNotice->rootObject(), SIGNAL(lightClicked()), this, SLOT(StatusNotice_Light_clicked()));
     QObject::connect(ui->qw_StatusNotice->rootObject(), SIGNAL(stepperClicked()), this, SLOT(StatusNotice_Stepper_clicked()));
@@ -254,13 +244,14 @@ MainWindow::MainWindow(QWidget *parent) :
     // wifiPageInit();
     // // #endif
 
-    // TempControlInit();
-    // ExtrudeControlInit();
-    // platformCalibratePageinit();
-    // xyCalibratePageinit();
-    // nozzleCalibratePageinit();
-    // changeHotendPageInit();
-    // LightSettingPageInit();
+     TempControlInit();
+     ExtrudeControlInit();
+     platformCalibratePageinit();
+     xyCalibratePageinit();
+     nozzleCalibratePageinit();
+     changeHotendPageInit();
+     LightSettingPageInit();
+     JodMovePageInit();
 
     // pMovie = new QMovie(this);
     // pMovie->setFileName("/usr/share/3d_printer/test.gif");
@@ -1250,27 +1241,27 @@ void MainWindow::on_pushButton_447_clicked()
     // m_port->updateBegin(UpdateFile);
 }
 
-void MainWindow::on_pushButton_453_clicked(bool checked)
-{
-    if(!checked)
-    {
-        if(!ui->pushButton_454->isChecked())
-        {
-            ui->pushButton_454->setChecked(true);
-        }
-    }
-}
+//void MainWindow::on_pushButton_453_clicked(bool checked)
+//{
+//    if(!checked)
+//    {
+//        if(!ui->pushButton_454->isChecked())
+//        {
+//            ui->pushButton_454->setChecked(true);
+//        }
+//    }
+//}
 
-void MainWindow::on_pushButton_454_clicked(bool checked)
-{
-    if(!checked)
-    {
-        if(!ui->pushButton_453->isChecked())
-        {
-            ui->pushButton_453->setChecked(true);
-        }
-    }
-}
+//void MainWindow::on_pushButton_454_clicked(bool checked)
+//{
+//    if(!checked)
+//    {
+//        if(!ui->pushButton_453->isChecked())
+//        {
+//            ui->pushButton_453->setChecked(true);
+//        }
+//    }
+//}
 
 void MainWindow::on_pushButton_455_clicked()
 {
