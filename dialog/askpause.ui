@@ -36,29 +36,242 @@ background-color: rgba(255, 255, 255, 200);</string>
     <string/>
    </property>
   </widget>
-  <widget class="QQuickWidget" name="quickWidget">
+  <widget class="QPushButton" name="btnPauseContinue">
    <property name="geometry">
     <rect>
-     <x>0</x>
-     <y>0</y>
-     <width>1280</width>
-     <height>720</height>
+     <x>322</x>
+     <y>33</y>
+     <width>634</width>
+     <height>121</height>
     </rect>
    </property>
-   <property name="resizeMode">
-    <enum>QQuickWidget::SizeRootObjectToView</enum>
+   <property name="styleSheet">
+    <string notr="true">QPushButton{
+	outline:none;border-radius: 20px;
+	background-color: rgb(255, 99, 11);
+	color: rgba(255, 255, 255, 255);
+	font-size: 36px;
+	text-align: center;
+	font-family: Barlow;
+	border: 2px solid rgba(67, 67, 67, 255);font-weight: bold;
+	font-family:Barlow;
+}
+
+QPushButton::pressed{
+	outline:none;border-radius: 20px;
+	background-color: rgb(245, 166, 35);
+	color: rgba(255, 255, 255, 255);
+	font-size: 36px;
+	text-align: center;
+	font-family: Barlow;
+	border: 2px solid rgba(67, 67, 67, 255);font-weight: bold;
+	font-family:Barlow;
+}
+
+QPushButton::disabled{
+	outline:none;border-radius: 20px;
+	background-color: rgb(33, 35, 38);
+	color: rgba(255, 255, 255, 255);
+	font-size: 36px;
+	text-align: center;
+	font-family: Barlow;
+	border: 2px solid rgba(67, 67, 67, 255);font-weight: bold;
+	font-family:Barlow;
+}</string>
+   </property>
+   <property name="text">
+    <string>Pause</string>
    </property>
   </widget>
-  <zorder>quickWidget</zorder>
-  <zorder>label_2</zorder>
+  <widget class="QPushButton" name="btnChangeFilament">
+   <property name="geometry">
+    <rect>
+     <x>322</x>
+     <y>200</y>
+     <width>634</width>
+     <height>121</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton{
+	outline:none;border-radius: 20px;
+	background-color: rgb(255, 99, 11);
+	color: rgba(255, 255, 255, 255);
+	font-size: 36px;
+	text-align: center;
+	font-family: Barlow;
+	border: 2px solid rgba(67, 67, 67, 255);font-weight: bold;
+	font-family:Barlow;
+}
+
+QPushButton::pressed{
+	outline:none;border-radius: 20px;
+	background-color: rgb(245, 166, 35);
+	color: rgba(255, 255, 255, 255);
+	font-size: 36px;
+	text-align: center;
+	font-family: Barlow;
+	border: 2px solid rgba(67, 67, 67, 255);font-weight: bold;
+	font-family:Barlow;
+}
+
+QPushButton::disabled{
+	outline:none;border-radius: 20px;
+	background-color: rgb(33, 35, 38);
+	color: rgba(255, 255, 255, 255);
+	font-size: 36px;
+	text-align: center;
+	font-family: Barlow;
+	border: 2px solid rgba(67, 67, 67, 255);font-weight: bold;
+	font-family:Barlow;
+}</string>
+   </property>
+   <property name="text">
+    <string>Change Filament</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="btnDisableLeft">
+   <property name="geometry">
+    <rect>
+     <x>322</x>
+     <y>368</y>
+     <width>304</width>
+     <height>121</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton{
+	outline:none;border-radius: 20px;
+	background-color: rgb(255, 99, 11);
+	color: rgba(255, 255, 255, 255);
+	font-size: 36px;
+	text-align: center;
+	font-family: Barlow;
+	border: 2px solid rgba(67, 67, 67, 255);font-weight: bold;
+	font-family:Barlow;
+}
+
+QPushButton::checked{
+	outline:none;border-radius: 20px;
+	background-color: rgb(245, 166, 35);
+	color: rgba(255, 255, 255, 255);
+	font-size: 36px;
+	text-align: center;
+	font-family: Barlow;
+	border: 2px solid rgba(67, 67, 67, 255);font-weight: bold;
+	font-family:Barlow;
+}
+
+QPushButton::unchecked{
+	outline:none;border-radius: 20px;
+	background-color: rgb(43, 43, 43);
+	color: rgba(255, 255, 255, 255);
+	font-size: 36px;
+	text-align: center;
+	font-family: Barlow;
+	border: 2px solid rgba(67, 67, 67, 255);font-weight: bold;
+	font-family:Barlow;
+}</string>
+   </property>
+   <property name="text">
+    <string>Disable LE</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="btnDisableRight">
+   <property name="geometry">
+    <rect>
+     <x>652</x>
+     <y>368</y>
+     <width>304</width>
+     <height>121</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton{
+	outline:none;border-radius: 20px;
+	background-color: rgb(255, 99, 11);
+	color: rgba(255, 255, 255, 255);
+	font-size: 36px;
+	text-align: center;
+	font-family: Barlow;
+	border: 2px solid rgba(67, 67, 67, 255);font-weight: bold;
+	font-family:Barlow;
+}
+
+QPushButton::checked{
+	outline:none;border-radius: 20px;
+	background-color: rgb(245, 166, 35);
+	color: rgba(255, 255, 255, 255);
+	font-size: 36px;
+	text-align: center;
+	font-family: Barlow;
+	border: 2px solid rgba(67, 67, 67, 255);font-weight: bold;
+	font-family:Barlow;
+}
+
+QPushButton::unchecked{
+	outline:none;border-radius: 20px;
+	background-color: rgb(43, 43, 43);
+	color: rgba(255, 255, 255, 255);
+	font-size: 36px;
+	text-align: center;
+	font-family: Barlow;
+	border: 2px solid rgba(67, 67, 67, 255);font-weight: bold;
+	font-family:Barlow;
+}</string>
+   </property>
+   <property name="text">
+    <string>Disable RE</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="btnCancel">
+   <property name="geometry">
+    <rect>
+     <x>322</x>
+     <y>535</y>
+     <width>634</width>
+     <height>121</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton{
+	outline:none;border-radius: 20px;
+	background-color: rgb(255, 99, 11);
+	color: rgba(255, 255, 255, 255);
+	font-size: 36px;
+	text-align: center;
+	font-family: Barlow;
+	border: 2px solid rgba(67, 67, 67, 255);font-weight: bold;
+	font-family:Barlow;
+}
+
+QPushButton::pressed{
+	outline:none;border-radius: 20px;
+	background-color: rgb(245, 166, 35);
+	color: rgba(255, 255, 255, 255);
+	font-size: 36px;
+	text-align: center;
+	font-family: Barlow;
+	border: 2px solid rgba(67, 67, 67, 255);font-weight: bold;
+	font-family:Barlow;
+}
+
+QPushButton::disabled{
+	outline:none;border-radius: 20px;
+	background-color: rgb(33, 35, 38);
+	color: rgba(255, 255, 255, 255);
+	font-size: 36px;
+	text-align: center;
+	font-family: Barlow;
+	border: 2px solid rgba(67, 67, 67, 255);font-weight: bold;
+	font-family:Barlow;
+}</string>
+   </property>
+   <property name="text">
+    <string>Cancel</string>
+   </property>
+  </widget>
  </widget>
- <customwidgets>
-  <customwidget>
-   <class>QQuickWidget</class>
-   <extends>QWidget</extends>
-   <header location="global">QtQuickWidgets/QQuickWidget</header>
-  </customwidget>
- </customwidgets>
  <resources/>
  <connections/>
 </ui>

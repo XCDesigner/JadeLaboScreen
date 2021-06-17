@@ -2,17 +2,16 @@
 #include "ui_mainwindow.h"
 
 void MainWindow::TempControlInit() {
-    ui->qw_LeftHeatingUnit->rootObject()->setProperty("unitIndicator", 0);
-    ui->qw_LeftHeatingUnit->setClearColor(QColor(qmlColor));
-    ui->qw_RightHeatingUnit->rootObject()->setProperty("unitIndicator", 1);
-    ui->qw_RightHeatingUnit->setClearColor(QColor(qmlColor));
+    ui->labLeftHeatingUnit->setIndicator(0);
+    ui->labRightHeatingUnit->setIndicator(1);
+
     ui->qw_BedHeatingUnit->setClearColor(QColor(qmlColor));
 
-    QObject::connect(ui->qw_LeftHeatingUnit->rootObject(), SIGNAL(choseTempClicked(int)), this, SLOT(tempControlChooseExtrudeTemp(int)));
-    QObject::connect(ui->qw_LeftHeatingUnit->rootObject(), SIGNAL(cooldownClicked(int)), this, SLOT(tempControlExtruderCooldown(int)));
+    QObject::connect(ui->labLeftHeatingUnit, SIGNAL(chooseTempClicked(int)), this, SLOT(tempControlChooseExtrudeTemp(int)));
+    QObject::connect(ui->labLeftHeatingUnit, SIGNAL(cooldownClicked(int)), this, SLOT(tempControlExtruderCooldown(int)));
 
-    QObject::connect(ui->qw_RightHeatingUnit->rootObject(), SIGNAL(choseTempClicked(int)), this, SLOT(tempControlChooseExtrudeTemp(int)));
-    QObject::connect(ui->qw_RightHeatingUnit->rootObject(), SIGNAL(cooldownClicked(int)), this, SLOT(tempControlExtruderCooldown(int)));
+    QObject::connect(ui->labRightHeatingUnit, SIGNAL(chooseTempClicked(int)), this, SLOT(tempControlChooseExtrudeTemp(int)));
+    QObject::connect(ui->labRightHeatingUnit, SIGNAL(cooldownClicked(int)), this, SLOT(tempControlExtruderCooldown(int)));
 
     QObject::connect(ui->qw_BedHeatingUnit->rootObject(), SIGNAL(choseTempClicked()), this, SLOT(tempControlChooseBedTemp()));
     QObject::connect(ui->qw_BedHeatingUnit->rootObject(), SIGNAL(cooldownClicked()), this, SLOT(tempControlBedCooldown()));
@@ -30,9 +29,9 @@ void MainWindow::tempControlChooseExtrudeTemp(int Index) {
 void MainWindow::tempControlExtruderCooldown(int Index) {
     m_port->setHeattingUnit(Index, 0);
     if(Index == 0)
-        ui->qw_LeftHeatingUnit->rootObject()->setProperty("value", 0);
+        ui->labLeftHeatingUnit->setValue(0);
     else
-        ui->qw_RightHeatingUnit->rootObject()->setProperty("value", 0);
+        ui->labRightHeatingUnit->setValue(0);
 }
 
 void MainWindow::tempControlChooseBedTemp() {
@@ -53,9 +52,9 @@ void MainWindow::tempControlChooseExtruderTempReturn() {
     int temp = ret.at(1).toUInt();
     m_port->setHeattingUnit(index, temp);
     if(index == 0)
-        ui->qw_LeftHeatingUnit->rootObject()->setProperty("value", ret.at(1).toInt());
+        ui->labLeftHeatingUnit->setValue(temp);
     else
-        ui->qw_RightHeatingUnit->rootObject()->setProperty("value", ret.at(1).toInt());
+        ui->labRightHeatingUnit->setValue(temp);
     delete pdlg_choose_extruder_temp;
 }
 

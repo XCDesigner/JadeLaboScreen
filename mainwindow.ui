@@ -70,7 +70,7 @@ font-family: barlow;
 }</string>
     </property>
     <property name="currentIndex">
-     <number>53</number>
+     <number>6</number>
     </property>
     <widget class="QWidget" name="page_12">
      <widget class="QLabel" name="label_14">
@@ -1784,42 +1784,6 @@ border:none;</string>
      </widget>
     </widget>
     <widget class="QWidget" name="page_TempControl">
-     <widget class="QQuickWidget" name="qw_LeftHeatingUnit">
-      <property name="geometry">
-       <rect>
-        <x>167</x>
-        <y>76</y>
-        <width>534</width>
-        <height>336</height>
-       </rect>
-      </property>
-      <property name="resizeMode">
-       <enum>QQuickWidget::SizeRootObjectToView</enum>
-      </property>
-      <property name="source">
-       <url>
-        <string>qrc:/qml/JLHeatingUnit2.qml</string>
-       </url>
-      </property>
-     </widget>
-     <widget class="QQuickWidget" name="qw_RightHeatingUnit">
-      <property name="geometry">
-       <rect>
-        <x>713</x>
-        <y>76</y>
-        <width>534</width>
-        <height>336</height>
-       </rect>
-      </property>
-      <property name="resizeMode">
-       <enum>QQuickWidget::SizeRootObjectToView</enum>
-      </property>
-      <property name="source">
-       <url>
-        <string>qrc:/qml/JLHeatingUnit2.qml</string>
-       </url>
-      </property>
-     </widget>
      <widget class="QQuickWidget" name="qw_BedHeatingUnit">
       <property name="geometry">
        <rect>
@@ -1902,6 +1866,32 @@ border:none;</string>
       </property>
       <property name="text">
        <string/>
+      </property>
+     </widget>
+     <widget class="JLHeatingUnit2" name="labLeftHeatingUnit">
+      <property name="geometry">
+       <rect>
+        <x>167</x>
+        <y>76</y>
+        <width>534</width>
+        <height>336</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>TextLabel</string>
+      </property>
+     </widget>
+     <widget class="JLHeatingUnit2" name="labRightHeatingUnit">
+      <property name="geometry">
+       <rect>
+        <x>713</x>
+        <y>76</y>
+        <width>534</width>
+        <height>336</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>TextLabel</string>
       </property>
      </widget>
     </widget>
@@ -2390,19 +2380,6 @@ background-color: rgba(255, 255, 255, 0);</string>
        <enum>QQuickWidget::SizeRootObjectToView</enum>
       </property>
      </widget>
-     <widget class="QQuickWidget" name="qw_PreparePrintControl">
-      <property name="geometry">
-       <rect>
-        <x>590</x>
-        <y>435</y>
-        <width>610</width>
-        <height>240</height>
-       </rect>
-      </property>
-      <property name="resizeMode">
-       <enum>QQuickWidget::SizeRootObjectToView</enum>
-      </property>
-     </widget>
      <widget class="QQuickWidget" name="qw_FileName_1">
       <property name="geometry">
        <rect>
@@ -2421,14 +2398,27 @@ background-color: rgba(255, 255, 255, 0);</string>
        </url>
       </property>
      </widget>
+     <widget class="JLControlBox" name="labPreparePrintControl">
+      <property name="geometry">
+       <rect>
+        <x>590</x>
+        <y>435</y>
+        <width>640</width>
+        <height>240</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
      <zorder>label_267</zorder>
      <zorder>label_70</zorder>
      <zorder>label_35</zorder>
      <zorder>label_36</zorder>
      <zorder>label_78</zorder>
      <zorder>qw_PreHeating</zorder>
-     <zorder>qw_PreparePrintControl</zorder>
      <zorder>qw_FileName_1</zorder>
+     <zorder>labPreparePrintControl</zorder>
     </widget>
     <widget class="QWidget" name="page_Printing">
      <widget class="QLabel" name="label_270">
@@ -2565,19 +2555,6 @@ background-color: rgba(255, 255, 255, 0);</string>
        <enum>QQuickWidget::SizeRootObjectToView</enum>
       </property>
      </widget>
-     <widget class="QQuickWidget" name="qw_PrintingControl">
-      <property name="geometry">
-       <rect>
-        <x>590</x>
-        <y>435</y>
-        <width>640</width>
-        <height>240</height>
-       </rect>
-      </property>
-      <property name="resizeMode">
-       <enum>QQuickWidget::SizeRootObjectToView</enum>
-      </property>
-     </widget>
      <widget class="QQuickWidget" name="qw_FileName_0">
       <property name="geometry">
        <rect>
@@ -2610,6 +2587,19 @@ background-color: rgba(255, 255, 255, 0);</string>
       </property>
       <property name="text">
        <string>PushButton</string>
+      </property>
+     </widget>
+     <widget class="JLControlBox" name="labPrintControl">
+      <property name="geometry">
+       <rect>
+        <x>590</x>
+        <y>435</y>
+        <width>640</width>
+        <height>240</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
       </property>
      </widget>
     </widget>
@@ -5460,7 +5450,7 @@ image: url(:/image/platform_2.png);</string>
        <string/>
       </property>
      </widget>
-     <widget class="QQuickWidget" name="qw_PlatformCalibrateP1">
+     <widget class="JLTurnIndicator" name="labPlatformCalibrateP1">
       <property name="geometry">
        <rect>
         <x>740</x>
@@ -5469,13 +5459,8 @@ image: url(:/image/platform_2.png);</string>
         <height>240</height>
        </rect>
       </property>
-      <property name="resizeMode">
-       <enum>QQuickWidget::SizeRootObjectToView</enum>
-      </property>
-      <property name="source">
-       <url>
-        <string>qrc:/qml/TurningLabel.qml</string>
-       </url>
+      <property name="text">
+       <string>TextLabel</string>
       </property>
      </widget>
     </widget>
@@ -5714,7 +5699,7 @@ image: url(:/image/platform_3.png);</string>
        <string/>
       </property>
      </widget>
-     <widget class="QQuickWidget" name="qw_PlatformCalibrateP2">
+     <widget class="JLTurnIndicator" name="labPlatformCalibrateP2">
       <property name="geometry">
        <rect>
         <x>740</x>
@@ -5723,13 +5708,8 @@ image: url(:/image/platform_3.png);</string>
         <height>240</height>
        </rect>
       </property>
-      <property name="resizeMode">
-       <enum>QQuickWidget::SizeRootObjectToView</enum>
-      </property>
-      <property name="source">
-       <url>
-        <string>qrc:/qml/TurningLabel.qml</string>
-       </url>
+      <property name="text">
+       <string>TextLabel</string>
       </property>
      </widget>
      <zorder>label_259</zorder>
@@ -5741,7 +5721,7 @@ image: url(:/image/platform_3.png);</string>
      <zorder>pushButton_377</zorder>
      <zorder>label_258</zorder>
      <zorder>label_296</zorder>
-     <zorder>qw_PlatformCalibrateP2</zorder>
+     <zorder>labPlatformCalibrateP2</zorder>
     </widget>
     <widget class="QWidget" name="page_PlatformCali_5">
      <widget class="QPushButton" name="pushButton_254">
@@ -13692,12 +13672,27 @@ font-weight: bold;</string>
   <customwidget>
    <class>JLButton</class>
    <extends>QLabel</extends>
-   <header>jlbutton.h</header>
+   <header location="global">customwidget/JLWidgets.h</header>
   </customwidget>
   <customwidget>
    <class>JLOnOffSwitch</class>
    <extends>QLabel</extends>
-   <header location="global">jlonoffswitch.h</header>
+   <header location="global">customwidget/JLWidgets.h</header>
+  </customwidget>
+  <customwidget>
+   <class>JLControlBox</class>
+   <extends>QLabel</extends>
+   <header location="global">customwidget/jlcontrolbox.h</header>
+  </customwidget>
+  <customwidget>
+   <class>JLTurnIndicator</class>
+   <extends>QLabel</extends>
+   <header location="global">customwidget/jlturnindicator.h</header>
+  </customwidget>
+  <customwidget>
+   <class>JLHeatingUnit2</class>
+   <extends>QLabel</extends>
+   <header location="global">customwidget/jlheatingunit2.h</header>
   </customwidget>
  </customwidgets>
  <resources/>

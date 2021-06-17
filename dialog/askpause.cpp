@@ -6,18 +6,10 @@ askPause::askPause(QWidget *parent) :
     ui(new Ui::askPause)
 {
     ui->setupUi(this);
-
-    ui->quickWidget->setSource(QUrl("qrc:/qml/PauseDialogItem.qml"));
-    ui->quickWidget->setClearColor(QColor("#202020"));
-    ui->quickWidget->rootObject()->setProperty("leftEnable", true);
-    ui->quickWidget->rootObject()->setProperty("rightEnable", true);
-
-    QQuickItem *item = ui->quickWidget->rootObject();
-
-    QObject::connect(item, SIGNAL(pauseClicked()), this, SLOT(pauseClick()));
-    QObject::connect(item, SIGNAL(continueClicked()), this, SLOT(continueClick()));
-    QObject::connect(item, SIGNAL(changeFilamentClicked()), this, SLOT(changeFilamentClick()));
-    QObject::connect(item, SIGNAL(cancelClicked()), this, SLOT(cancelClick()));
+    ui->btnDisableLeft->setCheckable(true);
+    ui->btnDisableRight->setCheckable(true);
+    ui->btnDisableLeft->setChecked(true);
+    ui->btnDisableRight->setChecked(true);
 }
 
 askPause::~askPause()
@@ -32,26 +24,30 @@ void askPause::init(QByteArray InitData)
     m_xhPort->getXhPage()->GetMachineStatus(&cur_status);
     pscreen_status->getStatus(&cur_screen_status);
     if(cur_status.Status == 1) {
-        ui->quickWidget->rootObject()->setProperty("curStatus", "running");
-        ui->quickWidget->rootObject()->setProperty("nonAvoidEnable", false);
+        current_status = "running";
+        ui->btnPauseContinue->setText("Pause");
+        ui->btnDisableLeft->setVisible(false);
+        ui->btnDisableRight->setVisible(false);
+        ui->btnCancel->setGeometry(322, 364, 634, 121);
     }
     else if((cur_status.Status == 2) || (cur_status.Status == 4)) {
-        ui->quickWidget->rootObject()->setProperty("curStatus", "pause");
-
+        current_status = "pause";
+        ui->btnPauseContinue->setText("Continue");
         if((pscreen_status->getPrintMode() == "Duplicate") || (pscreen_status->getPrintMode() == "Mirror") || (pscreen_status->getPrintMode() == "Origin-Duplicate") || (pscreen_status->getPrintMode() == "Origin-Mirror")) {
-            ui->quickWidget->rootObject()->setProperty("nonAvoidEnable", true);
             last_left_extruder_enable = pscreen_status->isExtruderEnabled(0);
             last_right_extruder_enable = pscreen_status->isExtruderEnabled(1);
-            qDebug()<<last_left_extruder_enable;
-            qDebug()<<last_right_extruder_enable;
             if((last_left_extruder_enable == false) || (last_right_extruder_enable == false)) {
-                ui->quickWidget->rootObject()->setProperty("nonAvoidEnable", false);
+                ui->btnDisableLeft->setVisible(false);
+                ui->btnDisableRight->setVisible(false);
+                ui->btnCancel->setGeometry(322, 364, 634, 121);
             }
-            ui->quickWidget->rootObject()->setProperty("leftEnable", last_left_extruder_enable);
-            ui->quickWidget->rootObject()->setProperty("rightEnable", last_right_extruder_enable);
+            ui->btnDisableLeft->setChecked(last_left_extruder_enable);
+            ui->btnDisableRight->setChecked(last_right_extruder_enable);
         }
         else{
-            ui->quickWidget->rootObject()->setProperty("nonAvoidEnable", false);
+            ui->btnDisableLeft->setVisible(true);
+            ui->btnDisableRight->setVisible(true);
+            ui->btnCancel->setGeometry(322, 535, 634, 121);
             last_left_extruder_enable = true;
             last_right_extruder_enable = true;
         }
@@ -69,31 +65,15 @@ void askPause::setXHPort(XhPort *pPort)
     m_xhPort = pPort;
 }
 
-void askPause::pauseClick()
+void askPause::on_btnCancel_clicked()
 {
-    QByteArray result = QByteArray("Pause");
+    QByteArray result = QByteArray("Cancel");
     ret_value.append(result);
     emit hideWidget();
     this->hide();
 }
 
-void askPause::continueClick()
-{
-    bool cur_left_extruder_enable, cur_right_extruder_enable;
-    QByteArray result = QByteArray("Continue");
-    ret_value.append(result);
-
-    cur_left_extruder_enable = ui->quickWidget->rootObject()->property("leftEnable").toBool();
-    cur_right_extruder_enable = ui->quickWidget->rootObject()->property("rightEnable").toBool();
-    if((cur_left_extruder_enable != last_left_extruder_enable) || (cur_right_extruder_enable != last_right_extruder_enable)) {
-        ret_value.append(cur_left_extruder_enable==true?QByteArray("Enable"):QByteArray("Disable"));
-        ret_value.append(cur_right_extruder_enable==true?QByteArray("Enable"):QByteArray("Disable"));
-    }
-    emit hideWidget();
-    this->hide();
-}
-
-void askPause::changeFilamentClick()
+void askPause::on_btnChangeFilament_clicked()
 {
     QByteArray result = QByteArray("ChangeFilament");
     ret_value.append(result);
@@ -101,10 +81,28 @@ void askPause::changeFilamentClick()
     this->hide();
 }
 
-void askPause::cancelClick()
+void askPause::on_btnPauseContinue_clicked()
 {
-    QByteArray result = QByteArray("Cancel");
-    ret_value.append(result);
-    emit hideWidget();
-    this->hide();
+    if(current_status == "running")
+    {
+        QByteArray result = QByteArray("Pause");
+        ret_value.append(result);
+        emit hideWidget();
+        this->hide();
+    }
+    else if(current_status == "pause")
+    {
+        bool cur_left_extruder_enable, cur_right_extruder_enable;
+        QByteArray result = QByteArray("Continue");
+        ret_value.append(result);
+
+        cur_left_extruder_enable = ui->btnDisableLeft->isChecked();
+        cur_right_extruder_enable = ui->btnDisableRight->isChecked();
+        if((cur_left_extruder_enable != last_left_extruder_enable) || (cur_right_extruder_enable != last_right_extruder_enable)) {
+            ret_value.append(cur_left_extruder_enable==true?QByteArray("Enable"):QByteArray("Disable"));
+            ret_value.append(cur_right_extruder_enable==true?QByteArray("Enable"):QByteArray("Disable"));
+        }
+        emit hideWidget();
+        this->hide();
+    }
 }

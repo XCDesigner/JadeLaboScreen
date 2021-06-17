@@ -3,8 +3,8 @@
 
 void MainWindow::preparePrintPageInit()
 {
-    ui->qw_PreparePrintControl->rootObject()->setProperty("settingEnabled", true);
-    ui->qw_PreparePrintControl->rootObject()->setProperty("stopEnabled", true);
+    ui->labPreparePrintControl->setSettingEnable();
+    ui->labPreparePrintControl->setStopEnable();
     QTimer::singleShot(4000, this, SLOT(preparePrintTempChecking()));
     print_start_time.setDate(QDate(2021, 1, 1));
     print_end_time.setDate(QDate(2021, 1, 1));
@@ -43,8 +43,8 @@ void MainWindow::preparePrintTempChecking()
         {
             if((new_status.CurTemp[0] > (new_status.TarTemp[0] * 0.8)) && (new_status.CurTemp[1] > (new_status.TarTemp[1] * 0.8)))
             {
-                ui->qw_PreparePrintControl->rootObject()->setProperty("settingEnabled", false);
-                ui->qw_PreparePrintControl->rootObject()->setProperty("stopEnabled", false);
+                ui->labPreparePrintControl->setSettingDisable();
+                ui->labPreparePrintControl->setStopDisable();
                 screen_status.setPerformance(PRINTING);
             }
         }

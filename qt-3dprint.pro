@@ -41,7 +41,10 @@ SOURCES += \
     CMOD/xhpage.cpp \
     CMOD/xhport.cpp \
     customwidget/jlbutton.cpp \
+    customwidget/jlcontrolbox.cpp \
+    customwidget/jlheatingunit2.cpp \
     customwidget/jlonoffswitch.cpp \
+    customwidget/jlturnindicator.cpp \
     dialog/askpause.cpp \
     dialog/changefilamentdlg.cpp \
     dialog/choosebedtemp.cpp \
@@ -116,7 +119,10 @@ HEADERS += \
     customTypes.h \
     customwidget/JLWidgets.h \
     customwidget/jlbutton.h \
+    customwidget/jlcontrolbox.h \
+    customwidget/jlheatingunit2.h \
     customwidget/jlonoffswitch.h \
+    customwidget/jlturnindicator.h \
     define/imagePath.h \
     define/linuxPath.h \
     define/windowsPath.h \
@@ -154,7 +160,10 @@ HEADERS += \
 
 FORMS += \
     customwidget/jlbutton.ui \
+    customwidget/jlcontrolbox.ui \
+    customwidget/jlheatingunit2.ui \
     customwidget/jlonoffswitch.ui \
+    customwidget/jlturnindicator.ui \
     dialog/askpause.ui \
     dialog/changefilamentdlg.ui \
     dialog/choosebedtemp.ui \

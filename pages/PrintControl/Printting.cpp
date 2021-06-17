@@ -36,9 +36,9 @@ void MainWindow::onFinishPrintClicked()
     ui->stackedWidget->setCurrentWidget(ui->page_GetStart);
     ui->quickWidget_3->rootObject()->setProperty("currentPercent", 0);
     ui->quickWidget_3->rootObject()->setProperty("finishEnabled", false);
-    ui->qw_PrintingControl->rootObject()->setProperty("settingEnabled", true);
-    ui->qw_PrintingControl->rootObject()->setProperty("stopEnabled", true);
-    ui->qw_PrintingControl->rootObject()->setProperty("pauseEnabled", true);
+    ui->labPrintControl->setSettingEnable();
+    ui->labPrintControl->setStopEnable();
+    ui->labPrintControl->setPauseEnable();
     screen_status.setPerformance(IDLE);
 }
 
@@ -69,9 +69,9 @@ void MainWindow::printMessageProcess(uint8_t Command, uint8_t SubCode, QByteArra
         else if(SubCode == 0x07)
         {
             m_printsec->stop();
-            ui->qw_PrintingControl->rootObject()->setProperty("settingEnabled", false);
-            ui->qw_PrintingControl->rootObject()->setProperty("stopEnabled", false);
-            ui->qw_PrintingControl->rootObject()->setProperty("pauseEnabled", false);
+            ui->labPrintControl->setSettingDisable();
+            ui->labPrintControl->setStopDisable();
+            ui->labPrintControl->setPauseDisable();
         }
         else if(SubCode == 0x09)
         {

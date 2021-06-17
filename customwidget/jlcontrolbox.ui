@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>JLControlBox</class>
+ <widget class="QWidget" name="JLControlBox">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>640</width>
+    <height>240</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true"/>
+  </property>
+  <widget class="QPushButton" name="btnSetting">
+   <property name="geometry">
+    <rect>
+     <x>52</x>
+     <y>55</y>
+     <width>140</width>
+     <height>130</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton {
+	background-color: rgba(0,0,0,0);
+	background-image: url(&quot;:/image/setting.png&quot;);
+	border-radius: 0px;
+}
+
+QPushButton::disabled {
+	background-color: rgba(0,0,0,0);
+	background-image: url(&quot;:/image/setting_disabled.png&quot;);
+	border-radius: 0px;
+}</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="btnStop">
+   <property name="geometry">
+    <rect>
+     <x>260</x>
+     <y>55</y>
+     <width>120</width>
+     <height>120</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton {
+	background-color: rgba(0,0,0,0);
+	background-image: url(&quot;:/image/stop.png&quot;);
+	border-radius: 0px;
+}
+
+QPushButton::disabled {
+	background-color: rgba(0,0,0,0);
+	background-image: url(&quot;:/image/stop_disabled.png&quot;);
+	border-radius: 0px;
+}</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="btnPause">
+   <property name="geometry">
+    <rect>
+     <x>473</x>
+     <y>57</y>
+     <width>120</width>
+     <height>120</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton {
+	background-color: rgba(0,0,0,0);
+	background-image: url(&quot;:/image/pause.png&quot;);
+	border-radius: 0px
+}
+
+QPushButton::disabled {
+	background-color: rgba(0,0,0,0);
+	background-image: url(&quot;:/image/pause_disabled.png&quot;);
+	border-radius: 0px;
+}</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>640</width>
+     <height>240</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QLabel {
+	background-color: &quot;#2d2b2c&quot;;
+	border-radius: 20px;
+}</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <zorder>label</zorder>
+  <zorder>btnSetting</zorder>
+  <zorder>btnStop</zorder>
+  <zorder>btnPause</zorder>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

@@ -143,17 +143,9 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->qw_Distance->setResizeMode(QQuickWidget::SizeRootObjectToView);
     ui->qw_Distance->setClearColor(QColor(qmlColor));
 
-    ui->qw_PreparePrintControl->setSource(QUrl("qrc:/qml/PrintControlBox.qml"));
-    ui->qw_PreparePrintControl->setClearColor(QColor(qmlColor));
-    ui->qw_PreparePrintControl->rootObject()->setProperty("stopEnabled", true);
-    ui->qw_PreparePrintControl->rootObject()->setProperty("settingEnabled", true);
-    ui->qw_PreparePrintControl->rootObject()->setProperty("pauseEnabled", false);
-
-    ui->qw_PrintingControl->setSource(QUrl("qrc:/qml/PrintControlBox.qml"));
-    ui->qw_PrintingControl->setClearColor(QColor(qmlColor));
-    ui->qw_PrintingControl->rootObject()->setProperty("stopEnabled", true);
-    ui->qw_PrintingControl->rootObject()->setProperty("settingEnabled", true);
-    ui->qw_PrintingControl->rootObject()->setProperty("pauseEnabled", true);
+    ui->labPreparePrintControl->setSettingEnable();
+    ui->labPreparePrintControl->setStopEnable();
+    ui->labPreparePrintControl->setPauseDisable();
 
     ui->qw_StatusNotice->setSource(QUrl("qrc:/qml/StatusBarNotice.qml"));
     ui->qw_StatusNotice->setClearColor(QColor(qmlColor));
@@ -168,12 +160,13 @@ MainWindow::MainWindow(QWidget *parent) :
 
     qw_DistanceItem = ui->qw_Distance->rootObject();
 
-    QObject::connect(ui->qw_PreparePrintControl->rootObject(), SIGNAL(stopClicked()), this, SLOT(StopPreHeatting()));
-    QObject::connect(ui->qw_PreparePrintControl->rootObject(), SIGNAL(settingClicked()), this, SLOT(ShowParameterDialogClicked()));
 
-    QObject::connect(ui->qw_PrintingControl->rootObject(), SIGNAL(settingClicked()), this, SLOT(ShowParameterDialogClicked()));
-    QObject::connect(ui->qw_PrintingControl->rootObject(), SIGNAL(stopClicked()), this, SLOT(StopPrintClicked()));
-    QObject::connect(ui->qw_PrintingControl->rootObject(), SIGNAL(pauseClicked()), this, SLOT(ShowPauseDialogClicked()));
+    QObject::connect(ui->labPreparePrintControl, SIGNAL(stopClicked()), this, SLOT(StopPreHeatting()));
+    QObject::connect(ui->labPreparePrintControl, SIGNAL(settingClicked()), this, SLOT(ShowParameterDialogClicked()));
+
+    QObject::connect(ui->labPrintControl, SIGNAL(settingClicked()), this, SLOT(ShowParameterDialogClicked()));
+    QObject::connect(ui->labPrintControl, SIGNAL(stopClicked()), this, SLOT(StopPrintClicked()));
+    QObject::connect(ui->labPrintControl, SIGNAL(pauseClicked()), this, SLOT(ShowPauseDialogClicked()));
 
     QObject::connect(ui->stackedWidget, SIGNAL(currentChanged(int)), this, SLOT(WidgetChanged(int)));
 
@@ -238,7 +231,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->qw_FileName_0->setSource(QUrl("qrc:/qml/JLScrollLabel.qml"));
     ui->qw_FileName_1->setSource(QUrl("qrc:/qml/JLScrollLabel.qml"));
 
-    // AboutPageInit();
+    AboutPageInit();
 
     // // #if defined(XH_WIN)
     // wifiPageInit();
