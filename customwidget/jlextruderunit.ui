@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>JLExtruderUnit</class>
+ <widget class="QWidget" name="JLExtruderUnit">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1094</width>
+    <height>513</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <widget class="QLabel" name="label">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1094</width>
+     <height>513</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QLabel{
+	border-image: url(:/image/extruder_bg.png);
+}</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="btnUnload">
+   <property name="geometry">
+    <rect>
+     <x>596</x>
+     <y>39</y>
+     <width>140</width>
+     <height>140</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Barlow</family>
+     <pointsize>-1</pointsize>
+     <weight>75</weight>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton::enabled{
+	font-weight: bold;
+	font-family:Barlow;outline:none;border-radius: 20px;
+	background-color: rgb(255, 99, 11);
+	color: rgb(255, 255, 255);
+	font-size: 36px;
+	font-family: Barlow;
+	border: 2px solid rgb(255, 99, 11) ;
+	border-image: url(:/image/unload_enable.png)
+}
+
+QPushButton::disabled{
+	font-weight: bold;
+	font-family:Barlow;outline:none;border-radius: 20px;
+	background-color: rgb(255, 99, 11);
+	color: rgb(255, 255, 255);
+	font-size: 36px;
+	font-family: Barlow;
+	border: 2px solid rgb(255, 99, 11) ;
+	border-image: url(:/image/unload_disable.png)
+}
+
+QPushButton::pressed{
+	font-weight: bold;
+	font-family:Barlow;outline:none;border-radius: 20px;
+	background-color: rgb(255, 99, 11);
+	color: rgb(255, 255, 255);
+	font-size: 36px;
+	font-family: Barlow;
+	border: 2px solid rgb(255, 99, 11) ;
+	border-image: url(:/image/unload_pressed.png)
+}</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="btnLoad">
+   <property name="geometry">
+    <rect>
+     <x>904</x>
+     <y>39</y>
+     <width>140</width>
+     <height>140</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Barlow</family>
+     <pointsize>-1</pointsize>
+     <weight>75</weight>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton::enabled{
+	font-weight: bold;
+	font-family:Barlow;outline:none;border-radius: 20px;
+	background-color: rgb(255, 99, 11);
+	color: rgb(255, 255, 255);
+	font-size: 36px;
+	font-family: Barlow;
+	border: 2px solid rgb(255, 99, 11) ;
+	border-image: url(:/image/load_enable.png)
+}
+
+QPushButton::disabled{
+	font-weight: bold;
+	font-family:Barlow;outline:none;border-radius: 20px;
+	background-color: rgb(255, 99, 11);
+	color: rgb(255, 255, 255);
+	font-size: 36px;
+	font-family: Barlow;
+	border: 2px solid rgb(255, 99, 11) ;
+	border-image: url(:/image/load_disable.png)
+}
+
+QPushButton::pressed{
+	font-weight: bold;
+	font-family:Barlow;outline:none;border-radius: 20px;
+	background-color: rgb(255, 99, 11);
+	color: rgb(255, 255, 255);
+	font-size: 36px;
+	font-family: Barlow;
+	border: 2px solid rgb(255, 99, 11) ;
+	border-image: url(:/image/load_pressed.png)
+}</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="btnCooldown">
+   <property name="geometry">
+    <rect>
+     <x>594</x>
+     <y>230</y>
+     <width>464</width>
+     <height>96</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Barlow</family>
+     <weight>75</weight>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton{
+	border-image: url(:image/bed_cooldown.png);
+}</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="btnChooseTemp">
+   <property name="geometry">
+    <rect>
+     <x>278</x>
+     <y>76</y>
+     <width>220</width>
+     <height>72</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Barlow</family>
+     <pointsize>-1</pointsize>
+     <weight>75</weight>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton {
+	font-weight: bold;
+	font-family:Barlow;outline:none;border-radius: 8px;
+	background-color: rgb(255, 99, 11);
+	color: rgb(255, 255, 255);
+	font-size: 36px;
+	text-align: center;
+	font-family: Barlow;
+	border: 2px solid rgb(255, 99, 11) ;
+}</string>
+   </property>
+   <property name="text">
+    <string>000°C</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="btnChooseDistance">
+   <property name="geometry">
+    <rect>
+     <x>278</x>
+     <y>248</y>
+     <width>220</width>
+     <height>72</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Barlow</family>
+     <pointsize>-1</pointsize>
+     <weight>75</weight>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton {
+	font-weight: bold;
+	font-family:Barlow;outline:none;border-radius: 8px;
+	background-color: rgb(255, 99, 11);
+	color: rgb(255, 255, 255);
+	font-size: 36px;
+	text-align: center;
+	font-family: Barlow;
+	border: 2px solid rgb(255, 99, 11) ;
+}</string>
+   </property>
+   <property name="text">
+    <string>0.1mm</string>
+   </property>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

@@ -42,7 +42,10 @@ SOURCES += \
     CMOD/xhport.cpp \
     customwidget/jlbutton.cpp \
     customwidget/jlcontrolbox.cpp \
+    customwidget/jlextruderunit.cpp \
+    customwidget/jlheatedbedunit.cpp \
     customwidget/jlheatingunit2.cpp \
+    customwidget/jlnozzleturnindicator.cpp \
     customwidget/jlonoffswitch.cpp \
     customwidget/jlturnindicator.cpp \
     dialog/askpause.cpp \
@@ -120,7 +123,10 @@ HEADERS += \
     customwidget/JLWidgets.h \
     customwidget/jlbutton.h \
     customwidget/jlcontrolbox.h \
+    customwidget/jlextruderunit.h \
+    customwidget/jlheatedbedunit.h \
     customwidget/jlheatingunit2.h \
+    customwidget/jlnozzleturnindicator.h \
     customwidget/jlonoffswitch.h \
     customwidget/jlturnindicator.h \
     define/imagePath.h \
@@ -161,7 +167,10 @@ HEADERS += \
 FORMS += \
     customwidget/jlbutton.ui \
     customwidget/jlcontrolbox.ui \
+    customwidget/jlextruderunit.ui \
+    customwidget/jlheatedbedunit.ui \
     customwidget/jlheatingunit2.ui \
+    customwidget/jlnozzleturnindicator.ui \
     customwidget/jlonoffswitch.ui \
     customwidget/jlturnindicator.ui \
     dialog/askpause.ui \

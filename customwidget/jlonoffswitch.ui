@@ -14,7 +14,7 @@
    <string>Form</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">background-color:rgb(255, 255, 255, 0);
+   <string notr="true">background-color:rgba(255, 255, 255, 0);
 </string>
   </property>
   <widget class="QPushButton" name="btnCircle">
@@ -27,8 +27,7 @@
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">radius:30px;
-border-radius: 30px;
+    <string notr="true">border-radius: 30px;
 background-color:rgba(255, 99, 11, 255);</string>
    </property>
    <property name="text">
@@ -45,8 +44,7 @@ background-color:rgba(255, 99, 11, 255);</string>
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">radius:22px;
-border-radius: 22px;
+    <string notr="true">border-radius: 22px;
 background-color:rgba(255, 255, 255, 255);</string>
    </property>
    <property name="text">

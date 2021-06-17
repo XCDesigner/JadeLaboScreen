@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>JLHeatedbedUnit</class>
+ <widget class="QWidget" name="JLHeatedbedUnit">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1080</width>
+    <height>270</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <widget class="QLabel" name="labBackground">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1080</width>
+     <height>270</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QLabel{
+	border-image: url(:/image/bed_heating_bg.png);
+}</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="btnCooldown">
+   <property name="geometry">
+    <rect>
+     <x>582</x>
+     <y>122</y>
+     <width>464</width>
+     <height>96</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Barlow</family>
+     <weight>75</weight>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton{
+	border-image: url(:image/bed_cooldown.png);
+}</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="btnChooseTemp">
+   <property name="geometry">
+    <rect>
+     <x>278</x>
+     <y>145</y>
+     <width>220</width>
+     <height>72</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Barlow</family>
+     <pointsize>-1</pointsize>
+     <weight>75</weight>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton {
+	font-weight: bold;
+	font-family:Barlow;outline:none;border-radius: 8px;
+	background-color: rgb(255, 99, 11);
+	color: rgb(255, 255, 255);
+	font-size: 36px;
+	text-align: center;
+	font-family: Barlow;
+	border: 2px solid rgb(255, 99, 11) ;
+}</string>
+   </property>
+   <property name="text">
+    <string>000°C</string>
+   </property>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

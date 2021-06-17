@@ -261,7 +261,7 @@ private slots:
     void nozzleCalibrationMessageProcess(uint8_t Command, uint8_t SubCode, QByteArray Datas);
     void platformCalibrationMessageProcess(uint8_t Command, uint8_t SubCode, QByteArray Datas);
     void xyCalibrationMessageProcess(uint8_t Command, uint8_t SubCode, QByteArray Datas);
-    void onSetBuildplatThicknessClicked(int Index);
+    void onSetBuildplatThicknessClicked();
     void BuildplateProcess(QByteArray Datas);
     void onSetBuildplatThicknessReturn();
 
@@ -730,8 +730,6 @@ private slots:
     void on_pushButton_447_clicked();
 
     void on_pushButton_692_clicked();
-
-    void on_pushButton_455_clicked();
 
     void on_pushButton_693_clicked();
 

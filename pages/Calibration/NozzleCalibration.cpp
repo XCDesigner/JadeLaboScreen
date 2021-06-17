@@ -8,7 +8,6 @@ void MainWindow::nozzleCalibratePageinit()
 void MainWindow::on_pushButton_286_clicked()
 {
     ui->stackedWidget->setCurrentWidget(ui->page_NozzleCali_1);
-    ui->qw_NozzleCalibrateP1->setClearColor(QColor(qmlColor));
     m_port->setHeattingUnit(0, 150);
     m_port->setHeattingUnit(1, 150);
     m_port->setHeattingUnit(2, 60);
@@ -89,7 +88,7 @@ void MainWindow::nozzleCalibrationMessageProcess(uint8_t Command, uint8_t SubCod
                 if(z_diff != 0)
                 {
                     ui->stackedWidget->setCurrentWidget(ui->page_NozzleCali_3);
-                    ui->qw_NozzleCalibrateP1->rootObject()->setProperty("value", (int)z_diff);
+                    ui->labNozzleCalibrateP1->setValue((int)z_diff);
                 }
                 else
                 {

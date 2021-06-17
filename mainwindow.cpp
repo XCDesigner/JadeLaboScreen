@@ -1256,14 +1256,6 @@ void MainWindow::on_pushButton_447_clicked()
 //    }
 //}
 
-void MainWindow::on_pushButton_455_clicked()
-{
-    ui->stackedWidget->setCurrentWidget(ui->page_GetStart);
-#ifdef XH_VIS
-    ui->m_StatusBar->setVisible(true);
-#endif
-}
-
 void MainWindow::onMessageTest(uint8_t Command, uint8_t SubCode, QByteArray Datas)
 {
     if(Command == 0x09) {

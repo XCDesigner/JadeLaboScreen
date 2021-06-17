@@ -18,7 +18,6 @@ void MainWindow::on_pushButton_126_clicked()
     ui->wqVersion->rootObject()->setProperty("text", version);
     m_port->getFirmwareVersion();
     AddListen(QByteArray(QByteArray::fromHex("0503")), &MainWindow::onFirmwareVersionReceived, false);
-    ui->quickWidget_2->rootObject()->setProperty("icon", "qrc:/image/platform_warning.png");
 }
 
 void MainWindow::on_AboutReturn(int Index)

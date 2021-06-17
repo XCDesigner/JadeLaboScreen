@@ -8,7 +8,6 @@ void MainWindow::xyCalibratePageinit()
 void MainWindow::on_pushButton_631_clicked()
 {
     ui->stackedWidget->setCurrentWidget(ui->page_XYCali_1);
-    ui->qw_NozzleCalibrateP1->setClearColor("#202020");
     m_port->setHeattingUnit(0, 150);
     m_port->setHeattingUnit(1, 150);
     m_port->setHeattingUnit(2, 60);

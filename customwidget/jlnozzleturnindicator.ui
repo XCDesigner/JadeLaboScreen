@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>JLTurnIndicator</class>
- <widget class="QWidget" name="JLTurnIndicator">
+ <class>JLNozzleTurnIndicator</class>
+ <widget class="QWidget" name="JLNozzleTurnIndicator">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>360</width>
-    <height>240</height>
+    <width>266</width>
+    <height>248</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -18,33 +18,35 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>360</width>
-     <height>240</height>
+     <width>266</width>
+     <height>248</height>
     </rect>
    </property>
    <property name="styleSheet">
     <string notr="true">QLabel {
-	border-image: url(:image/turn_left.png);
+	border-image: url(:/image/nozzle_up2.png);
 }</string>
    </property>
    <property name="text">
     <string/>
    </property>
   </widget>
-  <widget class="QLabel" name="labText">
+  <widget class="QLabel" name="label">
    <property name="geometry">
     <rect>
-     <x>120</x>
-     <y>155</y>
-     <width>120</width>
+     <x>100</x>
+     <y>190</y>
+     <width>66</width>
      <height>48</height>
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">font-size:48px;
-color: rgb(255, 255, 255);
-font-weight: bold;
-font-family: &quot;barlow&quot;;</string>
+    <string notr="true">QLabel {
+	color: rgb(255, 255, 255);
+	font-family: &quot;barlow&quot;;
+	font-weight: bold;
+    font-size: 48px;
+}</string>
    </property>
    <property name="text">
     <string>3</string>

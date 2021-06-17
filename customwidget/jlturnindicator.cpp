@@ -30,7 +30,13 @@ void JLTurnIndicator::setText(QString Text)
 
 void JLTurnIndicator::setValue(int Value)
 {
-    ui->labText->setText(QString(Value));
+    char str_value[32];
+    int abs_value;
+
+    abs_value = Value>=0?Value:-Value;
+    sprintf(str_value, "%d", abs_value);
+    ui->labText->setText(str_value);
+
     if(Value > 0)
         ui->labBackground->setStyleSheet(leftStyleSheet);
     else if(Value < 0)

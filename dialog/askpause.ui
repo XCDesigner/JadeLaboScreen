@@ -52,9 +52,9 @@ background-color: rgba(255, 255, 255, 200);</string>
 	color: rgba(255, 255, 255, 255);
 	font-size: 36px;
 	text-align: center;
-	font-family: Barlow;
-	border: 2px solid rgba(67, 67, 67, 255);font-weight: bold;
-	font-family:Barlow;
+	font-family: &quot;Barlow&quot;;
+	border: 2px solid rgba(67, 67, 67, 255);
+	font-weight: bold;
 }
 
 QPushButton::pressed{
@@ -63,9 +63,9 @@ QPushButton::pressed{
 	color: rgba(255, 255, 255, 255);
 	font-size: 36px;
 	text-align: center;
-	font-family: Barlow;
-	border: 2px solid rgba(67, 67, 67, 255);font-weight: bold;
-	font-family:Barlow;
+	font-family: &quot;Barlow&quot;;
+	border: 2px solid rgba(67, 67, 67, 255);
+	font-weight: bold;
 }
 
 QPushButton::disabled{
@@ -74,9 +74,9 @@ QPushButton::disabled{
 	color: rgba(255, 255, 255, 255);
 	font-size: 36px;
 	text-align: center;
-	font-family: Barlow;
-	border: 2px solid rgba(67, 67, 67, 255);font-weight: bold;
-	font-family:Barlow;
+	font-family: &quot;Barlow&quot;;
+	border: 2px solid rgba(67, 67, 67, 255);
+	font-weight: bold;
 }</string>
    </property>
    <property name="text">
@@ -99,9 +99,9 @@ QPushButton::disabled{
 	color: rgba(255, 255, 255, 255);
 	font-size: 36px;
 	text-align: center;
-	font-family: Barlow;
-	border: 2px solid rgba(67, 67, 67, 255);font-weight: bold;
-	font-family:Barlow;
+	font-family: &quot;Barlow&quot;;
+	border: 2px solid rgba(67, 67, 67, 255);
+	font-weight: bold;
 }
 
 QPushButton::pressed{
@@ -110,9 +110,9 @@ QPushButton::pressed{
 	color: rgba(255, 255, 255, 255);
 	font-size: 36px;
 	text-align: center;
-	font-family: Barlow;
-	border: 2px solid rgba(67, 67, 67, 255);font-weight: bold;
-	font-family:Barlow;
+	font-family: &quot;Barlow&quot;;
+	border: 2px solid rgba(67, 67, 67, 255);
+	font-weight: bold;
 }
 
 QPushButton::disabled{
@@ -121,9 +121,9 @@ QPushButton::disabled{
 	color: rgba(255, 255, 255, 255);
 	font-size: 36px;
 	text-align: center;
-	font-family: Barlow;
-	border: 2px solid rgba(67, 67, 67, 255);font-weight: bold;
-	font-family:Barlow;
+	font-family: &quot;Barlow&quot;;
+	border: 2px solid rgba(67, 67, 67, 255);
+	font-weight: bold;
 }</string>
    </property>
    <property name="text">
@@ -146,31 +146,31 @@ QPushButton::disabled{
 	color: rgba(255, 255, 255, 255);
 	font-size: 36px;
 	text-align: center;
-	font-family: Barlow;
-	border: 2px solid rgba(67, 67, 67, 255);font-weight: bold;
-	font-family:Barlow;
+	font-family: &quot;Barlow&quot;;
+	border: 2px solid rgba(67, 67, 67, 255);
+	font-weight: bold;
 }
 
-QPushButton::checked{
+QPushButton::pressed{
 	outline:none;border-radius: 20px;
 	background-color: rgb(245, 166, 35);
 	color: rgba(255, 255, 255, 255);
 	font-size: 36px;
 	text-align: center;
-	font-family: Barlow;
-	border: 2px solid rgba(67, 67, 67, 255);font-weight: bold;
-	font-family:Barlow;
+	font-family: &quot;Barlow&quot;;
+	border: 2px solid rgba(67, 67, 67, 255);
+	font-weight: bold;
 }
 
-QPushButton::unchecked{
+QPushButton::disabled{
 	outline:none;border-radius: 20px;
-	background-color: rgb(43, 43, 43);
+	background-color: rgb(33, 35, 38);
 	color: rgba(255, 255, 255, 255);
 	font-size: 36px;
 	text-align: center;
-	font-family: Barlow;
-	border: 2px solid rgba(67, 67, 67, 255);font-weight: bold;
-	font-family:Barlow;
+	font-family: &quot;Barlow&quot;;
+	border: 2px solid rgba(67, 67, 67, 255);
+	font-weight: bold;
 }</string>
    </property>
    <property name="text">
@@ -193,31 +193,31 @@ QPushButton::unchecked{
 	color: rgba(255, 255, 255, 255);
 	font-size: 36px;
 	text-align: center;
-	font-family: Barlow;
-	border: 2px solid rgba(67, 67, 67, 255);font-weight: bold;
-	font-family:Barlow;
+	font-family: &quot;Barlow&quot;;
+	border: 2px solid rgba(67, 67, 67, 255);
+	font-weight: bold;
 }
 
-QPushButton::checked{
+QPushButton::pressed{
 	outline:none;border-radius: 20px;
 	background-color: rgb(245, 166, 35);
 	color: rgba(255, 255, 255, 255);
 	font-size: 36px;
 	text-align: center;
-	font-family: Barlow;
-	border: 2px solid rgba(67, 67, 67, 255);font-weight: bold;
-	font-family:Barlow;
+	font-family: &quot;Barlow&quot;;
+	border: 2px solid rgba(67, 67, 67, 255);
+	font-weight: bold;
 }
 
-QPushButton::unchecked{
+QPushButton::disabled{
 	outline:none;border-radius: 20px;
-	background-color: rgb(43, 43, 43);
+	background-color: rgb(33, 35, 38);
 	color: rgba(255, 255, 255, 255);
 	font-size: 36px;
 	text-align: center;
-	font-family: Barlow;
-	border: 2px solid rgba(67, 67, 67, 255);font-weight: bold;
-	font-family:Barlow;
+	font-family: &quot;Barlow&quot;;
+	border: 2px solid rgba(67, 67, 67, 255);
+	font-weight: bold;
 }</string>
    </property>
    <property name="text">
@@ -240,9 +240,9 @@ QPushButton::unchecked{
 	color: rgba(255, 255, 255, 255);
 	font-size: 36px;
 	text-align: center;
-	font-family: Barlow;
-	border: 2px solid rgba(67, 67, 67, 255);font-weight: bold;
-	font-family:Barlow;
+	font-family: &quot;Barlow&quot;;
+	border: 2px solid rgba(67, 67, 67, 255);
+	font-weight: bold;
 }
 
 QPushButton::pressed{
@@ -251,9 +251,9 @@ QPushButton::pressed{
 	color: rgba(255, 255, 255, 255);
 	font-size: 36px;
 	text-align: center;
-	font-family: Barlow;
-	border: 2px solid rgba(67, 67, 67, 255);font-weight: bold;
-	font-family:Barlow;
+	font-family: &quot;Barlow&quot;;
+	border: 2px solid rgba(67, 67, 67, 255);
+	font-weight: bold;
 }
 
 QPushButton::disabled{
@@ -262,9 +262,9 @@ QPushButton::disabled{
 	color: rgba(255, 255, 255, 255);
 	font-size: 36px;
 	text-align: center;
-	font-family: Barlow;
-	border: 2px solid rgba(67, 67, 67, 255);font-weight: bold;
-	font-family:Barlow;
+	font-family: &quot;Barlow&quot;;
+	border: 2px solid rgba(67, 67, 67, 255);
+	font-weight: bold;
 }</string>
    </property>
    <property name="text">
