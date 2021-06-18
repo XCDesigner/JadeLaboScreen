@@ -94,6 +94,7 @@ private:
     bool on;
 
     XhUpdater *m_upDater;
+    QMutex mtxMachineStatus;
 
     strMachineStatus cur_machine_status;
 signals:

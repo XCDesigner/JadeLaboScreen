@@ -29,8 +29,7 @@ void MainWindow::changeHotendPageInit()
 //        pbutton[i]->rootObject()->setProperty("color", btnBackColor[i]);
 //    }
 
-    ui->qw_heatingUnitChangehotend_L->rootObject()->setProperty("text", "200°C");
-    ui->qw_heatingUnitChangehotend_R->rootObject()->setProperty("text", "200°C");
+
 
 
 //    QObject::connect(pbutton[0]->rootObject(), SIGNAL(clicked(int)), this, SLOT(onChangeHotend_btnClick_0(int)));
@@ -47,20 +46,6 @@ void MainWindow::changeHotendPageInit()
 //    QObject::connect(pbutton[11]->rootObject(), SIGNAL(clicked(int)), this, SLOT(onChangeHotend_btnClick_11(int)));
 //    QObject::connect(pbutton[12]->rootObject(), SIGNAL(clicked(int)), this, SLOT(onChangeHotend_btnClick_12(int)));
 //    QObject::connect(pbutton[13]->rootObject(), SIGNAL(clicked(int)), this, SLOT(onChangeHotend_btnClick_13(int)));
-
-    ui->qw_heatingUnitChangehotend_L->rootObject()->setProperty("indicatorIcon", "qrc:/image/LeftHotendIndecator.png");
-    ui->qw_heatingUnitChangehotend_L->rootObject()->setProperty("indicatorText", "Left Extruder");
-    ui->qw_heatingUnitChangehotend_L->rootObject()->setProperty("extrudeEnable", false);
-    QObject::connect(ui->qw_heatingUnitChangehotend_L->rootObject(), SIGNAL(choseTempClicked()), this, SLOT(changeHotendLeftSetTemp()));
-    QObject::connect(ui->qw_heatingUnitChangehotend_L->rootObject(), SIGNAL(extruderClicked()), this, SLOT(changeHotendLeftExtrude()));
-    QObject::connect(ui->qw_heatingUnitChangehotend_L->rootObject(), SIGNAL(retackClicked()), this, SLOT(changeHotendLeftRetract()));
-
-    ui->qw_heatingUnitChangehotend_R->rootObject()->setProperty("indicatorIcon", "qrc:/image/RightHotendIndecator.png");
-    ui->qw_heatingUnitChangehotend_R->rootObject()->setProperty("indicatorText", "Right Extruder");
-    ui->qw_heatingUnitChangehotend_R->rootObject()->setProperty("extrudeEnable", false);
-    QObject::connect(ui->qw_heatingUnitChangehotend_R->rootObject(), SIGNAL(choseTempClicked()), this, SLOT(changeHotendRightSetTemp()));
-    QObject::connect(ui->qw_heatingUnitChangehotend_R->rootObject(), SIGNAL(extruderClicked()), this, SLOT(changeHotendRightExtrude()));
-    QObject::connect(ui->qw_heatingUnitChangehotend_R->rootObject(), SIGNAL(retackClicked()), this, SLOT(changeHotendRightRetract()));
 }
 
 void MainWindow::on_pushButton_176_clicked()
@@ -155,11 +140,11 @@ void MainWindow::changeHotendSetTemp()
     int index = ret.at(0).toUInt();
     if(index == 0)
     {
-        ui->qw_heatingUnitChangehotend_L->rootObject()->setProperty("text", ret.at(1) + "°C");
+        ui->labHeatingUnitChangehotend_L->setValue(ret.at(1).toUInt());
     }
     else
     {
-        ui->qw_heatingUnitChangehotend_R->rootObject()->setProperty("text", ret.at(1) + "°C");
+        ui->labHeatingUnitChangehotend_R->setValue(ret.at(1).toUInt());
     }
     m_port->setHeattingUnit(index, ret.at(1).toUInt());
     delete pdlg_choose_extruder_temp;

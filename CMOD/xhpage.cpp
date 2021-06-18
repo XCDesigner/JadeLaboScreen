@@ -177,6 +177,7 @@ void XhPage::fTGet(QByteArray data)
 {
     if(data[2] == '\x00')
     {
+        mtxMachineStatus.lock();
         cur_machine_status.CurTemp[0] = (int16_t)(((uint16_t)(data[5] << 8)) | (uint8_t)data[4]);
         cur_machine_status.TarTemp[0] = (int16_t)(((uint16_t)(data[7] << 8)) | (uint8_t)data[6]);
         cur_machine_status.CurTemp[1] = (int16_t)(((uint16_t)(data[9] << 8)) | (uint8_t)data[8]);
@@ -187,6 +188,7 @@ void XhPage::fTGet(QByteArray data)
         cur_machine_status.Status = data[3];
         cur_machine_status.Percent = ((uint8_t)data[21] << 8) | (uint8_t)data[20];
         cur_machine_status.StepperHold = (uint8_t)data[22];
+        mtxMachineStatus.unlock();
     }
 }
 
@@ -197,7 +199,9 @@ void XhPage::fTGet(QByteArray data)
   */
 void XhPage::GetMachineStatus(strMachineStatus *pStatus)
 {
+    mtxMachineStatus.lock();
     *pStatus = cur_machine_status;
+    mtxMachineStatus.unlock();
 }
 
 QByteArray XhPage::groupPage(QByteArray data)

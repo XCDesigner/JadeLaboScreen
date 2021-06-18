@@ -70,7 +70,7 @@ font-family: barlow;
 }</string>
     </property>
     <property name="currentIndex">
-     <number>4</number>
+     <number>15</number>
     </property>
     <widget class="QWidget" name="page_12">
      <widget class="QLabel" name="label_14">
@@ -1652,7 +1652,7 @@ border: 2px solid rgb(255, 99, 11) ;</string>
        </rect>
       </property>
       <property name="text">
-       <string>TextLabel</string>
+       <string/>
       </property>
      </widget>
      <widget class="JLHeatingUnit" name="labChangeFilamentRight">
@@ -1665,7 +1665,7 @@ border: 2px solid rgb(255, 99, 11) ;</string>
        </rect>
       </property>
       <property name="text">
-       <string>TextLabel</string>
+       <string/>
       </property>
      </widget>
     </widget>
@@ -3165,7 +3165,7 @@ background-color: rgba(255, 255, 255, 0);</string>
        <string/>
       </property>
      </widget>
-     <widget class="QQuickWidget" name="qw_heatingUnitChangehotend_L">
+     <widget class="JLHeatingUnit" name="labHeatingUnitChangehotend_L">
       <property name="geometry">
        <rect>
         <x>180</x>
@@ -3174,16 +3174,11 @@ background-color: rgba(255, 255, 255, 0);</string>
         <height>480</height>
        </rect>
       </property>
-      <property name="resizeMode">
-       <enum>QQuickWidget::SizeRootObjectToView</enum>
-      </property>
-      <property name="source">
-       <url>
-        <string>qrc:/qml/JLHeatingUnit.qml</string>
-       </url>
+      <property name="text">
+       <string/>
       </property>
      </widget>
-     <widget class="QQuickWidget" name="qw_heatingUnitChangehotend_R">
+     <widget class="JLHeatingUnit" name="labHeatingUnitChangehotend_R">
       <property name="geometry">
        <rect>
         <x>730</x>
@@ -3192,13 +3187,8 @@ background-color: rgba(255, 255, 255, 0);</string>
         <height>480</height>
        </rect>
       </property>
-      <property name="resizeMode">
-       <enum>QQuickWidget::SizeRootObjectToView</enum>
-      </property>
-      <property name="source">
-       <url>
-        <string>qrc:/qml/JLHeatingUnit.qml</string>
-       </url>
+      <property name="text">
+       <string/>
       </property>
      </widget>
     </widget>
