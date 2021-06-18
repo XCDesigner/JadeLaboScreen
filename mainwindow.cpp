@@ -209,20 +209,6 @@ MainWindow::MainWindow(QWidget *parent) :
     QObject::connect(this->m_event, SIGNAL(changePageAccept(QByteArray)), this, SLOT(changePageCallback(QByteArray)));
     QObject::connect(this->m_event, SIGNAL(changeDialogAccept(QByteArray)), this, SLOT(changeDialogCallback(QByteArray)));
 
-    ui->qw_LeftHeating->rootObject()->setProperty("indicatorIcon", "qrc:/image/LeftHotendIndecator.png");
-    ui->qw_LeftHeating->rootObject()->setProperty("indicatorText", "Left Extruder");
-    ui->qw_LeftHeating->rootObject()->setProperty("extrudeEnable", false);
-    QObject::connect(ui->qw_LeftHeating->rootObject(), SIGNAL(choseTempClicked()), this, SLOT(changeFilamentLeftSetTemp()));
-    QObject::connect(ui->qw_LeftHeating->rootObject(), SIGNAL(extruderClicked()), this, SLOT(changeFilamentLeftExtrude()));
-    QObject::connect(ui->qw_LeftHeating->rootObject(), SIGNAL(retackClicked()), this, SLOT(changeFilamentLeftRetract()));
-
-    ui->qw_RightHeating->rootObject()->setProperty("indicatorIcon", "qrc:/image/RightHotendIndecator.png");
-    ui->qw_RightHeating->rootObject()->setProperty("indicatorText", "Right Extruder");
-    ui->qw_RightHeating->rootObject()->setProperty("extrudeEnable", false);
-    QObject::connect(ui->qw_RightHeating->rootObject(), SIGNAL(choseTempClicked()), this, SLOT(changeFilamentRightSetTemp()));
-    QObject::connect(ui->qw_RightHeating->rootObject(), SIGNAL(extruderClicked()), this, SLOT(changeFilamentRightExtrude()));
-    QObject::connect(ui->qw_RightHeating->rootObject(), SIGNAL(retackClicked()), this, SLOT(changeFilamentRightRetract()));
-
     QObject::connect(m_port->getXhPage(), SIGNAL(command_received(uint8_t, uint8_t, QByteArray)), this, SLOT(printMessageProcess(uint8_t, uint8_t, QByteArray)));
     QObject::connect(m_port->getXhPage(), SIGNAL(command_received(uint8_t, uint8_t, QByteArray)), this, SLOT(onMessageTest(uint8_t, uint8_t, QByteArray)));
 
@@ -245,6 +231,7 @@ MainWindow::MainWindow(QWidget *parent) :
      changeHotendPageInit();
      LightSettingPageInit();
      JodMovePageInit();
+     changeFilamentPageInit();
 
     // pMovie = new QMovie(this);
     // pMovie->setFileName("/usr/share/3d_printer/test.gif");
@@ -268,11 +255,11 @@ void MainWindow::WidgetChanged(int index)
     qDebug()<<buff;
     if(ui->stackedWidget->currentWidget() == ui->page_ChangeFilament)
     {
-        changeFilamentPageInit();
+        changeFilamentPageLoad();
     }
     else if(ui->stackedWidget->currentWidget() == ui->page_PreparePrint)
     {
-        preparePrintPageInit();
+        preparePrintPageLoad();
     }
 }
 

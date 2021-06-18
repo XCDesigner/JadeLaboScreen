@@ -64,7 +64,7 @@ border: 2px solid rgb(255, 99, 11) ;</string>
      <string>Finish</string>
     </property>
    </widget>
-   <widget class="QQuickWidget" name="qw_LeftHeatingItem">
+   <widget class="JLHeatingUnit" name="labLeftHeatingUnit">
     <property name="geometry">
      <rect>
       <x>60</x>
@@ -73,11 +73,11 @@ border: 2px solid rgb(255, 99, 11) ;</string>
       <height>480</height>
      </rect>
     </property>
-    <property name="resizeMode">
-     <enum>QQuickWidget::SizeRootObjectToView</enum>
+    <property name="text">
+     <string/>
     </property>
    </widget>
-   <widget class="QQuickWidget" name="qw_RightHeatingItem">
+   <widget class="JLHeatingUnit" name="labRightHeatingUnit">
     <property name="geometry">
      <rect>
       <x>700</x>
@@ -86,8 +86,8 @@ border: 2px solid rgb(255, 99, 11) ;</string>
       <height>480</height>
      </rect>
     </property>
-    <property name="resizeMode">
-     <enum>QQuickWidget::SizeRootObjectToView</enum>
+    <property name="text">
+     <string/>
     </property>
    </widget>
   </widget>
@@ -319,6 +319,11 @@ font-weight: bold;</string>
    <class>QQuickWidget</class>
    <extends>QWidget</extends>
    <header location="global">QtQuickWidgets/QQuickWidget</header>
+  </customwidget>
+  <customwidget>
+   <class>JLHeatingUnit</class>
+   <extends>QLabel</extends>
+   <header location="global">customwidget/jlheatingunit.h</header>
   </customwidget>
  </customwidgets>
  <resources/>

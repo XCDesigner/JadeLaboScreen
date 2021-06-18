@@ -13,7 +13,7 @@ chooseTemp::~chooseTemp()
     delete ui;
 }
 
-void chooseTemp::init(QString str)
+void chooseTemp::init()
 {
     item[0] = ui->qw_Temp180;
     item[1] = ui->qw_Temp200;

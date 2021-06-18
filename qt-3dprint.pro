@@ -45,6 +45,7 @@ SOURCES += \
     customwidget/jlextruderselect.cpp \
     customwidget/jlextruderunit.cpp \
     customwidget/jlheatedbedunit.cpp \
+    customwidget/jlheatingunit.cpp \
     customwidget/jlheatingunit2.cpp \
     customwidget/jlnozzleturnindicator.cpp \
     customwidget/jlonoffswitch.cpp \
@@ -128,6 +129,7 @@ HEADERS += \
     customwidget/jlextruderselect.h \
     customwidget/jlextruderunit.h \
     customwidget/jlheatedbedunit.h \
+    customwidget/jlheatingunit.h \
     customwidget/jlheatingunit2.h \
     customwidget/jlnozzleturnindicator.h \
     customwidget/jlonoffswitch.h \
@@ -174,6 +176,7 @@ FORMS += \
     customwidget/jlextruderselect.ui \
     customwidget/jlextruderunit.ui \
     customwidget/jlheatedbedunit.ui \
+    customwidget/jlheatingunit.ui \
     customwidget/jlheatingunit2.ui \
     customwidget/jlnozzleturnindicator.ui \
     customwidget/jlonoffswitch.ui \

@@ -159,5 +159,7 @@
         <file>qml/JLScrollLabel.qml</file>
         <file>image/test.gif</file>
         <file>qml/Test.qml</file>
+        <file>image/left_heatuint_background.png</file>
+        <file>image/right_heatuint_background.png</file>
     </qresource>
 </RCC>

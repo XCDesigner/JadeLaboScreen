@@ -1,7 +1,7 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
-void MainWindow::preparePrintPageInit()
+void MainWindow::preparePrintPageLoad()
 {
     ui->labPreparePrintControl->setSettingEnable();
     ui->labPreparePrintControl->setStopEnable();

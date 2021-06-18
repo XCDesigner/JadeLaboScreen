@@ -70,7 +70,7 @@ font-family: barlow;
 }</string>
     </property>
     <property name="currentIndex">
-     <number>43</number>
+     <number>4</number>
     </property>
     <widget class="QWidget" name="page_12">
      <widget class="QLabel" name="label_14">
@@ -1512,42 +1512,6 @@ background-color: rgb(45, 44, 43);</string>
      <zorder>label_41</zorder>
     </widget>
     <widget class="QWidget" name="page_ChangeFilament">
-     <widget class="QQuickWidget" name="qw_LeftHeating">
-      <property name="geometry">
-       <rect>
-        <x>190</x>
-        <y>80</y>
-        <width>520</width>
-        <height>480</height>
-       </rect>
-      </property>
-      <property name="resizeMode">
-       <enum>QQuickWidget::SizeRootObjectToView</enum>
-      </property>
-      <property name="source">
-       <url>
-        <string>qrc:/qml/JLHeatingUnit.qml</string>
-       </url>
-      </property>
-     </widget>
-     <widget class="QQuickWidget" name="qw_RightHeating">
-      <property name="geometry">
-       <rect>
-        <x>740</x>
-        <y>80</y>
-        <width>520</width>
-        <height>480</height>
-       </rect>
-      </property>
-      <property name="resizeMode">
-       <enum>QQuickWidget::SizeRootObjectToView</enum>
-      </property>
-      <property name="source">
-       <url>
-        <string>qrc:/qml/JLHeatingUnit.qml</string>
-       </url>
-      </property>
-     </widget>
      <widget class="QPushButton" name="pushButton_113">
       <property name="geometry">
        <rect>
@@ -1676,6 +1640,32 @@ border: 2px solid rgb(255, 99, 11) ;</string>
       </property>
       <property name="text">
        <string>Help</string>
+      </property>
+     </widget>
+     <widget class="JLHeatingUnit" name="labChangeFilamentLeft">
+      <property name="geometry">
+       <rect>
+        <x>190</x>
+        <y>80</y>
+        <width>520</width>
+        <height>480</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>TextLabel</string>
+      </property>
+     </widget>
+     <widget class="JLHeatingUnit" name="labChangeFilamentRight">
+      <property name="geometry">
+       <rect>
+        <x>740</x>
+        <y>80</y>
+        <width>520</width>
+        <height>480</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>TextLabel</string>
       </property>
      </widget>
     </widget>
@@ -13703,6 +13693,11 @@ font-weight: bold;</string>
    <class>JLExtruderSelect</class>
    <extends>QLabel</extends>
    <header location="global">customwidget/jlextruderselect.h</header>
+  </customwidget>
+  <customwidget>
+   <class>JLHeatingUnit</class>
+   <extends>QLabel</extends>
+   <header location="global">customwidget/jlheatingunit.h</header>
   </customwidget>
  </customwidgets>
  <resources/>

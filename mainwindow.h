@@ -107,6 +107,8 @@ public:
     void changeDialog(JLWidget *pDialog);
     void changePageOnStatus(QByteArray Status, QWidget *pPage);
 
+    void changeFilamentPageLoad();
+
     void changeFilamentPageInit();
     void AboutPageInit();
     void platformCalibratePageinit();
@@ -267,7 +269,7 @@ private slots:
 
     void onFinishPrintClicked();
     void preparePrintTempChecking();
-    void preparePrintPageInit();
+    void preparePrintPageLoad();
 
     void PowerLostDialogReturn();
     void RecoveryStop();

@@ -10,19 +10,15 @@ changeFilamentDlg::changeFilamentDlg(QWidget *parent) :
     ui->qw_StatusNotice->setSource(QUrl("qrc:/qml/StatusBarNotice.qml"));
     ui->qw_StatusNotice->setClearColor("#2d2b2c");
 
-    ui->qw_LeftHeatingItem->setSource(QUrl("qrc:/qml/JLHeatingUnit.qml"));
-    QObject::connect(ui->qw_LeftHeatingItem->rootObject(), SIGNAL(choseTempClicked()), this, SLOT(left_setTemp()));
-    QObject::connect(ui->qw_LeftHeatingItem->rootObject(), SIGNAL(extruderClicked()), this, SLOT(left_extrude()));
-    QObject::connect(ui->qw_LeftHeatingItem->rootObject(), SIGNAL(retackClicked()), this, SLOT(left_retract()));
-    ui->qw_LeftHeatingItem->rootObject()->setProperty("indicatorIcon", "qrc:/image/LeftHotendIndecator.png");
-    ui->qw_LeftHeatingItem->rootObject()->setProperty("indicatorText", "Left Extruder");
+    QObject::connect(ui->labLeftHeatingUnit, SIGNAL(chooseTempClicked()), this, SLOT(left_setTemp()));
+    QObject::connect(ui->labLeftHeatingUnit, SIGNAL(extrudeClicked()), this, SLOT(left_extrude()));
+    QObject::connect(ui->labLeftHeatingUnit, SIGNAL(retractClicked()), this, SLOT(left_retract()));
+    ui->labLeftHeatingUnit->setIndicator(0);
 
-    ui->qw_RightHeatingItem->setSource(QUrl("qrc:/qml/JLHeatingUnit.qml"));
-    QObject::connect(ui->qw_RightHeatingItem->rootObject(), SIGNAL(choseTempClicked()), this, SLOT(right_setTemp()));
-    QObject::connect(ui->qw_RightHeatingItem->rootObject(), SIGNAL(extruderClicked()), this, SLOT(right_extrude()));
-    QObject::connect(ui->qw_RightHeatingItem->rootObject(), SIGNAL(retackClicked()), this, SLOT(right_retract()));
-    ui->qw_RightHeatingItem->rootObject()->setProperty("indicatorIcon", "qrc:/image/RightHotendIndecator.png");
-    ui->qw_RightHeatingItem->rootObject()->setProperty("indicatorText", "Right Extruder");
+    QObject::connect(ui->labRightHeatingUnit, SIGNAL(chooseTempClicked()), this, SLOT(right_setTemp()));
+    QObject::connect(ui->labRightHeatingUnit, SIGNAL(extrudeClicked()), this, SLOT(right_extrude()));
+    QObject::connect(ui->labRightHeatingUnit, SIGNAL(retractClicked()), this, SLOT(right_retract()));
+    ui->labRightHeatingUnit->setIndicator(1);
 
     autoUpdateStatus = false;
 }
@@ -51,11 +47,12 @@ void changeFilamentDlg::show()
     ui->qw_StatusNotice->rootObject()->setProperty("lightVisible", true);
 
     sprintf(strtmp, "%03d°C", status.TargetTemp[0]);
-    ui->qw_LeftHeatingItem->rootObject()->setProperty("text", strtmp);
+    ui->labLeftHeatingUnit->setValue(status.TargetTemp[0]);
     sprintf(strtmp, "%03d°C", status.TargetTemp[1]);
-    ui->qw_RightHeatingItem->rootObject()->setProperty("text", strtmp);
+    ui->labRightHeatingUnit->setValue(status.TargetTemp[1]);
 
     chooseTempDialog = new chooseTemp(this);
+    chooseTempDialog->init();
     chooseTempDialog->hide();
     autoUpdateStatus = true;
 
@@ -119,12 +116,12 @@ void changeFilamentDlg::onSetTemp()
 {
     QList<QByteArray> ret = chooseTempDialog->get_return_value();
     if(extruder_selected == 0) {
-        ui->qw_LeftHeatingItem->rootObject()->setProperty("text", ret[0] + "°C");
+        ui->labLeftHeatingUnit->setValue(ret[0].toUInt());
         m_xhPort->setHeattingUnit(0, ret[0].toInt());
     }
     else if(extruder_selected == 1)
     {
-        ui->qw_RightHeatingItem->rootObject()->setProperty("text", ret[0] + "°C");
+        ui->labRightHeatingUnit->setValue(ret[0].toUInt());
         m_xhPort->setHeattingUnit(1, ret[0].toInt());
     }
 }

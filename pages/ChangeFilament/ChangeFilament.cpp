@@ -3,16 +3,26 @@
 
 void MainWindow::changeFilamentPageInit()
 {
-    char temp[20];
+    ui->labChangeFilamentLeft->setIndicator(0);
+    ui->labChangeFilamentRight->setIndicator(1);
+    QObject::connect(ui->labChangeFilamentLeft, SIGNAL(chooseTempClicked()), this, SLOT(changeFilamentLeftSetTemp()));
+    QObject::connect(ui->labChangeFilamentLeft, SIGNAL(extrudeClicked()), this, SLOT(changeFilamentLeftExtrude()));
+    QObject::connect(ui->labChangeFilamentLeft, SIGNAL(retractClicked()), this, SLOT(changeFilamentLeftRetract()));
+
+    QObject::connect(ui->labChangeFilamentRight, SIGNAL(chooseTempClicked()), this, SLOT(changeFilamentRightSetTemp()));
+    QObject::connect(ui->labChangeFilamentRight, SIGNAL(extrudeClicked()), this, SLOT(changeFilamentRightExtrude()));
+    QObject::connect(ui->labChangeFilamentRight, SIGNAL(retractClicked()), this, SLOT(changeFilamentRightRetract()));
+}
+
+void MainWindow::changeFilamentPageLoad()
+{
     strMachineStatus new_status;
     m_port->getXhPage()->GetMachineStatus(&new_status);
-    sprintf(temp, "%03d°C", new_status.TarTemp[0]);
-    ui->qw_LeftHeating->rootObject()->setProperty("text", temp);
-    sprintf(temp, "%03d°C", new_status.TarTemp[1]);
-    ui->qw_RightHeating->rootObject()->setProperty("text", temp);
+    ui->labChangeFilamentLeft->setValue(new_status.TarTemp[0]);
+    ui->labChangeFilamentRight->setValue(new_status.TarTemp[1]);
     screen_status.setPerformance(CHANGE_FILAMENT);
-    ui->qw_LeftHeating->rootObject()->setProperty("extrudeEnable", false);
-    ui->qw_RightHeating->rootObject()->setProperty("extrudeEnable", false);
+    ui->labChangeFilamentLeft->setExtruderEnable(false);
+    ui->labChangeFilamentRight->setExtruderEnable(false);
     QTimer::singleShot(500, this, SLOT(changeFilamentTempChecking()));
 }
 
@@ -24,19 +34,19 @@ void MainWindow::changeFilamentTempChecking()
     {
         if((new_status.CurTemp[0] > (new_status.TarTemp[0] - 5)) && (new_status.TarTemp[0] > 0))
         {
-            ui->qw_LeftHeating->rootObject()->setProperty("extrudeEnable", true);
+            ui->labChangeFilamentLeft->setExtruderEnable(true);
         }
         else
         {
-            ui->qw_LeftHeating->rootObject()->setProperty("extrudeEnable", false);
+            ui->labChangeFilamentLeft->setExtruderEnable(false);
         }
         if((new_status.CurTemp[1] > (new_status.TarTemp[1] - 5)) && (new_status.TarTemp[1] > 0))
         {
-            ui->qw_RightHeating->rootObject()->setProperty("extrudeEnable", true);
+            ui->labChangeFilamentRight->setExtruderEnable(true);
         }
         else
         {
-            ui->qw_RightHeating->rootObject()->setProperty("extrudeEnable", false);
+            ui->labChangeFilamentRight->setExtruderEnable(false);
         }
         QTimer::singleShot(500, this, SLOT(changeFilamentTempChecking()));
     }
@@ -72,11 +82,11 @@ void MainWindow::changeFilamentSetTemp()
     }
     if(index == 0)
     {
-        ui->qw_LeftHeating->rootObject()->setProperty("text", ret.at(1) + "°C");
+        ui->labChangeFilamentLeft->setValue(ret.at(1).toUInt());
     }
     else
     {
-        ui->qw_RightHeating->rootObject()->setProperty("text", ret.at(1) + "°C");
+        ui->labChangeFilamentRight->setValue(ret.at(1).toUInt());
     }
     m_port->setHeattingUnit(index, ret.at(1).toUInt());
     pdlg_choose_extruder_temp->close();
@@ -117,8 +127,8 @@ void MainWindow::changeFilamentRightRetract()
 void MainWindow::on_pushButton_359_clicked()
 {
     screen_status.setPerformance(IDLE);
-    ui->qw_LeftHeating->rootObject()->setProperty("text", "000°C");
-    ui->qw_RightHeating->rootObject()->setProperty("text", "000°C");
+    ui->labChangeFilamentLeft->setValue(0);
+    ui->labChangeFilamentRight->setValue(0);
     m_port->setHeattingUnit("0","0");
     ui->pushButton_113->setEnabled(true);
     ui->pushButton_117->setEnabled(true);

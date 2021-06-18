@@ -18,7 +18,7 @@ class chooseTemp : public JLWidget
 public:
     explicit chooseTemp(QWidget *parent = nullptr);
     ~chooseTemp();
-    void init(QString str);
+    void init();
     void show() override;
 
 private:
