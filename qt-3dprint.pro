@@ -42,11 +42,13 @@ SOURCES += \
     CMOD/xhport.cpp \
     customwidget/jlbutton.cpp \
     customwidget/jlcontrolbox.cpp \
+    customwidget/jlextruderselect.cpp \
     customwidget/jlextruderunit.cpp \
     customwidget/jlheatedbedunit.cpp \
     customwidget/jlheatingunit2.cpp \
     customwidget/jlnozzleturnindicator.cpp \
     customwidget/jlonoffswitch.cpp \
+    customwidget/jlsliderbar.cpp \
     customwidget/jlturnindicator.cpp \
     dialog/askpause.cpp \
     dialog/changefilamentdlg.cpp \
@@ -123,11 +125,13 @@ HEADERS += \
     customwidget/JLWidgets.h \
     customwidget/jlbutton.h \
     customwidget/jlcontrolbox.h \
+    customwidget/jlextruderselect.h \
     customwidget/jlextruderunit.h \
     customwidget/jlheatedbedunit.h \
     customwidget/jlheatingunit2.h \
     customwidget/jlnozzleturnindicator.h \
     customwidget/jlonoffswitch.h \
+    customwidget/jlsliderbar.h \
     customwidget/jlturnindicator.h \
     define/imagePath.h \
     define/linuxPath.h \
@@ -167,11 +171,13 @@ HEADERS += \
 FORMS += \
     customwidget/jlbutton.ui \
     customwidget/jlcontrolbox.ui \
+    customwidget/jlextruderselect.ui \
     customwidget/jlextruderunit.ui \
     customwidget/jlheatedbedunit.ui \
     customwidget/jlheatingunit2.ui \
     customwidget/jlnozzleturnindicator.ui \
     customwidget/jlonoffswitch.ui \
+    customwidget/jlsliderbar.ui \
     customwidget/jlturnindicator.ui \
     dialog/askpause.ui \
     dialog/changefilamentdlg.ui \

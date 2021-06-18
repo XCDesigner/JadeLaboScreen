@@ -3,13 +3,12 @@
 
 void MainWindow::ExtrudeControlInit()
 {
-    ui->qw_ExtrudeSelect->setClearColor("#202020");
     QObject::connect(ui->labExtrudeUnit, SIGNAL(chooseTempClicked(int)), this, SLOT(extrudeControlChooseTemp(int)));
     QObject::connect(ui->labExtrudeUnit, SIGNAL(chooseDistanceClicked(int)), this, SLOT(extrudeControlChooseDistance(int)));
     QObject::connect(ui->labExtrudeUnit, SIGNAL(extrudeClicked(int)), this, SLOT(extrudeControlExtrude(int)));
     QObject::connect(ui->labExtrudeUnit, SIGNAL(retractClicked(int)), this, SLOT(extrudeControlRetract(int)));
     QObject::connect(ui->labExtrudeUnit, SIGNAL(cooldownClicked(int)), this, SLOT(extrudeControlCooldown(int)));
-    QObject::connect(ui->qw_ExtrudeSelect->rootObject(), SIGNAL(clicked(int)), this, SLOT(extrudeControlSelectExtruder(int)));
+    QObject::connect(ui->labExtruderSelect, SIGNAL(clicked(int)), this, SLOT(extrudeControlSelectExtruder(int)));
     ui->labExtrudeUnit->setIndicator(0);
     ui->labExtrudeUnit->setExtruderEnable(false);
 }

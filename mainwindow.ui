@@ -70,7 +70,7 @@ font-family: barlow;
 }</string>
     </property>
     <property name="currentIndex">
-     <number>5</number>
+     <number>43</number>
     </property>
     <widget class="QWidget" name="page_12">
      <widget class="QLabel" name="label_14">
@@ -1714,24 +1714,6 @@ border:none;</string>
        <string/>
       </property>
      </widget>
-     <widget class="QQuickWidget" name="qw_ExtrudeSelect">
-      <property name="geometry">
-       <rect>
-        <x>175</x>
-        <y>85</y>
-        <width>1090</width>
-        <height>80</height>
-       </rect>
-      </property>
-      <property name="resizeMode">
-       <enum>QQuickWidget::SizeRootObjectToView</enum>
-      </property>
-      <property name="source">
-       <url>
-        <string>qrc:/qml/ExtruderSelect.qml</string>
-       </url>
-      </property>
-     </widget>
      <widget class="QPushButton" name="pushButton_457">
       <property name="geometry">
        <rect>
@@ -1774,7 +1756,20 @@ border:none;</string>
        </rect>
       </property>
       <property name="text">
-       <string>TextLabel</string>
+       <string/>
+      </property>
+     </widget>
+     <widget class="JLExtruderSelect" name="labExtruderSelect">
+      <property name="geometry">
+       <rect>
+        <x>175</x>
+        <y>85</y>
+        <width>1090</width>
+        <height>80</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
       </property>
      </widget>
     </widget>
@@ -1871,7 +1866,7 @@ border:none;</string>
        <string>TextLabel</string>
       </property>
      </widget>
-     <widget class="JLHeatingUnit2" name="labHeatedbedUnit">
+     <widget class="JLHeatedbedUnit" name="labHeatedbedUnit">
       <property name="geometry">
        <rect>
         <x>167</x>
@@ -5732,7 +5727,7 @@ image: url(:/image/platform_3.png);</string>
        </rect>
       </property>
       <property name="text">
-       <string>TextLabel</string>
+       <string/>
       </property>
      </widget>
      <zorder>label_259</zorder>
@@ -13698,6 +13693,16 @@ font-weight: bold;</string>
    <class>JLExtruderUnit</class>
    <extends>QLabel</extends>
    <header location="global">customwidget/jlextruderunit.h</header>
+  </customwidget>
+  <customwidget>
+   <class>JLHeatedbedUnit</class>
+   <extends>QLabel</extends>
+   <header location="global">customwidget/jlheatedbedunit.h</header>
+  </customwidget>
+  <customwidget>
+   <class>JLExtruderSelect</class>
+   <extends>QLabel</extends>
+   <header location="global">customwidget/jlextruderselect.h</header>
   </customwidget>
  </customwidgets>
  <resources/>

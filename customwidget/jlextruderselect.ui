@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>JLExtruderSelect</class>
+ <widget class="QWidget" name="JLExtruderSelect">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1090</width>
+    <height>80</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <widget class="QPushButton" name="btnLeft">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>545</width>
+     <height>80</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton {
+	background-color: &quot;#202020&quot;;
+	font-family: barlow;
+	font-size: 32px;
+	color: rgb(255, 255, 255);
+	border-style: solid;
+	border-color: &quot;#808080&quot;;
+	border-width: 5px;
+	border-right-width: 0px;
+	border-top-left-radius: 20px;
+	border-bottom-left-radius: 20px;
+}
+
+QPushButton::checked{
+	background-color: &quot;#f0f0f0&quot;;
+	font-family: barlow;
+	font-size: 32px;
+	color: rgb(255, 255, 255);
+	border-style: solid;
+	border-color: &quot;#808080&quot;;
+	border-width: 5px;
+	border-right-width: 0px;
+	border-top-left-radius: 20px;
+	border-bottom-left-radius: 20px;
+}
+
+QPushButton::unchecked{
+	background-color: &quot;#202020&quot;;
+	font-family: barlow;
+	font-size: 32px;
+	color: rgb(255, 255, 255);
+	border-style: solid;
+	border-color: &quot;#808080&quot;;
+	border-width: 5px;
+	border-right-width: 0px;
+	border-top-left-radius: 20px;
+	border-bottom-left-radius: 20px;
+}</string>
+   </property>
+   <property name="text">
+    <string>LEFT</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="btnRight">
+   <property name="geometry">
+    <rect>
+     <x>545</x>
+     <y>0</y>
+     <width>545</width>
+     <height>80</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton {
+	background-color: &quot;#202020&quot;;
+	font-family: barlow;
+	font-size: 32px;
+	color: rgb(255, 255, 255);
+	border-style: solid;
+	border-color: &quot;#808080&quot;;
+	border-width: 5px;
+	border-left-width: 0px;
+	border-top-right-radius: 20px;
+	border-bottom-right-radius: 20px;
+}
+
+QPushButton::checked{
+	background-color: &quot;#f0f0f0&quot;;
+	font-family: barlow;
+	font-size: 32px;
+	color: rgb(255, 255, 255);
+	border-style: solid;
+	border-color: &quot;#808080&quot;;
+	border-width: 5px;
+	border-left-width: 0px;
+	border-top-right-radius: 20px;
+	border-bottom-right-radius: 20px;
+}
+
+QPushButton::unchecked{
+	background-color: &quot;#202020&quot;;
+	font-family: barlow;
+	font-size: 32px;
+	color: rgb(255, 255, 255);
+	border-style: solid;
+	border-color: &quot;#808080&quot;;
+	border-width: 5px;
+	border-left-width: 0px;
+	border-top-right-radius: 20px;
+	border-bottom-right-radius: 20px;
+}</string>
+   </property>
+   <property name="text">
+    <string>RIGHT</string>
+   </property>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
