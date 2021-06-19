@@ -160,7 +160,6 @@ MainWindow::MainWindow(QWidget *parent) :
 
     qw_DistanceItem = ui->qw_Distance->rootObject();
 
-
     QObject::connect(ui->labPreparePrintControl, SIGNAL(stopClicked()), this, SLOT(StopPreHeatting()));
     QObject::connect(ui->labPreparePrintControl, SIGNAL(settingClicked()), this, SLOT(ShowParameterDialogClicked()));
 
@@ -211,11 +210,6 @@ MainWindow::MainWindow(QWidget *parent) :
 
     QObject::connect(m_port->getXhPage(), SIGNAL(command_received(uint8_t, uint8_t, QByteArray)), this, SLOT(printMessageProcess(uint8_t, uint8_t, QByteArray)));
     QObject::connect(m_port->getXhPage(), SIGNAL(command_received(uint8_t, uint8_t, QByteArray)), this, SLOT(onMessageTest(uint8_t, uint8_t, QByteArray)));
-
-    ui->qw_FileName_0->setClearColor("#2d2c2b");
-    ui->qw_FileName_1->setClearColor("#2d2c2b");
-    ui->qw_FileName_0->setSource(QUrl("qrc:/qml/JLScrollLabel.qml"));
-    ui->qw_FileName_1->setSource(QUrl("qrc:/qml/JLScrollLabel.qml"));
 
     AboutPageInit();
 
@@ -1263,7 +1257,7 @@ void MainWindow::onMessageTest(uint8_t Command, uint8_t SubCode, QByteArray Data
 
 void MainWindow::on_pushButton_clicked()
 {
-
+    ui->label_5->setText("adskjhfkjd");
 }
 
 void MainWindow::on_pushButton_272_clicked()

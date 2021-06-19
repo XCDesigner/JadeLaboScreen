@@ -70,7 +70,7 @@ font-family: barlow;
 }</string>
     </property>
     <property name="currentIndex">
-     <number>54</number>
+     <number>9</number>
     </property>
     <widget class="QWidget" name="page_12">
      <widget class="QLabel" name="label_14">
@@ -2355,24 +2355,6 @@ background-color: rgba(255, 255, 255, 0);</string>
        <enum>QQuickWidget::SizeRootObjectToView</enum>
       </property>
      </widget>
-     <widget class="QQuickWidget" name="qw_FileName_1">
-      <property name="geometry">
-       <rect>
-        <x>610</x>
-        <y>130</y>
-        <width>600</width>
-        <height>80</height>
-       </rect>
-      </property>
-      <property name="resizeMode">
-       <enum>QQuickWidget::SizeRootObjectToView</enum>
-      </property>
-      <property name="source">
-       <url>
-        <string>qrc:/qml/JLScrollLabel.qml</string>
-       </url>
-      </property>
-     </widget>
      <widget class="JLControlBox" name="labPreparePrintControl">
       <property name="geometry">
        <rect>
@@ -2386,14 +2368,27 @@ background-color: rgba(255, 255, 255, 0);</string>
        <string/>
       </property>
      </widget>
+     <widget class="JLScrollLabel" name="labFileName_1">
+      <property name="geometry">
+       <rect>
+        <x>610</x>
+        <y>130</y>
+        <width>600</width>
+        <height>80</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>TextLabel</string>
+      </property>
+     </widget>
      <zorder>label_267</zorder>
      <zorder>label_70</zorder>
      <zorder>label_35</zorder>
      <zorder>label_36</zorder>
      <zorder>label_78</zorder>
      <zorder>qw_PreHeating</zorder>
-     <zorder>qw_FileName_1</zorder>
      <zorder>labPreparePrintControl</zorder>
+     <zorder>labFileName_1</zorder>
     </widget>
     <widget class="QWidget" name="page_Printing">
      <widget class="QLabel" name="label_270">
@@ -2530,24 +2525,6 @@ background-color: rgba(255, 255, 255, 0);</string>
        <enum>QQuickWidget::SizeRootObjectToView</enum>
       </property>
      </widget>
-     <widget class="QQuickWidget" name="qw_FileName_0">
-      <property name="geometry">
-       <rect>
-        <x>610</x>
-        <y>130</y>
-        <width>600</width>
-        <height>80</height>
-       </rect>
-      </property>
-      <property name="resizeMode">
-       <enum>QQuickWidget::SizeRootObjectToView</enum>
-      </property>
-      <property name="source">
-       <url>
-        <string>qrc:/qml/JLScrollLabel.qml</string>
-       </url>
-      </property>
-     </widget>
      <widget class="QPushButton" name="pushButton_4">
       <property name="geometry">
        <rect>
@@ -2571,6 +2548,19 @@ background-color: rgba(255, 255, 255, 0);</string>
         <y>435</y>
         <width>640</width>
         <height>240</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="JLScrollLabel" name="labFileName_0">
+      <property name="geometry">
+       <rect>
+        <x>610</x>
+        <y>130</y>
+        <width>600</width>
+        <height>80</height>
        </rect>
       </property>
       <property name="text">
@@ -9283,6 +9273,10 @@ background-color: rgb(255, 255, 255);</string>
         <pointsize>16</pointsize>
        </font>
       </property>
+      <property name="styleSheet">
+       <string notr="true">border: 0px;
+background-color:rgb(255,255,255);</string>
+      </property>
       <property name="text">
        <string>PushButton</string>
       </property>
@@ -9304,17 +9298,17 @@ font-size:32px;</string>
        <string>ffffff</string>
       </property>
      </widget>
-     <widget class="JLButton" name="label_5">
+     <widget class="JLScrollLabel" name="label_5">
       <property name="geometry">
        <rect>
-        <x>770</x>
-        <y>390</y>
-        <width>351</width>
-        <height>191</height>
+        <x>50</x>
+        <y>70</y>
+        <width>600</width>
+        <height>80</height>
        </rect>
       </property>
       <property name="text">
-       <string>TextLabel</string>
+       <string>adskhfjs;lakdjfklasjdklfjsdlkfjdskljflksadjflkasjlfkjasdl</string>
       </property>
      </widget>
     </widget>
@@ -13656,11 +13650,6 @@ font-weight: bold;</string>
    <header location="global">QtQuickWidgets/QQuickWidget</header>
   </customwidget>
   <customwidget>
-   <class>JLButton</class>
-   <extends>QLabel</extends>
-   <header location="global">customwidget/JLWidgets.h</header>
-  </customwidget>
-  <customwidget>
    <class>JLOnOffSwitch</class>
    <extends>QLabel</extends>
    <header location="global">customwidget/JLWidgets.h</header>
@@ -13704,6 +13693,11 @@ font-weight: bold;</string>
    <class>JLHeatingUnit</class>
    <extends>QLabel</extends>
    <header location="global">customwidget/jlheatingunit.h</header>
+  </customwidget>
+  <customwidget>
+   <class>JLScrollLabel</class>
+   <extends>QLabel</extends>
+   <header location="global">customwidget/jlscrolllabel.h</header>
   </customwidget>
  </customwidgets>
  <resources/>

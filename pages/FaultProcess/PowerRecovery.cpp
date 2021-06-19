@@ -85,8 +85,8 @@ QString MainWindow::GetRecoveryFile()
     {
         QByteArray line = pfile->readLine(0);
         QString file_path = QString(localPath);
-        ui->qw_FileName_0->rootObject()->setProperty("text", line);
-        ui->qw_FileName_1->rootObject()->setProperty("text", line);
+        ui->labFileName_0->setText(line);
+        ui->labFileName_1->setText(line);
         ret = QString(file_path + line).trimmed();
         qDebug()<< ret;
         pfile->close();

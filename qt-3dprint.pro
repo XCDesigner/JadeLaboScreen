@@ -49,6 +49,7 @@ SOURCES += \
     customwidget/jlheatingunit2.cpp \
     customwidget/jlnozzleturnindicator.cpp \
     customwidget/jlonoffswitch.cpp \
+    customwidget/jlscrolllabel.cpp \
     customwidget/jlsliderbar.cpp \
     customwidget/jlturnindicator.cpp \
     dialog/askpause.cpp \
@@ -133,6 +134,7 @@ HEADERS += \
     customwidget/jlheatingunit2.h \
     customwidget/jlnozzleturnindicator.h \
     customwidget/jlonoffswitch.h \
+    customwidget/jlscrolllabel.h \
     customwidget/jlsliderbar.h \
     customwidget/jlturnindicator.h \
     define/imagePath.h \
@@ -180,6 +182,7 @@ FORMS += \
     customwidget/jlheatingunit2.ui \
     customwidget/jlnozzleturnindicator.ui \
     customwidget/jlonoffswitch.ui \
+    customwidget/jlscrolllabel.ui \
     customwidget/jlsliderbar.ui \
     customwidget/jlturnindicator.ui \
     dialog/askpause.ui \

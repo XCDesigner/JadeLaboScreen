@@ -108,8 +108,8 @@ void MainWindow::m_chooseItem(myListWidgetItem *itm)
     QObject::connect(m_WinFile, SIGNAL(hideWidget()), this, SLOT(onFileChooseReturn()), Qt::QueuedConnection);
     m_WinFile->show();
 
-    ui->qw_FileName_0->rootObject()->setProperty("text", itm->m_fileName);
-    ui->qw_FileName_1->rootObject()->setProperty("text", itm->m_fileName);
+    ui->labFileName_0->setText(itm->m_fileName);
+    ui->labFileName_1->setText(itm->m_fileName);
 }
 
 void MainWindow::onFileChooseReturn()
