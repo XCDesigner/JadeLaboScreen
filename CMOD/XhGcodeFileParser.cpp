@@ -93,6 +93,7 @@ void XhGcodeFileParser::run()
     QString outputFileName = m_outputFileName;
     m_mutex->unlock();
     process_status = QByteArray("Complete");
+    m_sourceGcodeLines->clear();
     emit parseSucceded(outputFileName);
 }
 
