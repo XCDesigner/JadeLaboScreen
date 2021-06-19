@@ -35,7 +35,6 @@ void MainWindow::wifiConnectEvent(QList<QByteArray> Data)
     {
         QString ip = Data.at(1);
         int port = Data.at(2).toInt();
-        ui->wqVersion->rootObject()->setProperty("text", ip);
         m_tcp_controler->connectServer(ip, port);
     }
     else if(command == "Disconnect Request")

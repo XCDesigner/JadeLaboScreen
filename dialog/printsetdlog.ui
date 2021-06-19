@@ -63,7 +63,7 @@
     <bool>false</bool>
    </property>
   </widget>
-  <widget class="QQuickWidget" name="qw_LeftTemp">
+  <widget class="QPushButton" name="btnLeftTemp">
    <property name="geometry">
     <rect>
      <x>46</x>
@@ -72,11 +72,32 @@
      <height>100</height>
     </rect>
    </property>
-   <property name="resizeMode">
-    <enum>QQuickWidget::SizeRootObjectToView</enum>
+   <property name="styleSheet">
+    <string notr="true">QPushButton::checked{
+	font-family: barlow;
+    color: white;
+	background-color: rgb(255, 99, 51);
+	font-weight: bold;
+    font-size: 32px;
+	border: 2px;
+	border-radius: 20px;
+}
+
+QPushButton{
+	font-family: barlow;
+    color: white;
+	background-color: rgb(67, 67, 67);
+	font-weight: bold;
+    font-size: 32px;
+	border: 2px;
+	border-radius: 20px;
+}</string>
+   </property>
+   <property name="text">
+    <string/>
    </property>
   </widget>
-  <widget class="QQuickWidget" name="qw_RightTemp">
+  <widget class="QPushButton" name="btnRightTemp">
    <property name="geometry">
     <rect>
      <x>469</x>
@@ -85,11 +106,66 @@
      <height>100</height>
     </rect>
    </property>
-   <property name="resizeMode">
-    <enum>QQuickWidget::SizeRootObjectToView</enum>
+   <property name="styleSheet">
+    <string notr="true">QPushButton::checked{
+	font-family: barlow;
+    color: white;
+	background-color: rgb(255, 99, 51);
+	font-weight: bold;
+    font-size: 32px;
+	border: 2px;
+	border-radius: 20px;
+}
+
+QPushButton{
+	font-family: barlow;
+    color: white;
+	background-color: rgb(67, 67, 67);
+	font-weight: bold;
+    font-size: 32px;
+	border: 2px;
+	border-radius: 20px;
+}</string>
+   </property>
+   <property name="text">
+    <string/>
    </property>
   </widget>
-  <widget class="QQuickWidget" name="qw_RightFan">
+  <widget class="QPushButton" name="btnLeftFan">
+   <property name="geometry">
+    <rect>
+     <x>46</x>
+     <y>136</y>
+     <width>400</width>
+     <height>100</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton::checked{
+	font-family: barlow;
+    color: white;
+	background-color: rgb(255, 99, 51);
+	font-weight: bold;
+    font-size: 32px;
+	border: 2px;
+	border-radius: 20px;
+}
+
+QPushButton{
+	font-family: barlow;
+    color: white;
+	background-color: rgb(67, 67, 67);
+	font-weight: bold;
+    font-size: 32px;
+	border: 2px;
+	border-radius: 20px;
+}</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="btnRightFan">
    <property name="geometry">
     <rect>
      <x>469</x>
@@ -98,37 +174,100 @@
      <height>100</height>
     </rect>
    </property>
-   <property name="resizeMode">
-    <enum>QQuickWidget::SizeRootObjectToView</enum>
+   <property name="styleSheet">
+    <string notr="true">QPushButton::checked{
+	font-family: barlow;
+    color: white;
+	background-color: rgb(255, 99, 51);
+	font-weight: bold;
+    font-size: 32px;
+	border: 2px;
+	border-radius: 20px;
+}
+
+QPushButton{
+	font-family: barlow;
+    color: white;
+	background-color: rgb(67, 67, 67);
+	font-weight: bold;
+    font-size: 32px;
+	border: 2px;
+	border-radius: 20px;
+}</string>
+   </property>
+   <property name="text">
+    <string/>
    </property>
   </widget>
-  <widget class="QQuickWidget" name="qw_LeftFan">
+  <widget class="QPushButton" name="btnLeftFlowrate">
    <property name="geometry">
     <rect>
      <x>46</x>
-     <y>136</y>
+     <y>253</y>
      <width>400</width>
      <height>100</height>
     </rect>
    </property>
-   <property name="resizeMode">
-    <enum>QQuickWidget::SizeRootObjectToView</enum>
+   <property name="styleSheet">
+    <string notr="true">QPushButton::checked{
+	font-family: barlow;
+    color: white;
+	background-color: rgb(255, 99, 51);
+	font-weight: bold;
+    font-size: 32px;
+	border: 2px;
+	border-radius: 20px;
+}
+
+QPushButton{
+	font-family: barlow;
+    color: white;
+	background-color: rgb(67, 67, 67);
+	font-weight: bold;
+    font-size: 32px;
+	border: 2px;
+	border-radius: 20px;
+}</string>
+   </property>
+   <property name="text">
+    <string/>
    </property>
   </widget>
-  <widget class="QQuickWidget" name="qw_BedTemp">
+  <widget class="QPushButton" name="btnRightFlowrate">
    <property name="geometry">
     <rect>
-     <x>46</x>
-     <y>484</y>
+     <x>469</x>
+     <y>253</y>
      <width>400</width>
      <height>100</height>
     </rect>
    </property>
-   <property name="resizeMode">
-    <enum>QQuickWidget::SizeRootObjectToView</enum>
+   <property name="styleSheet">
+    <string notr="true">QPushButton::checked{
+	font-family: barlow;
+    color: white;
+	background-color: rgb(255, 99, 51);
+	font-weight: bold;
+    font-size: 32px;
+	border: 2px;
+	border-radius: 20px;
+}
+
+QPushButton{
+	font-family: barlow;
+    color: white;
+	background-color: rgb(67, 67, 67);
+	font-weight: bold;
+    font-size: 32px;
+	border: 2px;
+	border-radius: 20px;
+}</string>
+   </property>
+   <property name="text">
+    <string/>
    </property>
   </widget>
-  <widget class="QQuickWidget" name="qw_FeedRatePercent">
+  <widget class="QPushButton" name="btnFeedrate">
    <property name="geometry">
     <rect>
      <x>46</x>
@@ -137,24 +276,32 @@
      <height>100</height>
     </rect>
    </property>
-   <property name="resizeMode">
-    <enum>QQuickWidget::SizeRootObjectToView</enum>
+   <property name="styleSheet">
+    <string notr="true">QPushButton::checked{
+	font-family: barlow;
+    color: white;
+	background-color: rgb(255, 99, 51);
+	font-weight: bold;
+    font-size: 32px;
+	border: 2px;
+	border-radius: 20px;
+}
+
+QPushButton{
+	font-family: barlow;
+    color: white;
+	background-color: rgb(67, 67, 67);
+	font-weight: bold;
+    font-size: 32px;
+	border: 2px;
+	border-radius: 20px;
+}</string>
+   </property>
+   <property name="text">
+    <string/>
    </property>
   </widget>
-  <widget class="QQuickWidget" name="qw_PlatformHeight">
-   <property name="geometry">
-    <rect>
-     <x>469</x>
-     <y>484</y>
-     <width>400</width>
-     <height>100</height>
-    </rect>
-   </property>
-   <property name="resizeMode">
-    <enum>QQuickWidget::SizeRootObjectToView</enum>
-   </property>
-  </widget>
-  <widget class="QQuickWidget" name="qw_BackupMode">
+  <widget class="QPushButton" name="btnBackupMode">
    <property name="geometry">
     <rect>
      <x>46</x>
@@ -163,11 +310,110 @@
      <height>100</height>
     </rect>
    </property>
-   <property name="resizeMode">
-    <enum>QQuickWidget::SizeRootObjectToView</enum>
+   <property name="styleSheet">
+    <string notr="true">QPushButton::checked{
+	font-family: barlow;
+    color: white;
+	background-color: rgb(255, 99, 51);
+	font-weight: bold;
+    font-size: 32px;
+	border: 2px;
+	border-radius: 20px;
+}
+
+QPushButton{
+	font-family: barlow;
+    color: white;
+	background-color: rgb(67, 67, 67);
+	font-weight: bold;
+    font-size: 32px;
+	border: 2px;
+	border-radius: 20px;
+}
+
+QPushButton::disabled{
+	font-family: barlow;
+    color: white;
+	background-color: rgb(32, 32, 32);
+	font-weight: bold;
+    font-size: 32px;
+	border: 2px;
+	border-radius: 20px;
+}</string>
+   </property>
+   <property name="text">
+    <string>Backup Mode</string>
    </property>
   </widget>
-  <widget class="QQuickWidget" name="qw_Increase">
+  <widget class="QPushButton" name="btnBedTemp">
+   <property name="geometry">
+    <rect>
+     <x>46</x>
+     <y>484</y>
+     <width>400</width>
+     <height>100</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton::checked{
+	font-family: barlow;
+    color: white;
+	background-color: rgb(255, 99, 51);
+	font-weight: bold;
+    font-size: 32px;
+	border: 2px;
+	border-radius: 20px;
+}
+
+QPushButton{
+	font-family: barlow;
+    color: white;
+	background-color: rgb(67, 67, 67);
+	font-weight: bold;
+    font-size: 32px;
+	border: 2px;
+	border-radius: 20px;
+}</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="btnPlatformHeight">
+   <property name="geometry">
+    <rect>
+     <x>469</x>
+     <y>484</y>
+     <width>400</width>
+     <height>100</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton::checked{
+	font-family: barlow;
+    color: white;
+	background-color: rgb(255, 99, 51);
+	font-weight: bold;
+    font-size: 32px;
+	border: 2px;
+	border-radius: 20px;
+}
+
+QPushButton{
+	font-family: barlow;
+    color: white;
+	background-color: rgb(67, 67, 67);
+	font-weight: bold;
+    font-size: 32px;
+	border: 2px;
+	border-radius: 20px;
+}</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="btnIncrease">
    <property name="geometry">
     <rect>
      <x>898</x>
@@ -176,11 +422,33 @@
      <height>268</height>
     </rect>
    </property>
-   <property name="resizeMode">
-    <enum>QQuickWidget::SizeRootObjectToView</enum>
+   <property name="styleSheet">
+    <string notr="true">QPushButton {
+	font-family: barlow;
+    color: white;
+	font-weight: bold;
+    font-size: 32px;
+	border-radius: 20px;
+	border-image: url(:/image/Path Copy.png);
+}
+
+QPushButton::pressed{
+	font-family: barlow;
+    color: white;
+	background-color: &quot;#202020&quot;;
+	font-weight: bold;
+    font-size: 32px;
+	border: 2px;
+	border-radius: 20px;
+	border-image: url(:/image/Path Copy.png);
+}
+</string>
+   </property>
+   <property name="text">
+    <string/>
    </property>
   </widget>
-  <widget class="QQuickWidget" name="qw_Decrease">
+  <widget class="QPushButton" name="btnDecrease">
    <property name="geometry">
     <rect>
      <x>898</x>
@@ -189,44 +457,33 @@
      <height>268</height>
     </rect>
    </property>
-   <property name="resizeMode">
-    <enum>QQuickWidget::SizeRootObjectToView</enum>
+   <property name="styleSheet">
+    <string notr="true">QPushButton {
+	font-family: barlow;
+    color: white;
+	font-weight: bold;
+    font-size: 32px;
+	border-radius: 20px;
+	border-image: url(:/image/Path.png);
+}
+
+QPushButton::pressed{
+	font-family: barlow;
+    color: white;
+	background-color: &quot;#202020&quot;;
+	font-weight: bold;
+    font-size: 32px;
+	border: 2px;
+	border-radius: 20px;
+	border-image: url(:/image/Path.png);
+}
+</string>
    </property>
-  </widget>
-  <widget class="QQuickWidget" name="qw_LeftFlowratePercent">
-   <property name="geometry">
-    <rect>
-     <x>46</x>
-     <y>253</y>
-     <width>400</width>
-     <height>100</height>
-    </rect>
-   </property>
-   <property name="resizeMode">
-    <enum>QQuickWidget::SizeRootObjectToView</enum>
-   </property>
-  </widget>
-  <widget class="QQuickWidget" name="qw_RightFlowratePercent">
-   <property name="geometry">
-    <rect>
-     <x>469</x>
-     <y>253</y>
-     <width>400</width>
-     <height>100</height>
-    </rect>
-   </property>
-   <property name="resizeMode">
-    <enum>QQuickWidget::SizeRootObjectToView</enum>
+   <property name="text">
+    <string/>
    </property>
   </widget>
  </widget>
- <customwidgets>
-  <customwidget>
-   <class>QQuickWidget</class>
-   <extends>QWidget</extends>
-   <header location="global">QtQuickWidgets/QQuickWidget</header>
-  </customwidget>
- </customwidgets>
  <resources/>
  <connections/>
 </ui>

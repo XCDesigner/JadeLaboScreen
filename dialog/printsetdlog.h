@@ -40,7 +40,37 @@ private slots:
 
     void buttonClicked(int);
 
-    void backupModeChange(int);
+    void on_btnIncrease_clicked();
+
+    void on_btnDecrease_clicked();
+
+    void on_btnIncrease_released();
+
+    void on_btnDecrease_released();
+
+    void on_btnLeftTemp_clicked();
+
+    void on_btnRightTemp_clicked();
+
+    void on_btnLeftFan_clicked();
+
+    void on_btnRightFan_clicked();
+
+    void on_btnLeftFlowrate_clicked();
+
+    void on_btnRightFlowrate_clicked();
+
+    void on_btnFeedrate_clicked();
+
+    void on_btnBedTemp_clicked();
+
+    void on_btnPlatformHeight_clicked();
+
+    void on_btnBackupMode_clicked();
+
+    void on_btnIncrease_pressed();
+
+    void on_btnDecrease_pressed();
 
 private:
     int getStepValue();
@@ -53,7 +83,7 @@ private:
     QTimer *m_tmr_press_check;
     QString print_mode;
 
-    QQuickWidget *pButtons[9];
+    QPushButton *pButtons[9];
     bool button_check_status[9];
 
     int16_t temp_percent[3];
@@ -67,6 +97,9 @@ private:
     int step_direction;
 
     int press_counter;
+
+    bool increase_pressed;
+    bool decrease_pressed;
 signals:
     void closeset(int );
 

@@ -29,24 +29,6 @@
     <string/>
    </property>
   </widget>
-  <widget class="QQuickWidget" name="qw_Icon">
-   <property name="geometry">
-    <rect>
-     <x>80</x>
-     <y>107</y>
-     <width>470</width>
-     <height>464</height>
-    </rect>
-   </property>
-   <property name="resizeMode">
-    <enum>QQuickWidget::SizeRootObjectToView</enum>
-   </property>
-   <property name="source">
-    <url>
-     <string>qrc:/qml/IconCheckedButton.qml</string>
-    </url>
-   </property>
-  </widget>
   <widget class="QLabel" name="label">
    <property name="geometry">
     <rect>
@@ -108,14 +90,20 @@ border: 2px solid rgb(255, 99, 11) ;</string>
     <string>Confirm</string>
    </property>
   </widget>
+  <widget class="QLabel" name="labIcon">
+   <property name="geometry">
+    <rect>
+     <x>80</x>
+     <y>107</y>
+     <width>470</width>
+     <height>464</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
  </widget>
- <customwidgets>
-  <customwidget>
-   <class>QQuickWidget</class>
-   <extends>QWidget</extends>
-   <header location="global">QtQuickWidgets/QQuickWidget</header>
-  </customwidget>
- </customwidgets>
  <resources/>
  <connections/>
 </ui>

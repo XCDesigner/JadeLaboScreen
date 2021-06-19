@@ -9,70 +9,27 @@ PrintSetDlog::PrintSetDlog(QWidget *parent) :
 
     m_tmr_press_check = new QTimer(this);
 
-    ui->qw_LeftTemp->setSource(QUrl("qrc:/qml/JLPushedButton.qml"));
-    ui->qw_LeftTemp->setClearColor(QColor(qmlColor));
+    ui->btnBackupMode->setText("Backup Mode");
 
-    ui->qw_RightTemp->setSource(QUrl("qrc:/qml/JLPushedButton.qml"));
-    ui->qw_RightTemp->setClearColor(QColor(qmlColor));
+    pButtons[0] = ui->btnLeftTemp;
+    pButtons[1] = ui->btnRightTemp;
+    pButtons[2] = ui->btnBedTemp;
+    pButtons[3] = ui->btnLeftFan;
+    pButtons[4] = ui->btnRightFan;
+    pButtons[5] = ui->btnFeedrate;
+    pButtons[6] = ui->btnPlatformHeight;
+    pButtons[7] = ui->btnLeftFlowrate;
+    pButtons[8] = ui->btnRightFlowrate;
 
-    ui->qw_BedTemp->setSource(QUrl("qrc:/qml/JLPushedButton.qml"));
-    ui->qw_BedTemp->setClearColor(QColor(qmlColor));
-
-    ui->qw_LeftFan->setSource(QUrl("qrc:/qml/JLPushedButton.qml"));
-    ui->qw_LeftFan->setClearColor(QColor(qmlColor));
-
-    ui->qw_RightFan->setSource(QUrl("qrc:/qml/JLPushedButton.qml"));
-    ui->qw_RightFan->setClearColor(QColor(qmlColor));
-
-    ui->qw_FeedRatePercent->setSource(QUrl("qrc:/qml/JLPushedButton.qml"));
-    ui->qw_FeedRatePercent->setClearColor(QColor(qmlColor));
-
-    ui->qw_LeftFlowratePercent->setSource(QUrl("qrc:/qml/JLPushedButton.qml"));
-    ui->qw_LeftFlowratePercent->setClearColor(QColor(qmlColor));
-
-    ui->qw_RightFlowratePercent->setSource(QUrl("qrc:/qml/JLPushedButton.qml"));
-    ui->qw_RightFlowratePercent->setClearColor(QColor(qmlColor));
-
-    ui->qw_PlatformHeight->setSource(QUrl("qrc:/qml/JLPushedButton.qml"));
-    ui->qw_PlatformHeight->setClearColor(QColor(qmlColor));
-
-    ui->qw_BackupMode->setSource(QUrl("qrc:/qml/JLPushedButton.qml"));
-    ui->qw_BackupMode->setClearColor(QColor(qmlColor));
-    ui->qw_BackupMode->rootObject()->setProperty("text", "Backup Mode");
-
-    ui->qw_Increase->setSource(QUrl("qrc:/qml/JLIconButton.qml"));
-    ui->qw_Increase->setClearColor(QColor(qmlColor));
-    ui->qw_Increase->rootObject()->setProperty("icon", "qrc:/image/Path Copy.png");
-    ui->qw_Increase->rootObject()->setProperty("pressIcon", "qrc:/image/Path Copy.png");
-
-    ui->qw_Decrease->setSource(QUrl("qrc:/qml/JLIconButton.qml"));
-    ui->qw_Decrease->setClearColor(QColor(qmlColor));
-    ui->qw_Decrease->rootObject()->setProperty("icon", "qrc:/image/Path.png");
-    ui->qw_Decrease->rootObject()->setProperty("pressIcon", "qrc:/image/Path.png");
-
-    pButtons[0] = ui->qw_LeftTemp;
-    pButtons[1] = ui->qw_RightTemp;
-    pButtons[2] = ui->qw_BedTemp;
-    pButtons[3] = ui->qw_LeftFan;
-    pButtons[4] = ui->qw_RightFan;
-    pButtons[5] = ui->qw_FeedRatePercent;
-    pButtons[6] = ui->qw_PlatformHeight;
-    pButtons[7] = ui->qw_LeftFlowratePercent;
-    pButtons[8] = ui->qw_RightFlowratePercent;
-
-    for(int i=0;i<9;i++) {
-        pButtons[i]->rootObject()->setProperty("index", i);
-        pButtons[i]->rootObject()->setProperty("enable", true);
-        QObject::connect(pButtons[i]->rootObject(), SIGNAL(clicked(int)), this, SLOT(buttonClicked(int)));
+    for(int i=0;i<9;i++)
+    {
+        pButtons[i]->setCheckable(true);
+        pButtons[i]->setChecked(false);
     }
+    pButtons[0]->setChecked(true);
 
-    ui->qw_BackupMode->rootObject()->setProperty("index", 10);
-    QObject::connect(ui->qw_BackupMode->rootObject(), SIGNAL(clicked(int)), this, SLOT(backupModeChange(int)));
-
-    QObject::connect(ui->qw_Increase->rootObject(), SIGNAL(press()), this, SLOT(onIncreaseClicked()));
-    QObject::connect(ui->qw_Decrease->rootObject(), SIGNAL(press()), this, SLOT(onDecreaseClicked()));
-    QObject::connect(ui->qw_Increase->rootObject(), SIGNAL(release()), this, SLOT(onIncreaseRelease()));
-    QObject::connect(ui->qw_Decrease->rootObject(), SIGNAL(release()), this, SLOT(onDecreaseRelease()));
+    decrease_pressed = false;
+    increase_pressed = false;
 }
 
 PrintSetDlog::~PrintSetDlog()
@@ -85,15 +42,15 @@ void PrintSetDlog::setPrintMode(QString PrintMode)
     print_mode = PrintMode;
     if(PrintMode == "Mix")
     {
-        ui->qw_LeftFlowratePercent->setGeometry(46, 253, 400, 100);
-        ui->qw_RightFlowratePercent->setGeometry(469, 253, 400, 100);
-        ui->qw_RightFlowratePercent->setVisible(true);
+        ui->btnLeftFlowrate->setGeometry(46, 253, 400, 100);
+        ui->btnRightFlowrate->setGeometry(469, 253, 400, 100);
+        ui->btnRightFlowrate->setVisible(true);
     }
     else
     {
-        ui->qw_LeftFlowratePercent->setGeometry(46, 253, 824, 100);
-        ui->qw_RightFlowratePercent->setGeometry(0, 0, 0, 0);
-        ui->qw_RightFlowratePercent->setVisible(false);
+        ui->btnLeftFlowrate->setGeometry(46, 253, 824, 100);
+        ui->btnRightFlowrate->setGeometry(0, 0, 0, 0);
+        ui->btnRightFlowrate->setVisible(false);
     }
 }
 
@@ -128,23 +85,23 @@ void PrintSetDlog::init(QByteArray InitData)
 
 void PrintSetDlog::initnum(QString a, QString b, QString c, QString d, QString e, QString f, QString g, QString h, QString i)
 {
-    ui->qw_LeftTemp->rootObject()->setProperty("text", QString("Left Temp / %1°C").arg(a));
-    ui->qw_RightTemp->rootObject()->setProperty("text", QString("Right Temp / %1°C").arg(b));
-    ui->qw_BedTemp->rootObject()->setProperty("text", QString("Bed Temp / %1°C").arg(c));
-    ui->qw_LeftFan->rootObject()->setProperty("text", QString("Left Fan / %1%").arg(d));
-    ui->qw_RightFan->rootObject()->setProperty("text", QString("Right Fan / %1%").arg(e));
-    ui->qw_FeedRatePercent->rootObject()->setProperty("text", QString("Feedrate / %1%").arg(f));
-    ui->qw_PlatformHeight->rootObject()->setProperty("text", QString("Platform Height / %1mm").arg(g));
+    pButtons[0]->setText(QString("Left Temp / %1°C").arg(a));
+    pButtons[1]->setText(QString("Right Temp / %1°C").arg(b));
+    pButtons[2]->setText(QString("Bed Temp / %1°C").arg(c));
+    pButtons[3]->setText(QString("Left Fan / %1%").arg(d));
+    pButtons[4]->setText(QString("Right Fan / %1%").arg(e));
+    pButtons[5]->setText(QString("Feedrate / %1%").arg(f));
+    pButtons[6]->setText(QString("Platform Height / %1mm").arg(g));
+
     if(print_mode == "Mix")
-        ui->qw_LeftFlowratePercent->rootObject()->setProperty("text", QString("Left Flowrate / %1%").arg(h));
+        pButtons[7]->setText(QString("Left Flowrate / %1%").arg(h));
     else
-        ui->qw_LeftFlowratePercent->rootObject()->setProperty("text", QString("Flowrate / %1%").arg(h));
-    ui->qw_RightFlowratePercent->rootObject()->setProperty("text", QString("Right Flowrate / %1%").arg(i));
+        pButtons[7]->setText(QString("Flowrate / %1%").arg(h));
+    pButtons[8]->setText(QString("Right Flowrate / %1%").arg(i));
 
     for(int i=0;i<9;i++)
     {
-        pButtons[i]->rootObject()->setProperty("color", "#2d2b2c");
-        pButtons[i]->rootObject()->setProperty("isPressed", "false");
+        pButtons[i]->setChecked(false);
         button_check_status[i] = false;
     }
 }
@@ -154,29 +111,17 @@ void PrintSetDlog::setXHPort(XhPort *pPort)
     m_xhPort = pPort;
 }
     
-void PrintSetDlog::backupModeChange(int Index)
-{
-    if(ui->qw_BackupMode->rootObject()->property("isPressed").toBool() == true)
-    {
-        ui->qw_BackupMode->rootObject()->setProperty("isPressed", false);
-    }
-    else
-    {
-        ui->qw_BackupMode->rootObject()->setProperty("isPressed", true);
-    }
-}
-
-void PrintSetDlog::backup(int a )
+void PrintSetDlog::backup(int a)
 {
     switch (a) {
     case 0:
-        ui->qw_BackupMode->rootObject()->setProperty("isPressed", false);
+        ui->btnBackupMode->setChecked(false);
         break;
     case 1:
-        ui->qw_BackupMode->rootObject()->setProperty("isPressed", true);
+        ui->btnBackupMode->setChecked(true);
         break;
     case 2:
-        ui->qw_BackupMode->rootObject()->setProperty("enable", false);
+        ui->btnBackupMode->setChecked(false);
         break;
     default:
         break;
@@ -186,7 +131,7 @@ void PrintSetDlog::backup(int a )
 
 void PrintSetDlog::on_pushButton_clicked()
 {
-    if(ui->qw_BackupMode->rootObject()->property("isPressed").toBool() == true)
+    if(ui->btnBackupMode->isChecked() == true)
         ret_value.append(QByteArray("Enable Backup"));
     else
         ret_value.append(QByteArray("Disable Backup"));
@@ -197,6 +142,7 @@ void PrintSetDlog::on_pushButton_clicked()
 
 void PrintSetDlog::onIncreaseClicked()
 {
+    increase_pressed = true;
     press_counter = 0;
     step_direction = 1;
     step_value = getStepValue();
@@ -208,12 +154,14 @@ void PrintSetDlog::onIncreaseClicked()
 
 void PrintSetDlog::onIncreaseRelease()
 {
+    increase_pressed = false;
     press_counter = 0;
     step_value = 0;
 }
 
 void PrintSetDlog::onDecreaseClicked()
 {
+    decrease_pressed = true;
     press_counter = 0;
     step_direction = -1;
     step_value = getStepValue();
@@ -225,13 +173,14 @@ void PrintSetDlog::onDecreaseClicked()
 
 void PrintSetDlog::onDecreaseRelease()
 {
+    decrease_pressed = false;
     press_counter = 0;
     step_value = 0;
 }
 
 void PrintSetDlog::increaseCheck()
 {
-    if(ui->qw_Increase->rootObject()->property("isPressed").toBool() == true) {
+    if(increase_pressed == true) {
         change_value = getLongPressStepValue() * step_direction;
         m_tmr_press_check->singleShot(50, this, SLOT(increaseCheck()));
         if(press_counter < 400)
@@ -245,7 +194,7 @@ void PrintSetDlog::increaseCheck()
 
 void PrintSetDlog::decreaseCheck()
 {
-    if(ui->qw_Decrease->rootObject()->property("isPressed").toBool() == true) {
+    if(decrease_pressed == true) {
         change_value = getLongPressStepValue() * step_direction;
         m_tmr_press_check->singleShot(50, this, SLOT(decreaseCheck()));
         if(press_counter < 400)
@@ -291,18 +240,12 @@ int PrintSetDlog::getLongPressStepValue()
 
 void PrintSetDlog::buttonClicked(int Index)
 {
-    bool new_status = pButtons[Index]->rootObject()->property("isPressed").toBool();
+    bool new_status = pButtons[Index]->isChecked();
+    qDebug()<<new_status;
+    UncheckAllButton();
     if(new_status == true)
-    {
-        pButtons[Index]->rootObject()->setProperty("isPressed", false);
-        button_check_status[Index] = false;
-    }
-    else
-    {
-        pButtons[Index]->rootObject()->setProperty("isPressed", true);
-        button_check_status[Index] = true;
-        updateButtonCheckStatus(Index);
-    }
+        pButtons[Index]->setChecked(true);
+    button_check_status[Index] = new_status;
 }
 
 void PrintSetDlog::UncheckAllButton()
@@ -310,15 +253,14 @@ void PrintSetDlog::UncheckAllButton()
     for(int i=0;i<9;i++)
     {
         button_check_status[i] = false;
-        pButtons[i]->rootObject()->setProperty("isPressed", false);
+        pButtons[i]->setChecked(false);
     }
 }
 
 void PrintSetDlog::updateButtonCheckStatus(int Index)
 {
     UncheckAllButton();
-    pButtons[Index]->rootObject()->setProperty("isPressed", true);
-    button_check_status[Index] = true;
+    pButtons[Index]->setChecked(true);
 }
 
 void PrintSetDlog::sendSetting()
@@ -336,9 +278,9 @@ void PrintSetDlog::sendSetting()
         m_xhPort->setHeattingUnit(0, temp_percent[0]);
         m_xhPort->setHeattingUnit(1, temp_percent[1]);
         m_xhPort->setHeattingUnit(2, temp_percent[2]);
-        ui->qw_LeftTemp->rootObject()->setProperty("text", QString("Left Temp / %1°C").arg(temp_percent[0]));
-        ui->qw_RightTemp->rootObject()->setProperty("text", QString("Right Temp / %1°C").arg(temp_percent[1]));
-        ui->qw_BedTemp->rootObject()->setProperty("text", QString("Bed Temp / %1°C").arg(temp_percent[2]));
+        pButtons[0]->setText(QString("Left Temp / %1°C").arg(temp_percent[0]));
+        pButtons[1]->setText(QString("Right Temp / %1°C").arg(temp_percent[1]));
+        pButtons[2]->setText(QString("Bed Temp / %1°C").arg(temp_percent[2]));
     }
     else if((button_check_status[3] == true) || (button_check_status[4] == true))
     {
@@ -352,8 +294,8 @@ void PrintSetDlog::sendSetting()
         }
         m_xhPort->setPrintFanPercentage(0, fan_percent[0]);
         m_xhPort->setPrintFanPercentage(1, fan_percent[1]);
-        ui->qw_LeftFan->rootObject()->setProperty("text", QString("Left Fan / %1%").arg(fan_percent[0]));
-        ui->qw_RightFan->rootObject()->setProperty("text", QString("Right Fan / %1%").arg(fan_percent[1]));
+        pButtons[3]->setText(QString("Left Fan / %1%").arg(fan_percent[0]));
+        pButtons[4]->setText(QString("Right Fan / %1%").arg(fan_percent[1]));
     }
     else if(button_check_status[5] == true)
     {
@@ -363,7 +305,7 @@ void PrintSetDlog::sendSetting()
         else if(feedrate_percent < 10)
             feedrate_percent = 10;
         m_xhPort->setPrintSpeedPercentage(feedrate_percent);
-        ui->qw_FeedRatePercent->rootObject()->setProperty("text", QString("Feedrate / %1%").arg(feedrate_percent));
+        ui->btnFeedrate->setText(QString("Feedrate / %1%").arg(feedrate_percent));
     }
     else if(button_check_status[6] == true)
     {
@@ -375,8 +317,7 @@ void PrintSetDlog::sendSetting()
         char dis[20];
         sprintf(dis, "%0.2f", platform_height / 1000.0f);
         m_xhPort->setPrintPlatformOffset(platform_height);
-        // QString g = QString("%1.%2").arg(platform_height/1000).arg((platform_height % 1000) / 10);
-        ui->qw_PlatformHeight->rootObject()->setProperty("text", QString("Platform Height / %1mm").arg(dis));
+        pButtons[6]->setText(QString("Platform Height / %1mm").arg(dis));
     }
     else if((button_check_status[7] == true) || (button_check_status[8] == true))
     {
@@ -392,17 +333,94 @@ void PrintSetDlog::sendSetting()
         {
             m_xhPort->setFlowratePercentage(0, flowrate_percent[0]);
             if(print_mode == "Mix")
-                ui->qw_LeftFlowratePercent->rootObject()->setProperty("text", QString("Left Flowrate / %1%").arg(flowrate_percent[0]));
+                pButtons[7]->setText(QString("Left Flowrate / %1%").arg(flowrate_percent[0]));
             else
-                ui->qw_LeftFlowratePercent->rootObject()->setProperty("text", QString("Flowrate / %1%").arg(flowrate_percent[0]));
+                pButtons[7]->setText(QString("Left Flowrate / %1%").arg(QString("Flowrate / %1%").arg(flowrate_percent[0])));
         }
         if(button_check_status[8] == true)
         {
             m_xhPort->setFlowratePercentage(1, flowrate_percent[1]);
-            ui->qw_RightFlowratePercent->rootObject()->setProperty("text", QString("Right Flowrate / %1%").arg(flowrate_percent[1]));
+            pButtons[8]->setText(QString("Flowrate / %1%").arg(QString("Right Flowrate / %1%").arg(flowrate_percent[1])));
         }
     }
 }
 
+void PrintSetDlog::on_btnIncrease_clicked()
+{
 
+}
 
+void PrintSetDlog::on_btnDecrease_clicked()
+{
+
+}
+
+void PrintSetDlog::on_btnIncrease_released()
+{
+    onIncreaseRelease();
+}
+
+void PrintSetDlog::on_btnDecrease_released()
+{
+    onDecreaseRelease();
+}
+
+void PrintSetDlog::on_btnLeftTemp_clicked()
+{
+    buttonClicked(0);
+}
+
+void PrintSetDlog::on_btnRightTemp_clicked()
+{
+    buttonClicked(1);
+}
+
+void PrintSetDlog::on_btnLeftFan_clicked()
+{
+    buttonClicked(3);
+}
+
+void PrintSetDlog::on_btnRightFan_clicked()
+{
+    buttonClicked(4);
+}
+
+void PrintSetDlog::on_btnLeftFlowrate_clicked()
+{
+    buttonClicked(7);
+}
+
+void PrintSetDlog::on_btnRightFlowrate_clicked()
+{
+    buttonClicked(8);
+}
+
+void PrintSetDlog::on_btnFeedrate_clicked()
+{
+    buttonClicked(5);
+}
+
+void PrintSetDlog::on_btnBedTemp_clicked()
+{
+    buttonClicked(2);
+}
+
+void PrintSetDlog::on_btnPlatformHeight_clicked()
+{
+    buttonClicked(6);
+}
+
+void PrintSetDlog::on_btnBackupMode_clicked()
+{
+
+}
+
+void PrintSetDlog::on_btnIncrease_pressed()
+{
+    onIncreaseClicked();
+}
+
+void PrintSetDlog::on_btnDecrease_pressed()
+{
+    onDecreaseClicked();
+}

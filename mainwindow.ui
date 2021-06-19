@@ -70,7 +70,7 @@ font-family: barlow;
 }</string>
     </property>
     <property name="currentIndex">
-     <number>15</number>
+     <number>54</number>
     </property>
     <widget class="QWidget" name="page_12">
      <widget class="QLabel" name="label_14">
@@ -13281,24 +13281,6 @@ border: 2px solid rgba(255, 99, 11, 255);</string>
       <string>color:white;
 font-size:22px</string>
      </property>
-     <widget class="QQuickWidget" name="wqVersion">
-      <property name="geometry">
-       <rect>
-        <x>70</x>
-        <y>80</y>
-        <width>581</width>
-        <height>200</height>
-       </rect>
-      </property>
-      <property name="resizeMode">
-       <enum>QQuickWidget::SizeRootObjectToView</enum>
-      </property>
-      <property name="source">
-       <url>
-        <string>qrc:/qml/JLPushedButton.qml</string>
-       </url>
-      </property>
-     </widget>
      <widget class="QPushButton" name="pushButton_2">
       <property name="geometry">
        <rect>
@@ -13330,24 +13312,6 @@ font-size: 32px;</string>
       </property>
       <property name="text">
        <string>PushButton</string>
-      </property>
-     </widget>
-     <widget class="QQuickWidget" name="wqVersionFirmware">
-      <property name="geometry">
-       <rect>
-        <x>740</x>
-        <y>80</y>
-        <width>581</width>
-        <height>200</height>
-       </rect>
-      </property>
-      <property name="resizeMode">
-       <enum>QQuickWidget::SizeRootObjectToView</enum>
-      </property>
-      <property name="source">
-       <url>
-        <string>qrc:/qml/JLPushedButton.qml</string>
-       </url>
       </property>
      </widget>
      <widget class="QLabel" name="label">
@@ -13423,6 +13387,58 @@ font-size:22px</string>
       </property>
       <property name="text">
        <string>TextLabel</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="labFirmwareVersion">
+      <property name="geometry">
+       <rect>
+        <x>90</x>
+        <y>90</y>
+        <width>431</width>
+        <height>121</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QLabel{
+	fotn-size: 28px;
+	font-family: barlow;
+	color: white;
+}</string>
+      </property>
+      <property name="text">
+       <string>TextLabel</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+      </property>
+      <property name="wordWrap">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QLabel" name="labScreenVersion">
+      <property name="geometry">
+       <rect>
+        <x>620</x>
+        <y>100</y>
+        <width>431</width>
+        <height>121</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QLabel{
+	fotn-size: 28px;
+	font-family: barlow;
+	color: white;
+}</string>
+      </property>
+      <property name="text">
+       <string>TextLabel</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+      </property>
+      <property name="wordWrap">
+       <bool>true</bool>
       </property>
      </widget>
     </widget>

@@ -5,7 +5,6 @@
 
 void MainWindow::AboutPageInit()
 {
-    QObject::connect(ui->wqVersion->rootObject(), SIGNAL(clicked(int)), this, SLOT(on_AboutReturn(int)));
     AddListen(QByteArray(QByteArray::fromHex("0B")), &MainWindow::DebugCallback, true);
     QTimer::singleShot(500, this, SLOT(aboutTimerTester()));
 }
@@ -15,20 +14,15 @@ void MainWindow::on_pushButton_126_clicked()
     ui->stackedWidget->setCurrentWidget(ui->page_About);
     char version[30];
     sprintf(version, "Ver:%s-%s", __DATE__, __TIME__);
-    ui->wqVersion->rootObject()->setProperty("text", version);
+    ui->labScreenVersion->setText(version);
     m_port->getFirmwareVersion();
     AddListen(QByteArray(QByteArray::fromHex("0503")), &MainWindow::onFirmwareVersionReceived, false);
-}
-
-void MainWindow::on_AboutReturn(int Index)
-{
-    ui->stackedWidget->setCurrentWidget(ui->page_GetStart);
 }
 
 void MainWindow::onFirmwareVersionReceived(QByteArray Datas)
 {
     QString ver = QString(Datas.mid(3, -1));
-    ui->wqVersionFirmware->rootObject()->setProperty("text", ver);
+    ui->labFirmwareVersion->setText(ver);
 }
 
 void MainWindow::aboutTimerTester()
@@ -92,13 +86,7 @@ void MainWindow::DebugCallback(QByteArray Data)
 
 void MainWindow::on_pushButton_3_clicked()
 {
-    qDebug()<<"Start";
-    test_counter = 0;
-    for(uint i=0;i<sizeof(test_buffer);i++)
-    {
-        test_buffer[i] = 0;
-    }
-    m_port->SendTest(QByteArray::fromRawData((char*)test_buffer, sizeof(test_buffer)));
+    ui->stackedWidget->setCurrentWidget(ui->page_GetStart);
 }
 
 void MainWindow::on_pushButton_2_clicked()
