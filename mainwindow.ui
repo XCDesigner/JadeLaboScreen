@@ -13400,7 +13400,7 @@ font-size:22px</string>
       </property>
       <property name="styleSheet">
        <string notr="true">QLabel{
-	fotn-size: 28px;
+	font-size: 28px;
 	font-family: barlow;
 	color: white;
 }</string>
@@ -13426,7 +13426,7 @@ font-size:22px</string>
       </property>
       <property name="styleSheet">
        <string notr="true">QLabel{
-	fotn-size: 28px;
+	font-size: 28px;
 	font-family: barlow;
 	color: white;
 }</string>
