@@ -16,7 +16,15 @@ myListWidgetItem::~myListWidgetItem()
 
 void myListWidgetItem::m_addItem(const QString &fileName, QString filePath)
 {
-    ui->pushButton_2->setText(fileName);
+    QFont font;
+    font.setBold(true);
+    font.setFamily("barlow");
+    font.setPixelSize(36);
+    QFontMetrics font_metrics(font);
+    QString cut_filename = font_metrics.elidedText(fileName, Qt::TextElideMode::ElideMiddle, 950);
+
+
+    ui->pushButton_2->setText(cut_filename);
     m_filePath = filePath;
     m_fileName = fileName;
 }

@@ -3,7 +3,7 @@
 
 void MainWindow::preparePrintPageLoad()
 {
-    ui->labPreparePrintControl->setSettingEnable();
+    ui->labPreparePrintControl->setSettingDisable();
     ui->labPreparePrintControl->setStopEnable();
     QTimer::singleShot(4000, this, SLOT(preparePrintTempChecking()));
     print_start_time.setDate(QDate(2021, 1, 1));

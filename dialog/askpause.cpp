@@ -41,12 +41,16 @@ void askPause::init(QByteArray InitData)
                 ui->btnDisableRight->setVisible(false);
                 ui->btnCancel->setGeometry(322, 364, 634, 121);
             }
+            else {
+                ui->btnDisableLeft->setVisible(true);
+                ui->btnDisableRight->setVisible(true);
+            }
             ui->btnDisableLeft->setChecked(last_left_extruder_enable);
             ui->btnDisableRight->setChecked(last_right_extruder_enable);
         }
         else{
-            ui->btnDisableLeft->setVisible(true);
-            ui->btnDisableRight->setVisible(true);
+            ui->btnDisableLeft->setVisible(false);
+            ui->btnDisableRight->setVisible(false);
             ui->btnCancel->setGeometry(322, 535, 634, 121);
             last_left_extruder_enable = true;
             last_right_extruder_enable = true;

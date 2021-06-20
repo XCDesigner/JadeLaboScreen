@@ -30,12 +30,14 @@
 	background-color: rgba(0,0,0,0);
 	background-image: url(&quot;:/image/setting.png&quot;);
 	border-radius: 0px;
+	border-width: 0px;
 }
 
 QPushButton::disabled {
 	background-color: rgba(0,0,0,0);
 	background-image: url(&quot;:/image/setting_disabled.png&quot;);
 	border-radius: 0px;
+	border-width: 0px;
 }</string>
    </property>
    <property name="text">

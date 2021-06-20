@@ -69,7 +69,7 @@ QByteArray JLProtocal::parseDataV30(QByteArray SourceData, uint32_t *DataRead)
         }
     }
 
-    while(SourceData.size() > 8) {
+    while(SourceData.size() > 10) {
         if(SourceData.at(0) != header[0])
         {
             data_read++;
@@ -167,7 +167,7 @@ QByteArray JLProtocal::parseDataV31(QByteArray SourceData, uint32_t *DataRead)
         }
     }
 
-    while(SourceData.size() > 10) {
+    while(SourceData.size() > 12) {
         if(SourceData.at(0) != header[0])
         {
             data_read++;

@@ -35,11 +35,13 @@ void MainWindow::wifiConnectEvent(QList<QByteArray> Data)
     {
         QString ip = Data.at(1);
         int port = Data.at(2).toInt();
+        wifiControlerInit();
         m_tcp_controler->connectServer(ip, port);
     }
     else if(command == "Disconnect Request")
     {
-        m_tcp_controler->disconnectServer();
+        if(m_tcp_controler != nullptr)
+            m_tcp_controler->disconnectServer();
     }
 }
 

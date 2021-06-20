@@ -67,7 +67,8 @@ Rectangle {
         id: icbLight
         width: 30
         height: 43
-        checked: true
+        checked: false
+        canBeChecked: true
         anchors { right: icbUdisk.left; margins: 10}
         icon: "qrc:/image/Light.png"
         pressedIcon: "qrc:/image/light_on.png"

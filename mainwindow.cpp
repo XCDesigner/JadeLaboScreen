@@ -82,15 +82,26 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->listWidget->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     ui->listWidget->setHorizontalScrollMode(QListWidget::QAbstractItemView::ScrollPerPixel);
     ui->listWidget->setVerticalScrollMode(QListWidget::ScrollPerItem);
-    QScroller::grabGesture(ui->listWidget, QScroller::LeftMouseButtonGesture);
+    QScroller::grabGesture(ui->listWidget->viewport(),QScroller::LeftMouseButtonGesture);
+    QScroller *scroller = QScroller::scroller(ui->listWidget->viewport());
+    QScrollerProperties scroller_properties = scroller->scrollerProperties();
+    scroller_properties.setScrollMetric(QScrollerProperties::DragVelocitySmoothingFactor,0.3);
+    scroller_properties.setScrollMetric(QScrollerProperties::FrameRate,QScrollerProperties::Fps60);
+    scroller->setScrollerProperties(scroller_properties);
 
     ui->listWidget_2->setViewMode(QListView::ListMode);
     ui->listWidget_2->setFlow(QListView::TopToBottom);
     ui->listWidget_2->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     ui->listWidget_2->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     ui->listWidget_2->setHorizontalScrollMode(QListWidget::ScrollPerPixel);
-    ui->listWidget_2->setVerticalScrollMode(QListWidget::ScrollPerItem);
-    QScroller::grabGesture(ui->listWidget_2, QScroller::LeftMouseButtonGesture);
+    ui->listWidget_2->setVerticalScrollMode(QListWidget::ScrollPerPixel);
+    QScroller::grabGesture(ui->listWidget_2->viewport(),QScroller::LeftMouseButtonGesture);
+    scroller = QScroller::scroller(ui->listWidget_2->viewport());
+    scroller_properties = scroller->scrollerProperties();
+    scroller_properties.setScrollMetric(QScrollerProperties::DragVelocitySmoothingFactor,0.3);
+    scroller_properties.setScrollMetric(QScrollerProperties::FrameRate,QScrollerProperties::Fps60);
+    scroller->setScrollerProperties(scroller_properties);
+
 
     ui->listWidget_3->setViewMode(QListView::ListMode);
     ui->listWidget_3->setFlow(QListView::TopToBottom);
@@ -98,6 +109,11 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->listWidget_3->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     ui->listWidget_3->setHorizontalScrollMode(QListWidget::QAbstractItemView::ScrollPerPixel);
     QScroller::grabGesture(ui->listWidget_3, QScroller::LeftMouseButtonGesture);
+    scroller = QScroller::scroller(ui->listWidget_3->viewport());
+    scroller_properties = scroller->scrollerProperties();
+    scroller_properties.setScrollMetric(QScrollerProperties::DragVelocitySmoothingFactor,0.3);
+    scroller_properties.setScrollMetric(QScrollerProperties::FrameRate,QScrollerProperties::Fps60);
+    scroller->setScrollerProperties(scroller_properties);
 
     /*检测U盘*/
     QTimer::singleShot(500, this, SLOT(fileList()));
@@ -213,19 +229,19 @@ MainWindow::MainWindow(QWidget *parent) :
 
     AboutPageInit();
 
-    // // #if defined(XH_WIN)
-    // wifiPageInit();
-    // // #endif
+    #if defined(XH_WIN)
+    wifiPageInit();
+    #endif
 
-     TempControlInit();
-     ExtrudeControlInit();
-     platformCalibratePageinit();
-     xyCalibratePageinit();
-     nozzleCalibratePageinit();
-     changeHotendPageInit();
-     LightSettingPageInit();
-     JodMovePageInit();
-     changeFilamentPageInit();
+    TempControlInit();
+    ExtrudeControlInit();
+    platformCalibratePageinit();
+    xyCalibratePageinit();
+    nozzleCalibratePageinit();
+    changeHotendPageInit();
+    LightSettingPageInit();
+    JodMovePageInit();
+    changeFilamentPageInit();
 
     // pMovie = new QMovie(this);
     // pMovie->setFileName("/usr/share/3d_printer/test.gif");
@@ -962,7 +978,7 @@ void MainWindow::on_pushButton_340_clicked()
                                         start_udhcpc();
                                         ui->stackedWidget->setCurrentWidget(ui->page_WifiConnect_2);
                                         setWinPic(true);
-                                        wifiControlerInit();
+                                        // wifiControlerInit();
                                         udpControl = new XhControlR818(this);
                                         QObject::connect(udpControl,&XhControlR818::signalsAskCondition,this,&MainWindow::getCondition);
                                         QObject::connect(this,&MainWindow::sendCondition,udpControl,&XhControlR818::slotAskCondition);
@@ -1113,7 +1129,7 @@ void MainWindow::on_pushButton_689_clicked()
         start_udhcpc();
         ui->stackedWidget->setCurrentWidget(ui->page_GetStart);
         setWinPic(true);
-        wifiControlerInit();
+        // wifiControlerInit();
 
         QFile wifiConnect(localWIFI);
         QTextStream textStream(&wifiConnect);
@@ -1257,7 +1273,7 @@ void MainWindow::onMessageTest(uint8_t Command, uint8_t SubCode, QByteArray Data
 
 void MainWindow::on_pushButton_clicked()
 {
-    ui->label_5->setText("adskjhfkjd");
+
 }
 
 void MainWindow::on_pushButton_272_clicked()

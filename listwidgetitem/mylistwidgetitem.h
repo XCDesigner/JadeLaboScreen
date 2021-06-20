@@ -3,6 +3,8 @@
 
 #include <QWidget>
 #include <QString>
+#include <QFont>
+#include <QFontMetrics>
 
 namespace Ui {
 class myListWidgetItem;

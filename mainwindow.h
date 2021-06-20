@@ -28,6 +28,8 @@
 #include <QMovie>
 #include <QTcpSocket>
 #include <QMovie>
+#include <QEvent>
+#include <QMouseEvent>
 #include "CMOD/xhpage.h"
 #include "CMOD/xhEvent.h"
 #include "CMOD/xhport.h"
@@ -872,6 +874,8 @@ private:
     void MovementFaultDetected();
 
     void onPreparePirntComplete(QByteArray);
+
+    bool eventFilter(QObject *watched, QEvent *event) override;
 
 };
 

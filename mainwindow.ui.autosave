@@ -70,7 +70,7 @@ font-family: barlow;
 }</string>
     </property>
     <property name="currentIndex">
-     <number>8</number>
+     <number>4</number>
     </property>
     <widget class="QWidget" name="page_12">
      <widget class="QLabel" name="label_14">
@@ -13670,6 +13670,11 @@ font-weight: bold;</string>
    <header location="global">QtQuickWidgets/QQuickWidget</header>
   </customwidget>
   <customwidget>
+   <class>JLHeatingUnit</class>
+   <extends>QLabel</extends>
+   <header location="global">customwidget/jlheatingunit.h</header>
+  </customwidget>
+  <customwidget>
    <class>JLOnOffSwitch</class>
    <extends>QLabel</extends>
    <header location="global">customwidget/JLWidgets.h</header>
@@ -13708,11 +13713,6 @@ font-weight: bold;</string>
    <class>JLExtruderSelect</class>
    <extends>QLabel</extends>
    <header location="global">customwidget/jlextruderselect.h</header>
-  </customwidget>
-  <customwidget>
-   <class>JLHeatingUnit</class>
-   <extends>QLabel</extends>
-   <header location="global">customwidget/jlheatingunit.h</header>
   </customwidget>
   <customwidget>
    <class>JLScrollLabel</class>

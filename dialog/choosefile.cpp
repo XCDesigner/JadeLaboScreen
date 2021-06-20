@@ -20,6 +20,13 @@ void chooseFile::show()
 
 void chooseFile::init(myListWidgetItem* pItem)
 {
+    QFont font;
+    font.setBold(true);
+    font.setFamily("barlow");
+    font.setPixelSize(36);
+    QFontMetrics font_metrics(font);
+    QString cut_filename = font_metrics.elidedText(pItem->m_fileName, Qt::TextElideMode::ElideMiddle, 850);
+
     ui->label_2->setText(pItem->m_fileName + "?");
     ui->label_2->setAlignment(Qt::AlignCenter);
     m_fileName = pItem->m_fileName;

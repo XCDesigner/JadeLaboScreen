@@ -42,7 +42,7 @@ bool TcpControler::connectServer(QString IP, int Port)
     {
         qDebug()<<"TCP Connect success";
         QObject::connect(this, SIGNAL(sigDataParsed(QByteArray)), this, SLOT(DataProcess(QByteArray)), Qt::QueuedConnection);
-        ((QTcpSocket*)p_Socket)->write("Hello");
+        // ((QTcpSocket*)p_Socket)->write("Hello");
     }
     return ret;
 }
