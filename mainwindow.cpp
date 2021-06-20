@@ -229,9 +229,9 @@ MainWindow::MainWindow(QWidget *parent) :
 
     AboutPageInit();
 
-    #if defined(XH_WIN)
+    // #if defined(XH_WIN)
     wifiPageInit();
-    #endif
+    // #endif
 
     TempControlInit();
     ExtrudeControlInit();
