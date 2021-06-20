@@ -312,7 +312,7 @@ void XhPage::sendfile(quint32 offset)
         if(!m_file->open(QIODevice::ReadOnly)) {
             qDebug()<<"File open fail!!";
             m_file->close();
-            delete m_file;
+            delete m_file
             return;
         }
     }

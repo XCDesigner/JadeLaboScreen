@@ -63,7 +63,10 @@ void MainWindow::preparePrintTempChecking()
                 offset.append(1, int_offset >> 8);
                 offset.append(1, int_offset >> 16);
                 offset.append(1, int_offset >> 24);
-                m_port->getXhPage()->setPrintFile(print_desc.FileName);
+                if(m_port->getXhPage()->setPrintFile(print_desc.FileName) != true)
+                {
+                    qDebug()<<"Set print file fail!";
+                }
                 qDebug()<<"StartPrint:" << print_desc.ParsedMode;
                 // Direct mode contains "Direct" "Origin-Mirror" "Origin-Duplicate" "Mix" "Unsupport"
                 if(print_desc.Mode == "Direct")
