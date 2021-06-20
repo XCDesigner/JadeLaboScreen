@@ -245,8 +245,7 @@ void XhPort::setRGBLight(int R, int G, int B)
     s.append(1, R);
     s.append(1, G);
     s.append(1, B);
-    QByteArray buff = m_package->groupPage(s);
-    m_serial->write(buff);
+    m_serial->writeProtocalData(s);
 }
 
 /**
@@ -261,8 +260,7 @@ void XhPort::setLightOnOff(bool OnOff)
         s.append(1, 1);
     else
         s.append(1, 0);
-    QByteArray buff = m_package->groupPage(s);
-    m_serial->write(buff);
+    m_serial->writeProtocalData(s);
 }
 
 /**
@@ -277,8 +275,7 @@ void XhPort::setStepperOnOff(bool OnOff)
         s.append(1, 1);
     else
         s.append(1, 0);
-    QByteArray buff = m_package->groupPage(s);
-    m_serial->write(buff);
+    m_serial->writeProtocalData(s);
 }
 
 /**
@@ -293,8 +290,7 @@ void XhPort::setHeattingUnit(int Index, int Temp)
     s.append(1, Index);
     s.append(1, (Temp));
     s.append(1, (Temp >> 8));
-    QByteArray buff = m_package->groupPage(s);
-    m_serial->write(buff);
+    m_serial->writeProtocalData(s);
 }
 
 /**
