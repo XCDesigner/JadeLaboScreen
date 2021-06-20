@@ -345,16 +345,6 @@ void PrintSetDlog::sendSetting()
     }
 }
 
-void PrintSetDlog::on_btnIncrease_clicked()
-{
-
-}
-
-void PrintSetDlog::on_btnDecrease_clicked()
-{
-
-}
-
 void PrintSetDlog::on_btnIncrease_released()
 {
     onIncreaseRelease();

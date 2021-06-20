@@ -31,6 +31,7 @@
 	background-image: url(&quot;:/image/setting.png&quot;);
 	border-radius: 0px;
 	border-width: 0px;
+	outline:none;
 }
 
 QPushButton::disabled {
@@ -38,6 +39,7 @@ QPushButton::disabled {
 	background-image: url(&quot;:/image/setting_disabled.png&quot;);
 	border-radius: 0px;
 	border-width: 0px;
+	outline:none;
 }</string>
    </property>
    <property name="text">
@@ -58,12 +60,14 @@ QPushButton::disabled {
 	background-color: rgba(0,0,0,0);
 	background-image: url(&quot;:/image/stop.png&quot;);
 	border-radius: 0px;
+	outline:none;
 }
 
 QPushButton::disabled {
 	background-color: rgba(0,0,0,0);
 	background-image: url(&quot;:/image/stop_disabled.png&quot;);
 	border-radius: 0px;
+	outline:none;
 }</string>
    </property>
    <property name="text">
@@ -83,13 +87,15 @@ QPushButton::disabled {
     <string notr="true">QPushButton {
 	background-color: rgba(0,0,0,0);
 	background-image: url(&quot;:/image/pause.png&quot;);
-	border-radius: 0px
+	border-radius: 0px;
+	outline:none;
 }
 
 QPushButton::disabled {
 	background-color: rgba(0,0,0,0);
 	background-image: url(&quot;:/image/pause_disabled.png&quot;);
 	border-radius: 0px;
+	outline:none;
 }</string>
    </property>
    <property name="text">

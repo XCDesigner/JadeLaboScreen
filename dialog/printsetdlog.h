@@ -40,10 +40,6 @@ private slots:
 
     void buttonClicked(int);
 
-    void on_btnIncrease_clicked();
-
-    void on_btnDecrease_clicked();
-
     void on_btnIncrease_released();
 
     void on_btnDecrease_released();
