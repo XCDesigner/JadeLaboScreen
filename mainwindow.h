@@ -818,6 +818,9 @@ private slots:
 
     void on_pushButton_4_clicked();
 
+signals:
+    void sendCondition(QByteArray);
+
 private:
     void romClean(int fileSize);
 
