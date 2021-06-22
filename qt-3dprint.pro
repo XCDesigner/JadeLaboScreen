@@ -13,11 +13,17 @@ greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 TARGET = qt-3dprint
 TEMPLATE = app
 
+win32:LIBS += -lOpengl32 \
+              -lglu32
+else:unix:LIBS += -lglut \
+                  -lGLU
+
 # The following define makes your compiler emit warnings if you use
 # any feature of Qt which has been marked as deprecated (the exact warnings
 # depend on your compiler). Please consult the documentation of the
 # deprecated API in order to know how to port your code away from it.
-DEFINES += QT_DEPRECATED_WARNINGS XH_WIN XH_VIS
+win32:DEFINES += QT_DEPRECATED_WARNINGS XH_WIN XH_VIS
+else:unix:DEFINES += QT_DEPRECATED_WARNINGS XH_LINUX XH_VIS
 QMAKE_CXXFLAGS += -g
 
 # You can also make your code fail to compile if you use deprecated APIs.
@@ -40,6 +46,7 @@ SOURCES += \
     CMOD/xhcontrolr818.cpp \
     CMOD/xhpage.cpp \
     CMOD/xhport.cpp \
+    customwidget/jl3dviewer.cpp \
     customwidget/jlbutton.cpp \
     customwidget/jlcontrolbox.cpp \
     customwidget/jlextruderselect.cpp \
@@ -125,6 +132,7 @@ HEADERS += \
     CMOD/xhport.h \
     customTypes.h \
     customwidget/JLWidgets.h \
+    customwidget/jl3dviewer.h \
     customwidget/jlbutton.h \
     customwidget/jlcontrolbox.h \
     customwidget/jlextruderselect.h \
@@ -173,6 +181,7 @@ HEADERS += \
 
 
 FORMS += \
+    customwidget/jl3dviewer.ui \
     customwidget/jlbutton.ui \
     customwidget/jlcontrolbox.ui \
     customwidget/jlextruderselect.ui \
