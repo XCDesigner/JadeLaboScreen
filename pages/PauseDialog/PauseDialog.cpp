@@ -20,7 +20,6 @@ void MainWindow::printStop()
 {
     m_port->stopPrint();
     m_printsec->stop();
-    m_time->setHMS(0,0,0);
     changePageOnStatus(QByteArray::fromHex("00"), ui->page_GetStart);
 }
 

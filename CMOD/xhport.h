@@ -32,14 +32,10 @@ public:
     void isXYHeating();//是否在加热？*
     void XYAdjust();//校准XY轴
 
-    /**********FILAMENT**********/
-    void lup();
-    void ldown();
-    void rup();
-    void rdown();
-
     void ExtruderMotion(uint8_t Index, int32_t Distance);
     void prepareChangeFilament();
+    void UnloadFilament(uint8_t Index);
+    void LoadFilament(uint8_t Index) ;
 
     /**********PRINT IDER**********/
     QByteArray startPrint(QString);
@@ -132,7 +128,19 @@ public:
     void trigFILSample();
     void getFILValue();
 
+    bool setPrintFile(QString);
+    void sendFile(uint32_t Offset);
+    uint32_t getPrintFileSize();
+    void closeFile();
+
     void SendTest(QByteArray Datas);
+
+private:
+    void lup();
+    void ldown();
+    void rup();
+    void rdown();
+
 private:
     // QSerialPort *m_serial;
     JLSerialPort *m_serial;
@@ -141,6 +149,8 @@ private:
     QByteArray ReceiveBuff;
 
     QTimer *portTimer;//专门用于测试通讯串口的计时器
+    QFile *print_file;
+    QString thisFilePath;
 
 signals:
     void firstTestResult(bool ,bool ,bool ,bool ,bool );

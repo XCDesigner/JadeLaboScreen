@@ -53,76 +53,6 @@ void MainWindow::on_pushButton_176_clicked()
     ui->stackedWidget->setCurrentWidget(ui->page_ChangeHotend_0);
 }
 
-void MainWindow::onChangeHotend_btnClick_0(int) 
-{
-    ui->stackedWidget->setCurrentWidget(ui->page_ChangeHotend_1);
-}
-
-void MainWindow::onChangeHotend_btnClick_1(int) 
-{
-    ui->stackedWidget->setCurrentWidget(ui->page_ChangeHotend_1);
-}
-
-void MainWindow::onChangeHotend_btnClick_2(int) 
-{
-    ui->stackedWidget->setCurrentWidget(ui->page_ChangeHotend_0);
-}
-
-void MainWindow::onChangeHotend_btnClick_3(int) 
-{
-    ui->stackedWidget->setCurrentWidget(ui->page_ChangeHotend_2);
-}
-
-void MainWindow::onChangeHotend_btnClick_4(int) 
-{
-    ui->stackedWidget->setCurrentWidget(ui->page_ChangeHotend_1);
-}
-
-void MainWindow::onChangeHotend_btnClick_5(int) 
-{
-    ui->stackedWidget->setCurrentWidget(ui->page_ChangeHotend_3);
-}
-
-void MainWindow::onChangeHotend_btnClick_6(int) 
-{
-    ui->stackedWidget->setCurrentWidget(ui->page_ChangeHotend_2);
-}
-
-void MainWindow::onChangeHotend_btnClick_7(int) 
-{
-    ui->stackedWidget->setCurrentWidget(ui->page_ChangeHotend_5);
-}
-
-void MainWindow::onChangeHotend_btnClick_8(int) 
-{
-    ui->stackedWidget->setCurrentWidget(ui->page_ChangeHotend_3);
-}
-
-void MainWindow::onChangeHotend_btnClick_9(int) 
-{
-    ui->stackedWidget->setCurrentWidget(ui->page_ChangeHotend_6);
-}
-
-void MainWindow::onChangeHotend_btnClick_10(int) 
-{
-    ui->stackedWidget->setCurrentWidget(ui->page_ChangeHotend_5);
-}
-
-void MainWindow::onChangeHotend_btnClick_11(int) 
-{
-    ui->stackedWidget->setCurrentWidget(ui->page_ChangeHotend_7);
-}
-
-void MainWindow::onChangeHotend_btnClick_12(int) 
-{
-    ui->stackedWidget->setCurrentWidget(ui->page_Tools);
-}
-
-void MainWindow::onChangeHotend_btnClick_13(int) 
-{
-    ui->stackedWidget->setCurrentWidget(ui->page_Calibration);
-}
-
 void MainWindow::changeHotendLeftSetTemp()
 {
     pdlg_choose_extruder_temp = new ChooseExtruderTemp();
@@ -152,12 +82,12 @@ void MainWindow::changeHotendSetTemp()
 
 void MainWindow::changeHotendLeftExtrude()
 {
-    m_port->ldown();
+    m_port->LoadFilament(0);
 }
 
 void MainWindow::changeHotendLeftRetract()
 {
-    m_port->lup();
+    m_port->UnloadFilament(0);
 }
 
 void MainWindow::changeHotendRightSetTemp()
@@ -173,11 +103,11 @@ void MainWindow::changeHotendRightSetTemp()
 
 void MainWindow::changeHotendRightExtrude()
 {
-    m_port->rdown();
+    m_port->LoadFilament(1);
 }
 
 void MainWindow::changeHotendRightRetract()
 {
-    m_port->rup();
+    m_port->UnloadFilament(1);
 }
 

@@ -87,12 +87,6 @@ void XhPort::rdown()
     m_serial->write(buff);
 }
 
-QByteArray XhPort::startPrint(QString m_filePath)
-{
-    QByteArray buff = m_package->chooseFile(m_filePath);
-    return  buff;
-}
-
 void XhPort::readyprint(int Mode, QByteArray Offset)
 {
     QByteArray s;
@@ -120,9 +114,7 @@ void XhPort::setBackupEnableStatus(bool Enable)
 
 void XhPort::factoryReset()
 {
-    QByteArray s = QByteArray::fromHex("0901");
-    QByteArray buff = m_package->groupPage(s);
-    m_serial->write(buff);
+    m_serial->writeProtocalData(QByteArray::fromHex("0901"));
 }
 
 void XhPort::p_nozzleHeating()
@@ -134,44 +126,32 @@ void XhPort::p_nozzleHeating()
 
 void XhPort::p_platformCalibration()
 {
-    QByteArray s = QByteArray::fromHex("0302");
-    QByteArray buff = m_package->groupPage(s);
-    m_serial->write(buff);
+    m_serial->writeProtocalData(QByteArray::fromHex("0302"));
 }
 
 void XhPort::finish()
 {
-    QByteArray s = QByteArray::fromHex("0309");
-    QByteArray buff = m_package->groupPage(s);
-    m_serial->write(buff);
+    m_serial->writeProtocalData(QByteArray::fromHex("0309"));
 }
 
 void XhPort::cancleCalibration()
 {
-    QByteArray s = QByteArray::fromHex("030A");
-    QByteArray buff = m_package->groupPage(s);
-    m_serial->write(buff);
+    m_serial->writeProtocalData(QByteArray::fromHex("030A"));
 }
 
 void XhPort::n_nozzleCalibration()
 {
-    QByteArray s = QByteArray::fromHex("0300");
-    QByteArray buff = m_package->groupPage(s);
-    m_serial->write(buff);
+    m_serial->writeProtocalData(QByteArray::fromHex("0300"));
 }
 
 void XhPort::x_platformCalibration()
 {
-    QByteArray s = QByteArray::fromHex("0309");
-    QByteArray buff = m_package->groupPage(s);
-    m_serial->write(buff);
+    m_serial->writeProtocalData(QByteArray::fromHex("0309"));
 }
 
 void XhPort::x_xyCalibration()
 {
-    QByteArray s = QByteArray::fromHex("0305");
-    QByteArray buff = m_package->groupPage(s);
-    m_serial->write(buff);
+    m_serial->writeProtocalData(QByteArray::fromHex("0305"));
 }
 
 /**
@@ -641,7 +621,7 @@ void XhPort::preparePrint(QString Mode, QByteArray Offset)
 void XhPort::startPrint()
 {
     QByteArray s = QByteArray::fromHex("0606");
-    uint32_t file_size = m_package->getPrintFileSize();
+    uint32_t file_size = getPrintFileSize();
     qDebug()<<"Size:" << file_size;
     s.append(1, file_size);
     s.append(1, file_size >> 8);
@@ -653,6 +633,95 @@ void XhPort::startPrint()
     s.append(1, 0xff);
     qDebug()<<"Start print:" << s;
     m_serial->writeProtocalData(s);
+}
+
+/**
+  * @brief  Send file package
+  * @param  Offset: File position
+  * @retval None
+  */
+void XhPort::sendFile(uint32_t Offset)
+{
+    if(print_file == nullptr)
+    {
+        print_file = new QFile(thisFilePath);
+        //in = new QTextStream(m_file);
+        if(!print_file->open(QIODevice::ReadOnly)) {
+            qDebug()<<"File open fail!!";
+            print_file->close();
+            delete print_file;
+            return;
+        }
+    }
+    if(!print_file->isOpen())
+    {
+        qDebug()<<"File closed";
+        print_file->close();
+        // m_file = new QFile(thisFilePath);
+        if(!print_file->open(QIODevice::ReadOnly)) {
+            qDebug()<<"File reopen fail!!";
+            return;
+        }
+
+    }
+    print_file->seek(Offset);
+
+    QByteArray data = print_file->read(128);
+    int len= data.size();
+    QByteArray datalen;
+    datalen.resize(0);
+    datalen.append(1, (len & 0xff));
+    datalen.append(1, ((len >> 8) & 0xff));
+    QByteArray pageData;
+    pageData = QByteArray::fromHex("060400");
+    pageData.append(1, Offset);
+    pageData.append(1, Offset >> 8);
+    pageData.append(1, Offset >> 16);
+    pageData.append(1, Offset >> 24);
+    pageData.append(datalen);
+    pageData.append(data);
+    m_serial->writeProtocalData(pageData);
+}
+
+/**
+  * @brief  Set print file. This is called when powered with power lost event
+  * @param  FileName: The file name of last print job
+  * @retval True if the file is opened successfully
+  */
+bool XhPort::setPrintFile(QString FileName)
+{
+    thisFilePath = FileName;
+    if(print_file != nullptr)
+    {
+        if(print_file->isOpen() == true)
+            print_file->close();
+        delete print_file;
+    }
+    print_file = new QFile(thisFilePath);
+    return print_file->open(QIODevice::ReadOnly);
+}
+
+/**
+  * @brief  Get the size of the file
+  * @retval Size of the file
+  */
+uint32_t XhPort::getPrintFileSize()
+{
+    qDebug()<<print_file->size();
+    if(print_file->isOpen() == true)
+        return print_file->size();
+    else
+        return 0;
+}
+
+/**
+  * @brief  Close the print file
+  * @retval None
+  */
+void XhPort::closeFile()
+{
+    if(print_file != nullptr)
+        print_file->close();
 }
 
 /**
@@ -680,8 +749,33 @@ void XhPort::ExtruderMotion(uint8_t Index, int32_t Distance)
     s.append(1, Distance >> 8);
     s.append(1, Distance >> 16);
     s.append(1, Distance >> 24);
-    QByteArray buff = m_package->groupPage(s);
-    m_serial->write(buff);
+    m_serial->writeProtocalData(s);
+}
+
+/**
+  * @brief  Extrude for changing filament
+  * @param  Index: Extruder index
+  * @retval None
+  */
+void XhPort::LoadFilament(uint8_t Index)
+{
+    if(Index == 0)
+        ldown();
+    else
+        rdown();
+}
+
+/**
+  * @brief  Retract for changing filament
+  * @param  Index: Extruder index
+  * @retval None
+  */
+void XhPort::UnloadFilament(uint8_t Index)
+{
+    if(Index == 0)
+        lup();
+    else
+        rup();
 }
 
 /**

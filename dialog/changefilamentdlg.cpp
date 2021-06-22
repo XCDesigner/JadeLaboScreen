@@ -103,13 +103,14 @@ void changeFilamentDlg::right_setTemp()
 void changeFilamentDlg::left_extrude()
 {
     qDebug()<<"left extrude";
-    m_xhPort->ldown();
+    m_xhPort->LoadFilament(0);
 }
 
 void changeFilamentDlg::left_retract()
 {
     qDebug()<<"left retract";
-    m_xhPort->lup();
+    m_xhPort->UnloadFilament(0);
+
 }
 
 void changeFilamentDlg::onSetTemp()
@@ -130,13 +131,13 @@ void changeFilamentDlg::onSetTemp()
 void changeFilamentDlg::right_extrude()
 {
     qDebug()<<"right extrude";
-    m_xhPort->rdown();
+    m_xhPort->LoadFilament(1);
 }
 
 void changeFilamentDlg::right_retract()
 {
     qDebug()<<"right retract";
-    m_xhPort->rup();
+    m_xhPort->UnloadFilament(1);
 }
 
 void changeFilamentDlg::on_pushButton_359_clicked()

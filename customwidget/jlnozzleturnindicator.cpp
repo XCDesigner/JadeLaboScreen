@@ -35,11 +35,11 @@ void JLNozzleTurnIndicator::setValue(int Value)
     if(Value > 0)
     {
         ui->label->setText(str_value);
-        ui->labBackground->setStyleSheet(downStyleSheet);
+        ui->labBackground->setStyleSheet(upStyleSheet);
     }
     else if(Value < 0)
     {
         ui->label->setText(str_value);
-        ui->labBackground->setStyleSheet(upStyleSheet);
+        ui->labBackground->setStyleSheet(downStyleSheet);
     }
 }

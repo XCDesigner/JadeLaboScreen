@@ -7,22 +7,6 @@ void MainWindow::AboutPageInit()
 {
     AddListen(QByteArray(QByteArray::fromHex("0B")), &MainWindow::DebugCallback, true);
     QTimer::singleShot(500, this, SLOT(aboutTimerTester()));
-
-    ui->listWidget_2->installEventFilter(this);
-}
-
-bool MainWindow::eventFilter(QObject *watched, QEvent *event)
-{
-    //if((event->type()!=QEvent::HoverMove) && (event->type()!=QEvent::Gesture))
-    //{
-    //    if(event->type() != QEvent::Paint)
-    //        qDebug()<<event->type();
-        return QObject::eventFilter(watched, event);
-    //}
-    //else
-    //{
-    //    return true;
-    //}
 }
 
 void MainWindow::on_pushButton_126_clicked()

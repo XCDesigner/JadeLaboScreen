@@ -63,7 +63,7 @@ void MainWindow::preparePrintTempChecking()
                 offset.append(1, int_offset >> 8);
                 offset.append(1, int_offset >> 16);
                 offset.append(1, int_offset >> 24);
-                if(m_port->getXhPage()->setPrintFile(print_desc.FileName) != true)
+                if(m_port->setPrintFile(print_desc.FileName) != true)
                 {
                     qDebug()<<"Set print file fail!";
                 }

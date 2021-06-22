@@ -95,12 +95,12 @@ void MainWindow::changeFilamentSetTemp()
 
 void MainWindow::changeFilamentLeftExtrude()
 {
-    m_port->ldown();
+    m_port->LoadFilament(0);
 }
 
 void MainWindow::changeFilamentLeftRetract()
 {
-    m_port->lup();
+    m_port->UnloadFilament(0);
 }
 
 void MainWindow::changeFilamentRightSetTemp()
@@ -116,12 +116,12 @@ void MainWindow::changeFilamentRightSetTemp()
 
 void MainWindow::changeFilamentRightExtrude()
 {
-    m_port->rdown();
+    m_port->LoadFilament(1);
 }
 
 void MainWindow::changeFilamentRightRetract()
 {
-    m_port->rup();
+    m_port->UnloadFilament(1);
 }
 
 void MainWindow::on_pushButton_359_clicked()

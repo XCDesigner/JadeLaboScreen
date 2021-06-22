@@ -119,7 +119,9 @@ void MainWindow::onFileChooseReturn()
     delete m_WinFile;
     if(ret[0] == "Confirm")
     {
+        m_fileParser = new XhGcodeFileParser(this);
         QVariantMap parse_result = m_fileParser->parseQuickly(p_item->m_filePath);
+        delete m_fileParser;
         pdlg_select_mode = new PrintModeSelect();
         pdlg_select_mode->init(QByteArray(parse_result["mode"].toByteArray()), p_item);
         pdlg_select_mode->show();
@@ -157,7 +159,9 @@ void MainWindow::onParseComplete()
     {
         // qDebug()<<ret[1];
         // qDebug()<<ret[2];
+        m_fileParser = new XhGcodeFileParser(this);
         QVariantMap parse_result = m_fileParser->parseQuickly(localPath + ret[1]);
+        delete m_fileParser;
         print_desc.ParsedMode = parse_result["mode"].toString();
         print_desc.Mode = ret[2];
         print_desc.LeftTemp = parse_result["left_temp"].toString();
@@ -178,7 +182,9 @@ void MainWindow::onParseComplete()
     else
     {
         qDebug()<<"Mode unsupported!";
+        m_fileParser = new XhGcodeFileParser(this);
         QVariantMap parse_result = m_fileParser->parseQuickly(localPath + ret[1]);
+        delete m_fileParser;
         pdlg_select_mode = new PrintModeSelect();
         qDebug()<<parse_result["mode"].toByteArray();
         pdlg_select_mode->init(QByteArray(parse_result["mode"].toByteArray()), localPath+ret[1], ret[1]);

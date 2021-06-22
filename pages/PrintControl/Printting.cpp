@@ -1,6 +1,11 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
+void MainWindow::printingPageInit()
+{
+
+}
+
 void MainWindow::StopPrintClicked()
 {
     if(m_timer.isActive())
@@ -62,7 +67,17 @@ void MainWindow::printMessageProcess(uint8_t Command, uint8_t SubCode, QByteArra
 {
     if(Command == 0x06)
     {
-        if(SubCode == 0x06)
+        if(SubCode == 0x01)
+        {
+            m_port->closeFile();
+        }
+        else if(SubCode == 0x04)
+        {
+            uint32_t offset;
+            offset = ((uint8_t)Datas.at(5)<<24 ) | ((uint8_t)Datas.at(4)<<16 ) | ((uint8_t)Datas.at(3)<<8 )| ((uint8_t)Datas.at(2));
+            m_port->sendFile(offset);
+        }
+        else if(SubCode == 0x06)
         {
             ui->stackedWidget->setCurrentWidget(ui->page_Printing);
         }
@@ -77,13 +92,7 @@ void MainWindow::printMessageProcess(uint8_t Command, uint8_t SubCode, QByteArra
         {
             ui->quickWidget_3->rootObject()->setProperty("currentPercent", 1000);
             ui->quickWidget_3->rootObject()->setProperty("finishEnabled", true);
-        }
-    }
-    if(Command == 0x01)
-    {
-        if(SubCode == 0x07)
-        {
-            qDebug()<<Datas;
+            m_port->closeFile();
         }
     }
 }

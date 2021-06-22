@@ -37,18 +37,16 @@ MainWindow::MainWindow(QWidget *parent) :
     m_port = NULL;
     m_event = NULL;
 
-    m_modeone = NULL;
     m_filamentfault = NULL;
     m_printfilament = NULL;
+    m_parsetdlog = NULL;
+    chooseit = NULL;
 
     m_power = NULL;
     m_setdlog = new PrintSetDlog();
     m_setdlog->hide();
     QObject::connect(m_setdlog, SIGNAL(hideWidget()), this, SLOT(onSettingDialogHide()));
-    m_parsetdlog = NULL;
-    m_dam = NULL;
-    m_dup = NULL;
-    chooseit = NULL;
+
 #ifdef XH_LINUX
     aw_wifi =NULL;
     udpControl = NULL;
@@ -188,7 +186,6 @@ MainWindow::MainWindow(QWidget *parent) :
     QTimer::singleShot(1500, this, SLOT(updateStatusBar()));
 
     m_printsec = new QTimer(this);
-    m_time = new QTime(0,0,0);
     QObject::connect(m_printsec,&QTimer::timeout,this,&MainWindow::timeAdd);
 
     ListenerInit();
@@ -218,7 +215,6 @@ MainWindow::MainWindow(QWidget *parent) :
 #endif
 
     setWinPic(false);
-    m_fileParser = new XhGcodeFileParser(this);
 
     m_event->setup(m_port);
     QObject::connect(this->m_event, SIGNAL(changePageAccept(QByteArray)), this, SLOT(changePageCallback(QByteArray)));
@@ -582,7 +578,9 @@ void MainWindow::getCondition()
 
 void MainWindow::downloadOver(QString fileName)
 {
+    m_fileParser = new XhGcodeFileParser(this);
     m_fileParser->parseByDeep("/usr/share/3d_printer/tmp/"+fileName,localPath+fileName);
+    delete m_fileParser;
 #ifdef XH_LINUX
     system(QString::asprintf("rm /usr/share/3d_printer/tmp/%s",fileName.toStdString().c_str()).toStdString().c_str());
 #endif
@@ -595,55 +593,6 @@ void MainWindow::connctwifi(myWifiItem *itm)
     ui->stackedWidget_2->setCurrentIndex(0);
     chooseit = NULL;
     chooseit = itm;
-}
-
-void MainWindow::m_canPrintFile()
-{
-    //等待请求文件内容的指令中
-    ui->stackedWidget->setCurrentWidget(ui->page_Printing);
-}
-
-void MainWindow::m_parcancel()
-{
-    m_timer.stop();
-    QObject::disconnect(&m_timer,SIGNAL(timeout()),this,SLOT(jumpSixteen()));
-    pdlg_parsing->hide();
-    pdlg_parsing->close();
-}
-
-void MainWindow::m_backPrint()
-{
-    m_mode->hide();
-    m_mode->close();
-    ui->stackedWidget->setCurrentWidget(ui->page_GetStart);
-}
-
-void MainWindow::m_whatThis()
-{
-    qDebug()<<"1";
-    m_mode->hide();
-    m_mode->close();
-    ui->stackedWidget->setCurrentIndex(40);
-    ui->m_StatusBar->setVisible(false);
-}
-
-
-void MainWindow::wizardCancel()
-{
-    m_wizard->hide();
-    m_wizard->close();
-}
-
-void MainWindow::wizardConfirm()
-{
-    m_wizard->hide();
-    m_wizard->close();
-    m_opaCity=0.0;
-    m_effect=new QGraphicsOpacityEffect();
-    m_effect->setOpacity(m_opaCity);
-    QObject::connect(&m_timer,SIGNAL(timeout()),this,SLOT(firstStart()));
-    ui->stackedWidget->setCurrentIndex(0);
-    m_timer.start(250);
 }
 
 void MainWindow::fileList()
@@ -702,8 +651,6 @@ void MainWindow::on_pushButton_169_clicked()
     ui->m_StatusBar->setVisible(true);
     m_mode = new selectMode(this);
     m_mode->show();
-    QObject::connect(m_mode,SIGNAL(m_back()),this,SLOT(m_backPrint()));
-    QObject::connect(m_mode,SIGNAL(m_whatThis()),this,SLOT(m_whatThis()));
 }
 
 void MainWindow::on_pushButton_174_clicked()

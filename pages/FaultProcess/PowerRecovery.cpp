@@ -62,7 +62,7 @@ void MainWindow::PowerLostDialogReturn()
     else if(ret[0] == "Recovery")
     {
         qDebug()<<"Power lost recovery";
-        if(m_port->getXhPage()->setPrintFile(GetRecoveryFile()) == true)
+        if(m_port->setPrintFile(GetRecoveryFile()) == true)
         {
             qDebug()<<"Set file success";
             AddListen(QByteArray(QByteArray::fromHex("0615")), &MainWindow::AcceptRecoveryInfo, false);

@@ -38,9 +38,9 @@ void JLTurnIndicator::setValue(int Value)
     ui->labText->setText(str_value);
 
     if(Value > 0)
-        ui->labBackground->setStyleSheet(leftStyleSheet);
-    else if(Value < 0)
         ui->labBackground->setStyleSheet(rightStyleSheet);
+    else if(Value < 0)
+        ui->labBackground->setStyleSheet(leftStyleSheet);
     else
         ui->labBackground->setStyleSheet(normalStyleSheet);
 }

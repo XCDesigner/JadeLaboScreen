@@ -43,15 +43,8 @@ public:
     /*****************组包******************/
     QByteArray groupPage(QByteArray );
 
-    QByteArray chooseFile(QString );
-    QByteArray analysisFile();
-    void sendfile(quint32 );
-
     void sendUpdate(quint16 ,QByteArray );
     void GetMachineStatus(strMachineStatus *pStatus);
-
-    bool setPrintFile(QString);
-    uint32_t getPrintFileSize();
 private:
     /*包体*/
     QByteArray pageHead;//头
@@ -78,8 +71,6 @@ private:
     bool Tnozzleheightcheck;
     bool TxYcheck;
 
-    /*当前文件打印文件路径*/
-    QString thisFilePath;
     /*当前打印文件*/
     QFile *m_file;
     QTextStream *in;

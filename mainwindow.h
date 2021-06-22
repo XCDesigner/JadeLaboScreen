@@ -135,6 +135,7 @@ public:
 
     // Change Hotend
     void changeHotendPageInit();
+    void printingPageInit();
 
 
 private:
@@ -204,10 +205,6 @@ private:
     WarningDialog *pdlg_warning;
     InputDialog *pdlg_Input;
 
-    UnNoknfile *m_modeone;
-    DupandMirorr *m_dam;
-    duponly *m_dup;
-
     QQuickItem *qw_DistanceItem;
     QQuickItem *qw_LightItem;
 
@@ -218,7 +215,6 @@ private:
 
     PrintSetDlog *m_setdlog;
     parsetdlog *m_parsetdlog;
-    int32_t  offsetnum;
 
     myWifiItem * chooseit;
 
@@ -232,9 +228,6 @@ private:
     XhGcodeFileParser *m_fileParser;
     /*打印计时*/
     QTimer *m_printsec;
-    QTime *m_time;
-
-    QTimer *timer_light_slider;
 
     QWidget *pNextShowPage;
     JLWidget *pDialogToShow;
@@ -380,14 +373,6 @@ private slots:
     void m_chooseItem(myListWidgetItem * itm);
 
     void connctwifi(myWifiItem* itm);
-    void m_canPrintFile();
-    void m_parcancel();
-
-    void m_backPrint();
-    void m_whatThis();
-
-    void wizardCancel();
-    void wizardConfirm();
 
     void fileList();
 
@@ -831,31 +816,8 @@ private slots:
 
     void on_pushButton_176_clicked();
 
-    void onChangeHotend_btnClick_0(int);
-    void onChangeHotend_btnClick_1(int);
-    void onChangeHotend_btnClick_2(int);
-    void onChangeHotend_btnClick_3(int);
-    void onChangeHotend_btnClick_4(int);
-    void onChangeHotend_btnClick_5(int);
-    void onChangeHotend_btnClick_6(int);
-    void onChangeHotend_btnClick_7(int);
-    void onChangeHotend_btnClick_8(int);
-    void onChangeHotend_btnClick_9(int);
-    void onChangeHotend_btnClick_10(int);
-    void onChangeHotend_btnClick_11(int);
-    void onChangeHotend_btnClick_12(int);
-    void onChangeHotend_btnClick_13(int);
-
     void on_pushButton_4_clicked();
 
-signals:
-    void detection(bool);
-    void updateNum(int );
-    void sendCondition(QByteArray);
-    void sendSignalToQml(int );
-    void sendSignalHeating(int , int );
-
-    void printUpdateCompleted();
 private:
     void romClean(int fileSize);
 
@@ -874,9 +836,6 @@ private:
     void MovementFaultDetected();
 
     void onPreparePirntComplete(QByteArray);
-
-    bool eventFilter(QObject *watched, QEvent *event) override;
-
 };
 
 #endif // MAINWINDOW_H

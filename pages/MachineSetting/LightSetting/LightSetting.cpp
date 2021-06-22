@@ -10,12 +10,11 @@ void MainWindow::LightSettingPageInit()
     qw_LightItem = ui->qw_LightSlider->rootObject();
     QObject::connect(qw_LightItem, SIGNAL(released()), this, SLOT(LightSliderReleased()));
     QObject::connect(qw_LightItem, SIGNAL(pressed()), this, SLOT(LightSliderPressed()));
-    timer_light_slider = new QTimer(this);
 }
 
 void MainWindow::LightSliderPressed()
 {
-    timer_light_slider->singleShot(200, this, SLOT(LightSettingTimer()));
+    QTimer::singleShot(200, this, SLOT(LightSettingTimer()));
     // qDebug()<<"Pressed";
     int bright = qw_LightItem->property("value").toInt() * 2.55f;
     m_port->setRGBLight(bright, bright, bright);
@@ -31,7 +30,7 @@ void MainWindow::LightSliderReleased()
 void MainWindow::LightSettingTimer()
 {
     if(qw_LightItem->property("isPressed").toBool() == true) {
-        timer_light_slider->singleShot(200, this, SLOT(LightSettingTimer()));
+        QTimer::singleShot(200, this, SLOT(LightSettingTimer()));
         // qDebug()<<"Set";
         int bright = qw_LightItem->property("value").toInt() * 2.55f;
         m_port->setRGBLight(bright, bright, bright);
