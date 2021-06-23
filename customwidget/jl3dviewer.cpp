@@ -27,6 +27,7 @@ void JL3DViewer::resizeGL(int w, int h)
 
 void JL3DViewer::paintGL()
 {
+#ifdef XH_WIN
     glClearColor(0, 0, 0, 1);
     glLoadIdentity();
 
@@ -64,5 +65,6 @@ void JL3DViewer::paintGL()
     glVertex3f( -0.5, -0.5, -0.5 );      // P4 是紫色
 
     glEnd();
+#endif
 }
 
