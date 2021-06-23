@@ -8,37 +8,37 @@ void MainWindow::JodMovePageInit()
 
 void MainWindow::on_pushButton_698_clicked()
 {
-    QVariant i = qw_DistanceItem->property("distance");
+    QVariant i = ui->qw_Distance->rootObject()->property("distance");
     m_port->moveAxis(1, i.toInt(), 0, 0);
 }
 
 void MainWindow::on_pushButton_697_clicked()
 {
-    QVariant i = qw_DistanceItem->property("distance");
+    QVariant i = ui->qw_Distance->rootObject()->property("distance");
     m_port->moveAxis(1, -(i.toInt()), 0, 0);
 }
 
 void MainWindow::on_pushButton_694_clicked()
 {
-    QVariant i = qw_DistanceItem->property("distance");
+    QVariant i = ui->qw_Distance->rootObject()->property("distance");
     m_port->moveAxis(1, 0, i.toUInt(), 0);
 }
 
 void MainWindow::on_pushButton_696_clicked()
 {
-    QVariant i = qw_DistanceItem->property("distance");
+    QVariant i = ui->qw_Distance->rootObject()->property("distance");
     m_port->moveAxis(1, 0, -(i.toInt()), 0);
 }
 
 void MainWindow::on_pushButton_699_clicked()
 {
-    QVariant i = qw_DistanceItem->property("distance");
+    QVariant i = ui->qw_Distance->rootObject()->property("distance");
     m_port->moveAxis(1, 0, 0, i.toInt());
 }
 
 void MainWindow::on_pushButton_701_clicked()
 {
-    QVariant i = qw_DistanceItem->property("distance");
+    QVariant i = ui->qw_Distance->rootObject()->property("distance");
     qDebug()<<-(i.toInt());
     m_port->moveAxis(1, 0, 0, -(i.toInt()));
 }

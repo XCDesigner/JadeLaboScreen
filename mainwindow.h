@@ -158,17 +158,8 @@ private:
     int m_w;
     int m_h;
     int printtime;
-    QString lt;
-    QString rt;
-    QString bt;
 
     strPrintDesc print_desc;
-
-    QString loaclPATH;
-    QString udiskPATH;
-    bool openMode;
-
-    QByteArray offset;
 
     QGraphicsOpacityEffect *m_effect;
     QTimer m_timer;
@@ -205,9 +196,6 @@ private:
     PrintModeSelect *pdlg_select_mode;
     WarningDialog *pdlg_warning;
     InputDialog *pdlg_Input;
-
-    QQuickItem *qw_DistanceItem;
-    QQuickItem *qw_LightItem;
 
     filamentFault *m_filamentfault;
     printFlament *m_printfilament;
@@ -251,8 +239,6 @@ private:
     QDateTime print_end_time;
 
     QList<QByteArray> command_received_list;
-
-    bool first_calibration;
 
 private slots:
     void printMessageProcess(uint8_t, uint8_t, QByteArray Datas);
@@ -353,7 +339,6 @@ private slots:
     void shinetwo();
 
     void getMachineStatus();
-    void jumpSeventeen();
     void jumpnineteen();
 
     void printStop();

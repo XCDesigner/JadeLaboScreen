@@ -7,32 +7,31 @@ void MainWindow::LightSettingPageInit()
     ui->qw_LightSlider->setResizeMode(QQuickWidget::SizeRootObjectToView);
     ui->qw_LightSlider->setClearColor(QColor(qmlColor));
 
-    qw_LightItem = ui->qw_LightSlider->rootObject();
-    QObject::connect(qw_LightItem, SIGNAL(released()), this, SLOT(LightSliderReleased()));
-    QObject::connect(qw_LightItem, SIGNAL(pressed()), this, SLOT(LightSliderPressed()));
+    QObject::connect(ui->qw_LightSlider->rootObject(), SIGNAL(released()), this, SLOT(LightSliderReleased()));
+    QObject::connect(ui->qw_LightSlider->rootObject(), SIGNAL(pressed()), this, SLOT(LightSliderPressed()));
 }
 
 void MainWindow::LightSliderPressed()
 {
     QTimer::singleShot(200, this, SLOT(LightSettingTimer()));
     // qDebug()<<"Pressed";
-    int bright = qw_LightItem->property("value").toInt() * 2.55f;
+    int bright = ui->qw_LightSlider->rootObject()->property("value").toInt() * 2.55f;
     m_port->setRGBLight(bright, bright, bright);
 }
 
 void MainWindow::LightSliderReleased()
 {
     // qDebug()<<"Release";
-    int bright = qw_LightItem->property("value").toInt() * 2.55f;
+    int bright = ui->qw_LightSlider->rootObject()->property("value").toInt() * 2.55f;
     m_port->setRGBLight(bright, bright, bright);
 }
 
 void MainWindow::LightSettingTimer()
 {
-    if(qw_LightItem->property("isPressed").toBool() == true) {
+    if(ui->qw_LightSlider->rootObject()->property("isPressed").toBool() == true) {
         QTimer::singleShot(200, this, SLOT(LightSettingTimer()));
         // qDebug()<<"Set";
-        int bright = qw_LightItem->property("value").toInt() * 2.55f;
+        int bright = ui->qw_LightSlider->rootObject()->property("value").toInt() * 2.55f;
         m_port->setRGBLight(bright, bright, bright);
     }
 }

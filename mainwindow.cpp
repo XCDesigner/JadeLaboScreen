@@ -147,8 +147,6 @@ MainWindow::MainWindow(QWidget *parent) :
     QObject::connect(ui->qw_StatusNotice->rootObject(), SIGNAL(lightClicked()), this, SLOT(StatusNotice_Light_clicked()));
     QObject::connect(ui->qw_StatusNotice->rootObject(), SIGNAL(stepperClicked()), this, SLOT(StatusNotice_Stepper_clicked()));
 
-    qw_DistanceItem = ui->qw_Distance->rootObject();
-
     QObject::connect(ui->stackedWidget, SIGNAL(currentChanged(int)), this, SLOT(WidgetChanged(int)));
 
     QTimer::singleShot(1500, this, SLOT(updateStatusBar()));
@@ -482,31 +480,6 @@ void MainWindow::shinetwo()
 #endif
 }
 
-void MainWindow::jumpSeventeen()
-{
-    /*加热槽函数*/
-    // qDebug()<<ui->label_125->text();
-    int l1 = ui->label_125->text().left(3).toInt();
-    int l2 = ui->label_125->text().mid(4,3).toInt();
-    // qDebug()<<"time out heating";
-    int r = ui->label_127->text().left(3).toInt();
-    int r2 = ui->label_127->text().mid(4,3).toInt();
-    if(l2!=0 || r2 != 0)
-    {
-        if((l1>=(l2*0.9)) && (r>=(r2*0.9)))
-        {
-            screen_status.setExtruderEnabled(0, true);
-            screen_status.setExtruderEnabled(1, true);
-            screen_status.setPrintMode(printMode);
-            m_port->readyprint(this->printMode,offset);
-            qDebug()<<"readyprint offset "<<offset;
-            qDebug()<<"readyprint mode"<<printMode;
-            QObject::disconnect(&m_timer,SIGNAL(timeout()),this,SLOT(jumpSeventeen()));
-            m_timer.stop();
-        }
-    }
-}
-
 void MainWindow::jumpnineteen()
 {
     /*print3动图槽函数*/
@@ -625,13 +598,11 @@ void MainWindow::on_pushButton_230_clicked()
 
 void MainWindow::on_pushButton_235_clicked()
 {
-    first_calibration = true;
     ui->stackedWidget->setCurrentWidget(ui->page_PlatformCali_0);
 }
 
 void MainWindow::on_pushButton_236_clicked()
 {
-    first_calibration = true;
     ui->stackedWidget->setCurrentWidget(ui->page_NozzleCali_0);
 }
 
