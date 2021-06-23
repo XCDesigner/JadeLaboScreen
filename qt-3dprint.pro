@@ -15,8 +15,6 @@ TEMPLATE = app
 
 win32:LIBS += -lOpengl32 \
               -lglu32
-else:unix:LIBS += -lglut \
-                  -lGLU
 
 # The following define makes your compiler emit warnings if you use
 # any feature of Qt which has been marked as deprecated (the exact warnings
