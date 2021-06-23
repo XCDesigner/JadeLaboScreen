@@ -16,13 +16,18 @@ namespace Ui {
 class JL3DViewer;
 }
 
-class JL3DViewer : public QWidget
+class JL3DViewer : public QOpenGLWidget
 {
     Q_OBJECT
 
 public:
     explicit JL3DViewer(QWidget *parent = nullptr);
     ~JL3DViewer();
+
+protected:
+    void initializeGL() override;
+    void resizeGL(int w, int h) override;
+    void paintGL() override;
 
 private:
     Ui::JL3DViewer *ui;

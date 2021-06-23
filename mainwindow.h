@@ -136,6 +136,7 @@ public:
     // Change Hotend
     void changeHotendPageInit();
     void printingPageInit();
+    void preparePrintingPageInit();
 
 
 private:
@@ -337,8 +338,6 @@ private slots:
     void winGtwo();
     void jumpThree();
 
-//    void winGfour();
-    void winGfour(bool a,bool b,bool c,bool d,bool e);
     void jumpFour();
 
     void jumpFive();

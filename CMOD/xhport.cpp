@@ -10,21 +10,13 @@
 
 XhPort::XhPort(QObject *parent) : QObject(parent)
 {
-    portTimer = new QTimer(this);
     m_package = new XhPage;
     serialOpen =false;
-    /*打开串口*/
-    QObject::connect(m_package,&XhPage::sendFileArry,this,&XhPort::sendfile);
-
-    QObject::connect(m_package,&XhPage::firstTestResult,this,&XhPort::xhfirstTestResult);
-    /*tool*/
-    QObject::connect(m_package,&XhPage::backFactory,this,&XhPort::xhbackFactory);
 }
 
 XhPort::~XhPort()
 {
     delete m_serial;
-    delete portTimer;
     delete m_package;
 }
 
@@ -62,29 +54,25 @@ void XhPort::XYAdjust()
 void XhPort::lup()
 {
     QByteArray s = QByteArray::fromHex("0205006079FEFF");
-    QByteArray buff = m_package->groupPage(s);
-    m_serial->write(buff);
+    m_serial->writeProtocalData(s);
 }
 
 void XhPort::ldown()
 {
     QByteArray s = QByteArray::fromHex("020500A0860100");
-    QByteArray buff = m_package->groupPage(s);
-    m_serial->write(buff);
+    m_serial->writeProtocalData(s);
 }
 
 void XhPort::rup()
 {
     QByteArray s = QByteArray::fromHex("0205016079FEFF");
-    QByteArray buff = m_package->groupPage(s);
-    m_serial->write(buff);
+    m_serial->writeProtocalData(s);
 }
 
 void XhPort::rdown()
 {
     QByteArray s = QByteArray::fromHex("020501A0860100");
-    QByteArray buff = m_package->groupPage(s);
-    m_serial->write(buff);
+    m_serial->writeProtocalData(s);
 }
 
 void XhPort::readyprint(int Mode, QByteArray Offset)
@@ -93,8 +81,7 @@ void XhPort::readyprint(int Mode, QByteArray Offset)
     char strMode[][7] = {"060D00", "060D01", "060D02", "060D03", "060D04", "060D05", "060D06"};
     s = QByteArray::fromHex(strMode[Mode]);
     s.append(Offset);
-    QByteArray buff = m_package->groupPage(s);
-    m_serial->write(buff);
+    m_serial->writeProtocalData(s);
 }
 
 void XhPort::setBackupEnableStatus(bool Enable)
@@ -102,13 +89,11 @@ void XhPort::setBackupEnableStatus(bool Enable)
     if(Enable == true)
     {
         QByteArray s = QByteArray::fromHex("010F01");
-        QByteArray buff = m_package->groupPage(s);
-        m_serial->write(buff);
+        m_serial->writeProtocalData(s);
     }
     else {
         QByteArray s = QByteArray::fromHex("010F00");
-        QByteArray buff = m_package->groupPage(s);
-        m_serial->write(buff);
+        m_serial->writeProtocalData(s);
     }
 }
 
@@ -120,8 +105,7 @@ void XhPort::factoryReset()
 void XhPort::p_nozzleHeating()
 {
     QByteArray s = QByteArray::fromHex("030200");
-    QByteArray buff = m_package->groupPage(s);
-    m_serial->write(buff);
+    m_serial->writeProtocalData(s);
 }
 
 void XhPort::p_platformCalibration()
@@ -195,8 +179,7 @@ void XhPort::moveAxis(int Mode, int X, int Y, int Z)
     s.append(value);
     FILL_QBYTEARRAY_32(value, Z);
     s.append(value);
-    QByteArray buff = m_package->groupPage(s);
-    m_serial->write(buff);
+    m_serial->writeProtocalData(s);
 }
 
 /**
@@ -208,8 +191,7 @@ void XhPort::setDualMode(int Mode)
 {
     QByteArray s = QByteArray::fromHex("0206");
     s.append(1, Mode);
-    QByteArray buff = m_package->groupPage(s);
-    m_serial->write(buff);
+    m_serial->writeProtocalData(s);
 }
 
 /**
@@ -319,10 +301,9 @@ void XhPort::setFilamentSensorEnableStatus(bool NewStatus)
 {
     QByteArray buff;
     if (NewStatus == true)
-        buff = m_package->groupPage(QByteArray::fromHex("070001"));
+        m_serial->writeProtocalData(QByteArray::fromHex("010701"));
     else
-        buff = m_package->groupPage(QByteArray::fromHex("070000"));
-    m_serial->write(buff);
+        m_serial->writeProtocalData(QByteArray::fromHex("010700"));
 }
 
 /**
@@ -331,8 +312,7 @@ void XhPort::setFilamentSensorEnableStatus(bool NewStatus)
   */
 void XhPort::getFilamentSensorEnableStatus()
 {
-    QByteArray buff = m_package->groupPage(QByteArray::fromHex("0701"));
-    m_serial->write(buff);
+    m_serial->writeProtocalData(QByteArray::fromHex("0701"));
 }
 
 /**
@@ -344,8 +324,7 @@ void XhPort::changeToolHead(int Index)
 {
     QByteArray s = QByteArray::fromHex("0208");
     s.append(1, Index);
-    QByteArray buff = m_package->groupPage(s);
-    m_serial->write(buff);
+    m_serial->writeProtocalData(s);
 }
 
 /**
@@ -359,8 +338,7 @@ void XhPort::setPrintTempPercentage(int Index, uint8_t Percent)
     QByteArray s = QByteArray::fromHex("0610");
     s.append(1, Index);
     s.append(1, Percent);
-    QByteArray buff = m_package->groupPage(s);
-    m_serial->write(buff);
+    m_serial->writeProtocalData(s);
 }
 
 /**
@@ -374,8 +352,7 @@ void XhPort::setPrintFanPercentage(int Index, uint8_t Percent)
     QByteArray s = QByteArray::fromHex("0611");
     s.append(1, Index);
     s.append(1, Percent);
-    QByteArray buff = m_package->groupPage(s);
-    m_serial->write(buff);
+    m_serial->writeProtocalData(s);
 }
 
 /**
@@ -388,8 +365,7 @@ void XhPort::setPrintSpeedPercentage(uint16_t Percent)
     QByteArray s = QByteArray::fromHex("0612");
     s.append(1, Percent);
     s.append(1, (Percent >> 8));
-    QByteArray buff = m_package->groupPage(s);
-    m_serial->write(buff);
+    m_serial->writeProtocalData(s);
 }
 
 /**
@@ -404,8 +380,7 @@ void XhPort::setFlowratePercentage(uint8_t Extruder, uint16_t Percent)
     s.append(1, Extruder);
     s.append(1, Percent);
     s.append(1, (Percent >> 8));
-    QByteArray buff = m_package->groupPage(s);
-    m_serial->write(buff);
+    m_serial->writeProtocalData(s);
 }
 
 /**
@@ -420,8 +395,7 @@ void XhPort::setPrintPlatformOffset(int32_t Height)
     s.append(1, (Height >> 8));
     s.append(1, (Height >> 16));
     s.append(1, (Height >> 24));
-    QByteArray buff = m_package->groupPage(s);
-    m_serial->write(buff);
+    m_serial->writeProtocalData(s);
 }
 
 /**
@@ -431,8 +405,7 @@ void XhPort::setPrintPlatformOffset(int32_t Height)
 void XhPort::pausePrint()
 {
     QByteArray s = QByteArray::fromHex("0602");
-    QByteArray buff = m_package->groupPage(s);
-    m_serial->write(buff);
+    m_serial->writeProtocalData(s);
 }
 
 /**
@@ -442,8 +415,7 @@ void XhPort::pausePrint()
 void XhPort::continuePrint()
 {
     QByteArray s = QByteArray::fromHex("060C");
-    QByteArray buff = m_package->groupPage(s);
-    m_serial->write(buff);
+    m_serial->writeProtocalData(s);
 }
 
 /**
@@ -453,8 +425,7 @@ void XhPort::continuePrint()
 void XhPort::stopPrint()
 {
     QByteArray s = QByteArray::fromHex("0601");
-    QByteArray buff = m_package->groupPage(s);
-    m_serial->write(buff);
+    m_serial->writeProtocalData(s);
 }
 
 /**
@@ -466,10 +437,9 @@ void XhPort::setExtruderDisable(uint8_t Index)
 {
     QByteArray buff;
     if(Index == 0)
-        buff = m_package->groupPage(QByteArray::fromHex("010700"));
+        m_serial->writeProtocalData(QByteArray::fromHex("010700"));
     else if(Index == 1)
-        buff = m_package->groupPage(QByteArray::fromHex("010701"));
-    m_serial->write(buff);
+        m_serial->writeProtocalData(QByteArray::fromHex("010701"));
 }
 
 /**
@@ -828,8 +798,7 @@ void XhPort::SendTest(QByteArray Datas)
 void XhPort::testdemo()
 {
     QByteArray s = QByteArray::fromHex("84654875294581");
-    QByteArray buff = m_package->groupPage(s);
-    m_serial->write(buff);
+    m_serial->writeProtocalData(s);
 }
 
 /*打开串口*/
@@ -839,8 +808,6 @@ void XhPort::portInit(QString portname)
     if(m_serial->openPort(portname, 115200))
     {
         QObject::connect(m_serial, SIGNAL(sigDataParsed(QByteArray)), this, SLOT(readData(QByteArray)));//连接信号槽
-        // QObject::connect(portTimer, &QTimer::timeout, this, &XhPort::serialTest);//连接信号槽
-        // portTimer->start(500);
     }
     else
     {
@@ -850,47 +817,16 @@ void XhPort::portInit(QString portname)
 
 void XhPort::carbinfinished()
 {
-    QByteArray s = QByteArray::fromHex("0309");
-    QByteArray buff = m_package->groupPage(s);
-    m_serial->write(buff);
+    m_serial->writeProtocalData(QByteArray::fromHex("0309"));
 }
 
 void XhPort::carbincancel()
 {
-    QByteArray s = QByteArray::fromHex("030A");
-    QByteArray buff = m_package->groupPage(s);
-    m_serial->write(buff);
+    m_serial->writeProtocalData(QByteArray::fromHex("030A"));
 }
 
 void XhPort::readData(QByteArray Data) {
     m_package->analysis(Data);
-}
-
-/*测试串口通讯*/
-void XhPort::serialTest()
-{
-    QByteArray buff = QByteArray::fromHex("4A4630020002E002000101");
-    m_serial->write(buff);
-    if(serialOpen)
-    {
-        QObject::disconnect(portTimer, &QTimer::timeout, this, &XhPort::serialTest);//dis连接信号槽
-        portTimer->stop();
-    }
-}
-
-void XhPort::sendfile(QByteArray sendData)
-{
-    m_serial->write(sendData);
-}
-
-void XhPort::xhfirstTestResult(bool a, bool b, bool c, bool d, bool e)
-{
-    emit firstTestResult(a,b,c,d,e);
-}
-
-void XhPort::xhbackFactory(bool a)
-{
-    emit backFactory(a);
 }
 
 XhPage* XhPort::getXhPage()
@@ -920,3 +856,7 @@ void XhPort::getFILValue() {
     m_serial->writeProtocalData(s);
 }
 
+void XhPort::writeCustomData(QByteArray Datas)
+{
+    m_serial->writeProtocalData(Datas);
+}

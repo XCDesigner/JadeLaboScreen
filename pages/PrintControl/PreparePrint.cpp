@@ -1,6 +1,12 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
+void MainWindow::preparePrintingPageInit()
+{
+    QObject::connect(ui->labPreparePrintControl, SIGNAL(stopClicked()), this, SLOT(StopPreHeatting()));
+    QObject::connect(ui->labPreparePrintControl, SIGNAL(settingClicked()), this, SLOT(ShowParameterDialogClicked()));
+}
+
 void MainWindow::preparePrintPageLoad()
 {
     ui->labPreparePrintControl->setSettingDisable();

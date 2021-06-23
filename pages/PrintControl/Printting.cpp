@@ -3,7 +3,9 @@
 
 void MainWindow::printingPageInit()
 {
-
+    QObject::connect(ui->labPrintControl, SIGNAL(settingClicked()), this, SLOT(ShowParameterDialogClicked()));
+    QObject::connect(ui->labPrintControl, SIGNAL(stopClicked()), this, SLOT(StopPrintClicked()));
+    QObject::connect(ui->labPrintControl, SIGNAL(pauseClicked()), this, SLOT(ShowPauseDialogClicked()));
 }
 
 void MainWindow::StopPrintClicked()

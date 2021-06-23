@@ -26,14 +26,7 @@ void JLEvent::setup(XhPort *pSerialPort)
   */
 void JLEvent::wait(QByteArray pDataSend, uint8_t Timeout)
 {
-    QByteArray pack_data;
-    pack_data.resize(0);
-    pack_data.append(pDataSend);
-
-    QByteArray buff;
-    buff = m_serial_port->getXhPage()->groupPage(pack_data);
-    m_serial_port->getSerialPort()->write(buff);
-
+    m_serial_port->writeCustomData(pDataSend);
     command_to_wait = pDataSend[0];
     subcode_to_wait = pDataSend[1];
     wait_type = WAIT_TYPE_PAGE;
@@ -48,14 +41,7 @@ void JLEvent::wait(QByteArray pDataSend, uint8_t Timeout)
   */
 void JLEvent::waitDialog(QByteArray pDataSend, uint8_t Timeout)
 {
-    QByteArray pack_data;
-    pack_data.resize(0);
-    pack_data.append(pDataSend);
-
-    QByteArray buff;
-    buff = m_serial_port->getXhPage()->groupPage(pack_data);
-    m_serial_port->getSerialPort()->write(buff);
-
+    m_serial_port->writeCustomData(pDataSend);
     command_to_wait = pDataSend[0];
     subcode_to_wait = pDataSend[1];
     wait_type = WAIT_TYPE_DIALOG;

@@ -64,9 +64,6 @@ MainWindow::MainWindow(QWidget *parent) :
 #endif
 
     /*绑定串口信号*/
-    /*frist*/
-    QObject::connect(m_port, &XhPort::firstTestResult, this,&MainWindow::winGfour);
-
     print = new QTimer(this);
     QObject::connect(print,&QTimer::timeout,this,&MainWindow::printTime);
     /*设置透明度淡入淡出*/
@@ -117,29 +114,7 @@ MainWindow::MainWindow(QWidget *parent) :
     QTimer::singleShot(500, this, SLOT(fileList()));
 
     ui->listWidget->clear();
-    QDir *m_dir=new QDir(localPath);
-    QStringList filter;
-    QFileInfoList m_fileinfo = m_dir->entryInfoList();
 
-    int i = 0;
-    qDebug()<<m_fileinfo.count();
-    QFileInfoList m_gcodelist;
-
-    foreach (QFileInfo fileinfo, m_fileinfo)
-    {
-        if(!fileinfo.isFile())
-            continue;
-        if(0 == fileinfo.suffix().compare("gcode",Qt::CaseInsensitive))
-        {
-            qDebug()<<fileinfo.fileName();
-            m_gcodelist<<fileinfo;
-        }
-    }
-
-    for(i = 0;i< m_gcodelist.count();i++)
-    {
-        m_addItemToList(m_gcodelist.at(i).fileName(),m_gcodelist.at(i).filePath(), QByteArray("Local"));
-    }
     printTimer = new QTimer(this);
     m_opaCity=0.0;
     m_effect=new QGraphicsOpacityEffect();
@@ -173,13 +148,6 @@ MainWindow::MainWindow(QWidget *parent) :
     QObject::connect(ui->qw_StatusNotice->rootObject(), SIGNAL(stepperClicked()), this, SLOT(StatusNotice_Stepper_clicked()));
 
     qw_DistanceItem = ui->qw_Distance->rootObject();
-
-    QObject::connect(ui->labPreparePrintControl, SIGNAL(stopClicked()), this, SLOT(StopPreHeatting()));
-    QObject::connect(ui->labPreparePrintControl, SIGNAL(settingClicked()), this, SLOT(ShowParameterDialogClicked()));
-
-    QObject::connect(ui->labPrintControl, SIGNAL(settingClicked()), this, SLOT(ShowParameterDialogClicked()));
-    QObject::connect(ui->labPrintControl, SIGNAL(stopClicked()), this, SLOT(StopPrintClicked()));
-    QObject::connect(ui->labPrintControl, SIGNAL(pauseClicked()), this, SLOT(ShowPauseDialogClicked()));
 
     QObject::connect(ui->stackedWidget, SIGNAL(currentChanged(int)), this, SLOT(WidgetChanged(int)));
 
@@ -238,6 +206,7 @@ MainWindow::MainWindow(QWidget *parent) :
     LightSettingPageInit();
     JodMovePageInit();
     changeFilamentPageInit();
+    printingPageInit();
 
     // pMovie = new QMovie(this);
     // pMovie->setFileName("/usr/share/3d_printer/test.gif");
@@ -355,25 +324,6 @@ void MainWindow::jumpThree()
     QObject::disconnect(&m_timer,SIGNAL(timeout()),this,SLOT(jumpThree()));
 
     m_port->askStatus();
-}
-
-void MainWindow::winGfour(bool a, bool b, bool c, bool d, bool e)
-{
-    /*判断是跳至G4还是G4-1*/
-    if(a && b && c && d && e)
-    {
-        /*正常启动*/
-        ui->stackedWidget->setCurrentIndex(5);
-        m_port->getMachineStatus();
-
-        QObject::connect(&m_timer,SIGNAL(timeout()),this,SLOT(jumpFour()));
-        m_timer.start(2000);
-    }
-    else
-    {
-        /*非正常启动*/
-        ui->stackedWidget->setCurrentIndex(7);
-    }
 }
 
 /*正常启动后进入*/

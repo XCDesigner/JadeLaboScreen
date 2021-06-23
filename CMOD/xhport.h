@@ -135,6 +135,8 @@ public:
 
     void SendTest(QByteArray Datas);
 
+    void writeCustomData(QByteArray Datas);
+
 private:
     void lup();
     void ldown();
@@ -148,24 +150,9 @@ private:
     XhPage *m_package;
     QByteArray ReceiveBuff;
 
-    QTimer *portTimer;//专门用于测试通讯串口的计时器
     QFile *print_file;
     QString thisFilePath;
-
-signals:
-    void firstTestResult(bool ,bool ,bool ,bool ,bool );
-    /*tool*/
-    void backFactory(bool );
-public slots:
-
 private slots:
-    void serialTest();//frsit start 开机测试串口是否打通
-
-    void sendfile(QByteArray );
-
-    void xhfirstTestResult(bool ,bool ,bool ,bool ,bool );
-    /*tool*/
-    void xhbackFactory(bool );
 
     void readData(QByteArray Data);
 };
