@@ -615,7 +615,6 @@ void XhPort::sendFile(uint32_t Offset)
     if(print_file == nullptr)
     {
         print_file = new QFile(thisFilePath);
-        //in = new QTextStream(m_file);
         if(!print_file->open(QIODevice::ReadOnly)) {
             qDebug()<<"File open fail!!";
             print_file->close();

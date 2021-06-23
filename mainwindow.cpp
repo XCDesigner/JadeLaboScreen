@@ -29,7 +29,6 @@ MainWindow::MainWindow(QWidget *parent) :
     pdlg_warning->hide();
 
     QObject::connect(skpWin, SIGNAL(hideWidget()), this, SLOT(onPauseDialogHide()));
-    m_mode = NULL;
     m_delete = NULL;
 
     m_wizard = NULL;
@@ -96,7 +95,6 @@ MainWindow::MainWindow(QWidget *parent) :
     scroller_properties.setScrollMetric(QScrollerProperties::DragVelocitySmoothingFactor,0.3);
     scroller_properties.setScrollMetric(QScrollerProperties::FrameRate,QScrollerProperties::Fps60);
     scroller->setScrollerProperties(scroller_properties);
-
 
     ui->listWidget_3->setViewMode(QListView::ListMode);
     ui->listWidget_3->setFlow(QListView::TopToBottom);
@@ -570,10 +568,7 @@ void MainWindow::on_pushButton_129_clicked()
 
 void MainWindow::on_pushButton_169_clicked()
 {
-    ui->stackedWidget->setCurrentWidget(ui->page_GetStart);
-    ui->m_StatusBar->setVisible(true);
-    m_mode = new selectMode(this);
-    m_mode->show();
+
 }
 
 void MainWindow::on_pushButton_174_clicked()

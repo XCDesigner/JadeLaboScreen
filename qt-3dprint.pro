@@ -65,8 +65,6 @@ SOURCES += \
     dialog/choosefile.cpp \
     dialog/choosetemp.cpp \
     dialog/delete.cpp \
-    dialog/dupandmirror.cpp \
-    dialog/duponly.cpp \
     dialog/filamentfault.cpp \
     dialog/firststartdialog.cpp \
     dialog/inputdialog.cpp \
@@ -78,7 +76,6 @@ SOURCES += \
     dialog/printmodeselect.cpp \
     dialog/printsetdlog.cpp \
     dialog/selectmode.cpp \
-    dialog/unnoknfile.cpp \
     dialog/updateprogrebar.cpp \
     dialog/warningdialog.cpp \
     dialog/xhwizard.cpp \
@@ -154,8 +151,6 @@ HEADERS += \
     dialog/choosefile.h \
     dialog/choosetemp.h \
     dialog/delete.h \
-    dialog/dupandmirror.h \
-    dialog/duponly.h \
     dialog/filamentfault.h \
     dialog/firststartdialog.h \
     dialog/inputdialog.h \
@@ -167,7 +162,6 @@ HEADERS += \
     dialog/printmodeselect.h \
     dialog/printsetdlog.h \
     dialog/selectmode.h \
-    dialog/unnoknfile.h \
     dialog/updateprogrebar.h \
     dialog/warningdialog.h \
     dialog/xhwizard.h \
@@ -200,8 +194,6 @@ FORMS += \
     dialog/choosefile.ui \
     dialog/choosetemp.ui \
     dialog/delete.ui \
-    dialog/dupandmirror.ui \
-    dialog/duponly.ui \
     dialog/filamentfault.ui \
     dialog/firststartdialog.ui \
     dialog/inputdialog.ui \
@@ -212,7 +204,6 @@ FORMS += \
     dialog/printmodeselect.ui \
     dialog/printsetdlog.ui \
     dialog/selectmode.ui \
-    dialog/unnoknfile.ui \
     dialog/updateprogrebar.ui \
     dialog/warningdialog.ui \
     dialog/xhwizard.ui \

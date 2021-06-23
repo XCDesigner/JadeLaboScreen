@@ -39,7 +39,6 @@
 #include "dialog/parsing.h"
 #include "dialog/askpause.h"
 #include "dialog/changefilamentdlg.h"
-#include "dialog/selectmode.h"
 #include "dialog/xhwizard.h"
 #include "dialog/delete.h"
 #include "oldplan/filecheckthread.h"
@@ -47,15 +46,12 @@
 #include "dialog/chooseextrudertemp.h"
 #include "dialog/choosebedtemp.h"
 #include "dialog/choosedistance.h"
-#include "dialog/unnoknfile.h"
 #include "dialog/filamentfault.h"
 #include "dialog/printflament.h"
 #include "dialog/powerlost.h"
 #include "dialog/printsetdlog.h"
 #include "dialog/parsetdlog.h"
-#include "dialog/dupandmirror.h"
 #include "dialog/inputdialog.h"
-#include "dialog/duponly.h"
 #include "dialog/jlwidget.h"
 #include "dialog/printmodeselect.h"
 #include "listwidgetitem/mywifiitem.h"
@@ -173,7 +169,6 @@ private:
     chooseFile * m_WinFile;
     parsing *pdlg_parsing;
     askPause * skpWin;
-    selectMode * m_mode;
     Delete * m_delete;
     changeFilamentDlg *changeFilamentDialog;
 

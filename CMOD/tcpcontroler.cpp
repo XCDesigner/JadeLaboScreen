@@ -113,11 +113,17 @@ void TcpControler::startDownloadProcess(QByteArray Datas)
     writeProtocalData(QByteArray(QByteArray::fromHex("0680")));
     requestDownloadPack(0);
     QTimer::singleShot(6000, this, SLOT(downloadRetryThread()));
-
     file_info.resize(0);
     file_info.append(1, download_file_type);
     file_info.append(download_file_name);
     emit downloadEvent("Start", file_info);
+
+    // Make directory
+    QDir *pDir = new QDir(downloadPath);
+    if(pDir->exists() == false)
+        pDir->mkpath(downloadPath);
+    delete pDir;
+
     if(QFile::exists(downloadFile) == true)
         QFile::remove(downloadFile);
     QFile new_file(downloadFile);

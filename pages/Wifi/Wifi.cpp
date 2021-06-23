@@ -64,9 +64,6 @@ void MainWindow::wifiDownloadEvent(QString EventName, QByteArray Data)
     {
         pdlg_Download->hide();
         delete pdlg_Download;
-        QDir dir(downloadPath);
-        if(dir.exists() == false)
-            dir.mkdir(downloadPath);
         if(last_download_type == 1)
         {
             if(QFile::exists(downloadUpdateFile) == true)

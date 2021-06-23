@@ -137,6 +137,8 @@ public:
 
     void writeCustomData(QByteArray Datas);
 
+    uint32_t getReceiveLen() { return m_serial->getReceiverSize(); }
+
 private:
     void lup();
     void ldown();

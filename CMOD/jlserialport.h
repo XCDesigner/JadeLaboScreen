@@ -25,6 +25,8 @@ public:
     void writeData(QByteArray);
     void writeProtocalData(QByteArray);
 
+    uint32_t getReceiverSize();
+
 private slots:
     void onSerialRead();
 

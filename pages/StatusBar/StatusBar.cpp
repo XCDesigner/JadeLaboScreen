@@ -60,7 +60,7 @@ void MainWindow::updateStatusBar()
 
     screen_status.setTemp(new_status.CurTemp, new_status.TarTemp);
 
-    char m_string[20] ="";
+    char m_string[32] ="";
     sprintf(m_string,"%03d|%03d°C",new_status.CurTemp[0], new_status.TarTemp[0]);
     ui->label_125->setText(m_string);
 

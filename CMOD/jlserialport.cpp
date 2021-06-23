@@ -92,4 +92,13 @@ void JLSerialPort::writeProtocalData(QByteArray SourceData) {
     writeData(pack_data);
 }
 
+uint32_t JLSerialPort::getReceiverSize()
+{
+    uint32_t ret;
+    mtx_receiver_buffer.lock();
+    ret = receive_buffer.length();
+    mtx_receiver_buffer.unlock();
+    return ret;
+}
+
 

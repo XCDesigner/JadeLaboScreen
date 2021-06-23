@@ -335,12 +335,12 @@ void PrintSetDlog::sendSetting()
             if(print_mode == "Mix")
                 pButtons[7]->setText(QString("Left Flowrate / %1%").arg(flowrate_percent[0]));
             else
-                pButtons[7]->setText(QString("Left Flowrate / %1%").arg(QString("Flowrate / %1%").arg(flowrate_percent[0])));
+                pButtons[7]->setText(QString("Flowrate / %1%").arg(flowrate_percent[0]));
         }
         if(button_check_status[8] == true)
         {
             m_xhPort->setFlowratePercentage(1, flowrate_percent[1]);
-            pButtons[8]->setText(QString("Flowrate / %1%").arg(QString("Right Flowrate / %1%").arg(flowrate_percent[1])));
+            pButtons[8]->setText(QString("Right Flowrate / %1%").arg(flowrate_percent[1]));
         }
     }
 }

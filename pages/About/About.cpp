@@ -91,7 +91,7 @@ void MainWindow::on_pushButton_3_clicked()
 
 void MainWindow::on_pushButton_2_clicked()
 {
-    pMovie->start();
-    ui->label_4->setMovie(pMovie);
-    ui->label_4->setScaledContents(true);
+    char len[32];
+    sprintf(len, "%d", m_port->getReceiveLen());
+    ui->pushButton_2->setText(len);
 }

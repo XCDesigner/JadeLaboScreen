@@ -39,7 +39,7 @@ void changeFilamentDlg::init(QByteArray InitData)
 void changeFilamentDlg::show()
 {
     strScreenStatus status;
-    char strtmp[20];
+    char strtmp[32];
 
     pscreen_status->getStatus(&status);
     ui->qw_StatusNotice->rootObject()->setProperty("udiskVisible", pscreen_status->getUdiskStatus());
@@ -66,7 +66,7 @@ void changeFilamentDlg::updateStatusBar()
 {
     strScreenStatus status;
     pscreen_status->getStatus(&status);
-    char strtmp[20];
+    char strtmp[32];
 
     sprintf(strtmp, "%03d|%03d", status.CurrentTemp[0], status.TargetTemp[0]);
     ui->label_131->setText(strtmp);
