@@ -16,8 +16,8 @@ void MainWindow::StopPrintClicked()
         QObject::disconnect(&m_timer,SIGNAL(timeout()),this,SLOT(jumpFourteen()));
     }
     qDebug()<<"Stop clicked";
-    m_port->stopPrint();
     screen_status.setPerformance(IDLE);
+    m_port->stopPrint();
     changePageOnStatus(QByteArray::fromHex("00"), ui->page_GetStart);
 }
 
@@ -75,9 +75,12 @@ void MainWindow::printMessageProcess(uint8_t Command, uint8_t SubCode, QByteArra
         }
         else if(SubCode == 0x04)
         {
-            uint32_t offset;
-            offset = ((uint8_t)Datas.at(5)<<24 ) | ((uint8_t)Datas.at(4)<<16 ) | ((uint8_t)Datas.at(3)<<8 )| ((uint8_t)Datas.at(2));
-            m_port->sendFile(offset);
+            if(screen_status.getPerformance() == PRINTING)
+            {
+                uint32_t offset;
+                offset = ((uint8_t)Datas.at(5)<<24 ) | ((uint8_t)Datas.at(4)<<16 ) | ((uint8_t)Datas.at(3)<<8 )| ((uint8_t)Datas.at(2));
+                m_port->sendFile(offset);
+            }
         }
         else if(SubCode == 0x06)
         {
