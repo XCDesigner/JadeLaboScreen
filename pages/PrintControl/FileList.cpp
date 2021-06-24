@@ -119,6 +119,7 @@ void MainWindow::onFileChooseReturn()
     QList<QByteArray> ret = m_WinFile->get_return_value();
     myListWidgetItem *p_item = m_WinFile->getSelectItem();
     delete m_WinFile;
+    w_WinFile = nullptr;
     if(ret[0] == "Confirm")
     {
         m_fileParser = new XhGcodeFileParser(this);
@@ -138,6 +139,7 @@ void MainWindow::onModeSelectReturn()
     if(ret[0] == "Cancel")
     {
         delete pdlg_select_mode;
+        pdlg_select_mode = nullptr;
     }
     else
     {
@@ -145,6 +147,7 @@ void MainWindow::onModeSelectReturn()
         QString output_file_name = pdlg_select_mode->getOutputFileName();
         WriteRecoveryFilaName(output_file_name);
         delete pdlg_select_mode;
+        pdlg_select_mode = nullptr;
 
         pdlg_parsing = new parsing();
         pdlg_parsing->init(QByteArray(), ret[0], input_file, output_file_name);
@@ -164,6 +167,7 @@ void MainWindow::onParseComplete()
         m_fileParser = new XhGcodeFileParser(this);
         QVariantMap parse_result = m_fileParser->parseQuickly(localPath + ret[1]);
         delete m_fileParser;
+        m_fileParser = nullptr;
         print_desc.ParsedMode = parse_result["mode"].toString();
         print_desc.Mode = ret[2];
         print_desc.LeftTemp = parse_result["left_temp"].toString();
@@ -190,6 +194,7 @@ void MainWindow::onParseComplete()
         m_fileParser = new XhGcodeFileParser(this);
         QVariantMap parse_result = m_fileParser->parseQuickly(localPath + ret[1]);
         delete m_fileParser;
+        m_fileParser = nullptr;
         pdlg_select_mode = new PrintModeSelect();
         qDebug()<<parse_result["mode"].toByteArray();
         pdlg_select_mode->init(QByteArray(parse_result["mode"].toByteArray()), localPath+ret[1], ret[1]);
@@ -197,6 +202,7 @@ void MainWindow::onParseComplete()
         QObject::connect(pdlg_select_mode, SIGNAL(hideWidget()), this, SLOT(onModeSelectReturn()), Qt::QueuedConnection);
     }
     delete pdlg_parsing;
+    pdlg_parsing = nullptr;
 }
 
 void MainWindow::m_deleteItem(myListWidgetItem *itm)
@@ -221,15 +227,18 @@ void MainWindow::onDeleteFileReturn()
             QListWidgetItem *v=m_map.take(pItem);
             ui->listWidget->takeItem(ui->listWidget->row(v));
             delete v;
+            v = nullptr;
         }else
         {
             QListWidgetItem *v=m_map.take(pItem);
             ui->listWidget_2->takeItem(ui->listWidget_2->row(v));
             delete v;
+            v = nullptr;
         }
     }
     QObject::disconnect(m_delete, SIGNAL(hideWidget()), this, SLOT(onDeleteFileReturn()));
     delete m_delete;
+    m_delete = nullptr;
 }
 
 void MainWindow::romClean(int fileSize)

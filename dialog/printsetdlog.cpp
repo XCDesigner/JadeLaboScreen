@@ -35,6 +35,7 @@ PrintSetDlog::PrintSetDlog(QWidget *parent) :
 PrintSetDlog::~PrintSetDlog()
 {
     delete ui;
+    delete m_tmr_press_check;
 }
 
 void PrintSetDlog::setPrintMode(QString PrintMode)

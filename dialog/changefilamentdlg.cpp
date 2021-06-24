@@ -21,11 +21,16 @@ changeFilamentDlg::changeFilamentDlg(QWidget *parent) :
     ui->labRightHeatingUnit->setIndicator(1);
 
     autoUpdateStatus = false;
+
+    chooseTempDialog = new chooseTemp(this);
+    chooseTempDialog->init();
+    chooseTempDialog->hide();
 }
 
 changeFilamentDlg::~changeFilamentDlg()
 {
     delete ui;
+    delete chooseTempDialog;
 }
 
 void changeFilamentDlg::init(QByteArray InitData)
@@ -51,9 +56,6 @@ void changeFilamentDlg::show()
     sprintf(strtmp, "%03d°C", status.TargetTemp[1]);
     ui->labRightHeatingUnit->setValue(status.TargetTemp[1]);
 
-    chooseTempDialog = new chooseTemp(this);
-    chooseTempDialog->init();
-    chooseTempDialog->hide();
     autoUpdateStatus = true;
 
     QTimer::singleShot(500, this, SLOT(updateStatusBar()));

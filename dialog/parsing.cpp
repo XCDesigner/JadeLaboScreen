@@ -18,6 +18,7 @@ parsing::parsing(QWidget *parent) :
 parsing::~parsing()
 {
     delete ui;
+    delete m_file_parser;
 }
 
 void parsing::init(QByteArray InitData, QString ReqMode, QString InputFile, QString OutputFileName)
