@@ -31,7 +31,7 @@ private slots:
     void onSerialRead();
 
 protected:
-    QByteArray readData() override;
+//    QByteArray readData() override;
     QByteArray parseData() override;
 
 private:

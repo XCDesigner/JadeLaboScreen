@@ -300,8 +300,8 @@ void PrintSetDlog::sendSetting()
     else if(button_check_status[5] == true)
     {
         feedrate_percent += change_value;
-        if(feedrate_percent > 200)
-            feedrate_percent = 200;
+        if(feedrate_percent > 300)
+            feedrate_percent = 300;
         else if(feedrate_percent < 10)
             feedrate_percent = 10;
         m_xhPort->setPrintSpeedPercentage(feedrate_percent);

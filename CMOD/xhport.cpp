@@ -690,7 +690,10 @@ uint32_t XhPort::getPrintFileSize()
 void XhPort::closeFile()
 {
     if(print_file != nullptr)
+    {
         print_file->close();
+        delete print_file;
+    }
 }
 
 /**

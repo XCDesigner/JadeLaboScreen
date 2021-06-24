@@ -58,12 +58,12 @@ bool JLSerialPort::openPort(QString PortName) {
     return openPort(PortName, QSerialPort::Baud115200);
 }
 
-QByteArray JLSerialPort::readData() {
-    QByteArray ret;
-    if(m_port->isOpen())
-        ret = m_port->read(512);
-    return ret;
-}
+//QByteArray JLSerialPort::readData() {
+//    QByteArray ret;
+//    if(m_port->isOpen())
+//        ret = m_port->read(512);
+//    return ret;
+//}
 
 QByteArray JLSerialPort::parseData() {
     uint32_t rn;
