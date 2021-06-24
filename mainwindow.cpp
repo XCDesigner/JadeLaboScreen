@@ -131,10 +131,6 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->qw_Distance->setResizeMode(QQuickWidget::SizeRootObjectToView);
     ui->qw_Distance->setClearColor(QColor(qmlColor));
 
-    ui->labPreparePrintControl->setSettingEnable();
-    ui->labPreparePrintControl->setStopEnable();
-    ui->labPreparePrintControl->setPauseDisable();
-
     ui->qw_StatusNotice->setSource(QUrl("qrc:/qml/StatusBarNotice.qml"));
     ui->qw_StatusNotice->setClearColor(QColor(qmlColor));
     ui->qw_StatusNotice->rootObject()->setProperty("udiskVisible", false);
@@ -201,6 +197,7 @@ MainWindow::MainWindow(QWidget *parent) :
     JodMovePageInit();
     changeFilamentPageInit();
     printingPageInit();
+    preparePrintingPageInit();
 
     // pMovie = new QMovie(this);
     // pMovie->setFileName("/usr/share/3d_printer/test.gif");

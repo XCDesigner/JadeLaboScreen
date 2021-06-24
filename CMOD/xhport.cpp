@@ -663,10 +663,12 @@ bool XhPort::setPrintFile(QString FileName)
     thisFilePath = FileName;
     if(print_file != nullptr)
     {
+        qDebug()<<"Delete old file!";
         if(print_file->isOpen() == true)
             print_file->close();
         delete print_file;
     }
+    qDebug()<<"Create new File";
     print_file = new QFile(thisFilePath);
     return print_file->open(QIODevice::ReadOnly);
 }

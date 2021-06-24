@@ -3,6 +3,10 @@
 
 void MainWindow::preparePrintingPageInit()
 {
+    ui->labPreparePrintControl->setSettingEnable();
+    ui->labPreparePrintControl->setStopEnable();
+    ui->labPreparePrintControl->setPauseDisable();
+
     QObject::connect(ui->labPreparePrintControl, SIGNAL(stopClicked()), this, SLOT(StopPreHeatting()));
     QObject::connect(ui->labPreparePrintControl, SIGNAL(settingClicked()), this, SLOT(ShowParameterDialogClicked()));
 }
