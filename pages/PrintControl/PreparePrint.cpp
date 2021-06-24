@@ -21,6 +21,7 @@ void MainWindow::preparePrintPageLoad()
 
 void MainWindow::StopPreHeatting() 
 {
+    qDebug()<<"Stop clicked";
     m_port->setHeattingUnit("0", "0");
     m_port->setHeattingUnit(2, 0);
     screen_status.setPerformance(IDLE);
