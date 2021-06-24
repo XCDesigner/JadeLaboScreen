@@ -696,6 +696,7 @@ void XhPort::closeFile()
     {
         print_file->close();
         delete print_file;
+        print_file = nullptr;
     }
 }
 
