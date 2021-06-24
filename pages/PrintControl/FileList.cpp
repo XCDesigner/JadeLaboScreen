@@ -36,6 +36,7 @@ void MainWindow::on_pushButton_101_clicked()
         QFileInfoList m_fileinfo = m_dir->entryInfoList();
         for(int i = 0;i< m_fileinfo.count();i++)
             m_addItemToList(m_fileinfo.at(i).fileName(),m_fileinfo.at(i).filePath(),"UDisk");
+        delete m_dir;
 }
 
 void MainWindow::on_pushButton_134_clicked()
@@ -72,6 +73,7 @@ void MainWindow::on_pushButton_134_clicked()
     QFileInfoList m_fileinfo = m_dir->entryInfoList();
     for(int i = 0;i< m_fileinfo.count();i++)
         m_addItemToList(m_fileinfo.at(i).fileName(),m_fileinfo.at(i).filePath(), "Local");
+    delete m_dir;
 }
 
 void MainWindow::m_addItemToList(const QString &fileName, QString filePath, QByteArray FileFrom)
@@ -178,6 +180,9 @@ void MainWindow::onParseComplete()
         m_port->setHeattingUnit(print_desc.LeftTemp, print_desc.RightTemp, print_desc.BedTemp);
         // Need add check for file is opened successfully
         ui->stackedWidget->setCurrentWidget(ui->page_PreparePrint);
+        ui->listWidget->clear();
+        ui->listWidget_2->clear();
+        m_map.clear();
     }
     else
     {
