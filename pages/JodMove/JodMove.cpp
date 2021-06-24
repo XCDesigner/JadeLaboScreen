@@ -59,13 +59,14 @@ void MainWindow::on_pushButton_700_clicked()
 
 void MainWindow::on_pushButton_693_clicked()
 {
+    m_port->changeToolHead(0);
     m_port->setDualMode(0);
     ui->stackedWidget->setCurrentWidget(ui->page_Tools);
 }
 
 void MainWindow::ExtruderChange()
 {
-    if(ui->label_7->getEnableStatus() == true) {
+    if(ui->label_7->getEnableStatus() == false) {
         m_port->changeToolHead(0);
         qDebug()<<"Left";
     }

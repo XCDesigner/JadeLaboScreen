@@ -544,6 +544,7 @@ QVariantMap XhGcodeFileParser::parseQuickly(const QString inputFileName)
     // qDebug()<<m_headerInfo["left_temp"].toString();
     // qDebug()<<m_headerInfo["right_temp"].toString();
     // qDebug()<<m_headerInfo["bed_temp"].toString();
+    m_sourceGcodeLines->clear();
     return m_headerInfo;
 }
 
