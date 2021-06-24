@@ -158,9 +158,6 @@ MainWindow::MainWindow(QWidget *parent) :
 #ifdef  XH_LINUX
     m_port->portInit(serialNum);
     ui->stackedWidget->setCurrentWidget(ui->page_GetStart);
-    // ui->quickWidget_2->setSource(QUrl("qrc:/pageView.qml"));
-    // ui->quickWidget_2->setResizeMode(QQuickWidget::SizeRootObjectToView);
-    // ui->quickWidget_2->show();
 
     ui->m_StatusBar->setVisible(true);
     QObject::connect(printTimer,&QTimer::timeout,this,&MainWindow::getMachineStatus);

@@ -633,7 +633,8 @@ void XhPort::sendFile(uint32_t Offset)
         }
 
     }
-    print_file->seek(Offset);
+    if(print_file->pos() != Offset)
+        print_file->seek(Offset);
 
     QByteArray data = print_file->read(128);
     int len= data.size();
