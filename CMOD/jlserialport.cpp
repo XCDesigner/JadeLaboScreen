@@ -74,11 +74,11 @@ QByteArray JLSerialPort::parseData() {
     return ret;
 }
 
-void JLSerialPort::write(QByteArray DataToWrite) {
+void JLSerialPort::write(QByteArray &DataToWrite) {
     writeData(DataToWrite);
 }
 
-void JLSerialPort::writeData(QByteArray DataToWrite) {
+void JLSerialPort::writeData(QByteArray &DataToWrite) {
     if(m_port->isOpen())
     {
         mtx_port_write.lock();

@@ -11,8 +11,8 @@
 #include "define/windowsPath.h"
 #endif
 
-#define XH_LITTLE_BIT_MERGE_16(d1, d2)              ((((d2) << 8) & 0xFF00) | ((d1) & 0x00FF))
-#define XH_LITTLE_BIT_MERGE_32(d1, d2, d3, d4)      ( (((d4) << 24) & 0xFF000000) | (((d3) << 16) & 0xFF0000) | (((d2) << 8) & 0xFF00) | ((d1) & 0xFF))
+// #define XH_LITTLE_BIT_MERGE_16(d1, d2)              ((((d2) << 8) & 0xFF00) | ((d1) & 0x00FF))
+// #define XH_LITTLE_BIT_MERGE_32(d1, d2, d3, d4)      ( (((d4) << 24) & 0xFF000000) | (((d3) << 16) & 0xFF0000) | (((d2) << 8) & 0xFF00) | ((d1) & 0xFF))
 
 
 XhPage::XhPage(QObject *parent) : QObject(parent)
@@ -41,6 +41,7 @@ int XhPage::analysis(QByteArray package)
     uint16_t dataCheck;
     dataCheck = (uint8_t)package.at(8) << 8 | (uint8_t)package.at(7);
     emit command_received((uint8_t)data.at(0), (uint8_t)data.at(1), data);
+    qDebug()<<"emit";
     switch (data[0]) {
     /*判断是哪一个页面族*/
     /********first start********/
@@ -53,7 +54,7 @@ int XhPage::analysis(QByteArray package)
                 break;
             }
         break;
-    default:
+        default:
         break;
     }
     return 0;

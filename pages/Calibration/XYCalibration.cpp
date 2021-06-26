@@ -46,7 +46,7 @@ void MainWindow::xyCalibrationHeating() {
         {
             m_port->x_xyCalibration();
             ui->stackedWidget->setCurrentWidget(ui->page_XYCali_2);
-            QObject::connect(m_port->getXhPage(), SIGNAL(command_received(uint8_t, uint8_t, QByteArray)), this, SLOT(xyCalibrationMessageProcess(uint8_t, uint8_t, QByteArray)));
+            QObject::connect(m_port->getXhPage(), SIGNAL(command_received(uint8_t, uint8_t, QByteArray &)), this, SLOT(xyCalibrationMessageProcess(uint8_t, uint8_t, QByteArray &)));
         }
         else
         {
@@ -55,7 +55,7 @@ void MainWindow::xyCalibrationHeating() {
     }
 }
 
-void MainWindow::xyCalibrationMessageProcess(uint8_t Command, uint8_t SubCode, QByteArray Datas)
+void MainWindow::xyCalibrationMessageProcess(uint8_t Command, uint8_t SubCode, QByteArray &Datas)
 {
     uint8_t result = (uint8_t)Datas.at(2);
     if(Command == 0x03)
@@ -67,7 +67,7 @@ void MainWindow::xyCalibrationMessageProcess(uint8_t Command, uint8_t SubCode, Q
                 m_port->setHeattingUnit(2, 0);
                 screen_status.setPerformance(IDLE);
                 ui->stackedWidget->setCurrentWidget(ui->page_XYCali_3);
-                QObject::disconnect(m_port->getXhPage(), SIGNAL(command_received(uint8_t, uint8_t, QByteArray)), this, SLOT(xyCalibrationMessageProcess(uint8_t, uint8_t, QByteArray)));
+                QObject::disconnect(m_port->getXhPage(), SIGNAL(command_received(uint8_t, uint8_t, QByteArray &)), this, SLOT(xyCalibrationMessageProcess(uint8_t, uint8_t, QByteArray &)));
             }
             else {
                 m_port->setHeattingUnit(0, 0);

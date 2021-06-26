@@ -29,7 +29,7 @@ void MainWindow::aboutTimerTester()
 {
     if(ui->checkBox->isChecked() == true) {
         QByteArray regs = QByteArray::fromHex("0012416f");
-        m_port->getTMCValue(3, regs);
+        m_port->getTMCValue(2, regs);
         m_port->trigFILSample();
         m_port->getFILValue();
     }

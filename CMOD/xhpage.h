@@ -35,7 +35,7 @@ private:
 
     strMachineStatus cur_machine_status;
 signals:
-    void command_received(uint8_t, uint8_t, QByteArray);
+    void command_received(uint8_t, uint8_t, QByteArray &);
 };
 
 #endif // XHPAGE_H

@@ -41,6 +41,10 @@ public:
 
     int     GetParsedLine();
 
+    void    fileListRecordInit();
+    void    writeFileListRecord(QList<QString>);
+    QList<QString> loadFileListRecord();
+
     /* 2021/3/8/ by paladin  over */
 signals:
     void    parseSucceded(QString outputFileName);
@@ -88,6 +92,11 @@ private:
     QString         header2StringLine();
     QString         cutComment(QString gcode);
     void            rewriteLocalFile();
+    QList<QString>  loadFileListRecordContent(QString);
+    void            checkFileList(QString);
+    void            syncFiles(QList<QString> FileList);
+    void            writeFileList(QString FileName, QList<QString> List);
+    void            insertFileListRecord(QString);
 };
 
 #endif // XHGCODEFILEPARSER_H

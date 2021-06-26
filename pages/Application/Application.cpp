@@ -58,12 +58,12 @@ void MainWindow::changeDialog(JLWidget *pDialog)
     pDialogToShow->show();
 }
 
-void MainWindow::changePageCallback(QByteArray ReplyData)
+void MainWindow::changePageCallback(QByteArray &ReplyData)
 {
     ui->stackedWidget->setCurrentWidget(pNextShowPage);
 }
 
-void MainWindow::changeDialogCallback(QByteArray ReplyData)
+void MainWindow::changeDialogCallback(QByteArray &ReplyData)
 {
     pDialogToShow->init(ReplyData);
     pDialogToShow->show();
@@ -72,11 +72,11 @@ void MainWindow::changeDialogCallback(QByteArray ReplyData)
 
 void MainWindow::ListenerInit()
 {
-    QObject::connect(m_port->getXhPage(), SIGNAL(command_received(uint8_t, uint8_t, QByteArray)), this, SLOT(onMessageListen(uint8_t, uint8_t, QByteArray)));
+    QObject::connect(m_port->getXhPage(), SIGNAL(command_received(uint8_t, uint8_t, QByteArray &)), this, SLOT(onMessageListen(uint8_t, uint8_t, QByteArray &)));
     // AddListen(QByteArray(QByteArray::fromHex("0100")), &MainWindow::TestListener, true);
 }
 
-void MainWindow::onMessageListen(uint8_t Command, uint8_t SubCode, QByteArray MessageData)
+void MainWindow::onMessageListen(uint8_t Command, uint8_t SubCode, QByteArray &MessageData)
 {
     // bool found = false;
     // QByteArray s;

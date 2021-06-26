@@ -651,6 +651,7 @@ void XhPort::sendFile(uint32_t Offset)
     pageData.append(datalen);
     pageData.append(data);
     m_serial->writeProtocalData(pageData);
+    pageData.clear();
 }
 
 /**
@@ -707,8 +708,52 @@ void XhPort::closeFile()
   */
 void XhPort::getFirmwareVersion()
 {
-    QByteArray s = QByteArray::fromHex("0503");
-    m_serial->writeProtocalData(s);
+    m_serial->writeProtocalData(QByteArray::fromHex("0503"));
+}
+
+/**
+  * @brief  Test axis endstop, movment
+  * @retval None
+  */
+void XhPort::testAxis()
+{
+    m_serial->writeProtocalData(QByteArray::fromHex("0505"));
+}
+
+/**
+  * @brief  Test left hotend heating && fans
+  * @retval None
+  */
+void XhPort::testLeftHotend()
+{
+    m_serial->writeProtocalData(QByteArray::fromHex("0506"));
+}
+
+/**
+  * @brief  Test right hotend heating && fans
+  * @retval None
+  */
+void XhPort::testRightHotend()
+{
+    m_serial->writeProtocalData(QByteArray::fromHex("0507"));
+}
+
+/**
+  * @brief  Test heatedbed heating
+  * @retval None
+  */
+void XhPort::testBed()
+{
+    m_serial->writeProtocalData(QByteArray::fromHex("0508"));
+}
+
+/**
+  * @brief  Test calibration data
+  * @retval None
+  */
+void XhPort::testCalibration()
+{
+    m_serial->writeProtocalData(QByteArray::fromHex("0509"));
 }
 
 /**
@@ -799,12 +844,6 @@ void XhPort::SendTest(QByteArray Datas)
     QByteArray buff = QByteArray::fromHex("0b0f");
     buff.append(Datas);
     m_serial->writeProtocalData(buff);
-}
-
-void XhPort::testdemo()
-{
-    QByteArray s = QByteArray::fromHex("84654875294581");
-    m_serial->writeProtocalData(s);
 }
 
 /*打开串口*/

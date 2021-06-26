@@ -107,12 +107,13 @@ public:
 
     void changeFilamentPageLoad();
 
+    void fileListPageInit();
     void changeFilamentPageInit();
     void AboutPageInit();
     void platformCalibratePageinit();
     void xyCalibratePageinit();
     void nozzleCalibratePageinit();
-    void JodMovePageInit();
+    void jodMovePageInit();
 
     void ListenerInit();
     void AddListen(QByteArray MatchData, pFunction, bool);
@@ -127,7 +128,7 @@ public:
     void ExtrudeControlInit();
     void DebugCallback(QByteArray);
 
-    void LightSettingPageInit();
+    void lightSettingPageInit();
 
     // Change Hotend
     void changeHotendPageInit();
@@ -147,12 +148,6 @@ private:
     bool flicker;
 
     int printMode;
-    int itemMode;
-    int timeLonger;
-    int m_x;
-    int m_y;
-    int m_w;
-    int m_h;
     int printtime;
 
     strPrintDesc print_desc;
@@ -234,12 +229,13 @@ private:
     QDateTime print_end_time;
 
     QList<QByteArray> command_received_list;
+    QList<QString> file_list;
 
 private slots:
-    void printMessageProcess(uint8_t, uint8_t, QByteArray Datas);
-    void nozzleCalibrationMessageProcess(uint8_t Command, uint8_t SubCode, QByteArray Datas);
-    void platformCalibrationMessageProcess(uint8_t Command, uint8_t SubCode, QByteArray Datas);
-    void xyCalibrationMessageProcess(uint8_t Command, uint8_t SubCode, QByteArray Datas);
+    void printMessageProcess(uint8_t, uint8_t, QByteArray &Datas);
+    void nozzleCalibrationMessageProcess(uint8_t Command, uint8_t SubCode, QByteArray &Datas);
+    void platformCalibrationMessageProcess(uint8_t Command, uint8_t SubCode, QByteArray &Datas);
+    void xyCalibrationMessageProcess(uint8_t Command, uint8_t SubCode, QByteArray &Datas);
     void onSetBuildplatThicknessClicked();
     void BuildplateProcess(QByteArray Datas);
     void onSetBuildplatThicknessReturn();
@@ -266,22 +262,22 @@ private slots:
     void wifiParseComplete();
 
     // Fault detection
-    void onMessageListen(uint8_t, uint8_t, QByteArray);
+    void onMessageListen(uint8_t, uint8_t, QByteArray &);
 
     //Test
-    void onMessageTest(uint8_t Command, uint8_t SubCode, QByteArray Datas);
+    void onMessageTest(uint8_t Command, uint8_t SubCode, QByteArray &);
 
     // Update page
     void updateFileAnalize(QString);
-    QList<uint32_t> getUpdateItem(uint32_t SearchType);
+    QList<uint32_t> getUpdateItem(uint32_t);
     QByteArray getUpdateInfo(QList<uint32_t>);
     QByteArray getUpdateContent(QList<uint32_t>);
     void startUpdatePrinter();
     void startUpdateScreen();
-    void sendPrinterUpdatePack(uint16_t PackIndex);
+    void sendPrinterUpdatePack(uint16_t);
     void sendEndUpdatePrinter();
     void sendPrinterUpdateInfo();
-    void updateCommandProcess(uint8_t Command, uint8_t SubCode, QByteArray Datas);
+    void updateCommandProcess(uint8_t, uint8_t, QByteArray &);
     void rebootSystem();
 
     // Temp control
@@ -307,8 +303,8 @@ private slots:
 
     void updateStatusBar();
     void waitforIdleStatus();
-    void changePageCallback(QByteArray ReplyData);
-    void changeDialogCallback(QByteArray ReplyData);
+    void changePageCallback(QByteArray &);
+    void changeDialogCallback(QByteArray &);
     void onPauseDialogHide();
     void onSettingDialogHide();
     void firstStart();
@@ -366,8 +362,6 @@ private slots:
     void on_pushButton_129_clicked();
 
     void on_pushButton_134_clicked();
-
-    void on_pushButton_169_clicked();
 
     void on_pushButton_174_clicked();
 
@@ -818,6 +812,8 @@ private:
     void MovementFaultDetected();
 
     void onPreparePirntComplete(QByteArray);
+
+    void onSelfTestReack(QByteArray Data);
 };
 
 #endif // MAINWINDOW_H

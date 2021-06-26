@@ -1,7 +1,7 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
-void MainWindow::LightSettingPageInit()
+void MainWindow::lightSettingPageInit()
 {
     ui->qw_LightSlider->setSource(QUrl("qrc:/qml/JFSliderBar.qml"));
     ui->qw_LightSlider->setResizeMode(QQuickWidget::SizeRootObjectToView);

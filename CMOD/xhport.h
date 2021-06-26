@@ -94,7 +94,11 @@ public:
 
     void getFirmwareVersion();
 
-    void testdemo();
+    void testAxis();
+    void testLeftHotend();
+    void testRightHotend();
+    void testBed();
+    void testCalibration();
 
     void portInit(QString );//初始化串口
     bool serialOpen;//串口是否打开

@@ -21,8 +21,8 @@ public:
     static QList<QString> getPortNames();
     bool openPort(QString, int);
     bool openPort(QString);
-    void write(QByteArray);
-    void writeData(QByteArray);
+    void write(QByteArray &);
+    void writeData(QByteArray &);
     void writeProtocalData(QByteArray);
 
     uint32_t getReceiverSize();

@@ -175,11 +175,11 @@ MainWindow::MainWindow(QWidget *parent) :
     setWinPic(false);
 
     m_event->setup(m_port);
-    QObject::connect(this->m_event, SIGNAL(changePageAccept(QByteArray)), this, SLOT(changePageCallback(QByteArray)));
-    QObject::connect(this->m_event, SIGNAL(changeDialogAccept(QByteArray)), this, SLOT(changeDialogCallback(QByteArray)));
+    QObject::connect(this->m_event, SIGNAL(changePageAccept(&QByteArray)), this, SLOT(changePageCallback(&QByteArray)));
+    QObject::connect(this->m_event, SIGNAL(changeDialogAccept(&QByteArray)), this, SLOT(changeDialogCallback(&QByteArray)));
 
-    QObject::connect(m_port->getXhPage(), SIGNAL(command_received(uint8_t, uint8_t, QByteArray)), this, SLOT(printMessageProcess(uint8_t, uint8_t, QByteArray)));
-    QObject::connect(m_port->getXhPage(), SIGNAL(command_received(uint8_t, uint8_t, QByteArray)), this, SLOT(onMessageTest(uint8_t, uint8_t, QByteArray)));
+    QObject::connect(m_port->getXhPage(), SIGNAL(command_received(uint8_t, uint8_t, QByteArray &)), this, SLOT(printMessageProcess(uint8_t, uint8_t, QByteArray &)));
+//    QObject::connect(m_port->getXhPage(), SIGNAL(command_received(uint8_t, uint8_t, QByteArray)), this, SLOT(onMessageTest(uint8_t, uint8_t, QByteArray)));
 
     AboutPageInit();
 
@@ -193,14 +193,15 @@ MainWindow::MainWindow(QWidget *parent) :
     xyCalibratePageinit();
     nozzleCalibratePageinit();
     changeHotendPageInit();
-    LightSettingPageInit();
-    JodMovePageInit();
+    lightSettingPageInit();
+    jodMovePageInit();
     changeFilamentPageInit();
     printingPageInit();
     preparePrintingPageInit();
 
     // pMovie = new QMovie(this);
     // pMovie->setFileName("/usr/share/3d_printer/test.gif");
+    fileListPageInit();
 }
 
 
@@ -557,13 +558,7 @@ void MainWindow::fileList()
 void MainWindow::on_pushButton_129_clicked()
 {
     ui->stackedWidget->setCurrentWidget(ui->page_FileList);
-    ui->listWidget->setVisible(true);
-    ui->listWidget_2->setVisible(false);
-}
-
-void MainWindow::on_pushButton_169_clicked()
-{
-
+    on_pushButton_134_clicked();
 }
 
 void MainWindow::on_pushButton_174_clicked()
@@ -1111,7 +1106,7 @@ void MainWindow::on_pushButton_447_clicked()
 //    }
 //}
 
-void MainWindow::onMessageTest(uint8_t Command, uint8_t SubCode, QByteArray Datas)
+void MainWindow::onMessageTest(uint8_t Command, uint8_t SubCode, QByteArray &Datas)
 {
     if(Command == 0x09) {
         if(SubCode == 0x01)

@@ -91,7 +91,7 @@ QList<uint32_t> MainWindow::getUpdateItem(uint32_t SearchType)
 
 void MainWindow::startUpdatePrinter()
 {
-    QObject::connect(m_port->getXhPage(), SIGNAL(command_received(uint8_t, uint8_t, QByteArray)), this, SLOT(updateCommandProcess(uint8_t, uint8_t, QByteArray)));
+    QObject::connect(m_port->getXhPage(), SIGNAL(command_received(uint8_t, uint8_t, QByteArray &)), this, SLOT(updateCommandProcess(uint8_t, uint8_t, QByteArray &)));
     m_update = new updateProgreBar();
     m_update->show();
     m_port->startUpdate();
@@ -131,7 +131,7 @@ void MainWindow::rebootSystem()
 {
     qDebug()<<"Send Reboot system";
     m_port->sendRebootSystem();
-    QObject::disconnect(m_port->getXhPage(), SIGNAL(command_received(uint8_t, uint8_t, QByteArray)), this, SLOT(updateCommandProcess(uint8_t, uint8_t, QByteArray)));
+    QObject::disconnect(m_port->getXhPage(), SIGNAL(command_received(uint8_t, uint8_t, QByteArray &)), this, SLOT(updateCommandProcess(uint8_t, uint8_t, QByteArray &)));
 }
 
 void MainWindow::startUpdateScreen()
@@ -168,7 +168,7 @@ void MainWindow::startUpdateScreen()
     }
 }
 
-void MainWindow::updateCommandProcess(uint8_t Command, uint8_t SubCode, QByteArray Datas)
+void MainWindow::updateCommandProcess(uint8_t Command, uint8_t SubCode, QByteArray &Datas)
 {
     if(Command == 0x05)
     {

@@ -41,15 +41,14 @@ private:
    uint8_t command_to_wait;
    uint8_t subcode_to_wait;
    uint8_t wait_type;
-   QByteArray bytes_accept;
 
 public slots:
    void test();
-   void commandAccept(uint8_t Command, uint8_t SubCode, QByteArray Data);
+   void commandAccept(uint8_t Command, uint8_t SubCode, QByteArray &Data);
 
 signals:
-   void changePageAccept(QByteArray);
-   void changeDialogAccept(QByteArray);
+   void changePageAccept(QByteArray &);
+   void changeDialogAccept(QByteArray &);
 };
 
 #endif

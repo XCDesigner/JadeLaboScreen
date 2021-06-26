@@ -54,7 +54,6 @@ void JLEvent::test()
 
 void JLEvent::commandAccept(uint8_t Command, uint8_t SubCode, QByteArray &Data)
 {
-    qDebug()<<Data;
     if((Command == command_to_wait) && (subcode_to_wait == SubCode))
     {
         command_to_wait = 0xff;
@@ -64,5 +63,4 @@ void JLEvent::commandAccept(uint8_t Command, uint8_t SubCode, QByteArray &Data)
         else if(wait_type == WAIT_TYPE_DIALOG)
             emit changeDialogAccept(Data);
     }
-    Data[0] = 0x77;
 }

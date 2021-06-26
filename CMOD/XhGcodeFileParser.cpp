@@ -25,7 +25,11 @@ XhGcodeFileParser::~XhGcodeFileParser()
 
 void XhGcodeFileParser::parseByDirect(const QString &inputFileName, const QString &outputFileName, QByteArray FileFrom)
 {
-    file_from = FileFrom;
+    qDebug()<<"Input: " << inputFileName;
+    qDebug()<<QFileInfo(inputFileName).path();
+    qDebug()<<UDiskPath;
+    if(QFileInfo(inputFileName).path() == UDiskPath)
+        file_from = "UDisk";
     process_percent = 0;
     m_mutex->lock();
     m_inputFileName = inputFileName;
@@ -37,7 +41,11 @@ void XhGcodeFileParser::parseByDirect(const QString &inputFileName, const QStrin
 
 void XhGcodeFileParser::parseByDeep(const QString &inputFileName, const QString &outputFileName, QByteArray FileFrom)
 {
-    file_from = FileFrom;
+    qDebug()<<"Input: " << inputFileName;
+    qDebug()<<QFileInfo(inputFileName).path();
+    qDebug()<<UDiskPath;
+    if(QFileInfo(inputFileName).path() == UDiskPath)
+        file_from = "UDisk";
     process_percent = 0;
     m_mutex->lock();
     m_inputFileName = inputFileName;
@@ -84,6 +92,7 @@ void XhGcodeFileParser::run()
     default:
         break;
     }
+    qDebug()<<file_from;
     if(file_from == "UDisk")
         writeNewFile();
     else
@@ -479,6 +488,7 @@ void XhGcodeFileParser::writeNewFile()
         }
         process_percent = 1000;
         new_file.close();
+        insertFileListRecord(m_outputFileName);
         QFile::remove(localPath + m_outputFileName);
         QFile::rename(localPath + "tmpfile.gcode", localPath + m_outputFileName);
     }
@@ -561,4 +571,163 @@ QByteArray XhGcodeFileParser::getParseStatus()
 int XhGcodeFileParser::getPercent()
 {
     return process_percent;
+}
+
+void XhGcodeFileParser::syncFiles(QList<QString> FileList)
+{
+    QFileInfoList file_info_list;
+    bool found;
+    QDir *p_dir = new QDir(localPath);
+    file_info_list = p_dir->entryInfoList();
+    qDebug()<<"Start Sync";
+    foreach(QFileInfo info, file_info_list)
+    {
+        found = false;
+        foreach(QString file_name, FileList)
+        {
+            if(file_name == info.fileName())
+            {
+                found = true;
+                break;
+            }
+        }
+        if(found == false)
+        {
+            qDebug()<<"Remove: " << info.filePath();
+            QFile::remove(info.filePath());
+        }
+    }
+    delete p_dir;
+    file_info_list.clear();
+}
+
+void XhGcodeFileParser::fileListRecordInit()
+{
+    qDebug()<<FileListRecordPath;
+
+    QDir *pDir = new QDir(FileListRecordPath);
+    if(pDir->exists() == false)
+    {
+        qDebug()<<"Create file record directory";
+        pDir->mkdir(FileListRecordPath);
+    }
+    QList<QString> file_list = loadFileListRecord();
+    syncFiles(file_list);
+    file_list.clear();
+    delete pDir;
+}
+
+void XhGcodeFileParser::writeFileList(QString FileName, QList<QString> List)
+{
+    QFile *pFile = new QFile(FileName);
+    pFile->open(QIODevice::Truncate | QIODevice::WriteOnly);
+    QTextStream in(pFile);
+    in << "Start\n";
+    foreach(QString line, List)
+        in<<line+"\n";
+    in << "End";
+    pFile->close();
+    delete pFile;
+}
+
+void XhGcodeFileParser::writeFileListRecord(QList<QString> FileList)
+{
+    writeFileList(FileListRecord, FileList);
+    writeFileList(FileListRecord_BAK, FileList);
+}
+
+void XhGcodeFileParser::insertFileListRecord(QString Item)
+{
+    QList<QString> file_list = loadFileListRecord();
+    file_list.insert(0, Item);
+    writeFileListRecord(file_list);
+    file_list.clear();
+}
+
+QList<QString> XhGcodeFileParser::loadFileListRecordContent(QString FileName)
+{
+    QList<QString> ret;
+    QFile *pFile = new QFile(FileName);
+    pFile->open(QIODevice::ReadOnly);
+    QTextStream stream(pFile);
+    QString new_line;
+    do
+    {
+        new_line = stream.readLine(255);
+        if(new_line != nullptr)
+            ret.append(new_line);
+    }while(new_line != nullptr);
+    pFile->close();
+    delete pFile;
+    return ret;
+}
+
+void XhGcodeFileParser::checkFileList(QString FileName)
+{
+    QFile *pFile;
+    // The file is unexisted
+    if(QFile::exists(FileName) == false)
+    {
+        qDebug()<<"Create file: " << FileName;
+        pFile = new QFile(FileName);
+        pFile->open(QIODevice::ReadWrite);
+        QTextStream out(pFile);
+        out<<"Start\n";
+        out<<"End";
+        pFile->close();
+        delete pFile;
+    }
+}
+
+QList<QString> XhGcodeFileParser::loadFileListRecord()
+{
+    QList<QString> ret;
+    checkFileList(FileListRecord);
+    checkFileList(FileListRecord_BAK);
+
+    // Load file list
+    QList<QString> file_list = loadFileListRecordContent(FileListRecord);
+    // Load file list backup
+    QList<QString> file_list_backup = loadFileListRecordContent(FileListRecord_BAK);
+    bool complete_0, complete_1;
+    complete_0 = (file_list.at(0) == "Start") && (file_list.at(file_list.count() - 1) == "End");
+    complete_1 = (file_list_backup.at(0) == "Start") && (file_list_backup.at(file_list.count() - 1) == "End");
+    // The 2 files are complete
+    if((complete_0 == true) && (complete_1 == true))
+    {
+        // These 2 files are different. So we recover the backup file.
+        if(file_list != file_list_backup)
+        {
+            qDebug()<<"Recover file list backup file";
+            QFile::remove(FileListRecord_BAK);
+            QFile::copy(FileListRecord, FileListRecord_BAK);
+        }
+        ret = file_list;
+    }
+    // One of the file is incomplete
+    else
+    {
+        // The file list is complete.This means the backup is incomplete.The situation is happened while writing the backup file.
+        // So we need to recover the backup file
+        if(complete_0 == true)
+        {
+            qDebug()<<"Recover file list backup file";
+            QFile::exists(FileListRecord_BAK);
+            QFile::remove(FileListRecord_BAK);
+            QFile::copy(FileListRecord, FileListRecord_BAK);
+            ret = file_list;
+        }
+        else
+        {
+            qDebug()<<"Recover file list file";
+            QFile::exists(FileListRecord);
+            QFile::remove(FileListRecord);
+            QFile::copy(FileListRecord_BAK, FileListRecord);
+            ret = file_list_backup;
+        }
+    }
+    ret.removeAt(0);
+    ret.removeAt(ret.count() - 1);
+
+    return ret;
 }

@@ -1,6 +1,15 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
+void MainWindow::fileListPageInit()
+{
+    m_fileParser = new XhGcodeFileParser();
+    m_fileParser->fileListRecordInit();
+    file_list = m_fileParser->loadFileListRecord();
+    qDebug()<<file_list;
+    delete m_fileParser;
+}
+
 void MainWindow::on_pushButton_101_clicked()
 {
     ui->pushButton_134->setStyleSheet("QPushButton{border-top-left-radius: 20px;\
@@ -68,12 +77,18 @@ void MainWindow::on_pushButton_134_clicked()
     ui->listWidget_2->setVisible(false);
 
     ui->listWidget->clear();
-    QDir *m_dir=new QDir(localPath);
-    QStringList filter;
-    QFileInfoList m_fileinfo = m_dir->entryInfoList();
-    for(int i = 0;i< m_fileinfo.count();i++)
-        m_addItemToList(m_fileinfo.at(i).fileName(),m_fileinfo.at(i).filePath(), "Local");
-    delete m_dir;
+//    QDir *m_dir=new QDir(localPath);
+//    QStringList filter;
+//    QFileInfoList m_fileinfo = m_dir->entryInfoList();
+    m_fileParser = new XhGcodeFileParser();
+    QList<QString> file_list = m_fileParser->loadFileListRecord();
+    foreach(QString item, file_list)
+        m_addItemToList(item, localPath + item, "local");
+    file_list.clear();
+    delete m_fileParser;
+//    for(int i = 0;i< m_fileinfo.count();i++)
+//        m_addItemToList(m_fileinfo.at(i).fileName(),m_fileinfo.at(i).filePath(), "Local");
+//    delete m_dir;
 }
 
 void MainWindow::m_addItemToList(const QString &fileName, QString filePath, QByteArray FileFrom)
@@ -119,7 +134,7 @@ void MainWindow::onFileChooseReturn()
     QList<QByteArray> ret = m_WinFile->get_return_value();
     myListWidgetItem *p_item = m_WinFile->getSelectItem();
     delete m_WinFile;
-    w_WinFile = nullptr;
+    m_WinFile = nullptr;
     if(ret[0] == "Confirm")
     {
         m_fileParser = new XhGcodeFileParser(this);

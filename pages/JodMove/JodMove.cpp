@@ -1,7 +1,7 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
-void MainWindow::JodMovePageInit()
+void MainWindow::jodMovePageInit()
 {
     QObject::connect(ui->label_7, SIGNAL(clicked()), this, SLOT(ExtruderChange()));
 }

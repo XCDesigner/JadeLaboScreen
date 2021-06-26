@@ -15,7 +15,6 @@ void MainWindow::StopPrintClicked()
         m_timer.stop();
         QObject::disconnect(&m_timer,SIGNAL(timeout()),this,SLOT(jumpFourteen()));
     }
-    qDebug()<<"Stop clicked";
     screen_status.setPerformance(IDLE);
     m_port->stopPrint();
     changePageOnStatus(QByteArray::fromHex("00"), ui->page_GetStart);
@@ -65,7 +64,7 @@ void MainWindow::timeAdd()
 }
 
 
-void MainWindow::printMessageProcess(uint8_t Command, uint8_t SubCode, QByteArray Datas)
+void MainWindow::printMessageProcess(uint8_t Command, uint8_t SubCode, QByteArray &Datas)
 {
     if(Command == 0x06)
     {

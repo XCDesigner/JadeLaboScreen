@@ -13,7 +13,7 @@ greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 TARGET = qt-3dprint
 TEMPLATE = app
 
-win32:LIBS += -lOpengl\
+win32:LIBS += -lOpengl32\
               -lglu32
 
 # The following define makes your compiler emit warnings if you use

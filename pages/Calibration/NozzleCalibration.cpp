@@ -66,7 +66,7 @@ void MainWindow::nozzleCalibrationHeating()
         {
             m_port->n_nozzleCalibration();
             ui->stackedWidget->setCurrentWidget(ui->page_NozzleCali_2);
-            QObject::connect(m_port->getXhPage(), SIGNAL(command_received(uint8_t, uint8_t, QByteArray)), this, SLOT(nozzleCalibrationMessageProcess(uint8_t, uint8_t, QByteArray)));
+            QObject::connect(m_port->getXhPage(), SIGNAL(command_received(uint8_t, uint8_t, QByteArray &)), this, SLOT(nozzleCalibrationMessageProcess(uint8_t, uint8_t, QByteArray &)));
         }
         else
         {
@@ -75,7 +75,7 @@ void MainWindow::nozzleCalibrationHeating()
     }
 }
 
-void MainWindow::nozzleCalibrationMessageProcess(uint8_t Command, uint8_t SubCode, QByteArray Datas)
+void MainWindow::nozzleCalibrationMessageProcess(uint8_t Command, uint8_t SubCode, QByteArray &Datas)
 {
     uint8_t result = (uint8_t)Datas.at(2);
     if(Command == 0x03)
@@ -93,7 +93,7 @@ void MainWindow::nozzleCalibrationMessageProcess(uint8_t Command, uint8_t SubCod
                 else
                 {
                     ui->stackedWidget->setCurrentWidget(ui->page_NozzleCali_4);
-                    QObject::disconnect(m_port->getXhPage(), SIGNAL(command_received(uint8_t, uint8_t, QByteArray)), this, SLOT(nozzleCalibrationMessageProcess(uint8_t, uint8_t, QByteArray)));
+                    QObject::disconnect(m_port->getXhPage(), SIGNAL(command_received(uint8_t, uint8_t, QByteArray &)), this, SLOT(nozzleCalibrationMessageProcess(uint8_t, uint8_t, QByteArray &)));
                 }
             }
             else {

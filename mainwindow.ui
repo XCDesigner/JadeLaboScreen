@@ -70,7 +70,7 @@ font-family: barlow;
 }</string>
     </property>
     <property name="currentIndex">
-     <number>48</number>
+     <number>7</number>
     </property>
     <widget class="QWidget" name="page_12">
      <widget class="QLabel" name="label_14">
@@ -2562,46 +2562,6 @@ background-color: rgba(255, 255, 255, 0);</string>
         <width>600</width>
         <height>80</height>
        </rect>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-     </widget>
-    </widget>
-    <widget class="QWidget" name="page_41">
-     <widget class="QLabel" name="label_83">
-      <property name="geometry">
-       <rect>
-        <x>140</x>
-        <y>20</y>
-        <width>1000</width>
-        <height>700</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">width: 867px;
-height: 40px;
-color: rgba(16, 16, 16, 255);
-font-size: 28px;
-text-align: left;
-font-family: SourceHanSansSC-regular;
-border:1px solid gray</string>
-      </property>
-      <property name="text">
-       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Mirror Mode：XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;p&gt;Duplicate Mode:&lt;/p&gt;&lt;p&gt;XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;p&gt;Hybird Mode:&lt;/p&gt;&lt;p&gt;XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;p&gt;Backup Mode:&lt;/p&gt;&lt;p&gt;XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="pushButton_169">
-      <property name="geometry">
-       <rect>
-        <x>1170</x>
-        <y>120</y>
-        <width>80</width>
-        <height>80</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">border-image: url(:/image/close.png);</string>
       </property>
       <property name="text">
        <string/>

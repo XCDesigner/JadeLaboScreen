@@ -18,6 +18,10 @@
 
 #define LogFile                 "/usr/share/3d_printer/Log.bin"
 
+#define FileListRecordPath      QString("/usr/share/3d_printer")
+#define FileListRecord          QString("/usr/share/3d_printer/fileList.txt")
+#define FileListRecord_BAK      QString("/usr/share/3d_printer/fileList_bak.txt")
+
 #define UPDATE_FILE_TMP         "/usr/share/3d_printer/tmp/J1Screen.tar"
 //void tWifi_event_callback(struct Manager *wmg,int event_lavel)
 //{

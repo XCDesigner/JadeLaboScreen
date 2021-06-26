@@ -14,6 +14,10 @@
 #define UpdateSourceFile        QDir::currentPath()+"/UD/TestPack.JUP"
 #define LogFile                 QDir::currentPath()+"/UD/Log.bin"
 
+#define FileListRecordPath      QDir::currentPath()
+#define FileListRecord          QDir::currentPath()+"/fileList.txt"
+#define FileListRecord_BAK      QDir::currentPath()+"/fileList_bak.txt"
+
 #define UPDATE_FILE_TMP         QDir::currentPath() + "/Update/J1Screen.tar"
 
 #define RECOVERY_INFO_PATH      QDir::currentPath() + "/RE"
