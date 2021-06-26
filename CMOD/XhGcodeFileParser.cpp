@@ -2,6 +2,7 @@
 
 #include <QFile>
 #include <QFileInfo>
+#include <QDir>
 #include <QByteArray>
 #include <QChar>
 #include <QMutexLocker>
