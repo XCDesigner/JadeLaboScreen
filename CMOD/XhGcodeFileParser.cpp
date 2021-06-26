@@ -1,6 +1,7 @@
 #include "XhGcodeFileParser.h"
 
 #include <QFile>
+#include <QFileInfo>
 #include <QByteArray>
 #include <QChar>
 #include <QMutexLocker>
