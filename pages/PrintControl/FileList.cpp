@@ -77,18 +77,10 @@ void MainWindow::on_pushButton_134_clicked()
     ui->listWidget_2->setVisible(false);
 
     ui->listWidget->clear();
-//    QDir *m_dir=new QDir(localPath);
-//    QStringList filter;
-//    QFileInfoList m_fileinfo = m_dir->entryInfoList();
-    m_fileParser = new XhGcodeFileParser();
-    QList<QString> file_list = m_fileParser->loadFileListRecord();
+    QList<QString> file_list = XhGcodeFileParser::loadFileListRecord();
     foreach(QString item, file_list)
-        m_addItemToList(item, localPath + item, "local");
+        m_addItemToList(item, localPath + "/" + item, "local");
     file_list.clear();
-    delete m_fileParser;
-//    for(int i = 0;i< m_fileinfo.count();i++)
-//        m_addItemToList(m_fileinfo.at(i).fileName(),m_fileinfo.at(i).filePath(), "Local");
-//    delete m_dir;
 }
 
 void MainWindow::m_addItemToList(const QString &fileName, QString filePath, QByteArray FileFrom)
@@ -180,7 +172,7 @@ void MainWindow::onParseComplete()
         // qDebug()<<ret[1];
         // qDebug()<<ret[2];
         m_fileParser = new XhGcodeFileParser(this);
-        QVariantMap parse_result = m_fileParser->parseQuickly(localPath + ret[1]);
+        QVariantMap parse_result = m_fileParser->parseQuickly(localPath + "/" + ret[1]);
         delete m_fileParser;
         m_fileParser = nullptr;
         print_desc.ParsedMode = parse_result["mode"].toString();
@@ -189,7 +181,7 @@ void MainWindow::onParseComplete()
         print_desc.RightTemp = parse_result["right_temp"].toString();
         print_desc.BedTemp = parse_result["bed_temp"].toString();
         print_desc.XOffset = parse_result["offset"].toFloat();
-        print_desc.FileName = localPath + ret[1];
+        print_desc.FileName = localPath + "/" + ret[1];
         ui->label_36->setText(ret[2]);
         ui->label_69->setText(ret[2]);
         if((print_desc.Mode == "Duplicate") || (print_desc.Mode == "Mirror"))
@@ -207,12 +199,12 @@ void MainWindow::onParseComplete()
     {
         qDebug()<<"Mode unsupported!";
         m_fileParser = new XhGcodeFileParser(this);
-        QVariantMap parse_result = m_fileParser->parseQuickly(localPath + ret[1]);
+        QVariantMap parse_result = m_fileParser->parseQuickly(localPath + "/" + ret[1]);
         delete m_fileParser;
         m_fileParser = nullptr;
         pdlg_select_mode = new PrintModeSelect();
         qDebug()<<parse_result["mode"].toByteArray();
-        pdlg_select_mode->init(QByteArray(parse_result["mode"].toByteArray()), localPath+ret[1], ret[1]);
+        pdlg_select_mode->init(QByteArray(parse_result["mode"].toByteArray()), localPath+"/"+ret[1], ret[1]);
         pdlg_select_mode->show();
         QObject::connect(pdlg_select_mode, SIGNAL(hideWidget()), this, SLOT(onModeSelectReturn()), Qt::QueuedConnection);
     }
@@ -235,8 +227,13 @@ void MainWindow::onDeleteFileReturn()
     if(ret[0] == "Confirm")
     {
         myListWidgetItem *pItem = m_delete->getDeleteItem();
-        QFile fileTemp(pItem->m_filePath);
-        fileTemp.remove();
+        QFileInfo info(pItem->m_filePath);
+        if(info.path() == localPath)
+        {
+            qDebug()<<"delete: " << pItem->m_fileName;
+            XhGcodeFileParser::deleteFileListRecord(pItem->m_fileName);
+        }
+        QFile::remove(pItem->m_filePath);
         if(pItem->isUDisk == "UDisk")
         {
             QListWidgetItem *v=m_map.take(pItem);

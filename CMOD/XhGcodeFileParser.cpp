@@ -408,7 +408,7 @@ float XhGcodeFileParser::parseXValue(QString &gcode)
 void XhGcodeFileParser::rewriteLocalFile()
 {
     bool need_rewrite = false;
-    QFile old_file(localPath + m_outputFileName);
+    QFile old_file(localPath + "/" + m_outputFileName);
     if(old_file.open(QIODevice::ReadOnly) == false)
     {
         need_rewrite = true;
@@ -428,12 +428,12 @@ void XhGcodeFileParser::rewriteLocalFile()
     if(need_rewrite == true)
     {
         qDebug()<<"Rewrite new file";
-        QFile new_file(localPath + "tmpfile.gcode");
+        QFile new_file(localPath + "/tmpfile.gcode");
         int retry = 2;
         do
         {
             if(new_file.open(QIODevice::WriteOnly | QIODevice::Truncate) == false)
-                QFile::remove(localPath + "tmpfile.gcode");
+                QFile::remove(localPath + "/tmpfile.gcode");
             else
                 break;
         }while(retry--);
@@ -451,8 +451,8 @@ void XhGcodeFileParser::rewriteLocalFile()
             }
             process_percent = 1000;
             new_file.close();
-            QFile::remove(localPath + m_outputFileName);
-            QFile::rename(localPath + "tmpfile.gcode", localPath + m_outputFileName);
+            QFile::remove(localPath + "/" + m_outputFileName);
+            QFile::rename(localPath + "/tmpfile.gcode", localPath + "/" + m_outputFileName);
         }
         else
         {
@@ -464,12 +464,12 @@ void XhGcodeFileParser::rewriteLocalFile()
 void XhGcodeFileParser::writeNewFile()
 {
     qDebug()<<"Write new file";
-    QFile new_file(localPath + "tmpfile.gcode");
+    QFile new_file(localPath + "/tmpfile.gcode");
     int retry = 2;
     do
     {
         if(new_file.open(QIODevice::WriteOnly | QIODevice::Truncate) == false)
-            QFile::remove(localPath + "tmpfile.gcode");
+            QFile::remove(localPath + "/tmpfile.gcode");
         else
             break;
     }while(retry--);
@@ -489,8 +489,8 @@ void XhGcodeFileParser::writeNewFile()
         process_percent = 1000;
         new_file.close();
         insertFileListRecord(m_outputFileName);
-        QFile::remove(localPath + m_outputFileName);
-        QFile::rename(localPath + "tmpfile.gcode", localPath + m_outputFileName);
+        QFile::remove(localPath + "/" + m_outputFileName);
+        QFile::rename(localPath + "/tmpfile.gcode", localPath + "/" + m_outputFileName);
     }
     else
     {
@@ -573,7 +573,7 @@ int XhGcodeFileParser::getPercent()
     return process_percent;
 }
 
-void XhGcodeFileParser::syncFiles(QList<QString> FileList)
+void XhGcodeFileParser::syncFiles(QList<QString> &FileList)
 {
     QFileInfoList file_info_list;
     bool found;
@@ -617,7 +617,7 @@ void XhGcodeFileParser::fileListRecordInit()
     delete pDir;
 }
 
-void XhGcodeFileParser::writeFileList(QString FileName, QList<QString> List)
+void XhGcodeFileParser::writeFileList(QString FileName, QList<QString> &List)
 {
     QFile *pFile = new QFile(FileName);
     pFile->open(QIODevice::Truncate | QIODevice::WriteOnly);
@@ -630,18 +630,25 @@ void XhGcodeFileParser::writeFileList(QString FileName, QList<QString> List)
     delete pFile;
 }
 
-void XhGcodeFileParser::writeFileListRecord(QList<QString> FileList)
+void XhGcodeFileParser::writeFileListRecord(QList<QString> &FileList)
 {
     writeFileList(FileListRecord, FileList);
     writeFileList(FileListRecord_BAK, FileList);
 }
 
-void XhGcodeFileParser::insertFileListRecord(QString Item)
+void XhGcodeFileParser::insertFileListRecord(QString &Item)
 {
     QList<QString> file_list = loadFileListRecord();
     file_list.insert(0, Item);
     writeFileListRecord(file_list);
     file_list.clear();
+}
+
+void XhGcodeFileParser::deleteFileListRecord(QString &FileName)
+{
+    QList<QString> file_list = loadFileListRecord();
+    file_list.removeOne(FileName);
+    writeFileListRecord(file_list);
 }
 
 QList<QString> XhGcodeFileParser::loadFileListRecordContent(QString FileName)

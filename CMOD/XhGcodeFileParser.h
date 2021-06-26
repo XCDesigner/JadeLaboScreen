@@ -41,9 +41,10 @@ public:
 
     int     GetParsedLine();
 
-    void    fileListRecordInit();
-    void    writeFileListRecord(QList<QString>);
-    QList<QString> loadFileListRecord();
+    static void fileListRecordInit();
+    static void writeFileListRecord(QList<QString> &);
+    static QList<QString> loadFileListRecord();
+    static void deleteFileListRecord(QString &);
 
     /* 2021/3/8/ by paladin  over */
 signals:
@@ -92,11 +93,11 @@ private:
     QString         header2StringLine();
     QString         cutComment(QString gcode);
     void            rewriteLocalFile();
-    QList<QString>  loadFileListRecordContent(QString);
-    void            checkFileList(QString);
-    void            syncFiles(QList<QString> FileList);
-    void            writeFileList(QString FileName, QList<QString> List);
-    void            insertFileListRecord(QString);
+    static QList<QString>  loadFileListRecordContent(QString);
+    static void            checkFileList(QString);
+    static void            syncFiles(QList<QString> &);
+    static void            writeFileList(QString, QList<QString> &);
+    static void            insertFileListRecord(QString &);
 };
 
 #endif // XHGCODEFILEPARSER_H

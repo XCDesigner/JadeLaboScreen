@@ -62,7 +62,7 @@ void parsing::onParseComplete(QString FileName)
 
 void parsing::onDelayReturn()
 {
-    QVariantMap parsed_result = m_file_parser->parseQuickly(localPath + output_file_name);
+    QVariantMap parsed_result = m_file_parser->parseQuickly(localPath + "/" + output_file_name);
     qDebug()<<"Req Mode: " << req_mode;
     QString support_mode = parsed_result["mode"].toString();
     if(req_mode != "Direct")

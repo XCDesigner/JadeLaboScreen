@@ -9,7 +9,7 @@
 #define downloadFile            QDir::currentPath()+"/download/tmp.file"
 #define UDiskPath               QDir::currentPath()+"/UD"
 #define UDiskfind               QDir::currentPath()+"/dev"
-#define localPath               QDir::currentPath()+"/3D/"
+#define localPath               QDir::currentPath()+"/3D"
 #define UpdateFile              QDir::currentPath()+"/updatefiles/local_update.JUP"
 #define UpdateSourceFile        QDir::currentPath()+"/UD/TestPack.JUP"
 #define LogFile                 QDir::currentPath()+"/UD/Log.bin"

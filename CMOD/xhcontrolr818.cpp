@@ -1,5 +1,5 @@
 #include "xhcontrolr818.h"
-#define localPath "/usr/share/3d_printer/tmp/"
+#define localPath QString("/usr/share/3d_printer/tmp")
 #define XH_LITTLE_BIT_MERGE_32(d1, d2, d3, d4)      ( (((d4) << 24) & 0xFF000000) | (((d3) << 16) & 0xFF0000) | (((d2) << 8) & 0xFF00) | ((d1) & 0xFF))
 #define INT_TO_ARRAY(output, input)                             \
     do {                                                        \
@@ -79,7 +79,7 @@ void XhControlR818::analysis(QByteArray data)
         break;
     case '\x06':
         if(comData[1] == '\x00'){
-            readyWriteFile(comData);
+            // readyWriteFile(comData);
             askFilePage();
         }
         if(comData[1] == '\x01')
@@ -161,37 +161,37 @@ void XhControlR818::analysisPrintMode(QByteArray data)
     emit signalsStartPrint(printFile,mode);
 }
 
-void XhControlR818::readyWriteFile(QByteArray data)
-{
-    pageNumber = 0;
-    fileSize = 0;
-    sum = 0;
-    int i = 0;
-    for (i =0;i<data.size();i++) {
-        if(data[i] == '\0')
-        {
-            if(i>1)
-            break;
-        }
-    }
-    QString fileName = data.mid(2,i-2);
-    qDebug()<<fileName;
-    fileSize = (int ) XH_LITTLE_BIT_MERGE_32(data[i+1],data[i+2],data[i+3],data[i+4]);
-    sum = (int ) XH_LITTLE_BIT_MERGE_32(data[i+5],data[i+6],data[i+7],data[i+8]);
-    qDebug()<<fileSize<<sum;
-    inputFile->setFileName(localPath + fileName);
-    inputFileName.clear();
-    inputFileName = fileName;
-    if(!inputFile->open(QIODevice::WriteOnly))
-    {
-        qDebug()<<" disopen ";
-        return;
-    }
-    QByteArray com = QByteArray::fromHex("068000");
-    QByteArray send = group(com);
-    cmdSocket->writeDatagram(send,hostAddress,hostPort);
-    askFilePage();
-}
+//void XhControlR818::readyWriteFile(QByteArray data)
+//{
+//    pageNumber = 0;
+//    fileSize = 0;
+//    sum = 0;
+//    int i = 0;
+//    for (i =0;i<data.size();i++) {
+//        if(data[i] == '\0')
+//        {
+//            if(i>1)
+//            break;
+//        }
+//    }
+//    QString fileName = data.mid(2,i-2);
+//    qDebug()<<fileName;
+//    fileSize = (int ) XH_LITTLE_BIT_MERGE_32(data[i+1],data[i+2],data[i+3],data[i+4]);
+//    sum = (int ) XH_LITTLE_BIT_MERGE_32(data[i+5],data[i+6],data[i+7],data[i+8]);
+//    qDebug()<<fileSize<<sum;
+//    inputFile->setFileName(localPath + "/" + fileName);
+//    inputFileName.clear();
+//    inputFileName = fileName;
+//    if(!inputFile->open(QIODevice::WriteOnly))
+//    {
+//        qDebug()<<" disopen ";
+//        return;
+//    }
+//    QByteArray com = QByteArray::fromHex("068000");
+//    QByteArray send = group(com);
+//    cmdSocket->writeDatagram(send,hostAddress,hostPort);
+//    askFilePage();
+//}
 
 void XhControlR818::getWriteFile(QByteArray data)
 {

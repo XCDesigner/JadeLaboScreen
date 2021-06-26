@@ -84,7 +84,7 @@ QString MainWindow::GetRecoveryFile()
     if(pfile->open(QIODevice::ReadOnly | QIODevice::Text) == true)
     {
         QByteArray line = pfile->readLine(0);
-        QString file_path = QString(localPath);
+        QString file_path = QString(localPath) + "/";
         ui->labFileName_0->setText(line);
         ui->labFileName_1->setText(line);
         ret = QString(file_path + line).trimmed();

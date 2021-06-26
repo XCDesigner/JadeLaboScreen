@@ -38,7 +38,7 @@ private:
 //    void askCondition();
     void analysisPrintMode(QByteArray data);
 
-    void readyWriteFile(QByteArray data);
+    // void readyWriteFile(QByteArray data);
     void getWriteFile(QByteArray data);
     void askFilePage();
     void finishWriteFile();

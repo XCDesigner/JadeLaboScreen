@@ -8,7 +8,7 @@
 #define downloadUpdateFile      QString("/usr/share/download/Update.JUP")
 #define downloadGcodeFile       QString("/usr/share/download/tmp.gcode")
 #define downloadFile            QString("/usr/share/download/tmp.file")
-#define localPath               QString("/usr/gode/")
+#define localPath               QString("/usr/gcode")
 #define UDiskPath               QString("/mnt/exUDISK/gcode")
 #define UDiskfind               QString("/mnt/exUDISK/gcode")
 #define serialNum               "ttyS2"

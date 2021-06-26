@@ -98,14 +98,14 @@ void MainWindow::wifiParseComplete()
         qDebug()<<ret[1];
         qDebug()<<ret[2];
         m_fileParser = new XhGcodeFileParser(this);
-        QVariantMap parse_result = m_fileParser->parseQuickly(localPath + ret[1]);
+        QVariantMap parse_result = m_fileParser->parseQuickly(localPath + "/" + ret[1]);
         delete m_fileParser;
         print_desc.Mode = ret[2];
         print_desc.LeftTemp = parse_result["left_temp"].toString();
         print_desc.RightTemp = parse_result["right_temp"].toString();
         print_desc.BedTemp = parse_result["bed_temp"].toString();
         print_desc.XOffset = parse_result["offset"].toFloat();
-        print_desc.FileName = localPath + ret[1];
+        print_desc.FileName = localPath + "/" + ret[1];
         ui->label_36->setText(ret[2]);
         ui->label_69->setText(ret[2]);
         if(print_desc.Mode == "Direct")
