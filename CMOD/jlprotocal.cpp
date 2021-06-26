@@ -11,7 +11,7 @@ JLProtocal::JLProtocal(uint8_t Version) {
     attribute = 0xe0;
 }
 
-QByteArray JLProtocal::setupPackage(QByteArray Datas) {
+QByteArray JLProtocal::setupPackage(QByteArray &Datas) {
     QByteArray ret;
     ret.append(1, header[0]);
     ret.append(1, header[1]);
@@ -37,7 +37,7 @@ QByteArray JLProtocal::setupPackage(QByteArray Datas) {
     return ret;
 }
 
-QByteArray JLProtocal::parseDataV30(QByteArray SourceData, uint32_t *DataRead)
+QByteArray JLProtocal::parseDataV30(QByteArray &SourceData, uint32_t *DataRead)
 {
     uint32_t data_read = 0;
     QByteArray ret_datas;
@@ -137,7 +137,7 @@ QByteArray JLProtocal::parseDataV30(QByteArray SourceData, uint32_t *DataRead)
     return ret_datas;
 }
 
-QByteArray JLProtocal::parseDataV31(QByteArray SourceData, uint32_t *DataRead)
+QByteArray JLProtocal::parseDataV31(QByteArray &SourceData, uint32_t *DataRead)
 {
     uint32_t data_read = 0;
     QByteArray ret_datas;

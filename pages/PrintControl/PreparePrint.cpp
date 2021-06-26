@@ -64,9 +64,10 @@ void MainWindow::preparePrintTempChecking()
         {
             if((new_status.CurTemp[0] > (new_status.TarTemp[0] * 0.9)) && (new_status.CurTemp[1] > (new_status.TarTemp[1] * 0.9)))
             {
+                QByteArray s = print_desc.Mode.toUtf8();
                 screen_status.setExtruderEnabled(0, true);
                 screen_status.setExtruderEnabled(1, true);
-                screen_status.setPrintMode(print_desc.Mode.toUtf8());
+                screen_status.setPrintMode(s);
                 QByteArray offset;
                 int int_offset;
                 int_offset = print_desc.XOffset * 1000;
@@ -103,7 +104,7 @@ void MainWindow::preparePrintTempChecking()
     }
 }
 
-void MainWindow::onPreparePirntComplete(QByteArray Data)
+void MainWindow::onPreparePirntComplete(QByteArray &Data)
 {
     qDebug()<<"Prepare complete!";
     m_port->startPrint();

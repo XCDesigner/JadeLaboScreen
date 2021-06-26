@@ -181,7 +181,7 @@ void MainWindow::onSetBuildplatThicknessReturn()
     delete pdlg_Input;
 }
 
-void MainWindow::BuildplateProcess(QByteArray Datas)
+void MainWindow::BuildplateProcess(QByteArray &Datas)
 {
     if((Datas.at(0) == 0x03) && (Datas.at(1) == 0x0C)) {
         float thickness = ((uint8_t)Datas.at(6) << 24 | (uint8_t)Datas.at(5) << 16 | (uint8_t)Datas.at(4) << 8 | (uint8_t)Datas.at(3)) / 1000.0f;

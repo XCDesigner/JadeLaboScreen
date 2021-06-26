@@ -5,7 +5,7 @@
 #include <QByteArray>
 
 class MainWindow;
-typedef void (MainWindow::*pFunction)(QByteArray);
+typedef void (MainWindow::*pFunction)(QByteArray &);
 
 class ListenerItem
 {
@@ -40,8 +40,8 @@ typedef struct
 
 class UdpListener;
 class TcpControler;
-typedef void (UdpListener::*pUdpProcess)(QByteArray);
-typedef void (TcpControler::*pTcpProcess)(QByteArray);
+typedef void (UdpListener::*pUdpProcess)(QByteArray &);
+typedef void (TcpControler::*pTcpProcess)(QByteArray &);
 typedef struct
 {
     uint16_t Command;

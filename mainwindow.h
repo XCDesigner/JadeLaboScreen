@@ -117,16 +117,16 @@ public:
 
     void ListenerInit();
     void AddListen(QByteArray MatchData, pFunction, bool);
-    void TestListener(QByteArray);
+    void TestListener(QByteArray &);
 
-    void onFirmwareVersionReceived(QByteArray);
+    void onFirmwareVersionReceived(QByteArray &);
 
     void wifiPageInit();
     void wifiControlerInit();
 
     void TempControlInit();
     void ExtrudeControlInit();
-    void DebugCallback(QByteArray);
+    void DebugCallback(QByteArray &);
 
     void lightSettingPageInit();
 
@@ -237,7 +237,7 @@ private slots:
     void platformCalibrationMessageProcess(uint8_t Command, uint8_t SubCode, QByteArray &Datas);
     void xyCalibrationMessageProcess(uint8_t Command, uint8_t SubCode, QByteArray &Datas);
     void onSetBuildplatThicknessClicked();
-    void BuildplateProcess(QByteArray Datas);
+    void BuildplateProcess(QByteArray &);
     void onSetBuildplatThicknessReturn();
 
     void onFinishPrintClicked();
@@ -340,9 +340,8 @@ private slots:
 
     /******udp**************/
     void getCondition();
-    void downloadOver(QString );
+    void downloadOver(QString);
     /***/
-
 
     void m_deleteItem(myListWidgetItem * itm);
     void m_chooseItem(myListWidgetItem * itm);
@@ -798,22 +797,22 @@ private:
     void romClean(int fileSize);
 
     void PowerLostInit();
-    void PowerTestResult(QByteArray);
-    void AcceptRecoveryInfo(QByteArray);
+    void PowerTestResult(QByteArray &);
+    void AcceptRecoveryInfo(QByteArray &);
     QString GetRecoveryFile();
     void WriteRecoveryFilaName(QString FileName);
 
     void FaultDetectInit();
-    void onPauseRequest(QByteArray);
-    void onAbortRequest(QByteArray Data);
-    void onFaultFlag(QByteArray);
+    void onPauseRequest(QByteArray &);
+    void onAbortRequest(QByteArray &);
+    void onFaultFlag(QByteArray &);
 
     void FilamentFaultDetected();
     void MovementFaultDetected();
 
-    void onPreparePirntComplete(QByteArray);
+    void onPreparePirntComplete(QByteArray &);
 
-    void onSelfTestReack(QByteArray Data);
+    void onSelfTestReack(QByteArray &);
 };
 
 #endif // MAINWINDOW_H

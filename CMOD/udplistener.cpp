@@ -70,24 +70,25 @@ void UdpListener::DataProcess(QByteArray Data)
     }
 }
 
-void UdpListener::broadCastProcess(QByteArray Data)
+void UdpListener::broadCastProcess(QByteArray &Data)
 {
-    broadCastReply(QByteArray());
+    QByteArray s;
+    broadCastReply(s);
 }
 
-void UdpListener::broadCastReply(QByteArray Data)
+void UdpListener::broadCastReply(QByteArray &Data)
 {
     writeProtocalData(QByteArray(QByteArray::fromHex("088000")));
 }
 
-void UdpListener::connectRequest(QByteArray Data)
+void UdpListener::connectRequest(QByteArray &Data)
 {
     QList<QByteArray> ret;
     ret.append("Connect Request");
     ret.append(host.toString().toUtf8());
     ret.append("8888");
-
-    connectReply(QByteArray());
+    QByteArray s;
+    connectReply(s);
     emit sigManageEvent(ret);
     if(isConnected == true) {
 
@@ -98,16 +99,17 @@ void UdpListener::connectRequest(QByteArray Data)
     }
 }
 
-void UdpListener::connectReply(QByteArray Data)
+void UdpListener::connectReply(QByteArray &Data)
 {
     writeProtocalData(QByteArray(QByteArray::fromHex("088100")));
 }
 
-void UdpListener::disconnectRequest(QByteArray Data)
+void UdpListener::disconnectRequest(QByteArray &Data)
 {
     QList<QByteArray> ret;
+    QByteArray s;
     ret.append("Disconnect Request");
-    disconnectReply(QByteArray());
+    disconnectReply(s);
     emit sigManageEvent(ret);
     if(isConnected == true) {
 
@@ -117,7 +119,7 @@ void UdpListener::disconnectRequest(QByteArray Data)
     }
 }
 
-void UdpListener::disconnectReply(QByteArray Data)
+void UdpListener::disconnectReply(QByteArray &Data)
 {
     writeProtocalData(QByteArray(QByteArray::fromHex("088200")));
 }

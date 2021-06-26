@@ -9,7 +9,7 @@ void MainWindow::PowerLostInit()
     m_port->getPowerLostStatus();
 }
 
-void MainWindow::PowerTestResult(QByteArray Data)
+void MainWindow::PowerTestResult(QByteArray &Data)
 {
     if(Data.at(3) == 0x01)
     {
@@ -20,7 +20,7 @@ void MainWindow::PowerTestResult(QByteArray Data)
     }
 }
 
-void MainWindow::AcceptRecoveryInfo(QByteArray Data)
+void MainWindow::AcceptRecoveryInfo(QByteArray &Data)
 {
     int16_t temp[3];
     QString mode[] = {"Direct", "", "Duplicate", "Mirror", "Original-Duplicate", "Original-Mirror"};

@@ -723,18 +723,6 @@ void MainWindow::on_pushButton_646_clicked()
     ui->stackedWidget->setCurrentWidget(ui->page_Tools);
 }
 
-void MainWindow::on_pushButton_348_clicked()
-{
-    ui->stackedWidget->setCurrentWidget(ui->page_MachineSetting);
-
-    ui->label_164->clear();
-    ui->label_192->clear();
-    ui->label_193->clear();
-    ui->label_224->clear();
-    ui->label_225->clear();
-    ui->label_285->clear();
-}
-
 void MainWindow::on_pushButton_349_clicked()
 {
 #ifdef XH_LINUX
@@ -864,51 +852,6 @@ void MainWindow::on_pushButton_340_clicked()
     }
 #endif
 
-}
-
-void MainWindow::on_pushButton_679_clicked()
-{
-    ui->label_164->clear();
-    ui->label_192->clear();
-    ui->label_193->clear();
-    ui->label_224->clear();
-    ui->label_225->clear();
-    ui->label_285->clear();
-    ui->stackedWidget->setCurrentWidget(ui->page_GetStart);
-}
-
-void MainWindow::on_pushButton_676_clicked()
-{
-    ui->label_164->clear();
-    ui->label_192->clear();
-    ui->label_193->clear();
-    ui->label_224->clear();
-    ui->label_225->clear();
-    ui->label_285->clear();
-    m_port->prepareChangeFilament();
-    ui->stackedWidget->setCurrentWidget(ui->page_ChangeFilament);
-}
-
-void MainWindow::on_pushButton_678_clicked()
-{
-    ui->label_164->clear();
-    ui->label_192->clear();
-    ui->label_193->clear();
-    ui->label_224->clear();
-    ui->label_225->clear();
-    ui->label_285->clear();
-    ui->stackedWidget->setCurrentWidget(ui->page_Tools);
-}
-
-void MainWindow::on_pushButton_677_clicked()
-{
-    ui->label_164->clear();
-    ui->label_192->clear();
-    ui->label_193->clear();
-    ui->label_224->clear();
-    ui->label_225->clear();
-    ui->label_285->clear();
-    ui->stackedWidget->setCurrentWidget(ui->page_About);
 }
 
 void MainWindow::on_pushButton_128_clicked()

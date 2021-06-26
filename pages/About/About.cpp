@@ -19,7 +19,7 @@ void MainWindow::on_pushButton_126_clicked()
     AddListen(QByteArray(QByteArray::fromHex("0503")), &MainWindow::onFirmwareVersionReceived, false);
 }
 
-void MainWindow::onFirmwareVersionReceived(QByteArray Datas)
+void MainWindow::onFirmwareVersionReceived(QByteArray &Datas)
 {
     QString ver = QString(Datas.mid(3, -1));
     ui->labFirmwareVersion->setText(ver);
@@ -36,7 +36,7 @@ void MainWindow::aboutTimerTester()
     QTimer::singleShot(500, this, SLOT(aboutTimerTester()));
 }
 
-void MainWindow::DebugCallback(QByteArray Data)
+void MainWindow::DebugCallback(QByteArray &Data)
 {
     QByteArray prefix = Data.mid(0, 3).toHex();
     if(prefix == "0b0100") {

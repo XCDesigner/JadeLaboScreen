@@ -119,7 +119,7 @@ void MainWindow::AddListen(QByteArray MatchData, pFunction Callback = NULL, bool
     lst_listen_item.append(newItem);
 }
 
-void MainWindow::TestListener(QByteArray Datas)
+void MainWindow::TestListener(QByteArray &Datas)
 {
     // qDebug()<<"Listen arrived";
 }

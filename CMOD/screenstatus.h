@@ -37,7 +37,7 @@ public:
     uint8_t getPerformance();
     void setPerformance(uint8_t);
     void setPrintMode(uint8_t);
-    void setPrintMode(QByteArray);
+    void setPrintMode(QByteArray &);
     QByteArray getPrintMode();
     void setWifiStatus(bool);
     void setUdiskStatus(bool);

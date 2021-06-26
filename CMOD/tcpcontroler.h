@@ -17,14 +17,14 @@ public:
 
 protected:
     QByteArray readData() override;
-    void startPrintProcess(QByteArray);
-    void resumePrint(QByteArray);
-    void stopPrint(QByteArray);
-    void pausePrint(QByteArray);
-    void startDownloadProcess(QByteArray);
+    void startPrintProcess(QByteArray &);
+    void resumePrint(QByteArray &);
+    void stopPrint(QByteArray &);
+    void pausePrint(QByteArray &);
+    void startDownloadProcess(QByteArray &);
     void requestDownloadPack(uint32_t);
-    void downloadPackReceived(QByteArray);
-    void endDownloadProcess(QByteArray);
+    void downloadPackReceived(QByteArray &);
+    void endDownloadProcess(QByteArray &);
 
 private slots:
     void DataProcess(QByteArray);

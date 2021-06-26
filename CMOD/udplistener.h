@@ -14,12 +14,12 @@ public:
 
     void writeProtocalData(QByteArray);
 
-    void broadCastProcess(QByteArray);
-    void connectRequest(QByteArray);
-    void broadCastReply(QByteArray);
-    void connectReply(QByteArray);
-    void disconnectRequest(QByteArray);
-    void disconnectReply(QByteArray);
+    void broadCastProcess(QByteArray &);
+    void connectRequest(QByteArray &);
+    void broadCastReply(QByteArray &);
+    void connectReply(QByteArray &);
+    void disconnectRequest(QByteArray &);
+    void disconnectReply(QByteArray &);
 
 
 protected:

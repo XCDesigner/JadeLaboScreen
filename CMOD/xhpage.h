@@ -25,14 +25,11 @@ public:
     explicit XhPage(QObject *parent = nullptr);
     ~XhPage();
 
-    int analysis(QByteArray package);
-    /*frist start页面*/
-    void fTGet(QByteArray data);//温度获取
+    int analysis(QByteArray &package);
+    void fTGet(QByteArray &);
     void GetMachineStatus(strMachineStatus *pStatus);
 private:
-    /*first start自检变量*/
     QMutex mtxMachineStatus;
-
     strMachineStatus cur_machine_status;
 signals:
     void command_received(uint8_t, uint8_t, QByteArray &);

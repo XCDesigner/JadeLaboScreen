@@ -25,17 +25,17 @@ void MainWindow::FaultDetectInit()
     AddListen(QByteArray(QByteArray::fromHex("010100")), &MainWindow::onFaultFlag, true);
 }
 
-void MainWindow::onPauseRequest(QByteArray Data)
+void MainWindow::onPauseRequest(QByteArray &Data)
 {
     m_port->getFaultFlag();
 }
 
-void MainWindow::onAbortRequest(QByteArray Data)
+void MainWindow::onAbortRequest(QByteArray &Data)
 {
     m_port->getFaultFlag();
 }
 
-void MainWindow::onFaultFlag(QByteArray Data)
+void MainWindow::onFaultFlag(QByteArray &Data)
 {
     uint32_t flag;
 

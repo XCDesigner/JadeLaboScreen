@@ -8,12 +8,12 @@ class JLProtocal
 public:
     JLProtocal();
     JLProtocal(uint8_t);
-    QByteArray setupPackage(QByteArray);
+    QByteArray setupPackage(QByteArray &);
     QByteArray parseData(QByteArray, uint32_t *);
 
 private:
-    QByteArray parseDataV30(QByteArray SourceData, uint32_t *DataRead);
-    QByteArray parseDataV31(QByteArray SourceData, uint32_t *DataRead);
+    QByteArray parseDataV30(QByteArray &SourceData, uint32_t *DataRead);
+    QByteArray parseDataV31(QByteArray &SourceData, uint32_t *DataRead);
 
 private:
     uint8_t header[2];

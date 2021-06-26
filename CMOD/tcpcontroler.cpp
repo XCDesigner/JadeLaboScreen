@@ -78,27 +78,27 @@ void TcpControler::DataProcess(QByteArray Data)
     }
 }
 
-void TcpControler::startPrintProcess(QByteArray Datas) 
+void TcpControler::startPrintProcess(QByteArray &Datas)
 {
     qDebug()<<"wifi: Start print";
 }
 
-void TcpControler::resumePrint(QByteArray Datas) 
+void TcpControler::resumePrint(QByteArray &Datas)
 {
     qDebug()<<"wifi: Resume";
 }
 
-void TcpControler::stopPrint(QByteArray Datas) 
+void TcpControler::stopPrint(QByteArray &Datas)
 {
     qDebug()<<"wifi: Stop";
 }
 
-void TcpControler::pausePrint(QByteArray Datas) 
+void TcpControler::pausePrint(QByteArray &Datas)
 {
     qDebug()<<"wifi: Pause";
 }
 
-void TcpControler::startDownloadProcess(QByteArray Datas) 
+void TcpControler::startDownloadProcess(QByteArray &Datas)
 {
     QByteArray file_info;
 
@@ -141,7 +141,7 @@ void TcpControler::requestDownloadPack(uint32_t PackIndex)
     writeProtocalData(send_buff);
 }
 
-void TcpControler::downloadPackReceived(QByteArray Datas) 
+void TcpControler::downloadPackReceived(QByteArray &Datas)
 {
     uint32_t recv_pack_index;
     recv_pack_index = ((uint8_t)Datas.at(6) << 24) | ((uint8_t)Datas.at(5) << 16) | ((uint8_t)Datas.at(4) << 8) | (uint8_t)Datas.at(3);
@@ -171,7 +171,7 @@ void TcpControler::downloadPackReceived(QByteArray Datas)
     }
 }
 
-void TcpControler::endDownloadProcess(QByteArray Datas) 
+void TcpControler::endDownloadProcess(QByteArray &Datas)
 {
     writeProtocalData(QByteArray(QByteArray::fromHex("068200")));
     download_status = "Idle";

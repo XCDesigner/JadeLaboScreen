@@ -32,7 +32,7 @@ XhPage::~XhPage()
 {
 }
 
-int XhPage::analysis(QByteArray package)
+int XhPage::analysis(QByteArray &package)
 {
     uint16_t len;
     len = (uint8_t)package.at(4) << 8 | (uint8_t)package.at(3);
@@ -41,7 +41,6 @@ int XhPage::analysis(QByteArray package)
     uint16_t dataCheck;
     dataCheck = (uint8_t)package.at(8) << 8 | (uint8_t)package.at(7);
     emit command_received((uint8_t)data.at(0), (uint8_t)data.at(1), data);
-    qDebug()<<"emit";
     switch (data[0]) {
     /*判断是哪一个页面族*/
     /********first start********/
@@ -60,7 +59,7 @@ int XhPage::analysis(QByteArray package)
     return 0;
 }
 
-void XhPage::fTGet(QByteArray data)
+void XhPage::fTGet(QByteArray &data)
 {
     if(data[2] == '\x00')
     {
