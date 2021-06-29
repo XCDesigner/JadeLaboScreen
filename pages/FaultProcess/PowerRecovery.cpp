@@ -5,7 +5,8 @@
 
 void MainWindow::PowerLostInit()
 {
-    AddListen(QByteArray(QByteArray::fromHex("0103")), &MainWindow::PowerTestResult, false);
+    QByteArray s = QByteArray::fromHex("0103");
+    AddListen(s, &MainWindow::PowerTestResult, false);
     m_port->getPowerLostStatus();
 }
 
@@ -65,7 +66,8 @@ void MainWindow::PowerLostDialogReturn()
         if(m_port->setPrintFile(GetRecoveryFile()) == true)
         {
             qDebug()<<"Set file success";
-            AddListen(QByteArray(QByteArray::fromHex("0615")), &MainWindow::AcceptRecoveryInfo, false);
+            QByteArray s = QByteArray::fromHex("0615");
+            AddListen(s, &MainWindow::AcceptRecoveryInfo, false);
             m_port->getRecoveryInfo();
         }
         else
@@ -95,7 +97,7 @@ QString MainWindow::GetRecoveryFile()
     return ret;
 }
 
-void MainWindow::WriteRecoveryFilaName(QString FileName)
+void MainWindow::WriteRecoveryFilaName(QString &FileName)
 {
     qDebug()<<"WriteRecovery";
     QFile *pfile = new QFile(RECOVERY_RECORD);
@@ -124,7 +126,8 @@ void MainWindow::RecoveryStop()
         QObject::disconnect(&m_timer,SIGNAL(timeout()),this,SLOT(jumpSeventeen()));
     }
     screen_status.setPerformance(IDLE);
-    changePageOnStatus(QByteArray::fromHex("00"), ui->page_GetStart);
+    QByteArray s = QByteArray::fromHex("00");
+    changePageOnStatus(s, ui->page_GetStart);
 }
 
 void MainWindow::RecoverySettingShow()

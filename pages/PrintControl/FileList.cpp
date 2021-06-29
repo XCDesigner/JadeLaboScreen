@@ -43,8 +43,9 @@ void MainWindow::on_pushButton_101_clicked()
         QDir *m_dir=new QDir(UDiskPath);
         QStringList filter;
         QFileInfoList m_fileinfo = m_dir->entryInfoList();
+        QByteArray s = "UDisk";
         for(int i = 0;i< m_fileinfo.count();i++)
-            m_addItemToList(m_fileinfo.at(i).fileName(),m_fileinfo.at(i).filePath(),"UDisk");
+            m_addItemToList(m_fileinfo.at(i).fileName(),m_fileinfo.at(i).filePath(), s);
         delete m_dir;
 }
 
@@ -78,12 +79,13 @@ void MainWindow::on_pushButton_134_clicked()
 
     ui->listWidget->clear();
     QList<QString> file_list = XhGcodeFileParser::loadFileListRecord();
+    QByteArray s = "local";
     foreach(QString item, file_list)
-        m_addItemToList(item, localPath + "/" + item, "local");
+        m_addItemToList(item, localPath + "/" + item, s);
     file_list.clear();
 }
 
-void MainWindow::m_addItemToList(const QString &fileName, QString filePath, QByteArray FileFrom)
+void MainWindow::m_addItemToList(const QString &fileName, QString filePath, QByteArray &FileFrom)
 {
     if(fileName == "."||fileName == "..")
         return;

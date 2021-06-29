@@ -48,11 +48,14 @@ text-align: center;
 font-family:Barlow;
 color: rgb(255, 255, 255);
 border: 2px solid rgba(45, 44, 43, 255);
-font-size: 36px;
+font-size: 32px;
 </string>
    </property>
    <property name="text">
     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:27pt;&quot;&gt;Power Lost Detected&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
    </property>
   </widget>
   <widget class="QLabel" name="label_3">

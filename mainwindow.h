@@ -96,14 +96,13 @@ public:
     void setLightPic(bool isVisible);
     void setWinPic(bool isVisible);
 
-    void m_addItemToList(const QString &, QString, QByteArray);
+    void m_addItemToList(const QString &, QString, QByteArray &);
     void m_adTtemtowifi(const QString& wifiname,QString wifilevel);
 
-    //void blockingChangePage(QByteArray Command, QWidget *pPage);
-    void blockingChangePage(QByteArray Command, QWidget *pPage, bool NeedProcessingPage = true);
-    void blockingChangeDialog(QByteArray Command, JLWidget *pDialog);
+    void blockingChangePage(QByteArray &, QWidget *, bool NeedProcessingPage = true);
+    void blockingChangeDialog(QByteArray &, JLWidget *);
     void changeDialog(JLWidget *pDialog);
-    void changePageOnStatus(QByteArray Status, QWidget *pPage);
+    void changePageOnStatus(QByteArray &, QWidget *);
 
     void changeFilamentPageLoad();
 
@@ -116,7 +115,7 @@ public:
     void jodMovePageInit();
 
     void ListenerInit();
-    void AddListen(QByteArray MatchData, pFunction, bool);
+    void AddListen(QByteArray &, pFunction, bool);
     void TestListener(QByteArray &);
 
     void onFirmwareVersionReceived(QByteArray &);
@@ -256,9 +255,9 @@ private slots:
     void onParseComplete();
 
     // wifi
-    void wifiConnectEvent(QList<QByteArray>);
-    void wifiDownloadEvent(QString, QByteArray);
-    void wifiPrint(QString, QString, QString);
+    void wifiConnectEvent(QList<QByteArray> &);
+    void wifiDownloadEvent(QString &, QByteArray &);
+    void wifiPrint(QString &, QString &, QString &);
     void wifiParseComplete();
 
     // Fault detection
@@ -270,8 +269,8 @@ private slots:
     // Update page
     void updateFileAnalize(QString);
     QList<uint32_t> getUpdateItem(uint32_t);
-    QByteArray getUpdateInfo(QList<uint32_t>);
-    QByteArray getUpdateContent(QList<uint32_t>);
+    QByteArray getUpdateInfo(QList<uint32_t> &);
+    QByteArray getUpdateContent(QList<uint32_t> &);
     void startUpdatePrinter();
     void startUpdateScreen();
     void sendPrinterUpdatePack(uint16_t);
@@ -800,7 +799,7 @@ private:
     void PowerTestResult(QByteArray &);
     void AcceptRecoveryInfo(QByteArray &);
     QString GetRecoveryFile();
-    void WriteRecoveryFilaName(QString FileName);
+    void WriteRecoveryFilaName(QString &);
 
     void FaultDetectInit();
     void onPauseRequest(QByteArray &);

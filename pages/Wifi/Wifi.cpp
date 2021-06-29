@@ -27,7 +27,7 @@ void MainWindow::wifiControlerInit()
     QObject::connect(m_tcp_controler, SIGNAL(downloadEvent(QString, QByteArray)), this, SLOT(wifiDownloadEvent(QString, QByteArray)));
 }
 
-void MainWindow::wifiConnectEvent(QList<QByteArray> Data)
+void MainWindow::wifiConnectEvent(QList<QByteArray> &Data)
 {
     QByteArray command = Data.at(0);
     qDebug()<<Data;
@@ -45,7 +45,7 @@ void MainWindow::wifiConnectEvent(QList<QByteArray> Data)
     }
 }
 
-void MainWindow::wifiDownloadEvent(QString EventName, QByteArray Data)
+void MainWindow::wifiDownloadEvent(QString &EventName, QByteArray &Data)
 {
     if(EventName == "Start")
     {
@@ -77,12 +77,14 @@ void MainWindow::wifiDownloadEvent(QString EventName, QByteArray Data)
                 QFile::remove(downloadGcodeFile);
             QFile::rename(downloadFile, downloadGcodeFile);
             qDebug()<<"Output:" << last_download_filename;
-            wifiPrint("Direct", downloadGcodeFile, last_download_filename);
+            QString str_mode = "Direct";
+            QString dowload_temp_file_path = downloadGcodeFile;
+            wifiPrint(str_mode, dowload_temp_file_path, last_download_filename);
         }
     }
 }
 
-void MainWindow::wifiPrint(QString Mode, QString SourceFile, QString OutputFileName)
+void MainWindow::wifiPrint(QString &Mode, QString &SourceFile, QString &OutputFileName)
 {
     pdlg_parsing = new parsing(this);
     pdlg_parsing->init(QByteArray(), Mode, SourceFile, OutputFileName);

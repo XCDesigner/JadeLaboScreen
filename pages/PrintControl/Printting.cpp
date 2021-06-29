@@ -17,7 +17,8 @@ void MainWindow::StopPrintClicked()
     }
     screen_status.setPerformance(IDLE);
     m_port->stopPrint();
-    changePageOnStatus(QByteArray::fromHex("00"), ui->page_GetStart);
+    QByteArray s = QByteArray::fromHex("00");
+    changePageOnStatus(s, ui->page_GetStart);
 }
 
 void MainWindow::ShowPauseDialogClicked()

@@ -19,7 +19,8 @@ void MainWindow::on_pushButton_275_clicked()
 
 void MainWindow::on_pushButton_242_clicked()
 {
-    AddListen(QByteArray::fromHex("030C00"), &MainWindow::BuildplateProcess, false);
+    QByteArray s = QByteArray::fromHex("030C00");
+    AddListen(s, &MainWindow::BuildplateProcess, false);
     m_port->getBuildplatThickness();
 }
 

@@ -592,7 +592,6 @@ void XhPort::startPrint()
 {
     QByteArray s = QByteArray::fromHex("0606");
     uint32_t file_size = getPrintFileSize();
-    qDebug()<<"Size:" << file_size;
     s.append(1, file_size);
     s.append(1, file_size >> 8);
     s.append(1, file_size >> 16);
@@ -601,7 +600,6 @@ void XhPort::startPrint()
     s.append(1, 0xff);
     s.append(1, 0xff);
     s.append(1, 0xff);
-    qDebug()<<"Start print:" << s;
     m_serial->writeProtocalData(s);
 }
 

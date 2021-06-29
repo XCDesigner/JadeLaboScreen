@@ -5,7 +5,8 @@
 
 void MainWindow::AboutPageInit()
 {
-    AddListen(QByteArray(QByteArray::fromHex("0B")), &MainWindow::DebugCallback, true);
+    QByteArray s = QByteArray::fromHex("0B");
+    AddListen(s, &MainWindow::DebugCallback, true);
     QTimer::singleShot(500, this, SLOT(aboutTimerTester()));
 }
 
@@ -16,7 +17,8 @@ void MainWindow::on_pushButton_126_clicked()
     sprintf(version, "Ver:%s-%s", __DATE__, __TIME__);
     ui->labScreenVersion->setText(version);
     m_port->getFirmwareVersion();
-    AddListen(QByteArray(QByteArray::fromHex("0503")), &MainWindow::onFirmwareVersionReceived, false);
+    QByteArray s = QByteArray::fromHex("0503");
+    AddListen(s, &MainWindow::onFirmwareVersionReceived, false);
 }
 
 void MainWindow::onFirmwareVersionReceived(QByteArray &Datas)

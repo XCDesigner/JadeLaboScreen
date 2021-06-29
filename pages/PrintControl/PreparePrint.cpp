@@ -29,7 +29,8 @@ void MainWindow::StopPreHeatting()
     m_port->setHeattingUnit("0", "0");
     m_port->setHeattingUnit(2, 0);
     screen_status.setPerformance(IDLE);
-    changePageOnStatus(QByteArray::fromHex("00"), ui->page_GetStart);
+    QByteArray s = QByteArray::fromHex("00");
+    changePageOnStatus(s, ui->page_GetStart);
 }
 
 void MainWindow::preparePrintTempChecking()
@@ -42,6 +43,8 @@ void MainWindow::preparePrintTempChecking()
         {
             ui->stackedWidget->setCurrentWidget(ui->page_Printing);
             m_port->resumeRecovery();
+            // Need add callback?
+            screen_status.setPerformance(PRINTING);
         }
         else
         {
@@ -94,7 +97,8 @@ void MainWindow::preparePrintTempChecking()
                 }
                 qDebug()<<"readyprint offset " << offset;
                 qDebug()<<"readyprint mode" << printMode;
-                AddListen(QByteArray(QByteArray::fromHex("060D00")), &MainWindow::onPreparePirntComplete, false);
+                s = QByteArray::fromHex("060D00");
+                AddListen(s, &MainWindow::onPreparePirntComplete, false);
             }
             else
             {

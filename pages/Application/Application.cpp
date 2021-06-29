@@ -2,7 +2,7 @@
 #include "ui_mainwindow.h"
 
 
-void MainWindow::blockingChangePage(QByteArray Command, QWidget *pPage, bool NeedProcessingPage)
+void MainWindow::blockingChangePage(QByteArray &Command, QWidget *pPage, bool NeedProcessingPage)
 {
     m_event->wait(Command, 5);
     pNextShowPage = pPage;
@@ -10,7 +10,7 @@ void MainWindow::blockingChangePage(QByteArray Command, QWidget *pPage, bool Nee
         ui->stackedWidget->setCurrentWidget(ui->page_Masker);
 }
 
-void MainWindow::changePageOnStatus(QByteArray Status, QWidget *pPage)
+void MainWindow::changePageOnStatus(QByteArray &Status, QWidget *pPage)
 {
     pNextShowPage = pPage;
     ui->stackedWidget->setCurrentWidget(ui->page_Masker);
@@ -34,7 +34,7 @@ void MainWindow::waitforIdleStatus()
     QTimer::singleShot(1000, this, SLOT(waitforIdleStatus()));
 }
 
-void MainWindow::blockingChangeDialog(QByteArray Command, JLWidget *pDialog)
+void MainWindow::blockingChangeDialog(QByteArray &Command, JLWidget *pDialog)
 {
     pDialogToShow = pDialog;
     if(Command.size() == 0)
@@ -110,7 +110,7 @@ void MainWindow::onMessageListen(uint8_t Command, uint8_t SubCode, QByteArray &M
     }
 }
 
-void MainWindow::AddListen(QByteArray MatchData, pFunction Callback = NULL, bool Repeated = true)
+void MainWindow::AddListen(QByteArray &MatchData, pFunction Callback = NULL, bool Repeated = true)
 {
     ListenerItem newItem;
     newItem.Data = MatchData;

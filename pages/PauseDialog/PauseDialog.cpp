@@ -20,7 +20,8 @@ void MainWindow::printStop()
 {
     m_port->stopPrint();
     m_printsec->stop();
-    changePageOnStatus(QByteArray::fromHex("00"), ui->page_GetStart);
+    QByteArray s = QByteArray::fromHex("00");
+    changePageOnStatus(s, ui->page_GetStart);
 }
 
 void MainWindow::printPause()
@@ -28,7 +29,8 @@ void MainWindow::printPause()
     m_printsec->stop();
     QByteArray command = QByteArray::fromHex("0602");
     m_port->pausePrint();
-    changePageOnStatus(QByteArray::fromHex("02"), ui->page_Printing);
+    QByteArray s = QByteArray::fromHex("02");
+    changePageOnStatus(s, ui->page_Printing);
 }
 
 void MainWindow::printContinue()
@@ -50,7 +52,8 @@ void MainWindow::printContinue()
     }
     m_printsec->start();
     m_port->continuePrint();
-    changePageOnStatus(QByteArray::fromHex("01"), ui->page_Printing);
+    QByteArray s = QByteArray::fromHex("01");
+    changePageOnStatus(s, ui->page_Printing);
 }
 
 void MainWindow::printChangeFilament()

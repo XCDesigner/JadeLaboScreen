@@ -30,7 +30,7 @@ void MainWindow::updateFileAnalize(QString SourceFile)
     }
 }
 
-QByteArray MainWindow::getUpdateInfo(QList<uint32_t> Info)
+QByteArray MainWindow::getUpdateInfo(QList<uint32_t> &Info)
 {
     QFile *file = new QFile(UpdateFile);
     QByteArray ret;
@@ -43,7 +43,7 @@ QByteArray MainWindow::getUpdateInfo(QList<uint32_t> Info)
     return ret;
 }
 
-QByteArray MainWindow::getUpdateContent(QList<uint32_t> Info)
+QByteArray MainWindow::getUpdateContent(QList<uint32_t> &Info)
 {
     QFile *file = new QFile(UpdateFile);
     QByteArray ret;

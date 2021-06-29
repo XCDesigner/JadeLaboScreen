@@ -17,12 +17,15 @@
 
 void MainWindow::FaultDetectInit()
 {
+    QByteArray s = QByteArray::fromHex("0608");
     // Pause event detection
-    AddListen(QByteArray(QByteArray::fromHex("0608")), &MainWindow::onPauseRequest, true);
+    AddListen(s, &MainWindow::onPauseRequest, true);
     // Abort event detection
-    AddListen(QByteArray(QByteArray::fromHex("060A")), &MainWindow::onAbortRequest, true);
+    s = QByteArray::fromHex("060A");
+    AddListen(s, &MainWindow::onAbortRequest, true);
     // Get fault flag
-    AddListen(QByteArray(QByteArray::fromHex("010100")), &MainWindow::onFaultFlag, true);
+    s = QByteArray::fromHex("010100");
+    AddListen(s, &MainWindow::onFaultFlag, true);
 }
 
 void MainWindow::onPauseRequest(QByteArray &Data)
