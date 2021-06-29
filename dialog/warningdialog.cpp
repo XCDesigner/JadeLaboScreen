@@ -27,7 +27,7 @@ WarningDialog::~WarningDialog()
     delete ui;
 }
 
-void WarningDialog::init(QByteArray InitData)
+void WarningDialog::init(QByteArray &InitData)
 {
     ui->label->setText(tips.value(QString(InitData)));
     qDebug()<<images.value(QString(InitData));

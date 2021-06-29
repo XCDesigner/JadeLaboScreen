@@ -33,7 +33,7 @@ changeFilamentDlg::~changeFilamentDlg()
     delete chooseTempDialog;
 }
 
-void changeFilamentDlg::init(QByteArray InitData)
+void changeFilamentDlg::init(QByteArray &InitData)
 {
     strMachineStatus cur_status;
     m_xhPort->getXhPage()->GetMachineStatus(&cur_status);

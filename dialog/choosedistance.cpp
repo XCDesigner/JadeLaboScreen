@@ -26,7 +26,7 @@ ChooseDistance::~ChooseDistance()
     delete ui;
 }
 
-void ChooseDistance::init(QByteArray InitData)
+void ChooseDistance::init(QByteArray &InitData)
 {
     extruder_index = (uint8_t)InitData.at(0);
     ret_value.clear();

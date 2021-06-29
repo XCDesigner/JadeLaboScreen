@@ -17,7 +17,7 @@ askPause::~askPause()
     delete ui;
 }
 
-void askPause::init(QByteArray InitData)
+void askPause::init(QByteArray &InitData)
 {
     strMachineStatus cur_status;
     strScreenStatus cur_screen_status;

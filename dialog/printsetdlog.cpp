@@ -55,7 +55,7 @@ void PrintSetDlog::setPrintMode(QString PrintMode)
     }
 }
 
-void PrintSetDlog::init(QByteArray InitData)
+void PrintSetDlog::init(QByteArray &InitData)
 {
     int16_t curTemp[3], tarTemp[3];
     pscreen_status->getTemp(curTemp, tarTemp);

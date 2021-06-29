@@ -19,7 +19,7 @@ class changeFilamentDlg : public JLWidget
 public:
     explicit changeFilamentDlg(QWidget *parent = nullptr);
     ~changeFilamentDlg();
-    void init(QByteArray) override;
+    void init(QByteArray &) override;
     void show() override;
     void setXHPort(XhPort *pPort);
 

@@ -16,7 +16,7 @@ public:
     explicit WarningDialog(QWidget *parent = nullptr);
     ~WarningDialog();
 
-    void init(QByteArray) override;
+    void init(QByteArray &) override;
     void show() override;
 
 private slots:

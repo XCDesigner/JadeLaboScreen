@@ -5,11 +5,13 @@
 
 void MainWindow::FilamentFaultDetected()
 {
-    pdlg_warning->init(QByteArray("Filament"));
+    QByteArray s0 = "Filament";
+    pdlg_warning->init(s0);
     pdlg_warning->show();
 
     m_filamentfault = new filamentFault(this);
-    m_filamentfault->init(QByteArray());
+    QByteArray s1;
+    m_filamentfault->init(s1);
     m_filamentfault->show();
     QObject::connect(m_filamentfault, SIGNAL(hideWidget()), this, SLOT(onFilamentFaultDialogReturn()));
 }

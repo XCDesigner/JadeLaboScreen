@@ -15,7 +15,7 @@ class ChooseBedTemp : public JLWidget
 public:
     explicit ChooseBedTemp(QWidget *parent = nullptr);
     ~ChooseBedTemp();
-    void init(QByteArray) override;
+    void init(QByteArray &) override;
     void show() override;
 
 private slots:

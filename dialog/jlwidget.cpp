@@ -5,7 +5,7 @@ JLWidget::JLWidget(QWidget *parent) : QWidget(parent)
     // setAttribute(Qt::WA_DeleteOnClose, true);
 }
 
-void JLWidget::init(QByteArray InitData)
+void JLWidget::init(QByteArray &InitData)
 {
     qDebug()<<"init() Unremap";
 }

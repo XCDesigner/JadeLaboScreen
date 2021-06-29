@@ -16,7 +16,7 @@ public:
     explicit InputDialog(QWidget *parent = nullptr);
     ~InputDialog();
 
-    void init(QByteArray) override;
+    void init(QByteArray &) override;
     void show() override;
 
 private slots:

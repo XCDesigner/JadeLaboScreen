@@ -19,7 +19,7 @@ public:
     askPause(QWidget *parent = nullptr);
     ~askPause();
 
-    void init(QByteArray) override;
+    void init(QByteArray &) override;
     void show() override;
     void setXHPort(XhPort *pPort);
 

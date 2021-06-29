@@ -14,7 +14,7 @@ class JLWidget : public QWidget
 public:
     explicit JLWidget(QWidget *parent = nullptr);
 
-    virtual void init(QByteArray);
+    virtual void init(QByteArray &);
     virtual void show();
     virtual QList<QByteArray> get_return_value();
     void setScreenStausContext(ScreenStatus *pContext);

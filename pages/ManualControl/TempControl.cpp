@@ -33,8 +33,9 @@ void MainWindow::tempControlExtruderCooldown(int Index) {
 }
 
 void MainWindow::tempControlChooseBedTemp() {
+    QByteArray s;
     pdlg_choose_bed_temp = new ChooseBedTemp();
-    pdlg_choose_bed_temp->init(QByteArray());
+    pdlg_choose_bed_temp->init(s);
     pdlg_choose_bed_temp->show();
     QObject::connect(pdlg_choose_bed_temp, SIGNAL(hideWidget()), this, SLOT(tempControlChooseBedTempReturn()), Qt::QueuedConnection);
 }

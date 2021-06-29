@@ -153,7 +153,8 @@ void MainWindow::platformCalibrationMessageProcess(uint8_t Command, uint8_t SubC
                 m_port->setHeattingUnit(0, 0);
                 m_port->setHeattingUnit(1, 0);
                 m_port->setHeattingUnit(2, 0);
-                pdlg_warning->init(QByteArray("PlatformCalibrate"));
+                QByteArray s = "PlatformCalibrate";
+                pdlg_warning->init(s);
                 pdlg_warning->show();
 
             }
@@ -167,7 +168,8 @@ void MainWindow::onSetBuildplatThicknessClicked()
     QString init_data;
     init_data = ui->btnSetPlatformThickness->text();
     init_data = init_data.left(init_data.length() - 2);
-    pdlg_Input->init(init_data.toUtf8());
+    QByteArray s = init_data.toUtf8();
+    pdlg_Input->init(s);
     QObject::connect(pdlg_Input, SIGNAL(hideWidget()), this, SLOT(onSetBuildplatThicknessReturn()), Qt::QueuedConnection);
     pdlg_Input->show();
 }

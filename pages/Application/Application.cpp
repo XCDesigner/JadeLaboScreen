@@ -39,7 +39,8 @@ void MainWindow::blockingChangeDialog(QByteArray &Command, JLWidget *pDialog)
     pDialogToShow = pDialog;
     if(Command.size() == 0)
     {
-        pDialogToShow->init(QByteArray());
+        QByteArray s;
+        pDialogToShow->init(s);
         pDialogToShow->show();
     }
     else

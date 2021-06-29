@@ -24,7 +24,7 @@ void JLEvent::setup(XhPort *pSerialPort)
   * @param  Timeout:  Time to wait in microsecnods. 0 for always waiting.
   * @retval None
   */
-void JLEvent::wait(QByteArray pDataSend, uint8_t Timeout)
+void JLEvent::wait(QByteArray &pDataSend, uint8_t Timeout)
 {
     m_serial_port->writeCustomData(pDataSend);
     command_to_wait = pDataSend[0];
@@ -39,7 +39,7 @@ void JLEvent::wait(QByteArray pDataSend, uint8_t Timeout)
   * @param  Timeout:  Time to wait in microsecnods. 0 for always waiting.
   * @retval None
   */
-void JLEvent::waitDialog(QByteArray pDataSend, uint8_t Timeout)
+void JLEvent::waitDialog(QByteArray &pDataSend, uint8_t Timeout)
 {
     m_serial_port->writeCustomData(pDataSend);
     command_to_wait = pDataSend[0];

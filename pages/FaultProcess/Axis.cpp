@@ -10,7 +10,8 @@ void MainWindow::MovementFaultDetected()
     current_performance = screen_status.getPerformance();
     if(current_performance == PRINTING)
     {
-        pdlg_warning->init(QByteArray("Movement"));
+        QByteArray s = "Movement";
+        pdlg_warning->init(s);
     }
 
 }

@@ -13,7 +13,7 @@ filamentFault::~filamentFault()
     delete ui;
 }
 
-void filamentFault::init(QByteArray)
+void filamentFault::init(QByteArray &InitData)
 {
 
 }

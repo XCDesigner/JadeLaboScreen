@@ -25,7 +25,7 @@ InputDialog::~InputDialog()
     delete ui;
 }
 
-void InputDialog::init(QByteArray InitData)
+void InputDialog::init(QByteArray &InitData)
 {
     QString value = QString(InitData);
     accept_string = value;

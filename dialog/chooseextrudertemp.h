@@ -16,7 +16,7 @@ class ChooseExtruderTemp : public JLWidget
 public:
     explicit ChooseExtruderTemp(QWidget *parent = nullptr);
     ~ChooseExtruderTemp();
-    void init(QByteArray) override;
+    void init(QByteArray &) override;
     void show() override;
 
 private slots:

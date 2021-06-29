@@ -29,7 +29,7 @@ ChooseBedTemp::~ChooseBedTemp()
     delete ui;
 }
 
-void ChooseBedTemp::init(QByteArray InitData)
+void ChooseBedTemp::init(QByteArray &InitData)
 {
     ret_value.clear();
 }

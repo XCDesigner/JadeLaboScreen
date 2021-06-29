@@ -8,7 +8,7 @@ powerLost::powerLost(QWidget *parent) :
     ui->setupUi(this);
 }
 
-void powerLost::init(QByteArray)
+void powerLost::init(QByteArray &InitData)
 {
 
 }

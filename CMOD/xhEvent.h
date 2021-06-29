@@ -30,8 +30,8 @@ public:
     explicit JLEvent(QObject *parent = nullptr);
     ~JLEvent();
 
-    void wait(QByteArray pDataSend, uint8_t Timeout);
-    void waitDialog(QByteArray pDataSend, uint8_t Timeout);
+    void wait(QByteArray &pDataSend, uint8_t Timeout);
+    void waitDialog(QByteArray &pDataSend, uint8_t Timeout);
     void setup(XhPort *pSerialPort);
     // bool setListen(uint8_t Command, uint8_t SubCode);
 

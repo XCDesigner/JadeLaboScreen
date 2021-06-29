@@ -100,7 +100,8 @@ void MainWindow::nozzleCalibrationMessageProcess(uint8_t Command, uint8_t SubCod
                 m_port->setHeattingUnit(0, 0);
                 m_port->setHeattingUnit(1, 0);
                 m_port->setHeattingUnit(2, 0);
-                pdlg_warning->init(QByteArray("NozzleCalibrate"));
+                QByteArray s = "NozzleCalibrate";
+                pdlg_warning->init(s);
                 pdlg_warning->show();
                 ui->stackedWidget->setCurrentWidget(ui->page_Calibration);
             }

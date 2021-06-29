@@ -16,7 +16,7 @@ public:
     explicit filamentFault(QWidget *parent = nullptr);
     ~filamentFault();
     void show() override;
-    void init(QByteArray) override;
+    void init(QByteArray &) override;
 
 private:
     Ui::filamentFault *ui;

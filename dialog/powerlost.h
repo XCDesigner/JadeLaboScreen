@@ -16,7 +16,7 @@ public:
     explicit powerLost(QWidget *parent = nullptr);
     ~powerLost();
     void show() override;
-    void init(QByteArray) override;
+    void init(QByteArray &) override;
 
 private slots:
     void on_btnResume_clicked();

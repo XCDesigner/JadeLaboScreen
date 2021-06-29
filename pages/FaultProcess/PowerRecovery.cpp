@@ -15,7 +15,8 @@ void MainWindow::PowerTestResult(QByteArray &Data)
     if(Data.at(3) == 0x01)
     {
         m_power = new powerLost();
-        m_power->init(QByteArray());
+        QByteArray s;
+        m_power->init(s);
         m_power->show();
         QObject::connect(m_power, SIGNAL(hideWidget()), this, SLOT(PowerLostDialogReturn()));
     }

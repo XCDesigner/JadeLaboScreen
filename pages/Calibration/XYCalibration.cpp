@@ -73,7 +73,8 @@ void MainWindow::xyCalibrationMessageProcess(uint8_t Command, uint8_t SubCode, Q
                 m_port->setHeattingUnit(0, 0);
                 m_port->setHeattingUnit(1, 0);
                 m_port->setHeattingUnit(2, 0);
-                pdlg_warning->init(QByteArray("XYCalibrate"));
+                QByteArray s = "XYCalibrate";
+                pdlg_warning->init(s);
                 pdlg_warning->show();
                 ui->stackedWidget->setCurrentWidget(ui->page_Calibration);
             }

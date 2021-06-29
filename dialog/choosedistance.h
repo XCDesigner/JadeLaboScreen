@@ -16,7 +16,7 @@ class ChooseDistance : public JLWidget
 public:
     explicit ChooseDistance(QWidget *parent = nullptr);
     ~ChooseDistance();
-    void init(QByteArray) override;
+    void init(QByteArray &) override;
     void show() override;
 
 private slots:
