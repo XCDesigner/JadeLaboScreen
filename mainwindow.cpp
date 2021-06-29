@@ -175,11 +175,10 @@ MainWindow::MainWindow(QWidget *parent) :
     setWinPic(false);
 
     m_event->setup(m_port);
-    QObject::connect(this->m_event, SIGNAL(changePageAccept(&QByteArray)), this, SLOT(changePageCallback(&QByteArray)));
-    QObject::connect(this->m_event, SIGNAL(changeDialogAccept(&QByteArray)), this, SLOT(changeDialogCallback(&QByteArray)));
+    QObject::connect(this->m_event, SIGNAL(changePageAccept(QByteArray &)), this, SLOT(changePageCallback(QByteArray &)));
+    QObject::connect(this->m_event, SIGNAL(changeDialogAccept(QByteArray &)), this, SLOT(changeDialogCallback(QByteArray &)));
 
     QObject::connect(m_port->getXhPage(), SIGNAL(command_received(uint8_t, uint8_t, QByteArray &)), this, SLOT(printMessageProcess(uint8_t, uint8_t, QByteArray &)));
-//    QObject::connect(m_port->getXhPage(), SIGNAL(command_received(uint8_t, uint8_t, QByteArray)), this, SLOT(onMessageTest(uint8_t, uint8_t, QByteArray)));
 
     AboutPageInit();
 
